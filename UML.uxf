@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="13.3">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>350</y>
+      <w>210</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Level
+--
+- bubbleList
+- playerList
+- ropeList 
+- timeLeft
+- height
+- width
+--
+
++ checkCollision(): boolean 
++ bubbleSplit(Bubble)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>970</x>
+      <y>350</y>
+      <w>210</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>Bubble
+--
+- x,y: int
+- directionH,directionV: boolean
+- color: String
+- radius: int
+--
++ moveBubble()
++ bounceH()
++ bounceV()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>410</y>
+      <w>170</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>410</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+1-*
+bubbleList</panel_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>970</x>
+      <y>170</y>
+      <w>210</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>Player
+--
+- x,y: int
+- height, width: int
+--
++ moveLeft()
++ moveRight()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>350</y>
+      <w>210</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>Game
+--
+- levelList
+- lives
+- score
+--
++ start()
++ drawBubbles()
++ drawPlayers
++ drawRopes
++ gameLoop()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>240</y>
+      <w>200</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;110.0;180.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>240</y>
+      <w>200</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+
+</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>Text</id>
+    <coordinates>
+      <x>880</x>
+      <y>260</y>
+      <w>100</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>1-2
+
+playerList</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>400</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>400</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+1-*
+levelList</panel_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>970</x>
+      <y>560</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Rope
+--
+- x,y: int
+--
++ moveUp
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
