@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>590</x>
-      <y>350</y>
+      <x>620</x>
+      <y>340</y>
       <w>210</w>
       <h>160</h>
     </coordinates>
@@ -26,28 +26,32 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>970</x>
-      <y>350</y>
+      <x>1000</x>
+      <y>340</y>
       <w>210</w>
-      <h>150</h>
+      <h>210</h>
     </coordinates>
     <panel_attributes>Bubble
 --
 - x,y: int
 - directionH,directionV: boolean
+- speed: int
+- maxHeight: int
 - color: String
 - radius: int
+- alive: boolean
 --
-+ moveBubble()
++ move()
 + bounceH()
-+ bounceV()</panel_attributes>
++ bounceV()
++ die()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
-      <y>410</y>
+      <x>820</x>
+      <y>400</y>
       <w>170</w>
       <h>40</h>
     </coordinates>
@@ -58,8 +62,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>410</y>
+      <x>850</x>
+      <y>400</y>
       <w>170</w>
       <h>50</h>
     </coordinates>
@@ -71,26 +75,27 @@ bubbleList</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>970</x>
+      <x>1000</x>
       <y>170</y>
       <w>210</w>
-      <h>100</h>
+      <h>110</h>
     </coordinates>
     <panel_attributes>Player
 --
+- name: String
 - x,y: int
 - height, width: int
 --
 + moveLeft()
 + moveRight()
-</panel_attributes>
++ shootRope()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>350</y>
+      <x>290</x>
+      <y>340</y>
       <w>210</w>
       <h>160</h>
     </coordinates>
@@ -110,33 +115,33 @@ bubbleList</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
+      <x>820</x>
       <y>240</y>
       <w>200</w>
-      <h>130</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 </panel_attributes>
-    <additional_attributes>10.0;110.0;180.0;10.0</additional_attributes>
+    <additional_attributes>10.0;100.0;180.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
+      <x>820</x>
       <y>240</y>
       <w>200</w>
-      <h>130</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;-
 
 </panel_attributes>
-    <additional_attributes>180.0;10.0;10.0;110.0</additional_attributes>
+    <additional_attributes>180.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>880</x>
-      <y>260</y>
+      <x>910</x>
+      <y>250</y>
       <w>100</w>
       <h>70</h>
     </coordinates>
@@ -148,8 +153,8 @@ playerList</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
-      <y>400</y>
+      <x>480</x>
+      <y>390</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -160,8 +165,8 @@ playerList</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>460</x>
-      <y>400</y>
+      <x>490</x>
+      <y>390</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
@@ -173,16 +178,17 @@ levelList</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>970</x>
-      <y>560</y>
+      <x>1000</x>
+      <y>610</y>
       <w>210</w>
-      <h>70</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>Rope
 --
 - x,y: int
+- shotBy: Player.name
 --
-+ moveUp
++ move()
 </panel_attributes>
     <additional_attributes/>
   </element>
