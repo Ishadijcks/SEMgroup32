@@ -48,4 +48,8 @@ public class Game {
 	public int getLives(){
 		return lives;
 	}
+	
+	public void loseLife(){
+		lives--;
+	}
 }

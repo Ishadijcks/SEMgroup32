@@ -8,7 +8,6 @@ public class Level {
 	private int width = 500;
 	private int height = 350;
 
-
 	/**
 	 * Constructor, initializes the bubble- and playerList
 	 */
@@ -29,18 +28,8 @@ public class Level {
 		// remove bubble from list
 		// add two new smaller bubbles if old radius was > 1
 		if (checkCollisionRope() != -1) {
-			int i = checkCollisionRope();
-			Bubble bubble = bubbleList.get(i);
-			int x = bubble.getX();
-			int y = bubble.getY();
-			int radius = bubble.getRadius();
-			bubbleList.remove(i);
-			if (radius > 1) {
-				Bubble newBubble1 = new Bubble(radius - 1, x, y, false, true);
-				Bubble newBubble2 = new Bubble(radius - 1, x, y, true, true);
-				bubbleList.add(newBubble1);
-				bubbleList.add(newBubble2);
-			}
+			
+			
 
 		}
 		// checks if the player needs to die :(
@@ -61,8 +50,14 @@ public class Level {
 			// then there is a chance the rope hits the bubble
 			// /// RADIUS NOT IN ACCOUNT JET AND SIZE OF PLAYER
 			Player player = playerList.get(0);
+			System.out.println("Bubble " + i + ": " + bubbleList.get(i).getX()
+					+ ", " + bubbleList.get(i).getY());
+			System.out.println("Player: " + player.getX() + ", "
+					+ (height - player.getHeight()));
+			System.out.println();
 			if (bubbleList.get(i).getX() == player.getX()) {
-				if (player.getY() <= bubbleList.get(i).getY()) {
+				if (height - player.getHeight() <= bubbleList.get(i).getY()) {
+					System.out.println("Died to bubble: " + i);
 					return true;
 				}
 			}
@@ -76,14 +71,16 @@ public class Level {
 	 * @return -1 if there is no collision otherwise the index of the bubble
 	 */
 	public int checkCollisionRope() {
-		for (int i = 0; i < bubbleList.size(); i++) {
-			// if the x of the rope and the bubble is the same
-			// then there is a chance the rope hits the bubble
-			// /// RADIUS NOT IN ACCOUNT JET
-			if (bubbleList.get(i).getX() == rope.getX()) {
-				// if the ropes end is higher then the bubble it's a hit
-				if (rope.getY() <= bubbleList.get(i).getY()) {
-					return i;
+		if (hasRope()) {
+			for (int i = 0; i < bubbleList.size(); i++) {
+				// if the x of the rope and the bubble is the same
+				// then there is a chance the rope hits the bubble
+				// /// RADIUS NOT IN ACCOUNT JET
+				if (bubbleList.get(i).getX() == rope.getX()) {
+					// if the ropes end is higher then the bubble it's a hit
+					if (rope.getY() <= bubbleList.get(i).getY()) {
+						return i;
+					}
 				}
 			}
 		}
@@ -118,10 +115,10 @@ public class Level {
 		}
 	}
 
-	public boolean hasRope(){
+	public boolean hasRope() {
 		return rope != null;
 	}
-	
+
 	// Getters and Setters
 	public ArrayList<Bubble> getBubbleList() {
 		return bubbleList;
@@ -132,19 +129,19 @@ public class Level {
 	}
 
 	// Getters and Setters
-	public int getHeight(){
+	public int getHeight() {
 		return height;
 	}
-	
-	public int getWidth(){
+
+	public int getWidth() {
 		return width;
 	}
-	
-	public Rope getRope(){
+
+	public Rope getRope() {
 		return rope;
 	}
-	
-	public void setRope(Rope rope){
+
+	public void setRope(Rope rope) {
 		this.rope = rope;
 	}
 }

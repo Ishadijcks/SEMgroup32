@@ -70,6 +70,7 @@ public class Player {
 					.setRope(rope);
 		}
 	}
+	
 
 	// Getters and setters
 	public String getName() {

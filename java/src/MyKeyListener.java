@@ -6,8 +6,7 @@ class MyKeyListener extends KeyAdapter {
 	Game game = Driver.game;
 
 	public void keyPressed(KeyEvent evt) {
-		System.out.println(evt.getKeyCode());
-
+		
 		Level curLevel = game.getLevelList().get(game.getCurrentLevel());
 
 		switch (evt.getKeyCode()) {
