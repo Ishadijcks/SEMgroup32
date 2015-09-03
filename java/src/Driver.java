@@ -97,25 +97,7 @@ public class Driver extends JPanel {
 				curLevel.getRope().move();
 			}
 
-			if (curLevel.checkCollisionRope() != -1) {
-				curLevel.setRope(null);
-				System.out.println("Hit a ball");
-
-				int i = curLevel.checkCollisionRope();
-				Bubble bubble = curLevel.getBubbleList().get(i);
-				int x = bubble.getX();
-				int y = bubble.getY();
-				int radius = bubble.getRadius();
-				curLevel.getBubbleList().remove(i);
-				if (radius > 1) {
-					Bubble newBubble1 = new Bubble(radius - 1, x, y, false,
-							true);
-					Bubble newBubble2 = new Bubble(radius - 1, x, y, true, true);
-					curLevel.getBubbleList().add(newBubble1);
-					curLevel.getBubbleList().add(newBubble2);
-
-				}
-			}
+			curLevel.checkCollisionRope();
 
 			driver.repaint();
 			player1.move();
