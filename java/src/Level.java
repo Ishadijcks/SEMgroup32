@@ -144,4 +144,7 @@ public class Level {
 		return rope;
 	}
 	
+	public void setRope(Rope rope){
+		this.rope = rope;
+	}
 }

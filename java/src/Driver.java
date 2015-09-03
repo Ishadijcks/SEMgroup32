@@ -47,14 +47,16 @@ public class Driver extends JPanel  {
 		// Draw the border
 		g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
 
+		// Show the lives of the player
+		g2d.drawString("Lives: "+game.getLives(),20,curLevel.getHeight()+20);
 	}
 
 	public static void main(String[] args) throws InterruptedException {
 		JFrame frame = new JFrame("Bounce test");
 		Driver driver = new Driver();
+		frame.addKeyListener(new MyKeyListener());	
 		frame.add(driver);
-		System.out.println(frame.isFocusable());
-		frame.setSize(600, 400);
+		frame.setSize(600, 500);
 		frame.setVisible(true);
 		
 		Player isha = new Player("Isha",40,10);
@@ -77,6 +79,8 @@ public class Driver extends JPanel  {
 		while (true) {
 			
 			Level curLevel = game.getLevelList().get(game.getCurrentLevel());
+			Player player1 = curLevel.getPlayerList().get(0);
+			
 			for(int i = 0; i<curLevel.getBubbleList().size(); i++){
 				Bubble bubble = curLevel.getBubbleList().get(i);
 				bubble.move(curLevel.getWidth(),curLevel.getHeight());
@@ -85,6 +89,9 @@ public class Driver extends JPanel  {
 			if(curLevel.hasRope()){
 			curLevel.getRope().move();
 			}
+			
+			
+			player1.move();
 			
 			driver.repaint();
 			

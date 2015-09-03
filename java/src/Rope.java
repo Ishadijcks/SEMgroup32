@@ -8,7 +8,12 @@ public class Rope {
 	}
 
 	public void move() {
+		if(y <= 0){
+			Driver.game.getLevelList().get(Driver.game.getCurrentLevel()).setRope(null);
+		}
+		else{
 		y--;
+		}
 	}
 
 	public int getX() {
