@@ -47,17 +47,11 @@ public class Bubble {
 
 	public void move(int width, int height) {
 		// moeilijke berekeningen enzo
-		if (x + radius > width && directionH || x <= 1 && !directionH) { // 250
-																			// should
-																			// should
-																			// level.size();
+		if (x + radius > width && directionH || x <= 1 && !directionH) { 
 			bounceH();
 		}
 
-		if (y + radius > height && directionV || y <= 1 && !directionV) { // 350
-																			// should
-																			// should
-																			// level.size();
+		if (y + radius > height && directionV || y <= 1 && !directionV) {
 			bounceV();
 		}
 

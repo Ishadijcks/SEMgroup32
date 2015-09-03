@@ -26,6 +26,18 @@ public class Player {
 		x += stepSize;
 	}
 
+
+	public void shootRope() {
+		if(!Driver.game.getLevelList().get(Driver.game.getCurrentLevel()).hasRope()){
+		int ropeY =  Driver.game.getLevelList().get(Driver.game.getCurrentLevel()).getHeight() - height + 2;
+		int ropeX = x + width/2;
+		Rope rope = new Rope(ropeX, ropeY);		
+
+		Driver.game.getLevelList().get(Driver.game.getCurrentLevel()).setRope(rope);
+		}
+	}
+	
+	
 	// Getters and setters
 	public String getName(){
 		return name;
@@ -46,4 +58,5 @@ public class Player {
 	public int getHeight() {
 		return height;
 	}
+
 }
