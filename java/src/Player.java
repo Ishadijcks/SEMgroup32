@@ -16,14 +16,18 @@ public class Player {
 	 * The player moves left
 	 */
 	public void moveLeft() {
+		if(x-stepSize > 0){
 		x -= stepSize;
+		}
 	}
 
 	/**
 	 * The player moves right
 	 */
 	public void moveRight() {
+		if(x+stepSize+width <  Driver.game.getLevelList().get(Driver.game.getCurrentLevel()).getWidth()){
 		x += stepSize;
+		}
 	}
 
 
