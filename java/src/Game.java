@@ -23,7 +23,7 @@ public class Game {
 	public ArrayList<Level> getLevelList() {
 		return levelList;
 	}
-
+	
 	/**
 	 * Adds a level to the levelList
 	 * 
@@ -43,5 +43,9 @@ public class Game {
 	 */
 	public int getCurrentLevel() {
 		return currentLevel;
+	}
+	
+	public int getLives(){
+		return lives;
 	}
 }
