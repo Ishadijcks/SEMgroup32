@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>620</x>
-      <y>340</y>
+      <x>330</x>
+      <y>300</y>
       <w>210</w>
       <h>160</h>
     </coordinates>
@@ -26,8 +26,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1000</x>
-      <y>340</y>
+      <x>710</x>
+      <y>300</y>
       <w>210</w>
       <h>210</h>
     </coordinates>
@@ -43,15 +43,14 @@
 --
 + move()
 + bounceH()
-+ bounceV()
-+ die()</panel_attributes>
++ bounceV()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>400</y>
+      <x>530</x>
+      <y>360</y>
       <w>170</w>
       <h>40</h>
     </coordinates>
@@ -62,8 +61,8 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>850</x>
-      <y>400</y>
+      <x>560</x>
+      <y>360</y>
       <w>170</w>
       <h>50</h>
     </coordinates>
@@ -75,16 +74,17 @@ bubbleList</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1000</x>
-      <y>170</y>
+      <x>710</x>
+      <y>130</y>
       <w>210</w>
-      <h>110</h>
+      <h>150</h>
     </coordinates>
     <panel_attributes>Player
 --
 - name: String
 - x,y: int
 - height, width: int
+- stepSize: int
 --
 + moveLeft()
 + moveRight()
@@ -94,8 +94,8 @@ bubbleList</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>290</x>
-      <y>340</y>
+      <x>0</x>
+      <y>300</y>
       <w>210</w>
       <h>160</h>
     </coordinates>
@@ -115,8 +115,8 @@ bubbleList</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>240</y>
+      <x>530</x>
+      <y>200</y>
       <w>200</w>
       <h>120</h>
     </coordinates>
@@ -127,8 +127,8 @@ bubbleList</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>820</x>
-      <y>240</y>
+      <x>530</x>
+      <y>200</y>
       <w>200</w>
       <h>120</h>
     </coordinates>
@@ -140,8 +140,8 @@ bubbleList</panel_attributes>
   <element>
     <id>Text</id>
     <coordinates>
-      <x>910</x>
-      <y>250</y>
+      <x>620</x>
+      <y>210</y>
       <w>100</w>
       <h>70</h>
     </coordinates>
@@ -153,8 +153,8 @@ playerList</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>390</y>
+      <x>190</x>
+      <y>350</y>
       <w>140</w>
       <h>40</h>
     </coordinates>
@@ -165,8 +165,8 @@ playerList</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>490</x>
-      <y>390</y>
+      <x>200</x>
+      <y>350</y>
       <w>150</w>
       <h>50</h>
     </coordinates>
@@ -178,8 +178,8 @@ levelList</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1000</x>
-      <y>610</y>
+      <x>710</x>
+      <y>570</y>
       <w>210</w>
       <h>80</h>
     </coordinates>
@@ -191,5 +191,31 @@ levelList</panel_attributes>
 + move()
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>530</x>
+      <y>450</y>
+      <w>200</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;180.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>470</y>
+      <w>170</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-
+0-playerList.size
+
+ropeList</panel_attributes>
+    <additional_attributes>150.0;100.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
