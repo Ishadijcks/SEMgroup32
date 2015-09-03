@@ -39,7 +39,6 @@ public class Bubble {
 
 	public void move(int width, int height) {
 		// moeilijke berekeningen enzo
-		System.out.println("Width: "+width + ", height: "+height);
 		if (x + radius > width && directionH || x <= 1 && !directionH) { // 250 should should level.size();
 			bounceH();
 		}

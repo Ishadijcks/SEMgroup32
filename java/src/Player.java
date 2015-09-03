@@ -2,8 +2,8 @@ public class Player {
 	private String name;
 	private int x;
 	private int y;
-	private int height;
-	private int width;
+	private int height = 40;
+	private int width = 20;
 	private int stepSize = 10;
 
 	Player(String name, int x, int y) {
@@ -27,6 +27,10 @@ public class Player {
 	}
 
 	// Getters and setters
+	public String getName(){
+		return name;
+	}
+	
 	public int getX() {
 		return x;
 	}

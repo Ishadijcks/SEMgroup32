@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Level {
 	private ArrayList<Bubble> bubbleList;
 	private ArrayList<Player> playerList;
-	private Rope rope;
+	private Rope rope = null;
 	private int timeLeft;
 	private int width = 500;
 	private int height = 350;
@@ -118,6 +118,10 @@ public class Level {
 		}
 	}
 
+	public boolean hasRope(){
+		return rope != null;
+	}
+	
 	// Getters and Setters
 	public ArrayList<Bubble> getBubbleList() {
 		return bubbleList;
@@ -134,6 +138,10 @@ public class Level {
 	
 	public int getWidth(){
 		return width;
+	}
+	
+	public Rope getRope(){
+		return rope;
 	}
 	
 }

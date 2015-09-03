@@ -31,8 +31,14 @@ public class Driver extends JPanel  {
 		// Draw all the players
 		for(int i = 0; i<curLevel.getPlayerList().size(); i++){
 			Player player = curLevel.getPlayerList().get(i);
-			g2d.fillRect(player.getX(), 350-player.getHeight()+2, player.getWidth(), player.getHeight());
+			
+			g2d.drawString(player.getName(), player.getX(), curLevel.getHeight()-player.getHeight()-10);
+			g2d.fillRect(player.getX(), curLevel.getHeight()-player.getHeight()+2, player.getWidth(), player.getHeight());
 		}
+		
+		// Draw the ropes
+		
+		g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope().getY(), curLevel.getRope().getX(), curLevel.getHeight());
 		
 		// Draw the border
 		g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
@@ -48,6 +54,7 @@ public class Driver extends JPanel  {
 		frame.setVisible(true);
 		
 		Player isha = new Player("Isha",40,10);
+		Player tim = new Player("Tim",80,10);
 		Bubble bubble1 = new Bubble(10,50,50,true,false);
 		Bubble bubble2 = new Bubble(10,50,50,true,true);
 		Bubble bubble3 = new Bubble(10,50,50,false,false);
@@ -58,7 +65,7 @@ public class Driver extends JPanel  {
 		level1.addBubble(bubble3);
 		level1.addBubble(bubble4);
 		level1.addPlayer(isha);
-		
+		level1.addPlayer(tim);
 		game.addLevel(level1);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +77,11 @@ public class Driver extends JPanel  {
 				Bubble bubble = curLevel.getBubbleList().get(i);
 				bubble.move(curLevel.getWidth(),curLevel.getHeight());
 			}
-
+			
+			if(curLevel.hasRope()){
+			curLevel.getRope().move();
+			}
+			
 			driver.repaint();
 			
 			//120 FPS
