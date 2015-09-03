@@ -79,6 +79,8 @@ public class Driver extends JPanel  {
 		while (true) {
 			
 			Level curLevel = game.getLevelList().get(game.getCurrentLevel());
+			Player player1 = curLevel.getPlayerList().get(0);
+			
 			for(int i = 0; i<curLevel.getBubbleList().size(); i++){
 				Bubble bubble = curLevel.getBubbleList().get(i);
 				bubble.move(curLevel.getWidth(),curLevel.getHeight());
@@ -87,6 +89,9 @@ public class Driver extends JPanel  {
 			if(curLevel.hasRope()){
 			curLevel.getRope().move();
 			}
+			
+			
+			player1.move();
 			
 			driver.repaint();
 			
