@@ -1,12 +1,21 @@
 import java.util.ArrayList;
 
 public class Level {
-	private ArrayList<Bubble> bubbleList = new ArrayList<Bubble>();
-	private ArrayList<Player> playerList = new ArrayList<Player>();
-	private Rope rope;
+	private ArrayList<Bubble> bubbleList;
+	private ArrayList<Player> playerList;
+	private Rope rope = null;
 	private int timeLeft;
-	private int height;
-	private int width;
+	private int width = 500;
+	private int height = 350;
+
+
+	/**
+	 * Constructor, initializes the bubble- and playerList
+	 */
+	public Level() {
+		this.bubbleList = new ArrayList<Bubble>();
+		this.playerList = new ArrayList<Player>();
+	}
 
 	/**
 	 * Checks if there is a collision in the game and if return true that means
@@ -84,4 +93,55 @@ public class Level {
 	public void resetLevel() {
 		// reset the level
 	}
+
+	/**
+	 * Add a bubble to the bubbleList
+	 * 
+	 * @param bubble
+	 *            bubble to add
+	 */
+	public void addBubble(Bubble bubble) {
+		if (!bubbleList.contains(bubble)) {
+			bubbleList.add(bubble);
+		}
+	}
+
+	/**
+	 * Add a player to the playerList
+	 * 
+	 * @param player
+	 *            player to add
+	 */
+	public void addPlayer(Player player) {
+		if (!playerList.contains(player)) {
+			playerList.add(player);
+		}
+	}
+
+	public boolean hasRope(){
+		return rope != null;
+	}
+	
+	// Getters and Setters
+	public ArrayList<Bubble> getBubbleList() {
+		return bubbleList;
+	}
+
+	public ArrayList<Player> getPlayerList() {
+		return playerList;
+	}
+
+	// Getters and Setters
+	public int getHeight(){
+		return height;
+	}
+	
+	public int getWidth(){
+		return width;
+	}
+	
+	public Rope getRope(){
+		return rope;
+	}
+	
 }

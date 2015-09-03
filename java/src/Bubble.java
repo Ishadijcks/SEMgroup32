@@ -1,10 +1,12 @@
+import java.awt.Color;
+
 public class Bubble {
 	private int x;
 	private int y;
 	private int radius;
 	private boolean directionH;
 	private boolean directionV;
-	private String color;
+	private Color color;
 
 	/**
 	 * the constructor sets the starting coordinates the moving location the
@@ -23,27 +25,39 @@ public class Bubble {
 		// Sets the color depending on the radius of the bubble
 		switch (radius) {
 		case 1:
-			color = "#ecff13";
+			color = Color.BLUE;
 			break;
 		case 2:
-			color = "#33ef5f";
+			color = Color.BLACK;
 			break;
-		case 3:
-			color = "#3aa9ff";
+		case 4:
+			color = Color.GREEN;
+			break;
+		case 8:
+			color = Color.CYAN;
+			break;
+		case 16:
+			color = Color.PINK;
 			break;
 		default:
-			color = "#0b33ff";
+			color = Color.MAGENTA;
 			break;
 		}
 	}
 
-	public void move() {
+	public void move(int width, int height) {
 		// moeilijke berekeningen enzo
-		if (x + radius > 250 && directionH || x <= 1 && !directionH) { // 250 should should level.size();
+		if (x + radius > width && directionH || x <= 1 && !directionH) { // 250
+																			// should
+																			// should
+																			// level.size();
 			bounceH();
 		}
 
-		if (y + radius > 350 && directionV || y <= 1 && !directionV) { // 350 should should level.size();
+		if (y + radius > height && directionV || y <= 1 && !directionV) { // 350
+																			// should
+																			// should
+																			// level.size();
 			bounceV();
 		}
 
@@ -57,7 +71,7 @@ public class Bubble {
 		} else {
 			y--;
 		}
-	
+
 	}
 
 	/**
@@ -73,7 +87,8 @@ public class Bubble {
 	public void bounceV() {
 		directionV = !directionV;
 	}
-
+	// Getters and Setters
+	
 	public int getX() {
 		return x;
 	}
@@ -85,4 +100,10 @@ public class Bubble {
 	public int getRadius() {
 		return radius;
 	}
+	
+	public Color getColor(){
+		return color;
+	}
+
+
 }

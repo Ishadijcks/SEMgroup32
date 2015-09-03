@@ -1,23 +1,36 @@
 public class Player {
+	private String name;
 	private int x;
 	private int y;
-	private int height;
-	private int width;
+	private int height = 40;
+	private int width = 20;
 	private int stepSize = 10;
 
-	Player(int x, int y) {
+	Player(String name, int x, int y) {
+		this.name = name;
 		this.x = x;
 		this.y = y;
 	}
 
+	/**
+	 * The player moves left
+	 */
 	public void moveLeft() {
 		x -= stepSize;
 	}
 
-	public void moveRIght() {
+	/**
+	 * The player moves right
+	 */
+	public void moveRight() {
 		x += stepSize;
 	}
 
+	// Getters and setters
+	public String getName(){
+		return name;
+	}
+	
 	public int getX() {
 		return x;
 	}
