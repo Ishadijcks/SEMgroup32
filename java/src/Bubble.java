@@ -104,4 +104,6 @@ public class Bubble {
 	public Color getColor(){
 		return color;
 	}
+
+
 }
