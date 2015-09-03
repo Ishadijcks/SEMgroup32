@@ -1,12 +1,17 @@
 import java.awt.Color;
 
 public class Bubble {
-	private int x;
-	private int y;
+	private double x;
+	private double y;
 	private int radius;
 	private boolean directionH;
 	private boolean directionV;
 	private Color color;
+	private double downTime = 1;
+	private double upTime = 1;
+	private boolean falling = false;
+	private double lastDownSpeed = 0;
+	private double lastUpSpeed = 0;
 
 	/**
 	 * the constructor sets the starting coordinates the moving location the
@@ -15,7 +20,8 @@ public class Bubble {
 	 * @param x
 	 * @param y
 	 */
-	Bubble(int radius, int x, int y, boolean directionH, boolean directionV) {
+	Bubble(int radius, double x, double y, boolean directionH,
+			boolean directionV) {
 		this.x = x;
 		this.y = y;
 		this.directionH = directionH;
@@ -24,19 +30,19 @@ public class Bubble {
 
 		// Sets the color depending on the radius of the bubble
 		switch (radius) {
-		case 1:
+		case 8:
 			color = Color.BLUE;
 			break;
-		case 2:
+		case 16:
 			color = Color.BLACK;
 			break;
-		case 4:
+		case 32:
 			color = Color.GREEN;
 			break;
-		case 8:
+		case 64:
 			color = Color.CYAN;
 			break;
-		case 16:
+		case 128:
 			color = Color.PINK;
 			break;
 		default:
@@ -46,8 +52,27 @@ public class Bubble {
 	}
 
 	public void move(int width, int height) {
-		// moeilijke berekeningen enzo
-		if (x + radius > width && directionH || x <= 1 && !directionH) { 
+		int maxheight = 200;
+		if (radius == 64) {
+			maxheight = 70;
+		}
+		if (radius == 16) {
+			maxheight = 220;
+		}
+		if (radius == 32) {
+			maxheight = 120;
+		}
+
+		if (directionV) {
+			downTime += 1;
+		} else {
+			upTime += 1;
+		}
+
+		int range = height - maxheight;
+		double speedFactor = 0.8 / range;
+
+		if (x + radius > width && directionH || x <= 1 && !directionH) {
 			bounceH();
 		}
 
@@ -56,14 +81,31 @@ public class Bubble {
 		}
 
 		if (directionH) {
-			x++;
+			x+=0.8;
 		} else {
-			x--;
+			x-=0.8;
+		}
+
+		// bounce on the max height
+		if (y < maxheight) {
+			directionV = true;
 		}
 		if (directionV) {
-			y++;
+			lastDownSpeed = 0.1 + 4 * (downTime / 100);
+			lastDownSpeed = lastDownSpeed * 0.8;
+			if(lastDownSpeed > 2.5){
+				lastDownSpeed = 2.5;
+			}
+			y += 0.2 + 4 * ((downTime + 10) / 100);
+			
 		} else {
-			y--;
+			// start with the last downspeed but up this speed slows down
+			// depending on the uptime
+			// mutiply this with a factor that reaches 0 when at max height
+			// + 0.1 standaard speed to reach the maxheight (last few pixels)
+			lastUpSpeed = (1 - Math.pow((maxheight / y), 5) + 0.05)
+					* (lastDownSpeed - Math.pow(upTime, 1 / 3) + 0.7) + 0.1;
+			y -= lastUpSpeed;
 		}
 
 	}
@@ -80,24 +122,31 @@ public class Bubble {
 	 */
 	public void bounceV() {
 		directionV = !directionV;
+		if (directionV) {
+			falling = true;
+			upTime = 1;
+		} else {
+			falling = false;
+			downTime = 1;
+		}
 	}
+
 	// Getters and Setters
-	
+
 	public int getX() {
-		return x;
+		return (int) Math.round(x);
 	}
 
 	public int getY() {
-		return y;
+		return (int) Math.round(y);
 	}
 
 	public int getRadius() {
 		return radius;
 	}
-	
-	public Color getColor(){
+
+	public Color getColor() {
 		return color;
 	}
-
 
 }
