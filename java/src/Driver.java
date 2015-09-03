@@ -47,6 +47,8 @@ public class Driver extends JPanel  {
 		// Draw the border
 		g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
 
+		// Show the lives of the player
+		g2d.drawString("Lives: "+game.getLives(),20,curLevel.getHeight()+20);
 	}
 
 	public static void main(String[] args) throws InterruptedException {
@@ -54,7 +56,7 @@ public class Driver extends JPanel  {
 		Driver driver = new Driver();
 		frame.addKeyListener(new MyKeyListener());	
 		frame.add(driver);
-		frame.setSize(600, 400);
+		frame.setSize(600, 500);
 		frame.setVisible(true);
 		
 		Player isha = new Player("Isha",40,10);

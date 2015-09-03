@@ -44,4 +44,8 @@ public class Game {
 	public int getCurrentLevel() {
 		return currentLevel;
 	}
+	
+	public int getLives(){
+		return lives;
+	}
 }
