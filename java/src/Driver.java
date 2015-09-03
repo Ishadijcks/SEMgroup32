@@ -52,8 +52,8 @@ public class Driver extends JPanel  {
 	public static void main(String[] args) throws InterruptedException {
 		JFrame frame = new JFrame("Bounce test");
 		Driver driver = new Driver();
+		frame.addKeyListener(new MyKeyListener());	
 		frame.add(driver);
-		System.out.println(frame.isFocusable());
 		frame.setSize(600, 400);
 		frame.setVisible(true);
 		
