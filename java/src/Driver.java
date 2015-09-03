@@ -37,9 +37,9 @@ public class Driver extends JPanel  {
 		}
 		
 		// Draw the ropes
-		
+		if(curLevel.hasRope()){
 		g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope().getY(), curLevel.getRope().getX(), curLevel.getHeight());
-		
+		}
 		// Draw the border
 		g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
 
