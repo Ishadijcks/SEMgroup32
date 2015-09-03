@@ -33,8 +33,6 @@ public class Player {
 	public void movingRight() {
 		movingRight = true;
 	}
-
-
 	/**
 	 * The player stops moving right
 	 */

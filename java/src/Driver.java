@@ -65,12 +65,14 @@ public class Driver extends JPanel {
 		frame.setSize(600, 500);
 		frame.setVisible(true);
 
-		Player isha = new Player("Isha", 40, 10);
-		Player tim = new Player("Tim", 80, 10);
-		Bubble bubble1 = new Bubble(4, 50, 50, true, false);
-		Bubble bubble2 = new Bubble(8, 50, 50, true, true);
-		Bubble bubble3 = new Bubble(16, 50, 50, false, false);
-		Bubble bubble4 = new Bubble(8, 50, 50, false, true);
+
+		Player isha = new Player("Isha",40,10);
+		Player tim = new Player("Tim",80,10);
+		Bubble bubble1 = new Bubble(16,50,50,true,false);
+		Bubble bubble2 = new Bubble(32,50,50,true,true);
+		Bubble bubble3 = new Bubble(64,50,50,false,false);
+		Bubble bubble4 = new Bubble(32,50,50,false,true);
+
 		Level level1 = new Level();
 		level1.addBubble(bubble1);
 		level1.addBubble(bubble2);
