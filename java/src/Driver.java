@@ -99,6 +99,9 @@ public class Driver extends JPanel {
 
 			curLevel.checkCollisionRope();
 
+			if(curLevel.checkCollisionPlayer()){
+				game.loseLife();
+			}
 			driver.repaint();
 			player1.move();
 

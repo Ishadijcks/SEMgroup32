@@ -16,7 +16,6 @@ public class Level {
 		this.playerList = new ArrayList<Player>();
 	}
 
-
 	/**
 	 * Checks if there is collision between player and a bubble
 	 * 
@@ -28,14 +27,10 @@ public class Level {
 			// then there is a chance the rope hits the bubble
 			// /// RADIUS NOT IN ACCOUNT JET AND SIZE OF PLAYER
 			Player player = playerList.get(0);
-			System.out.println("Bubble " + i + ": " + bubbleList.get(i).getX()
-					+ ", " + bubbleList.get(i).getY());
-			System.out.println("Player: " + player.getX() + ", "
-					+ (height - player.getHeight()));
-			System.out.println();
+
 			if (bubbleList.get(i).getX() == player.getX()) {
 				if (height - player.getHeight() <= bubbleList.get(i).getY()) {
-					System.out.println("Died to bubble: " + i);
+
 					return true;
 				}
 			}
@@ -54,8 +49,6 @@ public class Level {
 				// if the x of the rope and the bubble is the same
 				// then there is a chance the rope hits the bubble
 				// /// RADIUS NOT IN ACCOUNT JET
-				System.out.println(bubbleList.get(i));
-				System.out.println(rope);
 				if (bubbleList.get(i).getX() == rope.getX()) {
 					// if the ropes end is higher then the bubble it's a hit
 					if (rope.getY() <= bubbleList.get(i).getY()) {
@@ -68,7 +61,7 @@ public class Level {
 		}
 	}
 
-	public void destroyBubble(int i){
+	public void destroyBubble(int i) {
 
 		Bubble bubble = bubbleList.get(i);
 		int x = bubble.getX();
@@ -76,16 +69,15 @@ public class Level {
 		int radius = bubble.getRadius();
 		bubbleList.remove(i);
 		if (radius > 3) {
-			Bubble newBubble1 = new Bubble(radius/2, x, y, false,
-					false);
-			Bubble newBubble2 = new Bubble(radius/2, x, y, true, false);
+			Bubble newBubble1 = new Bubble(radius / 2, x, y, false, false);
+			Bubble newBubble2 = new Bubble(radius / 2, x, y, true, false);
 			bubbleList.add(newBubble1);
 			bubbleList.add(newBubble2);
 
 		}
-		
+
 	}
-	
+
 	public void resetLevel() {
 		// reset the level
 	}
