@@ -4,7 +4,12 @@ public class Game {
 	private ArrayList<Level> levelList = new ArrayList<Level>();
 	private int lives = 5;
 	private int currentLevel = 0;
+	private boolean gameInProgress;
 	int score;
+	
+	public Game() {
+		this.gameInProgress = false;
+	}
 
 	public void gameLoop() {
 		Level level = levelList.get(currentLevel);
@@ -35,6 +40,23 @@ public class Game {
 			levelList.add(level);
 		}
 	}
+	
+	public void gameStart() {
+		if(!this.gameInProgress)
+			this.gameInProgress = true;
+	}
+	/**
+	 * Function that advances the player to the next level
+	 * or makes the player win the whole game.
+	 */
+	public void gameWon() {
+		if(currentLevel < levelList.size() - 1){
+			currentLevel++;
+			gameInProgress = false;
+		}
+		else
+			gameInProgress = false;
+	}
 
 	/**
 	 * Returns the currentLevel
@@ -51,5 +73,9 @@ public class Game {
 	
 	public void loseLife(){
 		lives--;
+	}
+	
+	public boolean isGameinProgress() {
+		return this.gameInProgress;
 	}
 }

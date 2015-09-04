@@ -13,16 +13,19 @@ class MyKeyListener extends KeyAdapter {
 
 		// Left
 		case 37:
-			curLevel.getPlayerList().get(0).movingLeft();
+			if(game.isGameinProgress())
+				curLevel.getPlayerList().get(0).movingLeft();
 			break;
 
 		// Right
 		case 39:
-			curLevel.getPlayerList().get(0).movingRight();
+			if(game.isGameinProgress())
+				curLevel.getPlayerList().get(0).movingRight();
 			break;
 
 		case 32:
-			curLevel.getPlayerList().get(0).shootRope();
+			if(game.isGameinProgress())
+				curLevel.getPlayerList().get(0).shootRope();
 			break;
 		}
 	}
