@@ -138,7 +138,7 @@ public class Driver extends JPanel {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		while (true) {
-			if(game.isGameinProgress()){
+			if(game.inProgress()){
 				Level curLevel = game.getLevelList().get(game.getCurrentLevel());
 				Player player1 = curLevel.getPlayerList().get(0);
 	

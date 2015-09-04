@@ -6,27 +6,24 @@ class MyKeyListener extends KeyAdapter {
 	Game game = Driver.game;
 
 	public void keyPressed(KeyEvent evt) {
-		
-		Level curLevel = game.getLevelList().get(game.getCurrentLevel());
+		if (game.inProgress()) {
 
-		switch (evt.getKeyCode()) {
+			Level curLevel = game.getLevelList().get(game.getCurrentLevel());
 
-		// Left
-		case 37:
-			if(game.isGameinProgress())
+			switch (evt.getKeyCode()) {
+
+			// Left
+			case 37:
 				curLevel.getPlayerList().get(0).movingLeft();
-			break;
-
-		// Right
-		case 39:
-			if(game.isGameinProgress())
+				break;
+			// Right
+			case 39:
 				curLevel.getPlayerList().get(0).movingRight();
-			break;
-
-		case 32:
-			if(game.isGameinProgress())
+				break;
+			case 32:
 				curLevel.getPlayerList().get(0).shootRope();
-			break;
+				break;
+			}
 		}
 	}
 
