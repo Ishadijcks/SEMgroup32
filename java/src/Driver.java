@@ -26,6 +26,9 @@ public class Driver extends JPanel {
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 
+		// TODO Split up in methods
+		
+		
 		// Draw all the bubbles with a black border
 		Level curLevel = game.getLevelList().get(game.getCurrentLevel());
 		for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
@@ -116,7 +119,7 @@ public class Driver extends JPanel {
 
 		Player isha = new Player("Isha",40,10);
 		Player tim = new Player("Tim",80,10);
-		Bubble bubble1 = new Bubble(4,50,50,true,false);
+		Bubble bubble1 = new Bubble(2,50,50,true,false);
 		Bubble bubble2 = new Bubble(2,50,50,true,true);
 		Bubble bubble3 = new Bubble(64,50,50,false,false);
 		Bubble bubble4 = new Bubble(32,50,50,false,true);

@@ -41,10 +41,15 @@ public class Game {
 		}
 	}
 	
+	/**
+	 * If the game is paused, start the game
+	 */
 	public void gameStart() {
 		if(!this.inProgress)
 			this.inProgress = true;
 	}
+	
+	
 	/**
 	 * Function that advances the player to the next level
 	 * or makes the player win the whole game.
@@ -58,6 +63,10 @@ public class Game {
 			inProgress = false;
 	}
 
+	
+	// Getters and setters
+	
+	
 	/**
 	 * Returns the currentLevel
 	 * 
