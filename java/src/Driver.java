@@ -74,10 +74,10 @@ public class Driver extends JPanel {
 		Bubble bubble4 = new Bubble(32,50,50,false,true);
 
 		Level level1 = new Level();
-		level1.addBubble(bubble1);
+		//level1.addBubble(bubble1);
 		level1.addBubble(bubble2);
-		level1.addBubble(bubble3);
-		level1.addBubble(bubble4);
+		//level1.addBubble(bubble3);
+		//level1.addBubble(bubble4);
 
 		level1.addPlayer(isha);
 		level1.addPlayer(tim);

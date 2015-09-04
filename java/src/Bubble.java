@@ -12,6 +12,7 @@ public class Bubble {
 	private boolean falling = false;
 	private double lastDownSpeed = 0;
 	private double lastUpSpeed = 0;
+	private boolean newBubble;
 
 	/**
 	 * the constructor sets the starting coordinates the moving location the
@@ -27,7 +28,7 @@ public class Bubble {
 		this.directionH = directionH;
 		this.directionV = directionV;
 		this.radius = radius;
-
+		this.newBubble = true;
 		// Sets the color depending on the radius of the bubble
 		switch (radius) {
 		case 8:
@@ -52,6 +53,8 @@ public class Bubble {
 	}
 
 	public void move(int width, int height) {
+			System.out.println(directionV);
+		
 		int maxheight = 200;
 		if (radius == 64) {
 			maxheight = 70;
@@ -99,12 +102,19 @@ public class Bubble {
 			y += 0.2 + 4 * ((downTime + 10) / 100);
 			
 		} else {
+			if(newBubble){
+				newBubble = false;
+				lastDownSpeed = 2;
+			}
 			// start with the last downspeed but up this speed slows down
 			// depending on the uptime
 			// mutiply this with a factor that reaches 0 when at max height
 			// + 0.1 standaard speed to reach the maxheight (last few pixels)
 			lastUpSpeed = (1 - Math.pow((maxheight / y), 5) + 0.05)
 					* (lastDownSpeed - Math.pow(upTime, 1 / 3) + 0.7) + 0.1;
+			if(lastUpSpeed < 0.2){
+				lastUpSpeed =0.2;
+			}
 			y -= lastUpSpeed;
 		}
 
