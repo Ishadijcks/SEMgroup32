@@ -49,16 +49,25 @@ public class Level {
 				// if the x of the rope and the bubble is the same
 				// then there is a chance the rope hits the bubble
 				// /// RADIUS NOT IN ACCOUNT JET
-				if (bubbleList.get(i).getX() == rope.getX()) {
-					// if the ropes end is higher then the bubble it's a hit
-					if (rope.getY() <= bubbleList.get(i).getY()) {
-						destroyBubble(i);
-						setRope(null);
-						return;
+				if(bubbleList.get(i).getX() < rope.getX()){
+					if(bubbleList.get(i).getX()+bubbleList.get(i).getRadius() > rope.getX()){
+						if(bubbleList.get(i).getY()+bubbleList.get(i).getRadius() >= rope.getY()){
+							destroyBubble(i);
+							setRope(null);
+							return;
+						}
 					}
 				}
 			}
 		}
+	}
+
+	private double distance(float x, float y, float x2, float y2) {
+		// TODO Auto-generated method stub
+		float xDis = x - x2;
+		float yDis = y - y2;
+
+		return Math.sqrt(xDis * xDis + yDis * yDis);
 	}
 
 	public void destroyBubble(int i) {
@@ -68,12 +77,15 @@ public class Level {
 		int y = bubble.getY();
 		int radius = bubble.getRadius();
 		bubbleList.remove(i);
-		if (radius > 3) {
+		if (radius > 2) {
 			Bubble newBubble1 = new Bubble(radius / 2, x, y, false, false);
 			Bubble newBubble2 = new Bubble(radius / 2, x, y, true, false);
 			bubbleList.add(newBubble1);
 			bubbleList.add(newBubble2);
 
+		}
+		if (bubbleList.isEmpty()) {
+			System.out.println("Yay you won!!!!");
 		}
 
 	}
