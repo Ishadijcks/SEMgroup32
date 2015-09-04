@@ -56,8 +56,11 @@ public class Bubble {
 			System.out.println(directionV);
 		
 		int maxheight = 200;
-		if (radius == 64) {
-			maxheight = 70;
+		if (radius == 4) {
+			maxheight = 300;
+		}
+		if (radius == 8) {
+			maxheight = 260;
 		}
 		if (radius == 16) {
 			maxheight = 220;
@@ -111,9 +114,9 @@ public class Bubble {
 			// mutiply this with a factor that reaches 0 when at max height
 			// + 0.1 standaard speed to reach the maxheight (last few pixels)
 			lastUpSpeed = (1 - Math.pow((maxheight / y), 5) + 0.05)
-					* (lastDownSpeed - Math.pow(upTime, 1 / 3) + 0.7) + 0.1;
-			if(lastUpSpeed < 0.2){
-				lastUpSpeed =0.2;
+					* (lastDownSpeed - Math.pow(upTime, 1 / 3) + 0.7) + 0.05;
+			if(lastUpSpeed < 0.1){
+				lastUpSpeed =0.1;
 			}
 			y -= lastUpSpeed;
 		}
