@@ -77,10 +77,10 @@ public class Driver extends JPanel {
 			label.setText("Congratulations! Game won!");
 			add(label);
 		} else {
-			JLabel label = new JLabel("test");
+			final JLabel label = new JLabel("test");
 			label.setText("Congratulations! Level won!");
 			add(label);
-			JButton nextLevel = new JButton("Next Level");
+			final JButton nextLevel = new JButton("Next Level");
 			nextLevel.setVerticalTextPosition(AbstractButton.BOTTOM);
 			nextLevel.setHorizontalTextPosition(AbstractButton.CENTER);
 		    nextLevel.setMnemonic(KeyEvent.VK_M);
@@ -98,7 +98,7 @@ public class Driver extends JPanel {
 	}
 	
 	public void addButton(String content) {
-		JButton nextLevel = new JButton(content);
+		final JButton nextLevel = new JButton(content);
 		nextLevel.setVerticalTextPosition(AbstractButton.BOTTOM);
 		nextLevel.setHorizontalTextPosition(AbstractButton.CENTER);
 	    nextLevel.setMnemonic(KeyEvent.VK_M);
