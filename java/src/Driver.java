@@ -21,6 +21,8 @@ public class Driver extends JPanel {
 
 	@Override
 	public void paint(Graphics g) {
+		try{
+		
 		super.paint(g);
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -63,7 +65,11 @@ public class Driver extends JPanel {
 		// Show the lives of the player
 		g2d.drawString("Lives: " + game.getLives(), 20,
 				curLevel.getHeight() + 20);
-	}
+		}
+		catch(IndexOutOfBoundsException e){
+			System.out.println("First time");
+		}
+		}
 	
 	public void levelWonFrame() {
 		if(game.getCurrentLevel() == game.getLevelList().size() - 1){
