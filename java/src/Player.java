@@ -40,6 +40,9 @@ public class Player {
 		movingRight = false;
 	}
 
+	/**
+	 * Moves the player left or right, depending on what key is pressed
+	 */
 	public void move() {
 		if (movingLeft) {
 			if (x - stepSize > 0) {
@@ -55,6 +58,11 @@ public class Player {
 		}
 	}
 
+	
+	/**
+	 * The player shoots a rope from his current position
+	 * The rope is added to the level
+	 */
 	public void shootRope() {
 		if (!Driver.game.getLevelList().get(Driver.game.getCurrentLevel())
 				.hasRope()) {

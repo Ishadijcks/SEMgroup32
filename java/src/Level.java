@@ -77,7 +77,7 @@ public class Level {
 		int y = bubble.getY();
 		int radius = bubble.getRadius();
 		bubbleList.remove(i);
-		if (radius > 2) {
+		if (radius > 5) {
 			Bubble newBubble1 = new Bubble(radius / 2, x, y, false, false);
 			Bubble newBubble2 = new Bubble(radius / 2, x, y, true, false);
 			bubbleList.add(newBubble1);

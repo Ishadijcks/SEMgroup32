@@ -7,6 +7,9 @@ public class Rope {
 		this.y = y;
 	}
 
+	/**
+	 * The rope moves up and gets destroyed when it hits the roof
+	 */
 	public void move() {
 		if(y <= 0){
 			Driver.game.getLevelList().get(Driver.game.getCurrentLevel()).setRope(null);

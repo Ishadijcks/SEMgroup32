@@ -4,7 +4,12 @@ public class Game {
 	private ArrayList<Level> levelList = new ArrayList<Level>();
 	private int lives = 5;
 	private int currentLevel = 0;
+	private boolean inProgress;
 	int score;
+	
+	public Game() {
+		this.inProgress = false;
+	}
 
 	public void gameLoop() {
 		Level level = levelList.get(currentLevel);
@@ -35,7 +40,33 @@ public class Game {
 			levelList.add(level);
 		}
 	}
+	
+	/**
+	 * If the game is paused, start the game
+	 */
+	public void gameStart() {
+		if(!this.inProgress)
+			this.inProgress = true;
+	}
+	
+	
+	/**
+	 * Function that advances the player to the next level
+	 * or makes the player win the whole game.
+	 */
+	public void gameWon() {
+		if(currentLevel < levelList.size() - 1){
+			currentLevel++;
+			inProgress = false;
+		}
+		else
+			inProgress = false;
+	}
 
+	
+	// Getters and setters
+	
+	
 	/**
 	 * Returns the currentLevel
 	 * 
@@ -51,5 +82,9 @@ public class Game {
 	
 	public void loseLife(){
 		lives--;
+	}
+	
+	public boolean inProgress() {
+		return this.inProgress;
 	}
 }
