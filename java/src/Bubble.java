@@ -53,7 +53,7 @@ public class Bubble {
 	}
 
 	public void move(int width, int height) {
-			
+
 		
 		int maxheight = 200;
 		if (radius == 4) {
