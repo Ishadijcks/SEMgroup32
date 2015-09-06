@@ -1,102 +1,102 @@
 public class Player {
-	private String name;
-	private int x;
-	private int y;
-	private int height = 40;
-	private int width = 20;
-	private int stepSize = 2;
-	private boolean movingLeft = false;
-	private boolean movingRight = false;
+    private String name;
+    private int x;
+    private int y;
+    private int height = 40;
+    private int width = 20;
+    private int stepSize = 2;
+    private boolean movingLeft = false;
+    private boolean movingRight = false;
 
-	Player(String name, int x, int y) {
-		this.name = name;
-		this.x = x;
-		this.y = y;
-	}
+    Player(String name, int x, int y) {
+        this.name = name;
+        this.x = x;
+        this.y = y;
+    }
 
-	/**
-	 * The player moves left
-	 */
-	public void movingLeft() {
-		movingLeft = true;
-	}
-	/**
-	 * The player stops moving left
-	 */
-	public void stopMovingLeft() {
-		movingLeft = false;
-	}
+    /**
+     * The player moves left
+     */
+    public void movingLeft() {
+        movingLeft = true;
+    }
 
-	/**
-	 * The player moves right
-	 */
-	public void movingRight() {
-		movingRight = true;
-	}
-	/**
-	 * The player stops moving right
-	 */
-	public void stopMovingRight() {
-		movingRight = false;
-	}
+    /**
+     * The player stops moving left
+     */
+    public void stopMovingLeft() {
+        movingLeft = false;
+    }
 
-	/**
-	 * Moves the player left or right, depending on what key is pressed
-	 */
-	public void move() {
-		if (movingLeft) {
-			if (x - stepSize > 0) {
-				x -= stepSize;
-			}
-		}
+    /**
+     * The player moves right
+     */
+    public void movingRight() {
+        movingRight = true;
+    }
 
-		if (movingRight) {
-			if (x + stepSize + width < Driver.game.getLevelList()
-					.get(Driver.game.getCurrentLevel()).getWidth()) {
-				x += stepSize;
-			}
-		}
-	}
+    /**
+     * The player stops moving right
+     */
+    public void stopMovingRight() {
+        movingRight = false;
+    }
 
-	
-	/**
-	 * The player shoots a rope from his current position
-	 * The rope is added to the level
-	 */
-	public void shootRope() {
-		if (!Driver.game.getLevelList().get(Driver.game.getCurrentLevel())
-				.hasRope()) {
-			int ropeY = Driver.game.getLevelList()
-					.get(Driver.game.getCurrentLevel()).getHeight()
-					- height + 2;
-			int ropeX = x + width / 2;
-			Rope rope = new Rope(ropeX, ropeY);
+    /**
+     * Moves the player left or right, depending on what key is pressed
+     */
+    public void move() {
+        if (movingLeft) {
+            if (x - stepSize > 0) {
+                x -= stepSize;
+            }
+        }
 
-			Driver.game.getLevelList().get(Driver.game.getCurrentLevel())
-					.setRope(rope);
-		}
-	}
-	
+        if (movingRight) {
+            if (x + stepSize + width < Driver.game.getLevelList()
+                    .get(Driver.game.getCurrentLevel()).getWidth()) {
+                x += stepSize;
+            }
+        }
+    }
 
-	// Getters and setters
-	public String getName() {
-		return name;
-	}
+    /**
+     * The player shoots a rope from his current position The rope is added to
+     * the level
+     */
+    public void shootRope() {
+        if (!Driver.game.getLevelList().get(Driver.game.getCurrentLevel())
+                .hasRope()) {
+            int ropeY = Driver.game.getLevelList()
+                    .get(Driver.game.getCurrentLevel()).getHeight()
+                    - height + 2;
+            int ropeX = x + width / 2;
+            Rope rope = new Rope(ropeX, ropeY);
 
-	public int getX() {
-		return x;
-	}
+            Driver.game.getLevelList().get(Driver.game.getCurrentLevel())
+                    .setRope(rope);
+        }
+    }
 
-	public int getY() {
-		return y;
-	}
+    // Getters and setters
+    public String getName() {
+        return name;
+    }
 
-	public int getWidth() {
-		return width;
-	}
+    public int getX() {
+        return x;
+    }
 
-	public int getHeight() {
-		return height;
-	}
+    public int getY() {
+        return y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 
 }
