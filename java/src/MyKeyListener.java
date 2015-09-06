@@ -3,51 +3,56 @@ import java.awt.event.KeyEvent;
 
 class MyKeyListener extends KeyAdapter {
 
-	Game game = Driver.game;
+    Game game = Driver.game;
 
-	/**
-	 * Checks what key is pressed, moves the player in that direction or shoots a rope
-	 */
-	public void keyPressed(KeyEvent evt) {
-		if (game.inProgress()) {
+    /**
+     * Checks what key is pressed, moves the player in that direction or shoots
+     * a rope
+     */
+    public void keyPressed(KeyEvent evt) {
+        if (game.inProgress()) {
 
-			Level curLevel = game.getLevelList().get(game.getCurrentLevel());
+            Level curLevel = game.getLevelList().get(game.getCurrentLevel());
 
-			switch (evt.getKeyCode()) {
+            switch (evt.getKeyCode()) {
 
-			// Left
-			case 37:
-				curLevel.getPlayerList().get(0).movingLeft();
-				break;
-			// Right
-			case 39:
-				curLevel.getPlayerList().get(0).movingRight();
-				break;
-			case 32:
-				curLevel.getPlayerList().get(0).shootRope();
-				break;
-			}
-		}
-	}
+            // Left
+                case 37:
+                    curLevel.getPlayerList().get(0).movingLeft();
+                    break;
+            // Right
+                case 39:
+                    curLevel.getPlayerList().get(0).movingRight();
+                    break;
+                case 32:
+                    curLevel.getPlayerList().get(0).shootRope();
+                    break;
+            
+                default:
+                    break;
+            }
+        }
+    }
 
-	/**
-	 * Checks what key is released, makes the player stop moving in that direction
-	 */
-	public void keyReleased(KeyEvent evt) {
+    /**
+     * Checks what key is released, makes the player stop moving in that
+     * direction
+     */
+    public void keyReleased(KeyEvent evt) {
 
-		Level curLevel = game.getLevelList().get(game.getCurrentLevel());
+        Level curLevel = game.getLevelList().get(game.getCurrentLevel());
 
-		switch (evt.getKeyCode()) {
+        switch (evt.getKeyCode()) {
 
-		// Left
-		case 37:
-			curLevel.getPlayerList().get(0).stopMovingLeft();
-			break;
+        // Left
+        case 37:
+            curLevel.getPlayerList().get(0).stopMovingLeft();
+            break;
 
-		// Right
-		case 39:
-			curLevel.getPlayerList().get(0).stopMovingRight();
-			break;
-		}
-	}
+        // Right
+        case 39:
+            curLevel.getPlayerList().get(0).stopMovingRight();
+            break;
+        }
+    }
 }
