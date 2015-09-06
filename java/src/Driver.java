@@ -97,8 +97,8 @@ public class Driver extends JPanel {
 	    validate();
 	}
 	
-	public void addButton(String content) {
-		final JButton nextLevel = new JButton(content);
+	public void addStartButton() {
+		final JButton nextLevel = new JButton("Start game");
 		nextLevel.setVerticalTextPosition(AbstractButton.BOTTOM);
 		nextLevel.setHorizontalTextPosition(AbstractButton.CENTER);
 	    nextLevel.setMnemonic(KeyEvent.VK_M);
@@ -114,73 +114,74 @@ public class Driver extends JPanel {
 	}
 
 	public static void main(String[] args) throws InterruptedException {
-		JFrame frame = new JFrame("Bounce test");
-		Driver driver = new Driver();
-		frame.addKeyListener(new MyKeyListener());
-		frame.add(driver);
-		frame.setSize(600, 500);
-		frame.setVisible(true);
-		driver.addButton("Start game");
 
+			final JFrame frame = new JFrame("Bounce test");
+			Driver driver = new Driver();
+			frame.addKeyListener(new MyKeyListener());
+			frame.add(driver);
+			frame.setSize(600, 500);
+			frame.setVisible(true);
+			driver.addStartButton();
 
-		Player isha = new Player("Isha",40,10);
-		Player tim = new Player("Tim",80,10);
-		Bubble bubble1 = new Bubble(2,50,50,false,false);
-		Bubble bubble2 = new Bubble(2,50,50,true,true);
-		Bubble bubble3 = new Bubble(64,50,50,false,false);
-		Bubble bubble4 = new Bubble(32,50,50,false,true);
+			Player isha = new Player("Isha",40,10);
+			Player tim = new Player("Tim",80,10);
+			Bubble bubble1 = new Bubble(2,50,50,false,false);
+			Bubble bubble2 = new Bubble(2,50,50,true,true);
+			Bubble bubble3 = new Bubble(64,50,50,false,false);
+			Bubble bubble4 = new Bubble(32,50,50,false,true);
 
-		Level level1 = new Level();
-		Level level2 = new Level();
-		level1.addBubble(bubble1);
-		level1.addBubble(bubble2);
-		level2.addBubble(bubble3);
-		level1.addBubble(bubble4);
+			Level level1 = new Level();
+			Level level2 = new Level();
+			level1.addBubble(bubble1);
+			level1.addBubble(bubble2);
+			level2.addBubble(bubble3);
+			level1.addBubble(bubble4);
 
-		level1.addPlayer(isha);
-		level1.addPlayer(tim);
-		level2.addPlayer(isha);
-		level2.addPlayer(tim);
-		game.addLevel(level1);
-		game.addLevel(level2);
+			level1.addPlayer(isha);
+			level1.addPlayer(tim);
+			level2.addPlayer(isha);
+			level2.addPlayer(tim);
+			game.addLevel(level1);
+			game.addLevel(level2);
 
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		while (true) {
-			if(game.inProgress()){
-				Level curLevel = game.getLevelList().get(game.getCurrentLevel());
-				Player player1 = curLevel.getPlayerList().get(0);
-	
-				for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
-					Bubble bubble = curLevel.getBubbleList().get(i);
-					bubble.move(curLevel.getWidth(), curLevel.getHeight());
-				}
-	
-				if (curLevel.hasRope()) {
-					curLevel.getRope().move();
-				}
-	
-				curLevel.checkCollisionRope();
-	
-				if(curLevel.checkCollisionPlayer()){
-					game.loseLife();
-				}
-				driver.repaint();
-				player1.move();
-				
-				if(curLevel.getBubbleList().size() == 0){
-					boolean once = true;
-					if(once){
-						once = false;
-						driver.levelWonFrame();
+			while (true) {
+				if(game.inProgress()){
+					Level curLevel = game.getLevelList().get(game.getCurrentLevel());
+					Player player1 = curLevel.getPlayerList().get(0);
+		
+					for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
+						Bubble bubble = curLevel.getBubbleList().get(i);
+						bubble.move(curLevel.getWidth(), curLevel.getHeight());
 					}
-					game.gameWon();
+		
+					if (curLevel.hasRope()) {
+						curLevel.getRope().move();
+					}
+		
+					curLevel.checkCollisionRope();
+		
+					if(curLevel.checkCollisionPlayer()){
+						game.loseLife();
+					}
+					driver.repaint();
+					player1.move();
+					
+					if(curLevel.getBubbleList().size() == 0){
+						boolean once = true;
+						if(once){
+							once = false;
+							driver.levelWonFrame();
+						}
+						game.gameWon();
+					}
 				}
-			}
 
-			// 120 FPS
-			Thread.sleep(1000 / 120);
-		}
+				// 120 FPS
+				Thread.sleep(1000 / 120);
+			}
+		
 	}
 
 }
