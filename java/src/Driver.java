@@ -50,6 +50,7 @@ public class Driver extends JPanel {
                 g2d.fillRect(player.getX(),
                         curLevel.getHeight() - player.getHeight() + 2,
                         player.getWidth(), player.getHeight());
+                //g2d.drawImage(player.getImage(), player.getX(), curLevel.getHeight() - player.getHeight()- 30, this);
             }
 
             // Draw the ropes

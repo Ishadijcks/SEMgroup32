@@ -3,6 +3,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -34,32 +36,32 @@ public class StartScreen extends JFrame {
                 .getLocation();
         String imageLocation = location.getFile();
 
-        setLayout(new BorderLayout());
+        //setLayout(new BorderLayout());
         setContentPane(new JLabel(new ImageIcon(imageLocation
                 + "Images/StartscreenBackground.png")));
-        setLayout(new FlowLayout());
+        //setLayout(new FlowLayout());
+        setLayout(null);
 
         startButton = new JButton("Start game");
         startButton.setBackground(Color.RED);
         startButton.setForeground(Color.WHITE);
         startButton.setFont(new Font("Calibri", Font.BOLD, 30));
         startButton.setOpaque(true);
-        startButton.setPreferredSize(new Dimension(200, 50));
-        startButton.setLocation(50, 50);
+        startButton.setBounds(55, 300, 250, 60);
 
         settingsButton = new JButton("Settings");
         settingsButton.setBackground(Color.RED);
         settingsButton.setForeground(Color.WHITE);
         settingsButton.setFont(new Font("Calibri", Font.BOLD, 30));
         settingsButton.setOpaque(true);
-        settingsButton.setPreferredSize(new Dimension(200, 50));
+        settingsButton.setBounds(55, 400, 250, 60);
 
-        stopButton = new JButton("Stop");
+        stopButton = new JButton("Exit");
         stopButton.setBackground(Color.RED);
         stopButton.setForeground(Color.WHITE);
         stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
         stopButton.setOpaque(true);
-        stopButton.setPreferredSize(new Dimension(200, 50));
+        stopButton.setBounds(55, 500, 250, 60);
         
         dr = driver;
         jf = jframe;
