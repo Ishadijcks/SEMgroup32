@@ -18,8 +18,11 @@ public class StartScreen extends JFrame {
     JButton startButton;
     JButton settingsButton;
     JButton stopButton;
+    
+    final private Driver dr;
+    final private JFrame jf;
 
-    public StartScreen() {
+    public StartScreen(Driver driver, JFrame jframe) {
 
         setTitle("Start screen");
         setSize(700, 700);
@@ -57,12 +60,15 @@ public class StartScreen extends JFrame {
         stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
         stopButton.setOpaque(true);
         stopButton.setPreferredSize(new Dimension(200, 50));
+        
+        dr = driver;
+        jf = jframe;
 
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent startGame) {
                 setVisible(false);
                 dispose();
-                Driver driver = new Driver();
+                dr.startGame(jf);
             }
         });
 
@@ -83,8 +89,6 @@ public class StartScreen extends JFrame {
     }
 
     public static void main(String args[]) {
-
-        new StartScreen();
 
     }
 }

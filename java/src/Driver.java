@@ -95,6 +95,12 @@ public class Driver extends JPanel {
         validate();
     }
 
+    public void startGame(JFrame frame)
+    {
+    	frame.setVisible(true);
+    	game.gameStart();
+    }
+    
     public void addStartButton() {
         final JButton nextLevel = new JButton("Start game");
         nextLevel.setVerticalTextPosition(AbstractButton.BOTTOM);
@@ -113,15 +119,14 @@ public class Driver extends JPanel {
 
     public static void main(String[] args) throws InterruptedException {
 
-        new StartScreen();
-
         final JFrame frame = new JFrame("Bounce test");
         Driver driver = new Driver();
         frame.addKeyListener(new MyKeyListener());
         frame.add(driver);
         frame.setSize(600, 500);
-        frame.setVisible(true);
-        driver.addStartButton();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(false);
+        new StartScreen(driver, frame);
 
         Player isha = new Player("Isha", 40, 10);
         Player tim = new Player("Tim", 80, 10);
