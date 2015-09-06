@@ -123,12 +123,12 @@ public class Driver extends JPanel {
         Driver driver = new Driver();
         frame.addKeyListener(new MyKeyListener());
         frame.add(driver);
-        frame.setSize(600, 500);
+        frame.setSize(700, 500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(false);
         new StartScreen(driver, frame);
 
-        Player isha = new Player("Isha", 40, 10);
+        Player isha = new Player("Isha", 350, 10);
         Player tim = new Player("Tim", 80, 10);
         Bubble bubble1 = new Bubble(2, 50, 50, false, false);
         Bubble bubble2 = new Bubble(2, 50, 50, true, true);
@@ -137,15 +137,13 @@ public class Driver extends JPanel {
 
         Level level1 = new Level();
         Level level2 = new Level();
-        level1.addBubble(bubble1);
-        level1.addBubble(bubble2);
         level2.addBubble(bubble3);
         level1.addBubble(bubble4);
 
         level1.addPlayer(isha);
-        level1.addPlayer(tim);
+        //level1.addPlayer(tim);
         level2.addPlayer(isha);
-        level2.addPlayer(tim);
+        //level2.addPlayer(tim);
         game.addLevel(level1);
         game.addLevel(level2);
 

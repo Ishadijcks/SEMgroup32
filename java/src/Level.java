@@ -5,7 +5,7 @@ public class Level {
     private ArrayList<Player> playerList;
     private Rope rope = null;
     private int timeLeft;
-    private int width = 500;
+    private int width = 675;
     private int height = 350;
 
     /**
