@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Level {
     private ArrayList<Bubble> bubbleList;
     private ArrayList<Player> playerList;
+    private ArrayList<Powerup> powerupList;
     private Rope rope = null;
     private int timeLeft;
     private int width = 675;
@@ -14,6 +15,7 @@ public class Level {
     public Level() {
         this.bubbleList = new ArrayList<Bubble>();
         this.playerList = new ArrayList<Player>();
+        this.powerupList = new ArrayList<Powerup>();
     }
 
     /**
@@ -84,7 +86,8 @@ public class Level {
             Bubble newBubble2 = new Bubble(radius / 2, x, y, true, false);
             bubbleList.add(newBubble1);
             bubbleList.add(newBubble2);
-
+            Powerup powerup = new Powerup("speed",x,y);
+            powerupList.add(powerup);
         }
         if (bubbleList.isEmpty()) {
             System.out.println("Yay you won!!!!");
@@ -105,6 +108,12 @@ public class Level {
     public void addBubble(Bubble bubble) {
         if (!bubbleList.contains(bubble)) {
             bubbleList.add(bubble);
+        }
+    }
+    
+    public void addPowerup(Powerup powerup) {
+        if (!powerupList.contains(powerup)) {
+            powerupList.add(powerup);
         }
     }
 
@@ -133,6 +142,10 @@ public class Level {
         return playerList;
     }
 
+    public ArrayList<Powerup> getPowerupList() {
+        return powerupList;
+    }
+    
     // Getters and Setters
     public int getHeight() {
         return height;

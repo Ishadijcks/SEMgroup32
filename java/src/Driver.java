@@ -53,6 +53,16 @@ public class Driver extends JPanel {
                 //g2d.drawImage(player.getImage(), player.getX(), curLevel.getHeight() - player.getHeight()- 30, this);
             }
 
+            // Draw the powerups
+            for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
+                Powerup powerup = curLevel.getPowerupList().get(i);
+
+     
+                g2d.fillRect(powerup.getX(),
+                       curLevel.getHeight() - powerup.getHeight() + 2,
+                      powerup.getWidth(), powerup.getHeight());
+            }
+            
             // Draw the ropes
             if (curLevel.hasRope()) {
                 g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope()

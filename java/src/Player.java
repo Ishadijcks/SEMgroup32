@@ -16,6 +16,7 @@ public class Player {
     private boolean movingLeft = false;
     private boolean movingRight = false;
     private Image image;
+    private String powerup = "";
 
     Player(String name, int x, int y) {
         this.name = name;
@@ -60,6 +61,10 @@ public class Player {
      * Moves the player left or right, depending on what key is pressed
      */
     public void move() {
+        if(powerup.equals("speed")){
+            stepSize *=2;
+        }
+        
         if (movingLeft) {
             if (x - stepSize > 0) {
                 x -= stepSize;
@@ -72,6 +77,11 @@ public class Player {
                 x += stepSize;
             }
         }
+        
+        if(powerup.equals("speed")){
+            stepSize /=2;
+        }
+        
     }
 
     /**
@@ -115,6 +125,10 @@ public class Player {
     
     public Image getImage() {
         return image;
+    }
+    
+    public String getPowerup(){
+        return this.powerup;
     }
 
 }
