@@ -1,7 +1,10 @@
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.Stroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -23,11 +26,11 @@ public class Driver extends JPanel {
 	private int animationLeftCounter = 1;
 	private int slowDownCounter = 0;
 	private int oldX;
-	private boolean dragonIsRight = true;
+	private static boolean dragonIsRight = true;
 	private boolean dragonIsMoving = false;
 	private boolean shootRope = false;
-	private URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
-	private String imageLocation = location.getFile();
+	private static URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
+	private static String imageLocation = location.getFile();
 
 	@Override
 	public void paint(Graphics g) {
@@ -57,9 +60,29 @@ public class Driver extends JPanel {
 						if (curLevel.hasRope()) {
 							shootRope = true;
 							Player player = curLevel.getPlayerList().get(0);
-							 g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope()
-							 .getY(), curLevel.getRope().getX(), curLevel
-							 .getHeight());
+							g2d.setColor(Color.RED);
+							// creates a solid stroke with line width is 2
+							Stroke stroke = new BasicStroke(2f);
+							g2d.setStroke(stroke);
+							if(dragonIsRight)
+							{
+								g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope()
+										 .getY(), curLevel.getRope().getX(), curLevel
+										 .getHeight());
+							}
+							else
+							{
+								g2d.drawLine(curLevel.getRope().getX() - 35, curLevel.getRope()
+										 .getY(), curLevel.getRope().getX() - 35, curLevel
+										 .getHeight());
+							}
+							 
+							 
+							 //Set g2d back to normal settings
+							 g2d.setColor(Color.BLACK);
+								// creates a solid stroke with line width is 2
+								Stroke normalStroke = new BasicStroke(1f);
+								g2d.setStroke(normalStroke);
 
 						}
 			
@@ -170,8 +193,23 @@ public class Driver extends JPanel {
 			g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
 
 			// Show the lives of the player
-			g2d.drawString("Lives: " + game.getLives(), 20,
-					curLevel.getHeight() + 20);
+			g2d.setFont(new Font("Calibri", Font.BOLD, 30));
+			g2d.drawString("Lives: ", 20,
+					curLevel.getHeight() + 35);
+			ImageIcon life = new ImageIcon(imageLocation + "Images/life.png");
+			for(int i = 0; i < game.getLives(); i++)
+			{
+				g2d.drawImage(life.getImage(), 88 + 25*i,
+						curLevel.getHeight() + 7, this);
+			}
+			
+			// Show the score of the player
+			g2d.drawString("Score: ", 20,
+					curLevel.getHeight() + 70);
+			
+			// Show level number
+			g2d.drawString("Level: " + game.getCurrentLevel(), 20,
+					curLevel.getHeight() + 105);
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("First time");
 		}
@@ -230,7 +268,7 @@ public class Driver extends JPanel {
 		Driver driver = new Driver();
 		frame.addKeyListener(new MyKeyListener());
 		frame.add(driver);
-		frame.setSize(1025, 700);
+		frame.setSize(1125, 800);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(false);
 		new StartScreen(driver, frame);
@@ -271,7 +309,7 @@ public class Driver extends JPanel {
 					curLevel.getRope().move();
 				}
 
-				curLevel.checkCollisionRope();
+				curLevel.checkCollisionRope(dragonIsRight);
 
 				if (curLevel.checkCollisionPlayer()) {
 					game.loseLife();
