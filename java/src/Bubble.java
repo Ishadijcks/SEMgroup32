@@ -29,6 +29,7 @@ public class Bubble {
         this.directionV = directionV;
         this.radius = radius;
         this.newBubble = true;
+        
         // Sets the color depending on the radius of the bubble
         switch (radius) {
         case 8:

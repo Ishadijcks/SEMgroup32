@@ -134,7 +134,7 @@ public class Driver extends JPanel {
         Driver driver = new Driver();
         frame.addKeyListener(new MyKeyListener());
         frame.add(driver);
-        frame.setSize(700, 500);
+        frame.setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
         frame.setLocationRelativeTo(null);
         frame.setVisible(false);
         new StartScreen(driver, frame);
@@ -199,7 +199,7 @@ public class Driver extends JPanel {
             }
 
             // 120 FPS
-            Thread.sleep(1000 / 120);
+            Thread.sleep(1000 / Settings.getFps());
         }
 
     }
