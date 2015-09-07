@@ -66,32 +66,26 @@ public class Level {
         }
     }
 
-    
     /**
      * Checks if the player collided with a powerup
      */
 
     public void checkPowerupCollision() {
-           
-        Player player1  = playerList.get(0);
+
+        Player player1 = playerList.get(0);
         for (int i = 0; i < powerupList.size(); i++) {
             Powerup powerup = powerupList.get(i);
-          
-            if (player1.getX() <= (powerup.getX()+powerup.getWidth()) && (player1.getX()+player1.getWidth()) >= powerup.getX() && player1.getY() <= (powerup.getY()+powerup.getHeight()) && (powerup.getY()+powerup.getHeight()) >= powerup.getY()) {
-                
-               System.out.println("Yay you have: "+powerupList.get(i).getName());
-               System.out.println("For "+ powerup.getFramesLeft()+  " more frames!");
+
+            if (player1.getX() <= (powerup.getX() + powerup.getWidth())
+                    && (player1.getX() + player1.getWidth()) >= powerup.getX()
+                    && player1.getY() <= (powerup.getY() + powerup.getHeight())
+                    && (powerup.getY() + powerup.getHeight()) >= powerup.getY()) {
                 playerList.get(0).setPowerup(powerupList.get(i));
                 powerupList.remove(i);
             }
         }
     }
-    
-    
-    
-    
-    
-    
+
     private double distance(float x, float y, float x2, float y2) {
         // TODO Auto-generated method stub
         float xDis = x - x2;
@@ -112,13 +106,27 @@ public class Level {
             Bubble newBubble2 = new Bubble(radius / 2, x, y, true, false);
             bubbleList.add(newBubble1);
             bubbleList.add(newBubble2);
-            Powerup powerup = new Powerup("speed",x,y);
+
+        }
+        if (10 > Math.random() * 100) {
+            Powerup powerup = generatePowerup(x, y);
             powerupList.add(powerup);
         }
+
         if (bubbleList.isEmpty()) {
             System.out.println("Yay you won!!!!");
         }
 
+    }
+
+    public Powerup generatePowerup(int x, int y) {
+        int randomNumber = (int) Math.floor(Math.random() * 1 + 1);
+        switch (randomNumber) {
+        case 1:
+            return new Powerup("speed", x, y);
+        default:
+            return new Powerup("speed", x, y);
+        }
     }
 
     public void resetLevel() {
@@ -136,7 +144,7 @@ public class Level {
             bubbleList.add(bubble);
         }
     }
-    
+
     public void addPowerup(Powerup powerup) {
         if (!powerupList.contains(powerup)) {
             powerupList.add(powerup);
@@ -171,7 +179,7 @@ public class Level {
     public ArrayList<Powerup> getPowerupList() {
         return powerupList;
     }
-    
+
     // Getters and Setters
     public int getHeight() {
         return height;
