@@ -207,7 +207,7 @@ public class Driver extends JPanel {
 			g2d.drawString("Score: ", 20,
 					curLevel.getHeight() + 70);
 			
-			// Show level number
+			// Show current level number
 			g2d.drawString("Level: " + game.getCurrentLevel(), 20,
 					curLevel.getHeight() + 105);
 		} catch (IndexOutOfBoundsException e) {
