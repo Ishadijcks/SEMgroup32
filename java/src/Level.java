@@ -122,10 +122,10 @@ public class Level {
     public Powerup generatePowerup(int x, int y) {
         int randomNumber = (int) Math.floor(Math.random() * 1 + 1);
         switch (randomNumber) {
-        case 1:
-            return new Powerup("speed", x, y);
-        default:
-            return new Powerup("speed", x, y);
+            case 1:
+                return new Powerup("speed", x, y);
+            default:
+                return new Powerup("speed", x, y);
         }
     }
 

@@ -70,8 +70,6 @@ public class Player {
             }
         }
 
-        System.out.println(stepSize);
-
         if (movingLeft) {
             if (x - stepSize > 0) {
                 x -= stepSize;
