@@ -6,8 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.net.URL;
 
 import javax.swing.AbstractButton;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,177 +18,216 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Driver extends JPanel {
 
-    public static Game game = new Game();
+	public static Game game = new Game();
+	private int animationCount = 1;
+	private int slowmotion = 0;
+	private int oldX;
 
-    @Override
-    public void paint(Graphics g) {
-        try { 
+	@Override
+	public void paint(Graphics g) {
+		try {
 
-            super.paint(g);
-            Graphics2D g2d = (Graphics2D) g;
-            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON);
+			super.paint(g);
+			Graphics2D g2d = (Graphics2D) g;
+			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+					RenderingHints.VALUE_ANTIALIAS_ON);
 
-            // TODO Split up in methods
- 
-            // Draw all the bubbles with a black border
-            Level curLevel = game.getLevelList().get(game.getCurrentLevel());
-            for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
-                Bubble bubble = curLevel.getBubbleList().get(i);
-                g2d.setColor(bubble.getColor());
-                g2d.fillOval(bubble.getX(), bubble.getY(), bubble.getRadius(),
-                        bubble.getRadius());
-                g2d.setColor(Color.black);
+			// TODO Split up in methods
 
-                g2d.drawOval(bubble.getX() - 1, bubble.getY() - 1,
-                        bubble.getRadius() + 2, bubble.getRadius() + 2);
-            }
-            // Draw all the players
-            for (int i = 0; i < curLevel.getPlayerList().size(); i++) {
-                Player player = curLevel.getPlayerList().get(i);
+			// Draw all the bubbles with a black border
+			Level curLevel = game.getLevelList().get(game.getCurrentLevel());
+			for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
+				Bubble bubble = curLevel.getBubbleList().get(i);
+				g2d.setColor(bubble.getColor());
+				g2d.fillOval(bubble.getX(), bubble.getY(), bubble.getRadius(),
+						bubble.getRadius());
+				g2d.setColor(Color.black);
 
-                g2d.drawString(player.getName(), player.getX(),
-                        curLevel.getHeight() - player.getHeight() - 10);
-                g2d.fillRect(player.getX(),
-                        curLevel.getHeight() - player.getHeight() + 2,
-                        player.getWidth(), player.getHeight());
-                //g2d.drawImage(player.getImage(), player.getX(), curLevel.getHeight() - player.getHeight()- 30, this);
-            }
+				g2d.drawOval(bubble.getX() - 1, bubble.getY() - 1,
+						bubble.getRadius() + 2, bubble.getRadius() + 2);
+			}
+			// Draw all the players
+			for (int i = 0; i < curLevel.getPlayerList().size(); i++) {
+				Player player = curLevel.getPlayerList().get(i);
 
-            // Draw the ropes
-            if (curLevel.hasRope()) {
-                g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope()
-                        .getY(), curLevel.getRope().getX(), curLevel
-                        .getHeight());
-            }
-            // Draw the border
-            g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
+				g2d.drawString(player.getName(), player.getX(),
+						curLevel.getHeight() - player.getHeight() - 10);
+				// g2d.fillRect(player.getX(),
+				// curLevel.getHeight() - player.getHeight() + 2,
+				// player.getWidth(), player.getHeight());
 
-            // Show the lives of the player
-            g2d.drawString("Lives: " + game.getLives(), 20,
-                    curLevel.getHeight() + 20);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("First time");
-        }
-    }
+				URL location = StartScreen.class.getProtectionDomain()
+						.getCodeSource().getLocation();
+				String imageLocation = location.getFile();
 
-    public void levelWonFrame() {
-        if (game.getCurrentLevel() == game.getLevelList().size() - 1) {
-            JLabel label = new JLabel("test");
-            label.setText("Congratulations! Game won!");
-            add(label);
-        } else {
-            final JLabel label = new JLabel("test");
-            label.setText("Congratulations! Level won!");
-            add(label);
-            final JButton nextLevel = new JButton("Next Level");
-            nextLevel.setVerticalTextPosition(AbstractButton.BOTTOM);
-            nextLevel.setHorizontalTextPosition(AbstractButton.CENTER);
-            nextLevel.setMnemonic(KeyEvent.VK_M);
-            nextLevel.setFocusable(false);
-            nextLevel.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent ae) {
-                    game.gameStart();
-                    remove(nextLevel);
-                    remove(label);
-                }
-            });
-            add(nextLevel);
-        }
-        validate();
-    }
+				ImageIcon dragon = new ImageIcon(imageLocation
+						+ "Images/dragon" + animationCount + ".png");
+				if(slowmotion% 22 == 0){
+				animationCount += 1;
+				}
+				if (animationCount == 9) {
+					animationCount = 1;
+				}
+				slowmotion+=1;
+				
+				ImageIcon standardDragon = new ImageIcon(imageLocation
+						+ "Images/dragonPause.png");
+				
+				if(oldX == player.getX())
+				{
+					g2d.drawImage(standardDragon.getImage(), player.getX() - 125,
+							curLevel.getHeight() - player.getHeight() - 117, this);
+				}
+				else if(oldX < player.getX())
+				{
+					g2d.drawImage(dragon.getImage(), player.getX() - 125,
+							curLevel.getHeight() - player.getHeight() - 117, this);
+				}
+				else if(oldX > player.getX())
+				{
+					g2d.drawImage(dragon.getImage(), player.getX() - 125,
+							curLevel.getHeight() - player.getHeight() - 117, this);
+				}
+				
+				oldX = player.getX();
+			}
 
-    public void startGame(JFrame frame)
-    {
-    	frame.setVisible(true);
-    	game.gameStart();
-    }
-    
-    public void addStartButton() {
-        final JButton nextLevel = new JButton("Start game");
-        nextLevel.setVerticalTextPosition(AbstractButton.BOTTOM);
-        nextLevel.setHorizontalTextPosition(AbstractButton.CENTER);
-        nextLevel.setMnemonic(KeyEvent.VK_M);
-        nextLevel.setFocusable(false);
-        nextLevel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent ae) {
-                game.gameStart();
-                remove(nextLevel);
-            }
-        });
-        add(nextLevel);
-        validate();
-    }
+			// Draw the ropes
+			if (curLevel.hasRope()) {
+				Player player = curLevel.getPlayerList().get(0);
+				 g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope()
+				 .getY(), curLevel.getRope().getX(), curLevel
+				 .getHeight());
+				//g2d.drawImage(player.getImage(), curLevel.getRope().getX(),
+				//		curLevel.getRope().getY(), this);
+			}
+			// Draw the border
+			g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
 
-    public static void main(String[] args) throws InterruptedException {
+			// Show the lives of the player
+			g2d.drawString("Lives: " + game.getLives(), 20,
+					curLevel.getHeight() + 20);
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("First time");
+		}
+	}
 
-        final JFrame frame = new JFrame("Bounce test");
-        Driver driver = new Driver();
-        frame.addKeyListener(new MyKeyListener());
-        frame.add(driver);
-        frame.setSize(700, 500);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(false);
-        new StartScreen(driver, frame);
+	public void levelWonFrame() {
+		if (game.getCurrentLevel() == game.getLevelList().size() - 1) {
+			JLabel label = new JLabel("test");
+			label.setText("Congratulations! Game won!");
+			add(label);
+		} else {
+			final JLabel label = new JLabel("test");
+			label.setText("Congratulations! Level won!");
+			add(label);
+			final JButton nextLevel = new JButton("Next Level");
+			nextLevel.setVerticalTextPosition(AbstractButton.BOTTOM);
+			nextLevel.setHorizontalTextPosition(AbstractButton.CENTER);
+			nextLevel.setMnemonic(KeyEvent.VK_M);
+			nextLevel.setFocusable(false);
+			nextLevel.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ae) {
+					game.gameStart();
+					remove(nextLevel);
+					remove(label);
+				}
+			});
+			add(nextLevel);
+		}
+		validate();
+	}
 
-        Player isha = new Player("Isha", 350, 10);
-        Player tim = new Player("Tim", 80, 10);
-        Bubble bubble1 = new Bubble(2, 50, 50, false, false);
-        Bubble bubble2 = new Bubble(2, 50, 50, true, true);
-        Bubble bubble3 = new Bubble(64, 50, 50, false, false);
-        Bubble bubble4 = new Bubble(32, 50, 50, false, true);
+	public void startGame(JFrame frame) {
+		frame.setVisible(true);
+		game.gameStart();
+	}
 
-        Level level1 = new Level();
-        Level level2 = new Level();
-        level2.addBubble(bubble3);
-        level1.addBubble(bubble4);
+	public void addStartButton() {
+		final JButton nextLevel = new JButton("Start game");
+		nextLevel.setVerticalTextPosition(AbstractButton.BOTTOM);
+		nextLevel.setHorizontalTextPosition(AbstractButton.CENTER);
+		nextLevel.setMnemonic(KeyEvent.VK_M);
+		nextLevel.setFocusable(false);
+		nextLevel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				game.gameStart();
+				remove(nextLevel);
+			}
+		});
+		add(nextLevel);
+		validate();
+	}
 
-        level1.addPlayer(isha);
-        //level1.addPlayer(tim);
-        level2.addPlayer(isha);
-        //level2.addPlayer(tim);
-        game.addLevel(level1);
-        game.addLevel(level2);
+	public static void main(String[] args) throws InterruptedException {
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		final JFrame frame = new JFrame("Bounce test");
+		Driver driver = new Driver();
+		frame.addKeyListener(new MyKeyListener());
+		frame.add(driver);
+		frame.setSize(1025, 700);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(false);
+		new StartScreen(driver, frame);
 
-        while (true) {
-            if (game.inProgress()) {
-                Level curLevel = game.getLevelList()
-                        .get(game.getCurrentLevel());
-                Player player1 = curLevel.getPlayerList().get(0);
+		Player isha = new Player("Isha", 350, 10);
+		Player tim = new Player("Tim", 80, 10);
+		Bubble bubble1 = new Bubble(2, 50, 50, false, false);
+		Bubble bubble2 = new Bubble(2, 50, 50, true, true);
+		Bubble bubble3 = new Bubble(64, 50, 50, false, false);
+		Bubble bubble4 = new Bubble(32, 50, 50, false, true);
 
-                for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
-                    Bubble bubble = curLevel.getBubbleList().get(i);
-                    bubble.move(curLevel.getWidth(), curLevel.getHeight());
-                }
+		Level level1 = new Level();
+		Level level2 = new Level();
+		level2.addBubble(bubble3);
+		level1.addBubble(bubble4);
 
-                if (curLevel.hasRope()) {
-                    curLevel.getRope().move();
-                }
+		level1.addPlayer(isha);
+		// level1.addPlayer(tim);
+		level2.addPlayer(isha);
+		// level2.addPlayer(tim);
+		game.addLevel(level1);
+		game.addLevel(level2);
 
-                curLevel.checkCollisionRope();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-                if (curLevel.checkCollisionPlayer()) {
-                    game.loseLife();
-                }
-                driver.repaint();
-                player1.move();
+		while (true) {
+			if (game.inProgress()) {
+				Level curLevel = game.getLevelList()
+						.get(game.getCurrentLevel());
+				Player player1 = curLevel.getPlayerList().get(0);
 
-                if (curLevel.getBubbleList().size() == 0) {
-                    boolean once = true;
-                    if (once) {
-                        once = false;
-                        driver.levelWonFrame();
-                    }
-                    game.gameWon();
-                }
-            }
+				for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
+					Bubble bubble = curLevel.getBubbleList().get(i);
+					bubble.move(curLevel.getWidth(), curLevel.getHeight());
+				}
 
-            // 120 FPS
-            Thread.sleep(1000 / 120);
-        }
+				if (curLevel.hasRope()) {
+					curLevel.getRope().move();
+				}
 
-    }
+				curLevel.checkCollisionRope();
+
+				if (curLevel.checkCollisionPlayer()) {
+					game.loseLife();
+				}
+				driver.repaint();
+				player1.move();
+
+				if (curLevel.getBubbleList().size() == 0) {
+					boolean once = true;
+					if (once) {
+						once = false;
+						driver.levelWonFrame();
+					}
+					game.gameWon();
+				}
+			}
+
+			// 120 FPS
+			Thread.sleep(1000 / 120);
+		}
+
+	}
 
 }

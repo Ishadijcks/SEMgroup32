@@ -15,7 +15,7 @@ public class Rope {
             Driver.game.getLevelList().get(Driver.game.getCurrentLevel())
                     .setRope(null);
         } else {
-            y -= 2;
+            y -= 3;
         }
     }
 

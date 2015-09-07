@@ -5,8 +5,8 @@ public class Level {
     private ArrayList<Player> playerList;
     private Rope rope = null;
     private int timeLeft;
-    private int width = 675;
-    private int height = 350;
+    private int width = 1000;
+    private int height = 600;
 
     /**
      * Constructor, initializes the bubble- and playerList
