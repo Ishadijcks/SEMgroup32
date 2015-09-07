@@ -66,6 +66,32 @@ public class Level {
         }
     }
 
+    
+    /**
+     * Checks if the player collided with a powerup
+     */
+
+    public void checkPowerupCollision() {
+           
+        Player player1  = playerList.get(0);
+        for (int i = 0; i < powerupList.size(); i++) {
+            Powerup powerup = powerupList.get(i);
+          
+            if (player1.getX() <= (powerup.getX()+powerup.getWidth()) && (player1.getX()+player1.getWidth()) >= powerup.getX() && player1.getY() <= (powerup.getY()+powerup.getHeight()) && (powerup.getY()+powerup.getHeight()) >= powerup.getY()) {
+                
+               System.out.println("Yay you have: "+powerupList.get(i).getName());
+               System.out.println("For "+ powerup.getFramesLeft()+  " more frames!");
+                playerList.get(0).setPowerup(powerupList.get(i));
+                powerupList.remove(i);
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
     private double distance(float x, float y, float x2, float y2) {
         // TODO Auto-generated method stub
         float xDis = x - x2;
