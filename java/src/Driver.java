@@ -19,9 +19,15 @@ import javax.swing.JPanel;
 public class Driver extends JPanel {
 
 	public static Game game = new Game();
-	private int animationCount = 1;
-	private int slowmotion = 0;
+	private int animationRightCounter = 1;
+	private int animationLeftCounter = 1;
+	private int slowDownCounter = 0;
 	private int oldX;
+	private boolean dragonIsRight = true;
+	private boolean dragonIsMoving = false;
+	private boolean shootRope = false;
+	private URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
+	private String imageLocation = location.getFile();
 
 	@Override
 	public void paint(Graphics g) {
@@ -46,61 +52,120 @@ public class Driver extends JPanel {
 				g2d.drawOval(bubble.getX() - 1, bubble.getY() - 1,
 						bubble.getRadius() + 2, bubble.getRadius() + 2);
 			}
+			
+			// Draw the ropes
+						if (curLevel.hasRope()) {
+							shootRope = true;
+							Player player = curLevel.getPlayerList().get(0);
+							 g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope()
+							 .getY(), curLevel.getRope().getX(), curLevel
+							 .getHeight());
+
+						}
+			
 			// Draw all the players
 			for (int i = 0; i < curLevel.getPlayerList().size(); i++) {
 				Player player = curLevel.getPlayerList().get(i);
 
 				g2d.drawString(player.getName(), player.getX(),
 						curLevel.getHeight() - player.getHeight() - 10);
+				
 				// g2d.fillRect(player.getX(),
 				// curLevel.getHeight() - player.getHeight() + 2,
 				// player.getWidth(), player.getHeight());
 
-				URL location = StartScreen.class.getProtectionDomain()
-						.getCodeSource().getLocation();
-				String imageLocation = location.getFile();
-
-				ImageIcon dragon = new ImageIcon(imageLocation
-						+ "Images/dragon" + animationCount + ".png");
-				if(slowmotion% 22 == 0){
-				animationCount += 1;
-				}
-				if (animationCount == 9) {
-					animationCount = 1;
-				}
-				slowmotion+=1;
+				// Get the images of the left flying or right flying dragon
+				ImageIcon dragonLeft = new ImageIcon(imageLocation + "Images/dragonL" + animationLeftCounter + ".png");
+				ImageIcon dragonRight = new ImageIcon(imageLocation + "Images/dragonR" + animationRightCounter + ".png");
 				
-				ImageIcon standardDragon = new ImageIcon(imageLocation
-						+ "Images/dragonPause.png");
+				// Get the current X position of the player.
+				int newX = player.getX();
 				
-				if(oldX == player.getX())
+				if(!shootRope)
 				{
-					g2d.drawImage(standardDragon.getImage(), player.getX() - 125,
-							curLevel.getHeight() - player.getHeight() - 117, this);
-				}
-				else if(oldX < player.getX())
-				{
-					g2d.drawImage(dragon.getImage(), player.getX() - 125,
-							curLevel.getHeight() - player.getHeight() - 117, this);
-				}
-				else if(oldX > player.getX())
-				{
-					g2d.drawImage(dragon.getImage(), player.getX() - 125,
-							curLevel.getHeight() - player.getHeight() - 117, this);
+					// Check if the player is moving.
+					if(oldX != newX)
+					{
+						dragonIsMoving = true;
+					}
+					else
+					{
+						dragonIsMoving = false;
+					}
+					
+					// The dragon was last moving right and should be facing right now.
+					if(dragonIsRight && !(dragonIsMoving))
+					{
+						ImageIcon dragonRightNormal = new ImageIcon(imageLocation + "Images/dragonR" + 10 + ".png");
+						g2d.drawImage(dragonRightNormal.getImage(), player.getX() - 100,
+								curLevel.getHeight() - player.getHeight() - 117, this);
+					}
+					// The dragon was last moving left and should be facing left now.
+					else if(!(dragonIsMoving))
+					{
+						ImageIcon dragonLeftNormal = new ImageIcon(imageLocation + "Images/dragonL" + 10 + ".png");
+						g2d.drawImage(dragonLeftNormal.getImage(), player.getX() - 100,
+								curLevel.getHeight() - player.getHeight() - 117, this);
+					}
+					
+					// If the dragon is going right, the animation for flying right is enabled
+					if(oldX < newX)
+					{
+						g2d.drawImage(dragonRight.getImage(), player.getX() - 100,
+								curLevel.getHeight() - player.getHeight() - 117, this);
+						dragonIsRight = true;
+						if(slowDownCounter%20 == 0)
+						{
+							animationRightCounter++;
+						}
+					}
+					// If the dragon is going left, the animation for flying left is enabled
+					else if(oldX > newX)
+					{
+						g2d.drawImage(dragonLeft.getImage(), player.getX() - 100,
+								curLevel.getHeight() - player.getHeight() - 117, this);
+						dragonIsRight = false;
+						if(slowDownCounter%20 == 0)
+						{
+							animationLeftCounter++;
+						}
+					}
 				}
 				
+				// Draw the dragon spitting fire
+				if(dragonIsRight && shootRope)
+				{
+					ImageIcon dragonRightFire = new ImageIcon(imageLocation + "Images/dragonRFire.png");
+					g2d.drawImage(dragonRightFire.getImage(), player.getX() - 100,
+							curLevel.getHeight() - player.getHeight() - 112, this);
+				}
+				else if(shootRope)
+				{
+					ImageIcon dragonLeftFire = new ImageIcon(imageLocation + "Images/dragonLFire.png");
+					g2d.drawImage(dragonLeftFire.getImage(), player.getX() - 100,
+							curLevel.getHeight() - player.getHeight() - 112, this);
+				}
+				
+				// Update the old x coordinate of the player with the current one.
 				oldX = player.getX();
+				
+				// When the dragon is in it's last state of the animation, the animation will reset itself.
+				if(animationLeftCounter == 10)
+				{
+					animationLeftCounter = 1;
+				}
+				if(animationRightCounter == 10)
+				{
+					animationRightCounter = 1;
+				}
+				if(!curLevel.hasRope())
+				{
+					shootRope = false;
+				}
+				
+				slowDownCounter++;
 			}
 
-			// Draw the ropes
-			if (curLevel.hasRope()) {
-				Player player = curLevel.getPlayerList().get(0);
-				 g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope()
-				 .getY(), curLevel.getRope().getX(), curLevel
-				 .getHeight());
-				//g2d.drawImage(player.getImage(), curLevel.getRope().getX(),
-				//		curLevel.getRope().getY(), this);
-			}
 			// Draw the border
 			g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
 
