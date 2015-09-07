@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Level {
     private ArrayList<Bubble> bubbleList;
     private ArrayList<Player> playerList;
+    private ArrayList<Powerup> powerupList;
     private Rope rope = null;
     private int timeLeft;
     private int width = 675;
@@ -14,6 +15,7 @@ public class Level {
     public Level() {
         this.bubbleList = new ArrayList<Bubble>();
         this.playerList = new ArrayList<Player>();
+        this.powerupList = new ArrayList<Powerup>();
     }
 
     /**
@@ -64,6 +66,26 @@ public class Level {
         }
     }
 
+    /**
+     * Checks if the player collided with a powerup
+     */
+
+    public void checkPowerupCollision() {
+
+        Player player1 = playerList.get(0);
+        for (int i = 0; i < powerupList.size(); i++) {
+            Powerup powerup = powerupList.get(i);
+
+            if (player1.getX() <= (powerup.getX() + powerup.getWidth())
+                    && (player1.getX() + player1.getWidth()) >= powerup.getX()
+                    && player1.getY() <= (powerup.getY() + powerup.getHeight())
+                    && (powerup.getY() + powerup.getHeight()) >= powerup.getY()) {
+                playerList.get(0).setPowerup(powerupList.get(i));
+                powerupList.remove(i);
+            }
+        }
+    }
+
     private double distance(float x, float y, float x2, float y2) {
         // TODO Auto-generated method stub
         float xDis = x - x2;
@@ -86,10 +108,25 @@ public class Level {
             bubbleList.add(newBubble2);
 
         }
+        if (10 > Math.random() * 100) {
+            Powerup powerup = generatePowerup(x, y);
+            powerupList.add(powerup);
+        }
+
         if (bubbleList.isEmpty()) {
             System.out.println("Yay you won!!!!");
         }
 
+    }
+
+    public Powerup generatePowerup(int x, int y) {
+        int randomNumber = (int) Math.floor(Math.random() * 1 + 1);
+        switch (randomNumber) {
+            case 1:
+                return new Powerup("speed", x, y);
+            default:
+                return new Powerup("speed", x, y);
+        }
     }
 
     public void resetLevel() {
@@ -105,6 +142,12 @@ public class Level {
     public void addBubble(Bubble bubble) {
         if (!bubbleList.contains(bubble)) {
             bubbleList.add(bubble);
+        }
+    }
+
+    public void addPowerup(Powerup powerup) {
+        if (!powerupList.contains(powerup)) {
+            powerupList.add(powerup);
         }
     }
 
@@ -131,6 +174,10 @@ public class Level {
 
     public ArrayList<Player> getPlayerList() {
         return playerList;
+    }
+
+    public ArrayList<Powerup> getPowerupList() {
+        return powerupList;
     }
 
     // Getters and Setters
