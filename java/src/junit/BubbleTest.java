@@ -5,16 +5,28 @@ import java.awt.Color;
 
 import game.Bubble;
 
+import org.junit.Before;
 import org.junit.Test;
 
 
 public class BubbleTest {
+	
+	public double x;
+	public double y;
+	public Bubble bubble;
+	
+	@Before
+	public void init() {
+		x = 2;
+		y = 2;
+		int diameter = 8;
+		
+		bubble = new Bubble(diameter, x, y, true, true);
+	}
 
 	@Test
 	public void testBubbleDefault() {
 		int diameter = 10000;
-		double x = 2;
-		double y = 2;
 		
 		Bubble bub = new Bubble(diameter, x, y, true, true);
 		
@@ -29,8 +41,6 @@ public class BubbleTest {
 	@Test
 	public void testBubble8() {
 		int diameter = 8;
-		double x = 2;
-		double y = 2;
 		
 		Bubble bub = new Bubble(diameter, x, y, true, true);
 		
@@ -39,8 +49,6 @@ public class BubbleTest {
 	@Test
 	public void testBubble16() {
 		int diameter = 16;
-		double x = 2;
-		double y = 2;
 		
 		Bubble bub = new Bubble(diameter, x, y, true, true);
 		
@@ -49,8 +57,6 @@ public class BubbleTest {
 	@Test
 	public void testBubble32() {
 		int diameter = 32;
-		double x = 2;
-		double y = 2;
 		
 		Bubble bub = new Bubble(diameter, x, y, true, true);
 		
@@ -59,8 +65,6 @@ public class BubbleTest {
 	@Test
 	public void testBubble64() {
 		int diameter = 64;
-		double x = 2;
-		double y = 2;
 		
 		Bubble bub = new Bubble(diameter, x, y, true, true);
 		
@@ -69,8 +73,6 @@ public class BubbleTest {
 	@Test
 	public void testBubble128() {
 		int diameter = 128;
-		double x = 2;
-		double y = 2;
 		
 		Bubble bub = new Bubble(diameter, x, y, true, true);
 		
@@ -79,8 +81,6 @@ public class BubbleTest {
 	@Test
 	public void testBubbleNegative() {
 		int diameter = -8;
-		double x = 2;
-		double y = 2;
 		
 		Bubble bub = new Bubble(diameter, x, y, true, true);
 		
@@ -93,29 +93,17 @@ public class BubbleTest {
 	}
 
 	@Test
-	public void testBounceH() {
-		int diameter = 128;
-		double x = 2;
-		double y = 2;
-		
-		Bubble bub = new Bubble(diameter, x, y, true, true);
-		
-		assertTrue(bub.isDirectionH());
-		bub.bounceH();
-		assertFalse(bub.isDirectionH());
+	public void testBounceH() {		
+		assertTrue(bubble.isDirectionH());
+		bubble.bounceH();
+		assertFalse(bubble.isDirectionH());
 	}
 
 	@Test
 	public void testBounceV() {
-		int diameter = 128;
-		double x = 2;
-		double y = 2;
-		
-		Bubble bub = new Bubble(diameter, x, y, true, true);
-		
-		assertTrue(bub.isDirectionV());
-		bub.bounceV();
-		assertFalse(bub.isDirectionV());
+		assertTrue(bubble.isDirectionV());
+		bubble.bounceV();
+		assertFalse(bubble.isDirectionV());
 	}
 
 }
