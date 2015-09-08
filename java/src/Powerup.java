@@ -2,9 +2,11 @@ public class Powerup {
     String name;
     private int x;
     private int y;
-    int height = 15;
-    int width = 10;
-    int framesLeft = 10*120;
+    
+    int width = Settings.getPowerupWidth();
+    int height = Settings.getPowerupHeight();
+    
+    int framesLeft = 10*Settings.getFps();
     
     Powerup(String name, int x, int y) {
         this.name = name;
@@ -17,7 +19,7 @@ public class Powerup {
      */
     public void move() {
         if (y <= Driver.game.getLevelList().get(Driver.game.getCurrentLevel()).getHeight() - (height -1) ) {
-            y += 1;
+            y += Settings.getPowerupSpeed();
         }
     }
 

@@ -35,7 +35,7 @@ public class Driver extends JPanel {
                 Bubble bubble = curLevel.getBubbleList().get(i);
                 g2d.setColor(bubble.getColor());
                 g2d.fillOval(bubble.getX(), bubble.getY(), bubble.getDiameter(),
-                        bubble.get());
+                        bubble.getDiameter());
                 g2d.setColor(Color.black);
 
                 g2d.drawOval(bubble.getX() - 1, bubble.getY() - 1,
@@ -134,7 +134,7 @@ public class Driver extends JPanel {
         Driver driver = new Driver();
         frame.addKeyListener(new MyKeyListener());
         frame.add(driver);
-        frame.setSize(700, 500);
+        frame.setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
         frame.setLocationRelativeTo(null);
         frame.setVisible(false);
         new StartScreen(driver, frame);
@@ -199,7 +199,7 @@ public class Driver extends JPanel {
             }
 
             // 120 FPS
-            Thread.sleep(1000 / 120);
+            Thread.sleep(1000 / Settings.getFps());
         }
 
     }

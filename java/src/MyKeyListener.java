@@ -10,10 +10,12 @@ class MyKeyListener extends KeyAdapter {
      * a rope
      */
     public void keyPressed(KeyEvent evt) {
+       
         if (game.inProgress()) {
 
             Level curLevel = game.getLevelList().get(game.getCurrentLevel());
 
+            
             switch (evt.getKeyCode()) {
 
             // Left

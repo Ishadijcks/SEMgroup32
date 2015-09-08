@@ -10,10 +10,10 @@ import javax.swing.JLabel;
 public class Player {
     private String name;
     private int x;
-    private int y = 350 - 40;
-    private int height = 40;
-    private int width = 20;
-    private int stepSize = 2;
+    private int y = Settings.getLevelHeight() - Settings.getPlayerHeight();
+    private int height = Settings.getPlayerHeight();
+    private int width = Settings.getPlayerWidth();
+    private int stepSize = Settings.getPlayerStepSize();
     private boolean movingLeft = false;
     private boolean movingRight = false;
     private Image image;
@@ -66,7 +66,7 @@ public class Player {
         if (powerup != null) {
 
             if (powerup.getName().equals("speed") && powerup.isActive()) {
-                stepSize = 4;
+                stepSize = Settings.getPlayerPowerupStepSize();
             }
         }
 
@@ -85,7 +85,7 @@ public class Player {
 
         if (powerup != null) {
             if (powerup.getName().equals("speed") && powerup.isActive()) {
-                stepSize = 2;
+                stepSize = Settings.getPlayerStepSize();
                 powerup.decreaseFramesLeft();
             }
         }

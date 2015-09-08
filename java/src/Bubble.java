@@ -28,6 +28,7 @@ public class Bubble {    private double x;
         this.directionV = directionV;
         this.diameter = diameter;
         this.newBubble = true;
+        
         // Sets the color depending on the radius of the bubble
         switch (diameter) {
         case 8:
@@ -54,16 +55,16 @@ public class Bubble {    private double x;
     public void move(int width, int height) {
 
         int maxheight = 200;
-        if (radius == 4) {
+        if (diameter == 4) {
             maxheight = 300;
         }
-        if (radius == 8) {
+        if (diameter == 8) {
             maxheight = 260;
         }
-        if (radius == 16) {
+        if (diameter == 16) {
             maxheight = 220;
         }
-        if (radius == 32) {
+        if (diameter == 32) {
             maxheight = 120;
         }
 
@@ -76,11 +77,11 @@ public class Bubble {    private double x;
         int range = height - maxheight;
         double speedFactor = 0.8 / range;
 
-        if (x + radius > width && directionH || x <= 1 && !directionH) {
+        if (x + diameter > width && directionH || x <= 1 && !directionH) {
             bounceH();
         }
 
-        if (y + radius > height && directionV || y <= 1 && !directionV) {
+        if (y + diameter > height && directionV || y <= 1 && !directionV) {
             bounceV();
         }
 
