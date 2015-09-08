@@ -12,9 +12,9 @@ public class Level {
     /**
      * Constructor, initializes the bubble- and playerList
      */
-    public Level() {
+    public Level(ArrayList<Player> playerList) {
         this.bubbleList = new ArrayList<Bubble>();
-        this.playerList = new ArrayList<Player>();
+        this.playerList = playerList;
         this.powerupList = new ArrayList<Powerup>();
     }
 
@@ -151,17 +151,6 @@ public class Level {
         }
     }
 
-    /**
-     * Add a player to the playerList
-     * 
-     * @param player
-     *            player to add
-     */
-    public void addPlayer(Player player) {
-        if (!playerList.contains(player)) {
-            playerList.add(player);
-        }
-    }
 
     public boolean hasRope() {
         return rope != null;
@@ -170,10 +159,6 @@ public class Level {
     // Getters and Setters
     public ArrayList<Bubble> getBubbleList() {
         return bubbleList;
-    }
-
-    public ArrayList<Player> getPlayerList() {
-        return playerList;
     }
 
     public ArrayList<Powerup> getPowerupList() {

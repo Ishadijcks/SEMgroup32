@@ -42,8 +42,8 @@ public class Driver extends JPanel {
                         bubble.getDiameter() + 2, bubble.getDiameter() + 2);
             }
             // Draw all the players
-            for (int i = 0; i < curLevel.getPlayerList().size(); i++) {
-                Player player = curLevel.getPlayerList().get(i);
+            for (int i = 0; i < game.getPlayerList().size(); i++) {
+                Player player = game.getPlayerList().get(i);
 
                 g2d.drawString(player.getName(), player.getX(),
                         curLevel.getHeight() - player.getHeight() - 10);
@@ -145,16 +145,15 @@ public class Driver extends JPanel {
         Bubble bubble2 = new Bubble(2, 50, 50, true, true);
         Bubble bubble3 = new Bubble(64, 50, 50, false, false);
         Bubble bubble4 = new Bubble(32, 50, 50, false, true);
+        
+        game.addPlayer(isha);
+        game.addPlayer(tim);
 
-        Level level1 = new Level();
-        Level level2 = new Level();
+        Level level1 = new Level(game.getPlayerList());
+        Level level2 = new Level(game.getPlayerList());
         level2.addBubble(bubble3);
         level1.addBubble(bubble4);
 
-        level1.addPlayer(isha);
-        //level1.addPlayer(tim);
-        level2.addPlayer(isha);
-        //level2.addPlayer(tim);
         game.addLevel(level1);
         game.addLevel(level2);
 
@@ -164,7 +163,7 @@ public class Driver extends JPanel {
             if (game.inProgress()) {
                 Level curLevel = game.getLevelList()
                         .get(game.getCurrentLevel());
-                Player player1 = curLevel.getPlayerList().get(0);
+                Player player1 = game.getPlayerList().get(0);
 
                 for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
                     Bubble bubble = curLevel.getBubbleList().get(i);

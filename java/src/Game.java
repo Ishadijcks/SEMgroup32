@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Level> levelList = new ArrayList<Level>();
+    private ArrayList<Player> playerList;
     private int lives = Settings.getLives();
     private int currentLevel = 0;
     private boolean inProgress;
@@ -9,6 +10,7 @@ public class Game {
 
     public Game() {
         this.inProgress = false;
+        this.playerList = new ArrayList<Player>();
     }
 
     public void gameLoop() {
@@ -61,6 +63,18 @@ public class Game {
             inProgress = false;
         }
     }
+    
+    /**
+     * Add a player to the playerList
+     * 
+     * @param player
+     *            player to add
+     */
+    public void addPlayer(Player player) {
+        if (!playerList.contains(player)) {
+            playerList.add(player);
+        }
+    }
 
     // Getters and setters
 
@@ -75,6 +89,10 @@ public class Game {
 
     public int getLives() {
         return lives;
+    }
+    
+    public ArrayList<Player> getPlayerList() {
+        return playerList;
     }
 
     public void loseLife() {
