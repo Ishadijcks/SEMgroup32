@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.net.URL;
+import java.util.Random;
 
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
@@ -33,7 +34,7 @@ public class Driver extends JPanel {
             .getCodeSource().getLocation();
     private static String imageLocation = location.getFile();
     private static Color dragonRed = new Color(135, 15, 15);
-
+    
     @Override
     public void paint(Graphics graph) {
         try {
@@ -44,7 +45,7 @@ public class Driver extends JPanel {
                     RenderingHints.VALUE_ANTIALIAS_ON);
 
             // TODO Split up in methods
-
+            
             // Draw all the bubbles with a black border
             Level curLevel = game.getCurrentLevel();
             for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
@@ -58,26 +59,74 @@ public class Driver extends JPanel {
                         bubble.getDiameter() + 2, bubble.getDiameter() + 2);
             }
 
+            int rInt127to153 = randomInt(127, 153);
+            int rInt51to102 = randomInt(51, 102);
+            int rInt69to240 = randomInt(69, 240);
+            int rInt255to8 = randomInt(69, 240);
+            int rInt6to11 = randomInt(6, 11);
+            
+            Color fire1 = new Color(255, rInt127to153, 0);
+            Color fire2 = new Color(255, rInt51to102, 0);
+            Color fire3 = new Color(255, rInt69to240, 0);
+            Color fire4 = new Color(250, rInt255to8, rInt6to11);
+            
+            Stroke stroke1 = new BasicStroke(1f);
+            Stroke stroke2 = new BasicStroke(3f);
+            Stroke stroke3 = new BasicStroke(5f);
+            Stroke stroke4 = new BasicStroke(7f);
+            
+            Color[] colors = {fire4, fire3, fire2, fire1};
+            Stroke[] strokes = {stroke4, stroke3, stroke2, stroke1};
+            
+            g2d.setColor(fire4);
+            g2d.setStroke(stroke4);
+            
             // Draw the ropes
             if (curLevel.hasRope()) {
                 shootRope = true;
-                g2d.setColor(Color.RED);
-                // creates a solid stroke with line width is 2
-                Stroke stroke = new BasicStroke(2f);
-                g2d.setStroke(stroke);
+                
                 if (dragonIsRight) {
-                    g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope()
-                            .getY(), curLevel.getRope().getX(), curLevel
-                            .getHeight());
+                    for (int i = 0; i < 4; i++)
+                    {
+                        g2d.setColor(colors[i]);
+                        g2d.setStroke(strokes[i]);
+                        
+                        int random = randomInt(0,4);
+                        if((i==0) && random == 2)
+                        {
+                            g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope().getY(), curLevel.getRope().getX(), curLevel
+                                    .getHeight());
+                        }
+                        else if(i == 1 || i == 2 || i == 3)
+                        {
+                            g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope().getY(), curLevel.getRope().getX(), curLevel
+                                    .getHeight());
+                        }
+                        
+                    }
+                    
                 } else {
-                    g2d.drawLine(curLevel.getRope().getX() - 35, curLevel
-                            .getRope().getY(), curLevel.getRope().getX() - 35,
-                            curLevel.getHeight());
+                    for (int i = 0; i < 4; i++)
+                    {
+                        g2d.setColor(colors[i]);
+                        g2d.setStroke(strokes[i]);
+                        
+                        int random = randomInt(0,4);
+                        if((i==0) && random == 2)
+                        {
+                            g2d.drawLine(curLevel.getRope().getX() - 35, curLevel.getRope().getY(), curLevel.getRope().getX() - 35, curLevel
+                                    .getHeight());
+                        }
+                        else if(i == 1 || i == 2 || i == 3)
+                        {
+                            g2d.drawLine(curLevel.getRope().getX() - 35, curLevel.getRope().getY(), curLevel.getRope().getX() - 35, curLevel
+                                    .getHeight());
+                        }
+                    }
                 }
 
                 // Set g2d back to normal settings
                 g2d.setColor(Color.BLACK);
-                // creates a solid stroke with line width is 2
                 Stroke normalStroke = new BasicStroke(1f);
                 g2d.setStroke(normalStroke);
 
@@ -210,7 +259,9 @@ public class Driver extends JPanel {
                 g2d.fillRect(powerup.getX(), powerup.getY(),
                         powerup.getWidth(), powerup.getHeight());
             }
-
+            
+            Stroke normalStroke = new BasicStroke(1f);
+            g2d.setStroke(normalStroke);
             // Draw the border
             g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
 
@@ -241,6 +292,12 @@ public class Driver extends JPanel {
         }
     }
 
+    public static int randomInt(int min, int max) {
+        Random rand = new Random();
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        return randomNum;
+    }
+    
     public void levelWonFrame() {
         if (game.getCurrentLevel().equals(game.getLevelList().get(game.getLevelList().size()-1))) {
             JLabel label = new JLabel("test");
@@ -294,7 +351,7 @@ public class Driver extends JPanel {
         Driver driver = new Driver();
         frame.addKeyListener(new MyKeyListener());
         frame.add(driver);
-        frame.setSize(1420, 1030);
+        frame.setSize(1409, 1030);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(false);
