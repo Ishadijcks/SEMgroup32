@@ -1,3 +1,4 @@
+package game;
 public class Rope {
     private int x;
     private int y;
