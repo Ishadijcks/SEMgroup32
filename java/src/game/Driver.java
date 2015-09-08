@@ -25,17 +25,21 @@ public class Driver extends JPanel {
 
     public static Game game = new Game();
     private int animationRightCounter = 1;
+    private int fireRightCounter = 1;
     private int animationLeftCounter = 1;
+    private int fireLeftCounter = 1;
     private int slowDownCounter = 0;
     private int oldX;
     private static boolean dragonIsRight = true;
     private static boolean canDrawGame = true;
+    private static boolean addOnce = false;
     private boolean dragonIsMoving = false;
     private boolean shootRope = false;
     private static URL location = StartScreen.class.getProtectionDomain()
             .getCodeSource().getLocation();
     private static String imageLocation = location.getFile();
     private static Color dragonRed = new Color(135, 15, 15);
+    private static Color bg = new Color(191, 191, 191);
 
     @Override
     public void paint(Graphics graph) {
@@ -53,7 +57,7 @@ public class Driver extends JPanel {
             g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
             if(canDrawGame)
             {
-                g2d.setColor(Color.LIGHT_GRAY);
+                g2d.setColor(bg);
                 g2d.fillRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
                 g2d.setColor(Color.BLACK);
             }
@@ -97,10 +101,15 @@ public class Driver extends JPanel {
                 shootRope = true;
 
                 if (dragonIsRight) {
+                    if(!(addOnce))
+                    {
+                        curLevel.getRope().addX(-3);
+                        addOnce = true;
+                    }
                     for (int i = 0; i < 4; i++) {
                         g2d.setColor(colors[i]);
                         g2d.setStroke(strokes[i]);
-
+                       
                         int random = randomInt(0, 4);
                         if ((i == 0) && random == 2) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
@@ -115,20 +124,25 @@ public class Driver extends JPanel {
                     }
 
                 } else {
+                    if(!(addOnce))
+                    {
+                        curLevel.getRope().addX(-32);
+                        addOnce = true;
+                    }
                     for (int i = 0; i < 4; i++) {
                         g2d.setColor(colors[i]);
                         g2d.setStroke(strokes[i]);
 
                         int random = randomInt(0, 4);
                         if ((i == 0) && random == 2) {
-                            g2d.drawLine(curLevel.getRope().getX() - 35,
+                            g2d.drawLine(curLevel.getRope().getX(),
                                     curLevel.getRope().getY(), curLevel
-                                            .getRope().getX() - 35, curLevel
+                                            .getRope().getX(), curLevel
                                             .getHeight());
                         } else if (i == 1 || i == 2 || i == 3) {
-                            g2d.drawLine(curLevel.getRope().getX() - 35,
+                            g2d.drawLine(curLevel.getRope().getX(),
                                     curLevel.getRope().getY(), curLevel
-                                            .getRope().getX() - 35, curLevel
+                                            .getRope().getX(), curLevel
                                             .getHeight());
                         }
                     }
@@ -159,14 +173,14 @@ public class Driver extends JPanel {
 
                 // Get the images of the left flying or right flying dragon
                 ImageIcon dragonLeft = new ImageIcon(imageLocation
-                        + "Images/dragonL" + animationLeftCounter + ".png");
+                        + "Images/dragon/dragonL" + animationLeftCounter + ".png");
                 ImageIcon dragonRight = new ImageIcon(imageLocation
-                        + "Images/dragonR" + animationRightCounter + ".png");
+                        + "Images/dragon/dragonR" + animationRightCounter + ".png");
 
                 // Get the current X position of the player.
                 int newX = player.getX();
 
-                if (!shootRope) {
+                if (!(shootRope)) {
                     // Check if the player is moving.
                     if (oldX != newX) {
                         dragonIsMoving = true;
@@ -178,7 +192,7 @@ public class Driver extends JPanel {
                     // right now.
                     if (dragonIsRight && !(dragonIsMoving)) {
                         ImageIcon dragonRightNormal = new ImageIcon(
-                                imageLocation + "Images/dragonR" + 10 + ".png");
+                                imageLocation + "Images/dragon/dragonR" + 10 + ".png");
                         g2d.drawImage(dragonRightNormal.getImage(),
                                 player.getX() - 100, curLevel.getHeight()
                                         - player.getHeight() - 117, this);
@@ -188,7 +202,7 @@ public class Driver extends JPanel {
                     // now.
                     else if (!(dragonIsMoving)) {
                         ImageIcon dragonLeftNormal = new ImageIcon(
-                                imageLocation + "Images/dragonL" + 10 + ".png");
+                                imageLocation + "Images/dragon/dragonL" + 10 + ".png");
                         g2d.drawImage(dragonLeftNormal.getImage(),
                                 player.getX() - 100, curLevel.getHeight()
                                         - player.getHeight() - 117, this);
@@ -216,30 +230,44 @@ public class Driver extends JPanel {
                                 player.getX() - 100, curLevel.getHeight()
                                         - player.getHeight() - 117, this);
                         dragonIsRight = false;
-                        if (slowDownCounter % 20 == 0) {
+                        if (slowDownCounter % 24 == 0) {
                             animationLeftCounter++;
                         }
                         if (animationLeftCounter == 7) {
                             animationLeftCounter = 4;
                         }
                     }
+                    
+                    else if( oldX == newX)
+                    {
+                        animationRightCounter = 1;
+                        animationLeftCounter = 1;
+                    }
                 }
 
                 // Draw the dragon spitting fire
                 if (dragonIsRight && shootRope) {
                     ImageIcon dragonRightFire = new ImageIcon(imageLocation
-                            + "Images/dragonRFire.png");
+                            + "Images/dragon/fireR" + fireRightCounter + ".png");
                     g2d.drawImage(dragonRightFire.getImage(),
                             player.getX() - 100,
-                            curLevel.getHeight() - player.getHeight() - 112,
+                            curLevel.getHeight() - player.getHeight() - 119,
                             this);
+                    if(fireRightCounter < 3 && slowDownCounter%8==0)
+                    {
+                        fireRightCounter++;
+                    }
                 } else if (shootRope) {
                     ImageIcon dragonLeftFire = new ImageIcon(imageLocation
-                            + "Images/dragonLFire.png");
+                            + "Images/dragon/fireL" + fireLeftCounter + ".png");
                     g2d.drawImage(dragonLeftFire.getImage(),
                             player.getX() - 100,
-                            curLevel.getHeight() - player.getHeight() - 112,
+                            curLevel.getHeight() - player.getHeight() - 119,
                             this);
+                    if(fireLeftCounter < 3 && slowDownCounter%8==0)
+                    {
+                        fireLeftCounter++;
+                    }
                 }
 
                 // Update the old x coordinate of the player with the current
@@ -256,6 +284,9 @@ public class Driver extends JPanel {
                 }
                 if (!curLevel.hasRope()) {
                     shootRope = false;
+                    fireRightCounter = 1;
+                    fireLeftCounter = 1;
+                    addOnce = false;
                 }
 
                 slowDownCounter++;
