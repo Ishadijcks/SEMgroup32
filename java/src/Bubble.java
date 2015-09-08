@@ -1,31 +1,31 @@
 import java.awt.Color;
 
-public class Bubble {    private double x;
+public class Bubble {
+    private double x;
     private double y;
     private int diameter;
+    private int maxheight = 0;
+    private double timer = 1;
     private boolean directionH;
     private boolean directionV;
     private Color color;
     private double lastDownSpeed = 0;
-    private double lastUpSpeed = 0;
+    private double lastUpSpeed = 1;
     private boolean newBubble;
 
-	private double s;
-	private double sOld;
-	private double t = 0;
-	private double a;
-	private double v;
-	private double Ek;
-	private double Ez;
-	private double oldEz;
-	private double h;
-	private double oldh;
-	private double m = 1;
-	private double timeStep = 1/ Settings.getFps();
+    private double speedX;
+
+    private double s;
+    private double sOld;
+    private double t = 0;
+    private double v;
+    private double timeStep = 0.01;
+    private double G = 3;
+    private double factor = 2;
 
     /**
      * the constructor sets the starting coordinates, the moving location, the
-     * diameter
+     * diameter.
      * 
      * @param x
      * @param y
@@ -38,44 +38,62 @@ public class Bubble {    private double x;
         this.directionV = directionV;
         this.diameter = diameter;
         this.newBubble = true;
-        
+
         // Sets the color depending on the radius of the bubble
         switch (diameter) {
-        case 8:
-            color = Color.BLUE;
-            break;
-        case 16:
-            color = Color.BLACK;
-            break;
-        case 32:
-            color = Color.GREEN;
-            break;
-        case 64:
-            color = Color.CYAN;
-            break;
-        case 128:
-            color = Color.PINK;
-            break;
-        default:
-            color = Color.MAGENTA;
-            break;
+            case 8:
+                color = Color.BLUE;
+                break;
+            case 16:
+                color = Color.BLACK;
+                break;
+            case 32:
+                color = Color.GREEN;
+                break;
+            case 64:
+                color = Color.CYAN;
+                break;
+            case 128:
+                color = Color.PINK;
+                break;
+            default:
+                color = Color.MAGENTA;
+                break;
         }
     }
 
+    /**
+     * The method that controlss bubble movement.
+     * @param width
+     * @param height
+     */
     public void move(int width, int height) {
 
-        int maxheight = 200;
         if (diameter == 4) {
-            maxheight = 300;
+            G = 2.0;
+            maxheight = 120;
+            speedX = 0.5;
         }
         if (diameter == 8) {
-            maxheight = 260;
+            G = 2.1;
+            maxheight = 95;
+            speedX = 0.6;
         }
         if (diameter == 16) {
-            maxheight = 220;
+            G = 2.3;
+            maxheight = 75;
+            speedX = 0.7;
         }
         if (diameter == 32) {
-            maxheight = 120;
+            G = 2.5;
+            maxheight = 56;
+            speedX = 0.8;
+        }
+
+        if (diameter == 64) {
+            G = 2.8;
+            maxheight = 40;
+            speedX = 0.9;
         }
 
         if (x + diameter > width && directionH || x <= 1 && !directionH) {
@@ -86,50 +104,52 @@ public class Bubble {    private double x;
             bounceV();
         }
 
-        // bounce on the max height
-        if (y < maxheight) {
-            directionV = true;
-        }
-        
-        if (directionV) {
-            sOld = 1/2 * 9.81 * t * t;
-        	t += timeStep;
-            s = 1/2 * 9.81 * t * t;
-            v = (s - sOld ) / timeStep;
-            lastDownSpeed = v;
-            y += lastDownSpeed / timeStep;
-
+        if (directionH) {
+            x += speedX;
         } else {
-        	t = 0;
+            x -= speedX;
+        }
+
+        if (lastUpSpeed < 0.5 && !directionV && y < height - 50) {
+            timer += 0.4;
+            System.out.println("timer " + timer);
+        }
+        if (timer > 5) {
+            bounceV();
+            timer = 1;
+        }
+
+        if (directionV) {
+            sOld = 0.5 * G * t * t;
+            t += timeStep;
+            s = 0.5 * G * t * t;
+            v = (s - sOld) / timeStep;
+            lastDownSpeed = v;
+            y += lastDownSpeed;
+            lastDownSpeed += 0.05;
+        } else {
+            t = 0;
             if (newBubble) {
                 newBubble = false;
-                if(lastDownSpeed < 1){
-                lastDownSpeed = 1;
-                }
+                lastDownSpeed = 4;
             }
-            Ek = 0.5 * m * lastDownSpeed * lastDownSpeed;
-            h = height - y;
-            Ez = m * 9.81 * h;
-            v = Math.sqrt(Ek/ (0.5 * m));
-			v = Math.round(v);
-			lastUpSpeed = v/timeStep;
-            if (lastUpSpeed < 0.1) {
-                lastUpSpeed = 0.1;
-            }
+            factor = ((y - maxheight) / (height - maxheight));
+            lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             y -= lastUpSpeed;
         }
 
     }
 
     /**
-     * switches the horizontal direction
+     * switches the horizontal direction.
      */
     public void bounceH() {
         directionH = !directionH;
+        System.out.println("bounce H");
     }
 
     /**
-     * switches the vertical direction
+     * switches the vertical direction.
      */
     public void bounceV() {
         directionV = !directionV;

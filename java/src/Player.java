@@ -3,7 +3,6 @@ import java.awt.FlowLayout;
 import java.awt.Image;
 import java.net.URL;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 

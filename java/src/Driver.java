@@ -20,7 +20,7 @@ public class Driver extends JPanel {
 
     @Override
     public void paint(Graphics g) {
-        try { 
+        try {
 
             super.paint(g);
             Graphics2D g2d = (Graphics2D) g;
@@ -28,14 +28,14 @@ public class Driver extends JPanel {
                     RenderingHints.VALUE_ANTIALIAS_ON);
 
             // TODO Split up in methods
- 
+
             // Draw all the bubbles with a black border
             Level curLevel = game.getLevelList().get(game.getCurrentLevel());
             for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
                 Bubble bubble = curLevel.getBubbleList().get(i);
                 g2d.setColor(bubble.getColor());
-                g2d.fillOval(bubble.getX(), bubble.getY(), bubble.getDiameter(),
-                        bubble.getDiameter());
+                g2d.fillOval(bubble.getX(), bubble.getY(),
+                        bubble.getDiameter(), bubble.getDiameter());
                 g2d.setColor(Color.black);
 
                 g2d.drawOval(bubble.getX() - 1, bubble.getY() - 1,
@@ -50,19 +50,18 @@ public class Driver extends JPanel {
                 g2d.fillRect(player.getX(),
                         curLevel.getHeight() - player.getHeight() + 2,
                         player.getWidth(), player.getHeight());
-                //g2d.drawImage(player.getImage(), player.getX(), curLevel.getHeight() - player.getHeight()- 30, this);
+                // g2d.drawImage(player.getImage(), player.getX(),
+                // curLevel.getHeight() - player.getHeight()- 30, this);
             }
 
             // Draw the powerups
             for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
                 Powerup powerup = curLevel.getPowerupList().get(i);
 
-     
-                g2d.fillRect(powerup.getX(),
-                       powerup.getY(),
-                      powerup.getWidth(), powerup.getHeight());
+                g2d.fillRect(powerup.getX(), powerup.getY(),
+                        powerup.getWidth(), powerup.getHeight());
             }
-            
+
             // Draw the ropes
             if (curLevel.hasRope()) {
                 g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope()
@@ -106,12 +105,11 @@ public class Driver extends JPanel {
         validate();
     }
 
-    public void startGame(JFrame frame)
-    {
-    	frame.setVisible(true);
-    	game.gameStart();
+    public void startGame(JFrame frame) {
+        frame.setVisible(true);
+        game.gameStart();
     }
-    
+
     public void addStartButton() {
         final JButton nextLevel = new JButton("Start game");
         nextLevel.setVerticalTextPosition(AbstractButton.BOTTOM);
@@ -152,9 +150,9 @@ public class Driver extends JPanel {
         level1.addBubble(bubble4);
 
         level1.addPlayer(isha);
-        //level1.addPlayer(tim);
+        // level1.addPlayer(tim);
         level2.addPlayer(isha);
-        //level2.addPlayer(tim);
+        // level2.addPlayer(tim);
         game.addLevel(level1);
         game.addLevel(level2);
 
@@ -170,8 +168,8 @@ public class Driver extends JPanel {
                     Bubble bubble = curLevel.getBubbleList().get(i);
                     bubble.move(curLevel.getWidth(), curLevel.getHeight());
                 }
-                
-                for (int i = 0; i<curLevel.getPowerupList().size(); i++){
+
+                for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
                     curLevel.getPowerupList().get(i).move();
                     curLevel.checkPowerupCollision();
                 }
@@ -187,7 +185,7 @@ public class Driver extends JPanel {
                 }
                 driver.repaint();
                 player1.move();
-                
+
                 if (curLevel.getBubbleList().size() == 0) {
                     boolean once = true;
                     if (once) {
