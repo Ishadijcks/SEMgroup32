@@ -19,7 +19,19 @@ public class Level {
         this.powerupList = new ArrayList<Powerup>();
     }
 
-    /**
+    public ArrayList<Player> getPlayerList() {
+		return playerList;
+	}
+
+	public void setPlayerList(ArrayList<Player> playerList) {
+		this.playerList = playerList;
+	}
+
+	public void setPowerupList(ArrayList<Powerup> powerupList) {
+		this.powerupList = powerupList;
+	}
+
+	/**
      * Checks if there is collision between player and a bubble
      * 
      * @return
@@ -50,9 +62,9 @@ public class Level {
         if (hasRope()) {
             for (int i = 0; i < bubbleList.size(); i++) {
 
-                if (bubbleList.get(i).getX() < rope.getX()) {
+                if (bubbleList.get(i).getX() <= rope.getX()) {
                     if (bubbleList.get(i).getX()
-                            + bubbleList.get(i).getDiameter() > rope.getX()) {
+                            + bubbleList.get(i).getDiameter() >= rope.getX()) {
                         if (bubbleList.get(i).getY()
                                 + bubbleList.get(i).getDiameter() >= rope.getY()) {
                             destroyBubble(i);
