@@ -34,12 +34,12 @@ public class Driver extends JPanel {
             for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
                 Bubble bubble = curLevel.getBubbleList().get(i);
                 g2d.setColor(bubble.getColor());
-                g2d.fillOval(bubble.getX(), bubble.getY(), bubble.getRadius(),
-                        bubble.getRadius());
+                g2d.fillOval(bubble.getX(), bubble.getY(), bubble.getDiameter(),
+                        bubble.getDiameter());
                 g2d.setColor(Color.black);
 
                 g2d.drawOval(bubble.getX() - 1, bubble.getY() - 1,
-                        bubble.getRadius() + 2, bubble.getRadius() + 2);
+                        bubble.getDiameter() + 2, bubble.getDiameter() + 2);
             }
             // Draw all the players
             for (int i = 0; i < curLevel.getPlayerList().size(); i++) {

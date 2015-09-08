@@ -27,7 +27,7 @@ public class Level {
         for (int i = 0; i < bubbleList.size(); i++) {
             // if the x of the player and the bubble is the same
             // then there is a chance the rope hits the bubble
-            // /// RADIUS NOT IN ACCOUNT JET AND SIZE OF PLAYER
+            // /// Diameter NOT IN ACCOUNT JET AND SIZE OF PLAYER
             Player player = playerList.get(0);
 
             if (bubbleList.get(i).getX() == player.getX()) {
@@ -48,11 +48,12 @@ public class Level {
     public void checkCollisionRope() {
         if (hasRope()) {
             for (int i = 0; i < bubbleList.size(); i++) {
+
                 if (bubbleList.get(i).getX() < rope.getX()) {
                     if (bubbleList.get(i).getX()
-                            + bubbleList.get(i).getRadius() > rope.getX()) {
+                            + bubbleList.get(i).getDiameter() > rope.getX()) {
                         if (bubbleList.get(i).getY()
-                                + bubbleList.get(i).getRadius() >= rope.getY()) {
+                                + bubbleList.get(i).getDiameter() >= rope.getY()) {
                             destroyBubble(i);
                             setRope(null);
                             return;
@@ -89,11 +90,14 @@ public class Level {
         Bubble bubble = bubbleList.get(i);
         int x = bubble.getX();
         int y = bubble.getY();
-        int radius = bubble.getRadius();
+        int diameter = bubble.getDiameter();
         bubbleList.remove(i);
-        if (radius > Settings.getSmallestBubbleSize()) {
-            Bubble newBubble1 = new Bubble(radius / 2, x, y, false, false);
-            Bubble newBubble2 = new Bubble(radius / 2, x, y, true, false);
+
+
+        if (diameter > 10) {
+            Bubble newBubble1 = new Bubble(diameter / 2, x, y, false, false);
+            Bubble newBubble2 = new Bubble(diameter / 2, x, y, true, false);
+
             bubbleList.add(newBubble1);
             bubbleList.add(newBubble2);
 
