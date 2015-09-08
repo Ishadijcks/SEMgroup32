@@ -34,12 +34,12 @@ public class Driver extends JPanel {
             for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
                 Bubble bubble = curLevel.getBubbleList().get(i);
                 g2d.setColor(bubble.getColor());
-                g2d.fillOval(bubble.getX(), bubble.getY(), bubble.getRadius(),
-                        bubble.getRadius());
+                g2d.fillOval(bubble.getX(), bubble.getY(), bubble.getDiameter(),
+                        bubble.get());
                 g2d.setColor(Color.black);
 
                 g2d.drawOval(bubble.getX() - 1, bubble.getY() - 1,
-                        bubble.getRadius() + 2, bubble.getRadius() + 2);
+                        bubble.getDiameter() + 2, bubble.getDiameter() + 2);
             }
             // Draw all the players
             for (int i = 0; i < curLevel.getPlayerList().size(); i++) {
@@ -53,6 +53,16 @@ public class Driver extends JPanel {
                 //g2d.drawImage(player.getImage(), player.getX(), curLevel.getHeight() - player.getHeight()- 30, this);
             }
 
+            // Draw the powerups
+            for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
+                Powerup powerup = curLevel.getPowerupList().get(i);
+
+     
+                g2d.fillRect(powerup.getX(),
+                       powerup.getY(),
+                      powerup.getWidth(), powerup.getHeight());
+            }
+            
             // Draw the ropes
             if (curLevel.hasRope()) {
                 g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope()
@@ -160,6 +170,11 @@ public class Driver extends JPanel {
                     Bubble bubble = curLevel.getBubbleList().get(i);
                     bubble.move(curLevel.getWidth(), curLevel.getHeight());
                 }
+                
+                for (int i = 0; i<curLevel.getPowerupList().size(); i++){
+                    curLevel.getPowerupList().get(i).move();
+                    curLevel.checkPowerupCollision();
+                }
 
                 if (curLevel.hasRope()) {
                     curLevel.getRope().move();
@@ -172,7 +187,7 @@ public class Driver extends JPanel {
                 }
                 driver.repaint();
                 player1.move();
-
+                
                 if (curLevel.getBubbleList().size() == 0) {
                     boolean once = true;
                     if (once) {
