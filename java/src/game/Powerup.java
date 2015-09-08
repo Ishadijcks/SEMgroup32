@@ -1,3 +1,4 @@
+package game;
 public class Powerup {
     String name;
     private int x;
