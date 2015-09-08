@@ -3,7 +3,7 @@ import java.awt.Color;
 public class Bubble {
     private double x;
     private double y;
-    private int radius;
+    private int diameter;
     private boolean directionH;
     private boolean directionV;
     private Color color;
@@ -16,24 +16,25 @@ public class Bubble {
     private static Color dragonRed = new Color(135, 15, 15);
 
     /**
-     * the constructor sets the starting coordinates the moving location the
-     * radius
+     * the constructor sets the starting coordinates, the moving location, the
+     * diameter
      * 
      * @param x
      * @param y
      */
-    Bubble(int radius, double x, double y, boolean directionH,
+    Bubble(int diameter, double x, double y, boolean directionH,
             boolean directionV) {
         this.x = x;
         this.y = y;
         this.directionH = directionH;
         this.directionV = directionV;
-        this.radius = radius;
+        this.diameter = diameter;
         this.newBubble = true;
+        
         // Sets the color depending on the radius of the bubble
-        switch (radius) {
+        switch (diameter) {
         case 8:
-            color = Color.BLUE;
+            color = dragonRed;
             break;
         case 16:
             color = Color.BLACK;
@@ -45,7 +46,7 @@ public class Bubble {
             color = Color.CYAN;
             break;
         case 128:
-            color = dragonRed;
+            color = Color.PINK;
             break;
         default:
             color = Color.MAGENTA;
@@ -56,16 +57,16 @@ public class Bubble {
     public void move(int width, int height) {
 
         int maxheight = 200;
-        if (radius == 4) {
+        if (diameter == 4) {
             maxheight = 300;
         }
-        if (radius == 8) {
+        if (diameter == 8) {
             maxheight = 260;
         }
-        if (radius == 16) {
+        if (diameter == 16) {
             maxheight = 220;
         }
-        if (radius == 32) {
+        if (diameter == 32) {
             maxheight = 120;
         }
 
@@ -78,11 +79,11 @@ public class Bubble {
         int range = height - maxheight;
         double speedFactor = 0.8 / range;
 
-        if (x + radius > width && directionH || x <= 1 && !directionH) {
+        if (x + diameter > width && directionH || x <= 1 && !directionH) {
             bounceH();
         }
 
-        if (y + radius > height && directionV || y <= 1 && !directionV) {
+        if (y + diameter > height && directionV || y <= 1 && !directionV) {
             bounceV();
         }
 
@@ -154,8 +155,8 @@ public class Bubble {
         return (int) Math.round(y);
     }
 
-    public int getRadius() {
-        return radius;
+    public int getDiameter() {
+        return diameter;
     }
 
     public Color getColor() {

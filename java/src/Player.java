@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Image;
 import java.net.URL;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -9,18 +10,19 @@ import javax.swing.JLabel;
 public class Player {
     private String name;
     private int x;
-    private int y;
-    private int height = 40;
-    private int width = 20;
-    private int stepSize = 2;
+    private int y = Settings.getLevelHeight() - Settings.getPlayerHeight();
+    private int height = Settings.getPlayerHeight();
+    private int width = Settings.getPlayerWidth();
+    private int stepSize = Settings.getPlayerStepSize();
     private boolean movingLeft = false;
     private boolean movingRight = false;
     private Image image;
+    private Powerup powerup = null;
 
     Player(String name, int x, int y) {
         this.name = name;
         this.x = x;
-        this.y = y;
+
         URL location = StartScreen.class.getProtectionDomain().getCodeSource()
                 .getLocation();
         String imageLocation = location.getFile();
@@ -60,6 +62,14 @@ public class Player {
      * Moves the player left or right, depending on what key is pressed
      */
     public void move() {
+
+        if (powerup != null) {
+
+            if (powerup.getName().equals("speed") && powerup.isActive()) {
+                stepSize = Settings.getPlayerPowerupStepSize();
+            }
+        }
+
         if (movingLeft) {
             if (x - stepSize > 0) {
                 x -= stepSize;
@@ -72,6 +82,14 @@ public class Player {
                 x += stepSize;
             }
         }
+
+        if (powerup != null) {
+            if (powerup.getName().equals("speed") && powerup.isActive()) {
+                stepSize = Settings.getPlayerStepSize();
+                powerup.decreaseFramesLeft();
+            }
+        }
+
     }
 
     /**
@@ -97,6 +115,10 @@ public class Player {
         return name;
     }
 
+    public void setPowerup(Powerup powerup) {
+        this.powerup = powerup;
+    }
+
     public int getX() {
         return x;
     }
@@ -112,9 +134,13 @@ public class Player {
     public int getHeight() {
         return height;
     }
-    
+
     public Image getImage() {
         return image;
+    }
+
+    public Powerup getPowerup() {
+        return this.powerup;
     }
 
 }

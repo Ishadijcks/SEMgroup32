@@ -15,7 +15,7 @@ public class Rope {
             Driver.game.getLevelList().get(Driver.game.getCurrentLevel())
                     .setRope(null);
         } else {
-            y -= 3;
+            y -= Settings.getRopeSpeed();
         }
     }
 
