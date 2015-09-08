@@ -13,21 +13,21 @@ class MyKeyListener extends KeyAdapter {
        
         if (game.inProgress()) {
 
-            Level curLevel = game.getLevelList().get(game.getCurrentLevel());
+            Level curLevel = game.getCurrentLevel();
 
             
             switch (evt.getKeyCode()) {
 
             // Left
                 case 37:
-                    curLevel.getPlayerList().get(0).movingLeft();
+                    game.getPlayerList().get(0).movingLeft();
                     break;
             // Right
                 case 39:
-                    curLevel.getPlayerList().get(0).movingRight();
+                    game.getPlayerList().get(0).movingRight();
                     break;
                 case 32:
-                    curLevel.getPlayerList().get(0).shootRope();
+                    game.getPlayerList().get(0).shootRope();
                     break;
             
                 default:
@@ -42,18 +42,18 @@ class MyKeyListener extends KeyAdapter {
      */
     public void keyReleased(KeyEvent evt) {
 
-        Level curLevel = game.getLevelList().get(game.getCurrentLevel());
+        Level curLevel = game.getCurrentLevel();
 
         switch (evt.getKeyCode()) {
 
         // Left
         case 37:
-            curLevel.getPlayerList().get(0).stopMovingLeft();
+            game.getPlayerList().get(0).stopMovingLeft();
             break;
 
         // Right
         case 39:
-            curLevel.getPlayerList().get(0).stopMovingRight();
+            game.getPlayerList().get(0).stopMovingRight();
             break;
         }
     }
