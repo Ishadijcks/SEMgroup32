@@ -4,85 +4,85 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public class LevelTest {
+public class SettingsTest {
 
 	@Test
-	public void testLevel() {
+	public void testGetFps() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testCheckCollisionPlayer() {
+	public void testGetScreenWidth() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testCheckCollisionRope() {
+	public void testGetScreenHeight() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testCheckPowerupCollision() {
+	public void testGetLevelWidth() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testDestroyBubble() {
+	public void testGetLevelHeight() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGeneratePowerup() {
+	public void testGetPlayerHeight() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testResetLevel() {
+	public void testGetPlayerWidth() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testAddBubble() {
+	public void testGetPlayerStepSize() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testAddPowerup() {
+	public void testGetPlayerPowerupStepSize() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testHasRope() {
+	public void testGetLives() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetBubbleList() {
+	public void testGetRopeSpeed() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetPowerupList() {
+	public void testGetSmallestBubbleSize() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetHeight() {
+	public void testGetPowerupSpeed() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetWidth() {
+	public void testGetPowerupChance() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetRope() {
+	public void testGetPowerupWidth() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testSetRope() {
+	public void testGetPowerupHeight() {
 		fail("Not yet implemented");
 	}
 

@@ -37,12 +37,27 @@ public class GameTest {
 	}
 
 	@Test
+	public void testAddPlayer() {
+		fail("Not yet implemented");
+	}
+
+	@Test
 	public void testGetCurrentLevel() {
 		fail("Not yet implemented");
 	}
 
 	@Test
+	public void testGetCurrentLevelInt() {
+		fail("Not yet implemented");
+	}
+
+	@Test
 	public void testGetLives() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetPlayerList() {
 		fail("Not yet implemented");
 	}
 

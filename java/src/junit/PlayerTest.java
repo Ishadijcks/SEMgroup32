@@ -4,70 +4,60 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public class LevelTest {
+public class PlayerTest {
 
 	@Test
-	public void testLevel() {
+	public void testPlayer() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testCheckCollisionPlayer() {
+	public void testMovingLeft() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testCheckCollisionRope() {
+	public void testStopMovingLeft() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testCheckPowerupCollision() {
+	public void testMovingRight() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testDestroyBubble() {
+	public void testStopMovingRight() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGeneratePowerup() {
+	public void testMove() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testResetLevel() {
+	public void testShootRope() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testAddBubble() {
+	public void testGetName() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testAddPowerup() {
+	public void testSetPowerup() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testHasRope() {
+	public void testGetX() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testGetBubbleList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetPowerupList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetHeight() {
+	public void testGetY() {
 		fail("Not yet implemented");
 	}
 
@@ -77,12 +67,17 @@ public class LevelTest {
 	}
 
 	@Test
-	public void testGetRope() {
+	public void testGetHeight() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	public void testSetRope() {
+	public void testGetImage() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetPowerup() {
 		fail("Not yet implemented");
 	}
 
