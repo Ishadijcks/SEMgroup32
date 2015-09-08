@@ -4,7 +4,6 @@ import java.awt.FlowLayout;
 import java.awt.Image;
 import java.net.URL;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -17,18 +16,11 @@ public class Player {
     private int stepSize = Settings.getPlayerStepSize();
     private boolean movingLeft = false;
     private boolean movingRight = false;
-    private Image image;
     private Powerup powerup = null;
 
     Player(String name, int x, int y) {
         this.name = name;
         this.x = x;
-
-        URL location = StartScreen.class.getProtectionDomain().getCodeSource()
-                .getLocation();
-        String imageLocation = location.getFile();
-        ImageIcon ii = new ImageIcon(imageLocation + "Images/dragon.png");
-        image = ii.getImage();
     }
 
     /**
@@ -132,10 +124,6 @@ public class Player {
 
     public int getHeight() {
         return height;
-    }
-
-    public Image getImage() {
-        return image;
     }
 
     public Powerup getPowerup() {

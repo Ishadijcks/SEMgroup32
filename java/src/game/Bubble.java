@@ -1,24 +1,34 @@
 package game;
+
 import java.awt.Color;
 
 public class Bubble {
     private double x;
     private double y;
     private int diameter;
+    private int maxheight = 0;
+    private double timer = 1;
     private boolean directionH;
     private boolean directionV;
     private Color color;
-    private double downTime = 1;
-    private double upTime = 1;
-    private boolean falling = false;
     private double lastDownSpeed = 0;
-    private double lastUpSpeed = 0;
+    private double lastUpSpeed = 1;
     private boolean newBubble;
     private static Color dragonRed = new Color(135, 15, 15);
 
+    private double speedX;
+
+    private double s;
+    private double sOld;
+    private double t = 0;
+    private double v;
+    private double timeStep = 0.01;
+    private double G = 3;
+    private double factor = 2;
+
     /**
      * the constructor sets the starting coordinates, the moving location, the
-     * diameter
+     * diameter.
      * 
      * @param x
      * @param y
@@ -31,54 +41,64 @@ public class Bubble {
         this.directionV = directionV;
         this.diameter = diameter;
         this.newBubble = true;
-        
+
         // Sets the color depending on the radius of the bubble
         switch (diameter) {
-        case 8:
-            color = dragonRed;
-            break;
-        case 16:
-            color = Color.BLACK;
-            break;
-        case 32:
-            color = Color.GREEN;
-            break;
-        case 64:
-            color = Color.CYAN;
-            break;
-        case 128:
-            color = Color.PINK;
-            break;
-        default:
-            color = Color.MAGENTA;
-            break;
+            case 8:
+                color = dragonRed;
+                break;
+            case 16:
+                color = Color.BLACK;
+                break;
+            case 32:
+                color = Color.GREEN;
+                break;
+            case 64:
+                color = Color.CYAN;
+                break;
+            case 128:
+                color = Color.PINK;
+                break;
+            default:
+                color = Color.MAGENTA;
+                break;
         }
     }
 
+    /**
+     * The method that controlss bubble movement.
+     * 
+     * @param width
+     * @param height
+     */
     public void move(int width, int height) {
 
-        int maxheight = 200;
         if (diameter == 4) {
-            maxheight = 300;
+            G = 2.0;
+            maxheight = 120;
+            speedX = 0.5;
         }
         if (diameter == 8) {
-            maxheight = 260;
+            G = 2.1;
+            maxheight = 95;
+            speedX = 0.6;
         }
         if (diameter == 16) {
-            maxheight = 220;
+            G = 2.3;
+            maxheight = 75;
+            speedX = 0.7;
         }
         if (diameter == 32) {
-            maxheight = 120;
+            G = 2.5;
+            maxheight = 56;
+            speedX = 0.8;
         }
 
-        if (directionV) {
-            downTime += 1;
-        } else {
-            upTime += 1;
+        if (diameter == 64) {
+            G = 2.8;
+            maxheight = 40;
+            speedX = 0.9;
         }
-
-        int range = height - maxheight;
-        double speedFactor = 0.8 / range;
 
         if (x + diameter > width && directionH || x <= 1 && !directionH) {
             bounceH();
@@ -89,61 +109,53 @@ public class Bubble {
         }
 
         if (directionH) {
-            x += 0.8;
+            x += speedX;
         } else {
-            x -= 0.8;
+            x -= speedX;
         }
 
-        // bounce on the max height
-        if (y < maxheight) {
-            directionV = true;
+        if (lastUpSpeed < 0.5 && !directionV && y < height - 50) {
+            timer += 0.4;
         }
+        if (timer > 5) {
+            bounceV();
+            timer = 1;
+        }
+
         if (directionV) {
-            lastDownSpeed = 0.1 + 4 * (downTime / 100);
-            lastDownSpeed = lastDownSpeed * 0.8;
-            if (lastDownSpeed > 2.5) {
-                lastDownSpeed = 2.5;
-            }
-            y += 0.2 + 4 * ((downTime + 10) / 100);
-
+            sOld = 0.5 * G * t * t;
+            t += timeStep;
+            s = 0.5 * G * t * t;
+            v = (s - sOld) / timeStep;
+            lastDownSpeed = v;
+            y += lastDownSpeed;
+            lastDownSpeed += 0.05;
         } else {
+            t = 0;
             if (newBubble) {
                 newBubble = false;
-                lastDownSpeed = 2;
+                lastDownSpeed = 4;
             }
-            // start with the last downspeed but up this speed slows down
-            // depending on the uptime
-            // mutiply this with a factor that reaches 0 when at max height
-            // + 0.1 standaard speed to reach the maxheight (last few pixels)
-            lastUpSpeed = (1 - Math.pow((maxheight / y), 5) + 0.05)
-                    * (lastDownSpeed - Math.pow(upTime, 1 / 3) + 0.7) + 0.05;
-            if (lastUpSpeed < 0.1) {
-                lastUpSpeed = 0.1;
-            }
+            factor = ((y - maxheight) / (height - maxheight));
+            lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             y -= lastUpSpeed;
         }
 
     }
 
     /**
-     * switches the horizontal direction
+     * switches the horizontal direction.
      */
     public void bounceH() {
         directionH = !directionH;
+        System.out.println("bounce H");
     }
 
     /**
-     * switches the vertical direction
+     * switches the vertical direction.
      */
     public void bounceV() {
         directionV = !directionV;
-        if (directionV) {
-            falling = true;
-            upTime = 1;
-        } else {
-            falling = false;
-            downTime = 1;
-        }
     }
 
     // Getters and Setters
@@ -164,20 +176,20 @@ public class Bubble {
         return color;
     }
 
-	public boolean isDirectionH() {
-		return directionH;
-	}
+    public boolean isDirectionH() {
+        return directionH;
+    }
 
-	public void setDirectionH(boolean directionH) {
-		this.directionH = directionH;
-	}
+    public void setDirectionH(boolean directionH) {
+        this.directionH = directionH;
+    }
 
-	public boolean isDirectionV() {
-		return directionV;
-	}
+    public boolean isDirectionV() {
+        return directionV;
+    }
 
-	public void setDirectionV(boolean directionV) {
-		this.directionV = directionV;
-	}
+    public void setDirectionV(boolean directionV) {
+        this.directionV = directionV;
+    }
 
 }

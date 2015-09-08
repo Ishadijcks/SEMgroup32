@@ -11,13 +11,13 @@ class MyKeyListener extends KeyAdapter {
      * a rope
      */
     public void keyPressed(KeyEvent evt) {
+
        
         Game game = Driver.game;
-        
+
         if (game.inProgress()) {
             
 
-            
             switch (evt.getKeyCode()) {
 
             // Left
