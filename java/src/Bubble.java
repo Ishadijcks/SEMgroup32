@@ -13,6 +13,7 @@ public class Bubble {
     private double lastDownSpeed = 0;
     private double lastUpSpeed = 0;
     private boolean newBubble;
+    private static Color dragonRed = new Color(135, 15, 15);
 
     /**
      * the constructor sets the starting coordinates, the moving location, the
@@ -33,7 +34,7 @@ public class Bubble {
         // Sets the color depending on the radius of the bubble
         switch (diameter) {
         case 8:
-            color = Color.BLUE;
+            color = dragonRed;
             break;
         case 16:
             color = Color.BLACK;

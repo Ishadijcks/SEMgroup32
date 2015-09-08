@@ -45,21 +45,41 @@ public class Level {
      * 
      * @return -1 if there is no collision otherwise the index of the bubble
      */
-    public void checkCollisionRope() {
+    public void checkCollisionRope(boolean dragonIsRight) {
         if (hasRope()) {
             for (int i = 0; i < bubbleList.size(); i++) {
-
-                if (bubbleList.get(i).getX() < rope.getX()) {
-                    if (bubbleList.get(i).getX()
-                            + bubbleList.get(i).getDiameter() > rope.getX()) {
-                        if (bubbleList.get(i).getY()
-                                + bubbleList.get(i).getDiameter() >= rope.getY()) {
-                            destroyBubble(i);
-                            setRope(null);
-                            return;
+                // if the x of the rope and the bubble is the same
+                // then there is a chance the rope hits the bubble
+                // /// RADIUS NOT IN ACCOUNT JET
+            	if(dragonIsRight)
+            	{
+            		if (bubbleList.get(i).getX() < rope.getX()) {
+                        if (bubbleList.get(i).getX()
+                                + bubbleList.get(i).getDiameter() > rope.getX()) {
+                            if (bubbleList.get(i).getY()
+                                    + bubbleList.get(i).getDiameter() >= rope.getY()) {
+                                destroyBubble(i);
+                                setRope(null);
+                                return;
+                            }
                         }
                     }
-                }
+            	}
+            	else
+            	{
+            		if (bubbleList.get(i).getX() < rope.getX() - 35) {
+                        if (bubbleList.get(i).getX()
+                                + bubbleList.get(i).getDiameter() > rope.getX() - 35) {
+                            if (bubbleList.get(i).getY()
+                                    + bubbleList.get(i).getDiameter() >= rope.getY()) {
+                                destroyBubble(i);
+                                setRope(null);
+                                return;
+                            }
+                        }
+                    }
+            	}
+                
             }
         }
     }
