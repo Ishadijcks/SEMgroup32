@@ -232,7 +232,7 @@ public class Driver extends JPanel {
             g2d.drawString("Level:", 1255, curLevel.getHeight() + 50);
 
             g2d.setColor(dragonRed);
-            g2d.drawString(" " + game.getCurrentLevel(), 1350,
+            g2d.drawString(" " + game.getCurrentLevelInt(), 1350,
                     curLevel.getHeight() + 51);
             g2d.setColor(Color.BLACK);
         } catch (IndexOutOfBoundsException e) {
@@ -307,7 +307,7 @@ public class Driver extends JPanel {
         Bubble bubble4 = new Bubble(32, 50, 50, false, true);
         
         game.addPlayer(isha);
-        game.addPlayer(tim);
+        //game.addPlayer(tim);
 
         Level level1 = new Level(game.getPlayerList());
         Level level2 = new Level(game.getPlayerList());
