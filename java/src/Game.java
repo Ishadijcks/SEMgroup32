@@ -81,10 +81,19 @@ public class Game {
     /**
      * Returns the currentLevel
      * 
-     * @return the current level (int)
+     * @return the current level
      */
     public Level getCurrentLevel() {
         return levelList.get(currentLevel);
+    }
+    
+    /**
+     * Returns the currentLevel as an integer
+     * 
+     * @return the current level as an integer
+     */
+    public int getCurrentLevelInt() {
+        return currentLevel;
     }
 
     public int getLives() {
