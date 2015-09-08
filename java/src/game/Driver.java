@@ -38,6 +38,12 @@ public class Driver extends JPanel {
     public void paint(Graphics graph) {
         try {
 
+            
+            // Calculate the margin left to center the board
+            int centerConstant = (int)Math.round( 0.5 * ( Settings.getScreenWidth() - Settings.getLevelWidth() ) );
+            // Margin top
+            int topMargin = 50;
+            
             super.paint(graph);
             Graphics2D g2d = (Graphics2D) graph;
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -91,7 +97,7 @@ public class Driver extends JPanel {
                 g2d.setColor(dragonRed);
 
                 g2d.drawString(player.getName(), player.getX() - 25,
-                        curLevel.getHeight() - player.getHeight() - 70);
+                        curLevel.getHeight()  - player.getHeight() +  topMargin);
 
                 g2d.setColor(Color.BLACK);
 
@@ -211,27 +217,29 @@ public class Driver extends JPanel {
                 g2d.fillRect(powerup.getX(), powerup.getY(),
                         powerup.getWidth(), powerup.getHeight());
             }
-
             // Draw the border
-            g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
+            g2d.drawRect(centerConstant, 50, curLevel.getWidth(), curLevel.getHeight());
 
             // Show the lives of the player
             g2d.setFont(new Font("Calibri", Font.BOLD, 40));
-            g2d.drawString("Lives: ", 20, curLevel.getHeight() + 45);
+            g2d.drawString("Lives: ", centerConstant, curLevel.getHeight() + 45 +  topMargin);
             ImageIcon life = new ImageIcon(imageLocation + "Images/life.png");
             for (int i = 0; i < game.getLives(); i++) {
-                g2d.drawImage(life.getImage(), 115 + 25 * i,
-                        curLevel.getHeight() + 16, this);
+                g2d.drawImage(life.getImage(), centerConstant + 125 + 25 * i,
+                        curLevel.getHeight() + 16 + topMargin, this);
             }
 
             // Show the score of the player
-            g2d.drawString("Score: ", 20, curLevel.getHeight() + 90);
+            g2d.drawString("Score: ", centerConstant, curLevel.getHeight() + 91 + topMargin);
             g2d.setColor(dragonRed);
-            g2d.drawString("1337 ", 135, curLevel.getHeight() + 91);
+            g2d.drawString("1337 ", centerConstant + 135, curLevel.getHeight() + 91 + topMargin);
             g2d.setColor(Color.BLACK);
 
             // Show current level number
-            g2d.drawString("Level:", 1255, curLevel.getHeight() + 50);
+            g2d.drawString("Level:", centerConstant , 45);
+            g2d.setColor(dragonRed);
+            g2d.drawString("1", centerConstant + 110,45);
+            g2d.setColor(Color.BLACK);
 
             g2d.setColor(dragonRed);
             g2d.drawString(" " + game.getCurrentLevelInt(), 1350,
@@ -295,7 +303,7 @@ public class Driver extends JPanel {
         Driver driver = new Driver();
         frame.addKeyListener(new MyKeyListener());
         frame.add(driver);
-        frame.setSize(1420, 1030);
+        frame.setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(false);

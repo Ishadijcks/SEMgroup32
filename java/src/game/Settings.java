@@ -3,11 +3,11 @@ package game;
 public class Settings {
 
     private static int fps = 120;
-    private static int screenWidth = 700;
-    private static int screenHeight = 500;
+    private static int screenWidth = 1000;
+    private static int screenHeight = 800;
     
-    private static int levelWidth = 1400;
-    private static int levelHeight = 880;
+    private static int levelWidth = 700;
+    private static int levelHeight = 500;
     
     private static int playerHeight = 40;
     private static int playerWidth = 20;
