@@ -6,8 +6,12 @@ public class GameCreator {
         Game game = new Game();
         game.addPlayer(player1);
         LevelCreator.setPlayerList(game.getPlayerList());
-        System.out.println(game.getPlayerList().size());
+
         game.addLevel(LevelCreator.getLevel1());
+        game.addLevel(LevelCreator.getLevel2());
+        game.addLevel(LevelCreator.getLevel3());
+        game.addLevel(LevelCreator.getLevel4());
+        game.addLevel(LevelCreator.getLevel5());
         return game;
     }
     

@@ -328,7 +328,7 @@ public class Driver extends JPanel {
             g2d.drawString("Level:", 1255, curLevel.getHeight() + 50);
 
             g2d.setColor(dragonRed);
-            g2d.drawString(" " + game.getCurrentLevelInt(), 1350,
+            g2d.drawString(" " + (game.getCurrentLevelInt()+1), 1350,
                     curLevel.getHeight() + 51);
             g2d.setColor(Color.BLACK);
         } catch (IndexOutOfBoundsException e) {
