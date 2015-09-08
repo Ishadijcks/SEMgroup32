@@ -30,7 +30,7 @@ public class Driver extends JPanel {
             // TODO Split up in methods
  
             // Draw all the bubbles with a black border
-            Level curLevel = game.getLevelList().get(game.getCurrentLevel());
+            Level curLevel = game.getCurrentLevel();
             for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
                 Bubble bubble = curLevel.getBubbleList().get(i);
                 g2d.setColor(bubble.getColor());
@@ -81,7 +81,7 @@ public class Driver extends JPanel {
     }
 
     public void levelWonFrame() {
-        if (game.getCurrentLevel() == game.getLevelList().size() - 1) {
+        if (game.getCurrentLevel().equals(game.getLevelList().get(game.getLevelList().size()-1))) {
             JLabel label = new JLabel("test");
             label.setText("Congratulations! Game won!");
             add(label);
@@ -161,8 +161,7 @@ public class Driver extends JPanel {
 
         while (true) {
             if (game.inProgress()) {
-                Level curLevel = game.getLevelList()
-                        .get(game.getCurrentLevel());
+                Level curLevel = game.getCurrentLevel();
                 Player player1 = game.getPlayerList().get(0);
 
                 for (int i = 0; i < curLevel.getBubbleList().size(); i++) {

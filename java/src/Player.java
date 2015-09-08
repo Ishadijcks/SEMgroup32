@@ -77,8 +77,7 @@ public class Player {
         }
 
         if (movingRight) {
-            if (x + stepSize + width < Driver.game.getLevelList()
-                    .get(Driver.game.getCurrentLevel()).getWidth()) {
+            if (x + stepSize + width < Driver.game.getCurrentLevel().getWidth()) {
                 x += stepSize;
             }
         }
@@ -97,15 +96,14 @@ public class Player {
      * the level
      */
     public void shootRope() {
-        if (!Driver.game.getLevelList().get(Driver.game.getCurrentLevel())
+        if (!Driver.game.getCurrentLevel()
                 .hasRope()) {
-            int ropeY = Driver.game.getLevelList()
-                    .get(Driver.game.getCurrentLevel()).getHeight()
+            int ropeY = Driver.game.getCurrentLevel().getHeight()
                     - height + 2;
             int ropeX = x + width / 2;
             Rope rope = new Rope(ropeX, ropeY);
 
-            Driver.game.getLevelList().get(Driver.game.getCurrentLevel())
+            Driver.game.getCurrentLevel()
                     .setRope(rope);
         }
     }

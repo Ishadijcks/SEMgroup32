@@ -13,7 +13,7 @@ class MyKeyListener extends KeyAdapter {
        
         if (game.inProgress()) {
 
-            Level curLevel = game.getLevelList().get(game.getCurrentLevel());
+            Level curLevel = game.getCurrentLevel();
 
             
             switch (evt.getKeyCode()) {
@@ -42,7 +42,7 @@ class MyKeyListener extends KeyAdapter {
      */
     public void keyReleased(KeyEvent evt) {
 
-        Level curLevel = game.getLevelList().get(game.getCurrentLevel());
+        Level curLevel = game.getCurrentLevel();
 
         switch (evt.getKeyCode()) {
 
