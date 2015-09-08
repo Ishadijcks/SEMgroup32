@@ -16,9 +16,30 @@ public class LevelCreator {
     
     public static Level getLevel2(){
         Bubble bubble1 = new Bubble(32, 320, 100, false, true);
-        Level level1 = new Level(playerList);
-        level1.addBubble(bubble1);
-        return level1;
+        Level level2 = new Level(playerList);
+        level2.addBubble(bubble1);
+        return level2;
+    }
+    
+    public static Level getLevel3(){
+        Bubble bubble1 = new Bubble(32, 320, 100, false, true);
+        Level level2 = new Level(playerList);
+        level2.addBubble(bubble1);
+        return level2;
+    }
+    
+    public static Level getLevel4(){
+        Bubble bubble1 = new Bubble(32, 320, 100, false, true);
+        Level level2 = new Level(playerList);
+        level2.addBubble(bubble1);
+        return level2;
+    }
+    
+    public static Level getLevel5(){
+        Bubble bubble1 = new Bubble(32, 320, 100, false, true);
+        Level level2 = new Level(playerList);
+        level2.addBubble(bubble1);
+        return level2;
     }
     
     
