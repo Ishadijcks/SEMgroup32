@@ -1,4 +1,5 @@
 package game;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -28,13 +29,14 @@ public class Driver extends JPanel {
     private int slowDownCounter = 0;
     private int oldX;
     private static boolean dragonIsRight = true;
+    private static boolean canDrawGame = true;
     private boolean dragonIsMoving = false;
     private boolean shootRope = false;
     private static URL location = StartScreen.class.getProtectionDomain()
             .getCodeSource().getLocation();
     private static String imageLocation = location.getFile();
     private static Color dragonRed = new Color(135, 15, 15);
-    
+
     @Override
     public void paint(Graphics graph) {
         try {
@@ -45,9 +47,18 @@ public class Driver extends JPanel {
                     RenderingHints.VALUE_ANTIALIAS_ON);
 
             // TODO Split up in methods
-            
-            // Draw all the bubbles with a black border
+
+            // Draw the game board
             Level curLevel = game.getCurrentLevel();
+            g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
+            if(canDrawGame)
+            {
+                g2d.setColor(Color.LIGHT_GRAY);
+                g2d.fillRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
+                g2d.setColor(Color.BLACK);
+            }
+
+            // Draw all the bubbles with a black border
             for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
                 Bubble bubble = curLevel.getBubbleList().get(i);
                 g2d.setColor(bubble.getColor());
@@ -64,63 +75,61 @@ public class Driver extends JPanel {
             int rInt69to240 = randomInt(69, 240);
             int rInt255to8 = randomInt(69, 240);
             int rInt6to11 = randomInt(6, 11);
-            
+
             Color fire1 = new Color(255, rInt127to153, 0);
             Color fire2 = new Color(255, rInt51to102, 0);
             Color fire3 = new Color(255, rInt69to240, 0);
             Color fire4 = new Color(250, rInt255to8, rInt6to11);
-            
+
             Stroke stroke1 = new BasicStroke(1f);
             Stroke stroke2 = new BasicStroke(3f);
             Stroke stroke3 = new BasicStroke(5f);
             Stroke stroke4 = new BasicStroke(7f);
-            
-            Color[] colors = {fire4, fire3, fire2, fire1};
-            Stroke[] strokes = {stroke4, stroke3, stroke2, stroke1};
-            
+
+            Color[] colors = { fire4, fire3, fire2, fire1 };
+            Stroke[] strokes = { stroke4, stroke3, stroke2, stroke1 };
+
             g2d.setColor(fire4);
             g2d.setStroke(stroke4);
-            
+
             // Draw the ropes
             if (curLevel.hasRope()) {
                 shootRope = true;
-                
+
                 if (dragonIsRight) {
-                    for (int i = 0; i < 4; i++)
-                    {
+                    for (int i = 0; i < 4; i++) {
                         g2d.setColor(colors[i]);
                         g2d.setStroke(strokes[i]);
-                        
-                        int random = randomInt(0,4);
-                        if((i==0) && random == 2)
-                        {
-                            g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope().getY(), curLevel.getRope().getX(), curLevel
-                                    .getHeight());
+
+                        int random = randomInt(0, 4);
+                        if ((i == 0) && random == 2) {
+                            g2d.drawLine(curLevel.getRope().getX(), curLevel
+                                    .getRope().getY(), curLevel.getRope()
+                                    .getX(), curLevel.getHeight());
+                        } else if (i == 1 || i == 2 || i == 3) {
+                            g2d.drawLine(curLevel.getRope().getX(), curLevel
+                                    .getRope().getY(), curLevel.getRope()
+                                    .getX(), curLevel.getHeight());
                         }
-                        else if(i == 1 || i == 2 || i == 3)
-                        {
-                            g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope().getY(), curLevel.getRope().getX(), curLevel
-                                    .getHeight());
-                        }
-                        
+
                     }
-                    
+
                 } else {
-                    for (int i = 0; i < 4; i++)
-                    {
+                    for (int i = 0; i < 4; i++) {
                         g2d.setColor(colors[i]);
                         g2d.setStroke(strokes[i]);
-                        
-                        int random = randomInt(0,4);
-                        if((i==0) && random == 2)
-                        {
-                            g2d.drawLine(curLevel.getRope().getX() - 35, curLevel.getRope().getY(), curLevel.getRope().getX() - 35, curLevel
-                                    .getHeight());
-                        }
-                        else if(i == 1 || i == 2 || i == 3)
-                        {
-                            g2d.drawLine(curLevel.getRope().getX() - 35, curLevel.getRope().getY(), curLevel.getRope().getX() - 35, curLevel
-                                    .getHeight());
+
+                        int random = randomInt(0, 4);
+                        if ((i == 0) && random == 2) {
+                            g2d.drawLine(curLevel.getRope().getX() - 35,
+                                    curLevel.getRope().getY(), curLevel
+                                            .getRope().getX() - 35, curLevel
+                                            .getHeight());
+                        } else if (i == 1 || i == 2 || i == 3) {
+                            g2d.drawLine(curLevel.getRope().getX() - 35,
+                                    curLevel.getRope().getY(), curLevel
+                                            .getRope().getX() - 35, curLevel
+                                            .getHeight());
                         }
                     }
                 }
@@ -174,7 +183,7 @@ public class Driver extends JPanel {
                                 player.getX() - 100, curLevel.getHeight()
                                         - player.getHeight() - 117, this);
                     }
-                    
+
                     // The dragon was last moving left and should be facing left
                     // now.
                     else if (!(dragonIsMoving)) {
@@ -199,7 +208,7 @@ public class Driver extends JPanel {
                             animationRightCounter = 4;
                         }
                     }
-                    
+
                     // If the dragon is going left, the animation for flying
                     // left is enabled
                     else if (oldX > newX) {
@@ -256,14 +265,17 @@ public class Driver extends JPanel {
             for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
                 Powerup powerup = curLevel.getPowerupList().get(i);
 
-                g2d.fillRect(powerup.getX(), powerup.getY(),
-                        powerup.getWidth(), powerup.getHeight());
+                ImageIcon powerupImage = powerup.getImageIcon();
+
+                if (powerupImage != null) {
+                    g2d.drawImage(powerupImage.getImage(), powerup.getX(),
+                            powerup.getY() - 37, this);
+                }
+
             }
-            
+
             Stroke normalStroke = new BasicStroke(1f);
             g2d.setStroke(normalStroke);
-            // Draw the border
-            g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
 
             // Show the lives of the player
             g2d.setFont(new Font("Calibri", Font.BOLD, 40));
@@ -297,9 +309,10 @@ public class Driver extends JPanel {
         int randomNum = rand.nextInt((max - min) + 1) + min;
         return randomNum;
     }
-    
+
     public void levelWonFrame() {
-        if (game.getCurrentLevel().equals(game.getLevelList().get(game.getLevelList().size()-1))) {
+        if (game.getCurrentLevel().equals(
+                game.getLevelList().get(game.getLevelList().size() - 1))) {
             JLabel label = new JLabel("test");
             label.setText("Congratulations! Game won!");
             add(label);
@@ -312,8 +325,10 @@ public class Driver extends JPanel {
             nextLevel.setHorizontalTextPosition(AbstractButton.CENTER);
             nextLevel.setMnemonic(KeyEvent.VK_M);
             nextLevel.setFocusable(false);
+            nextLevel.setBounds(700, 950, 250, 50);
             nextLevel.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
+                    canDrawGame = true;
                     game.gameStart();
                     remove(nextLevel);
                     remove(label);
@@ -337,6 +352,7 @@ public class Driver extends JPanel {
         nextLevel.setFocusable(false);
         nextLevel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
+                canDrawGame = true;
                 game.gameStart();
                 remove(nextLevel);
             }
@@ -363,9 +379,9 @@ public class Driver extends JPanel {
         Bubble bubble2 = new Bubble(2, 50, 50, true, true);
         Bubble bubble3 = new Bubble(64, 50, 50, false, false);
         Bubble bubble4 = new Bubble(32, 50, 50, false, true);
-        
+
         game.addPlayer(isha);
-        //game.addPlayer(tim);
+        // game.addPlayer(tim);
 
         Level level1 = new Level(game.getPlayerList());
         Level level2 = new Level(game.getPlayerList());
@@ -401,7 +417,7 @@ public class Driver extends JPanel {
                     game.loseLife();
                 }
                 driver.repaint();
-                
+
                 Player player1 = game.getPlayerList().get(0);
                 player1.move();
 
@@ -409,6 +425,7 @@ public class Driver extends JPanel {
                     boolean once = true;
                     if (once) {
                         once = false;
+                        canDrawGame = false;
                         driver.levelWonFrame();
                     }
                     game.gameWon();
