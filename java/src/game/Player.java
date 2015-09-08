@@ -129,5 +129,10 @@ public class Player {
     public Powerup getPowerup() {
         return this.powerup;
     }
+    
+    public void removePowerUp()
+    {
+        this.powerup = null;
+    }
 
 }

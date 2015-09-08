@@ -108,6 +108,10 @@ public class Game {
     public void loseLife() {
         lives--;
     }
+    
+    public void getLife() {
+        lives++;
+    }
 
     public boolean inProgress() {
         return this.inProgress;

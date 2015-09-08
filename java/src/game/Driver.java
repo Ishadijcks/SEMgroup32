@@ -28,11 +28,13 @@ public class Driver extends JPanel {
     private int fireRightCounter = 1;
     private int animationLeftCounter = 1;
     private int fireLeftCounter = 1;
-    private int slowDownCounter = 0;
+    private int slowDownCounter = 100;
+    private int ropeDurationCounter = 0;
     private int oldX;
     private static boolean dragonIsRight = true;
     private static boolean canDrawGame = true;
     private static boolean addOnce = false;
+    private boolean dragonJustStopped = false;
     private boolean dragonIsMoving = false;
     private boolean shootRope = false;
     private static URL location = StartScreen.class.getProtectionDomain()
@@ -99,10 +101,10 @@ public class Driver extends JPanel {
             // Draw the ropes
             if (curLevel.hasRope()) {
                 shootRope = true;
+                ropeDurationCounter--;
 
                 if (dragonIsRight) {
-                    if(!(addOnce))
-                    {
+                    if (!(addOnce)) {
                         curLevel.getRope().addX(-3);
                         addOnce = true;
                     }
@@ -124,8 +126,7 @@ public class Driver extends JPanel {
                     }
 
                 } else {
-                    if(!(addOnce))
-                    {
+                    if (!(addOnce)) {
                         curLevel.getRope().addX(-32);
                         addOnce = true;
                     }
@@ -181,7 +182,7 @@ public class Driver extends JPanel {
                 // Get the current X position of the player.
                 int newX = player.getX();
 
-                if (!(shootRope)) {
+                if (ropeDurationCounter < 40 || !(shootRope)) {
                     // Check if the player is moving.
                     if (oldX != newX) {
                         dragonIsMoving = true;
@@ -246,28 +247,31 @@ public class Driver extends JPanel {
                     }
                 }
 
-                // Draw the dragon spitting fire
-                if (dragonIsRight && shootRope) {
-                    ImageIcon dragonRightFire = new ImageIcon(imageLocation
-                            + "Images/dragon/fireR" + fireRightCounter + ".png");
-                    g2d.drawImage(dragonRightFire.getImage(),
-                            player.getX() - 100,
-                            curLevel.getHeight() - player.getHeight() - 119,
-                            this);
-                    if(fireRightCounter < 3 && slowDownCounter%8==0)
-                    {
-                        fireRightCounter++;
-                    }
-                } else if (shootRope) {
-                    ImageIcon dragonLeftFire = new ImageIcon(imageLocation
-                            + "Images/dragon/fireL" + fireLeftCounter + ".png");
-                    g2d.drawImage(dragonLeftFire.getImage(),
-                            player.getX() - 100,
-                            curLevel.getHeight() - player.getHeight() - 119,
-                            this);
-                    if(fireLeftCounter < 3 && slowDownCounter%8==0)
-                    {
-                        fireLeftCounter++;
+                if (shootRope && ropeDurationCounter > 40)
+                {
+                 // Draw the dragon spitting fire
+                    if (dragonIsRight) {
+                        ImageIcon dragonRightFire = new ImageIcon(imageLocation
+                                + "Images/dragon/fireR" + fireRightCounter + ".png");
+                        g2d.drawImage(dragonRightFire.getImage(),
+                                player.getX() - 100,
+                                curLevel.getHeight() - player.getHeight() - 119,
+                                this);
+                        if (fireRightCounter < 3 && slowDownCounter%8==0)
+                        {
+                            fireRightCounter++;
+                        }
+                    } else {
+                        ImageIcon dragonLeftFire = new ImageIcon(imageLocation
+                                + "Images/dragon/fireL" + fireLeftCounter + ".png");
+                        g2d.drawImage(dragonLeftFire.getImage(),
+                                player.getX() - 100,
+                                curLevel.getHeight() - player.getHeight() - 119,
+                                this);
+                        if (fireLeftCounter < 3 && slowDownCounter%8==0)
+                        {
+                            fireLeftCounter++;
+                        }
                     }
                 }
 
@@ -288,6 +292,7 @@ public class Driver extends JPanel {
                     fireRightCounter = 1;
                     fireLeftCounter = 1;
                     addOnce = false;
+                    ropeDurationCounter = 100;
                 }
 
                 slowDownCounter++;
@@ -448,6 +453,15 @@ public class Driver extends JPanel {
                 if (curLevel.checkCollisionPlayer()) {
                     game.loseLife();
                 }
+                if(game.getPlayerList().get(0).getPowerup() != null)
+                {
+                    if (game.getPlayerList().get(0).getPowerup().getName().equals("life"))
+                    {
+                        game.getLife();
+                        game.getPlayerList().get(0).removePowerUp();
+                    }
+                }
+                
                 driver.repaint();
 
                 Player player1 = game.getPlayerList().get(0);

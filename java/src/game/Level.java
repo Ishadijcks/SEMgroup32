@@ -1,5 +1,6 @@
 package game;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Level {
     private ArrayList<Bubble> bubbleList;
@@ -115,12 +116,20 @@ public class Level {
         }
 
     }
+    
+    public int randomInt(int min, int max) {
+        Random rand = new Random();
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        return randomNum;
+    }
 
     public Powerup generatePowerup(int x, int y) {
-        int randomNumber = (int) Math.floor(Math.random() * 1 + 1);
+        int randomNumber = randomInt(1, 2);
         switch (randomNumber) {
             case 1:
                 return new Powerup("speed", x, y);
+            case 2: 
+                return new Powerup("life", x, y);
             default:
                 return new Powerup("speed", x, y);
         }
