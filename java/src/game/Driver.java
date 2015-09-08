@@ -442,7 +442,7 @@ public class Driver extends JPanel {
                     curLevel.getRope().move();
                 }
 
-                curLevel.checkCollisionRope(dragonIsRight);
+                curLevel.checkCollisionRope();
 
                 if (curLevel.checkCollisionPlayer()) {
                     game.loseLife();
