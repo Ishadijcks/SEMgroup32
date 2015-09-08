@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -31,6 +32,7 @@ public class Driver extends JPanel {
 	private boolean shootRope = false;
 	private static URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
 	private static String imageLocation = location.getFile();
+	private static Color dragonRed = new Color(135, 15, 15);
 
 	@Override
 	public void paint(Graphics g) {
@@ -90,8 +92,13 @@ public class Driver extends JPanel {
 			for (int i = 0; i < curLevel.getPlayerList().size(); i++) {
 				Player player = curLevel.getPlayerList().get(i);
 
-				g2d.drawString(player.getName(), player.getX(),
-						curLevel.getHeight() - player.getHeight() - 10);
+				g2d.setFont(new Font("Calibri", Font.ITALIC, 25));
+				g2d.setColor(dragonRed);
+				
+				g2d.drawString(player.getName(), player.getX() - 25,
+						curLevel.getHeight() - player.getHeight() - 70);
+				
+				g2d.setColor(Color.BLACK);
 				
 				// g2d.fillRect(player.getX(),
 				// curLevel.getHeight() - player.getHeight() + 2,
@@ -141,6 +148,10 @@ public class Driver extends JPanel {
 						{
 							animationRightCounter++;
 						}
+						if(animationRightCounter == 7)
+						{
+							animationRightCounter = 4;
+						}
 					}
 					// If the dragon is going left, the animation for flying left is enabled
 					else if(oldX > newX)
@@ -151,6 +162,10 @@ public class Driver extends JPanel {
 						if(slowDownCounter%20 == 0)
 						{
 							animationLeftCounter++;
+						}
+						if(animationLeftCounter == 7)
+						{
+							animationLeftCounter = 4;
 						}
 					}
 				}
@@ -206,10 +221,19 @@ public class Driver extends JPanel {
 			// Show the score of the player
 			g2d.drawString("Score: ", 20,
 					curLevel.getHeight() + 70);
+			g2d.setColor(dragonRed);
+			g2d.drawString("1337 ", 105,
+					curLevel.getHeight() + 71);
+			g2d.setColor(Color.BLACK);
 			
 			// Show current level number
-			g2d.drawString("Level: " + game.getCurrentLevel(), 20,
-					curLevel.getHeight() + 105);
+			g2d.drawString("Level:", 975,
+					curLevel.getHeight() + 35);
+			
+			g2d.setColor(dragonRed);
+			g2d.drawString(" " + game.getCurrentLevel(), 1050,
+					curLevel.getHeight() + 35);
+			g2d.setColor(Color.BLACK);
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("First time");
 		}
@@ -268,7 +292,7 @@ public class Driver extends JPanel {
 		Driver driver = new Driver();
 		frame.addKeyListener(new MyKeyListener());
 		frame.add(driver);
-		frame.setSize(1125, 800);
+		frame.setSize(1423,1030);
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(false);
 		new StartScreen(driver, frame);
