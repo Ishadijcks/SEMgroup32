@@ -81,6 +81,8 @@ public class StartScreen extends JFrame {
             }
         });
 
+        setResizable(false);
+        
         add(startButton);
         add(settingsButton);
         add(stopButton);

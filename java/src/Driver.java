@@ -208,31 +208,31 @@ public class Driver extends JPanel {
 			g2d.drawRect(1, 1, curLevel.getWidth(), curLevel.getHeight());
 
 			// Show the lives of the player
-			g2d.setFont(new Font("Calibri", Font.BOLD, 30));
+			g2d.setFont(new Font("Calibri", Font.BOLD, 40));
 			g2d.drawString("Lives: ", 20,
-					curLevel.getHeight() + 35);
+					curLevel.getHeight() + 45);
 			ImageIcon life = new ImageIcon(imageLocation + "Images/life.png");
 			for(int i = 0; i < game.getLives(); i++)
 			{
-				g2d.drawImage(life.getImage(), 88 + 25*i,
-						curLevel.getHeight() + 7, this);
+				g2d.drawImage(life.getImage(), 115 + 25*i,
+						curLevel.getHeight() + 16, this);
 			}
 			
 			// Show the score of the player
 			g2d.drawString("Score: ", 20,
-					curLevel.getHeight() + 70);
+					curLevel.getHeight() + 90);
 			g2d.setColor(dragonRed);
-			g2d.drawString("1337 ", 105,
-					curLevel.getHeight() + 71);
+			g2d.drawString("1337 ", 135,
+					curLevel.getHeight() + 91);
 			g2d.setColor(Color.BLACK);
 			
 			// Show current level number
-			g2d.drawString("Level:", 975,
-					curLevel.getHeight() + 35);
+			g2d.drawString("Level:", 1255,
+					curLevel.getHeight() + 50);
 			
 			g2d.setColor(dragonRed);
-			g2d.drawString(" " + game.getCurrentLevel(), 1050,
-					curLevel.getHeight() + 35);
+			g2d.drawString(" " + game.getCurrentLevel(), 1350,
+					curLevel.getHeight() + 51);
 			g2d.setColor(Color.BLACK);
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("First time");
@@ -294,6 +294,7 @@ public class Driver extends JPanel {
 		frame.add(driver);
 		frame.setSize(1423,1030);
 		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
 		frame.setVisible(false);
 		new StartScreen(driver, frame);
 
