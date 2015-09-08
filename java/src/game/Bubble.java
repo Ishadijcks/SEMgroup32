@@ -116,7 +116,6 @@ public class Bubble {
 
         if (lastUpSpeed < 0.5 && !directionV && y < height - 50) {
             timer += 0.4;
-            System.out.println("timer " + timer);
         }
         if (timer > 5) {
             bounceV();

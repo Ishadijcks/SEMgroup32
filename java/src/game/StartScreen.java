@@ -31,6 +31,7 @@ public class StartScreen extends JFrame {
         URL location = StartScreen.class.getProtectionDomain().getCodeSource()
                 .getLocation();
         String imageLocation = location.getFile();
+        imageLocation = imageLocation.replace("%20", " ");
 
         //setLayout(new BorderLayout());
         setContentPane(new JLabel(new ImageIcon(imageLocation
