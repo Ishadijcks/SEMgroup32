@@ -30,7 +30,7 @@ public class Bubble {
         this.diameter = diameter;
         this.newBubble = true;
         // Sets the color depending on the radius of the bubble
-        switch (radius) {
+        switch (diameter) {
         case 8:
             color = Color.BLUE;
             break;
