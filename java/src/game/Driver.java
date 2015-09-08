@@ -100,6 +100,7 @@ public class Driver extends JPanel {
                 // player.getWidth(), player.getHeight());
 
                 // Get the images of the left flying or right flying dragon
+                imageLocation = imageLocation.replace("%20", " ");
                 ImageIcon dragonLeft = new ImageIcon(imageLocation
                         + "Images/dragonL" + animationLeftCounter + ".png");
                 ImageIcon dragonRight = new ImageIcon(imageLocation
