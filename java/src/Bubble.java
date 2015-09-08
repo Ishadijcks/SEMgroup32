@@ -3,7 +3,7 @@ import java.awt.Color;
 public class Bubble {
     private double x;
     private double y;
-    private int radius;
+    private int diameter;
     private boolean directionH;
     private boolean directionV;
     private Color color;
@@ -15,19 +15,19 @@ public class Bubble {
     private boolean newBubble;
 
     /**
-     * the constructor sets the starting coordinates the moving location the
-     * radius
+     * the constructor sets the starting coordinates, the moving location, the
+     * diameter
      * 
      * @param x
      * @param y
      */
-    Bubble(int radius, double x, double y, boolean directionH,
+    Bubble(int diameter, double x, double y, boolean directionH,
             boolean directionV) {
         this.x = x;
         this.y = y;
         this.directionH = directionH;
         this.directionV = directionV;
-        this.radius = radius;
+        this.diameter = diameter;
         this.newBubble = true;
         // Sets the color depending on the radius of the bubble
         switch (radius) {
@@ -153,8 +153,8 @@ public class Bubble {
         return (int) Math.round(y);
     }
 
-    public int getRadius() {
-        return radius;
+    public int getDiameter() {
+        return diameter;
     }
 
     public Color getColor() {
