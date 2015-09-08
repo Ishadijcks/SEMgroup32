@@ -1,4 +1,5 @@
 package game;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -33,26 +34,28 @@ public class Driver extends JPanel {
             .getCodeSource().getLocation();
     private static String imageLocation = location.getFile();
     private static Color dragonRed = new Color(135, 15, 15);
+    private Level curLevel;
+    private Graphics2D g2d;
+    private int topMargin;
+    private int centerConstant;
 
     @Override
     public void paint(Graphics graph) {
         try {
 
-            
             // Calculate the margin left to center the board
-            int centerConstant = (int)Math.round( 0.5 * ( Settings.getScreenWidth() - Settings.getLevelWidth() ) );
-            // Margin top
-            int topMargin = 50;
-            
+            centerConstant = Settings.getLeftMargin();
+            topMargin = Settings.getTopMargin();
+
             super.paint(graph);
-            Graphics2D g2d = (Graphics2D) graph;
+            g2d = (Graphics2D) graph;
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
 
             // TODO Split up in methods
 
             // Draw all the bubbles with a black border
-            Level curLevel = game.getCurrentLevel();
+            curLevel = game.getCurrentLevel();
             for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
                 Bubble bubble = curLevel.getBubbleList().get(i);
                 g2d.setColor(bubble.getColor());
@@ -74,11 +77,11 @@ public class Driver extends JPanel {
                 if (dragonIsRight) {
                     g2d.drawLine(curLevel.getRope().getX(), curLevel.getRope()
                             .getY(), curLevel.getRope().getX(), curLevel
-                            .getHeight());
+                            .getHeight() + topMargin);
                 } else {
                     g2d.drawLine(curLevel.getRope().getX() - 35, curLevel
                             .getRope().getY(), curLevel.getRope().getX() - 35,
-                            curLevel.getHeight());
+                            curLevel.getHeight()+ topMargin);
                 }
 
                 // Set g2d back to normal settings
@@ -97,20 +100,14 @@ public class Driver extends JPanel {
                 g2d.setColor(dragonRed);
 
                 g2d.drawString(player.getName(), player.getX() - 25,
-                        curLevel.getHeight()  - player.getHeight() +  topMargin);
+                        curLevel.getHeight() - player.getHeight() - 70
+                                + topMargin);
 
                 g2d.setColor(Color.BLACK);
 
                 // g2d.fillRect(player.getX(),
                 // curLevel.getHeight() - player.getHeight() + 2,
                 // player.getWidth(), player.getHeight());
-
-                // Get the images of the left flying or right flying dragon
-                imageLocation = imageLocation.replace("%20", " ");
-                ImageIcon dragonLeft = new ImageIcon(imageLocation
-                        + "Images/dragonL" + animationLeftCounter + ".png");
-                ImageIcon dragonRight = new ImageIcon(imageLocation
-                        + "Images/dragonR" + animationRightCounter + ".png");
 
                 // Get the current X position of the player.
                 int newX = player.getX();
@@ -123,55 +120,7 @@ public class Driver extends JPanel {
                         dragonIsMoving = false;
                     }
 
-                    // The dragon was last moving right and should be facing
-                    // right now.
-                    if (dragonIsRight && !(dragonIsMoving)) {
-                        ImageIcon dragonRightNormal = new ImageIcon(
-                                imageLocation + "Images/dragonR" + 10 + ".png");
-                        g2d.drawImage(dragonRightNormal.getImage(),
-                                player.getX() - 100, curLevel.getHeight()
-                                        - player.getHeight() - 117, this);
-                    }
-                    
-                    // The dragon was last moving left and should be facing left
-                    // now.
-                    else if (!(dragonIsMoving)) {
-                        ImageIcon dragonLeftNormal = new ImageIcon(
-                                imageLocation + "Images/dragonL" + 10 + ".png");
-                        g2d.drawImage(dragonLeftNormal.getImage(),
-                                player.getX() - 100, curLevel.getHeight()
-                                        - player.getHeight() - 117, this);
-                    }
-
-                    // If the dragon is going right, the animation for flying
-                    // right is enabled
-                    if (oldX < newX) {
-                        g2d.drawImage(dragonRight.getImage(),
-                                player.getX() - 100, curLevel.getHeight()
-                                        - player.getHeight() - 117, this);
-                        dragonIsRight = true;
-                        if (slowDownCounter % 20 == 0) {
-                            animationRightCounter++;
-                        }
-                        if (animationRightCounter == 7) {
-                            animationRightCounter = 4;
-                        }
-                    }
-                    
-                    // If the dragon is going left, the animation for flying
-                    // left is enabled
-                    else if (oldX > newX) {
-                        g2d.drawImage(dragonLeft.getImage(),
-                                player.getX() - 100, curLevel.getHeight()
-                                        - player.getHeight() - 117, this);
-                        dragonIsRight = false;
-                        if (slowDownCounter % 20 == 0) {
-                            animationLeftCounter++;
-                        }
-                        if (animationLeftCounter == 7) {
-                            animationLeftCounter = 4;
-                        }
-                    }
+                    drawDragon(player, newX);
                 }
 
                 // Draw the dragon spitting fire
@@ -180,15 +129,15 @@ public class Driver extends JPanel {
                             + "Images/dragonRFire.png");
                     g2d.drawImage(dragonRightFire.getImage(),
                             player.getX() - 100,
-                            curLevel.getHeight() - player.getHeight() - 112,
-                            this);
+                            curLevel.getHeight() - player.getHeight() - 112
+                                    + topMargin, this);
                 } else if (shootRope) {
                     ImageIcon dragonLeftFire = new ImageIcon(imageLocation
                             + "Images/dragonLFire.png");
                     g2d.drawImage(dragonLeftFire.getImage(),
                             player.getX() - 100,
-                            curLevel.getHeight() - player.getHeight() - 112,
-                            this);
+                            curLevel.getHeight() - player.getHeight() - 112
+                                    + topMargin, this);
                 }
 
                 // Update the old x coordinate of the player with the current
@@ -218,11 +167,13 @@ public class Driver extends JPanel {
                         powerup.getWidth(), powerup.getHeight());
             }
             // Draw the border
-            g2d.drawRect(centerConstant, 50, curLevel.getWidth(), curLevel.getHeight());
+            g2d.drawRect(centerConstant, 50, curLevel.getWidth(),
+                    curLevel.getHeight());
 
             // Show the lives of the player
             g2d.setFont(new Font("Calibri", Font.BOLD, 40));
-            g2d.drawString("Lives: ", centerConstant, curLevel.getHeight() + 45 +  topMargin);
+            g2d.drawString("Lives: ", centerConstant, curLevel.getHeight() + 45
+                    + topMargin);
             ImageIcon life = new ImageIcon(imageLocation + "Images/life.png");
             for (int i = 0; i < game.getLives(); i++) {
                 g2d.drawImage(life.getImage(), centerConstant + 125 + 25 * i,
@@ -230,15 +181,17 @@ public class Driver extends JPanel {
             }
 
             // Show the score of the player
-            g2d.drawString("Score: ", centerConstant, curLevel.getHeight() + 91 + topMargin);
+            g2d.drawString("Score: ", centerConstant, curLevel.getHeight() + 91
+                    + topMargin);
             g2d.setColor(dragonRed);
-            g2d.drawString("1337 ", centerConstant + 135, curLevel.getHeight() + 91 + topMargin);
+            g2d.drawString("1337 ", centerConstant + 135, curLevel.getHeight()
+                    + 91 + topMargin);
             g2d.setColor(Color.BLACK);
 
             // Show current level number
-            g2d.drawString("Level:", centerConstant , 45);
+            g2d.drawString("Level:", centerConstant, 45);
             g2d.setColor(dragonRed);
-            g2d.drawString("1", centerConstant + 110,45);
+            g2d.drawString("1", centerConstant + 110, 45);
             g2d.setColor(Color.BLACK);
 
             g2d.setColor(dragonRed);
@@ -250,8 +203,82 @@ public class Driver extends JPanel {
         }
     }
 
+    /**
+     * Method that draws the right dragon.
+     * 
+     * @param player
+     * @param newX
+     */
+    public void drawDragon(Player player, int newX) {
+        // Get the images of the left flying or right flying dragon
+        imageLocation = imageLocation.replace("%20", " ");
+        ImageIcon dragonLeft = new ImageIcon(imageLocation + "Images/dragonL"
+                + animationLeftCounter + ".png");
+        ImageIcon dragonRight = new ImageIcon(imageLocation + "Images/dragonR"
+                + animationRightCounter + ".png");
+
+        // The dragon was last moving right and should be facing
+        // right now.
+        if (dragonIsRight && !(dragonIsMoving)) {
+            ImageIcon dragonRightNormal = new ImageIcon(imageLocation
+                    + "Images/dragonR" + 10 + ".png");
+            g2d.drawImage(
+                    dragonRightNormal.getImage(),
+                    player.getX() - 100,
+                    curLevel.getHeight() - player.getHeight() - 117 + topMargin,
+                    this);
+        }
+
+        // The dragon was last moving left and should be facing left
+        // now.
+        else if (!(dragonIsMoving)) {
+            ImageIcon dragonLeftNormal = new ImageIcon(imageLocation
+                    + "Images/dragonL" + 10 + ".png");
+            g2d.drawImage(
+                    dragonLeftNormal.getImage(),
+                    player.getX() - 100,
+                    curLevel.getHeight() - player.getHeight() - 117 + topMargin,
+                    this);
+        }
+
+        // If the dragon is going right, the animation for flying
+        // right is enabled
+        if (oldX < newX) {
+            g2d.drawImage(
+                    dragonRight.getImage(),
+                    player.getX() - 100,
+                    curLevel.getHeight() - player.getHeight() - 117 + topMargin,
+                    this);
+            dragonIsRight = true;
+            if (slowDownCounter % 20 == 0) {
+                animationRightCounter++;
+            }
+            if (animationRightCounter == 7) {
+                animationRightCounter = 4;
+            }
+        }
+
+        // If the dragon is going left, the animation for flying
+        // left is enabled
+        else if (oldX > newX) {
+            g2d.drawImage(
+                    dragonLeft.getImage(),
+                    player.getX() - 100,
+                    curLevel.getHeight() - player.getHeight() - 117 + topMargin,
+                    this);
+            dragonIsRight = false;
+            if (slowDownCounter % 20 == 0) {
+                animationLeftCounter++;
+            }
+            if (animationLeftCounter == 7) {
+                animationLeftCounter = 4;
+            }
+        }
+    }
+
     public void levelWonFrame() {
-        if (game.getCurrentLevel().equals(game.getLevelList().get(game.getLevelList().size()-1))) {
+        if (game.getCurrentLevel().equals(
+                game.getLevelList().get(game.getLevelList().size() - 1))) {
             JLabel label = new JLabel("test");
             label.setText("Congratulations! Game won!");
             add(label);
@@ -315,9 +342,9 @@ public class Driver extends JPanel {
         Bubble bubble2 = new Bubble(2, 50, 50, true, true);
         Bubble bubble3 = new Bubble(64, 50, 50, false, false);
         Bubble bubble4 = new Bubble(32, 50, 50, false, true);
-        
+
         game.addPlayer(isha);
-        //game.addPlayer(tim);
+        // game.addPlayer(tim);
 
         Level level1 = new Level(game.getPlayerList());
         Level level2 = new Level(game.getPlayerList());
@@ -328,14 +355,17 @@ public class Driver extends JPanel {
         game.addLevel(level2);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        int centerConstant = (int) Math.round(0.5 * (Settings
+                .getScreenWidth() - Settings.getLevelWidth()));
+        Settings.setLeftMargin(centerConstant);
+        
         while (true) {
             if (game.inProgress()) {
                 Level curLevel = game.getCurrentLevel();
 
                 for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
                     Bubble bubble = curLevel.getBubbleList().get(i);
-                    bubble.move(curLevel.getWidth(), curLevel.getHeight());
+                    bubble.move(curLevel.getWidth() + Settings.getLeftMargin(), curLevel.getHeight() + Settings.getTopMargin());
                 }
 
                 for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
@@ -353,7 +383,7 @@ public class Driver extends JPanel {
                     game.loseLife();
                 }
                 driver.repaint();
-                
+
                 Player player1 = game.getPlayerList().get(0);
                 player1.move();
 

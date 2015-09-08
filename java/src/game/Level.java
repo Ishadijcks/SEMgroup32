@@ -80,6 +80,11 @@ public class Level {
                         }
                     }
             	}
+
+                if(rope.getY() < Settings.getTopMargin()){
+                    setRope(null);   
+                    return;
+                }
                 
             }
         }
