@@ -6,8 +6,8 @@ public class Settings {
     private static int screenWidth = 700;
     private static int screenHeight = 500;
     
-    private static int levelWidth = 675;
-    private static int levelHeight = 350;
+    private static int levelWidth = 1400;
+    private static int levelHeight = 880;
     
     private static int playerHeight = 40;
     private static int playerWidth = 20;
@@ -16,7 +16,7 @@ public class Settings {
     
     private static int lives = 5;
     
-    private static int ropeSpeed = 2;
+    private static int ropeSpeed = 4;
     
     private static int smallestBubbleSize = 5;
     

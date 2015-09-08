@@ -1,11 +1,7 @@
 package game;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
@@ -14,7 +10,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class StartScreen extends JFrame {
 
@@ -82,6 +77,8 @@ public class StartScreen extends JFrame {
             }
         });
 
+        setResizable(false);
+        
         add(startButton);
         add(settingsButton);
         add(stopButton);
