@@ -1,3 +1,4 @@
+package game;
 public class Powerup {
     String name;
     private int x;
@@ -18,7 +19,7 @@ public class Powerup {
      * The powerup moves up and gets destroyed when it hits the roof
      */
     public void move() {
-        if (y <= Driver.game.getLevelList().get(Driver.game.getCurrentLevel()).getHeight() - (height -1) ) {
+        if (y <= Driver.game.getCurrentLevel().getHeight() - (height -1) ) {
             y += Settings.getPowerupSpeed();
         }
     }

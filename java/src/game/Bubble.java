@@ -1,3 +1,5 @@
+package game;
+
 import java.awt.Color;
 
 public class Bubble {
@@ -12,6 +14,7 @@ public class Bubble {
     private double lastDownSpeed = 0;
     private double lastUpSpeed = 1;
     private boolean newBubble;
+    private static Color dragonRed = new Color(135, 15, 15);
 
     private double speedX;
 
@@ -30,7 +33,7 @@ public class Bubble {
      * @param x
      * @param y
      */
-    Bubble(int diameter, double x, double y, boolean directionH,
+    public Bubble(int diameter, double x, double y, boolean directionH,
             boolean directionV) {
         this.x = x;
         this.y = y;
@@ -42,7 +45,7 @@ public class Bubble {
         // Sets the color depending on the radius of the bubble
         switch (diameter) {
             case 8:
-                color = Color.BLUE;
+                color = dragonRed;
                 break;
             case 16:
                 color = Color.BLACK;
@@ -64,6 +67,7 @@ public class Bubble {
 
     /**
      * The method that controlss bubble movement.
+     * 
      * @param width
      * @param height
      */
@@ -172,4 +176,21 @@ public class Bubble {
     public Color getColor() {
         return color;
     }
+
+    public boolean isDirectionH() {
+        return directionH;
+    }
+
+    public void setDirectionH(boolean directionH) {
+        this.directionH = directionH;
+    }
+
+    public boolean isDirectionV() {
+        return directionV;
+    }
+
+    public void setDirectionV(boolean directionV) {
+        this.directionV = directionV;
+    }
+
 }
