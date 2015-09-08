@@ -6,12 +6,22 @@ public class Bubble {    private double x;
     private boolean directionH;
     private boolean directionV;
     private Color color;
-    private double downTime = 1;
-    private double upTime = 1;
-    private boolean falling = false;
     private double lastDownSpeed = 0;
     private double lastUpSpeed = 0;
     private boolean newBubble;
+
+	private double s;
+	private double sOld;
+	private double t = 0;
+	private double a;
+	private double v;
+	private double Ek;
+	private double Ez;
+	private double oldEz;
+	private double h;
+	private double oldh;
+	private double m = 1;
+	private double timeStep = 1/ Settings.getFps();
 
     /**
      * the constructor sets the starting coordinates, the moving location, the
@@ -68,15 +78,6 @@ public class Bubble {    private double x;
             maxheight = 120;
         }
 
-        if (directionV) {
-            downTime += 1;
-        } else {
-            upTime += 1;
-        }
-
-        int range = height - maxheight;
-        double speedFactor = 0.8 / range;
-
         if (x + diameter > width && directionH || x <= 1 && !directionH) {
             bounceH();
         }
@@ -85,35 +86,33 @@ public class Bubble {    private double x;
             bounceV();
         }
 
-        if (directionH) {
-            x += 0.8;
-        } else {
-            x -= 0.8;
-        }
-
         // bounce on the max height
         if (y < maxheight) {
             directionV = true;
         }
+        
         if (directionV) {
-            lastDownSpeed = 0.1 + 4 * (downTime / 100);
-            lastDownSpeed = lastDownSpeed * 0.8;
-            if (lastDownSpeed > 2.5) {
-                lastDownSpeed = 2.5;
-            }
-            y += 0.2 + 4 * ((downTime + 10) / 100);
+            sOld = 1/2 * 9.81 * t * t;
+        	t += timeStep;
+            s = 1/2 * 9.81 * t * t;
+            v = (s - sOld ) / timeStep;
+            lastDownSpeed = v;
+            y += lastDownSpeed / timeStep;
 
         } else {
+        	t = 0;
             if (newBubble) {
                 newBubble = false;
-                lastDownSpeed = 2;
+                if(lastDownSpeed < 1){
+                lastDownSpeed = 1;
+                }
             }
-            // start with the last downspeed but up this speed slows down
-            // depending on the uptime
-            // mutiply this with a factor that reaches 0 when at max height
-            // + 0.1 standaard speed to reach the maxheight (last few pixels)
-            lastUpSpeed = (1 - Math.pow((maxheight / y), 5) + 0.05)
-                    * (lastDownSpeed - Math.pow(upTime, 1 / 3) + 0.7) + 0.05;
+            Ek = 0.5 * m * lastDownSpeed * lastDownSpeed;
+            h = height - y;
+            Ez = m * 9.81 * h;
+            v = Math.sqrt(Ek/ (0.5 * m));
+			v = Math.round(v);
+			lastUpSpeed = v/timeStep;
             if (lastUpSpeed < 0.1) {
                 lastUpSpeed = 0.1;
             }
@@ -134,13 +133,6 @@ public class Bubble {    private double x;
      */
     public void bounceV() {
         directionV = !directionV;
-        if (directionV) {
-            falling = true;
-            upTime = 1;
-        } else {
-            falling = false;
-            downTime = 1;
-        }
     }
 
     // Getters and Setters
