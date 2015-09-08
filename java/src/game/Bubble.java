@@ -1,3 +1,4 @@
+package game;
 import java.awt.Color;
 
 public class Bubble {
@@ -22,7 +23,7 @@ public class Bubble {
      * @param x
      * @param y
      */
-    Bubble(int diameter, double x, double y, boolean directionH,
+    public Bubble(int diameter, double x, double y, boolean directionH,
             boolean directionV) {
         this.x = x;
         this.y = y;
@@ -162,5 +163,21 @@ public class Bubble {
     public Color getColor() {
         return color;
     }
+
+	public boolean isDirectionH() {
+		return directionH;
+	}
+
+	public void setDirectionH(boolean directionH) {
+		this.directionH = directionH;
+	}
+
+	public boolean isDirectionV() {
+		return directionV;
+	}
+
+	public void setDirectionV(boolean directionV) {
+		this.directionV = directionV;
+	}
 
 }
