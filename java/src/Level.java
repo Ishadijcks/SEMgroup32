@@ -6,8 +6,8 @@ public class Level {
     private ArrayList<Powerup> powerupList;
     private Rope rope = null;
     private int timeLeft;
-    private int width = 675;
-    private int height = 350;
+    private int width = Settings.getLevelWidth();
+    private int height = Settings.getLevelHeight();
 
     /**
      * Constructor, initializes the bubble- and playerList
@@ -48,9 +48,7 @@ public class Level {
     public void checkCollisionRope() {
         if (hasRope()) {
             for (int i = 0; i < bubbleList.size(); i++) {
-                // if the x of the rope and the bubble is the same
-                // then there is a chance the rope hits the bubble
-                // /// Diameter NOT IN ACCOUNT JET
+
                 if (bubbleList.get(i).getX() < rope.getX()) {
                     if (bubbleList.get(i).getX()
                             + bubbleList.get(i).getDiameter() > rope.getX()) {
@@ -86,13 +84,6 @@ public class Level {
         }
     }
 
-    private double distance(float x, float y, float x2, float y2) {
-        // TODO Auto-generated method stub
-        float xDis = x - x2;
-        float yDis = y - y2;
-
-        return Math.sqrt(xDis * xDis + yDis * yDis);
-    }
 
     public void destroyBubble(int i) {
 
@@ -101,14 +92,17 @@ public class Level {
         int y = bubble.getY();
         int diameter = bubble.getDiameter();
         bubbleList.remove(i);
+
+
         if (diameter > 10) {
             Bubble newBubble1 = new Bubble(diameter / 2, x, y, false, false);
             Bubble newBubble2 = new Bubble(diameter / 2, x, y, true, false);
+
             bubbleList.add(newBubble1);
             bubbleList.add(newBubble2);
 
         }
-        if (10 > Math.random() * 100) {
+        if (Settings.getPowerupChance() > Math.random() * 100) {
             Powerup powerup = generatePowerup(x, y);
             powerupList.add(powerup);
         }
@@ -144,7 +138,13 @@ public class Level {
             bubbleList.add(bubble);
         }
     }
-
+    
+    /**
+     * Add a powerup to the powerupList
+     * 
+     * @param powerup
+     *            powerup to add
+     */
     public void addPowerup(Powerup powerup) {
         if (!powerupList.contains(powerup)) {
             powerupList.add(powerup);

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Level> levelList = new ArrayList<Level>();
-    private int lives = 5;
+    private int lives = Settings.getLives();
     private int currentLevel = 0;
     private boolean inProgress;
     int score;
