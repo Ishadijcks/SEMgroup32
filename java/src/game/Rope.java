@@ -3,7 +3,7 @@ public class Rope {
     private int x;
     private int y;
 
-    Rope(int x, int y) {
+    public Rope(int x, int y) {
         this.x = x;
         this.y = y;
     }

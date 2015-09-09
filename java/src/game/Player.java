@@ -18,7 +18,7 @@ public class Player {
     private boolean movingRight = false;
     private Powerup powerup = null;
 
-    Player(String name, int x, int y) {
+    public Player(String name, int x, int y) {
         this.name = name;
         this.x = x;
     }
