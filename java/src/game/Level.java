@@ -21,7 +21,19 @@ public class Level {
         this.powerupList = new ArrayList<Powerup>();
     }
 
-    /**
+    public ArrayList<Player> getPlayerList() {
+		return playerList;
+	}
+
+	public void setPlayerList(ArrayList<Player> playerList) {
+		this.playerList = playerList;
+	}
+
+	public void setPowerupList(ArrayList<Powerup> powerupList) {
+		this.powerupList = powerupList;
+	}
+
+	/**
      * Checks if there is collision between player and a bubble
      * 
      * @return
@@ -33,9 +45,9 @@ public class Level {
             // /// Diameter NOT IN ACCOUNT JET AND SIZE OF PLAYER
             Player player = playerList.get(0);
 
-            if (bubbleList.get(i).getX() == player.getX()) {
-                if (height - player.getHeight() <= bubbleList.get(i).getY()) {
-
+            if (bubbleList.get(i).getX() < player.getX() + 22 && bubbleList.get(i).getX() > player.getX() - 53) {
+                if (height - 93 <= bubbleList.get(i).getY()) {
+System.out.println("hit");
                     return true;
                 }
             }
@@ -54,37 +66,17 @@ public class Level {
                 // if the x of the rope and the bubble is the same
                 // then there is a chance the rope hits the bubble
                 // /// RADIUS NOT IN ACCOUNT JET
-                if (bubbleList.get(i).getX() < rope.getX()) {
+        		if (bubbleList.get(i).getX() <= rope.getX()) {
                     if (bubbleList.get(i).getX()
-                            + bubbleList.get(i).getDiameter() > rope.getX()) {
+                            + bubbleList.get(i).getDiameter() >= rope.getX()) {
                         if (bubbleList.get(i).getY()
-                                + bubbleList.get(i).getDiameter() >= rope
-                                    .getY()) {
+                                + bubbleList.get(i).getDiameter() >= rope.getY()) {
                             destroyBubble(i);
                             setRope(null);
                             return;
                         }
                     }
-                } else {
-                    if (bubbleList.get(i).getX() < rope.getX() - 35) {
-                        if (bubbleList.get(i).getX()
-                                + bubbleList.get(i).getDiameter() > rope.getX() - 35) {
-                            if (bubbleList.get(i).getY()
-                                    + bubbleList.get(i).getDiameter() >= rope
-                                        .getY()) {
-                                destroyBubble(i);
-                                setRope(null);
-                                return;
-                            }
-                        }
-                    }
                 }
-
-                if (rope.getY() < Settings.getTopMargin()) {
-                    setRope(null);
-                    return;
-                }
-
             }
         }
     }

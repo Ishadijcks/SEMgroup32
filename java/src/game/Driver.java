@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Driver extends JPanel {
 
-    public static Game game = new Game();
+    public static Game game;
     private int animationRightCounter = 1;
     private int fireRightCounter = 1;
     private int animationLeftCounter = 1;
@@ -511,24 +511,14 @@ public class Driver extends JPanel {
 
         Player isha = new Player("Isha", 350, 10);
         Player tim = new Player("Tim", 80, 10);
-        Bubble bubble1 = new Bubble(2, 50, 50, false, false);
-        Bubble bubble2 = new Bubble(2, 50, 50, true, true);
-        Bubble bubble3 = new Bubble(64, 50, 50, false, false);
-        Bubble bubble4 = new Bubble(32, 50, 50, false, true);
+
+      
+        game = GameCreator.createSinglePlayer(isha);
 
         game.addPlayer(isha);
-        // game.addPlayer(tim);
 
-        Level level1 = new Level(game.getPlayerList());
-        Level level2 = new Level(game.getPlayerList());
-        level2.addBubble(bubble3);
-        level1.addBubble(bubble4);
-
-        game.addLevel(level1);
-        game.addLevel(level2);
-        
         player = game.getPlayerList().get(0);
-
+        
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         int centerConstant = (int) Math.round(0.5 * (Settings
                 .getScreenWidth() - Settings.getLevelWidth()));

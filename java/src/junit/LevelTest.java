@@ -1,23 +1,45 @@
 package junit;
 import static org.junit.Assert.*;
+import game.Bubble;
+import game.Level;
+import game.Player;
+import game.Powerup;
+import game.Rope;
 
+import java.util.ArrayList;
+
+import org.junit.Before;
 import org.junit.Test;
 
 
 public class LevelTest {
+	
+	public Level l;
+	public Bubble bubble;
+	public Powerup powr;
+	public ArrayList<Player> p;
+	public ArrayList<Bubble> bubbleList;
+	public ArrayList<Powerup> plist;
+	
+	@Before
+	public void init() {
+		bubble = new Bubble(18,2,2,true,true);
+		p = new ArrayList<Player>();
+		l = new Level(p);
+		bubbleList = new ArrayList<Bubble>();
+		plist = new ArrayList<Powerup>();
+		powr = new Powerup("speed", 0,0);
+	}
 
 	@Test
 	public void testLevel() {
-		fail("Not yet implemented");
+		assertTrue(l.getBubbleList().equals(bubbleList));
+		assertTrue(l.getPlayerList().equals(p));
+		assertTrue(l.getPowerupList().equals(plist));
 	}
 
 	@Test
 	public void testCheckCollisionPlayer() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCheckCollisionRope() {
 		fail("Not yet implemented");
 	}
 
@@ -28,12 +50,25 @@ public class LevelTest {
 
 	@Test
 	public void testDestroyBubble() {
-		fail("Not yet implemented");
+		Bubble bub = new Bubble(8,2,2,true,true);
+		l.addBubble(bub);
+		l.destroyBubble(0);
+		assertTrue(l.getBubbleList().isEmpty());
+		
+	}
+	
+	@Test
+	public void testDestroyBubbleBig() {
+		l.addBubble(bubble);
+		l.destroyBubble(0);
+		assertEquals(2, l.getBubbleList().size());
 	}
 
 	@Test
 	public void testGeneratePowerup() {
-		fail("Not yet implemented");
+		Powerup pow = new Powerup("speed", 0, 0);
+		Powerup pow2 = l.generatePowerup(0, 0);
+		assertTrue(pow.equals(pow2));
 	}
 
 	@Test
@@ -43,47 +78,24 @@ public class LevelTest {
 
 	@Test
 	public void testAddBubble() {
-		fail("Not yet implemented");
+		assertTrue(l.getBubbleList().isEmpty());
+		l.addBubble(bubble);
+		assertTrue(l.getBubbleList().contains(bubble));
 	}
 
 	@Test
 	public void testAddPowerup() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testHasRope() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetBubbleList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetPowerupList() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetHeight() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetWidth() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetRope() {
-		fail("Not yet implemented");
+		assertTrue(l.getPowerupList().isEmpty());
+		l.addPowerup(powr);
+		assertTrue(l.getPowerupList().contains(powr));
 	}
 
 	@Test
 	public void testSetRope() {
-		fail("Not yet implemented");
+		Rope r = new Rope(0, 0);
+		assertNull(l.getRope());
+		l.setRope(r);
+		assertEquals(r, l.getRope());
 	}
 
 }

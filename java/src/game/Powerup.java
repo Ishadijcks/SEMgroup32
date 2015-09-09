@@ -16,13 +16,29 @@ public class Powerup {
     
     int framesLeft = 10*Settings.getFps();
     
-    Powerup(String name, int x, int y) {
+    public Powerup(String name, int x, int y) {
         this.name = name;
         this.x = x;
         this.y = y;
     }
 
-    /**
+    @Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Powerup){
+			obj = (Powerup) obj;
+			if(((Powerup) obj).name.equals(this.name))
+				if(((Powerup) obj).x == this.x)
+					if(((Powerup) obj).y == this.y)
+						if(((Powerup) obj).width == this.width)
+							if(((Powerup) obj).height == this.height)
+								if(((Powerup) obj).framesLeft == this.framesLeft)
+									return true;
+		}
+		return false;
+		
+	}
+
+	/**
      * The powerup moves up and gets destroyed when it hits the roof
      */
     public void move() {
