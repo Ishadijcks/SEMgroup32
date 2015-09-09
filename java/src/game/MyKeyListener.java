@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 
 class MyKeyListener extends KeyAdapter {
 
-    Game game = Driver.game;
+    
 
     /**
      * Checks what key is pressed, moves the player in that direction or shoots
@@ -12,9 +12,11 @@ class MyKeyListener extends KeyAdapter {
      */
     public void keyPressed(KeyEvent evt) {
 
-        if (game.inProgress()) {
+       
+        Game game = Driver.game;
 
-            Level curLevel = game.getCurrentLevel();
+        if (game.inProgress()) {
+            
 
             switch (evt.getKeyCode()) {
 
@@ -42,7 +44,7 @@ class MyKeyListener extends KeyAdapter {
      */
     public void keyReleased(KeyEvent evt) {
 
-        Level curLevel = game.getCurrentLevel();
+        Game game = Driver.game;
 
         switch (evt.getKeyCode()) {
 
