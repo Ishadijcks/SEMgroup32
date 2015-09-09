@@ -1,4 +1,5 @@
 package game;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -100,7 +101,6 @@ System.out.println("hit");
         }
     }
 
-
     public void destroyBubble(int i) {
 
         Bubble bubble = bubbleList.get(i);
@@ -108,7 +108,6 @@ System.out.println("hit");
         int y = bubble.getY();
         int diameter = bubble.getDiameter();
         bubbleList.remove(i);
-
 
         if (diameter > 10) {
             Bubble newBubble1 = new Bubble(diameter / 2, x, y, false, false);
@@ -128,7 +127,7 @@ System.out.println("hit");
         }
 
     }
-    
+
     public int randomInt(int min, int max) {
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
@@ -138,12 +137,12 @@ System.out.println("hit");
     public Powerup generatePowerup(int x, int y) {
         int randomNumber = randomInt(1, 2);
         switch (randomNumber) {
-            case 1:
-                return new Powerup("speed", x, y);
-            case 2: 
-                return new Powerup("life", x, y);
-            default:
-                return new Powerup("speed", x, y);
+        case 1:
+            return new Powerup("speed", x, y);
+        case 2:
+            return new Powerup("life", x, y);
+        default:
+            return new Powerup("speed", x, y);
         }
     }
 
@@ -162,7 +161,7 @@ System.out.println("hit");
             bubbleList.add(bubble);
         }
     }
-    
+
     /**
      * Add a powerup to the powerupList
      * 
@@ -174,7 +173,6 @@ System.out.println("hit");
             powerupList.add(powerup);
         }
     }
-
 
     public boolean hasRope() {
         return rope != null;

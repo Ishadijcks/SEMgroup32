@@ -100,11 +100,11 @@ public class Bubble {
             speedX = 0.9;
         }
 
-        if (x + diameter > width && directionH || x <= 1 && !directionH) {
+        if (x + diameter > width && directionH || x <= Settings.getLeftMargin() && !directionH) {
             bounceH();
         }
 
-        if (y + diameter > height && directionV || y <= 1 && !directionV) {
+        if (y + diameter > height && directionV || y <= Settings.getTopMargin() && !directionV) {
             bounceV();
         }
 
