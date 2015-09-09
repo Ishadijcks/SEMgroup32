@@ -52,7 +52,7 @@ public class RopeBubbleCollisionTest {
 
 	@Test
 	public void testCheckCollisionRope() {
-		l.checkCollisionRope(true);
+		l.checkCollisionRope();
 		assertEquals(this.expected, l.getBubbleList().size());
 	}
 
