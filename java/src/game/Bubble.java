@@ -3,9 +3,9 @@ package game;
 import java.awt.Color;
 
 public class Bubble {
-    private double x;
-    private double y;
-    private int diameter;
+    private double x = 10;
+    private double y = 10;
+    private int diameter = 16;
     private int maxheight = 0;
     private double timer = 1;
     private boolean directionH;
@@ -14,7 +14,7 @@ public class Bubble {
     private double lastDownSpeed = 0;
     private double lastUpSpeed = 1;
     private boolean newBubble;
-    private static Color dragonRed = new Color(135, 15, 15);
+    private static Color dragonRed = Settings.getDragonRed();
 
     private double speedX;
 
@@ -35,34 +35,67 @@ public class Bubble {
      */
     public Bubble(int diameter, double x, double y, boolean directionH,
             boolean directionV) {
-        this.x = x;
-        this.y = y;
+
+        if (correctDiameter(diameter)) {
+            this.diameter = diameter;
+        } else {
+            this.diameter = Settings.getBubbleDefaultDiameter();
+        }
+
+        if (correctX(x, diameter)) {
+            this.x = x;
+        }
+
+        else {
+            this.x = Settings.getBubbleDefaultX();
+            ;
+        }
+
+        if (correctY(y, diameter)) {
+            this.y = y;
+        }
+
+        else {
+            this.y = Settings.getBubbleDefaultY();
+        }
+
         this.directionH = directionH;
         this.directionV = directionV;
-        this.diameter = diameter;
         this.newBubble = true;
 
         // Sets the color depending on the radius of the bubble
         switch (diameter) {
-            case 8:
-                color = dragonRed;
-                break;
-            case 16:
-                color = Color.BLACK;
-                break;
-            case 32:
-                color = Color.GREEN;
-                break;
-            case 64:
-                color = Color.CYAN;
-                break;
-            case 128:
-                color = Color.PINK;
-                break;
-            default:
-                color = Color.MAGENTA;
-                break;
+        case 8:
+            color = dragonRed;
+            break;
+        case 16:
+            color = Color.BLACK;
+            break;
+        case 32:
+            color = Color.GREEN;
+            break;
+        case 64:
+            color = Color.CYAN;
+            break;
+        case 128:
+            color = Color.PINK;
+            break;
+        default:
+            color = Color.MAGENTA;
+            break;
         }
+    }
+
+    public boolean correctDiameter(int diameter) {
+        return diameter > 0 && diameter <200;
+    }
+
+    public boolean correctX(double x, int diameter) {
+        return x > 0 && x < Settings.getLevelWidth() - diameter;
+    }
+
+    public boolean correctY(double y, int diameter) {
+        return y > 0 && y < Settings.getLevelHeight() - diameter;
     }
 
     /**
