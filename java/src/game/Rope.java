@@ -19,6 +19,10 @@ public class Rope {
             y -= Settings.getRopeSpeed();
         }
     }
+    
+    public void addX(int extra) {
+        this.x += extra;
+    }
 
     public int getX() {
         return x;

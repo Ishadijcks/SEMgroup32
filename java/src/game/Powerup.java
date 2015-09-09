@@ -1,8 +1,15 @@
 package game;
+
+import java.awt.Image;
+import java.net.URL;
+
+import javax.swing.ImageIcon;
+
 public class Powerup {
     String name;
     private int x;
     private int y;
+    private Image image;
     
     int width = Settings.getPowerupWidth();
     int height = Settings.getPowerupHeight();
@@ -70,6 +77,24 @@ public class Powerup {
     
     public String getName(){
         return name;
+    }
+    
+    public ImageIcon getImageIcon() {
+        URL location = StartScreen.class.getProtectionDomain().getCodeSource()
+                .getLocation();
+        String imageLocation = location.getFile();
+        if(name.equals("speed"))
+        {
+            ImageIcon powerupspeed = new ImageIcon(imageLocation + "Images/Powerups/puspeed.png");
+            return powerupspeed;
+        }
+        if(name.equals("life"))
+        {
+            ImageIcon poweruplife = new ImageIcon(imageLocation + "Images/Powerups/pulife.png");
+            return poweruplife;
+        }
+        return null;
+        
     }
     
 }
