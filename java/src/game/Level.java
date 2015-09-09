@@ -44,9 +44,9 @@ public class Level {
             // /// Diameter NOT IN ACCOUNT JET AND SIZE OF PLAYER
             Player player = playerList.get(0);
 
-            if (bubbleList.get(i).getX() == player.getX()) {
-                if (height - player.getHeight() <= bubbleList.get(i).getY()) {
-
+            if (bubbleList.get(i).getX() < player.getX() + 22 && bubbleList.get(i).getX() > player.getX() - 53) {
+                if (height - 93 <= bubbleList.get(i).getY()) {
+System.out.println("hit");
                     return true;
                 }
             }
