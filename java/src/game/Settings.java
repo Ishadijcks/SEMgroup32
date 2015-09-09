@@ -6,7 +6,7 @@ public class Settings {
     private static int screenWidth = 1000;
     private static int screenHeight = 800;
 
-    private static int levelWidth = 700;
+    private static int levelWidth = 850;
     private static int levelHeight = 500;
 
     private static int playerHeight = 40;
