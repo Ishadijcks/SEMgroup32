@@ -1,5 +1,7 @@
 package game;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Level {
     private ArrayList<Bubble> bubbleList;
@@ -46,46 +48,43 @@ public class Level {
      * 
      * @return -1 if there is no collision otherwise the index of the bubble
      */
-    public void checkCollisionRope(boolean dragonIsRight) {
+    public void checkCollisionRope() {
         if (hasRope()) {
             for (int i = 0; i < bubbleList.size(); i++) {
                 // if the x of the rope and the bubble is the same
                 // then there is a chance the rope hits the bubble
                 // /// RADIUS NOT IN ACCOUNT JET
-            	if(dragonIsRight)
-            	{
-            		if (bubbleList.get(i).getX() < rope.getX()) {
-                        if (bubbleList.get(i).getX()
-                                + bubbleList.get(i).getDiameter() > rope.getX()) {
-                            if (bubbleList.get(i).getY()
-                                    + bubbleList.get(i).getDiameter() >= rope.getY()) {
-                                destroyBubble(i);
-                                setRope(null);
-                                return;
-                            }
+                if (bubbleList.get(i).getX() < rope.getX()) {
+                    if (bubbleList.get(i).getX()
+                            + bubbleList.get(i).getDiameter() > rope.getX()) {
+                        if (bubbleList.get(i).getY()
+                                + bubbleList.get(i).getDiameter() >= rope
+                                    .getY()) {
+                            destroyBubble(i);
+                            setRope(null);
+                            return;
                         }
                     }
-            	}
-            	else
-            	{
-            		if (bubbleList.get(i).getX() < rope.getX() - 35) {
+                } else {
+                    if (bubbleList.get(i).getX() < rope.getX() - 35) {
                         if (bubbleList.get(i).getX()
                                 + bubbleList.get(i).getDiameter() > rope.getX() - 35) {
                             if (bubbleList.get(i).getY()
-                                    + bubbleList.get(i).getDiameter() >= rope.getY()) {
+                                    + bubbleList.get(i).getDiameter() >= rope
+                                        .getY()) {
                                 destroyBubble(i);
                                 setRope(null);
                                 return;
                             }
                         }
                     }
-            	}
+                }
 
-                if(rope.getY() < Settings.getTopMargin()){
-                    setRope(null);   
+                if (rope.getY() < Settings.getTopMargin()) {
+                    setRope(null);
                     return;
                 }
-                
+
             }
         }
     }
@@ -110,7 +109,6 @@ public class Level {
         }
     }
 
-
     public void destroyBubble(int i) {
 
         Bubble bubble = bubbleList.get(i);
@@ -118,7 +116,6 @@ public class Level {
         int y = bubble.getY();
         int diameter = bubble.getDiameter();
         bubbleList.remove(i);
-
 
         if (diameter > 10) {
             Bubble newBubble1 = new Bubble(diameter / 2, x, y, false, false);
@@ -139,13 +136,21 @@ public class Level {
 
     }
 
+    public int randomInt(int min, int max) {
+        Random rand = new Random();
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        return randomNum;
+    }
+
     public Powerup generatePowerup(int x, int y) {
-        int randomNumber = (int) Math.floor(Math.random() * 1 + 1);
+        int randomNumber = randomInt(1, 2);
         switch (randomNumber) {
-            case 1:
-                return new Powerup("speed", x, y);
-            default:
-                return new Powerup("speed", x, y);
+        case 1:
+            return new Powerup("speed", x, y);
+        case 2:
+            return new Powerup("life", x, y);
+        default:
+            return new Powerup("speed", x, y);
         }
     }
 
@@ -164,7 +169,7 @@ public class Level {
             bubbleList.add(bubble);
         }
     }
-    
+
     /**
      * Add a powerup to the powerupList
      * 
@@ -176,7 +181,6 @@ public class Level {
             powerupList.add(powerup);
         }
     }
-
 
     public boolean hasRope() {
         return rope != null;

@@ -19,8 +19,8 @@ public class Settings {
     private static int ropeSpeed = 4;
 
     private static int smallestBubbleSize = 5;
-
-    private static int powerupSpeed = 1;
+    
+    private static int powerupSpeed = 2;
     private static int powerupChance = 10;
     private static int powerupWidth = 15;
     private static int powerupHeight = 10;
