@@ -69,8 +69,13 @@ public class Powerup {
         String imageLocation = location.getFile();
         if(name.equals("speed"))
         {
-            ImageIcon powerup1 = new ImageIcon(imageLocation + "Images/Powerups/pu1.png");
-            return powerup1;
+            ImageIcon powerupspeed = new ImageIcon(imageLocation + "Images/Powerups/puspeed.png");
+            return powerupspeed;
+        }
+        if(name.equals("life"))
+        {
+            ImageIcon poweruplife = new ImageIcon(imageLocation + "Images/Powerups/pulife.png");
+            return poweruplife;
         }
         return null;
         
