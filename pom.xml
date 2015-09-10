@@ -18,6 +18,15 @@
 				<configuration>
 					<configLocation>${basedir}/checkstyle.xml</configLocation>
 					<includeTestSourceDirectory>true</includeTestSourceDirectory>
+				<executions>
+					<execution>
+						<id>verify-style</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
 				</configuration>
 			</plugin>
 
@@ -25,6 +34,15 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 				<version>${pmd.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>verify-pmd</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>pmd</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<skipEmptyReport>false</skipEmptyReport>
 					<includeTests>true</includeTests>
@@ -38,6 +56,15 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>${findbugs.version}</version>
+				<executions>
+					<execution>
+						<id>verify-findbugs</id>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<xmlOutput>true</xmlOutput>
 					<includeTests>true</includeTests>
