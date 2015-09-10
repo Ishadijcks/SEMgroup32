@@ -92,7 +92,7 @@ public class Player {
         if (!Driver.game.getCurrentLevel()
                 .hasRope()) {
             int ropeY = Driver.game.getCurrentLevel().getHeight()
-                    - height + 2;
+                    - height;
             int ropeX = x + width / 2;
             Rope rope = new Rope(ropeX, ropeY);
 

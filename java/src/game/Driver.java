@@ -116,7 +116,7 @@ public class Driver extends JPanel {
 
                 if (dragonIsRight) {
                     if (!(addOnce)) {
-                        curLevel.getRope().addX(-3);
+                        curLevel.getRope().addX(-6);
                         addOnce = true;
                     }
                     for (int i = 0; i < 4; i++) {
@@ -127,11 +127,11 @@ public class Driver extends JPanel {
                         if ((i == 0) && random == 2) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
                                     .getRope().getY(), curLevel.getRope()
-                                    .getX(), curLevel.getHeight());
+                                    .getX(), curLevel.getHeight() + 43);
                         } else if (i == 1 || i == 2 || i == 3) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
                                     .getRope().getY(), curLevel.getRope()
-                                    .getX(), curLevel.getHeight());
+                                    .getX(), curLevel.getHeight() + 43);
                         }
 
                     }
@@ -150,12 +150,12 @@ public class Driver extends JPanel {
                             g2d.drawLine(curLevel.getRope().getX(),
                                     curLevel.getRope().getY(), curLevel
                                             .getRope().getX(), curLevel
-                                            .getHeight());
+                                            .getHeight() + 43);
                         } else if (i == 1 || i == 2 || i == 3) {
                             g2d.drawLine(curLevel.getRope().getX(),
                                     curLevel.getRope().getY(), curLevel
                                             .getRope().getX(), curLevel
-                                            .getHeight());
+                                            .getHeight() + 43);
                         }
                     }
                 }
