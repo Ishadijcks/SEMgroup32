@@ -235,7 +235,7 @@ public class Driver extends JPanel {
                                 curLevel.getHeight() - 117,
                                 this);
                         dragonIsRight = true;
-                        if (slowDownCounter % 20 == 0) {
+                        if (slowDownCounter % 24 == 0) {
                             animationRightCounter++;
                         }
                         if (animationRightCounter == 7) {
@@ -252,7 +252,7 @@ public class Driver extends JPanel {
                                 curLevel.getHeight() - player.getHeight() - 117 + topMargin,
                                 this);
                         dragonIsRight = false;
-                        if (slowDownCounter % 20 == 0) {
+                        if (slowDownCounter % 24 == 0) {
                             animationLeftCounter++;
                         }
                         if (animationLeftCounter == 7) {
@@ -261,7 +261,7 @@ public class Driver extends JPanel {
                     }
                 }
 
-                else if( oldX == newX)
+                if( oldX == newX)
                     {
                         animationRightCounter = 1;
                         animationLeftCounter = 1;

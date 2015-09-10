@@ -107,6 +107,10 @@ public class Game {
 
     public void loseLife() {
         lives--;
+        if(lives < 0)
+        {
+            lives = 0;
+        }
     }
     
     public void getLife() {
