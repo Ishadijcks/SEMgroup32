@@ -148,7 +148,6 @@ public class Bubble {
      */
     public void bounceH() {
         directionH = !directionH;
-        System.out.println("bounce H");
     }
 
     /**

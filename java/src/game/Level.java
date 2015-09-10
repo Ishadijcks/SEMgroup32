@@ -16,11 +16,14 @@ public class Level {
      * Constructor, initializes the bubble- and playerList
      */
     public Level(ArrayList<Player> playerList) {
+        System.out.println("level init");
         this.bubbleList = new ArrayList<Bubble>();
         this.playerList = playerList;
         this.powerupList = new ArrayList<Powerup>();
     }
-
+    public void resetBubble(){
+        bubbleList = null;
+    }
     public ArrayList<Player> getPlayerList() {
 		return playerList;
 	}
@@ -45,9 +48,8 @@ public class Level {
             // /// Diameter NOT IN ACCOUNT JET AND SIZE OF PLAYER
             Player player = playerList.get(0);
 
-            if (bubbleList.get(i).getX() < player.getX() + 22 && bubbleList.get(i).getX() > player.getX() - 53) {
-                if (height - 93 <= bubbleList.get(i).getY()) {
-System.out.println("hit");
+            if (bubbleList.get(i).getX() < player.getX() + 22 && bubbleList.get(i).getX() > player.getX() - 58) {
+                if (height - 55 <= bubbleList.get(i).getY()) {
                     return true;
                 }
             }
@@ -147,7 +149,9 @@ System.out.println("hit");
     }
 
     public void resetLevel() {
-        // reset the level
+        ArrayList<Level> levels = Driver.game.getLevelList();
+        int currentLevel = Driver.game.getCurrentLevelInt();
+        levels.set(currentLevel-1, LevelCreator.getLevel(currentLevel));
     }
 
     /**
