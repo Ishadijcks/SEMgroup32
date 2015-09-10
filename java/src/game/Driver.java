@@ -10,9 +10,16 @@ import java.awt.Stroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -422,7 +429,7 @@ public class Driver extends JPanel {
         validate();
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, IOException, LineUnavailableException{
 
         final JFrame frame = new JFrame("Bounce test");
         Driver driver = new Driver();
@@ -434,6 +441,17 @@ public class Driver extends JPanel {
         frame.setVisible(false);
         new StartScreen(driver, frame);
 
+        URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
+        String currentLocation = location.getFile();      
+        String startScreenMusicLocation = currentLocation + "Music/ingame.wav";
+        File music = new File(startScreenMusicLocation);
+        AudioInputStream audioInputStream =
+                AudioSystem.getAudioInputStream(
+                    music);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.loop(1000000);
+        
         Player isha = new Player("Isha", 350, 10);
         Player tim = new Player("Tim", 80, 10);
 

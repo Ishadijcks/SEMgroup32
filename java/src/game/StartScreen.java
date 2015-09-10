@@ -4,8 +4,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,16 +27,29 @@ public class StartScreen extends JFrame {
     final private Driver dr;
     final private JFrame jf;
 
-    public StartScreen(Driver driver, JFrame jframe) {
+    public StartScreen(Driver driver, JFrame jframe) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
 
         setTitle("Start screen");
         setSize(700, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+        URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
+       /* String currentLocation = location.getFile();      
+        String startScreenMusicLocation = currentLocation + "Music/startscreen.wav";
+        File music = new File(startScreenMusicLocation);
+        AudioInputStream audioInputStream =
+                AudioSystem.getAudioInputStream(
+                    music);
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.loop(1000000);*/
+
+        
         setVisible(true);
 
-        URL location = StartScreen.class.getProtectionDomain().getCodeSource()
-                .getLocation();
+        
         String imageLocation = location.getFile();
         imageLocation = imageLocation.replace("%20", " ");
 
@@ -65,6 +85,7 @@ public class StartScreen extends JFrame {
 
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent startGame) {
+                //clip.stop();
                 setVisible(false);
                 dispose();
                 dr.startGame(jf);
