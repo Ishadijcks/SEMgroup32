@@ -326,7 +326,7 @@ public class Driver extends JPanel {
 
                 if (powerupImage != null) {
                     g2d.drawImage(powerupImage.getImage(), powerup.getX(),
-                            powerup.getY() - 37, this);
+                            powerup.getY() + 13, this);
                 }
 
             }
