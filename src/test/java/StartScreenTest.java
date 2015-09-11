@@ -1,14 +1,16 @@
 
 import static org.junit.Assert.*;
+import game.StartScreen;
 
 import javax.swing.JFrame;
 
+import org.junit.Before;
 import org.junit.Test;
 
 
 public class StartScreenTest {
 
-	public Startscreen startscreen;
+	public StartScreen startscreen;
 	
 	@Before
 	public void init(){
