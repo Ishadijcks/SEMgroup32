@@ -20,6 +20,7 @@ public class GameTest {
 	public Level l;
 	public Level k;
 	public Player player;
+	int currentLevel = 1;
 	
 	@Before
 	public void initGame() {
@@ -98,9 +99,12 @@ public class GameTest {
 		game.addLevel(k);
 		game.gameStart();
 		assertTrue(game.inProgress());
-		assertEquals(1, game.getCurrentLevelInt());
 		game.gameWon();
+		currentLevel++;
 		assertFalse(game.inProgress());
+		game.gameStart();
+		assertTrue(game.inProgress());
+		game.gameWon();
 		assertEquals(2, game.getCurrentLevelInt());
 		
 	}
