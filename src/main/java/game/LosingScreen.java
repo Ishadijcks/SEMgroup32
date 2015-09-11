@@ -39,6 +39,29 @@ public class LosingScreen extends JFrame {
         this.gameFrame = gameFrame;
         
         setVisible(true);
+        
+        URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
+        /* String currentLocation = location.getFile();      
+         String startScreenMusicLocation = currentLocation + "Music/startscreen.wav";
+         File music = new File(startScreenMusicLocation);
+         AudioInputStream audioInputStream =
+                 AudioSystem.getAudioInputStream(
+                     music);
+             Clip clip = AudioSystem.getClip();
+             clip.open(audioInputStream);
+             clip.loop(1000000);*/
+
+         
+         setVisible(true);
+
+         
+         String imageLocation = location.getFile();
+         imageLocation = imageLocation.replace("%20", " ");
+
+         //setLayout(new BorderLayout());
+         setContentPane(new JLabel(new ImageIcon(imageLocation
+                 + "main/Images/loseScreenBackground.png")));
+         //setLayout(new FlowLayout());
 
         setLayout(null);
 
@@ -79,6 +102,9 @@ public class LosingScreen extends JFrame {
         
         add(tryAgainButton);
         add(stopButton);
+        
+        setSize(Settings.getScreenWidth() - 1, Settings.getScreenHeight() - 1);
+        setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
 
     }
 
