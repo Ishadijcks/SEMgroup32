@@ -77,10 +77,10 @@ public class GameTest {
 		game.addLevel(l);
 		game.gameStart();
 		assertTrue(game.inProgress());
-		assertEquals(0, game.getCurrentLevelInt());
+		assertEquals(1, game.getCurrentLevelInt());
 		game.gameWon();
 		assertFalse(game.inProgress());
-		assertEquals(0, game.getCurrentLevelInt());
+		assertEquals(1, game.getCurrentLevelInt());
 	}
 	
 	@Test
@@ -89,10 +89,10 @@ public class GameTest {
 		game.addLevel(k);
 		game.gameStart();
 		assertTrue(game.inProgress());
-		assertEquals(0, game.getCurrentLevelInt());
+		assertEquals(1, game.getCurrentLevelInt());
 		game.gameWon();
 		assertFalse(game.inProgress());
-		assertEquals(1, game.getCurrentLevelInt());
+		assertEquals(2, game.getCurrentLevelInt());
 		
 	}
 	@Test

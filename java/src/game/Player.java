@@ -64,13 +64,13 @@ public class Player {
         }
 
         if (movingLeft) {
-            if (x - stepSize > 0) {
+            if (x - stepSize > Settings.getLeftMargin() + 37) {
                 x -= stepSize;
             }
         }
 
         if (movingRight) {
-            if (x + stepSize + width < Driver.game.getCurrentLevel().getWidth()) {
+            if (x + stepSize + width < Driver.game.getCurrentLevel().getWidth() + Settings.getLeftMargin()) {
                 x += stepSize;
             }
         }
@@ -92,7 +92,7 @@ public class Player {
         if (!Driver.game.getCurrentLevel()
                 .hasRope()) {
             int ropeY = Driver.game.getCurrentLevel().getHeight()
-                    - height + 2;
+                    - height;
             int ropeX = x + width / 2;
             Rope rope = new Rope(ropeX, ropeY);
 

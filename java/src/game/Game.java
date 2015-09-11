@@ -1,26 +1,18 @@
 package game;
+
 import java.util.ArrayList;
 
 public class Game {
     private ArrayList<Level> levelList = new ArrayList<Level>();
     private ArrayList<Player> playerList;
     private int lives = Settings.getLives();
-    private int currentLevel = 0;
+    private int currentLevel = 1;
     private boolean inProgress;
     int score;
 
     public Game() {
         this.inProgress = false;
         this.playerList = new ArrayList<Player>();
-    }
-
-    public void gameLoop() {
-        Level level = levelList.get(currentLevel);
-        boolean collision = level.checkCollisionPlayer();
-        if (collision) {
-            lives--;
-            level.resetLevel();
-        }
     }
 
     /**
@@ -30,6 +22,10 @@ public class Game {
      */
     public ArrayList<Level> getLevelList() {
         return levelList;
+    }
+
+    public void setLevelList(ArrayList<Level> levels) {
+        levelList = levels;
     }
 
     /**
@@ -64,7 +60,7 @@ public class Game {
             inProgress = false;
         }
     }
-    
+
     /**
      * Add a player to the playerList
      * 
@@ -85,9 +81,9 @@ public class Game {
      * @return the current level
      */
     public Level getCurrentLevel() {
-        return levelList.get(currentLevel);
+        return levelList.get(currentLevel - 1);
     }
-    
+
     /**
      * Returns the currentLevel as an integer
      * 
@@ -100,15 +96,25 @@ public class Game {
     public int getLives() {
         return lives;
     }
-    
+
     public ArrayList<Player> getPlayerList() {
         return playerList;
     }
 
+    public void resetLevel() {
+        levelList.get(currentLevel).resetLevel();
+        loseLife();
+
+    }
+
     public void loseLife() {
         lives--;
+        if(lives < 0)
+        {
+            lives = 0;
+        }
     }
-    
+
     public void getLife() {
         lives++;
     }

@@ -1,4 +1,5 @@
 package game;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -15,11 +16,14 @@ public class Level {
      * Constructor, initializes the bubble- and playerList
      */
     public Level(ArrayList<Player> playerList) {
+        System.out.println("level init");
         this.bubbleList = new ArrayList<Bubble>();
         this.playerList = playerList;
         this.powerupList = new ArrayList<Powerup>();
     }
-
+    public void resetBubble(){
+        bubbleList = null;
+    }
     public ArrayList<Player> getPlayerList() {
 		return playerList;
 	}
@@ -44,9 +48,8 @@ public class Level {
             // /// Diameter NOT IN ACCOUNT JET AND SIZE OF PLAYER
             Player player = playerList.get(0);
 
-            if (bubbleList.get(i).getX() == player.getX()) {
-                if (height - player.getHeight() <= bubbleList.get(i).getY()) {
-
+            if (bubbleList.get(i).getX() < player.getX() + 22 && bubbleList.get(i).getX() > player.getX() - 58) {
+                if (height - 55 <= bubbleList.get(i).getY()) {
                     return true;
                 }
             }
@@ -100,7 +103,6 @@ public class Level {
         }
     }
 
-
     public void destroyBubble(int i) {
 
         Bubble bubble = bubbleList.get(i);
@@ -108,7 +110,6 @@ public class Level {
         int y = bubble.getY();
         int diameter = bubble.getDiameter();
         bubbleList.remove(i);
-
 
         if (diameter > 10) {
             Bubble newBubble1 = new Bubble(diameter / 2, x, y, false, false);
@@ -128,7 +129,7 @@ public class Level {
         }
 
     }
-    
+
     public int randomInt(int min, int max) {
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
@@ -138,17 +139,19 @@ public class Level {
     public Powerup generatePowerup(int x, int y) {
         int randomNumber = randomInt(1, 2);
         switch (randomNumber) {
-            case 1:
-                return new Powerup("speed", x, y);
-            case 2: 
-                return new Powerup("life", x, y);
-            default:
-                return new Powerup("speed", x, y);
+        case 1:
+            return new Powerup("speed", x, y);
+        case 2:
+            return new Powerup("life", x, y);
+        default:
+            return new Powerup("speed", x, y);
         }
     }
 
     public void resetLevel() {
-        // reset the level
+        ArrayList<Level> levels = Driver.game.getLevelList();
+        int currentLevel = Driver.game.getCurrentLevelInt();
+        levels.set(currentLevel-1, LevelCreator.getLevel(currentLevel));
     }
 
     /**
@@ -162,7 +165,7 @@ public class Level {
             bubbleList.add(bubble);
         }
     }
-    
+
     /**
      * Add a powerup to the powerupList
      * 
@@ -174,7 +177,6 @@ public class Level {
             powerupList.add(powerup);
         }
     }
-
 
     public boolean hasRope() {
         return rope != null;
