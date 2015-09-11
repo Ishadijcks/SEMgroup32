@@ -27,6 +27,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Class that executes the game
+ * @author Naomi
+ *
+ */
 @SuppressWarnings("serial")
 public class Driver extends JPanel {
 
@@ -57,6 +62,9 @@ public class Driver extends JPanel {
     private static Driver driver;
     private static JFrame frame;
 
+    /**
+     * Method to draw the game
+     */
     @Override
     public void paint(Graphics graph) {
         try {
@@ -374,12 +382,21 @@ public class Driver extends JPanel {
         }
     }
 
+    /**
+     * Create a random integer
+     * @param min
+     * @param max
+     * @return a random integer
+     */
     public static int randomInt(int min, int max) {
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
         return randomNum;
     }
 
+    /**
+     * Show a frame when the level is won
+     */
     public void levelWonFrame() {
         if (game.getCurrentLevel().equals(
                 game.getLevelList().get(game.getLevelList().size() - 1))) {
@@ -409,11 +426,17 @@ public class Driver extends JPanel {
         validate();
     }
 
+    /**
+     * Frame to start the game
+     */
     public void startGame() {
         frame.setVisible(true);
         game.gameStart();
     }
 
+    /**
+     * Add a start button to the screen
+     */
     public void addStartButton() {
         final JButton nextLevel = new JButton("Start game");
         nextLevel.setVerticalTextPosition(AbstractButton.BOTTOM);
@@ -431,6 +454,9 @@ public class Driver extends JPanel {
         validate();
     }
 
+    /**
+     * Check if the game has been won
+     */
     public static void checkGameWon(){
         int levelNumbers = game.getLevelList().size();
         if(game.getCurrentLevelInt() == 2)
@@ -440,6 +466,9 @@ public class Driver extends JPanel {
         }
     }
     
+    /**
+     * Check if the game has been lost
+     */
     public static void checkGameLost(){
         int livesLeft = game.getLives();
         if(livesLeft == 0 && game.inProgress())
@@ -513,6 +542,10 @@ public class Driver extends JPanel {
     public static void initGame(){
        frame = new JFrame("Bounce");
     }
+    
+    /**
+     * Set up the game
+     */
     public static void setupGame(){
        
         driver = new Driver();
@@ -544,6 +577,9 @@ public class Driver extends JPanel {
         
     }
     
+    /**
+     * Catching exceptions of the startscreen.
+     */
     public static void startScreen(){
         try {
             new StartScreen(driver, frame);
