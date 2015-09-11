@@ -42,22 +42,9 @@ public class Bubble {
             this.diameter = Settings.getBubbleDefaultDiameter();
         }
 
-        if (correctX(x, diameter)) {
-            this.x = x;
-        }
+        this.x = x;
 
-        else {
-            this.x = Settings.getBubbleDefaultX() ;
-            
-        }
-
-        if (correctY(y, diameter)) {
-            this.y = y;
-        }
-
-        else {
-            this.y = Settings.getBubbleDefaultY();
-        }
+        this.y = y;
 
         this.directionH = directionH;
         this.directionV = directionV;
@@ -69,10 +56,6 @@ public class Bubble {
 
     public boolean correctDiameter(int diameter) {
         return diameter > 0 && diameter < 200;
-    }
-
-    public boolean correctX(double x, int diameter) {
-        return x > 0 && x < Settings.getLeftMargin() + Settings.getLevelWidth() - diameter;
     }
 
     public boolean correctY(double y, int diameter) {

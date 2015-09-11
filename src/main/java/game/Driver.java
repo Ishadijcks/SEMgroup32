@@ -216,7 +216,7 @@ public class Driver extends JPanel {
                                 imageLocation + "main/Images/dragon/dragonR" + 10
                                         + ".png");
                         g2d.drawImage(dragonRightNormal.getImage(),
-                                player.getX() - 100, player.getY(),
+                                player.getX() - 50, player.getY(),
                                 this);
                     }
 
@@ -227,7 +227,7 @@ public class Driver extends JPanel {
                                 imageLocation + "main/Images/dragon/dragonL" + 10
                                         + ".png");
                         g2d.drawImage(dragonLeftNormal.getImage(),
-                                player.getX() - 100, player.getY(),
+                                player.getX() - 50, player.getY(),
                                 this);
                     }
 
@@ -236,7 +236,7 @@ public class Driver extends JPanel {
                     // player.getHeight() - 117 + topMargin
                     if (oldX < newX) {
                         g2d.drawImage(dragonRight.getImage(),
-                                player.getX() - 100,
+                                player.getX() - 50,
                                 player.getY(), this);
                         dragonIsRight = true;
                         if (slowDownCounter % 24 == 0) {
@@ -251,7 +251,7 @@ public class Driver extends JPanel {
                     // left is enabled //
                     else if (oldX > newX) {
                         g2d.drawImage(dragonLeft.getImage(),
-                                player.getX() - 100, player.getY(),
+                                player.getX() - 50, player.getY(),
                                 this);
                         dragonIsRight = false;
                         if (slowDownCounter % 24 == 0) {
@@ -276,7 +276,7 @@ public class Driver extends JPanel {
                     ImageIcon dragonRightFire = new ImageIcon(imageLocation
                             + "main/Images/dragon/fireR" + fireRightCounter + ".png");
                     g2d.drawImage(dragonRightFire.getImage(), game
-                            .getPlayerList().get(0).getX() - 100,player.getY()
+                            .getPlayerList().get(0).getX() - 50,player.getY()
                             		, this);
                     if (fireRightCounter < 3 && slowDownCounter % 8 == 0) {
                         fireRightCounter++;
@@ -285,7 +285,7 @@ public class Driver extends JPanel {
                     ImageIcon dragonLeftFire = new ImageIcon(imageLocation
                             + "main/Images/dragon/fireL" + fireLeftCounter + ".png");
                     g2d.drawImage(dragonLeftFire.getImage(), game
-                            .getPlayerList().get(0).getX() - 100,player.getY(), this);
+                            .getPlayerList().get(0).getX() - 50,player.getY(), this);
                     if (fireLeftCounter < 3 && slowDownCounter % 8 == 0) {
                         fireLeftCounter++;
                     }

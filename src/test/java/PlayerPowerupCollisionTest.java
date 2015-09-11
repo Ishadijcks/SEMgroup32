@@ -19,7 +19,13 @@ public class PlayerPowerupCollisionTest {
 	@Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
-        		{ 100, 550, true }, { 1000, 0, false } });
+        		{ 35, 550, true }, { 161, 550, true },
+        		{ 34, 550, false }, { 162, 550, false },
+        		{ 36, 550, true }, { 160, 550, true },
+        		{ 50, 550, true }, { 146, 550, true },
+        		{ 35, 440, true }, { 35, 550, true },
+        		{ 35, 439, false }, { 35, 551, false},
+        		{ 35, 450, true }, { 35, 540, true} });
     }
 
     public Level l;
@@ -40,7 +46,6 @@ public class PlayerPowerupCollisionTest {
 
     @Test
     public void testCheckCollisionRope() {
-        l.checkCollisionRope();
         assertEquals(this.expected, l.checkPowerupCollision());
     }
 

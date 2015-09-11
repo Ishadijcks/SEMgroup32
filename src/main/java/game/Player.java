@@ -12,6 +12,8 @@ public class Player {
     private String name;
     private int x;
     private int y = Settings.getLevelHeight() - Settings.getPlayerHeight() + Settings.getTopMargin();
+    private int colY = y + 61;
+    private int colX;
     private int height = Settings.getPlayerHeight();
     private int width = Settings.getPlayerWidth();
     private int stepSize = Settings.getPlayerStepSize();
@@ -22,6 +24,7 @@ public class Player {
     public Player(String name, int x) {
         this.name = name;
         this.x = x;
+        this.colX = x - 50;
     }
 
     /**
@@ -67,12 +70,14 @@ public class Player {
         if (movingLeft) {
             if (x - stepSize > Settings.getLeftMargin() + 37) {
                 x -= stepSize;
+                colX -= stepSize;
             }
         }
 
         if (movingRight) {
             if (x + stepSize + width < Driver.game.getCurrentLevel().getWidth() + Settings.getLeftMargin()) {
                 x += stepSize;
+                colX += stepSize;
             }
         }
 
@@ -117,6 +122,14 @@ public class Player {
 
     public int getY() {
         return y;
+    }
+    
+    public int getCollisionX(){
+    	return this.colX;
+    }
+    
+    public int getCollisionY(){
+    	return this.colY;
     }
 
     public int getWidth() {

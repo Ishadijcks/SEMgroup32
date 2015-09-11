@@ -42,7 +42,6 @@ public class PlayerBubbleCollisionTest {
 
     @Test
     public void testCheckCollisionRope() {
-        l.checkCollisionRope();
         assertEquals(this.expected, l.checkCollisionPlayer());
     }
 

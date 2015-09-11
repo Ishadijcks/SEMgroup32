@@ -53,7 +53,7 @@ public class Level {
 
 
             if (bubble.getX() < player.getX() + 22 && bubble.getX() > player.getX() - 58) {
-                if (player.getY() + 61 <= bubble.getY()) {
+                if (player.getCollisionY() <= bubble.getY()) {
                     return true;
                 }
             }
@@ -66,26 +66,29 @@ public class Level {
      * 
      * @return -1 if there is no collision otherwise the index of the bubble
      */
-    public void checkCollisionRope() {
+    public boolean checkCollisionRope() {
         if (hasRope()) {
             for (int i = 0; i < bubbleList.size(); i++) {
                 // if the x of the rope and the bubble is the same
                 // then there is a chance the rope hits the bubble
                 // /// RADIUS NOT IN ACCOUNT JET
                 if (bubbleList.get(i).getX() <= rope.getX()) {
+                	System.out.println("DEZEKLOPT");
                     if (bubbleList.get(i).getX()
                             + bubbleList.get(i).getDiameter() >= rope.getX()) {
+                    	System.out.println("DEZE KLOPT OK");
                         if (bubbleList.get(i).getY()
                                 + bubbleList.get(i).getDiameter() >= rope
                                     .getY()) {
                             destroyBubble(i);
                             setRope(null);
-                            return;
+                            return true;
                         }
                     }
                 }
             }
         }
+        return false;
     }
 
     /**
@@ -97,11 +100,11 @@ public class Level {
         Player player1 = playerList.get(0);
         for (int i = 0; i < powerupList.size(); i++) {
             Powerup powerup = powerupList.get(i);
-
-            if (player1.getX() <= (powerup.getX() + powerup.getWidth())
-                    && (player1.getX() + player1.getWidth()) >= powerup.getX()
-                    && player1.getY() <= (powerup.getY() + powerup.getHeight())
-                    && (powerup.getY() + powerup.getHeight()) >= powerup.getY()) {
+            
+            if (player1.getCollisionX() <= (powerup.getX() + powerup.getWidth())
+                    && (player1.getCollisionX() + player1.getWidth()) >= powerup.getX()
+                    && player1.getCollisionY() <= (powerup.getY() + powerup.getHeight())
+                    && (player1.getY() + player1.getHeight()) >= powerup.getY()) {
                 playerList.get(0).setPowerup(powerupList.get(i));
                 powerupList.remove(i);
                 return true;

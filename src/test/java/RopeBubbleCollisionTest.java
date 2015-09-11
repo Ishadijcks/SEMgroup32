@@ -19,20 +19,20 @@ public class RopeBubbleCollisionTest {
 
     @Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] { { 20, 68, 2 }, { 29, 68, 2 },
-                { 38, 68, 2 }, { 20, 59, 2 }, { 20, 50, 2 }, { 20, 30, 2 },
-                { 24, 59, 2 }, { 35, 29, 2 }, { 19, 68, 1 }, { 20, 69, 1 },
-                { 19, 69, 1 }, { 39, 68, 1 }, { 38, 69, 1 }, { 39, 69, 1 },
-                { -10000, 20192, 1 }, { 100000, -129293, 1 } });
+        return Arrays.asList(new Object[][] { { 20, 68, true }, { 29, 68, true },
+                { 38, 68, true }, { 20, 59, true }, { 20, 50, true }, { 20, 30, true },
+                { 24, 59, true }, { 35, 29, true }, { 19, 68, false }, { 20, 69, false },
+                { 19, 69, false }, { 39, 68, false }, { 38, 69, false }, { 39, 69, false },
+                { -10000, 20192, false }, { 100000, -129293, false } });
     }
 
     public Level l;
     public Bubble bubble;
     public ArrayList<Bubble> bubbleList;
     public ArrayList<Player> p;
-    private int expected;
+    private boolean expected;
 
-    public RopeBubbleCollisionTest(int x, int y, int exp) {
+    public RopeBubbleCollisionTest(int x, int y, boolean exp) {
         bubble = new Bubble(18, 20, 50, true, true);
         p = new ArrayList<Player>();
         l = new Level(p);
@@ -45,8 +45,10 @@ public class RopeBubbleCollisionTest {
 
     @Test
     public void testCheckCollisionRope() {
-        l.checkCollisionRope();
-        assertEquals(this.expected, l.getBubbleList().size());
+    	System.out.println(bubble.getY());
+    	System.out.println(bubble.getDiameter());
+    	System.out.println(l.getRope().getY());
+        assertEquals(this.expected, l.checkCollisionRope());
     }
 
 }
