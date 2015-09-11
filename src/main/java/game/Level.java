@@ -17,7 +17,6 @@ public class Level {
      * Constructor, initializes the bubble- and playerList
      */
     public Level(ArrayList<Player> playerList) {
-        System.out.println("level init");
         this.bubbleList = new ArrayList<Bubble>();
         this.playerList = playerList;
         this.powerupList = new ArrayList<Powerup>();

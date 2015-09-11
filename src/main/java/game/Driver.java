@@ -473,8 +473,7 @@ public class Driver extends JPanel {
 
                 for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
                     Bubble bubble = curLevel.getBubbleList().get(i);
-                    bubble.move(curLevel.getWidth() + Settings.getLeftMargin(),
-                            curLevel.getHeight() + Settings.getTopMargin());
+                    bubble.move();
                 }
 
                 for (int i = 0; i < curLevel.getPowerupList().size(); i++) {

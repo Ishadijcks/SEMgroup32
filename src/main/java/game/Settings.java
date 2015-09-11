@@ -38,7 +38,7 @@ public class Settings {
 
 
     private static int topMargin = 50;
-    private static int leftMargin;
+    private static int leftMargin = 0;
 
     public static void setLeftMargin(int left ) {
         leftMargin = left;
