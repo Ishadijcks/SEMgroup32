@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class PlayerTest {
 
-    Player player = new Player("Isha", 500, 10);
+    Player player = new Player("Isha", 500);
 
     @Test
     public void testPlayerConstructor() {

@@ -29,7 +29,7 @@ public class GameCreator {
         game.addPlayer(player1);
         game.addPlayer(player2);
         LevelCreator.setPlayerList(game.getPlayerList());
-        System.out.println(game.getPlayerList().size());
+     
         game.addLevel(LevelCreator.getLevel1());
         return game;
     }

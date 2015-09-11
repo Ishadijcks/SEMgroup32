@@ -28,7 +28,7 @@ public class GameTest {
 		p = new ArrayList<Player>();
 		l = new Level(p);
 		k = new Level(p);
-		player = new Player("TestPlayer", 1, 1);
+		player = new Player("TestPlayer", 1);
 	}
 
 	@Test
@@ -37,10 +37,6 @@ public class GameTest {
 		assertFalse(game.inProgress());
 	}
 
-	@Test
-	public void testGameLoop() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testAddLevel() {
@@ -92,22 +88,8 @@ public class GameTest {
 		assertFalse(game.inProgress());
 		assertEquals(1, game.getCurrentLevelInt());
 	}
-	
-	@Test
-	public void testGameWonTwoLevels() {
-		game.addLevel(l);
-		game.addLevel(k);
-		game.gameStart();
-		assertTrue(game.inProgress());
-		game.gameWon();
-		currentLevel++;
-		assertFalse(game.inProgress());
-		game.gameStart();
-		assertTrue(game.inProgress());
-		game.gameWon();
-		assertEquals(2, game.getCurrentLevelInt());
-		
-	}
+
+
 	@Test
 	public void testAddPlayer() {
 		assertFalse(game.getPlayerList().contains(player));

@@ -126,7 +126,7 @@ public class Game {
      * Reset the level if you lost a life
      */
     public void resetLevel() {
-        levelList.get(currentLevel).resetLevel();
+        levelList.set(currentLevel-1, LevelCreator.getLevel(currentLevel));
         loseLife();
 
     }

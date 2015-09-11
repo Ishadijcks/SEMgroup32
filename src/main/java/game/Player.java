@@ -11,7 +11,9 @@ import javax.swing.JLabel;
 public class Player {
     private String name;
     private int x;
-    private int y = Settings.getLevelHeight() - Settings.getPlayerHeight();
+    private int y = Settings.getLevelHeight() - Settings.getPlayerHeight() + Settings.getTopMargin();
+    private int colY = y + 61;
+    private int colX;
     private int height = Settings.getPlayerHeight();
     private int width = Settings.getPlayerWidth();
     private int stepSize = Settings.getPlayerStepSize();
@@ -19,9 +21,10 @@ public class Player {
     private boolean movingRight = false;
     private Powerup powerup = null;
 
-    public Player(String name, int x, int y) {
+    public Player(String name, int x) {
         this.name = name;
         this.x = x;
+        this.colX = x - 50;
     }
 
     /**
@@ -65,14 +68,16 @@ public class Player {
         }
 
         if (movingLeft) {
-            if (x - stepSize > Settings.getLeftMargin() + 37) {
+            if (x - stepSize > Settings.getLeftMargin()) {
                 x -= stepSize;
+                colX -= stepSize;
             }
         }
 
         if (movingRight) {
-            if (x + stepSize + width < Settings.getLevelWidth() + Settings.getLeftMargin()) {
+            if (x + stepSize + width < Settings.getLevelWidth() + Settings.getLeftMargin() + 37) {
                 x += stepSize;
+                colX += stepSize;
             }
         }
 
@@ -126,6 +131,14 @@ public class Player {
     public int getY() {
         return y;
     }
+    
+    public int getCollisionX(){
+    	return this.colX;
+    }
+    
+    public int getCollisionY(){
+    	return this.colY;
+    }
 
     public int getWidth() {
         return width;
@@ -142,6 +155,10 @@ public class Player {
     public void removePowerUp()
     {
         this.powerup = null;
+    }
+    
+    public boolean hasPowerup(){
+    	return this.powerup != null;
     }
 
 }

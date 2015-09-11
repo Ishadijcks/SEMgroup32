@@ -45,6 +45,7 @@ public class Bubble {
         } else {
             this.diameter = Settings.getBubbleDefaultDiameter();
         }
+        
         this.x = x;
         this.y = y;
 
@@ -113,9 +114,7 @@ public class Bubble {
         } else {
             x -= speedX;
         }
-
-        if (lastUpSpeed < 0.5 && !directionV
-                && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
+        if (lastUpSpeed < 0.5 && !directionV && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
             timer += 0.4;
         }
         if (timer > 5) {

@@ -11,8 +11,8 @@ public class Settings {
     private static int levelWidth = 850;
     private static int levelHeight = 500;
 
-    private static int playerHeight = 40;
-    private static int playerWidth = 20;
+    private static int playerHeight = 161;
+    private static int playerWidth = 111;
     private static int playerStepSize = 2;
     private static int playerPowerupStepSize = 3;
 
@@ -29,7 +29,7 @@ public class Settings {
     private static int smallestBubbleSize = 5;
     
     private static int powerupSpeed = 2;
-    private static int powerupChance = 8;
+    private static int powerupChance = 100;
     private static int powerupWidth = 15;
     private static int powerupHeight = 10;
 

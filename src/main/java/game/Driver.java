@@ -191,13 +191,13 @@ public class Driver extends JPanel {
                 g2d.setColor(dragonRed);
 
                 g2d.drawString(player.getName(), player.getX() - 25,
-                        curLevel.getHeight() - player.getHeight() - 70
+                        player.getY() - 70
                                 + topMargin);
 
                 g2d.setColor(Color.BLACK);
 
                 // g2d.fillRect(player.getX(),
-                // curLevel.getHeight() - player.getHeight() + 2,
+                // player.getY() + 2,
                 // player.getWidth(), player.getHeight());
 
                 // Get the images of the left flying or right flying dragon
@@ -227,8 +227,7 @@ public class Driver extends JPanel {
                                 imageLocation + "main/Images/dragon/dragonR" + 10
                                         + ".png");
                         g2d.drawImage(dragonRightNormal.getImage(),
-                                player.getX() - 100, curLevel.getHeight()
-                                        - player.getHeight() - 119 + topMargin,
+                                player.getX() - 50, player.getY(),
                                 this);
                     }
 
@@ -239,8 +238,7 @@ public class Driver extends JPanel {
                                 imageLocation + "main/Images/dragon/dragonL" + 10
                                         + ".png");
                         g2d.drawImage(dragonLeftNormal.getImage(),
-                                player.getX() - 100, curLevel.getHeight()
-                                        - player.getHeight() - 119 + topMargin,
+                                player.getX() - 50, player.getY(),
                                 this);
                     }
 
@@ -249,8 +247,8 @@ public class Driver extends JPanel {
                     // player.getHeight() - 117 + topMargin
                     if (oldX < newX) {
                         g2d.drawImage(dragonRight.getImage(),
-                                player.getX() - 100,
-                                curLevel.getHeight() - 117, this);
+                                player.getX() - 50,
+                                player.getY(), this);
                         dragonIsRight = true;
                         if (slowDownCounter % 24 == 0) {
                             animationRightCounter++;
@@ -264,8 +262,7 @@ public class Driver extends JPanel {
                     // left is enabled //
                     else if (oldX > newX) {
                         g2d.drawImage(dragonLeft.getImage(),
-                                player.getX() - 100, curLevel.getHeight()
-                                        - player.getHeight() - 117 + topMargin,
+                                player.getX() - 50, player.getY(),
                                 this);
                         dragonIsRight = false;
                         if (slowDownCounter % 24 == 0) {
@@ -290,10 +287,8 @@ public class Driver extends JPanel {
                     ImageIcon dragonRightFire = new ImageIcon(imageLocation
                             + "main/Images/dragon/fireR" + fireRightCounter + ".png");
                     g2d.drawImage(dragonRightFire.getImage(), game
-                            .getPlayerList().get(0).getX() - 100,
-                            curLevel.getHeight()
-                                    - game.getPlayerList().get(0).getHeight()
-                                    - 70, this);
+                            .getPlayerList().get(0).getX() - 50,player.getY()
+                            		, this);
                     if (fireRightCounter < 3 && slowDownCounter % 8 == 0) {
                         fireRightCounter++;
                     }
@@ -301,10 +296,7 @@ public class Driver extends JPanel {
                     ImageIcon dragonLeftFire = new ImageIcon(imageLocation
                             + "main/Images/dragon/fireL" + fireLeftCounter + ".png");
                     g2d.drawImage(dragonLeftFire.getImage(), game
-                            .getPlayerList().get(0).getX() - 100,
-                            curLevel.getHeight()
-                                    - game.getPlayerList().get(0).getHeight()
-                                    - 70, this);
+                            .getPlayerList().get(0).getX() - 50,player.getY(), this);
                     if (fireLeftCounter < 3 && slowDownCounter % 8 == 0) {
                         fireLeftCounter++;
                     }
@@ -379,7 +371,7 @@ public class Driver extends JPanel {
                     curLevel.getHeight() + 51);
             g2d.setColor(Color.BLACK);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("First time");
+           
         }
     }
 
@@ -561,8 +553,8 @@ public class Driver extends JPanel {
         URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
         String currentLocation = location.getFile();   
 
-        Player isha = new Player("Isha", 350, 10);
-        Player tim = new Player("Tim", 80, 10);
+        Player isha = new Player("Isha", 350);
+        Player tim = new Player("Tim", 80);
 
         game = GameCreator.createSinglePlayer(isha);
 

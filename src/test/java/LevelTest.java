@@ -41,24 +41,8 @@ public class LevelTest {
 		assertTrue(l.getPowerupList().equals(plist));
 	}
 
-	@Test
-	public void testCheckCollisionPlayer() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testCheckPowerupCollision() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testDestroyBubble() {
-		Bubble bub = new Bubble(8,2,2,true,true);
-		l.addBubble(bub);
-		l.destroyBubble(0);
-		assertTrue(l.getBubbleList().isEmpty());
-		
-	}
 	
 	@Test
 	public void testDestroyBubbleBig() {
@@ -68,16 +52,26 @@ public class LevelTest {
 	}
 
 	@Test
-	public void testGeneratePowerup() {
+	public void testGeneratePowerupSpeed() {
 		Powerup pow = new Powerup("speed", 0, 0);
-		Powerup pow2 = l.generatePowerup(0, 0);
+		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(1, 1));
+		assertTrue(pow.equals(pow2));
+	}
+	
+	@Test
+	public void testGeneratePowerupLife() {
+		Powerup pow = new Powerup("life", 0, 0);
+		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(2, 2));
+		assertTrue(pow.equals(pow2));
+	}
+	
+	@Test
+	public void testGeneratePowerupDefault() {
+		Powerup pow = new Powerup("speed", 0, 0);
+		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(1000, 1000000));
 		assertTrue(pow.equals(pow2));
 	}
 
-	@Test
-	public void testResetLevel() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testAddBubble() {
