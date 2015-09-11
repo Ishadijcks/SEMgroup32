@@ -73,10 +73,10 @@ public class Level {
                 // then there is a chance the rope hits the bubble
                 // /// RADIUS NOT IN ACCOUNT JET
                 if (bubbleList.get(i).getX() <= rope.getX()) {
-                	System.out.println("DEZEKLOPT");
+                	
                     if (bubbleList.get(i).getX()
                             + bubbleList.get(i).getDiameter() >= rope.getX()) {
-                    	System.out.println("DEZE KLOPT OK");
+                    	
                         if (bubbleList.get(i).getY()
                                 + bubbleList.get(i).getDiameter() >= rope
                                     .getY()) {
@@ -141,7 +141,7 @@ public class Level {
         }
 
         if (bubbleList.isEmpty()) {
-            System.out.println("Yay you won!!!!");
+          
         }
 
     }

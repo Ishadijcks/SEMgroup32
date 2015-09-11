@@ -45,9 +45,6 @@ public class RopeBubbleCollisionTest {
 
     @Test
     public void testCheckCollisionRope() {
-    	System.out.println(bubble.getY());
-    	System.out.println(bubble.getDiameter());
-    	System.out.println(l.getRope().getY());
         assertEquals(this.expected, l.checkCollisionRope());
     }
 

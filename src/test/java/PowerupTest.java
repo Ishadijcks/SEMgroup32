@@ -33,17 +33,6 @@ public class PowerupTest {
 
 	}
 
-	@Test
-	public void testMove() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testDecreaseFramesLeft() {
-			int framesLeft = 5;
-	powerup.decreaseFramesLeft();
-	assertEquals(framesLeft, 4);
-	}
 	
 	@Test
 	public void testIsActive() {

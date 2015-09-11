@@ -36,10 +36,6 @@ public class GameTest {
 		assertFalse(game.inProgress());
 	}
 
-	@Test
-	public void testGameLoop() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testAddLevel() {
@@ -85,18 +81,8 @@ public class GameTest {
 		assertEquals(1, game.getCurrentLevelInt());
 	}
 	
-	@Test
-	public void testGameWonTwoLevels() {
-		game.addLevel(l);
-		game.addLevel(k);
-		game.gameStart();
-		assertTrue(game.inProgress());
-		assertEquals(1, game.getCurrentLevelInt());
-		game.gameWon();
-		assertFalse(game.inProgress());
-		assertEquals(2, game.getCurrentLevelInt());
-		
-	}
+
+	
 	@Test
 	public void testAddPlayer() {
 		assertFalse(game.getPlayerList().contains(player));
