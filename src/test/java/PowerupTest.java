@@ -1,6 +1,8 @@
 
 import static org.junit.Assert.*;
+import game.Powerup;
 
+import org.junit.Before;
 import org.junit.Test;
 
 
@@ -14,7 +16,7 @@ public class PowerupTest {
 	public void init() {
 		x = 3;
 		y = 5;	
-		String name = name;
+		String name = "speed";
 			
 		powerup = new Powerup(name, x, y);		
 	}
@@ -31,7 +33,7 @@ public class PowerupTest {
 	
 	@Test
 	public void testPowerup() {
-		assertTrue(powerup != null);
+		fail("Not yet implemented");
 	}
 
 	@Test
@@ -41,11 +43,7 @@ public class PowerupTest {
 
 	@Test
 	public void testDecreaseFramesLeft() {
-		for(int framesLeft = 1; framesLeft < 10; framesLeft++){
-			decreaseFramesLeft();
-			assertTrue(framesLeft.equals(framesLeft-1));
-		}		
-		
+		fail("asd");
 	}
 
 	@Test
