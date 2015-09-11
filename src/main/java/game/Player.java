@@ -68,14 +68,14 @@ public class Player {
         }
 
         if (movingLeft) {
-            if (x - stepSize > Settings.getLeftMargin() + 37) {
+            if (x - stepSize > Settings.getLeftMargin()) {
                 x -= stepSize;
                 colX -= stepSize;
             }
         }
 
         if (movingRight) {
-            if (x + stepSize + width < Settings.getLevelWidth() + Settings.getLeftMargin()) {
+            if (x + stepSize + width < Settings.getLevelWidth() + Settings.getLeftMargin() + 37) {
                 x += stepSize;
                 colX += stepSize;
             }

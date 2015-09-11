@@ -52,7 +52,10 @@ public class Level {
             Player player = playerList.get(0);
 
 
-            if (bubble.getX() < player.getX() + 22 && bubble.getX() > player.getX() - 58) {
+            if (player.getX() <= (bubble.getX() + bubble.getDiameter())
+                    && (player.getCollisionX() + player.getWidth()) >= bubble.getX()
+                    && player.getCollisionY() <= (bubble.getY() + bubble.getDiameter())
+                    && (player.getY() + player.getHeight()) >= bubble.getY()) {
                 if (player.getCollisionY() <= bubble.getY()) {
                     return true;
                 }
@@ -73,10 +76,8 @@ public class Level {
                 // then there is a chance the rope hits the bubble
                 // /// RADIUS NOT IN ACCOUNT JET
                 if (bubbleList.get(i).getX() <= rope.getX()) {
-                	System.out.println("DEZEKLOPT");
                     if (bubbleList.get(i).getX()
                             + bubbleList.get(i).getDiameter() >= rope.getX()) {
-                    	System.out.println("DEZE KLOPT OK");
                         if (bubbleList.get(i).getY()
                                 + bubbleList.get(i).getDiameter() >= rope
                                     .getY()) {
