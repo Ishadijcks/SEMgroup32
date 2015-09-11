@@ -86,17 +86,17 @@ public class Powerup {
         String imageLocation = location.getFile();
         if(name.equals("speed"))
         {
-            ImageIcon powerupspeed = new ImageIcon(imageLocation + "Images/Powerups/puspeed.png");
+            ImageIcon powerupspeed = new ImageIcon(imageLocation + "main/Images/Powerups/puspeed.png");
             return powerupspeed;
         }
         if(name.equals("life"))
         {
-            ImageIcon poweruplife = new ImageIcon(imageLocation + "Images/Powerups/pulife.png");
+            ImageIcon poweruplife = new ImageIcon(imageLocation + "main/Images/Powerups/pulife.png");
             return poweruplife;
         }
         if(name.equals("ice"))
         {
-            ImageIcon powerupice = new ImageIcon(imageLocation + "Images/Powerups/puice.png");
+            ImageIcon powerupice = new ImageIcon(imageLocation + "main/Images/Powerups/puice.png");
             return powerupice;
         }
         return null;

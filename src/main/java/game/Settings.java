@@ -29,7 +29,7 @@ public class Settings {
     private static int smallestBubbleSize = 5;
     
     private static int powerupSpeed = 2;
-    private static int powerupChance = 8;
+    private static int powerupChance = 100;
     private static int powerupWidth = 15;
     private static int powerupHeight = 10;
 

@@ -18,6 +18,7 @@ public class Player {
     private boolean movingLeft = false;
     private boolean movingRight = false;
     private Powerup powerup = null;
+    private static boolean iceRope = false;
 
     public Player(String name, int x, int y) {
         this.name = name;
@@ -95,10 +96,27 @@ public class Player {
             int ropeY = Driver.game.getCurrentLevel().getHeight()
                     - height;
             int ropeX = x + width / 2;
-            Rope rope = new Rope(ropeX, ropeY);
-
-            Driver.game.getCurrentLevel()
-                    .setRope(rope);
+            if(powerup != null)
+            {
+                if(powerup.getName().equals("ice"))
+                {
+                    if(powerup.isActive())
+                    {
+                        iceRope = true;
+                        Rope rope = new Rope(ropeX, ropeY, iceRope);
+                        Driver.game.getCurrentLevel()
+                        .setRope(rope);
+                        return;
+                    }
+                    else if(!(powerup.isActive()))
+                    {
+                        iceRope = false;
+                    }
+                }
+            }
+            Rope rope = new Rope(ropeX, ropeY, false);
+            Driver.game.getCurrentLevel().setRope(rope);
+            
         }
     }
 
@@ -109,6 +127,10 @@ public class Player {
 
     public void setPowerup(Powerup powerup) {
         this.powerup = powerup;
+        if(powerup.getName().equals("ice"))
+        {
+            iceRope = true;
+        }
     }
 
     public boolean getMovingLeft(){

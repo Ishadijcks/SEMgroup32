@@ -97,32 +97,32 @@ public class Driver extends JPanel {
                         bubble.getDiameter() + 2, bubble.getDiameter() + 2);
             }
 
-            int rInt127to153 = randomInt(127, 153);
-            int rInt51to102 = randomInt(51, 102);
-            int rInt69to240 = randomInt(69, 240);
-            int rInt255to8 = randomInt(69, 240);
-            int rInt6to11 = randomInt(6, 11);
-
-            Color fire1 = new Color(255, rInt127to153, 0);
-            Color fire2 = new Color(255, rInt51to102, 0);
-            Color fire3 = new Color(255, rInt69to240, 0);
-            Color fire4 = new Color(250, rInt255to8, rInt6to11);
-
-            Stroke stroke1 = new BasicStroke(1f);
-            Stroke stroke2 = new BasicStroke(3f);
-            Stroke stroke3 = new BasicStroke(5f);
-            Stroke stroke4 = new BasicStroke(7f);
-
-            Color[] colors = { fire4, fire3, fire2, fire1 };
-            Stroke[] strokes = { stroke4, stroke3, stroke2, stroke1 };
-
-            g2d.setColor(fire4);
-            g2d.setStroke(stroke4);
-
             // Draw the ropes
             if (curLevel.hasRope() && !(iceRope)) {
                 shootRope = true;
                 ropeDurationCounter--;
+                
+                int rInt127to153 = randomInt(127, 153);
+                int rInt51to102 = randomInt(51, 102);
+                int rInt69to240 = randomInt(69, 240);
+                int rInt255to8 = randomInt(69, 240);
+                int rInt6to11 = randomInt(6, 11);
+
+                Color fire1 = new Color(255, rInt127to153, 0);
+                Color fire2 = new Color(255, rInt51to102, 0);
+                Color fire3 = new Color(255, rInt69to240, 0);
+                Color fire4 = new Color(250, rInt255to8, rInt6to11);
+
+                Stroke stroke1 = new BasicStroke(1f);
+                Stroke stroke2 = new BasicStroke(3f);
+                Stroke stroke3 = new BasicStroke(5f);
+                Stroke stroke4 = new BasicStroke(7f);
+
+                Color[] colors = { fire4, fire3, fire2, fire1 };
+                Stroke[] strokes = { stroke4, stroke3, stroke2, stroke1 };
+
+                g2d.setColor(fire4);
+                g2d.setStroke(stroke4);
 
                 if (dragonIsRight) {
                     if (!(addOnce)) {
@@ -178,6 +178,27 @@ public class Driver extends JPanel {
             if (curLevel.hasRope() && iceRope) {
                 shootRope = true;
                 ropeDurationCounter--;
+                
+                int rInt219to255 = randomInt(219, 255);
+                int rInt180to102 = randomInt(180, 236);
+                int rInt70to133 = randomInt(70, 133);
+                int rInt6to33 = randomInt(6, 11);
+
+                Color fire1 = new Color(0, rInt219to255, 255);
+                Color fire2 = new Color(36, rInt180to102, 235);
+                Color fire3 = new Color(29, rInt70to133, 179);
+                Color fire4 = new Color(14, rInt6to33, 120);
+
+                Stroke stroke1 = new BasicStroke(1f);
+                Stroke stroke2 = new BasicStroke(3f);
+                Stroke stroke3 = new BasicStroke(5f);
+                Stroke stroke4 = new BasicStroke(7f);
+
+                Color[] colors = { fire4, fire3, fire2, fire1 };
+                Stroke[] strokes = { stroke4, stroke3, stroke2, stroke1 };
+
+                g2d.setColor(fire4);
+                g2d.setStroke(stroke4);
 
                 if (dragonIsRight) {
                     if (!(addOnce)) {
@@ -542,10 +563,10 @@ public class Driver extends JPanel {
                         game.getLife();
                         game.getPlayerList().get(0).removePowerUp();
                     }
-                    if (game.getPlayerList().get(0).getPowerup().getName()
+                    else if (game.getPlayerList().get(0).getPowerup().getName()
                             .equals("ice")) {
                         iceRope = true;
-                        game.getPlayerList().get(0).removePowerUp();
+                        //game.getPlayerList().get(0).removePowerUp();
                     }
                 }
 

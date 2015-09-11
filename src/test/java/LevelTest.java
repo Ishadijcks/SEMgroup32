@@ -95,7 +95,7 @@ public class LevelTest {
 
 	@Test
 	public void testSetRope() {
-		Rope r = new Rope(0, 0);
+		Rope r = new Rope(0, 0, false);
 		assertNull(l.getRope());
 		l.setRope(r);
 		assertEquals(r, l.getRope());

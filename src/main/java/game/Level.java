@@ -178,12 +178,14 @@ public class Level {
     }
 
     public Powerup generatePowerup(int x, int y) {
-        int randomNumber = randomInt(1, 2);
+        int randomNumber = randomInt(1, 3);
         switch (randomNumber) {
         case 1:
             return new Powerup("speed", x, y);
         case 2:
             return new Powerup("life", x, y);
+        case 3:
+            return new Powerup("ice", x, y);
         default:
             return new Powerup("speed", x, y);
         }
