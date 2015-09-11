@@ -87,7 +87,7 @@ public class Bubble {
     }
 
     public boolean correctDiameter(int diameter) {
-        return diameter > 0 && diameter <200;
+        return diameter > 0 && diameter < 200;
     }
 
     public boolean correctX(double x, int diameter) {
@@ -106,38 +106,17 @@ public class Bubble {
      */
     public void move(int width, int height) {
 
-        if (diameter == 4) {
-            G = 2.0;
-            maxheight = 120;
-            speedX = 0.5;
-        }
-        if (diameter == 8) {
-            G = 2.1;
-            maxheight = 95;
-            speedX = 0.6;
-        }
-        if (diameter == 16) {
-            G = 2.3;
-            maxheight = 75;
-            speedX = 0.7;
-        }
-        if (diameter == 32) {
-            G = 2.5;
-            maxheight = 56;
-            speedX = 0.8;
-        }
-
-        if (diameter == 64) {
-            G = 2.8;
-            maxheight = 40;
-            speedX = 0.9;
-        }
-
-        if (x + diameter > width && directionH || x <= Settings.getLeftMargin() && !directionH) {
+        G = calculateG(diameter);
+        maxheight = calculateMaxHeight(diameter);
+        speedX = calculateSpeedX(diameter);
+        
+        if (x + diameter > width && directionH || x <= Settings.getLeftMargin()
+                && !directionH) {
             bounceH();
         }
 
-        if (y + diameter > height && directionV || y <= Settings.getTopMargin() && !directionV) {
+        if (y + diameter > height && directionV || y <= Settings.getTopMargin()
+                && !directionV) {
             bounceV();
         }
 
@@ -174,6 +153,59 @@ public class Bubble {
             y -= lastUpSpeed;
         }
 
+    }
+
+    public double calculateG(int diameter) {
+        switch (diameter) {
+        case 4:
+            return 2.0;
+        case 8:
+            return 2.1;
+        case 16:
+            return 2.3;
+        case 32:
+            return 2.5;
+        case 64:
+            return 2.8;
+        default:
+            return 3;
+        }
+
+    }
+
+    public int calculateMaxHeight(int diameter) {
+        switch (diameter) {
+        case 4:
+            return 120;
+        case 8:
+            return 95;
+        case 16:
+            return 75;
+        case 32:
+            return 56;
+        case 64:
+            return 40;
+        default:
+            return 100;
+
+        }
+    }
+
+    public double calculateSpeedX(int diameter) {
+        switch (diameter) {
+        case 4:
+            return 0.5;
+        case 8:
+            return 0.6;
+        case 16:
+            return 0.7;
+        case 32:
+            return 0.8;
+        case 64:
+            return 0.9;
+        default:
+            return 0.75;
+        }
     }
 
     /**
