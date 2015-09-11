@@ -1,84 +1,120 @@
-
 import static org.junit.Assert.*;
+import game.Driver;
+import game.GameCreator;
+import game.Player;
+import game.Powerup;
+import game.Settings;
 
 import org.junit.Test;
 
-
 public class PlayerTest {
 
-	@Test
-	public void testPlayer() {
-		fail("Not yet implemented");
-	}
+    Player player = new Player("Isha", 500);
 
-	@Test
-	public void testMovingLeft() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testPlayerConstructor() {
+        assertEquals("Isha", player.getName());
+        assertEquals(500, player.getX());
+        assertEquals(Settings.getPlayerHeight(), player.getY());
+        fail("Floris is langzaam");
+    }
 
-	@Test
-	public void testStopMovingLeft() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testMovingLeft() {
+        assertFalse(player.getMovingLeft());
+        player.movingLeft();
+        assertTrue(player.getMovingLeft());
+    }
 
-	@Test
-	public void testMovingRight() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testMovingRight() {
+        assertFalse(player.getMovingRight());
+        player.movingRight();
+        assertTrue(player.getMovingRight());
+    }
 
-	@Test
-	public void testStopMovingRight() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testStopMovingLeft() {
+        player.movingLeft();
+        assertTrue(player.getMovingLeft());
+        player.stopMovingLeft();
+        assertFalse(player.getMovingLeft());
+    }
 
-	@Test
-	public void testMove() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testStopMovingRight() {
+        player.movingRight();
+        assertTrue(player.getMovingRight());
+        player.stopMovingRight();
+        assertFalse(player.getMovingRight());
+    }
 
-	@Test
-	public void testShootRope() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testMoveLeft() {
+        int x = player.getX();
+        player.movingLeft();
+        player.move();
+        assertEquals(x - Settings.getPlayerStepSize(), player.getX());
+    }
 
-	@Test
-	public void testGetName() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testMoveRight() {
+        int x = player.getX();
+        player.movingRight();
+        player.move();
+        assertEquals(x + Settings.getPlayerStepSize(), player.getX());
+    }
 
-	@Test
-	public void testSetPowerup() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testSetPowerup() {
+        player.setPowerup(new Powerup("speed", 100, 60));
+        assertTrue(player.getPowerup().getName().equals("speed"));
+    }
 
-	@Test
-	public void testGetX() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testRemovePowerup() {
+        player.setPowerup(new Powerup("speed", 100, 60));
+        assertTrue(player.getPowerup().getName().equals("speed"));
+        player.removePowerUp();
+        assertEquals(null, player.getPowerup());
+    }
 
-	@Test
-	public void testGetY() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testMovePowerupLeft() {
+        player.setPowerup(new Powerup("speed", 100, 60));
+        int x = player.getX();
+        player.movingLeft();
+        player.move();
+        assertEquals(x - Settings.getPlayerPowerupStepSize(), player.getX());
+    }
 
-	@Test
-	public void testGetWidth() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testMovePowerupRight() {
+        player.setPowerup(new Powerup("speed", 100, 60));
+        int x = player.getX();
+        player.movingRight();
+        player.move();
+        assertEquals(x + Settings.getPlayerPowerupStepSize(), player.getX());
+    }
 
-	@Test
-	public void testGetHeight() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testShootRope() {
+        Driver.game = GameCreator.createSinglePlayer(player);
+        assertFalse(Driver.game.getCurrentLevel()
+                .hasRope());
+        player.shootRope();
+        assertTrue(Driver.game.getCurrentLevel()
+                .hasRope());
+    }
 
-	@Test
-	public void testGetImage() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testGetWidth() {
+        assertEquals(Settings.getPlayerWidth(), player.getWidth());
+    }
 
-	@Test
-	public void testGetPowerup() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testGetHeight() {
+        assertEquals(Settings.getPlayerHeight(), player.getHeight());
+    }
 
 }
