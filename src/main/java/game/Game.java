@@ -39,6 +39,19 @@ public class Game {
             levelList.add(level);
         }
     }
+    /**
+     * Add score to the players score
+     */
+    public void addScore(int score){
+        this.score += score;
+    }
+
+    /**
+     * Add score to the players score
+     */
+    public int getScore(){
+       return score;
+    }
 
     /**
      * If the game is paused, start the game

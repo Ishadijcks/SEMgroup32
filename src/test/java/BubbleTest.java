@@ -19,180 +19,84 @@ import org.junit.Test;
 
 public class BubbleTest {
 
-    public double x;
-    public double y;
-    public Bubble bubble;
-
-    @Before
-    public void init() {
-        x = 2;
-        y = 2;
-        int diameter = 8;
-
-        bubble = new Bubble(diameter, x, y, true, true);
-    }
 
     @Test
     public void testBubbleDefault() {
-        int diameter = 10000;
-        int x = -10;
-        int y = 100000;
+        Bubble bub = new Bubble(8, 10, 10, true, true);
+        
+        assertTrue(bub.calculateG(-10) ==  3);
+        assertTrue(bub.calculateMaxHeight(-10) ==  100);
+        assertTrue(bub.calculateSpeedX(-10) ==  0.75);
+        assertTrue(bub.getColor().equals(Settings.getDragonRed()));
+        
+    }
 
-        Bubble bub = new Bubble(diameter, x, y, true, true);
-
-        assertEquals(Settings.getBubbleDefaultDiameter(), bub.getDiameter());
-        assertEquals(Settings.getBubbleDefaultX(), bub.getX());
-        assertEquals(Settings.getBubbleDefaultY(), bub.getY());
-        assertEquals(Color.MAGENTA, bub.getColor());
+    @Test
+    public void testBubbleSetters() {
+        Bubble bub = new Bubble(8, 10, 10, true, true);
         assertTrue(bub.isDirectionH());
         assertTrue(bub.isDirectionV());
+        bub.setDirectionH(false);
+        bub.setDirectionV(false);
+        assertFalse(bub.isDirectionH());
+        assertFalse(bub.isDirectionV());
+        
     }
 
     @Test
-    public void testBubble8() {
-        int diameter = 8;
-
-        Bubble bub = new Bubble(diameter, x, y, true, true);
-        assertEquals(Settings.getDragonRed(), bub.getColor());
+    public void testBounceX() {
+        Bubble bub = new Bubble(4, Settings.getLeftMargin()+Settings.getLevelWidth()-5, Settings.getTopMargin()+Settings.getLevelHeight(), true, true);
+        assertTrue(bub.isDirectionH());
+        
+        for(int i = 0; i<6; i++){
+        bub.move();
+        }
+        assertFalse(bub.isDirectionH());
+      
+    }
+    
+    @Test
+    public void testBounceY() {
+        Bubble bub = new Bubble(4, Settings.getLeftMargin(), Settings.getTopMargin()+Settings.getLevelHeight()-5, true, true);
+        assertTrue(bub.isDirectionV());
+        for(int i = 0; i<100; i++){
+        bub.move();
+        }
+        assertFalse(bub.isDirectionV());
+      
+    }
+    
+    @Test
+    public void testBounceMaxHeight() {
+        Bubble bub = new Bubble(16, Settings.getLeftMargin(), 75+5, true, false);
+        System.out.println("Y:"+bub.getY());
+        assertFalse(bub.isDirectionV());
+        for(int i = 0; i<100; i++){
+        bub.move();
+        }
+        assertTrue(bub.isDirectionV());
+      
     }
 
     @Test
-    public void testBubble16() {
-        int diameter = 16;
-
-        Bubble bub = new Bubble(diameter, x, y, true, true);
-
-        assertEquals(Color.BLACK, bub.getColor());
-        assertEquals(diameter, bub.getDiameter());
+    public void testMove2() {
+        Bubble bub = new Bubble(4, Settings.getLeftMargin(), Settings.getTopMargin()+Settings.getLevelHeight(), true, true);
+        System.out.println("Margin: "+ Settings.getLeftMargin());
+        System.out.println("X: "+bub.getX());
+        bub.move();
+        bub.move();
+        bub.move();
+        bub.move();
+        bub.move();
+        bub.move();
+        
+      
     }
-
-    @Test
-    public void testBubble32() {
-        int diameter = 32;
-
-        Bubble bub = new Bubble(diameter, x, y, true, true);
-
-        assertEquals(Color.GREEN, bub.getColor());
-    }
-
-    @Test
-    public void testBubble64() {
-        int diameter = 64;
-
-        Bubble bub = new Bubble(diameter, x, y, true, true);
-
-        assertEquals(Color.CYAN, bub.getColor());
-    }
-
-    @Test
-    public void testBubble128() {
-        int diameter = 128;
-
-        Bubble bub = new Bubble(diameter, x, y, true, true);
-
-        assertEquals(Color.PINK, bub.getColor());
-
-    }
-
-    @Test
-    public void testBubbleNegative() {
-        int diameter = -8;
-
-        Bubble bub = new Bubble(diameter, x, y, true, true);
-        assertEquals(16, bub.getDiameter());
-    }
-
-    @Test
-    public void testMove4() {
-        int diameter = 4;
-        int x = 50;
-        int y = 50;
-        Bubble bub = new Bubble(diameter, x, y, true, true);
-        assertEquals(x, bub.getX());
-        assertEquals(y, bub.getY());
-        bub.move(100, 100);
-        bub.move(100, 100);
-        assertEquals((int) (x + 1.4), bub.getX());
-        bub.bounceH();
-        bub.move(100, 100);
-        bub.move(100, 100);
-        assertEquals(x, bub.getX());
-        assertEquals(y, bub.getY());
-    }
-
-    @Test
-    public void testMove8() {
-        int diameter = 8;
-        int x = 50;
-        int y = 50;
-        Bubble bub = new Bubble(diameter, x, y, true, true);
-        assertEquals(x, bub.getX());
-        assertEquals(y, bub.getY());
-        bub.move(100, 100);
-        bub.move(100, 100);
-        assertEquals((int) (x + 1.4), bub.getX());
-        bub.bounceH();
-        bub.move(100, 100);
-        bub.move(100, 100);
-        assertEquals(x, bub.getX());
-        assertEquals(y, bub.getY());
-    }
-
-    @Test
-    public void testMove16() {
-        int diameter = 16;
-        int x = 50;
-        int y = 50;
-        Bubble bub = new Bubble(diameter, x, y, true, true);
-        assertEquals(x, bub.getX());
-        assertEquals(y, bub.getY());
-        bub.move(100, 100);
-        bub.move(100, 100);
-        assertEquals((int) (x + 1.4), bub.getX());
-        bub.bounceH();
-        bub.move(100, 100);
-        bub.move(100, 100);
-        assertEquals(x, bub.getX());
-        assertEquals(y, bub.getY());
-    }
-
-    @Test
-    public void testMove32() {
-        int diameter = 32;
-        int x = 50;
-        int y = 50;
-        Bubble bub = new Bubble(diameter, x, y, true, true);
-        assertEquals(x, bub.getX());
-        assertEquals(y, bub.getY());
-        bub.move(100, 100);
-        bub.move(100, 100);
-        assertEquals( Math.round(x + 1.6), bub.getX());
-        bub.bounceH();
-        bub.move(100, 100);
-        bub.move(100, 100);
-        assertEquals(x, bub.getX());
-        assertEquals(y, bub.getY());
-    }
-
-    @Test
-    public void testMove64() {
-        int diameter = 64;
-        int x = 50;
-        int y = 50;
-        Bubble bub = new Bubble(diameter, x, y, true, true);
-        assertEquals(x, bub.getX());
-        assertEquals(y, bub.getY());
-        bub.move(1000, 1000);
-        bub.move(1000, 1000);
-        assertEquals( Math.round(x + 1.8), bub.getX());
-        bub.bounceH();
-        bub.move(100, 100);
-        bub.move(100, 100);
-        assertEquals(x, bub.getX());
-    }
-
+    
+    
     @Test
     public void testBounceH() {
+        Bubble bubble = new Bubble(10, 10, 10, true, true);
         assertTrue(bubble.isDirectionH());
         bubble.bounceH();
         assertFalse(bubble.isDirectionH());
@@ -200,6 +104,7 @@ public class BubbleTest {
 
     @Test
     public void testBounceV() {
+        Bubble bubble = new Bubble(10, 10, 10, true, true);
         assertTrue(bubble.isDirectionV());
         bubble.bounceV();
         assertFalse(bubble.isDirectionV());

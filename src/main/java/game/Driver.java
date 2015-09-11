@@ -344,7 +344,7 @@ public class Driver extends JPanel {
             g2d.drawString("Score: ", centerConstant, curLevel.getHeight() + 91
                     + topMargin);
             g2d.setColor(dragonRed);
-            g2d.drawString("1337 ", centerConstant + 135, curLevel.getHeight()
+            g2d.drawString("" + game.getScore(), centerConstant + 135, curLevel.getHeight()
                     + 91 + topMargin);
             g2d.setColor(Color.BLACK);
 
@@ -467,8 +467,7 @@ public class Driver extends JPanel {
 
                 for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
                     Bubble bubble = curLevel.getBubbleList().get(i);
-                    bubble.move(curLevel.getWidth() + Settings.getLeftMargin(),
-                            curLevel.getHeight() + Settings.getTopMargin());
+                    bubble.move();
                 }
 
                 for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
