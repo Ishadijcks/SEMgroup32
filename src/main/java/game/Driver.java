@@ -352,7 +352,7 @@ public class Driver extends JPanel {
             g2d.drawString("Score: ", centerConstant, curLevel.getHeight() + 91
                     + topMargin);
             g2d.setColor(dragonRed);
-            g2d.drawString("1337 ", centerConstant + 135, curLevel.getHeight()
+            g2d.drawString("" + game.getScore(), centerConstant + 135, curLevel.getHeight()
                     + 91 + topMargin);
             g2d.setColor(Color.BLACK);
 
