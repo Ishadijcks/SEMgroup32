@@ -30,6 +30,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Driver extends JPanel {
 
+    
     public static Game game;
     private int animationRightCounter = 1;
     private int fireRightCounter = 1;
