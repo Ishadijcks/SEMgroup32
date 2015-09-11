@@ -135,4 +135,8 @@ public class Game {
     public boolean inProgress() {
         return this.inProgress;
     }
+    
+    public void toggleProgress(){
+        inProgress = !inProgress;
+    }
 }
