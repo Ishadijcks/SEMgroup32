@@ -41,8 +41,7 @@ public class PowerupTest {
 
 	@Test
 	public void testDecreaseFramesLeft() {
-		for(int i; i < 10; i++){
-			int framesLeft = (int) Math.round(Math.random() * 10 + 1);
+		for(int framesLeft = 1; framesLeft < 10; framesLeft++){
 			decreaseFramesLeft();
 			assertTrue(framesLeft.equals(framesLeft-1));
 		}		
