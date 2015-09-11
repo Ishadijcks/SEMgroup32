@@ -93,9 +93,8 @@ public class Bubble {
      * @param height
      */
     public void move() {
-        System.out.println("y" + y);
+       
         if (y < Settings.getTopMargin() || !(y>0)) {
-            System.out.println("maxheight" + maxheight);
             y = maxheight;
         }
 

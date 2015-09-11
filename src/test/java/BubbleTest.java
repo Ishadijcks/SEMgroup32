@@ -23,7 +23,6 @@ public class BubbleTest {
     @Test
     public void testBubbleDefault() {
         Bubble bub = new Bubble(8, 10, 10, true, true);
-        
         assertTrue(bub.calculateG(-10) ==  3);
         assertTrue(bub.calculateMaxHeight(-10) ==  100);
         assertTrue(bub.calculateSpeedX(-10) ==  0.75);
@@ -69,7 +68,7 @@ public class BubbleTest {
     @Test
     public void testBounceMaxHeight() {
         Bubble bub = new Bubble(16, Settings.getLeftMargin(), 75+5, true, false);
-        System.out.println("Y:"+bub.getY());
+
         assertFalse(bub.isDirectionV());
         for(int i = 0; i<100; i++){
         bub.move();
@@ -81,8 +80,7 @@ public class BubbleTest {
     @Test
     public void testMove2() {
         Bubble bub = new Bubble(4, Settings.getLeftMargin(), Settings.getTopMargin()+Settings.getLevelHeight(), true, true);
-        System.out.println("Margin: "+ Settings.getLeftMargin());
-        System.out.println("X: "+bub.getX());
+
         bub.move();
         bub.move();
         bub.move();
