@@ -192,10 +192,10 @@ public class Driver extends JPanel {
                 // Get the images of the left flying or right flying dragon
                 imageLocation = imageLocation.replace("%20", " ");
                 ImageIcon dragonLeft = new ImageIcon(imageLocation
-                        + "Images/dragon/dragonL" + animationLeftCounter
+                        + "main/Images/dragon/dragonL" + animationLeftCounter
                         + ".png");
                 ImageIcon dragonRight = new ImageIcon(imageLocation
-                        + "Images/dragon/dragonR" + animationRightCounter
+                        + "main/Images/dragon/dragonR" + animationRightCounter
                         + ".png");
 
                 // Get the current X position of the player.
@@ -213,7 +213,7 @@ public class Driver extends JPanel {
                     // right now.
                     if (dragonIsRight && !(dragonIsMoving)) {
                         ImageIcon dragonRightNormal = new ImageIcon(
-                                imageLocation + "Images/dragon/dragonR" + 10
+                                imageLocation + "main/Images/dragon/dragonR" + 10
                                         + ".png");
                         g2d.drawImage(dragonRightNormal.getImage(),
                                 player.getX() - 100, curLevel.getHeight()
@@ -225,7 +225,7 @@ public class Driver extends JPanel {
                     // now.
                     else if (!(dragonIsMoving)) {
                         ImageIcon dragonLeftNormal = new ImageIcon(
-                                imageLocation + "Images/dragon/dragonL" + 10
+                                imageLocation + "main/Images/dragon/dragonL" + 10
                                         + ".png");
                         g2d.drawImage(dragonLeftNormal.getImage(),
                                 player.getX() - 100, curLevel.getHeight()
@@ -277,7 +277,7 @@ public class Driver extends JPanel {
                 // Draw the dragon spitting fire
                 if (dragonIsRight) {
                     ImageIcon dragonRightFire = new ImageIcon(imageLocation
-                            + "Images/dragon/fireR" + fireRightCounter + ".png");
+                            + "main/Images/dragon/fireR" + fireRightCounter + ".png");
                     g2d.drawImage(dragonRightFire.getImage(), game
                             .getPlayerList().get(0).getX() - 100,
                             curLevel.getHeight()
@@ -288,7 +288,7 @@ public class Driver extends JPanel {
                     }
                 } else {
                     ImageIcon dragonLeftFire = new ImageIcon(imageLocation
-                            + "Images/dragon/fireL" + fireLeftCounter + ".png");
+                            + "main/Images/dragon/fireL" + fireLeftCounter + ".png");
                     g2d.drawImage(dragonLeftFire.getImage(), game
                             .getPlayerList().get(0).getX() - 100,
                             curLevel.getHeight()
@@ -342,7 +342,7 @@ public class Driver extends JPanel {
             g2d.setFont(new Font("Calibri", Font.BOLD, 40));
             g2d.drawString("Lives: ", centerConstant, curLevel.getHeight() + 45
                     + topMargin);
-            ImageIcon life = new ImageIcon(imageLocation + "Images/life.png");
+            ImageIcon life = new ImageIcon(imageLocation + "main/Images/life.png");
             for (int i = 0; i < game.getLives(); i++) {
                 g2d.drawImage(life.getImage(), centerConstant + 125 + 25 * i,
                         curLevel.getHeight() + 16 + topMargin, this);
@@ -364,7 +364,7 @@ public class Driver extends JPanel {
             g2d.setColor(Color.BLACK);
 
             g2d.setColor(dragonRed);
-            g2d.drawString(" " + game.getCurrentLevelInt() + 1, 1350,
+            g2d.drawString(" " + (game.getCurrentLevelInt() + 1), 1350,
                     curLevel.getHeight() + 51);
             g2d.setColor(Color.BLACK);
         } catch (IndexOutOfBoundsException e) {
@@ -443,7 +443,7 @@ public class Driver extends JPanel {
 
         URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
         String currentLocation = location.getFile();      
-        String startScreenMusicLocation = currentLocation + "Music/ingame.wav";
+        String startScreenMusicLocation = currentLocation + "main/Music/ingame.wav";
         File music = new File(startScreenMusicLocation);
         AudioInputStream audioInputStream =
                 AudioSystem.getAudioInputStream(
