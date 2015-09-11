@@ -71,7 +71,7 @@ public class Player {
         }
 
         if (movingRight) {
-            if (x + stepSize + width < Driver.game.getCurrentLevel().getWidth() + Settings.getLeftMargin()) {
+            if (x + stepSize + width < Settings.getLevelWidth() + Settings.getLeftMargin()) {
                 x += stepSize;
             }
         }
@@ -111,6 +111,14 @@ public class Player {
         this.powerup = powerup;
     }
 
+    public boolean getMovingLeft(){
+        return movingLeft;
+    }
+    
+    public boolean getMovingRight(){
+        return movingRight;
+    }
+    
     public int getX() {
         return x;
     }

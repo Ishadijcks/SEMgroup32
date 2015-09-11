@@ -105,7 +105,7 @@ public class Bubble {
         } else {
             x -= speedX;
         }
-        System.out.println(lastUpSpeed);
+       
         if (lastUpSpeed < 0.5 && !directionV && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
             timer += 0.4;
         }
