@@ -15,11 +15,13 @@ public class BubbleDiameterMoveTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
-                { 4, 0.5 }, { 8, 0.6 }, { 16, 0.7 }, 
-                { 32, 0.8 }, { 64, 0.9 }, { 23123123, 0.7 },
-                { -123, 0.7 }, { 0, 0.7 } });
+                { 4, 1.4 }, { 8, 1.3 }, { 16, 1.2 }, 
+                { 32, 1.1 }, { 64, 1.0 }, { 23123123, 1.2 },
+                { -123, 1.2 }, { 0, 1.2 } });
     }
 
+
+    
     private double expectedMove;
     private Bubble bubble;
 

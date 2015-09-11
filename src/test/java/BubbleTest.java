@@ -23,9 +23,9 @@ public class BubbleTest {
     @Test
     public void testBubbleDefault() {
         Bubble bub = new Bubble(8, 10, 10, true, true);
-        assertTrue(bub.calculateG(-10) ==  3);
+        assertTrue(bub.calculateG(-10) ==  1);
         assertTrue(bub.calculateMaxHeight(-10) ==  100);
-        assertTrue(bub.calculateSpeedX(-10) ==  0.75);
+        assertTrue(bub.calculateSpeedX(-10) ==  1);
         assertTrue(bub.getColor().equals(Settings.getDragonRed()));
         
     }

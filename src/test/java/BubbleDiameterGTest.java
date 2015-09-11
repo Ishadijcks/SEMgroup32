@@ -17,10 +17,10 @@ public class BubbleDiameterGTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
-                { 4, 2.0},
-                { 8, 2.1 }, { 16, 2.3 }, { 32,  2.5}, 
-                { 64, 2.8 }, { 128, 3}, { 23123123, 2.3},
-                { -12, 2.3},{ 0, 2.3}, { Integer.MAX_VALUE, 2.3}});
+                { 4, 1.5},
+                { 8, 1 }, { 16, 1.3 }, { 32,  1.2}, 
+                { 64, 1.1 }, { 128, 1}, { 23123123, 1.3},
+                { -12, 1.3},{ 0, 1.3}, { Integer.MAX_VALUE, 1.3}});
     }
 
     private double expectedG;

@@ -185,7 +185,7 @@ public class Bubble {
         case 64:
             return 1.1;
         default:
-            return 31;
+            return 1;
         }
 
     }

@@ -15,8 +15,7 @@ public class PlayerTest {
     public void testPlayerConstructor() {
         assertEquals("Isha", player.getName());
         assertEquals(500, player.getX());
-        assertEquals(Settings.getPlayerHeight(), player.getY());
-        fail("Floris is langzaam");
+
     }
 
     @Test
