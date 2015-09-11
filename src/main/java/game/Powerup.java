@@ -94,6 +94,11 @@ public class Powerup {
             ImageIcon poweruplife = new ImageIcon(imageLocation + "Images/Powerups/pulife.png");
             return poweruplife;
         }
+        if(name.equals("ice"))
+        {
+            ImageIcon powerupice = new ImageIcon(imageLocation + "Images/Powerups/puice.png");
+            return powerupice;
+        }
         return null;
         
     }

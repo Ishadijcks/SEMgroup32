@@ -44,6 +44,7 @@ public class Driver extends JPanel {
     private boolean dragonJustStopped = false;
     private boolean dragonIsMoving = false;
     private boolean shootRope = false;
+    private static boolean iceRope = false;
     private static URL location = StartScreen.class.getProtectionDomain()
             .getCodeSource().getLocation();
     private static String imageLocation = location.getFile();
@@ -119,7 +120,7 @@ public class Driver extends JPanel {
             g2d.setStroke(stroke4);
 
             // Draw the ropes
-            if (curLevel.hasRope()) {
+            if (curLevel.hasRope() && !(iceRope)) {
                 shootRope = true;
                 ropeDurationCounter--;
 
@@ -173,6 +174,63 @@ public class Driver extends JPanel {
                 g2d.setStroke(normalStroke);
 
             }
+            
+            if (curLevel.hasRope() && iceRope) {
+                shootRope = true;
+                ropeDurationCounter--;
+
+                if (dragonIsRight) {
+                    if (!(addOnce)) {
+                        curLevel.getRope().addX(-6);
+                        addOnce = true;
+                    }
+                    for (int i = 0; i < 4; i++) {
+                        g2d.setColor(colors[i]);
+                        g2d.setStroke(strokes[i]);
+
+                        int random = randomInt(0, 4);
+                        if ((i == 0) && random == 2) {
+                            g2d.drawLine(curLevel.getRope().getX(), curLevel
+                                    .getRope().getY(), curLevel.getRope()
+                                    .getX(), curLevel.getHeight() + 43);
+                        } else if (i == 1 || i == 2 || i == 3) {
+                            g2d.drawLine(curLevel.getRope().getX(), curLevel
+                                    .getRope().getY(), curLevel.getRope()
+                                    .getX(), curLevel.getHeight() + 43);
+                        }
+
+                    }
+
+                } else {
+                    if (!(addOnce)) {
+                        curLevel.getRope().addX(-32);
+                        addOnce = true;
+                    }
+                    for (int i = 0; i < 4; i++) {
+                        g2d.setColor(colors[i]);
+                        g2d.setStroke(strokes[i]);
+
+                        int random = randomInt(0, 4);
+                        if ((i == 0) && random == 2) {
+                            g2d.drawLine(curLevel.getRope().getX(), curLevel
+                                    .getRope().getY(), curLevel.getRope()
+                                    .getX(), curLevel.getHeight() + 43);
+                        } else if (i == 1 || i == 2 || i == 3) {
+                            g2d.drawLine(curLevel.getRope().getX(), curLevel
+                                    .getRope().getY(), curLevel.getRope()
+                                    .getX(), curLevel.getHeight() + 43);
+                        }
+                    }
+                }
+
+                // Set g2d back to normal settings
+                g2d.setColor(Color.BLACK);
+                Stroke normalStroke = new BasicStroke(1f);
+                g2d.setStroke(normalStroke);
+
+            }
+            
+            
 
             // Draw all the players
             for (int i = 0; i < game.getPlayerList().size(); i++) {
@@ -482,6 +540,11 @@ public class Driver extends JPanel {
                     if (game.getPlayerList().get(0).getPowerup().getName()
                             .equals("life")) {
                         game.getLife();
+                        game.getPlayerList().get(0).removePowerUp();
+                    }
+                    if (game.getPlayerList().get(0).getPowerup().getName()
+                            .equals("ice")) {
+                        iceRope = true;
                         game.getPlayerList().get(0).removePowerUp();
                     }
                 }
