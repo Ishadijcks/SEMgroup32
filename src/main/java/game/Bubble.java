@@ -36,13 +36,17 @@ public class Bubble {
     public Bubble(int diameter, double x, double y, boolean directionH,
             boolean directionV) {
 
+        G = calculateG(diameter);
+        maxheight = calculateMaxHeight(diameter);
+        speedX = calculateSpeedX(diameter);
+
         if (correctDiameter(diameter)) {
             this.diameter = diameter;
         } else {
             this.diameter = Settings.getBubbleDefaultDiameter();
         }
-            this.x = x;
-            this.y = y;
+        this.x = x;
+        this.y = y;
 
         this.directionH = directionH;
         this.directionV = directionV;
@@ -56,7 +60,6 @@ public class Bubble {
         return diameter > 0 && diameter < 200;
     }
 
-
     /**
      * The method that controls bubble movement.
      * 
@@ -64,17 +67,19 @@ public class Bubble {
      * @param height
      */
     public void move() {
+        System.out.println("y" + y);
+        if (y < Settings.getTopMargin() || !(y>0)) {
+            System.out.println("maxheight" + maxheight);
+            y = maxheight;
+        }
 
-        G = calculateG(diameter);
-        maxheight = calculateMaxHeight(diameter);
-        speedX = calculateSpeedX(diameter);
-
-        if (x + diameter > Settings.getLeftMargin() + Settings.getLevelWidth() && directionH || x <= Settings.getLeftMargin() && !directionH) {
+        if (x + diameter > Settings.getLeftMargin() + Settings.getLevelWidth()
+                && directionH || x <= Settings.getLeftMargin() && !directionH) {
             bounceH();
         }
 
-        if (y + diameter > Settings.getTopMargin() + Settings.getLevelHeight() && directionV || y <= Settings.getTopMargin()
-                && !directionV) {
+        if (y + diameter > Settings.getTopMargin() + Settings.getLevelHeight()
+                && directionV || y <= Settings.getTopMargin() && !directionV) {
             bounceV();
         }
 
@@ -83,8 +88,9 @@ public class Bubble {
         } else {
             x -= speedX;
         }
-       
-        if (lastUpSpeed < 0.5 && !directionV && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
+
+        if (lastUpSpeed < 0.5 && !directionV
+                && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
             timer += 0.4;
         }
         if (timer > 5) {
@@ -106,7 +112,8 @@ public class Bubble {
                 newBubble = false;
                 lastDownSpeed = 4;
             }
-            factor = ((y - maxheight) / (Settings.getTopMargin() + Settings.getLevelHeight() - maxheight));
+            factor = ((y - maxheight) / (Settings.getTopMargin()
+                    + Settings.getLevelHeight() - maxheight));
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             y -= lastUpSpeed;
         }
@@ -167,7 +174,7 @@ public class Bubble {
 
         }
     }
-    
+
     public double calculateSpeedX(int diameter) {
         switch (diameter) {
         case 4:
@@ -224,7 +231,7 @@ public class Bubble {
     public void setDirectionH(boolean directionH) {
         this.directionH = directionH;
     }
-    
+
     public boolean isDirectionV() {
         return directionV;
     }

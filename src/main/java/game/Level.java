@@ -134,10 +134,6 @@ public class Level {
             powerupList.add(powerup);
         }
 
-        if (bubbleList.isEmpty()) {
-            System.out.println("Yay you won!!!!");
-        }
-
     }
     
     /**
