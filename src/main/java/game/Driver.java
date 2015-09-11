@@ -363,7 +363,7 @@ public class Driver extends JPanel {
                     curLevel.getHeight() + 51);
             g2d.setColor(Color.BLACK);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("First time");
+           
         }
     }
 

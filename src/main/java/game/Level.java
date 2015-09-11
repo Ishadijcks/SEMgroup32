@@ -140,7 +140,6 @@ public class Level {
             Powerup powerup = generatePowerup(x, y, randomInt(1,2));
             powerupList.add(powerup);
         }
-
     }
     
     /**
