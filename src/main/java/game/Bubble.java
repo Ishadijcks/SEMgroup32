@@ -89,14 +89,10 @@ public class Bubble {
         } else {
             x -= speedX;
         }
-<<<<<<< HEAD
+
     
         if (lastUpSpeed < 0.5 && !directionV && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
-=======
 
-        if (lastUpSpeed < 0.5 && !directionV
-                && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
->>>>>>> cbd4aecdfac5712fdb3c7ee1d0fa6e2f474e7771
             timer += 0.4;
         }
         if (timer > 5) {

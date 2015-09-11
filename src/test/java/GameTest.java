@@ -88,27 +88,8 @@ public class GameTest {
 		assertFalse(game.inProgress());
 		assertEquals(1, game.getCurrentLevelInt());
 	}
-	
-<<<<<<< HEAD
 
-	
-=======
-	@Test
-	public void testGameWonTwoLevels() {
-		game.addLevel(l);
-		game.addLevel(k);
-		game.gameStart();
-		assertTrue(game.inProgress());
-		game.gameWon();
-		currentLevel++;
-		assertFalse(game.inProgress());
-		game.gameStart();
-		assertTrue(game.inProgress());
-		game.gameWon();
-		assertEquals(2, game.getCurrentLevelInt());
-		
-	}
->>>>>>> cbd4aecdfac5712fdb3c7ee1d0fa6e2f474e7771
+
 	@Test
 	public void testAddPlayer() {
 		assertFalse(game.getPlayerList().contains(player));
