@@ -434,7 +434,7 @@ public class Driver extends JPanel {
 
     public static void checkGameWon(){
         int levelNumbers = game.getLevelList().size();
-        if(game.getCurrentLevelInt() == 2)
+        if(game.getCurrentLevelInt() == 4)
         {
             frame.dispose();
             new WinningScreen(driver);
