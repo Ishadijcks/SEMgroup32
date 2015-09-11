@@ -443,8 +443,8 @@ public class Driver extends JPanel {
         int livesLeft = game.getLives();
         if(livesLeft == 0 && game.inProgress())
         {
-            new LosingScreen(driver);
             game.toggleProgress();
+            new LosingScreen(driver);
         }
     }
     
@@ -522,21 +522,6 @@ public class Driver extends JPanel {
         frame.setResizable(false);
         frame.setVisible(false);
         
-    }
-    
-    public static void startScreen(){
-        try {
-            new StartScreen(driver, frame);
-        } catch (UnsupportedAudioFileException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        } catch (IOException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        } catch (LineUnavailableException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
 
         URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
         String currentLocation = location.getFile();   
@@ -555,6 +540,22 @@ public class Driver extends JPanel {
                 .round(0.5 * (Settings.getScreenWidth() - Settings
                         .getLevelWidth()));
         Settings.setLeftMargin(centerConstant);
+        
+    }
+    
+    public static void startScreen(){
+        try {
+            new StartScreen(driver, frame);
+        } catch (UnsupportedAudioFileException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        } catch (LineUnavailableException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
     }
 
 }
