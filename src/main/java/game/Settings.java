@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.Color;
 
 public class Settings {
 
@@ -15,6 +16,12 @@ public class Settings {
     private static int playerStepSize = 2;
     private static int playerPowerupStepSize = 3;
 
+    private static int bubbleDefaultDiameter = 16;
+    private static int bubbleDefaultX = 10;
+    
+
+    private static int bubbleDefaultY = 10;
+
     private static int lives = 5;
 
     private static int ropeSpeed = 4;
@@ -26,6 +33,10 @@ public class Settings {
     private static int powerupWidth = 15;
     private static int powerupHeight = 10;
 
+    private static Color dragonRed = new Color(135, 15, 15);
+    
+
+
     private static int topMargin = 50;
     private static int leftMargin;
 
@@ -36,6 +47,7 @@ public class Settings {
     public static int getLeftMargin() {
         return leftMargin;
     }
+
 
     public static int getFps() {
         return fps;
@@ -104,5 +116,23 @@ public class Settings {
     public static int getPowerupHeight() {
         return powerupHeight;
     }
+
+
+    public static Color getDragonRed(){
+        return dragonRed;
+    }
+    
+    public static int getBubbleDefaultDiameter() {
+        return bubbleDefaultDiameter;
+    }
+
+    public static int getBubbleDefaultX() {
+        return bubbleDefaultX;
+    }
+
+    public static int getBubbleDefaultY() {
+        return bubbleDefaultY;
+    }
+    
 
 }
