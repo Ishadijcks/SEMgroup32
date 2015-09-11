@@ -41,23 +41,8 @@ public class Bubble {
         } else {
             this.diameter = Settings.getBubbleDefaultDiameter();
         }
-
-        if (correctX(x, diameter)) {
             this.x = x;
-        }
-
-        else {
-            this.x = Settings.getBubbleDefaultX() ;
-            
-        }
-
-        if (correctY(y, diameter)) {
             this.y = y;
-        }
-
-        else {
-            this.y = Settings.getBubbleDefaultY();
-        }
 
         this.directionH = directionH;
         this.directionV = directionV;
@@ -71,13 +56,6 @@ public class Bubble {
         return diameter > 0 && diameter < 200;
     }
 
-    public boolean correctX(double x, int diameter) {
-        return x > 0 && x < Settings.getLeftMargin() + Settings.getLevelWidth() - diameter;
-    }
-
-    public boolean correctY(double y, int diameter) {
-        return y > Settings.getTopMargin() && y < (Settings.getTopMargin() + Settings.getLevelHeight() - diameter);
-    }
 
     /**
      * The method that controls bubble movement.
