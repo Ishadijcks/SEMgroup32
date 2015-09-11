@@ -47,8 +47,8 @@ public class Bubble {
         }
 
         else {
-            this.x = Settings.getBubbleDefaultX();
-            ;
+            this.x = Settings.getBubbleDefaultX() ;
+            
         }
 
         if (correctY(y, diameter)) {
@@ -64,26 +64,7 @@ public class Bubble {
         this.newBubble = true;
 
         // Sets the color depending on the radius of the bubble
-        switch (diameter) {
-        case 8:
-            color = dragonRed;
-            break;
-        case 16:
-            color = Color.BLACK;
-            break;
-        case 32:
-            color = Color.GREEN;
-            break;
-        case 64:
-            color = Color.CYAN;
-            break;
-        case 128:
-            color = Color.PINK;
-            break;
-        default:
-            color = Color.MAGENTA;
-            break;
-        }
+        this.color = calculateColor(diameter);
     }
 
     public boolean correctDiameter(int diameter) {
@@ -91,31 +72,30 @@ public class Bubble {
     }
 
     public boolean correctX(double x, int diameter) {
-        return x > 0 && x < Settings.getLevelWidth() - diameter;
+        return x > 0 && x < Settings.getLeftMargin() + Settings.getLevelWidth() - diameter;
     }
 
     public boolean correctY(double y, int diameter) {
-        return y > 0 && y < Settings.getLevelHeight() - diameter;
+        return y > Settings.getTopMargin() && y < (Settings.getTopMargin() + Settings.getLevelHeight() - diameter);
     }
 
     /**
-     * The method that controlss bubble movement.
+     * The method that controls bubble movement.
      * 
      * @param width
      * @param height
      */
-    public void move(int width, int height) {
+    public void move() {
 
         G = calculateG(diameter);
         maxheight = calculateMaxHeight(diameter);
         speedX = calculateSpeedX(diameter);
-        
-        if (x + diameter > width && directionH || x <= Settings.getLeftMargin()
-                && !directionH) {
+
+        if (x + diameter > Settings.getLeftMargin() + Settings.getLevelWidth() && directionH || x <= Settings.getLeftMargin() && !directionH) {
             bounceH();
         }
 
-        if (y + diameter > height && directionV || y <= Settings.getTopMargin()
+        if (y + diameter > Settings.getTopMargin() + Settings.getLevelHeight() && directionV || y <= Settings.getTopMargin()
                 && !directionV) {
             bounceV();
         }
@@ -125,8 +105,8 @@ public class Bubble {
         } else {
             x -= speedX;
         }
-
-        if (lastUpSpeed < 0.5 && !directionV && y < height - 50) {
+       
+        if (lastUpSpeed < 0.5 && !directionV && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
             timer += 0.4;
         }
         if (timer > 5) {
@@ -148,9 +128,28 @@ public class Bubble {
                 newBubble = false;
                 lastDownSpeed = 4;
             }
-            factor = ((y - maxheight) / (height - maxheight));
+            factor = ((y - maxheight) / (Settings.getTopMargin() + Settings.getLevelHeight() - maxheight));
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             y -= lastUpSpeed;
+        }
+
+    }
+
+    public Color calculateColor(int diameter) {
+        switch (diameter) {
+        case 8:
+            return dragonRed;
+        case 16:
+            return Color.BLACK;
+        case 32:
+            return Color.GREEN;
+        case 64:
+            return Color.CYAN;
+        case 128:
+            return Color.PINK;
+        default:
+            return Color.MAGENTA;
+
         }
 
     }
@@ -190,7 +189,7 @@ public class Bubble {
 
         }
     }
-
+    
     public double calculateSpeedX(int diameter) {
         switch (diameter) {
         case 4:
@@ -247,7 +246,7 @@ public class Bubble {
     public void setDirectionH(boolean directionH) {
         this.directionH = directionH;
     }
-
+    
     public boolean isDirectionV() {
         return directionV;
     }

@@ -10,7 +10,6 @@ public class LevelCreator {
     public static Level getLevel(int level) {
         switch (level) {
             case 1:
-                System.out.println("createlevel1");
                 return getLevel1();
             case 2:
                 return getLevel2();

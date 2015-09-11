@@ -433,9 +433,10 @@ public class Driver extends JPanel {
 
     public static void checkGameWon(){
         int levelNumbers = game.getLevelList().size();
-        if(game.getCurrentLevelInt() == 2)
+        if(game.getCurrentLevelInt() == 4)
         {
-            //new WinningScreen(driver);
+            frame.dispose();
+            new WinningScreen(driver);
         }
     }
     
@@ -443,6 +444,7 @@ public class Driver extends JPanel {
         int livesLeft = game.getLives();
         if(livesLeft == 0 && game.inProgress())
         {
+            frame.dispose();
             game.toggleProgress();
             new LosingScreen(driver);
         }
@@ -459,8 +461,7 @@ public class Driver extends JPanel {
 
                 for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
                     Bubble bubble = curLevel.getBubbleList().get(i);
-                    bubble.move(curLevel.getWidth() + Settings.getLeftMargin(),
-                            curLevel.getHeight() + Settings.getTopMargin());
+                    bubble.move();
                 }
 
                 for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
