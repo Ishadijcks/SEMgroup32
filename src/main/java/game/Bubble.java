@@ -158,17 +158,17 @@ public class Bubble {
     public double calculateG(int diameter) {
         switch (diameter) {
         case 4:
-            return 2.0;
+            return 1.5;
         case 8:
-            return 2.1;
+            return 1;
         case 16:
-            return 2.3;
+            return 1.3;
         case 32:
-            return 2.5;
+            return 1.2;
         case 64:
-            return 2.8;
+            return 1.1;
         default:
-            return 3;
+            return 31;
         }
 
     }
@@ -176,13 +176,13 @@ public class Bubble {
     public int calculateMaxHeight(int diameter) {
         switch (diameter) {
         case 4:
-            return 120;
+            return 200;
         case 8:
-            return 95;
+            return 200;
         case 16:
-            return 75;
+            return 100;
         case 32:
-            return 56;
+            return 90;
         case 64:
             return 40;
         default:
@@ -194,17 +194,17 @@ public class Bubble {
     public double calculateSpeedX(int diameter) {
         switch (diameter) {
         case 4:
-            return 0.5;
+            return 1.6;
         case 8:
-            return 0.6;
+            return 1.5;
         case 16:
-            return 0.7;
+            return 1.4;
         case 32:
-            return 0.8;
+            return 1.3;
         case 64:
-            return 0.9;
+            return 1.2;
         default:
-            return 0.75;
+            return 1;
         }
     }
 

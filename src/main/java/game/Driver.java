@@ -435,7 +435,7 @@ public class Driver extends JPanel {
         int levelNumbers = game.getLevelList().size();
         if(game.getCurrentLevelInt() == 2)
         {
-            new WinningScreen(driver);
+            //new WinningScreen(driver);
         }
     }
     
