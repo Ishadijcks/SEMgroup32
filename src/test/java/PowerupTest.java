@@ -10,7 +10,7 @@ public class PowerupTest {
 	public int x;
 	public int y;
 	public Powerup powerup;
-	public int framesLeft;
+	int framesLeft=10*Settings.getFps();
     int height = Settings.getPowerupHeight();
     int width = Settings.getPowerupWidth();
 
@@ -40,9 +40,9 @@ public class PowerupTest {
 
 	@Test
 	public void testDecreaseFramesLeft() {
-			int framesLeft = 10;
+			int framesLeft = 5;
 	powerup.decreaseFramesLeft();
-	assertEquals(framesLeft, 9);
+	assertEquals(framesLeft, 4);
 	}
 	
 	@Test
@@ -65,12 +65,15 @@ public class PowerupTest {
 
 	@Test
 	public void testGetFramesLeft() {
-		fail("Not yet implemented");
+		int framesLeft2= 1200;
+		assertEquals(framesLeft,framesLeft2);
 	}
 
 	@Test
 	public void testGetName() {
-		fail("Not yet implemented");
+		Powerup powerup2 = new Powerup("speed", x, y);
+		assertEquals(powerup, powerup2);
+		
 	}
 
 }
