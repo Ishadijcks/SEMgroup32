@@ -140,10 +140,13 @@ public class Level {
             powerupList.add(powerup);
         }
 
+<<<<<<< HEAD
         if (bubbleList.isEmpty()) {
           
         }
 
+=======
+>>>>>>> cbd4aecdfac5712fdb3c7ee1d0fa6e2f474e7771
     }
     
     /**

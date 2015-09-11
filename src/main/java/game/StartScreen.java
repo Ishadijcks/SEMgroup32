@@ -86,10 +86,9 @@ public class StartScreen extends JFrame {
 
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent startGame) {
-                //clip.stop();
                 setVisible(false);
                 dispose();
-                dr.startGame(jf);
+                dr.startGame();
             }
         });
 

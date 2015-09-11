@@ -30,6 +30,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Driver extends JPanel {
 
+    
     public static Game game;
     private int animationRightCounter = 1;
     private int fireRightCounter = 1;
@@ -54,6 +55,8 @@ public class Driver extends JPanel {
     private int centerConstant;
     private static Color bg = new Color(191, 191, 191);
     private static Player player;
+    private static Driver driver;
+    private static JFrame frame;
 
     @Override
     public void paint(Graphics graph) {
@@ -399,7 +402,7 @@ public class Driver extends JPanel {
         validate();
     }
 
-    public void startGame(JFrame frame) {
+    public void startGame() {
         frame.setVisible(true);
         game.gameStart();
     }
@@ -421,46 +424,30 @@ public class Driver extends JPanel {
         validate();
     }
 
+    public static void checkGameWon(){
+        int levelNumbers = game.getLevelList().size();
+        if(game.getCurrentLevelInt() == 4)
+        {
+            frame.dispose();
+            new WinningScreen(driver);
+        }
+    }
+    
+    public static void checkGameLost(){
+        int livesLeft = game.getLives();
+        if(livesLeft == 0 && game.inProgress())
+        {
+            frame.dispose();
+            game.toggleProgress();
+            new LosingScreen(driver);
+        }
+    }
+    
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, IOException, LineUnavailableException{
-
-        final JFrame frame = new JFrame("Bounce test");
-        Driver driver = new Driver();
-        frame.addKeyListener(new MyKeyListener());
-        frame.add(driver);
-        frame.setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
-        frame.setLocationRelativeTo(null);
-        frame.setResizable(false);
-        frame.setVisible(false);
-        new StartScreen(driver, frame);
-
-        URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
-        String currentLocation = location.getFile();   
-
-        currentLocation = currentLocation.replace("%20", " ");
-        String startScreenMusicLocation = currentLocation + "main/Music/ingame.wav";
-        File music = new File(startScreenMusicLocation);
-        AudioInputStream audioInputStream =
-                AudioSystem.getAudioInputStream(
-                    music);
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.loop(1000000);
+        initGame();
+        setupGame();
+        startScreen();
         
-        Player isha = new Player("Isha", 350);
-        Player tim = new Player("Tim", 80);
-
-        game = GameCreator.createSinglePlayer(isha);
-
-        game.addPlayer(isha);
-
-        player = game.getPlayerList().get(0);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        int centerConstant = (int) Math
-                .round(0.5 * (Settings.getScreenWidth() - Settings
-                        .getLevelWidth()));
-        Settings.setLeftMargin(centerConstant);
-
         while (true) {
             if (game.inProgress()) {
                 curLevel = game.getCurrentLevel();
@@ -506,12 +493,63 @@ public class Driver extends JPanel {
                     }
                     game.gameWon();
                 }
+                checkGameLost();
+                checkGameWon();
             }
 
             // 120 FPS
             Thread.sleep(1000 / Settings.getFps());
         }
 
+    }
+
+    public static void initGame(){
+       frame = new JFrame("Bounce");
+    }
+    public static void setupGame(){
+       
+        driver = new Driver();
+        frame.addKeyListener(new MyKeyListener());
+        frame.add(driver);
+        frame.setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
+        frame.setVisible(false);
+        
+
+        URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
+        String currentLocation = location.getFile();   
+
+        Player isha = new Player("Isha", 350);
+        Player tim = new Player("Tim", 80);
+
+        game = GameCreator.createSinglePlayer(isha);
+
+        game.addPlayer(isha);
+
+        player = game.getPlayerList().get(0);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        int centerConstant = (int) Math
+                .round(0.5 * (Settings.getScreenWidth() - Settings
+                        .getLevelWidth()));
+        Settings.setLeftMargin(centerConstant);
+        
+    }
+    
+    public static void startScreen(){
+        try {
+            new StartScreen(driver, frame);
+        } catch (UnsupportedAudioFileException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        } catch (IOException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        } catch (LineUnavailableException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
     }
 
 }
