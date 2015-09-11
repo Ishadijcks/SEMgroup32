@@ -56,7 +56,7 @@ public class StartScreen extends JFrame {
 
         //setLayout(new BorderLayout());
         setContentPane(new JLabel(new ImageIcon(imageLocation
-                + "Images/StartscreenBackground.png")));
+                + "main/Images/StartscreenBackground.png")));
         //setLayout(new FlowLayout());
         setLayout(null);
 
