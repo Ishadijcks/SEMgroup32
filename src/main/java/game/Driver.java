@@ -62,7 +62,7 @@ public class Driver extends JPanel {
             // Calculate the margin left to center the board
             centerConstant = Settings.getLeftMargin();
             topMargin = Settings.getTopMargin();
-
+            imageLocation = imageLocation.replace("%20", " ");
             super.paint(graph);
             g2d = (Graphics2D) graph;
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -442,7 +442,9 @@ public class Driver extends JPanel {
         new StartScreen(driver, frame);
 
         URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
-        String currentLocation = location.getFile();      
+        String currentLocation = location.getFile();   
+
+        currentLocation = currentLocation.replace("%20", " ");
         String startScreenMusicLocation = currentLocation + "main/Music/ingame.wav";
         File music = new File(startScreenMusicLocation);
         AudioInputStream audioInputStream =
