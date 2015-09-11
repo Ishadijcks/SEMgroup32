@@ -1,6 +1,6 @@
 package game;
 
-
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,22 +22,24 @@ public class Level {
         this.playerList = playerList;
         this.powerupList = new ArrayList<Powerup>();
     }
-    public void resetBubble(){
+
+    public void resetBubble() {
         bubbleList = null;
     }
+
     public ArrayList<Player> getPlayerList() {
-		return playerList;
-	}
+        return playerList;
+    }
 
-	public void setPlayerList(ArrayList<Player> playerList) {
-		this.playerList = playerList;
-	}
+    public void setPlayerList(ArrayList<Player> playerList) {
+        this.playerList = playerList;
+    }
 
-	public void setPowerupList(ArrayList<Powerup> powerupList) {
-		this.powerupList = powerupList;
-	}
+    public void setPowerupList(ArrayList<Powerup> powerupList) {
+        this.powerupList = powerupList;
+    }
 
-	/**
+    /**
      * Checks if there is collision between player and a bubble
      * 
      * @return
@@ -49,7 +51,8 @@ public class Level {
             // /// Diameter NOT IN ACCOUNT JET AND SIZE OF PLAYER
             Player player = playerList.get(0);
 
-            if (bubbleList.get(i).getX() < player.getX() + 22 && bubbleList.get(i).getX() > player.getX() - 58) {
+            if (bubbleList.get(i).getX() < player.getX() + 22
+                    && bubbleList.get(i).getX() > player.getX() - 58) {
                 if (height - 55 <= bubbleList.get(i).getY()) {
                     return true;
                 }
@@ -69,11 +72,12 @@ public class Level {
                 // if the x of the rope and the bubble is the same
                 // then there is a chance the rope hits the bubble
                 // /// RADIUS NOT IN ACCOUNT JET
-        		if (bubbleList.get(i).getX() <= rope.getX()) {
+                if (bubbleList.get(i).getX() <= rope.getX()) {
                     if (bubbleList.get(i).getX()
                             + bubbleList.get(i).getDiameter() >= rope.getX()) {
                         if (bubbleList.get(i).getY()
-                                + bubbleList.get(i).getDiameter() >= rope.getY()) {
+                                + bubbleList.get(i).getDiameter() >= rope
+                                    .getY()) {
                             destroyBubble(i);
                             setRope(null);
                             return;
@@ -104,12 +108,18 @@ public class Level {
         }
     }
 
+    /**
+     * Remove bubble.
+     * @param i
+     */
     public void destroyBubble(int i) {
 
         Bubble bubble = bubbleList.get(i);
         int x = bubble.getX();
         int y = bubble.getY();
         int diameter = bubble.getDiameter();
+        // Sets the color depending on the radius of the bubble
+        addScore(diameter);
         bubbleList.remove(i);
 
         if (diameter > 10) {
@@ -130,7 +140,38 @@ public class Level {
         }
 
     }
-
+    
+    /**
+     * Calls the add score method from the game.
+     * @param diameter
+     */
+    public void addScore(int diameter){
+        switch (diameter) {
+        case 8:
+            Driver.game.addScore(10);
+            break;
+        case 16:
+            Driver.game.addScore(15);
+            break;
+        case 32:
+            Driver.game.addScore(20);
+            break;
+        case 64:
+            Driver.game.addScore(25);
+            break;
+        case 128:
+            Driver.game.addScore(30);
+            break;
+        default:
+            break;
+        }
+    }
+    /**
+     * Generate random integer.
+     * @param min
+     * @param max
+     * @return
+     */
     public int randomInt(int min, int max) {
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
@@ -152,7 +193,7 @@ public class Level {
     public void resetLevel() {
         ArrayList<Level> levels = Driver.game.getLevelList();
         int currentLevel = Driver.game.getCurrentLevelInt();
-        levels.set(currentLevel-1, LevelCreator.getLevel(currentLevel));
+        levels.set(currentLevel - 1, LevelCreator.getLevel(currentLevel));
     }
 
     /**
