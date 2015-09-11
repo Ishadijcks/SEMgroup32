@@ -22,7 +22,7 @@ public class Settings {
 
     private static int bubbleDefaultY = 10;
 
-    private static int lives = 2;
+    private static int lives = 5;
 
     private static int ropeSpeed = 4;
 

@@ -435,6 +435,7 @@ public class Driver extends JPanel {
         int levelNumbers = game.getLevelList().size();
         if(game.getCurrentLevelInt() == 2)
         {
+            frame.dispose();
             new WinningScreen(driver);
         }
     }
@@ -443,6 +444,7 @@ public class Driver extends JPanel {
         int livesLeft = game.getLives();
         if(livesLeft == 0 && game.inProgress())
         {
+            frame.dispose();
             game.toggleProgress();
             new LosingScreen(driver);
         }
