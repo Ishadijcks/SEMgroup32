@@ -44,13 +44,14 @@ public class Level {
      */
     public boolean checkCollisionPlayer() {
         for (int i = 0; i < bubbleList.size(); i++) {
+        	Bubble bubble = bubbleList.get(i);
             // if the x of the player and the bubble is the same
             // then there is a chance the rope hits the bubble
             // /// Diameter NOT IN ACCOUNT JET AND SIZE OF PLAYER
             Player player = playerList.get(0);
 
-            if (bubbleList.get(i).getX() < player.getX() + 22 && bubbleList.get(i).getX() > player.getX() - 58) {
-                if (height - 55 <= bubbleList.get(i).getY()) {
+            if (bubble.getX() < player.getX() + 22 && bubble.getX() > player.getX() - 58) {
+                if (player.getY() + 61 <= bubble.getY()) {
                     return true;
                 }
             }
@@ -88,7 +89,7 @@ public class Level {
      * Checks if the player collided with a powerup
      */
 
-    public void checkPowerupCollision() {
+    public boolean checkPowerupCollision() {
 
         Player player1 = playerList.get(0);
         for (int i = 0; i < powerupList.size(); i++) {
@@ -100,8 +101,10 @@ public class Level {
                     && (powerup.getY() + powerup.getHeight()) >= powerup.getY()) {
                 playerList.get(0).setPowerup(powerupList.get(i));
                 powerupList.remove(i);
+                return true;
             }
         }
+        return false;
     }
 
     public void destroyBubble(int i) {
@@ -121,7 +124,7 @@ public class Level {
 
         }
         if (Settings.getPowerupChance() > Math.random() * 100) {
-            Powerup powerup = generatePowerup(x, y);
+            Powerup powerup = generatePowerup(x, y, randomInt(1,2));
             powerupList.add(powerup);
         }
 
@@ -137,8 +140,8 @@ public class Level {
         return randomNum;
     }
 
-    public Powerup generatePowerup(int x, int y) {
-        int randomNumber = randomInt(1, 2);
+    public Powerup generatePowerup(int x, int y, int randomNum) {
+        int randomNumber = randomNum;
         switch (randomNumber) {
         case 1:
             return new Powerup("speed", x, y);
@@ -147,12 +150,6 @@ public class Level {
         default:
             return new Powerup("speed", x, y);
         }
-    }
-
-    public void resetLevel() {
-        ArrayList<Level> levels = Driver.game.getLevelList();
-        int currentLevel = Driver.game.getCurrentLevelInt();
-        levels.set(currentLevel-1, LevelCreator.getLevel(currentLevel));
     }
 
     /**

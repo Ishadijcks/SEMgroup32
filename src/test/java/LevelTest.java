@@ -68,9 +68,23 @@ public class LevelTest {
 	}
 
 	@Test
-	public void testGeneratePowerup() {
+	public void testGeneratePowerupSpeed() {
 		Powerup pow = new Powerup("speed", 0, 0);
-		Powerup pow2 = l.generatePowerup(0, 0);
+		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(1, 1));
+		assertTrue(pow.equals(pow2));
+	}
+	
+	@Test
+	public void testGeneratePowerupLife() {
+		Powerup pow = new Powerup("life", 0, 0);
+		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(2, 2));
+		assertTrue(pow.equals(pow2));
+	}
+	
+	@Test
+	public void testGeneratePowerupDefault() {
+		Powerup pow = new Powerup("speed", 0, 0);
+		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(1000, 1000000));
 		assertTrue(pow.equals(pow2));
 	}
 

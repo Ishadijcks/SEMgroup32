@@ -27,7 +27,7 @@ public class GameTest {
 		p = new ArrayList<Player>();
 		l = new Level(p);
 		k = new Level(p);
-		player = new Player("TestPlayer", 1, 1);
+		player = new Player("TestPlayer", 1);
 	}
 
 	@Test

@@ -102,7 +102,7 @@ public class Game {
     }
 
     public void resetLevel() {
-        levelList.get(currentLevel).resetLevel();
+        levelList.set(currentLevel-1, LevelCreator.getLevel(currentLevel));
         loseLife();
 
     }

@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 public class Player {
     private String name;
     private int x;
-    private int y = Settings.getLevelHeight() - Settings.getPlayerHeight();
+    private int y = Settings.getLevelHeight() - Settings.getPlayerHeight() + Settings.getTopMargin();
     private int height = Settings.getPlayerHeight();
     private int width = Settings.getPlayerWidth();
     private int stepSize = Settings.getPlayerStepSize();
@@ -19,7 +19,7 @@ public class Player {
     private boolean movingRight = false;
     private Powerup powerup = null;
 
-    public Player(String name, int x, int y) {
+    public Player(String name, int x) {
         this.name = name;
         this.x = x;
     }
@@ -134,6 +134,10 @@ public class Player {
     public void removePowerUp()
     {
         this.powerup = null;
+    }
+    
+    public boolean hasPowerup(){
+    	return this.powerup != null;
     }
 
 }
