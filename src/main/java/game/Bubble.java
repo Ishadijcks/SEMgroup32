@@ -56,8 +56,33 @@ public class Bubble {
         this.color = calculateColor(diameter);
     }
 
+    /**
+     * Get the correct diameter
+     * @param diameter
+     * @return de diameter van de bubble
+     */
     public boolean correctDiameter(int diameter) {
         return diameter > 0 && diameter < 200;
+    }
+
+    /**
+     * get the correct X of the bubble
+     * @param x
+     * @param diameter
+     * @return the x of the bubble
+     */
+    public boolean correctX(double x, int diameter) {
+        return x > 0 && x < Settings.getLeftMargin() + Settings.getLevelWidth() - diameter;
+    }
+
+    /**
+     * get the correct Y of the bubble
+     * @param y
+     * @param diameter
+     * @return the y of the bubble
+     */
+    public boolean correctY(double y, int diameter) {
+        return y > Settings.getTopMargin() && y < (Settings.getTopMargin() + Settings.getLevelHeight() - diameter);
     }
 
     /**
@@ -120,6 +145,11 @@ public class Bubble {
 
     }
 
+    /**
+     * Give a color to the different balls
+     * @param diameter
+     * @return the color of the bubble per case
+     */
     public Color calculateColor(int diameter) {
         switch (diameter) {
         case 8:
@@ -139,6 +169,11 @@ public class Bubble {
 
     }
 
+    /**
+     * Calculate the speed of the bubble
+     * @param diameter
+     * @return the speed of the bubble
+     */
     public double calculateG(int diameter) {
         switch (diameter) {
         case 4:
@@ -157,6 +192,11 @@ public class Bubble {
 
     }
 
+    /**
+     * Calculate the maximum height of the bubbles
+     * @param diameter
+     * @return the maximum height per bubble.
+     */
     public int calculateMaxHeight(int diameter) {
         switch (diameter) {
         case 4:
@@ -175,6 +215,11 @@ public class Bubble {
         }
     }
 
+    /**
+     * Calculate the speed of the bubble
+     * @param diameter
+     * @return the speed of the bubble per case.
+     */
     public double calculateSpeedX(int diameter) {
         switch (diameter) {
         case 4:
@@ -224,18 +269,34 @@ public class Bubble {
         return color;
     }
 
+    /**
+     * Give the direction of the bubble
+     * @return the horizontal direction 
+     */
     public boolean isDirectionH() {
         return directionH;
     }
 
+    /**
+     * Set the direction of the bubble
+     * @param directionH
+     */
     public void setDirectionH(boolean directionH) {
         this.directionH = directionH;
     }
-
+    
+    /**
+     * Get the vertical direction
+     * @return the vertical direction
+     */
     public boolean isDirectionV() {
         return directionV;
     }
 
+    /**
+     * Set the vertical direction of the bubble
+     * @param directionV
+     */
     public void setDirectionV(boolean directionV) {
         this.directionV = directionV;
     }

@@ -6,6 +6,11 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 
+/**
+ * Class that controls the powerups
+ * @author Naomi
+ *
+ */
 public class Powerup {
     String name;
     private int x;
@@ -17,12 +22,19 @@ public class Powerup {
     
     int framesLeft = 10*Settings.getFps();
     
+    /**
+     * Constructor of the powerup
+     * @param name
+     * @param x
+     * @param y
+     */
     public Powerup(String name, int x, int y) {
         this.name = name;
         this.x = x;
         this.y = y;
     }
 
+    
     @Override
 	public boolean equals(Object obj) {
 		if(obj instanceof Powerup){
@@ -48,6 +60,9 @@ public class Powerup {
         }
     }
 
+    /**
+     * Decrease the frames that are left
+     */
     public void decreaseFramesLeft(){
         framesLeft--;
     }
@@ -56,30 +71,58 @@ public class Powerup {
         return framesLeft > 0;
     }
     
+    /**
+     * Get the x coordinate of the powerup
+     * @return the height of the powerup
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Get the y coordinate of the powerup
+     * @return the y coordinate of the powerup
+     */
     public int getY() {
         return y;
     }
     
+    /**
+     * Get the height of the powerup
+     * @return the height of the powerup
+     */
     public int getHeight(){
         return height;
     }
     
+    /**
+     * Get the width of the powerup
+     * @return the width of the powerup
+     */
     public int getWidth(){
         return width;
     }
     
+    /**
+     * Get the frames that are left of the powerup
+     * @return the frames left
+     */
     public int getFramesLeft(){
         return framesLeft;
     }
     
+    /**
+     * Get the name of the powerup
+     * @return the name of the powerup
+     */
     public String getName(){
         return name;
     }
     
+    /**
+     * Get the image of the powerup
+     * @return the image of the powerup
+     */
     public ImageIcon getImageIcon() {
         URL location = StartScreen.class.getProtectionDomain().getCodeSource()
                 .getLocation();
