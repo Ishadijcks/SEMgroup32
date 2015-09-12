@@ -68,15 +68,16 @@ public class PlayerTest {
     @Test
     public void testSetPowerup() {
         player.setPowerup(new Powerup("speed", 100, 60));
-        assertTrue(player.getPowerup().getName().equals("speed"));
+        assertTrue(player.getPowerupList().get(0).getName().equals("speed"));
     }
 
     @Test
     public void testRemovePowerup() {
-        player.setPowerup(new Powerup("speed", 100, 60));
-        assertTrue(player.getPowerup().getName().equals("speed"));
-        player.removePowerUp();
-        assertEquals(null, player.getPowerup());
+        Powerup speed = new Powerup("speed", 100, 60);
+        player.setPowerup(speed);
+        assertTrue(player.getPowerupList().get(0).getName().equals("speed"));
+        player.removePowerUp(speed);
+        assertEquals(null, player.getPowerupList().get(0));
     }
 
     @Test

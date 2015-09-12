@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.Image;
 import java.net.URL;
 import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -17,7 +18,7 @@ public class Player {
     private int stepSize = Settings.getPlayerStepSize();
     private boolean movingLeft = false;
     private boolean movingRight = false;
-    private Powerup powerup = null;
+    private ArrayList<Powerup> powerupList = new ArrayList<Powerup>();
     private static boolean iceRope = false;
 
     public Player(String name, int x, int y) {
@@ -57,12 +58,33 @@ public class Player {
      * Moves the player left or right, depending on what key is pressed
      */
     public void move() {
-
-        if (powerup != null) {
-
-            if (powerup.getName().equals("speed") && powerup.isActive()) {
-                stepSize = Settings.getPlayerPowerupStepSize();
-            }
+        int powerupListSize = powerupList.size();
+        if (powerupListSize > 0) {
+               for(int i = 0; i < powerupListSize; i++)
+               {
+                   System.out.println("Old size: " + powerupListSize);
+                   System.out.println("New size: " + powerupList.size());
+                       if (powerupList.get(i).getName().equals("speed") && powerupList.get(i).isActive()) {
+                           stepSize = Settings.getPlayerPowerupStepSize();
+                           powerupList.get(i).decreaseFramesLeft();
+                       }
+                       else if(powerupList.get(i).getName().equals("speed") && !(powerupList.get(i).isActive()))
+                       {
+                           powerupList.remove(i);
+                           stepSize = Settings.getPlayerStepSize();
+                           powerupListSize = powerupList.size();
+                       }
+                       else if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
+                       {
+                           powerupList.get(i).decreaseFramesLeft();
+                       }
+                       else if(powerupList.get(i).getName().equals("ice") && !(powerupList.get(i).isActive()))
+                       {
+                           powerupList.remove(i);
+                           iceRope = false;
+                           powerupListSize = powerupList.size();
+                       }
+               }
         }
 
         if (movingLeft) {
@@ -76,11 +98,31 @@ public class Player {
                 x += stepSize;
             }
         }
-
-        if (powerup != null) {
-            if (powerup.getName().equals("speed") && powerup.isActive()) {
-                stepSize = Settings.getPlayerStepSize();
-                powerup.decreaseFramesLeft();
+        
+        powerupListSize = powerupList.size();
+        if (powerupListSize > 0) {
+            for(int i = 0; i < powerupListSize; i++)
+            {
+                    if (powerupList.get(i).getName().equals("speed") && powerupList.get(i).isActive()) {
+                        stepSize = Settings.getPlayerPowerupStepSize();
+                        powerupList.get(i).decreaseFramesLeft();
+                    }
+                    else if(powerupList.get(i).getName().equals("speed") && !(powerupList.get(i).isActive()))
+                    {
+                        powerupList.remove(i);
+                        stepSize = Settings.getPlayerStepSize();
+                        powerupListSize = powerupList.size();
+                    }
+                    else if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
+                    {
+                        powerupList.get(i).decreaseFramesLeft();
+                    }
+                    else if(powerupList.get(i).getName().equals("ice") && !(powerupList.get(i).isActive()))
+                    {
+                        powerupList.remove(i);
+                        iceRope = false;
+                        powerupListSize = powerupList.size();
+                    }
             }
         }
 
@@ -96,25 +138,31 @@ public class Player {
             int ropeY = Driver.game.getCurrentLevel().getHeight()
                     - height;
             int ropeX = x + width / 2;
-            if(powerup != null)
+            int powerupListSize = powerupList.size();
+            if(powerupListSize > 0)
             {
-                if(powerup.getName().equals("ice"))
+                for(int i = 0; i < powerupListSize; i++)
                 {
-                    if(powerup.isActive())
+                    if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
                     {
-                        iceRope = true;
-                        Rope rope = new Rope(ropeX, ropeY, iceRope);
-                        Driver.game.getCurrentLevel()
-                        .setRope(rope);
-                        return;
+                            iceRope = true;
+                            Rope rope = new Rope(ropeX, ropeY, iceRope);
+                            Driver.game.getCurrentLevel()
+                            .setRope(rope);
+                            return;
                     }
-                    else if(!(powerup.isActive()))
+                    else if(powerupList.get(i).getName().equals("ice") && !(powerupList.get(i).isActive()))
                     {
-                        iceRope = false;
+                            iceRope = false;
+                            powerupList.remove(i);
                     }
                 }
+                
             }
-            Rope rope = new Rope(ropeX, ropeY, false);
+            
+            iceRope = false;
+            
+            Rope rope = new Rope(ropeX, ropeY, iceRope);
             Driver.game.getCurrentLevel().setRope(rope);
             
         }
@@ -126,11 +174,7 @@ public class Player {
     }
 
     public void setPowerup(Powerup powerup) {
-        this.powerup = powerup;
-        if(powerup.getName().equals("ice"))
-        {
-            iceRope = true;
-        }
+        powerupList.add(powerup);
     }
 
     public boolean getMovingLeft(){
@@ -157,13 +201,17 @@ public class Player {
         return height;
     }
 
-    public Powerup getPowerup() {
-        return this.powerup;
+    public ArrayList<Powerup> getPowerupList() {
+        return powerupList;
     }
     
-    public void removePowerUp()
+    public boolean getIceRope() {
+        return this.iceRope;
+    }
+    
+    public void removePowerUp(Powerup pu)
     {
-        this.powerup = null;
+        powerupList.remove(pu);
     }
 
 }

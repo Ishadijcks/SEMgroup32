@@ -557,17 +557,36 @@ public class Driver extends JPanel {
                 if (curLevel.checkCollisionPlayer()) {
                     game.resetLevel();
                 }
-                if (game.getPlayerList().get(0).getPowerup() != null) {
-                    if (game.getPlayerList().get(0).getPowerup().getName()
-                            .equals("life")) {
-                        game.getLife();
-                        game.getPlayerList().get(0).removePowerUp();
+                
+                int powerupListSize = game.getPlayerList().get(0).getPowerupList().size();
+                
+                if (powerupListSize > 0) {
+                    for(int i = 0; i < powerupListSize; i++)
+                    {
+                        if (game.getPlayerList().get(0).getPowerupList().get(i).getName()
+                                .equals("life")) {
+                            Powerup life = game.getPlayerList().get(0).getPowerupList().get(i);
+                            game.getLife();
+                            System.out.println(game.getPlayerList().get(0).getPowerupList().get(i).getName());
+                            game.getPlayerList().get(0).removePowerUp(life);
+                        }
+                        else if (game.getPlayerList().get(0).getPowerupList().get(i).getName()
+                                .equals("ice")) {
+                            iceRope = true;
+                            game.getPlayerList().get(0).getPowerupList().get(i).decreaseFramesLeft();
+                            System.out.println(game.getPlayerList().get(0).getPowerupList().get(i).getName());
+                        }
+                        else if (game.getPlayerList().get(0).getPowerupList().get(i).getName()
+                                .equals("speed")) {
+                            System.out.println(game.getPlayerList().get(0).getPowerupList().get(i).getName());
+                        }
+                        
                     }
-                    else if (game.getPlayerList().get(0).getPowerup().getName()
-                            .equals("ice")) {
-                        iceRope = true;
-                        //game.getPlayerList().get(0).removePowerUp();
-                    }
+                }
+                
+                if(!(game.getPlayerList().get(0).getIceRope()))
+                {
+                    iceRope = false;
                 }
 
                 driver.repaint();

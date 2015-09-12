@@ -9,6 +9,7 @@ public class Level {
     private ArrayList<Player> playerList;
     private ArrayList<Powerup> powerupList;
     private Rope rope = null;
+    private int numberOfRopes = 0;
     private int timeLeft;
     private int width = Settings.getLevelWidth();
     private int height = Settings.getLevelHeight();
@@ -37,7 +38,7 @@ public class Level {
     public void setPowerupList(ArrayList<Powerup> powerupList) {
         this.powerupList = powerupList;
     }
-
+    
     /**
      * Checks if there is collision between player and a bubble
      * 
@@ -245,6 +246,10 @@ public class Level {
 
     public Rope getRope() {
         return rope;
+    }
+    
+    public int getNumberOfRopes() {
+        return this.numberOfRopes;
     }
 
     public void setRope(Rope rope) {

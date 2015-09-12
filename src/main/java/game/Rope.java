@@ -27,8 +27,7 @@ public class Rope {
         else if(iceRope)
         {
              if (y <= Settings.getTopMargin() - 2) {
-                 Driver.game.getCurrentLevel()
-                 .setRope(null);
+                 return;
              } else {
                  y -= Settings.getRopeSpeed();
              } 
