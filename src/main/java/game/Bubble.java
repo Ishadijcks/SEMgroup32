@@ -36,13 +36,18 @@ public class Bubble {
     public Bubble(int diameter, double x, double y, boolean directionH,
             boolean directionV) {
 
+        G = calculateG(diameter);
+        maxheight = calculateMaxHeight(diameter);
+        speedX = calculateSpeedX(diameter);
+
         if (correctDiameter(diameter)) {
             this.diameter = diameter;
         } else {
             this.diameter = Settings.getBubbleDefaultDiameter();
         }
-            this.x = x;
-            this.y = y;
+        
+        this.x = x;
+        this.y = y;
 
         this.directionH = directionH;
         this.directionV = directionV;
@@ -52,10 +57,34 @@ public class Bubble {
         this.color = calculateColor(diameter);
     }
 
+    /**
+     * Get the correct diameter
+     * @param diameter
+     * @return de diameter van de bubble
+     */
     public boolean correctDiameter(int diameter) {
         return diameter > 0 && diameter < 200;
     }
 
+    /**
+     * get the correct X of the bubble
+     * @param x
+     * @param diameter
+     * @return the x of the bubble
+     */
+    public boolean correctX(double x, int diameter) {
+        return x > 0 && x < Settings.getLeftMargin() + Settings.getLevelWidth() - diameter;
+    }
+
+    /**
+     * get the correct Y of the bubble
+     * @param y
+     * @param diameter
+     * @return the y of the bubble
+     */
+    public boolean correctY(double y, int diameter) {
+        return y > Settings.getTopMargin() && y < (Settings.getTopMargin() + Settings.getLevelHeight() - diameter);
+    }
 
     /**
      * The method that controls bubble movement.
@@ -64,17 +93,18 @@ public class Bubble {
      * @param height
      */
     public void move() {
+       
+        if (y < Settings.getTopMargin() || !(y>0)) {
+            y = maxheight;
+        }
 
-        G = calculateG(diameter);
-        maxheight = calculateMaxHeight(diameter);
-        speedX = calculateSpeedX(diameter);
-
-        if (x + diameter > Settings.getLeftMargin() + Settings.getLevelWidth() && directionH || x <= Settings.getLeftMargin() && !directionH) {
+        if (x + diameter > Settings.getLeftMargin() + Settings.getLevelWidth()
+                && directionH || x <= Settings.getLeftMargin() && !directionH) {
             bounceH();
         }
 
-        if (y + diameter > Settings.getTopMargin() + Settings.getLevelHeight() && directionV || y <= Settings.getTopMargin()
-                && !directionV) {
+        if (y + diameter > Settings.getTopMargin() + Settings.getLevelHeight()
+                && directionV || y <= Settings.getTopMargin() && !directionV) {
             bounceV();
         }
 
@@ -83,7 +113,6 @@ public class Bubble {
         } else {
             x -= speedX;
         }
-       
         if (lastUpSpeed < 0.5 && !directionV && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
             timer += 0.4;
         }
@@ -106,13 +135,19 @@ public class Bubble {
                 newBubble = false;
                 lastDownSpeed = 4;
             }
-            factor = ((y - maxheight) / (Settings.getTopMargin() + Settings.getLevelHeight() - maxheight));
+            factor = ((y - maxheight) / (Settings.getTopMargin()
+                    + Settings.getLevelHeight() - maxheight));
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             y -= lastUpSpeed;
         }
 
     }
 
+    /**
+     * Give a color to the different balls
+     * @param diameter
+     * @return the color of the bubble per case
+     */
     public Color calculateColor(int diameter) {
         switch (diameter) {
         case 8:
@@ -132,6 +167,11 @@ public class Bubble {
 
     }
 
+    /**
+     * Calculate the speed of the bubble
+     * @param diameter
+     * @return the speed of the bubble
+     */
     public double calculateG(int diameter) {
         switch (diameter) {
         case 4:
@@ -145,11 +185,16 @@ public class Bubble {
         case 64:
             return 1.1;
         default:
-            return 31;
+            return 1;
         }
 
     }
 
+    /**
+     * Calculate the maximum height of the bubbles
+     * @param diameter
+     * @return the maximum height per bubble.
+     */
     public int calculateMaxHeight(int diameter) {
         switch (diameter) {
         case 4:
@@ -167,7 +212,12 @@ public class Bubble {
 
         }
     }
-    
+
+    /**
+     * Calculate the speed of the bubble
+     * @param diameter
+     * @return the speed of the bubble per case.
+     */
     public double calculateSpeedX(int diameter) {
         switch (diameter) {
         case 4:
@@ -217,18 +267,34 @@ public class Bubble {
         return color;
     }
 
+    /**
+     * Give the direction of the bubble
+     * @return the horizontal direction 
+     */
     public boolean isDirectionH() {
         return directionH;
     }
 
+    /**
+     * Set the direction of the bubble
+     * @param directionH
+     */
     public void setDirectionH(boolean directionH) {
         this.directionH = directionH;
     }
     
+    /**
+     * Get the vertical direction
+     * @return the vertical direction
+     */
     public boolean isDirectionV() {
         return directionV;
     }
 
+    /**
+     * Set the vertical direction of the bubble
+     * @param directionV
+     */
     public void setDirectionV(boolean directionV) {
         this.directionV = directionV;
     }

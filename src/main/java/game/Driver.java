@@ -27,9 +27,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * Class that executes the game
+ * @author Naomi
+ *
+ */
 @SuppressWarnings("serial")
 public class Driver extends JPanel {
 
+    
     public static Game game;
     private int animationRightCounter = 1;
     private int fireRightCounter = 1;
@@ -58,6 +64,9 @@ public class Driver extends JPanel {
     private static Driver driver;
     private static JFrame frame;
 
+    /**
+     * Method to draw the game
+     */
     @Override
     public void paint(Graphics graph) {
         try {
@@ -261,13 +270,13 @@ public class Driver extends JPanel {
                 g2d.setColor(dragonRed);
 
                 g2d.drawString(player.getName(), player.getX() - 25,
-                        curLevel.getHeight() - player.getHeight() - 70
+                        player.getY() - 70
                                 + topMargin);
 
                 g2d.setColor(Color.BLACK);
 
                 // g2d.fillRect(player.getX(),
-                // curLevel.getHeight() - player.getHeight() + 2,
+                // player.getY() + 2,
                 // player.getWidth(), player.getHeight());
 
                 // Get the images of the left flying or right flying dragon
@@ -297,8 +306,7 @@ public class Driver extends JPanel {
                                 imageLocation + "main/Images/dragon/dragonR" + 10
                                         + ".png");
                         g2d.drawImage(dragonRightNormal.getImage(),
-                                player.getX() - 100, curLevel.getHeight()
-                                        - player.getHeight() - 119 + topMargin,
+                                player.getX() - 50, player.getY(),
                                 this);
                     }
 
@@ -309,8 +317,7 @@ public class Driver extends JPanel {
                                 imageLocation + "main/Images/dragon/dragonL" + 10
                                         + ".png");
                         g2d.drawImage(dragonLeftNormal.getImage(),
-                                player.getX() - 100, curLevel.getHeight()
-                                        - player.getHeight() - 119 + topMargin,
+                                player.getX() - 50, player.getY(),
                                 this);
                     }
 
@@ -319,8 +326,8 @@ public class Driver extends JPanel {
                     // player.getHeight() - 117 + topMargin
                     if (oldX < newX) {
                         g2d.drawImage(dragonRight.getImage(),
-                                player.getX() - 100,
-                                curLevel.getHeight() - 117, this);
+                                player.getX() - 50,
+                                player.getY(), this);
                         dragonIsRight = true;
                         if (slowDownCounter % 24 == 0) {
                             animationRightCounter++;
@@ -334,8 +341,7 @@ public class Driver extends JPanel {
                     // left is enabled //
                     else if (oldX > newX) {
                         g2d.drawImage(dragonLeft.getImage(),
-                                player.getX() - 100, curLevel.getHeight()
-                                        - player.getHeight() - 117 + topMargin,
+                                player.getX() - 50, player.getY(),
                                 this);
                         dragonIsRight = false;
                         if (slowDownCounter % 24 == 0) {
@@ -360,10 +366,8 @@ public class Driver extends JPanel {
                     ImageIcon dragonRightFire = new ImageIcon(imageLocation
                             + "main/Images/dragon/fireR" + fireRightCounter + ".png");
                     g2d.drawImage(dragonRightFire.getImage(), game
-                            .getPlayerList().get(0).getX() - 100,
-                            curLevel.getHeight()
-                                    - game.getPlayerList().get(0).getHeight()
-                                    - 70, this);
+                            .getPlayerList().get(0).getX() - 50,player.getY()
+                            		, this);
                     if (fireRightCounter < 3 && slowDownCounter % 8 == 0) {
                         fireRightCounter++;
                     }
@@ -371,10 +375,7 @@ public class Driver extends JPanel {
                     ImageIcon dragonLeftFire = new ImageIcon(imageLocation
                             + "main/Images/dragon/fireL" + fireLeftCounter + ".png");
                     g2d.drawImage(dragonLeftFire.getImage(), game
-                            .getPlayerList().get(0).getX() - 100,
-                            curLevel.getHeight()
-                                    - game.getPlayerList().get(0).getHeight()
-                                    - 70, this);
+                            .getPlayerList().get(0).getX() - 50,player.getY(), this);
                     if (fireLeftCounter < 3 && slowDownCounter % 8 == 0) {
                         fireLeftCounter++;
                     }
@@ -449,16 +450,25 @@ public class Driver extends JPanel {
                     curLevel.getHeight() + 51);
             g2d.setColor(Color.BLACK);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("First time");
+           
         }
     }
 
+    /**
+     * Create a random integer
+     * @param min
+     * @param max
+     * @return a random integer
+     */
     public static int randomInt(int min, int max) {
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
         return randomNum;
     }
 
+    /**
+     * Show a frame when the level is won
+     */
     public void levelWonFrame() {
         if (game.getCurrentLevel().equals(
                 game.getLevelList().get(game.getLevelList().size() - 1))) {
@@ -488,11 +498,17 @@ public class Driver extends JPanel {
         validate();
     }
 
+    /**
+     * Frame to start the game
+     */
     public void startGame() {
         frame.setVisible(true);
         game.gameStart();
     }
 
+    /**
+     * Add a start button to the screen
+     */
     public void addStartButton() {
         final JButton nextLevel = new JButton("Start game");
         nextLevel.setVerticalTextPosition(AbstractButton.BOTTOM);
@@ -510,6 +526,9 @@ public class Driver extends JPanel {
         validate();
     }
 
+    /**
+     * Check if the game has been won
+     */
     public static void checkGameWon(){
         int levelNumbers = game.getLevelList().size();
         if(game.getCurrentLevelInt() == 4)
@@ -519,6 +538,9 @@ public class Driver extends JPanel {
         }
     }
     
+    /**
+     * Check if the game has been lost
+     */
     public static void checkGameLost(){
         int livesLeft = game.getLives();
         if(livesLeft == 0 && game.inProgress())
@@ -616,6 +638,10 @@ public class Driver extends JPanel {
     public static void initGame(){
        frame = new JFrame("Bounce");
     }
+    
+    /**
+     * Set up the game
+     */
     public static void setupGame(){
        
         driver = new Driver();
@@ -630,8 +656,8 @@ public class Driver extends JPanel {
         URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
         String currentLocation = location.getFile();   
 
-        Player isha = new Player("Isha", 350, 10);
-        Player tim = new Player("Tim", 80, 10);
+        Player isha = new Player("Isha", 350);
+        Player tim = new Player("Tim", 80);
 
         game = GameCreator.createSinglePlayer(isha);
 
@@ -647,6 +673,9 @@ public class Driver extends JPanel {
         
     }
     
+    /**
+     * Catching exceptions of the startscreen.
+     */
     public static void startScreen(){
         try {
             new StartScreen(driver, frame);

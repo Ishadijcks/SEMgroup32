@@ -106,20 +106,34 @@ public class Game {
         return currentLevel;
     }
 
+    /**
+     * Get the lives of the player
+     * @return the lives of the player
+     */
     public int getLives() {
         return lives;
     }
 
+    /**
+     * Create an array with the players
+     * @return the playerlist
+     */
     public ArrayList<Player> getPlayerList() {
         return playerList;
     }
 
+    /**
+     * Reset the level if you lost a life
+     */
     public void resetLevel() {
-        levelList.get(currentLevel).resetLevel();
+        levelList.set(currentLevel-1, LevelCreator.getLevel(currentLevel));
         loseLife();
 
     }
 
+    /**
+     * Method to control losing a life
+     */
     public void loseLife() {
         lives--;
         if(lives < 0)
@@ -128,13 +142,21 @@ public class Game {
         }
     }
 
+    /**
+     * Method to control getting a life (thanks to powerups e.g.)
+     */
     public void getLife() {
         lives++;
     }
 
+    /**
+     * Method to show that the game is in progress
+     * @return a boolean that is true if the game is in progress.
+     */
     public boolean inProgress() {
         return this.inProgress;
     }
+    
     
     public void toggleProgress(){
         inProgress = !inProgress;

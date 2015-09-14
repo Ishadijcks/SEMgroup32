@@ -9,14 +9,13 @@ import org.junit.Test;
 
 public class PlayerTest {
 
-    Player player = new Player("Isha", 500, 10);
+    Player player = new Player("Isha", 500);
 
     @Test
     public void testPlayerConstructor() {
         assertEquals("Isha", player.getName());
         assertEquals(500, player.getX());
-        assertEquals(Settings.getPlayerHeight(), player.getY());
-        fail("Floris is langzaam");
+
     }
 
     @Test

@@ -17,13 +17,13 @@ public class BubbleDiameterMaxHeightTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
-                { 4, 120},
-                { 8, 95 }, { 16, 75 }, { 32, 56}, 
-                { 64, 40 }, { 128, 100}, { 23123123, 75},
-                { -12, 75},{ 0, 75}, { Integer.MAX_VALUE, 75}});
+                { 4, 180},
+                { 8, 180 }, { 16, 100 }, { 32, 90}, 
+                { 64, 40 }, { 128, 100}, { 23123123, 100},
+                { -12, 100},{ 0, 100}, { Integer.MAX_VALUE, 100}});
     }
 
-    
+
 
     private int expectedMaxHeight;
     private Bubble bubble;
