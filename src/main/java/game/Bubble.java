@@ -94,10 +94,27 @@ public class Bubble {
      */
     public void move() {
        
-        if (y < Settings.getTopMargin() || !(y>0)) {
+        outOfBoardCheck();
+        bounceBorder();
+        moveX();
+        moveY();
+        
+    }
+    
+    /**
+     * check if the bubble isn't outside of the borders.
+     */
+    public void outOfBoardCheck() {
+        if (y < Settings.getTopMargin() || !(y > 0)) {
             y = maxheight;
         }
-
+    }
+    
+    /**
+     * Checks if the bubble needs to bounce cause of the borders.
+     * If needed bounce.
+     */
+    public void bounceBorder() {
         if (x + diameter > Settings.getLeftMargin() + Settings.getLevelWidth()
                 && directionH || x <= Settings.getLeftMargin() && !directionH) {
             bounceH();
@@ -108,19 +125,24 @@ public class Bubble {
             bounceV();
         }
 
+    }
+    
+    /**
+     * Updates the x location of the bubble.
+     */
+    public void moveX() {
         if (directionH) {
             x += speedX;
         } else {
             x -= speedX;
         }
-        if (lastUpSpeed < 0.5 && !directionV && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
-            timer += 0.4;
-        }
-        if (timer > 5) {
-            bounceV();
-            timer = 1;
-        }
+    }
+    
 
+    /**
+     * Updates the y location of the bubble.
+     */
+    public void moveY() {
         if (directionV) {
             sOld = 0.5 * G * t * t;
             t += timeStep;
@@ -140,9 +162,15 @@ public class Bubble {
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             y -= lastUpSpeed;
         }
-
+        if (lastUpSpeed < 0.5 && !directionV && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
+            timer += 0.4;
+        }
+        if (timer > 5) {
+            bounceV();
+            timer = 1;
+        }
     }
-
+    
     /**
      * Give a color to the different balls
      * @param diameter
@@ -174,8 +202,6 @@ public class Bubble {
      */
     public double calculateG(int diameter) {
         switch (diameter) {
-        case 4:
-            return 1.5;
         case 8:
             return 1;
         case 16:
@@ -197,18 +223,16 @@ public class Bubble {
      */
     public int calculateMaxHeight(int diameter) {
         switch (diameter) {
-        case 4:
-            return 180;
         case 8:
-            return 180;
+            return 200;
         case 16:
-            return 100;
+            return 150;
         case 32:
-            return 90;
+            return 120;
         case 64:
-            return 40;
+            return 80;
         default:
-            return 100;
+            return 40;
 
         }
     }
@@ -220,16 +244,14 @@ public class Bubble {
      */
     public double calculateSpeedX(int diameter) {
         switch (diameter) {
-        case 4:
-            return 1.4;
         case 8:
-            return 1.3;
+            return 0.9;
         case 16:
-            return 1.2;
+            return 1;
         case 32:
             return 1.1;
         case 64:
-            return 1.0;
+            return 1.3;
         default:
             return 1;
         }
