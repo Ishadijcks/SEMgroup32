@@ -9,9 +9,11 @@ public class Level {
     private ArrayList<Player> playerList;
     private ArrayList<Powerup> powerupList;
     private Rope rope = null;
+    private int numberOfRopes = 0;
     private int timeLeft;
     private int width = Settings.getLevelWidth();
     private int height = Settings.getLevelHeight();
+    private boolean increasedPowerupTime = false;
 
     /**
      * Constructor, initializes the bubble- and playerList
@@ -37,7 +39,7 @@ public class Level {
     public void setPowerupList(ArrayList<Powerup> powerupList) {
         this.powerupList = powerupList;
     }
-
+    
     /**
      * Checks if there is collision between player and a bubble
      * 
@@ -106,8 +108,26 @@ public class Level {
                     && (player1.getCollisionX() + player1.getWidth()) >= powerup.getX()
                     && player1.getCollisionY() <= (powerup.getY() + powerup.getHeight())
                     && (player1.getY() + player1.getHeight()) >= powerup.getY()) {
-                playerList.get(0).setPowerup(powerupList.get(i));
-                powerupList.remove(i);
+                
+                int powerupListSize = playerList.get(0).getPowerupList().size();
+                if(powerupListSize > 0)
+                {
+                    for(int i1 = 0; i1 < powerupListSize; i1++)
+                    {
+                        if(playerList.get(0).getPowerupList().get(i1).samePowerup(powerup))
+                        {
+                            playerList.get(0).getPowerupList().get(i1).resetFramesLeft();
+                            increasedPowerupTime = true;
+                            powerupList.remove(i);
+                        }
+                    }
+                }
+                if(!increasedPowerupTime)
+                {
+                    playerList.get(0).setPowerup(powerupList.get(i));
+                    powerupList.remove(i);
+                }
+                increasedPowerupTime = false;
                 return true;
             }
         }
@@ -137,7 +157,7 @@ public class Level {
 
         }
         if (Settings.getPowerupChance() > Math.random() * 100) {
-            Powerup powerup = generatePowerup(x, y, randomInt(1,2));
+            Powerup powerup = generatePowerup(x, y, randomInt(1,3));
             powerupList.add(powerup);
         }
     }
@@ -179,13 +199,15 @@ public class Level {
         return randomNum;
     }
 
-    public Powerup generatePowerup(int x, int y, int randomNum) {
-        int randomNumber = randomNum;
+    public Powerup generatePowerup(int x, int y, int randomNumber1) {
+        int randomNumber = randomNumber1;
         switch (randomNumber) {
         case 1:
             return new Powerup("speed", x, y);
         case 2:
             return new Powerup("life", x, y);
+        case 3:
+            return new Powerup("ice", x, y);
         default:
             return new Powerup("speed", x, y);
         }
@@ -239,6 +261,10 @@ public class Level {
 
     public Rope getRope() {
         return rope;
+    }
+    
+    public int getNumberOfRopes() {
+        return this.numberOfRopes;
     }
 
     public void setRope(Rope rope) {

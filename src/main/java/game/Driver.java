@@ -50,6 +50,7 @@ public class Driver extends JPanel {
     private boolean dragonJustStopped = false;
     private boolean dragonIsMoving = false;
     private boolean shootRope = false;
+    private static boolean iceRope = false;
     private static URL location = StartScreen.class.getProtectionDomain()
             .getCodeSource().getLocation();
     private static String imageLocation = location.getFile();
@@ -105,32 +106,32 @@ public class Driver extends JPanel {
                         bubble.getDiameter() + 2, bubble.getDiameter() + 2);
             }
 
-            int rInt127to153 = randomInt(127, 153);
-            int rInt51to102 = randomInt(51, 102);
-            int rInt69to240 = randomInt(69, 240);
-            int rInt255to8 = randomInt(69, 240);
-            int rInt6to11 = randomInt(6, 11);
-
-            Color fire1 = new Color(255, rInt127to153, 0);
-            Color fire2 = new Color(255, rInt51to102, 0);
-            Color fire3 = new Color(255, rInt69to240, 0);
-            Color fire4 = new Color(250, rInt255to8, rInt6to11);
-
-            Stroke stroke1 = new BasicStroke(1f);
-            Stroke stroke2 = new BasicStroke(3f);
-            Stroke stroke3 = new BasicStroke(5f);
-            Stroke stroke4 = new BasicStroke(7f);
-
-            Color[] colors = { fire4, fire3, fire2, fire1 };
-            Stroke[] strokes = { stroke4, stroke3, stroke2, stroke1 };
-
-            g2d.setColor(fire4);
-            g2d.setStroke(stroke4);
-
             // Draw the ropes
-            if (curLevel.hasRope()) {
+            if (curLevel.hasRope() && !(iceRope)) {
                 shootRope = true;
                 ropeDurationCounter--;
+                
+                int rInt127to153 = randomInt(127, 153);
+                int rInt51to102 = randomInt(51, 102);
+                int rInt69to240 = randomInt(69, 240);
+                int rInt255to8 = randomInt(69, 240);
+                int rInt6to11 = randomInt(6, 11);
+
+                Color fire1 = new Color(255, rInt127to153, 0);
+                Color fire2 = new Color(255, rInt51to102, 0);
+                Color fire3 = new Color(255, rInt69to240, 0);
+                Color fire4 = new Color(250, rInt255to8, rInt6to11);
+
+                Stroke stroke1 = new BasicStroke(1f);
+                Stroke stroke2 = new BasicStroke(3f);
+                Stroke stroke3 = new BasicStroke(5f);
+                Stroke stroke4 = new BasicStroke(7f);
+
+                Color[] colors = { fire4, fire3, fire2, fire1 };
+                Stroke[] strokes = { stroke4, stroke3, stroke2, stroke1 };
+
+                g2d.setColor(fire4);
+                g2d.setStroke(stroke4);
 
                 if (dragonIsRight) {
                     if (!(addOnce)) {
@@ -182,6 +183,84 @@ public class Driver extends JPanel {
                 g2d.setStroke(normalStroke);
 
             }
+            
+            if (curLevel.hasRope() && iceRope) {
+                shootRope = true;
+                ropeDurationCounter--;
+                
+                int rInt219to255 = randomInt(219, 255);
+                int rInt120to102 = randomInt(120, 236);
+                int rInt70to133 = randomInt(70, 133);
+                int rInt6to33 = randomInt(6, 11);
+
+                Color fire1 = new Color(0, rInt219to255, 255);
+                Color fire2 = new Color(36, rInt120to102, 165);
+                Color fire3 = new Color(29, rInt70to133, 209);
+                Color fire4 = new Color(14, rInt6to33, 120);
+
+                Stroke stroke1 = new BasicStroke(1f);
+                Stroke stroke2 = new BasicStroke(3f);
+                Stroke stroke3 = new BasicStroke(5f);
+                Stroke stroke4 = new BasicStroke(7f);
+
+                Color[] colors = { fire4, fire3, fire2, fire1 };
+                Stroke[] strokes = { stroke4, stroke3, stroke2, stroke1 };
+
+                g2d.setColor(fire4);
+                g2d.setStroke(stroke4);
+
+                if (dragonIsRight) {
+                    if (!(addOnce)) {
+                        curLevel.getRope().addX(-6);
+                        addOnce = true;
+                    }
+                    for (int i = 0; i < 4; i++) {
+                        g2d.setColor(colors[i]);
+                        g2d.setStroke(strokes[i]);
+
+                        int random = randomInt(0, 4);
+                        if ((i == 0) && random == 2) {
+                            g2d.drawLine(curLevel.getRope().getX(), curLevel
+                                    .getRope().getY(), curLevel.getRope()
+                                    .getX(), curLevel.getHeight() + 45);
+                        } else if (i == 1 || i == 2 || i == 3) {
+                            g2d.drawLine(curLevel.getRope().getX(), curLevel
+                                    .getRope().getY(), curLevel.getRope()
+                                    .getX(), curLevel.getHeight() + 45);
+                        }
+
+                    }
+
+                } else {
+                    if (!(addOnce)) {
+                        curLevel.getRope().addX(-32);
+                        addOnce = true;
+                    }
+                    for (int i = 0; i < 4; i++) {
+                        g2d.setColor(colors[i]);
+                        g2d.setStroke(strokes[i]);
+
+                        int random = randomInt(0, 4);
+                        if ((i == 0) && random == 2) {
+                            g2d.drawLine(curLevel.getRope().getX(), curLevel
+                                    .getRope().getY(), curLevel.getRope()
+                                    .getX(), curLevel.getHeight() + 43);
+                        } else if (i == 1 || i == 2 || i == 3) {
+                            g2d.drawLine(curLevel.getRope().getX(), curLevel
+                                    .getRope().getY(), curLevel.getRope()
+                                    .getX(), curLevel.getHeight() + 43);
+                        }
+                    }
+                }
+
+                // Set g2d back to normal settings
+                g2d.setColor(Color.BLACK);
+                Stroke normalStroke = new BasicStroke(1f);
+                g2d.setStroke(normalStroke);
+
+            }
+            
+            
 
             // Draw all the players
             for (int i = 0; i < game.getPlayerList().size(); i++) {
@@ -500,13 +579,34 @@ public class Driver extends JPanel {
                 if (curLevel.checkCollisionPlayer()) {
                     game.resetLevel();
                 }
-                if (game.getPlayerList().get(0).getPowerup() != null) {
-                    if (game.getPlayerList().get(0).getPowerup().getName()
-                            .equals("life")) {
-                        game.getLife();
-                        game.getPlayerList().get(0).removePowerUp();
+                
+                int powerupListSize = game.getPlayerList().get(0).getPowerupList().size();
+                
+                if (powerupListSize > 0) {
+                    for(int i = 0; i < powerupListSize; i++)
+                    {
+                        if (game.getPlayerList().get(0).getPowerupList().get(i).getName()
+                                .equals("life")) {
+                            Powerup life = game.getPlayerList().get(0).getPowerupList().get(i);
+                            game.getLife();
+                            System.out.println(game.getPlayerList().get(0).getPowerupList().get(i).getName());
+                            game.getPlayerList().get(0).removePowerUp(life);
+                        }
+                        else if (game.getPlayerList().get(0).getPowerupList().get(i).getName()
+                                .equals("ice")) {
+                            iceRope = true;
+                            game.getPlayerList().get(0).getPowerupList().get(i).decreaseFramesLeft();
+                            System.out.println(game.getPlayerList().get(0).getPowerupList().get(i).getName());
+                        }
+                        else if (game.getPlayerList().get(0).getPowerupList().get(i).getName()
+                                .equals("speed")) {
+                            game.getPlayerList().get(0).getPowerupList().get(i).decreaseFramesLeft();
+                            System.out.println(game.getPlayerList().get(0).getPowerupList().get(i).getName());
+                        }
+                        
                     }
                 }
+                iceRope = game.getPlayerList().get(0).hasIceRope();
 
                 driver.repaint();
 

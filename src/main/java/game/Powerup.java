@@ -67,8 +67,37 @@ public class Powerup {
         framesLeft--;
     }
     
+    /**
+     * The powerup is active when the framesLeft count is higher than zero
+     */
     public boolean isActive(){
         return framesLeft > 0;
+    }
+    
+    /**
+     * DeActivate the powerup by setting the framesLeft counter to zero
+     */
+    public void deActivate(){
+        framesLeft = 0;
+    }
+    
+    /**
+     * Reset the framesLeft counter to the starting count
+     */
+    public void resetFramesLeft(){
+        framesLeft = 10*Settings.getFps();
+    }
+    
+    /**
+     * Compare the names of the powerup to determine if they are the same sort
+     */
+    public boolean samePowerup(Powerup that){
+        if(getName().equals(that.getName()))
+        {
+            return true;
+        }
+        
+        return false;
     }
     
     /**
@@ -112,6 +141,14 @@ public class Powerup {
     }
     
     /**
+     * Set the frames that are left of the powerup
+     * @return the frames left
+     */
+    public void setFramesLeft(int left){
+        framesLeft = left;
+    }
+    
+    /**
      * Get the name of the powerup
      * @return the name of the powerup
      */
@@ -136,6 +173,11 @@ public class Powerup {
         {
             ImageIcon poweruplife = new ImageIcon(imageLocation + "main/Images/Powerups/pulife.png");
             return poweruplife;
+        }
+        if(name.equals("ice"))
+        {
+            ImageIcon powerupice = new ImageIcon(imageLocation + "main/Images/Powerups/puice.png");
+            return powerupice;
         }
         return null;
         
