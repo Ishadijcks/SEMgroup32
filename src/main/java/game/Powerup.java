@@ -71,6 +71,10 @@ public class Powerup {
         return framesLeft > 0;
     }
     
+    public void deActive(){
+        framesLeft = 0;
+    }
+    
     /**
      * Get the x coordinate of the powerup
      * @return the height of the powerup
@@ -109,6 +113,14 @@ public class Powerup {
      */
     public int getFramesLeft(){
         return framesLeft;
+    }
+    
+    /**
+     * Set the frames that are left of the powerup
+     * @return the frames left
+     */
+    public void setFramesLeft(int left){
+        framesLeft = left;
     }
     
     /**

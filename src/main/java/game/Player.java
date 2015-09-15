@@ -200,6 +200,18 @@ public class Player {
         powerupList.remove(pu);
     }
     
+    public void removeAllPowerUps()
+    {
+        int puListSize = powerupList.size();
+        for(int i = 0; i < puListSize ; i++)
+        {
+            powerupList.get(i).deActive();
+            powerupList.remove(i);
+            puListSize = powerupList.size();
+        }
+        iceRope = false;
+    }
+    
     public boolean hasPowerup(){
     	return this.powerupList.size() != 0;
     }

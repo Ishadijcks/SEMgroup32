@@ -76,7 +76,7 @@ public class PlayerTest {
         player.setPowerup(speed);
         assertTrue(player.getPowerupList().get(0).getName().equals("speed"));
         player.removePowerUp(speed);
-        assertEquals(null, player.getPowerupList().get(0));
+        assertEquals(0, player.getPowerupList().size());
     }
 
     @Test
