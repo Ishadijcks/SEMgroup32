@@ -577,6 +577,7 @@ public class Driver extends JPanel {
                 curLevel.checkCollisionRope();
 
                 if (curLevel.checkCollisionPlayer()) {
+                    game.getPlayerList().get(0).removeAllPowerUps();
                     game.resetLevel();
                 }
                 
