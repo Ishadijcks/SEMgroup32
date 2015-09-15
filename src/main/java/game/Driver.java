@@ -590,19 +590,16 @@ public class Driver extends JPanel {
                                 .equals("life")) {
                             Powerup life = game.getPlayerList().get(0).getPowerupList().get(i);
                             game.getLife();
-                            System.out.println(game.getPlayerList().get(0).getPowerupList().get(i).getName());
                             game.getPlayerList().get(0).removePowerUp(life);
                         }
                         else if (game.getPlayerList().get(0).getPowerupList().get(i).getName()
                                 .equals("ice")) {
                             iceRope = true;
                             game.getPlayerList().get(0).getPowerupList().get(i).decreaseFramesLeft();
-                            System.out.println(game.getPlayerList().get(0).getPowerupList().get(i).getName());
                         }
                         else if (game.getPlayerList().get(0).getPowerupList().get(i).getName()
                                 .equals("speed")) {
                             game.getPlayerList().get(0).getPowerupList().get(i).decreaseFramesLeft();
-                            System.out.println(game.getPlayerList().get(0).getPowerupList().get(i).getName());
                         }
                         
                     }

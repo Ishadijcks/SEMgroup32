@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 
+import java.util.ArrayList;
 import java.awt.Color;
 
 import game.Bubble;
@@ -16,7 +17,6 @@ import game.Settings;
 
 import org.junit.Before;
 import org.junit.Test;
-
 public class BubbleTest {
 
 
@@ -24,7 +24,7 @@ public class BubbleTest {
     public void testBubbleDefault() {
         Bubble bub = new Bubble(8, 10, 10, true, true);
         assertTrue(bub.calculateG(-10) ==  1);
-        assertTrue(bub.calculateMaxHeight(-10) ==  100);
+        assertTrue(bub.calculateMaxHeight(-10) ==  40);
         assertTrue(bub.calculateSpeedX(-10) ==  1);
         assertTrue(bub.getColor().equals(Settings.getDragonRed()));
         
@@ -91,7 +91,6 @@ public class BubbleTest {
       
     }
     
-    
     @Test
     public void testBounceH() {
         Bubble bubble = new Bubble(10, 10, 10, true, true);
@@ -107,5 +106,6 @@ public class BubbleTest {
         bubble.bounceV();
         assertFalse(bubble.isDirectionV());
     }
+    
 
 }

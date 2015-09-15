@@ -100,11 +100,11 @@ public class Player {
                 colX += stepSize;
             }
         }
+
         if(powerupList.size() != 0)
         {
             System.out.println(powerupList.get(0).getName() + " " + powerupList.get(0).getFramesLeft());
         }
-        
 
     }
 
@@ -125,7 +125,7 @@ public class Player {
                 {
                     if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
                     {
-                            Rope rope = new iceRope(ropeX, ropeY);
+                            Rope rope = new IceRope(ropeX, ropeY);
                             Driver.game.getCurrentLevel()
                             .setRope(rope);
                             return;
