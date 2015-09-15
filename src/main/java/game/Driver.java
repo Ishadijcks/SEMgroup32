@@ -559,11 +559,8 @@ public class Driver extends JPanel {
         setupGame();
         startScreen();
 
-        java.util.Date date= new java.util.Date();
-
-        SimpleDateFormat d = new SimpleDateFormat("dd-M-yyyy_hh:mm:ss");
-        System.out.println(d.format(date));
         Logger.log("Heyo", 2, 2);
+        Thread.sleep(1000);
         Logger.log("Tim is lui", 1, 2);
         while (true) {
             if (game.inProgress()) {
