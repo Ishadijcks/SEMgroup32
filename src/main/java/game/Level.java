@@ -124,18 +124,12 @@ public class Level {
         int x = bubble.getX();
         int y = bubble.getY();
         int diameter = bubble.getDiameter();
-        // Sets the color depending on the radius of the bubble
+        
         addScore(diameter);
         bubbleList.remove(i);
 
-        if (diameter > 10) {
-            Bubble newBubble1 = new Bubble(diameter / 2, x, y, false, false);
-            Bubble newBubble2 = new Bubble(diameter / 2, x, y, true, false);
-
-            bubbleList.add(newBubble1);
-            bubbleList.add(newBubble2);
-
-        }
+        bubbleList.addAll(bubble.destroyBubble(x, y));
+        
         if (Settings.getPowerupChance() > Math.random() * 100) {
             Powerup powerup = generatePowerup(x, y, randomInt(1,2));
             powerupList.add(powerup);
