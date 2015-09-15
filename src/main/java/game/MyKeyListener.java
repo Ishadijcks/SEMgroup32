@@ -2,6 +2,10 @@ package game;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 class MyKeyListener extends KeyAdapter {
 
@@ -32,7 +36,17 @@ class MyKeyListener extends KeyAdapter {
                 case 32:
                     game.getPlayerList().get(0).shootRope();
                     break;
-            
+                case 76:
+                try {
+                    new LogScreen();
+                } catch (UnsupportedAudioFileException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (LineUnavailableException e) {
+                    e.printStackTrace();
+                }
+                    break;
                 default:
                     break;
             }
