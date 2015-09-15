@@ -64,8 +64,6 @@ public class Player {
         if (powerupListSize > 0) {
                for(int i = 0; i < powerupListSize; i++)
                {
-                   System.out.println("Old size: " + powerupListSize);
-                   System.out.println("New size: " + powerupList.size());
                        if (powerupList.get(i).getName().equals("speed") && powerupList.get(i).isActive()) {
                            stepSize = Settings.getPlayerPowerupStepSize();;
                        }
@@ -96,11 +94,6 @@ public class Player {
                 colX += stepSize;
             }
         }
-        if(powerupList.size() != 0)
-        {
-            System.out.println(powerupList.get(0).getFramesLeft());
-        }
-        
 
     }
 
@@ -121,7 +114,7 @@ public class Player {
                 {
                     if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
                     {
-                            Rope rope = new iceRope(ropeX, ropeY);
+                            Rope rope = new IceRope(ropeX, ropeY);
                             Driver.game.getCurrentLevel()
                             .setRope(rope);
                             return;
