@@ -13,6 +13,9 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Random;
 
 import javax.sound.sampled.AudioInputStream;
@@ -555,7 +558,13 @@ public class Driver extends JPanel {
         initGame();
         setupGame();
         startScreen();
-        
+
+        java.util.Date date= new java.util.Date();
+
+        SimpleDateFormat d = new SimpleDateFormat("dd-M-yyyy_hh:mm:ss");
+        System.out.println(d.format(date));
+        Logger.log("Heyo", 2, 2);
+        Logger.log("Tim is lui", 1, 2);
         while (true) {
             if (game.inProgress()) {
                 curLevel = game.getCurrentLevel();
