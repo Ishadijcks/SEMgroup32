@@ -600,6 +600,7 @@ public class Driver extends JPanel {
                         }
                         else if (game.getPlayerList().get(0).getPowerupList().get(i).getName()
                                 .equals("speed")) {
+                            game.getPlayerList().get(0).getPowerupList().get(i).decreaseFramesLeft();
                             System.out.println(game.getPlayerList().get(0).getPowerupList().get(i).getName());
                         }
                         

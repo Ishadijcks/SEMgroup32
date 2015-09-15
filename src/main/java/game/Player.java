@@ -68,18 +68,13 @@ public class Player {
                    System.out.println("Old size: " + powerupListSize);
                    System.out.println("New size: " + powerupList.size());
                        if (powerupList.get(i).getName().equals("speed") && powerupList.get(i).isActive()) {
-                           stepSize = Settings.getPlayerPowerupStepSize();
-                           powerupList.get(i).decreaseFramesLeft();
+                           stepSize = Settings.getPlayerPowerupStepSize();;
                        }
                        else if(powerupList.get(i).getName().equals("speed") && !(powerupList.get(i).isActive()))
                        {
                            powerupList.remove(i);
                            stepSize = Settings.getPlayerStepSize();
                            powerupListSize = powerupList.size();
-                       }
-                       else if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
-                       {
-                           powerupList.get(i).decreaseFramesLeft();
                        }
                        else if(powerupList.get(i).getName().equals("ice") && !(powerupList.get(i).isActive()))
                        {
@@ -103,33 +98,11 @@ public class Player {
                 colX += stepSize;
             }
         }
-        
-        powerupListSize = powerupList.size();
-        if (powerupListSize > 0) {
-            for(int i = 0; i < powerupListSize; i++)
-            {
-                    if (powerupList.get(i).getName().equals("speed") && powerupList.get(i).isActive()) {
-                        stepSize = Settings.getPlayerPowerupStepSize();
-                        powerupList.get(i).decreaseFramesLeft();
-                    }
-                    else if(powerupList.get(i).getName().equals("speed") && !(powerupList.get(i).isActive()))
-                    {
-                        powerupList.remove(i);
-                        stepSize = Settings.getPlayerStepSize();
-                        powerupListSize = powerupList.size();
-                    }
-                    else if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
-                    {
-                        powerupList.get(i).decreaseFramesLeft();
-                    }
-                    else if(powerupList.get(i).getName().equals("ice") && !(powerupList.get(i).isActive()))
-                    {
-                        powerupList.remove(i);
-                        iceRope = false;
-                        powerupListSize = powerupList.size();
-                    }
-            }
+        if(powerupList.size() != 0)
+        {
+            System.out.println(powerupList.get(0).getFramesLeft());
         }
+        
 
     }
 
