@@ -1,8 +1,8 @@
 package game;
 
-public class iceRope extends Rope{
+public class IceRope extends Rope{
 
-    public iceRope(int x, int y) {
+    public IceRope(int x, int y) {
         super(x, y);
     }
 
