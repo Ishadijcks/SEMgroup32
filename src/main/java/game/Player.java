@@ -21,7 +21,6 @@ public class Player {
     private boolean movingLeft = false;
     private boolean movingRight = false;
     private ArrayList<Powerup> powerupList = new ArrayList<Powerup>();
-    private static boolean iceRope = false;
 
     public Player(String name, int x) {
         this.name = name;
@@ -79,7 +78,6 @@ public class Player {
                        else if(powerupList.get(i).getName().equals("ice") && !(powerupList.get(i).isActive()))
                        {
                            powerupList.remove(i);
-                           iceRope = false;
                            powerupListSize = powerupList.size();
                        }
                }
@@ -123,27 +121,39 @@ public class Player {
                 {
                     if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
                     {
-                            iceRope = true;
-                            Rope rope = new Rope(ropeX, ropeY, iceRope);
+                            Rope rope = new iceRope(ropeX, ropeY);
                             Driver.game.getCurrentLevel()
                             .setRope(rope);
                             return;
                     }
                     else if(powerupList.get(i).getName().equals("ice") && !(powerupList.get(i).isActive()))
                     {
-                            iceRope = false;
                             powerupList.remove(i);
                     }
                 }
                 
             }
             
-            iceRope = false;
-            
-            Rope rope = new Rope(ropeX, ropeY, iceRope);
+            Rope rope = new Rope(ropeX, ropeY);
             Driver.game.getCurrentLevel().setRope(rope);
             
         }
+    }
+    
+    public boolean hasIceRope()
+    {
+        int powerupListSize = powerupList.size();
+        if(powerupListSize > 0)
+        {
+            for(int i = 0; i < powerupListSize; i++)
+            {
+                if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
+                {
+                        return true;
+                }
+            }
+        }
+        return false;
     }
 
     // Getters and setters
@@ -191,10 +201,6 @@ public class Player {
         return powerupList;
     }
     
-    public boolean getIceRope() {
-        return this.iceRope;
-    }
-    
     public void removePowerUp(Powerup pu)
     {
         powerupList.remove(pu);
@@ -209,7 +215,6 @@ public class Player {
             powerupList.remove(i);
             puListSize = powerupList.size();
         }
-        iceRope = false;
     }
     
     public boolean hasPowerup(){

@@ -189,13 +189,13 @@ public class Driver extends JPanel {
                 ropeDurationCounter--;
                 
                 int rInt219to255 = randomInt(219, 255);
-                int rInt180to102 = randomInt(180, 236);
+                int rInt120to102 = randomInt(120, 236);
                 int rInt70to133 = randomInt(70, 133);
                 int rInt6to33 = randomInt(6, 11);
 
                 Color fire1 = new Color(0, rInt219to255, 255);
-                Color fire2 = new Color(36, rInt180to102, 235);
-                Color fire3 = new Color(29, rInt70to133, 179);
+                Color fire2 = new Color(36, rInt120to102, 165);
+                Color fire3 = new Color(29, rInt70to133, 209);
                 Color fire4 = new Color(14, rInt6to33, 120);
 
                 Stroke stroke1 = new BasicStroke(1f);
@@ -222,11 +222,11 @@ public class Driver extends JPanel {
                         if ((i == 0) && random == 2) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
                                     .getRope().getY(), curLevel.getRope()
-                                    .getX(), curLevel.getHeight() + 43);
+                                    .getX(), curLevel.getHeight() + 45);
                         } else if (i == 1 || i == 2 || i == 3) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
                                     .getRope().getY(), curLevel.getRope()
-                                    .getX(), curLevel.getHeight() + 43);
+                                    .getX(), curLevel.getHeight() + 45);
                         }
 
                     }
@@ -606,11 +606,7 @@ public class Driver extends JPanel {
                         
                     }
                 }
-                
-                if(!(game.getPlayerList().get(0).getIceRope()))
-                {
-                    iceRope = false;
-                }
+                iceRope = game.getPlayerList().get(0).hasIceRope();
 
                 driver.repaint();
 
