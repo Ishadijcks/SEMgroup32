@@ -164,6 +164,7 @@ public class Powerup {
         URL location = StartScreen.class.getProtectionDomain().getCodeSource()
                 .getLocation();
         String imageLocation = location.getFile();
+        imageLocation = imageLocation.replace("%20", " ");
         if(name.equals("speed"))
         {
             ImageIcon powerupspeed = new ImageIcon(imageLocation + "main/Images/Powerups/puspeed.png");
