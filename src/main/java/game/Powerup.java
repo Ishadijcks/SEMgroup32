@@ -67,12 +67,37 @@ public class Powerup {
         framesLeft--;
     }
     
+    /**
+     * The powerup is active when the framesLeft count is higher than zero
+     */
     public boolean isActive(){
         return framesLeft > 0;
     }
     
-    public void deActive(){
+    /**
+     * DeActivate the powerup by setting the framesLeft counter to zero
+     */
+    public void deActivate(){
         framesLeft = 0;
+    }
+    
+    /**
+     * Reset the framesLeft counter to the starting count
+     */
+    public void resetFramesLeft(){
+        framesLeft = 10*Settings.getFps();
+    }
+    
+    /**
+     * Compare the names of the powerup to determine if they are the same sort
+     */
+    public boolean samePowerup(Powerup that){
+        if(getName().equals(that.getName()))
+        {
+            return true;
+        }
+        
+        return false;
     }
     
     /**

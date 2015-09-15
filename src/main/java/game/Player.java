@@ -211,7 +211,7 @@ public class Player {
         int puListSize = powerupList.size();
         for(int i = 0; i < puListSize ; i++)
         {
-            powerupList.get(i).deActive();
+            powerupList.get(i).deActivate();
             powerupList.remove(i);
             puListSize = powerupList.size();
         }
