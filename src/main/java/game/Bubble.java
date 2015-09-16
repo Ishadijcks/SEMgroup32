@@ -35,7 +35,7 @@ public class Bubble {
      */
     public Bubble(int diameter, double x, double y, boolean directionH,
             boolean directionV) {
-
+        Logger.log("bubble created", 1, 1);
         G = calculateG(diameter);
         maxheight = calculateMaxHeight(diameter);
         speedX = calculateSpeedX(diameter);

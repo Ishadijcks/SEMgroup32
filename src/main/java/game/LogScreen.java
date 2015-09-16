@@ -22,6 +22,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import java.util.*;
 public class LogScreen extends JFrame {
 
     JButton startButton;
@@ -53,6 +54,14 @@ public class LogScreen extends JFrame {
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent startGame) {
                 driver.repaint();
+                try {
+                    LogScreen.main(null);
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.println("repaint");
+                
             }
         });
         
@@ -74,14 +83,28 @@ public class LogScreen extends JFrame {
     public void paint(Graphics graph) {
         try {
             super.paint(graph);
-            System.out.println("aaa");
+            System.out.println("paint");
             g2d = (Graphics2D) graph;
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                     RenderingHints.VALUE_ANTIALIAS_ON);
 
-            g2d.drawString("Score: ", 10,  10);
             Color black = new Color(0, 0, 0);
+            g2d.setFont(new Font("Calibri", Font.BOLD, 40));
+            g2d.drawString("Log: ", 50,  50);
             g2d.setColor(black);
+            g2d.drawRect(50, 50, 600, 400);
+
+            ArrayList<Integer> category = new ArrayList<Integer>();
+            category.add(1);
+            category.add(2);
+            category.add(3);
+            LinkedList<LogObject> ll = Logger.getFilteredLogs(category, 5);
+            g2d.setFont(new Font("Calibri", Font.PLAIN, 14));
+            int size = ll.size();
+            for (int i = 0; i < size; i++) {
+            g2d.drawString(ll.pop().getMessage(), 65, 80 + 17 * i);
+            }
+            
         } catch (IndexOutOfBoundsException e) {
             
         }
@@ -90,8 +113,7 @@ public class LogScreen extends JFrame {
     public static void main(String[] args) throws InterruptedException {
         System.out.println("main called");
         while (true) {
-        // 120 FPS
-        Thread.sleep(1000 / Settings.getFps());
+        Thread.sleep(1000);
         }
     }
 }
