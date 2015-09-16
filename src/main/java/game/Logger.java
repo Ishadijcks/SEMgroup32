@@ -8,11 +8,11 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Logger {
-    public static String[] categoryString = {"Player Input","Player","Bubble Movement","Bubble","Collisions","Rope","Powerup","Game","Level"};
     private static LinkedList<LogObject> logList = new LinkedList<LogObject>();
     
     private static java.util.Date date= new java.util.Date();
@@ -30,9 +30,8 @@ public class Logger {
         try {
             
            
-            System.out.println(d.format(date));
-            writer = new PrintWriter(new FileWriter("Logs/log "+d.format(date)+".txt",true));
-            writer.println("["+categoryString[log.getCategory()]+"] "+log.getMessage());
+              writer = new PrintWriter(new FileWriter("Logs/log "+d.format(date)+".txt",true));
+            writer.println(log.toString());
             writer.close();
             
         } catch (FileNotFoundException e) {
@@ -47,5 +46,18 @@ public class Logger {
                 e.printStackTrace();
         }
 
+    }
+    
+    
+    public static LinkedList<LogObject> getFilteredLogs( ArrayList<Integer> category, int minSeverity){
+        LinkedList<LogObject> filteredList = new LinkedList<LogObject>();
+        LogObject lo;
+        for(int i = 0; i<logList.size(); i++){
+            lo = logList.get(i);
+            if(category.contains(lo.getCategory()) &&lo.getSeverity() <= minSeverity){
+                filteredList.add(lo);
+            }
+        }
+        return filteredList;
     }
 }
