@@ -38,15 +38,9 @@ public class Logger {
     public static void appendToFile(LogObject log) {
         PrintWriter writer;
         try {
-<<<<<<< HEAD
-            
            
               writer = new PrintWriter(new FileWriter("Logs/log "+d.format(date)+".txt",true));
             writer.println(log.toString());
-=======
-            writer = new PrintWriter(new FileWriter("Logs/log " + d.format(date) + ".txt", true));
-            writer.println("[" + categoryString[log.getCategory()] + "] " + log.getMessage());
->>>>>>> 776108d593455101c84009fc3a497908dab48d66
             writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -58,16 +52,7 @@ public class Logger {
         }
 
     }
-    
-<<<<<<< HEAD
-    
-    public static LinkedList<LogObject> getFilteredLogs( ArrayList<Integer> category, int minSeverity){
-        LinkedList<LogObject> filteredList = new LinkedList<LogObject>();
-        LogObject lo;
-        for(int i = 0; i<logList.size(); i++){
-            lo = logList.get(i);
-            if(category.contains(lo.getCategory()) &&lo.getSeverity() <= minSeverity){
-=======
+
     /**
      * Returns the list of logs filtered on category and severity.
      * @param category
@@ -79,7 +64,6 @@ public class Logger {
         for (int i = 0; i < logList.size(); i++) {
             lo = logList.get(i);
             if (category.contains(lo.getCategory()) && lo.getSeverity() <= minSeverity) {
->>>>>>> 776108d593455101c84009fc3a497908dab48d66
                 filteredList.add(lo);
             }
         }

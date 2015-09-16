@@ -2,7 +2,7 @@ package game;
 
 /**
  * A simple log object.
- * @author Tim
+ * @author Tim, Isha
  *
  */
 public class LogObject {
