@@ -2,31 +2,36 @@ package game;
 
 /**
  * A simple log object.
+ * 
  * @author Tim, Isha
  *
  */
 public class LogObject {
     private String message;
     private int category;
-    public static String[] categoryString = {"Player Input","Player","Bubble Movement","Bubble","Collisions","Rope","Powerup","Game","Level","UI"};
-    public static String[] severityString = {"","ERROR","EXCEPTION","WARNING","INFO","DETAIL"};
+    public static String[] categoryString = { "Player Input", "Player",
+            "Bubble Movement", "Bubble", "Collisions", "Rope", "Powerup",
+            "Game", "Level", "UI" };
+    public static String[] severityString = { "", "ERROR", "EXCEPTION",
+            "WARNING", "INFO", "DETAIL" };
     private int severity;
-    
+
     /**
      * The constructor for the log object.
+     * 
      * @param message
      * @param categoryInput
      * @param severityInput
      */
-    public LogObject(String message, int categoryInput, int severityInput){
+    public LogObject(String message, int categoryInput, int severityInput) {
         this.message = message;
         this.category = categoryInput;
         this.severity = severityInput;
     }
-    
-    
+
     /**
      * get Message.
+     * 
      * @return message
      */
     public String getMessage() {
@@ -35,6 +40,7 @@ public class LogObject {
 
     /**
      * get Category.
+     * 
      * @return category
      */
     public int getCategory() {
@@ -43,23 +49,42 @@ public class LogObject {
 
     /**
      * get severity.
+     * 
      * @return severity
      */
     public int getSeverity() {
         return severity;
     }
-    
-    public String toString(){
-        if (category < 0 || category >= categoryString.length){
+
+    /**
+     * method that converts the integer to a string.
+     * @return string
+     */
+    public String toString() {
+        if (category < 0 || category >= categoryString.length) {
             category = 8;
             severity = 1;
         }
-        return "["+severityString[severity]+"] ["+categoryString[category]+"] "+ message;
+        return "[" + severityString[severity] + "] ["
+                + categoryString[category] + "] " + message;
     }
 
-
-    public static String[] getCategoryNames(){
+    /**
+     * get Category names.
+     * 
+     * @return string
+     */
+    public static String[] getCategoryNames() {
         return categoryString;
     }
-    
+
+    /**
+     * get severity names..
+     * 
+     * @return string
+     */
+    public static String[] getSeverityNames() {
+        return severityString;
+    }
+
 }

@@ -40,14 +40,16 @@ public class LogScreen extends JFrame {
         JFrame frame = new JFrame("Logging Screen");
         frame.setSize(800, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+        frame.setResizable(true);
 
         Font boldFont = new Font("Serif", Font.BOLD, 18);
         Font basicFont = new Font("Serif", Font.PLAIN, 16);
 
+        //Title top the screen
         JLabel textLog = new JLabel("Log");
         textLog.setFont(boldFont);
 
+        //Right panel with category and Severity
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
         JLabel textCategory = new JLabel("Category");
@@ -60,7 +62,19 @@ public class LogScreen extends JFrame {
             textCat.setFont(basicFont);
             rightPanel.add(textCat);
         }
+        
+        JLabel textSeverity = new JLabel("Severity");
+        textSeverity.setFont(boldFont);
+        rightPanel.add(textSeverity);
 
+        String[] sev = LogObject.getSeverityNames();
+        for (int i = 0; i < sev.length; i++) {
+            JLabel textSev = new JLabel(cat[i]);
+            textSev.setFont(basicFont);
+            rightPanel.add(textSev);
+        }
+        
+        //Center Panel for the log self
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel mainInnerPanel = makeMainInnerPanel();
 
@@ -83,12 +97,27 @@ public class LogScreen extends JFrame {
 
     }
 
-    private JPanel makeHorizontalPanel(int category, String... labelValues) {
+    private JPanel makeHorizontalPanel(int severity, String... labelValues) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         for (String s : labelValues) {
             JLabel label = new JLabel(s);
-            if (category == 2) {
-                   label.setForeground(Color.blue);
+            switch(severity){
+            case 1:
+                label.setForeground(Color.red);
+                break;
+            case 2:
+                label.setForeground(Color.orange);
+                break;
+            case 3:
+                label.setForeground(Color.yellow);
+                break;
+            case 4:
+                label.setForeground(Color.blue);
+                break;
+            case 5:
+                label.setForeground(Color.gray);
+                break;
+                
             }
             panel.add(label);
         }
@@ -106,7 +135,7 @@ public class LogScreen extends JFrame {
         int size = ll.size();
         ArrayList<JPanel> jPanels = new ArrayList<JPanel>();
         for (int i = 0; i < size; i++) {
-            jPanels.add(makeHorizontalPanel(ll.get(i).getCategory(), ll.get(i)
+            jPanels.add(makeHorizontalPanel(ll.get(i).getSeverity(), ll.get(i)
                     .getMessage()));
         }
         JPanel mainInnerPanel = new JPanel();
@@ -118,34 +147,4 @@ public class LogScreen extends JFrame {
         return mainInnerPanel;
     }
 
-    @Override
-    public void paint(Graphics graph) {
-        try {
-            super.paint(graph);
-            System.out.println("paint");
-            g2d = (Graphics2D) graph;
-            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON);
-
-            Color black = new Color(0, 0, 0);
-            g2d.setFont(new Font("Calibri", Font.BOLD, 40));
-            g2d.drawString("Log: ", 50, 50);
-            g2d.setColor(black);
-            g2d.drawRect(50, 50, 600, 400);
-
-            ArrayList<Integer> category = new ArrayList<Integer>();
-            category.add(1);
-            category.add(2);
-            category.add(3);
-            LinkedList<LogObject> ll = Logger.getFilteredLogs(category, 5);
-            g2d.setFont(new Font("Calibri", Font.PLAIN, 14));
-            int size = ll.size();
-            for (int i = 0; i < size; i++) {
-                g2d.drawString(ll.pop().getMessage(), 65, 80 + 17 * i);
-            }
-
-        } catch (IndexOutOfBoundsException e) {
-
-        }
-    }
 }
