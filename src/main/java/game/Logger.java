@@ -14,7 +14,9 @@ import java.util.List;
 
 public class Logger {
     private static LinkedList<LogObject> logList = new LinkedList<LogObject>();
-
+    public static String[] categoryString = {"Player Input","Player","Bubble Movement","Bubble","Collisions","Rope","Powerup","Game","Level","UI"};
+    public static String[] severityString = {"","ERROR","EXCEPTION","WARNING","INFO","DETAIL"};
+ 
     private static java.util.Date date = new java.util.Date();
     private static SimpleDateFormat d = new SimpleDateFormat(
             "dd-M-yyyy hh-mm-ss");
