@@ -69,4 +69,9 @@ public class Logger {
         }
         return filteredList;
     }
+    
+
+    public static String[] getCategory(){
+        return categoryString;
+    }
 }
