@@ -13,10 +13,13 @@ public class Rope {
      * The rope moves up and gets destroyed when it hits the roof
      */
     public void move() {
+        
             if (y <= Settings.getTopMargin() - 2) {
                 Driver.game.getCurrentLevel()
                          .setRope(null);
+                Logger.log("Rope hit the roof", 5, 4);
              } else {
+                 Logger.log("Rope moved from "+x+","+y+ " to "+ x + ","+(y-Settings.getRopeSpeed()), 5, 5);
                  y -= Settings.getRopeSpeed();
              } 
     }

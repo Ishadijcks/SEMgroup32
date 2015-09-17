@@ -8,7 +8,7 @@ package game;
 public class LogObject {
     private String message;
     private int category;
-    public static String[] categoryString = {"Player Input","Player","Bubble Movement","Bubble","Collisions","Rope","Powerup","Game","Level"};
+    public static String[] categoryString = {"Player Input","Player","Bubble Movement","Bubble","Collisions","Rope","Powerup","Game","Level","UI"};
     public static String[] severityString = {"","ERROR","EXCEPTION","WARNING","INFO","DETAIL"};
     private int severity;
     

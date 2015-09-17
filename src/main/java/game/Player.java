@@ -26,6 +26,7 @@ public class Player {
         this.name = name;
         this.x = x;
         this.colX = x - 50;
+        Logger.log("Player created", 1, 4);
     }
 
     /**
@@ -33,6 +34,7 @@ public class Player {
      */
     public void movingLeft() {
         movingLeft = true;
+        Logger.log("Player is moving left", 1, 5);
     }
 
     /**
@@ -40,6 +42,7 @@ public class Player {
      */
     public void stopMovingLeft() {
         movingLeft = false;
+        Logger.log("Player stopped moving left", 1, 5);
     }
 
     /**
@@ -47,6 +50,7 @@ public class Player {
      */
     public void movingRight() {
         movingRight = true;
+        Logger.log("Player is moving right", 1, 5);
     }
 
     /**
@@ -54,6 +58,7 @@ public class Player {
      */
     public void stopMovingRight() {
         movingRight = false;
+        Logger.log("Player stopped moving right", 1, 5);
     }
 
     /**
@@ -72,11 +77,13 @@ public class Player {
                            powerupList.remove(i);
                            stepSize = Settings.getPlayerStepSize();
                            powerupListSize = powerupList.size();
+                           Logger.log("Speed powerup removed",6,4);
                        }
                        else if(powerupList.get(i).getName().equals("ice") && !(powerupList.get(i).isActive()))
                        {
                            powerupList.remove(i);
                            powerupListSize = powerupList.size();
+                           Logger.log("Icerope powerup removed",6,4);
                        }
                }
         }
@@ -92,6 +99,9 @@ public class Player {
                 x -= stepSize;
                 colX -= stepSize;
             }
+            else{
+                Logger.log("Player is at the left border", 1, 4);
+            }
         }
 
         if (movingRight) {
@@ -99,11 +109,14 @@ public class Player {
                 x += stepSize;
                 colX += stepSize;
             }
+            else{
+                Logger.log("Player is at the right border", 1, 4);
+            }
         }
 
         if(powerupList.size() != 0)
         {
-            System.out.println(powerupList.get(0).getName() + " " + powerupList.get(0).getFramesLeft());
+        //    System.out.println(powerupList.get(0).getName() + " " + powerupList.get(0).getFramesLeft());
         }
 
     }
@@ -140,6 +153,7 @@ public class Player {
             
             Rope rope = new Rope(ropeX, ropeY);
             Driver.game.getCurrentLevel().setRope(rope);
+            Logger.log("Shot a rope", 1, 4);
             
         }
     }
