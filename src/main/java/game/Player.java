@@ -80,7 +80,13 @@ public class Player {
                        }
                }
         }
-
+        
+        if(powerupList.size() == 0)
+        {
+            stepSize = Settings.getPlayerStepSize();
+        }
+        
+        
         if (movingLeft) {
             if (x - stepSize > Settings.getLeftMargin()) {
                 x -= stepSize;
@@ -93,6 +99,11 @@ public class Player {
                 x += stepSize;
                 colX += stepSize;
             }
+        }
+
+        if(powerupList.size() != 0)
+        {
+            System.out.println(powerupList.get(0).getName() + " " + powerupList.get(0).getFramesLeft());
         }
 
     }
@@ -201,12 +212,10 @@ public class Player {
     
     public void removeAllPowerUps()
     {
-        int puListSize = powerupList.size();
-        for(int i = 0; i < puListSize ; i++)
+        while(powerupList.size() != 0)
         {
-            powerupList.get(i).deActivate();
-            powerupList.remove(i);
-            puListSize = powerupList.size();
+            powerupList.get(0).deActivate();
+            powerupList.remove(0);
         }
     }
     
