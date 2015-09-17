@@ -3,7 +3,9 @@ package game;
 public class IceRope extends Rope{
 
     public IceRope(int x, int y) {
+       
         super(x, y);
+        Logger.log("Ice rope created", 5 ,4);
     }
 
     /**
@@ -11,6 +13,7 @@ public class IceRope extends Rope{
      */
     @Override
     public void move() {
+        Logger.log("Ice rope moved", 5, 5, 100);
        if (super.y <= Settings.getTopMargin() - 2) 
        {
           return;

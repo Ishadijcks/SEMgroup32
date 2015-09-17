@@ -27,13 +27,16 @@ class MyKeyListener extends KeyAdapter {
 
             // Left
                 case 37:
+                    Logger.log("Player pressed Left", 0, 5);
                     game.getPlayerList().get(0).movingLeft();
                     break;
             // Right
                 case 39:
+                    Logger.log("Player pressed right", 0, 5);
                     game.getPlayerList().get(0).movingRight();
                     break;
                 case 32:
+                    Logger.log("Player pressed space", 0, 5);
                     game.getPlayerList().get(0).shootRope();
                     break;
                 case 76:
@@ -48,6 +51,7 @@ class MyKeyListener extends KeyAdapter {
                 }
                     break;
                 default:
+                    Logger.log("keyPressed switch default triggered",0, 3);
                     break;
             }
         }
@@ -65,11 +69,13 @@ class MyKeyListener extends KeyAdapter {
 
         // Left
         case 37:
+            Logger.log("Player released Left", 0, 5);
             game.getPlayerList().get(0).stopMovingLeft();
             break;
 
         // Right
         case 39:
+            Logger.log("Player released right", 0, 5);
             game.getPlayerList().get(0).stopMovingRight();
             break;
         }

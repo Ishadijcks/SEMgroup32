@@ -38,7 +38,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class Driver extends JPanel {
 
-    
+    public static int totalFrames = 1;
     public static Game game;
     private int animationRightCounter = 1;
     private int fireRightCounter = 1;
@@ -527,6 +527,7 @@ public class Driver extends JPanel {
         });
         add(nextLevel);
         validate();
+        Logger.log("Start button added", 9, 4);
     }
 
     /**
@@ -537,6 +538,7 @@ public class Driver extends JPanel {
         if(game.getCurrentLevelInt() == 4)
         {
             frame.dispose();
+            Logger.log("Frame destroyed",9 ,4);
             new WinningScreen(driver);
         }
     }
@@ -551,6 +553,7 @@ public class Driver extends JPanel {
             frame.dispose();
             game.toggleProgress();
             new LosingScreen(driver);
+            Logger.log("Game lost", 7, 4);
         }
     }
     
@@ -559,9 +562,6 @@ public class Driver extends JPanel {
         setupGame();
         startScreen();
 
-        Logger.log("Heyo", 2, 2);
-        Thread.sleep(1000);
-        Logger.log("Tim is lui", 1, 2);
         while (true) {
             if (game.inProgress()) {
                 curLevel = game.getCurrentLevel();
@@ -583,6 +583,7 @@ public class Driver extends JPanel {
                 curLevel.checkCollisionRope();
 
                 if (curLevel.checkCollisionPlayer()) {
+                    game.getPlayerList().get(0).removeAllPowerUps();
                     game.resetLevel();
                 }
                 
@@ -631,12 +632,14 @@ public class Driver extends JPanel {
 
             // 120 FPS
             Thread.sleep(1000 / Settings.getFps());
+            totalFrames++;
         }
 
     }
 
     public static void initGame(){
        frame = new JFrame("Bounce");
+       Logger.log("Main Frame created",9,4);
     }
     
     /**
@@ -646,8 +649,10 @@ public class Driver extends JPanel {
        
         driver = new Driver();
         frame.addKeyListener(new MyKeyListener());
+        Logger.log("Added key listener", 9, 4);
         frame.add(driver);
         frame.setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
+        Logger.log("Screen size set to "+Settings.getScreenWidth()+ " by " + Settings.getScreenWidth(), 9, 4);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(false);
@@ -689,6 +694,7 @@ public class Driver extends JPanel {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
+        Logger.log("Start screen created", 9, 4);
     }
 
 }

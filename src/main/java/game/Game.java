@@ -13,6 +13,7 @@ public class Game {
     public Game() {
         this.inProgress = false;
         this.playerList = new ArrayList<Player>();
+       Logger.log("Game object created", 7, 5);
     }
 
     /**
@@ -38,12 +39,14 @@ public class Game {
         if (!levelList.contains(level)) {
             levelList.add(level);
         }
+        Logger.log("Level added to the game",7 ,4);
     }
     /**
      * Add score to the players score
      */
     public void addScore(int score){
         this.score += score;
+        Logger.log(score+" points gained. Total score is now "+this.score, 7, 5);
     }
 
     /**
@@ -59,6 +62,7 @@ public class Game {
     public void gameStart() {
         if (!this.inProgress)
             this.inProgress = true;
+        Logger.log("Game started", 7,4);
     }
 
     /**
@@ -68,6 +72,7 @@ public class Game {
     public void gameWon() {
         if (currentLevel < levelList.size() - 1) {
             currentLevel++;
+            Logger.log("Level completed", 8, 4);
             inProgress = false;
         } else {
             inProgress = false;
@@ -84,6 +89,7 @@ public class Game {
         if (!playerList.contains(player)) {
             playerList.add(player);
         }
+        Logger.log("Player "+player.getName()+ " added to the game", 1, 4);
     }
 
     // Getters and setters

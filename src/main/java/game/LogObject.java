@@ -2,13 +2,14 @@ package game;
 
 /**
  * A simple log object.
- * @author Tim
+ * @author Tim, Isha
  *
  */
 public class LogObject {
     private String message;
     private int category;
-
+    public static String[] categoryString = {"Player Input","Player","Bubble Movement","Bubble","Collisions","Rope","Powerup","Game","Level","UI"};
+    public static String[] severityString = {"","ERROR","EXCEPTION","WARNING","INFO","DETAIL"};
     private int severity;
     
     /**
@@ -46,6 +47,14 @@ public class LogObject {
      */
     public int getSeverity() {
         return severity;
+    }
+    
+    public String toString(){
+        if (category < 0 || category >= categoryString.length){
+            category = 8;
+            severity = 1;
+        }
+        return "["+severityString[severity]+"] ["+categoryString[category]+"] "+ message;
     }
 
     
