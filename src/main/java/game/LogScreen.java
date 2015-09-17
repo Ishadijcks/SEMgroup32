@@ -38,7 +38,7 @@ public class LogScreen extends JFrame {
 
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame("Logging Screen");
-        frame.setSize(200, 150);
+        frame.setSize(800, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
 
@@ -54,7 +54,7 @@ public class LogScreen extends JFrame {
         textCategory.setFont(boldFont);
         rightPanel.add(textCategory);
 
-        String[] cat = Logger.getCategory();
+        String[] cat = LogObject.getCategoryNames();
         for (int i = 0; i < cat.length; i++) {
             JLabel textCat = new JLabel(cat[i]);
             textCat.setFont(basicFont);
@@ -70,8 +70,8 @@ public class LogScreen extends JFrame {
         // mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
         frame.add(textLog, BorderLayout.PAGE_START);
-        frame.add(new JButton("Button 4"), BorderLayout.CENTER);
-        frame.add(mainPanel, BorderLayout.LINE_END);
+        frame.add(mainPanel, BorderLayout.CENTER);
+        frame.add(rightPanel, BorderLayout.LINE_END);
 
         frame.add(mainPanel);
         frame.setVisible(true);
@@ -83,10 +83,13 @@ public class LogScreen extends JFrame {
 
     }
 
-    private JPanel makeHorizontalPanel(String... labelValues) {
+    private JPanel makeHorizontalPanel(int category, String... labelValues) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         for (String s : labelValues) {
             JLabel label = new JLabel(s);
+            if (category == 2) {
+                   label.setForeground(Color.blue);
+            }
             panel.add(label);
         }
         return panel;
@@ -103,10 +106,12 @@ public class LogScreen extends JFrame {
         int size = ll.size();
         ArrayList<JPanel> jPanels = new ArrayList<JPanel>();
         for (int i = 0; i < size; i++) {
-            jPanels.add(makeHorizontalPanel(ll.pop().getMessage()));
+            jPanels.add(makeHorizontalPanel(ll.get(i).getCategory(), ll.get(i)
+                    .getMessage()));
         }
         JPanel mainInnerPanel = new JPanel();
-        mainInnerPanel.setLayout(new BoxLayout(mainInnerPanel, BoxLayout.Y_AXIS));
+        mainInnerPanel
+                .setLayout(new BoxLayout(mainInnerPanel, BoxLayout.Y_AXIS));
         for (int i = 0; i < jPanels.size(); i++) {
             mainInnerPanel.add(jPanels.get(i));
         }

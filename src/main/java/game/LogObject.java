@@ -57,5 +57,9 @@ public class LogObject {
         return "["+severityString[severity]+"] ["+categoryString[category]+"] "+ message;
     }
 
+
+    public static String[] getCategoryNames(){
+        return categoryString;
+    }
     
 }
