@@ -4,218 +4,91 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>330</x>
-      <y>300</y>
+      <x>460</x>
+      <y>110</y>
       <w>210</w>
-      <h>160</h>
+      <h>190</h>
     </coordinates>
-    <panel_attributes>Level
+    <panel_attributes>LogObject
 --
-- bubbleList
-- playerList
-- ropeList 
-- timeLeft
-- height
-- width
+-message: String
+-category: Int
 --
-
-+ checkCollision(): boolean 
-+ bubbleSplit(Bubble)</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>710</x>
-      <y>300</y>
-      <w>210</w>
-      <h>210</h>
-    </coordinates>
-    <panel_attributes>Bubble
---
-- x,y: int
-- directionH,directionV: boolean
-- speed: int
-- maxHeight: int
-- color: String
-- radius: int
-- alive: boolean
---
-+ move()
-+ bounceH()
-+ bounceV()</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>530</x>
-      <y>360</y>
-      <w>170</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
++LogObject(String,int,int)
++toString() : String
 </panel_attributes>
-    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>560</x>
-      <y>360</y>
-      <w>170</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-1-*
-bubbleList</panel_attributes>
-    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>710</x>
+      <x>260</x>
+      <y>350</y>
+      <w>300</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>LogScreens
+--
+-logScreen: boolean
+-severityMin: int
+-logscreen: LogScreen
+-activeLog: boolean
+--
+-checkboxListener()
+-radioButtonListener()
+-makeHorizontalPanel()
+-makeMainInnerPanel()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>20</x>
+      <y>50</y>
+      <w>760</w>
+      <h>710</h>
+    </coordinates>
+    <panel_attributes>Logging
+--
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>90</x>
       <y>130</y>
-      <w>210</w>
-      <h>150</h>
+      <w>300</w>
+      <h>190</h>
     </coordinates>
-    <panel_attributes>Player
+    <panel_attributes>Logger
 --
-- name: String
-- x,y: int
-- height, width: int
-- stepSize: int
+-categoryString: String[]
+-severityString: String[]
 --
-+ moveLeft()
-+ moveRight()
-+ shootRope()</panel_attributes>
++log(message,category,severity)
++log(message,category,severity,frameRepeat)
++getFilteredLogs(ArrayList&lt;category&gt;, int minSeverity)
++appendToFile(LogObject)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>300</y>
-      <w>210</w>
-      <h>160</h>
+      <x>100</x>
+      <y>530</y>
+      <w>300</w>
+      <h>130</h>
     </coordinates>
-    <panel_attributes>Game
+    <panel_attributes>LogSettings
 --
-- levelList
-- lives
-- score
+-logScreen: boolean
+-severityMin: int
+-logscreen: LogScreen
+-activeLog: boolean
 --
-+ start()
-+ drawBubbles()
-+ drawPlayers
-+ drawRopes
-+ gameLoop()</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>530</x>
-      <y>200</y>
-      <w>200</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;100.0;180.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>530</x>
-      <y>200</y>
-      <w>200</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-
-</panel_attributes>
-    <additional_attributes>180.0;10.0;10.0;100.0</additional_attributes>
-  </element>
-  <element>
-    <id>Text</id>
-    <coordinates>
-      <x>620</x>
-      <y>210</y>
-      <w>100</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>1-2
-
-playerList</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>190</x>
-      <y>350</y>
-      <w>140</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>200</x>
-      <y>350</y>
-      <w>150</w>
-      <h>50</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-1-*
-levelList</panel_attributes>
-    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>710</x>
-      <y>570</y>
-      <w>210</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes>Rope
---
-- x,y: int
-- shotBy: Player.name
---
-+ move()
 </panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>530</x>
-      <y>450</y>
-      <w>200</w>
-      <h>140</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;10.0;180.0;120.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>560</x>
-      <y>470</y>
-      <w>170</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;&lt;-
-0-playerList.size
-
-ropeList</panel_attributes>
-    <additional_attributes>150.0;100.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

@@ -14,9 +14,12 @@ import java.util.List;
 
 public class Logger {
     private static LinkedList<LogObject> logList = new LinkedList<LogObject>();
-    public static String[] categoryString = {"Player Input","Player","Bubble Movement","Bubble","Collisions","Rope","Powerup","Game","Level","UI"};
-    public static String[] severityString = {"","ERROR","EXCEPTION","WARNING","INFO","DETAIL"};
- 
+    public static String[] categoryString = { "Player Input", "Player",
+            "Bubble Movement", "Bubble", "Collisions", "Rope", "Powerup",
+            "Game", "Level", "UI" };
+    public static String[] severityString = { "", "ERROR", "EXCEPTION",
+            "WARNING", "INFO", "DETAIL" };
+
     private static java.util.Date date = new java.util.Date();
     private static SimpleDateFormat d = new SimpleDateFormat(
             "dd-M-yyyy hh-mm-ss");
@@ -30,7 +33,7 @@ public class Logger {
      */
     public static void log(String message, int category, int severity,
             int frameRepeat) {
-        if ( Driver.totalFrames % frameRepeat== 0) {
+        if (Driver.totalFrames % frameRepeat == 0 && LogSettings.getActiveLog()) {
 
             LogObject tempLog = new LogObject(message, category, severity);
             logList.add(tempLog);
@@ -47,9 +50,11 @@ public class Logger {
      */
     public static void log(String message, int category, int severity) {
 
-        LogObject tempLog = new LogObject(message, category, severity);
-        logList.add(tempLog);
-        appendToFile(tempLog);
+        if (LogSettings.getActiveLog()) {
+            LogObject tempLog = new LogObject(message, category, severity);
+            logList.add(tempLog);
+            appendToFile(tempLog);
+        }
     }
 
     /**
@@ -94,5 +99,5 @@ public class Logger {
         }
         return filteredList;
     }
-    
+
 }
