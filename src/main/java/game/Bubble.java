@@ -35,7 +35,7 @@ public class Bubble {
      */
     public Bubble(int diameter, double x, double y, boolean directionH,
             boolean directionV) {
-
+        Logger.log("Bubble created with diameter " + diameter, 3, 4);
         G = calculateG(diameter);
         maxheight = calculateMaxHeight(diameter);
         speedX = calculateSpeedX(diameter);
@@ -45,7 +45,7 @@ public class Bubble {
         } else {
             this.diameter = Settings.getBubbleDefaultDiameter();
         }
-        
+
         this.x = x;
         this.y = y;
 
@@ -59,31 +59,54 @@ public class Bubble {
 
     /**
      * Get the correct diameter
+     * 
      * @param diameter
      * @return de diameter van de bubble
      */
     public boolean correctDiameter(int diameter) {
-        return diameter > 0 && diameter < 200;
+        if (diameter > 0 && diameter < 200) {
+            return true;
+        } else {
+            Logger.log("Incorrect diameter", 3, 3);
+            return false;
+        }
     }
 
     /**
      * get the correct X of the bubble
+     * 
      * @param x
      * @param diameter
      * @return the x of the bubble
      */
     public boolean correctX(double x, int diameter) {
-        return x > 0 && x < Settings.getLeftMargin() + Settings.getLevelWidth() - diameter;
+        if (x > 0
+                && x < Settings.getLeftMargin() + Settings.getLevelWidth()
+                        - diameter) {
+            return true;
+        } else {
+            Logger.log("Incorrect x", 3, 3);
+            return false;
+        }
     }
 
     /**
      * get the correct Y of the bubble
+     * 
      * @param y
      * @param diameter
      * @return the y of the bubble
      */
     public boolean correctY(double y, int diameter) {
-        return y > Settings.getTopMargin() && y < (Settings.getTopMargin() + Settings.getLevelHeight() - diameter);
+        if (y > Settings.getTopMargin()
+                && y < (Settings.getTopMargin() + Settings.getLevelHeight() - diameter)) {
+            return true;
+        }
+
+        else {
+            Logger.log("Incorrect y", 3, 3);
+            return false;
+        }
     }
 
     /**
@@ -93,26 +116,29 @@ public class Bubble {
      * @param height
      */
     public void move() {
-       
+
         outOfBoardCheck();
         bounceBorder();
+
+        Logger.log("Bubble moved from " + x + "," + y, 2, 5, 1000);
         moveX();
         moveY();
-        
+        Logger.log("to " + x + "," + y, 2, 5, 1000);
     }
-    
+
     /**
      * check if the bubble isn't outside of the borders.
      */
     public void outOfBoardCheck() {
         if (y < Settings.getTopMargin() || !(y > 0)) {
             y = maxheight;
+            Logger.log("Bubble is out of the board", 3, 3);
         }
     }
-    
+
     /**
-     * Checks if the bubble needs to bounce cause of the borders.
-     * If needed bounce.
+     * Checks if the bubble needs to bounce cause of the borders. If needed
+     * bounce.
      */
     public void bounceBorder() {
         if (x + diameter > Settings.getLeftMargin() + Settings.getLevelWidth()
@@ -126,7 +152,7 @@ public class Bubble {
         }
 
     }
-    
+
     /**
      * Updates the x location of the bubble.
      */
@@ -137,7 +163,6 @@ public class Bubble {
             x -= speedX;
         }
     }
-    
 
     /**
      * Updates the y location of the bubble.
@@ -162,7 +187,8 @@ public class Bubble {
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             y -= lastUpSpeed;
         }
-        if (lastUpSpeed < 0.5 && !directionV && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
+        if (lastUpSpeed < 0.5 && !directionV
+                && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
             timer += 0.4;
         }
         if (timer > 5) {
@@ -170,9 +196,10 @@ public class Bubble {
             timer = 1;
         }
     }
-    
+
     /**
      * Give a color to the different balls
+     * 
      * @param diameter
      * @return the color of the bubble per case
      */
@@ -197,6 +224,7 @@ public class Bubble {
 
     /**
      * Calculate the speed of the bubble
+     * 
      * @param diameter
      * @return the speed of the bubble
      */
@@ -218,6 +246,7 @@ public class Bubble {
 
     /**
      * Calculate the maximum height of the bubbles
+     * 
      * @param diameter
      * @return the maximum height per bubble.
      */
@@ -239,6 +268,7 @@ public class Bubble {
 
     /**
      * Calculate the speed of the bubble
+     * 
      * @param diameter
      * @return the speed of the bubble per case.
      */
@@ -261,14 +291,26 @@ public class Bubble {
      * switches the horizontal direction.
      */
     public void bounceH() {
+        if (directionH) {
+            Logger.log("Bubble bounced on the right wall", 2, 4, 1);
+        } else {
+            Logger.log("Bubble bounced on the left wall", 2, 4, 1);
+        }
         directionH = !directionH;
+
     }
 
     /**
      * switches the vertical direction.
      */
     public void bounceV() {
+        if (directionV) {
+            Logger.log("Bubble bounced on the floor", 2, 4, 1);
+        } else {
+            Logger.log("Bubble reached max height", 2, 4, 1);
+        }
         directionV = !directionV;
+
     }
 
     // Getters and Setters
@@ -291,7 +333,8 @@ public class Bubble {
 
     /**
      * Give the direction of the bubble
-     * @return the horizontal direction 
+     * 
+     * @return the horizontal direction
      */
     public boolean isDirectionH() {
         return directionH;
@@ -299,14 +342,16 @@ public class Bubble {
 
     /**
      * Set the direction of the bubble
+     * 
      * @param directionH
      */
     public void setDirectionH(boolean directionH) {
         this.directionH = directionH;
     }
-    
+
     /**
      * Get the vertical direction
+     * 
      * @return the vertical direction
      */
     public boolean isDirectionV() {
@@ -315,6 +360,7 @@ public class Bubble {
 
     /**
      * Set the vertical direction of the bubble
+     * 
      * @param directionV
      */
     public void setDirectionV(boolean directionV) {

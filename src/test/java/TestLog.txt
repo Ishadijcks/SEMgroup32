@@ -1,0 +1,1782 @@
+[INFO] [UI] Main Frame created
+[INFO] [UI] Added key listener
+[INFO] [UI] Screen size set to 1000 by 1000
+[INFO] [Player] Player created
+[INFO] [Player] Player created
+[DETAIL] [Game] Game object created
+[INFO] [Player] Player Isha added to the game
+[INFO] [Bubble] Bubble created with diameter 16
+[INFO] [Level] Level created
+[INFO] [Game] Level added to the game
+[INFO] [Bubble] Bubble created with diameter 16
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Level] Level created
+[INFO] [Game] Level added to the game
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Game] Level added to the game
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Game] Level added to the game
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Game] Level added to the game
+[INFO] [Game] Singleplayer game created
+[INFO] [Player] Player Isha added to the game
+[INFO] [UI] Start screen created
+[INFO] [Game] Game started
+[WARNING] [Bubble] Bubble is out of the board
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Rope] Rope moved from 297,339 to 297,335
+[DETAIL] [Rope] Rope moved from 265,335 to 265,331
+[DETAIL] [Game] 15 points gained. Total score is now 15
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Powerup] Powerup speed spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 257,403 to 257,405
+[DETAIL] [Powerup] Powerup moved from 257,423 to 257,425
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time speed added
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Rope] Rope moved from 181,339 to 181,335
+[DETAIL] [Rope] Rope moved from 175,335 to 175,331
+[DETAIL] [Rope] Rope moved from 175,331 to 175,327
+[DETAIL] [Rope] Rope moved from 175,327 to 175,323
+[DETAIL] [Rope] Rope moved from 175,323 to 175,319
+[DETAIL] [Rope] Rope moved from 175,319 to 175,315
+[DETAIL] [Rope] Rope moved from 175,315 to 175,311
+[DETAIL] [Rope] Rope moved from 175,311 to 175,307
+[DETAIL] [Rope] Rope moved from 175,307 to 175,303
+[DETAIL] [Rope] Rope moved from 175,303 to 175,299
+[DETAIL] [Rope] Rope moved from 175,299 to 175,295
+[DETAIL] [Rope] Rope moved from 175,295 to 175,291
+[DETAIL] [Rope] Rope moved from 175,291 to 175,287
+[DETAIL] [Rope] Rope moved from 175,287 to 175,283
+[DETAIL] [Rope] Rope moved from 175,283 to 175,279
+[DETAIL] [Rope] Rope moved from 175,279 to 175,275
+[DETAIL] [Rope] Rope moved from 175,275 to 175,271
+[DETAIL] [Rope] Rope moved from 175,271 to 175,267
+[DETAIL] [Rope] Rope moved from 175,267 to 175,263
+[DETAIL] [Rope] Rope moved from 175,263 to 175,259
+[DETAIL] [Rope] Rope moved from 175,259 to 175,255
+[DETAIL] [Rope] Rope moved from 175,255 to 175,251
+[DETAIL] [Rope] Rope moved from 175,251 to 175,247
+[DETAIL] [Rope] Rope moved from 175,247 to 175,243
+[DETAIL] [Rope] Rope moved from 175,243 to 175,239
+[DETAIL] [Rope] Rope moved from 175,239 to 175,235
+[DETAIL] [Rope] Rope moved from 175,235 to 175,231
+[DETAIL] [Rope] Rope moved from 175,231 to 175,227
+[DETAIL] [Rope] Rope moved from 175,227 to 175,223
+[DETAIL] [Rope] Rope moved from 175,223 to 175,219
+[DETAIL] [Rope] Rope moved from 175,219 to 175,215
+[DETAIL] [Rope] Rope moved from 175,215 to 175,211
+[DETAIL] [Rope] Rope moved from 175,211 to 175,207
+[DETAIL] [Rope] Rope moved from 175,207 to 175,203
+[DETAIL] [Rope] Rope moved from 175,203 to 175,199
+[DETAIL] [Rope] Rope moved from 175,199 to 175,195
+[DETAIL] [Rope] Rope moved from 175,195 to 175,191
+[DETAIL] [Rope] Rope moved from 175,191 to 175,187
+[DETAIL] [Rope] Rope moved from 175,187 to 175,183
+[DETAIL] [Rope] Rope moved from 175,183 to 175,179
+[DETAIL] [Rope] Rope moved from 175,179 to 175,175
+[DETAIL] [Game] 10 points gained. Total score is now 25
+[INFO] [Powerup] Powerup speed spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 175,273 to 175,275
+[DETAIL] [Powerup] Powerup moved from 175,293 to 175,295
+[DETAIL] [Powerup] Powerup moved from 175,313 to 175,315
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 175,333 to 175,335
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Rope] Rope moved from 426,339 to 426,335
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Powerup] Powerup moved from 175,353 to 175,355
+[DETAIL] [Rope] Rope moved from 394,335 to 394,331
+[DETAIL] [Rope] Rope moved from 394,331 to 394,327
+[DETAIL] [Rope] Rope moved from 394,327 to 394,323
+[DETAIL] [Rope] Rope moved from 394,323 to 394,319
+[DETAIL] [Rope] Rope moved from 394,319 to 394,315
+[DETAIL] [Rope] Rope moved from 394,315 to 394,311
+[DETAIL] [Rope] Rope moved from 394,311 to 394,307
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Rope] Rope moved from 394,307 to 394,303
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Rope] Rope moved from 394,303 to 394,299
+[DETAIL] [Rope] Rope moved from 394,299 to 394,295
+[DETAIL] [Powerup] Powerup moved from 175,373 to 175,375
+[DETAIL] [Rope] Rope moved from 394,295 to 394,291
+[DETAIL] [Rope] Rope moved from 394,291 to 394,287
+[DETAIL] [Rope] Rope moved from 394,287 to 394,283
+[DETAIL] [Rope] Rope moved from 394,283 to 394,279
+[DETAIL] [Rope] Rope moved from 394,279 to 394,275
+[DETAIL] [Rope] Rope moved from 394,275 to 394,271
+[DETAIL] [Rope] Rope moved from 394,271 to 394,267
+[DETAIL] [Rope] Rope moved from 394,267 to 394,263
+[DETAIL] [Rope] Rope moved from 394,263 to 394,259
+[DETAIL] [Rope] Rope moved from 394,259 to 394,255
+[DETAIL] [Powerup] Powerup moved from 175,393 to 175,395
+[DETAIL] [Rope] Rope moved from 394,255 to 394,251
+[DETAIL] [Rope] Rope moved from 394,251 to 394,247
+[DETAIL] [Rope] Rope moved from 394,247 to 394,243
+[DETAIL] [Rope] Rope moved from 394,243 to 394,239
+[DETAIL] [Rope] Rope moved from 394,239 to 394,235
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Rope] Rope moved from 394,235 to 394,231
+[DETAIL] [Rope] Rope moved from 394,231 to 394,227
+[DETAIL] [Rope] Rope moved from 394,227 to 394,223
+[DETAIL] [Rope] Rope moved from 394,223 to 394,219
+[DETAIL] [Rope] Rope moved from 394,219 to 394,215
+[DETAIL] [Powerup] Powerup moved from 175,413 to 175,415
+[DETAIL] [Rope] Rope moved from 394,215 to 394,211
+[DETAIL] [Rope] Rope moved from 394,211 to 394,207
+[DETAIL] [Rope] Rope moved from 394,207 to 394,203
+[DETAIL] [Rope] Rope moved from 394,203 to 394,199
+[DETAIL] [Rope] Rope moved from 394,199 to 394,195
+[DETAIL] [Rope] Rope moved from 394,195 to 394,191
+[DETAIL] [Rope] Rope moved from 394,191 to 394,187
+[DETAIL] [Rope] Rope moved from 394,187 to 394,183
+[DETAIL] [Rope] Rope moved from 394,183 to 394,179
+[DETAIL] [Rope] Rope moved from 394,179 to 394,175
+[DETAIL] [Powerup] Powerup moved from 175,433 to 175,435
+[DETAIL] [Rope] Rope moved from 394,175 to 394,171
+[DETAIL] [Rope] Rope moved from 394,171 to 394,167
+[DETAIL] [Rope] Rope moved from 394,167 to 394,163
+[DETAIL] [Rope] Rope moved from 394,163 to 394,159
+[DETAIL] [Rope] Rope moved from 394,159 to 394,155
+[DETAIL] [Rope] Rope moved from 394,155 to 394,151
+[DETAIL] [Rope] Rope moved from 394,151 to 394,147
+[DETAIL] [Rope] Rope moved from 394,147 to 394,143
+[DETAIL] [Rope] Rope moved from 394,143 to 394,139
+[DETAIL] [Rope] Rope moved from 394,139 to 394,135
+[DETAIL] [Powerup] Powerup moved from 175,453 to 175,455
+[DETAIL] [Rope] Rope moved from 394,135 to 394,131
+[DETAIL] [Rope] Rope moved from 394,131 to 394,127
+[DETAIL] [Rope] Rope moved from 394,127 to 394,123
+[DETAIL] [Rope] Rope moved from 394,123 to 394,119
+[DETAIL] [Rope] Rope moved from 394,119 to 394,115
+[DETAIL] [Rope] Rope moved from 394,115 to 394,111
+[DETAIL] [Rope] Rope moved from 394,111 to 394,107
+[DETAIL] [Rope] Rope moved from 394,107 to 394,103
+[DETAIL] [Rope] Rope moved from 394,103 to 394,99
+[DETAIL] [Rope] Rope moved from 394,99 to 394,95
+[DETAIL] [Powerup] Powerup moved from 175,473 to 175,475
+[DETAIL] [Rope] Rope moved from 394,95 to 394,91
+[DETAIL] [Rope] Rope moved from 394,91 to 394,87
+[DETAIL] [Rope] Rope moved from 394,87 to 394,83
+[DETAIL] [Rope] Rope moved from 394,83 to 394,79
+[DETAIL] [Rope] Rope moved from 394,79 to 394,75
+[DETAIL] [Rope] Rope moved from 394,75 to 394,71
+[DETAIL] [Rope] Rope moved from 394,71 to 394,67
+[DETAIL] [Rope] Rope moved from 394,67 to 394,63
+[DETAIL] [Rope] Rope moved from 394,63 to 394,59
+[DETAIL] [Rope] Rope moved from 394,59 to 394,55
+[DETAIL] [Rope] Rope moved from 394,55 to 394,51
+[DETAIL] [Rope] Rope moved from 394,51 to 394,47
+[INFO] [Rope] Rope hit the roof
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Bubble Movement] Bubble moved from 484.69999999999425,304.43457654833605
+[DETAIL] [Bubble Movement] to 485.5999999999942,305.54957654833606
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time speed reset
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Rope] Rope moved from 730,339 to 730,335
+[DETAIL] [Rope] Rope moved from 730,335 to 730,331
+[DETAIL] [Rope] Rope moved from 730,331 to 730,327
+[DETAIL] [Rope] Rope moved from 730,327 to 730,323
+[DETAIL] [Rope] Rope moved from 730,323 to 730,319
+[DETAIL] [Rope] Rope moved from 730,319 to 730,315
+[DETAIL] [Rope] Rope moved from 730,315 to 730,311
+[DETAIL] [Rope] Rope moved from 730,311 to 730,307
+[DETAIL] [Rope] Rope moved from 730,307 to 730,303
+[DETAIL] [Rope] Rope moved from 730,303 to 730,299
+[DETAIL] [Rope] Rope moved from 730,299 to 730,295
+[DETAIL] [Rope] Rope moved from 730,295 to 730,291
+[DETAIL] [Rope] Rope moved from 730,291 to 730,287
+[DETAIL] [Rope] Rope moved from 730,287 to 730,283
+[DETAIL] [Rope] Rope moved from 730,283 to 730,279
+[DETAIL] [Rope] Rope moved from 730,279 to 730,275
+[DETAIL] [Rope] Rope moved from 730,275 to 730,271
+[DETAIL] [Rope] Rope moved from 730,271 to 730,267
+[DETAIL] [Rope] Rope moved from 730,267 to 730,263
+[DETAIL] [Rope] Rope moved from 730,263 to 730,259
+[DETAIL] [Rope] Rope moved from 730,259 to 730,255
+[DETAIL] [Rope] Rope moved from 730,255 to 730,251
+[DETAIL] [Rope] Rope moved from 730,251 to 730,247
+[DETAIL] [Rope] Rope moved from 730,247 to 730,243
+[DETAIL] [Rope] Rope moved from 730,243 to 730,239
+[DETAIL] [Rope] Rope moved from 730,239 to 730,235
+[DETAIL] [Rope] Rope moved from 730,235 to 730,231
+[DETAIL] [Rope] Rope moved from 730,231 to 730,227
+[DETAIL] [Rope] Rope moved from 730,227 to 730,223
+[DETAIL] [Rope] Rope moved from 730,223 to 730,219
+[DETAIL] [Rope] Rope moved from 730,219 to 730,215
+[DETAIL] [Rope] Rope moved from 730,215 to 730,211
+[DETAIL] [Rope] Rope moved from 730,211 to 730,207
+[DETAIL] [Rope] Rope moved from 730,207 to 730,203
+[DETAIL] [Rope] Rope moved from 730,203 to 730,199
+[DETAIL] [Rope] Rope moved from 730,199 to 730,195
+[DETAIL] [Rope] Rope moved from 730,195 to 730,191
+[DETAIL] [Rope] Rope moved from 730,191 to 730,187
+[DETAIL] [Rope] Rope moved from 730,187 to 730,183
+[DETAIL] [Rope] Rope moved from 730,183 to 730,179
+[DETAIL] [Rope] Rope moved from 730,179 to 730,175
+[DETAIL] [Rope] Rope moved from 730,175 to 730,171
+[DETAIL] [Rope] Rope moved from 730,171 to 730,167
+[DETAIL] [Rope] Rope moved from 730,167 to 730,163
+[DETAIL] [Rope] Rope moved from 730,163 to 730,159
+[DETAIL] [Rope] Rope moved from 730,159 to 730,155
+[DETAIL] [Rope] Rope moved from 730,155 to 730,151
+[DETAIL] [Rope] Rope moved from 730,151 to 730,147
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Rope] Rope moved from 730,147 to 730,143
+[DETAIL] [Rope] Rope moved from 730,143 to 730,139
+[DETAIL] [Rope] Rope moved from 730,139 to 730,135
+[DETAIL] [Rope] Rope moved from 730,135 to 730,131
+[DETAIL] [Rope] Rope moved from 730,131 to 730,127
+[DETAIL] [Rope] Rope moved from 730,127 to 730,123
+[DETAIL] [Game] 10 points gained. Total score is now 35
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[INFO] [Level] Level completed
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[INFO] [Game] Game started
+[WARNING] [Bubble] Bubble is out of the board
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Rope] Rope moved from 601,339 to 601,335
+[DETAIL] [Rope] Rope moved from 569,335 to 569,331
+[DETAIL] [Rope] Rope moved from 569,331 to 569,327
+[DETAIL] [Rope] Rope moved from 569,327 to 569,323
+[DETAIL] [Rope] Rope moved from 569,323 to 569,319
+[DETAIL] [Rope] Rope moved from 569,319 to 569,315
+[DETAIL] [Rope] Rope moved from 569,315 to 569,311
+[DETAIL] [Rope] Rope moved from 569,311 to 569,307
+[DETAIL] [Rope] Rope moved from 569,307 to 569,303
+[DETAIL] [Rope] Rope moved from 569,303 to 569,299
+[DETAIL] [Rope] Rope moved from 569,299 to 569,295
+[DETAIL] [Rope] Rope moved from 569,295 to 569,291
+[DETAIL] [Rope] Rope moved from 569,291 to 569,287
+[DETAIL] [Rope] Rope moved from 569,287 to 569,283
+[DETAIL] [Rope] Rope moved from 569,283 to 569,279
+[DETAIL] [Rope] Rope moved from 569,279 to 569,275
+[DETAIL] [Rope] Rope moved from 569,275 to 569,271
+[DETAIL] [Rope] Rope moved from 569,271 to 569,267
+[DETAIL] [Rope] Rope moved from 569,267 to 569,263
+[DETAIL] [Rope] Rope moved from 569,263 to 569,259
+[DETAIL] [Rope] Rope moved from 569,259 to 569,255
+[DETAIL] [Rope] Rope moved from 569,255 to 569,251
+[DETAIL] [Rope] Rope moved from 569,251 to 569,247
+[DETAIL] [Rope] Rope moved from 569,247 to 569,243
+[DETAIL] [Rope] Rope moved from 569,243 to 569,239
+[DETAIL] [Rope] Rope moved from 569,239 to 569,235
+[DETAIL] [Rope] Rope moved from 569,235 to 569,231
+[DETAIL] [Rope] Rope moved from 569,231 to 569,227
+[DETAIL] [Rope] Rope moved from 569,227 to 569,223
+[DETAIL] [Rope] Rope moved from 569,223 to 569,219
+[DETAIL] [Rope] Rope moved from 569,219 to 569,215
+[DETAIL] [Rope] Rope moved from 569,215 to 569,211
+[DETAIL] [Rope] Rope moved from 569,211 to 569,207
+[DETAIL] [Rope] Rope moved from 569,207 to 569,203
+[DETAIL] [Rope] Rope moved from 569,203 to 569,199
+[DETAIL] [Rope] Rope moved from 569,199 to 569,195
+[DETAIL] [Rope] Rope moved from 569,195 to 569,191
+[DETAIL] [Rope] Rope moved from 569,191 to 569,187
+[DETAIL] [Rope] Rope moved from 569,187 to 569,183
+[DETAIL] [Rope] Rope moved from 569,183 to 569,179
+[DETAIL] [Rope] Rope moved from 569,179 to 569,175
+[DETAIL] [Rope] Rope moved from 569,175 to 569,171
+[DETAIL] [Rope] Rope moved from 569,171 to 569,167
+[DETAIL] [Game] 20 points gained. Total score is now 55
+[INFO] [Bubble] Bubble created with diameter 16
+[INFO] [Bubble] Bubble created with diameter 16
+[INFO] [Powerup] Powerup speed spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 569,216 to 569,218
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 569,236 to 569,238
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Rope] Rope moved from 561,339 to 561,335
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Rope] Rope moved from 529,335 to 529,331
+[DETAIL] [Rope] Rope moved from 529,331 to 529,327
+[DETAIL] [Rope] Rope moved from 529,327 to 529,323
+[DETAIL] [Rope] Rope moved from 529,323 to 529,319
+[DETAIL] [Powerup] Powerup moved from 569,256 to 569,258
+[DETAIL] [Rope] Rope moved from 529,319 to 529,315
+[DETAIL] [Rope] Rope moved from 529,315 to 529,311
+[DETAIL] [Rope] Rope moved from 529,311 to 529,307
+[DETAIL] [Rope] Rope moved from 529,307 to 529,303
+[DETAIL] [Rope] Rope moved from 529,303 to 529,299
+[DETAIL] [Rope] Rope moved from 529,299 to 529,295
+[DETAIL] [Rope] Rope moved from 529,295 to 529,291
+[DETAIL] [Rope] Rope moved from 529,291 to 529,287
+[DETAIL] [Rope] Rope moved from 529,287 to 529,283
+[DETAIL] [Rope] Rope moved from 529,283 to 529,279
+[DETAIL] [Powerup] Powerup moved from 569,276 to 569,278
+[DETAIL] [Rope] Rope moved from 529,279 to 529,275
+[DETAIL] [Rope] Rope moved from 529,275 to 529,271
+[DETAIL] [Rope] Rope moved from 529,271 to 529,267
+[DETAIL] [Rope] Rope moved from 529,267 to 529,263
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Rope] Rope moved from 529,263 to 529,259
+[DETAIL] [Rope] Rope moved from 529,259 to 529,255
+[DETAIL] [Rope] Rope moved from 529,255 to 529,251
+[DETAIL] [Rope] Rope moved from 529,251 to 529,247
+[DETAIL] [Rope] Rope moved from 529,247 to 529,243
+[DETAIL] [Rope] Rope moved from 529,243 to 529,239
+[DETAIL] [Powerup] Powerup moved from 569,296 to 569,298
+[DETAIL] [Rope] Rope moved from 529,239 to 529,235
+[DETAIL] [Rope] Rope moved from 529,235 to 529,231
+[DETAIL] [Rope] Rope moved from 529,231 to 529,227
+[DETAIL] [Rope] Rope moved from 529,227 to 529,223
+[DETAIL] [Rope] Rope moved from 529,223 to 529,219
+[DETAIL] [Rope] Rope moved from 529,219 to 529,215
+[DETAIL] [Game] 15 points gained. Total score is now 70
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Powerup] Powerup speed spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 569,316 to 569,318
+[DETAIL] [Powerup] Powerup moved from 522,208 to 522,210
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 569,336 to 569,338
+[DETAIL] [Powerup] Powerup moved from 522,228 to 522,230
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 569,356 to 569,358
+[DETAIL] [Powerup] Powerup moved from 522,248 to 522,250
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Powerup] Powerup moved from 569,376 to 569,378
+[DETAIL] [Powerup] Powerup moved from 522,268 to 522,270
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Rope] Rope moved from 461,339 to 461,335
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Rope] Rope moved from 429,335 to 429,331
+[DETAIL] [Rope] Rope moved from 429,331 to 429,327
+[DETAIL] [Rope] Rope moved from 429,327 to 429,323
+[DETAIL] [Rope] Rope moved from 429,323 to 429,319
+[DETAIL] [Rope] Rope moved from 429,319 to 429,315
+[DETAIL] [Rope] Rope moved from 429,315 to 429,311
+[DETAIL] [Powerup] Powerup moved from 569,396 to 569,398
+[DETAIL] [Powerup] Powerup moved from 522,288 to 522,290
+[DETAIL] [Rope] Rope moved from 429,311 to 429,307
+[DETAIL] [Rope] Rope moved from 429,307 to 429,303
+[DETAIL] [Rope] Rope moved from 429,303 to 429,299
+[DETAIL] [Rope] Rope moved from 429,299 to 429,295
+[DETAIL] [Rope] Rope moved from 429,295 to 429,291
+[DETAIL] [Rope] Rope moved from 429,291 to 429,287
+[DETAIL] [Rope] Rope moved from 429,287 to 429,283
+[DETAIL] [Rope] Rope moved from 429,283 to 429,279
+[DETAIL] [Rope] Rope moved from 429,279 to 429,275
+[DETAIL] [Rope] Rope moved from 429,275 to 429,271
+[DETAIL] [Powerup] Powerup moved from 569,416 to 569,418
+[DETAIL] [Powerup] Powerup moved from 522,308 to 522,310
+[DETAIL] [Rope] Rope moved from 429,271 to 429,267
+[DETAIL] [Rope] Rope moved from 429,267 to 429,263
+[DETAIL] [Rope] Rope moved from 429,263 to 429,259
+[DETAIL] [Rope] Rope moved from 429,259 to 429,255
+[DETAIL] [Rope] Rope moved from 429,255 to 429,251
+[DETAIL] [Rope] Rope moved from 429,251 to 429,247
+[DETAIL] [Rope] Rope moved from 429,247 to 429,243
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[DETAIL] [Rope] Rope moved from 429,243 to 429,239
+[DETAIL] [Rope] Rope moved from 429,239 to 429,235
+[DETAIL] [Rope] Rope moved from 429,235 to 429,231
+[DETAIL] [Powerup] Powerup moved from 569,436 to 569,438
+[DETAIL] [Powerup] Powerup moved from 522,328 to 522,330
+[DETAIL] [Rope] Rope moved from 429,231 to 429,227
+[DETAIL] [Rope] Rope moved from 429,227 to 429,223
+[DETAIL] [Rope] Rope moved from 429,223 to 429,219
+[DETAIL] [Rope] Rope moved from 429,219 to 429,215
+[DETAIL] [Rope] Rope moved from 429,215 to 429,211
+[DETAIL] [Rope] Rope moved from 429,211 to 429,207
+[DETAIL] [Rope] Rope moved from 429,207 to 429,203
+[DETAIL] [Rope] Rope moved from 429,203 to 429,199
+[DETAIL] [Rope] Rope moved from 429,199 to 429,195
+[DETAIL] [Rope] Rope moved from 429,195 to 429,191
+[DETAIL] [Powerup] Powerup moved from 569,456 to 569,458
+[DETAIL] [Powerup] Powerup moved from 522,348 to 522,350
+[DETAIL] [Rope] Rope moved from 429,191 to 429,187
+[DETAIL] [Rope] Rope moved from 429,187 to 429,183
+[DETAIL] [Rope] Rope moved from 429,183 to 429,179
+[DETAIL] [Rope] Rope moved from 429,179 to 429,175
+[DETAIL] [Rope] Rope moved from 429,175 to 429,171
+[DETAIL] [Rope] Rope moved from 429,171 to 429,167
+[DETAIL] [Rope] Rope moved from 429,167 to 429,163
+[DETAIL] [Rope] Rope moved from 429,163 to 429,159
+[DETAIL] [Rope] Rope moved from 429,159 to 429,155
+[DETAIL] [Rope] Rope moved from 429,155 to 429,151
+[DETAIL] [Powerup] Powerup moved from 569,476 to 569,478
+[DETAIL] [Powerup] Powerup moved from 522,368 to 522,370
+[DETAIL] [Rope] Rope moved from 429,151 to 429,147
+[DETAIL] [Rope] Rope moved from 429,147 to 429,143
+[DETAIL] [Rope] Rope moved from 429,143 to 429,139
+[DETAIL] [Rope] Rope moved from 429,139 to 429,135
+[DETAIL] [Rope] Rope moved from 429,135 to 429,131
+[DETAIL] [Rope] Rope moved from 429,131 to 429,127
+[DETAIL] [Rope] Rope moved from 429,127 to 429,123
+[DETAIL] [Rope] Rope moved from 429,123 to 429,119
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Rope] Rope moved from 429,119 to 429,115
+[DETAIL] [Rope] Rope moved from 429,115 to 429,111
+[DETAIL] [Powerup] Powerup moved from 522,388 to 522,390
+[DETAIL] [Rope] Rope moved from 429,111 to 429,107
+[DETAIL] [Rope] Rope moved from 429,107 to 429,103
+[DETAIL] [Rope] Rope moved from 429,103 to 429,99
+[DETAIL] [Rope] Rope moved from 429,99 to 429,95
+[DETAIL] [Rope] Rope moved from 429,95 to 429,91
+[DETAIL] [Rope] Rope moved from 429,91 to 429,87
+[DETAIL] [Rope] Rope moved from 429,87 to 429,83
+[DETAIL] [Rope] Rope moved from 429,83 to 429,79
+[DETAIL] [Rope] Rope moved from 429,79 to 429,75
+[DETAIL] [Game] 10 points gained. Total score is now 80
+[INFO] [Powerup] Powerup life spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 522,408 to 522,410
+[DETAIL] [Powerup] Powerup moved from 429,244 to 429,246
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Powerup] Powerup moved from 522,428 to 522,430
+[DETAIL] [Powerup] Powerup moved from 429,264 to 429,266
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time speed reset
+[DETAIL] [Powerup] Powerup moved from 429,282 to 429,284
+[DETAIL] [Powerup] Powerup moved from 429,302 to 429,304
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 429,322 to 429,324
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time speed reset
+[DETAIL] [Powerup] Powerup moved from 429,340 to 429,342
+[DETAIL] [Powerup] Powerup moved from 429,360 to 429,362
+[DETAIL] [Powerup] Powerup moved from 429,380 to 429,382
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Rope] Rope moved from 731,339 to 731,335
+[DETAIL] [Rope] Rope moved from 725,335 to 725,331
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Rope] Rope moved from 725,331 to 725,327
+[DETAIL] [Rope] Rope moved from 725,327 to 725,323
+[DETAIL] [Powerup] Powerup moved from 429,400 to 429,402
+[DETAIL] [Rope] Rope moved from 725,323 to 725,319
+[DETAIL] [Rope] Rope moved from 725,319 to 725,315
+[DETAIL] [Rope] Rope moved from 725,315 to 725,311
+[DETAIL] [Rope] Rope moved from 725,311 to 725,307
+[DETAIL] [Rope] Rope moved from 725,307 to 725,303
+[DETAIL] [Rope] Rope moved from 725,303 to 725,299
+[DETAIL] [Rope] Rope moved from 725,299 to 725,295
+[DETAIL] [Rope] Rope moved from 725,295 to 725,291
+[DETAIL] [Rope] Rope moved from 725,291 to 725,287
+[DETAIL] [Rope] Rope moved from 725,287 to 725,283
+[DETAIL] [Powerup] Powerup moved from 429,420 to 429,422
+[DETAIL] [Rope] Rope moved from 725,283 to 725,279
+[DETAIL] [Rope] Rope moved from 725,279 to 725,275
+[DETAIL] [Rope] Rope moved from 725,275 to 725,271
+[DETAIL] [Rope] Rope moved from 725,271 to 725,267
+[DETAIL] [Rope] Rope moved from 725,267 to 725,263
+[DETAIL] [Rope] Rope moved from 725,263 to 725,259
+[DETAIL] [Rope] Rope moved from 725,259 to 725,255
+[DETAIL] [Rope] Rope moved from 725,255 to 725,251
+[DETAIL] [Rope] Rope moved from 725,251 to 725,247
+[DETAIL] [Rope] Rope moved from 725,247 to 725,243
+[DETAIL] [Powerup] Powerup moved from 429,440 to 429,442
+[DETAIL] [Rope] Rope moved from 725,243 to 725,239
+[DETAIL] [Rope] Rope moved from 725,239 to 725,235
+[DETAIL] [Rope] Rope moved from 725,235 to 725,231
+[DETAIL] [Rope] Rope moved from 725,231 to 725,227
+[DETAIL] [Rope] Rope moved from 725,227 to 725,223
+[DETAIL] [Rope] Rope moved from 725,223 to 725,219
+[DETAIL] [Rope] Rope moved from 725,219 to 725,215
+[DETAIL] [Rope] Rope moved from 725,215 to 725,211
+[DETAIL] [Rope] Rope moved from 725,211 to 725,207
+[DETAIL] [Rope] Rope moved from 725,207 to 725,203
+[DETAIL] [Powerup] Powerup moved from 429,460 to 429,462
+[DETAIL] [Rope] Rope moved from 725,203 to 725,199
+[DETAIL] [Rope] Rope moved from 725,199 to 725,195
+[DETAIL] [Rope] Rope moved from 725,195 to 725,191
+[DETAIL] [Game] 10 points gained. Total score is now 90
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time life added
+[DETAIL] [Powerup] Powerup moved from 717,424 to 717,426
+[DETAIL] [Powerup] Powerup moved from 717,444 to 717,446
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 717,464 to 717,466
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Rope] Rope moved from 406,339 to 406,335
+[DETAIL] [Rope] Rope moved from 374,335 to 374,331
+[DETAIL] [Rope] Rope moved from 374,331 to 374,327
+[DETAIL] [Rope] Rope moved from 374,327 to 374,323
+[DETAIL] [Rope] Rope moved from 374,323 to 374,319
+[DETAIL] [Rope] Rope moved from 374,319 to 374,315
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Rope] Rope moved from 374,315 to 374,311
+[DETAIL] [Powerup] Powerup moved from 717,484 to 717,486
+[DETAIL] [Rope] Rope moved from 374,311 to 374,307
+[DETAIL] [Rope] Rope moved from 374,307 to 374,303
+[DETAIL] [Rope] Rope moved from 374,303 to 374,299
+[DETAIL] [Rope] Rope moved from 374,299 to 374,295
+[DETAIL] [Rope] Rope moved from 374,295 to 374,291
+[DETAIL] [Rope] Rope moved from 374,291 to 374,287
+[DETAIL] [Rope] Rope moved from 374,287 to 374,283
+[DETAIL] [Rope] Rope moved from 374,283 to 374,279
+[DETAIL] [Rope] Rope moved from 374,279 to 374,275
+[DETAIL] [Rope] Rope moved from 374,275 to 374,271
+[DETAIL] [Rope] Rope moved from 374,271 to 374,267
+[DETAIL] [Rope] Rope moved from 374,267 to 374,263
+[DETAIL] [Rope] Rope moved from 374,263 to 374,259
+[DETAIL] [Rope] Rope moved from 374,259 to 374,255
+[DETAIL] [Rope] Rope moved from 374,255 to 374,251
+[DETAIL] [Rope] Rope moved from 374,251 to 374,247
+[DETAIL] [Rope] Rope moved from 374,247 to 374,243
+[DETAIL] [Rope] Rope moved from 374,243 to 374,239
+[DETAIL] [Rope] Rope moved from 374,239 to 374,235
+[DETAIL] [Rope] Rope moved from 374,235 to 374,231
+[DETAIL] [Rope] Rope moved from 374,231 to 374,227
+[DETAIL] [Rope] Rope moved from 374,227 to 374,223
+[DETAIL] [Rope] Rope moved from 374,223 to 374,219
+[DETAIL] [Rope] Rope moved from 374,219 to 374,215
+[DETAIL] [Rope] Rope moved from 374,215 to 374,211
+[DETAIL] [Rope] Rope moved from 374,211 to 374,207
+[DETAIL] [Rope] Rope moved from 374,207 to 374,203
+[DETAIL] [Rope] Rope moved from 374,203 to 374,199
+[DETAIL] [Rope] Rope moved from 374,199 to 374,195
+[DETAIL] [Rope] Rope moved from 374,195 to 374,191
+[DETAIL] [Rope] Rope moved from 374,191 to 374,187
+[DETAIL] [Rope] Rope moved from 374,187 to 374,183
+[DETAIL] [Rope] Rope moved from 374,183 to 374,179
+[DETAIL] [Rope] Rope moved from 374,179 to 374,175
+[DETAIL] [Rope] Rope moved from 374,175 to 374,171
+[DETAIL] [Rope] Rope moved from 374,171 to 374,167
+[DETAIL] [Rope] Rope moved from 374,167 to 374,163
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Rope] Rope moved from 374,163 to 374,159
+[DETAIL] [Rope] Rope moved from 374,159 to 374,155
+[DETAIL] [Rope] Rope moved from 374,155 to 374,151
+[INFO] [Bubble Movement] Bubble bounced on the right wall
+[DETAIL] [Rope] Rope moved from 374,151 to 374,147
+[DETAIL] [Rope] Rope moved from 374,147 to 374,143
+[DETAIL] [Rope] Rope moved from 374,143 to 374,139
+[DETAIL] [Rope] Rope moved from 374,139 to 374,135
+[DETAIL] [Rope] Rope moved from 374,135 to 374,131
+[DETAIL] [Rope] Rope moved from 374,131 to 374,127
+[DETAIL] [Rope] Rope moved from 374,127 to 374,123
+[DETAIL] [Rope] Rope moved from 374,123 to 374,119
+[DETAIL] [Rope] Rope moved from 374,119 to 374,115
+[DETAIL] [Rope] Rope moved from 374,115 to 374,111
+[DETAIL] [Rope] Rope moved from 374,111 to 374,107
+[DETAIL] [Rope] Rope moved from 374,107 to 374,103
+[DETAIL] [Rope] Rope moved from 374,103 to 374,99
+[DETAIL] [Rope] Rope moved from 374,99 to 374,95
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Rope] Rope moved from 374,95 to 374,91
+[DETAIL] [Rope] Rope moved from 374,91 to 374,87
+[DETAIL] [Rope] Rope moved from 374,87 to 374,83
+[DETAIL] [Rope] Rope moved from 374,83 to 374,79
+[DETAIL] [Rope] Rope moved from 374,79 to 374,75
+[DETAIL] [Rope] Rope moved from 374,75 to 374,71
+[DETAIL] [Rope] Rope moved from 374,71 to 374,67
+[DETAIL] [Rope] Rope moved from 374,67 to 374,63
+[DETAIL] [Rope] Rope moved from 374,63 to 374,59
+[DETAIL] [Rope] Rope moved from 374,59 to 374,55
+[DETAIL] [Rope] Rope moved from 374,55 to 374,51
+[DETAIL] [Rope] Rope moved from 374,51 to 374,47
+[INFO] [Rope] Rope hit the roof
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Rope] Rope moved from 416,339 to 416,335
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Rope] Rope moved from 410,335 to 410,331
+[DETAIL] [Rope] Rope moved from 410,331 to 410,327
+[DETAIL] [Rope] Rope moved from 410,327 to 410,323
+[DETAIL] [Rope] Rope moved from 410,323 to 410,319
+[DETAIL] [Rope] Rope moved from 410,319 to 410,315
+[DETAIL] [Rope] Rope moved from 410,315 to 410,311
+[DETAIL] [Rope] Rope moved from 410,311 to 410,307
+[DETAIL] [Rope] Rope moved from 410,307 to 410,303
+[DETAIL] [Rope] Rope moved from 410,303 to 410,299
+[DETAIL] [Rope] Rope moved from 410,299 to 410,295
+[DETAIL] [Rope] Rope moved from 410,295 to 410,291
+[DETAIL] [Rope] Rope moved from 410,291 to 410,287
+[DETAIL] [Rope] Rope moved from 410,287 to 410,283
+[DETAIL] [Rope] Rope moved from 410,283 to 410,279
+[DETAIL] [Rope] Rope moved from 410,279 to 410,275
+[DETAIL] [Rope] Rope moved from 410,275 to 410,271
+[DETAIL] [Rope] Rope moved from 410,271 to 410,267
+[DETAIL] [Rope] Rope moved from 410,267 to 410,263
+[DETAIL] [Rope] Rope moved from 410,263 to 410,259
+[DETAIL] [Rope] Rope moved from 410,259 to 410,255
+[DETAIL] [Game] 15 points gained. Total score is now 105
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Powerup] Powerup life spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Bubble Movement] Bubble moved from 820.0,259.6775366665108
+[DETAIL] [Bubble Movement] to 819.0,258.85289868769945
+[DETAIL] [Bubble Movement] Bubble moved from 390.4000000000001,318.4278658121783
+[DETAIL] [Bubble Movement] to 389.5000000000001,317.0744044886106
+[DETAIL] [Bubble Movement] Bubble moved from 397.5999999999999,318.4278658121783
+[DETAIL] [Bubble Movement] to 398.4999999999999,317.0744044886106
+[DETAIL] [Powerup] Powerup moved from 394,332 to 394,334
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 394,352 to 394,354
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Powerup] Powerup moved from 394,372 to 394,374
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Rope] Rope moved from 366,339 to 366,335
+[DETAIL] [Rope] Rope moved from 334,335 to 334,331
+[DETAIL] [Rope] Rope moved from 334,331 to 334,327
+[DETAIL] [Rope] Rope moved from 334,327 to 334,323
+[DETAIL] [Rope] Rope moved from 334,323 to 334,319
+[DETAIL] [Rope] Rope moved from 334,319 to 334,315
+[DETAIL] [Rope] Rope moved from 334,315 to 334,311
+[DETAIL] [Rope] Rope moved from 334,311 to 334,307
+[DETAIL] [Powerup] Powerup moved from 394,392 to 394,394
+[DETAIL] [Rope] Rope moved from 334,307 to 334,303
+[DETAIL] [Rope] Rope moved from 334,303 to 334,299
+[DETAIL] [Rope] Rope moved from 334,299 to 334,295
+[DETAIL] [Rope] Rope moved from 334,295 to 334,291
+[DETAIL] [Rope] Rope moved from 334,291 to 334,287
+[DETAIL] [Rope] Rope moved from 334,287 to 334,283
+[DETAIL] [Rope] Rope moved from 334,283 to 334,279
+[DETAIL] [Rope] Rope moved from 334,279 to 334,275
+[DETAIL] [Rope] Rope moved from 334,275 to 334,271
+[DETAIL] [Rope] Rope moved from 334,271 to 334,267
+[DETAIL] [Powerup] Powerup moved from 394,412 to 394,414
+[DETAIL] [Rope] Rope moved from 334,267 to 334,263
+[DETAIL] [Rope] Rope moved from 334,263 to 334,259
+[DETAIL] [Rope] Rope moved from 334,259 to 334,255
+[DETAIL] [Rope] Rope moved from 334,255 to 334,251
+[DETAIL] [Rope] Rope moved from 334,251 to 334,247
+[DETAIL] [Rope] Rope moved from 334,247 to 334,243
+[DETAIL] [Rope] Rope moved from 334,243 to 334,239
+[DETAIL] [Rope] Rope moved from 334,239 to 334,235
+[DETAIL] [Rope] Rope moved from 334,235 to 334,231
+[DETAIL] [Rope] Rope moved from 334,231 to 334,227
+[DETAIL] [Powerup] Powerup moved from 394,432 to 394,434
+[DETAIL] [Rope] Rope moved from 334,227 to 334,223
+[DETAIL] [Rope] Rope moved from 334,223 to 334,219
+[DETAIL] [Rope] Rope moved from 334,219 to 334,215
+[DETAIL] [Rope] Rope moved from 334,215 to 334,211
+[DETAIL] [Rope] Rope moved from 334,211 to 334,207
+[DETAIL] [Rope] Rope moved from 334,207 to 334,203
+[DETAIL] [Rope] Rope moved from 334,203 to 334,199
+[DETAIL] [Rope] Rope moved from 334,199 to 334,195
+[DETAIL] [Rope] Rope moved from 334,195 to 334,191
+[DETAIL] [Rope] Rope moved from 334,191 to 334,187
+[DETAIL] [Powerup] Powerup moved from 394,452 to 394,454
+[DETAIL] [Rope] Rope moved from 334,187 to 334,183
+[DETAIL] [Rope] Rope moved from 334,183 to 334,179
+[DETAIL] [Rope] Rope moved from 334,179 to 334,175
+[DETAIL] [Game] 10 points gained. Total score is now 115
+[INFO] [Powerup] Powerup life spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 394,472 to 394,474
+[DETAIL] [Powerup] Powerup moved from 334,271 to 334,273
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 334,291 to 334,293
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time life added
+[DETAIL] [Powerup] Powerup moved from 334,311 to 334,313
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 334,331 to 334,333
+[DETAIL] [Powerup] Powerup moved from 334,351 to 334,353
+[DETAIL] [Powerup] Powerup moved from 334,371 to 334,373
+[DETAIL] [Powerup] Powerup moved from 334,391 to 334,393
+[DETAIL] [Powerup] Powerup moved from 334,411 to 334,413
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 334,431 to 334,433
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time ice added
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 334,449 to 334,451
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Powerup] Powerup moved from 334,469 to 334,471
+[DETAIL] [Powerup] Powerup moved from 334,489 to 334,491
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Game] 15 points gained. Total score is now 130
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Powerup] Powerup life spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 629,316 to 629,318
+[DETAIL] [Powerup] Powerup moved from 629,336 to 629,338
+[DETAIL] [Powerup] Powerup moved from 629,356 to 629,358
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Powerup] Powerup moved from 629,376 to 629,378
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 629,396 to 629,398
+[DETAIL] [Powerup] Powerup moved from 629,416 to 629,418
+[DETAIL] [Powerup] Powerup moved from 629,436 to 629,438
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time life added
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Game] 10 points gained. Total score is now 140
+[INFO] [Powerup] Powerup life spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 662,447 to 662,449
+[DETAIL] [Powerup] Powerup moved from 662,467 to 662,469
+[DETAIL] [Powerup] Powerup moved from 662,487 to 662,489
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time life added
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time life added
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Rope] Ice rope moved
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Game] 10 points gained. Total score is now 150
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 414,366 to 414,368
+[DETAIL] [Powerup] Powerup moved from 414,386 to 414,388
+[DETAIL] [Powerup] Powerup moved from 414,406 to 414,408
+[DETAIL] [Powerup] Powerup moved from 414,426 to 414,428
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 414,446 to 414,448
+[DETAIL] [Powerup] Powerup moved from 414,466 to 414,468
+[DETAIL] [Powerup] Powerup moved from 414,486 to 414,488
+[INFO] [Bubble Movement] Bubble bounced on the right wall
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Game] 10 points gained. Total score is now 160
+[INFO] [Powerup] Powerup life spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[INFO] [Level] Level completed
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[INFO] [Game] Game started
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Game] 20 points gained. Total score is now 180
+[INFO] [Bubble] Bubble created with diameter 16
+[INFO] [Bubble] Bubble created with diameter 16
+[INFO] [Powerup] Powerup life spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Powerup] Powerup moved from 510,366 to 510,368
+[DETAIL] [Powerup] Powerup moved from 510,386 to 510,388
+[DETAIL] [Powerup] Powerup moved from 510,406 to 510,408
+[DETAIL] [Powerup] Powerup moved from 510,426 to 510,428
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time life added
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Game] 15 points gained. Total score is now 195
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 429,247 to 429,249
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 429,267 to 429,269
+[DETAIL] [Powerup] Powerup moved from 429,287 to 429,289
+[DETAIL] [Powerup] Powerup moved from 429,307 to 429,309
+[DETAIL] [Powerup] Powerup moved from 429,327 to 429,329
+[DETAIL] [Powerup] Powerup moved from 429,347 to 429,349
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Powerup] Powerup moved from 429,367 to 429,369
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 429,387 to 429,389
+[DETAIL] [Powerup] Powerup moved from 429,407 to 429,409
+[DETAIL] [Game] 15 points gained. Total score is now 210
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 429,427 to 429,429
+[DETAIL] [Powerup] Powerup moved from 677,212 to 677,214
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 429,447 to 429,449
+[DETAIL] [Powerup] Powerup moved from 677,232 to 677,234
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 429,467 to 429,469
+[DETAIL] [Powerup] Powerup moved from 677,252 to 677,254
+[DETAIL] [Powerup] Powerup moved from 429,487 to 429,489
+[DETAIL] [Powerup] Powerup moved from 677,272 to 677,274
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Bubble Movement] Bubble moved from 435.90000000000265,399.03815246158626
+[DETAIL] [Bubble Movement] to 437.20000000000266,401.44165246158616
+[DETAIL] [Bubble Movement] Bubble moved from 310.200000000003,315.3487955586277
+[DETAIL] [Bubble Movement] to 309.300000000003,316.56379555862776
+[DETAIL] [Bubble Movement] Bubble moved from 547.799999999997,315.3487955586277
+[DETAIL] [Bubble Movement] to 548.699999999997,316.56379555862776
+[DETAIL] [Bubble Movement] Bubble moved from 635.600000000001,206.12499999999997
+[DETAIL] [Bubble Movement] to 634.7000000000011,206.47999999999996
+[DETAIL] [Bubble Movement] Bubble moved from 718.399999999999,206.12499999999997
+[DETAIL] [Bubble Movement] to 719.2999999999989,206.47999999999996
+[DETAIL] [Powerup] Powerup moved from 677,292 to 677,294
+[DETAIL] [Rope] Ice rope moved
+[DETAIL] [Game] 10 points gained. Total score is now 220
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 677,312 to 677,314
+[DETAIL] [Powerup] Powerup moved from 551,332 to 551,334
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 677,332 to 677,334
+[DETAIL] [Powerup] Powerup moved from 551,352 to 551,354
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Powerup] Powerup moved from 677,352 to 677,354
+[DETAIL] [Powerup] Powerup moved from 551,372 to 551,374
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Powerup] Powerup moved from 677,372 to 677,374
+[DETAIL] [Powerup] Powerup moved from 551,392 to 551,394
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 677,392 to 677,394
+[DETAIL] [Powerup] Powerup moved from 551,412 to 551,414
+[DETAIL] [Powerup] Powerup moved from 677,412 to 677,414
+[DETAIL] [Powerup] Powerup moved from 551,432 to 551,434
+[DETAIL] [Powerup] Powerup moved from 677,432 to 677,434
+[DETAIL] [Powerup] Powerup moved from 551,452 to 551,454
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time ice reset
+[INFO] [Powerup] Speed powerup removed
+[DETAIL] [Powerup] Powerup moved from 551,470 to 551,472
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Powerup] Powerup moved from 551,490 to 551,492
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Game] 10 points gained. Total score is now 230
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 807,292 to 807,294
+[DETAIL] [Powerup] Powerup moved from 807,312 to 807,314
+[DETAIL] [Powerup] Powerup moved from 807,332 to 807,334
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Powerup] Powerup moved from 807,352 to 807,354
+[DETAIL] [Powerup] Powerup moved from 807,372 to 807,374
+[DETAIL] [Powerup] Powerup moved from 807,392 to 807,394
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 807,412 to 807,414
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 807,432 to 807,434
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 807,452 to 807,454
+[DETAIL] [Powerup] Powerup moved from 807,472 to 807,474
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Game] 25 points gained. Total score is now 255
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Powerup] Powerup life spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Powerup] Powerup moved from 731,214 to 731,216
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time ice reset
+[DETAIL] [Powerup] Powerup moved from 731,234 to 731,236
+[DETAIL] [Powerup] Powerup moved from 731,254 to 731,256
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Powerup] Powerup moved from 731,274 to 731,276
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[DETAIL] [Powerup] Powerup moved from 731,294 to 731,296
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Powerup] Powerup moved from 731,314 to 731,316
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 731,334 to 731,336
+[DETAIL] [Powerup] Powerup moved from 731,354 to 731,356
+[DETAIL] [Rope] Ice rope moved
+[DETAIL] [Game] 20 points gained. Total score is now 275
+[INFO] [Bubble] Bubble created with diameter 16
+[INFO] [Bubble] Bubble created with diameter 16
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 731,374 to 731,376
+[DETAIL] [Powerup] Powerup moved from 822,175 to 822,177
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 731,394 to 731,396
+[DETAIL] [Powerup] Powerup moved from 822,195 to 822,197
+[DETAIL] [Powerup] Powerup moved from 731,414 to 731,416
+[DETAIL] [Powerup] Powerup moved from 822,215 to 822,217
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Powerup] Powerup moved from 731,434 to 731,436
+[DETAIL] [Powerup] Powerup moved from 822,235 to 822,237
+[DETAIL] [Powerup] Powerup moved from 731,454 to 731,456
+[DETAIL] [Powerup] Powerup moved from 822,255 to 822,257
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 731,474 to 731,476
+[DETAIL] [Powerup] Powerup moved from 822,275 to 822,277
+[DETAIL] [Game] 15 points gained. Total score is now 290
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 822,295 to 822,297
+[DETAIL] [Powerup] Powerup moved from 882,190 to 882,192
+[WARNING] [Bubble] Bubble is out of the board
+[WARNING] [Bubble] Bubble is out of the board
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time life added
+[DETAIL] [Powerup] Powerup moved from 822,315 to 822,317
+[DETAIL] [Powerup] Powerup moved from 882,210 to 882,212
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 822,335 to 822,337
+[DETAIL] [Powerup] Powerup moved from 882,230 to 882,232
+[DETAIL] [Powerup] Powerup moved from 822,355 to 822,357
+[DETAIL] [Powerup] Powerup moved from 882,250 to 882,252
+[INFO] [Bubble Movement] Bubble bounced on the right wall
+[DETAIL] [Powerup] Powerup moved from 822,375 to 822,377
+[DETAIL] [Powerup] Powerup moved from 882,270 to 882,272
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 822,395 to 822,397
+[DETAIL] [Powerup] Powerup moved from 882,290 to 882,292
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Powerup] Powerup moved from 822,415 to 822,417
+[DETAIL] [Powerup] Powerup moved from 882,310 to 882,312
+[DETAIL] [Powerup] Powerup moved from 822,435 to 822,437
+[DETAIL] [Powerup] Powerup moved from 882,330 to 882,332
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time ice reset
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 882,348 to 882,350
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 882,368 to 882,370
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 882,388 to 882,390
+[DETAIL] [Powerup] Powerup moved from 882,408 to 882,410
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[DETAIL] [Powerup] Powerup moved from 882,428 to 882,430
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time ice reset
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[INFO] [Player] Player is at the right border
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Game] 10 points gained. Total score is now 300
+[INFO] [Powerup] Powerup life spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 778,378 to 778,380
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Powerup] Powerup moved from 778,398 to 778,400
+[DETAIL] [Powerup] Powerup moved from 778,418 to 778,420
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Powerup] Powerup moved from 778,438 to 778,440
+[DETAIL] [Powerup] Powerup moved from 778,458 to 778,460
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 778,478 to 778,480
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time ice reset
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time ice reset
+[DETAIL] [Game] 10 points gained. Total score is now 310
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 521,313 to 521,315
+[DETAIL] [Powerup] Powerup moved from 521,333 to 521,335
+[DETAIL] [Powerup] Powerup moved from 521,353 to 521,355
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 521,373 to 521,375
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 521,393 to 521,395
+[DETAIL] [Powerup] Powerup moved from 521,413 to 521,415
+[DETAIL] [Powerup] Powerup moved from 521,433 to 521,435
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Powerup] Powerup moved from 521,453 to 521,455
+[DETAIL] [Powerup] Powerup moved from 521,473 to 521,475
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Rope] Ice rope moved
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Game] 10 points gained. Total score is now 320
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 357,280 to 357,282
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Game] 20 points gained. Total score is now 340
+[INFO] [Bubble] Bubble created with diameter 16
+[INFO] [Bubble] Bubble created with diameter 16
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 357,300 to 357,302
+[DETAIL] [Powerup] Powerup moved from 208,346 to 208,348
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 357,320 to 357,322
+[DETAIL] [Powerup] Powerup moved from 208,366 to 208,368
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Powerup] Powerup moved from 357,340 to 357,342
+[DETAIL] [Powerup] Powerup moved from 208,386 to 208,388
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 357,360 to 357,362
+[DETAIL] [Powerup] Powerup moved from 208,406 to 208,408
+[DETAIL] [Powerup] Powerup moved from 357,380 to 357,382
+[DETAIL] [Powerup] Powerup moved from 208,426 to 208,428
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time ice reset
+[DETAIL] [Bubble Movement] Bubble moved from 132.0,478.43610421372875
+[DETAIL] [Bubble Movement] to 131.0,481.06860421372875
+[DETAIL] [Bubble Movement] Bubble moved from 315.0000000000143,346.26271342640234
+[DETAIL] [Bubble Movement] to 314.10000000001435,347.54771342640237
+[DETAIL] [Bubble Movement] Bubble moved from 154.0,259.25928585420456
+[DETAIL] [Bubble Movement] to 153.0,258.1666929956625
+[DETAIL] [Bubble Movement] Bubble moved from 262.0,259.25928585420456
+[DETAIL] [Bubble Movement] to 263.0,258.1666929956625
+[DETAIL] [Powerup] Powerup moved from 357,400 to 357,402
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 357,420 to 357,422
+[DETAIL] [Powerup] Powerup moved from 357,440 to 357,442
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Powerup] Powerup moved from 357,460 to 357,462
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Game] 10 points gained. Total score is now 350
+[INFO] [Powerup] Powerup speed spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 357,480 to 357,482
+[DETAIL] [Powerup] Powerup moved from 279,405 to 279,407
+[DETAIL] [Powerup] Powerup moved from 279,425 to 279,427
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time speed added
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time ice reset
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Rope] Ice rope moved
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Rope] Ice rope moved
+[DETAIL] [Game] 15 points gained. Total score is now 365
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Powerup] Powerup speed spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 470,295 to 470,297
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 470,315 to 470,317
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Powerup] Powerup moved from 470,335 to 470,337
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Powerup] Powerup moved from 470,355 to 470,357
+[DETAIL] [Powerup] Powerup moved from 470,375 to 470,377
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 470,395 to 470,397
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 470,415 to 470,417
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Game] 15 points gained. Total score is now 380
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Powerup] Powerup life spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 470,435 to 470,437
+[DETAIL] [Powerup] Powerup moved from 294,225 to 294,227
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time speed reset
+[DETAIL] [Powerup] Powerup moved from 294,245 to 294,247
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time ice reset
+[DETAIL] [Powerup] Powerup moved from 294,265 to 294,267
+[DETAIL] [Powerup] Powerup moved from 294,285 to 294,287
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Powerup] Powerup moved from 294,305 to 294,307
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 294,325 to 294,327
+[DETAIL] [Powerup] Powerup moved from 294,345 to 294,347
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Powerup] Powerup moved from 294,365 to 294,367
+[DETAIL] [Powerup] Powerup moved from 294,385 to 294,387
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 294,405 to 294,407
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Powerup] Powerup moved from 294,425 to 294,427
+[DETAIL] [Game] 15 points gained. Total score is now 395
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Bubble] Bubble created with diameter 8
+[INFO] [Powerup] Powerup speed spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 294,445 to 294,447
+[DETAIL] [Powerup] Powerup moved from 377,407 to 377,409
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 294,465 to 294,467
+[DETAIL] [Powerup] Powerup moved from 377,427 to 377,429
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time speed reset
+[DETAIL] [Powerup] Powerup moved from 294,485 to 294,487
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time life added
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Game] 10 points gained. Total score is now 405
+[INFO] [Powerup] Powerup life spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 478,403 to 478,405
+[DETAIL] [Powerup] Powerup moved from 478,423 to 478,425
+[DETAIL] [Powerup] Powerup moved from 478,443 to 478,445
+[DETAIL] [Powerup] Powerup moved from 478,463 to 478,465
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[DETAIL] [Powerup] Powerup moved from 478,483 to 478,485
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time life added
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Game] 10 points gained. Total score is now 415
+[INFO] [Powerup] Powerup life spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 548,274 to 548,276
+[DETAIL] [Powerup] Powerup moved from 548,294 to 548,296
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 548,314 to 548,316
+[DETAIL] [Powerup] Powerup moved from 548,334 to 548,336
+[DETAIL] [Powerup] Powerup moved from 548,354 to 548,356
+[DETAIL] [Powerup] Powerup moved from 548,374 to 548,376
+[DETAIL] [Powerup] Powerup moved from 548,394 to 548,396
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[DETAIL] [Powerup] Powerup moved from 548,414 to 548,416
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Powerup] Powerup moved from 548,434 to 548,436
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Game] 10 points gained. Total score is now 425
+[INFO] [Powerup] Powerup speed spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 548,454 to 548,456
+[DETAIL] [Powerup] Powerup moved from 207,342 to 207,344
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 548,474 to 548,476
+[DETAIL] [Powerup] Powerup moved from 207,362 to 207,364
+[DETAIL] [Powerup] Powerup moved from 207,382 to 207,384
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Powerup] Powerup moved from 207,402 to 207,404
+[INFO] [Bubble Movement] Bubble bounced on the right wall
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 207,422 to 207,424
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time speed reset
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Game] 10 points gained. Total score is now 435
+[INFO] [Powerup] Powerup speed spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Powerup] Powerup moved from 169,288 to 169,290
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Powerup] Powerup moved from 169,308 to 169,310
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Powerup] Powerup moved from 169,328 to 169,330
+[DETAIL] [Powerup] Powerup moved from 169,348 to 169,350
+[DETAIL] [Powerup] Powerup moved from 169,368 to 169,370
+[DETAIL] [Powerup] Powerup moved from 169,388 to 169,390
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Powerup] Powerup moved from 169,408 to 169,410
+[DETAIL] [Powerup] Powerup moved from 169,428 to 169,430
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time speed reset
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Game] 10 points gained. Total score is now 445
+[INFO] [Powerup] Powerup ice spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 202,380 to 202,382
+[DETAIL] [Powerup] Powerup moved from 202,400 to 202,402
+[DETAIL] [Powerup] Powerup moved from 202,420 to 202,422
+[DETAIL] [Powerup] Powerup moved from 202,440 to 202,442
+[DETAIL] [Powerup] Powerup moved from 202,460 to 202,462
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time life added
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Powerup] Powerup moved from 202,480 to 202,482
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Rope] Ice rope created
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[DETAIL] [Bubble Movement] Bubble moved from 581.4999999999992,307.3499999999993
+[DETAIL] [Bubble Movement] to 580.3999999999992,307.77599999999927
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[DETAIL] [Bubble Movement] Bubble moved from 74.5000000000001,168.97403828685646
+[DETAIL] [Bubble Movement] to 75.8000000000001,168.21681242909597
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed Left
+[DETAIL] [Player] Player is moving left
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Rope] Rope moved from 547,339 to 547,335
+[DETAIL] [Rope] Rope moved from 515,335 to 515,331
+[DETAIL] [Rope] Rope moved from 515,331 to 515,327
+[DETAIL] [Rope] Rope moved from 515,327 to 515,323
+[DETAIL] [Rope] Rope moved from 515,323 to 515,319
+[DETAIL] [Rope] Rope moved from 515,319 to 515,315
+[DETAIL] [Rope] Rope moved from 515,315 to 515,311
+[DETAIL] [Rope] Rope moved from 515,311 to 515,307
+[DETAIL] [Rope] Rope moved from 515,307 to 515,303
+[DETAIL] [Rope] Rope moved from 515,303 to 515,299
+[DETAIL] [Rope] Rope moved from 515,299 to 515,295
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[DETAIL] [Player Input] Player released Left
+[DETAIL] [Player] Player stopped moving left
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Rope] Rope moved from 509,339 to 509,335
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Rope] Rope moved from 503,335 to 503,331
+[DETAIL] [Rope] Rope moved from 503,331 to 503,327
+[DETAIL] [Rope] Rope moved from 503,327 to 503,323
+[DETAIL] [Rope] Rope moved from 503,323 to 503,319
+[DETAIL] [Rope] Rope moved from 503,319 to 503,315
+[DETAIL] [Rope] Rope moved from 503,315 to 503,311
+[DETAIL] [Rope] Rope moved from 503,311 to 503,307
+[DETAIL] [Rope] Rope moved from 503,307 to 503,303
+[INFO] [Bubble Movement] Bubble reached max height
+[DETAIL] [Rope] Rope moved from 503,303 to 503,299
+[DETAIL] [Rope] Rope moved from 503,299 to 503,295
+[DETAIL] [Rope] Rope moved from 503,295 to 503,291
+[DETAIL] [Rope] Rope moved from 503,291 to 503,287
+[DETAIL] [Rope] Rope moved from 503,287 to 503,283
+[DETAIL] [Rope] Rope moved from 503,283 to 503,279
+[DETAIL] [Rope] Rope moved from 503,279 to 503,275
+[DETAIL] [Rope] Rope moved from 503,275 to 503,271
+[DETAIL] [Rope] Rope moved from 503,271 to 503,267
+[DETAIL] [Rope] Rope moved from 503,267 to 503,263
+[DETAIL] [Rope] Rope moved from 503,263 to 503,259
+[DETAIL] [Rope] Rope moved from 503,259 to 503,255
+[DETAIL] [Game] 20 points gained. Total score is now 465
+[INFO] [Bubble] Bubble created with diameter 16
+[INFO] [Bubble] Bubble created with diameter 16
+[INFO] [Powerup] Powerup speed spawned
+[INFO] [Powerup] Powerup created
+[INFO] [Level] Rope collided with a bubble
+[DETAIL] [Powerup] Powerup moved from 503,369 to 503,371
+[DETAIL] [Powerup] Powerup moved from 503,389 to 503,391
+[DETAIL] [Powerup] Powerup moved from 503,409 to 503,411
+[DETAIL] [Player Input] Player pressed space
+[INFO] [Player] Shot a rope
+[DETAIL] [Rope] Rope moved from 511,339 to 511,335
+[DETAIL] [Rope] Rope moved from 505,335 to 505,331
+[DETAIL] [Rope] Rope moved from 505,331 to 505,327
+[DETAIL] [Rope] Rope moved from 505,327 to 505,323
+[DETAIL] [Rope] Rope moved from 505,323 to 505,319
+[DETAIL] [Rope] Rope moved from 505,319 to 505,315
+[DETAIL] [Rope] Rope moved from 505,315 to 505,311
+[DETAIL] [Rope] Rope moved from 505,311 to 505,307
+[DETAIL] [Powerup] Powerup moved from 503,429 to 503,431
+[DETAIL] [Rope] Rope moved from 505,307 to 505,303
+[DETAIL] [Rope] Rope moved from 505,303 to 505,299
+[DETAIL] [Rope] Rope moved from 505,299 to 505,295
+[DETAIL] [Rope] Rope moved from 505,295 to 505,291
+[DETAIL] [Rope] Rope moved from 505,291 to 505,287
+[INFO] [Level] Player collided with a powerup
+[INFO] [Powerup] Power up time speed added
+[DETAIL] [Rope] Rope moved from 505,287 to 505,283
+[DETAIL] [Rope] Rope moved from 505,283 to 505,279
+[DETAIL] [Rope] Rope moved from 505,279 to 505,275
+[DETAIL] [Rope] Rope moved from 505,275 to 505,271
+[DETAIL] [Rope] Rope moved from 505,271 to 505,267
+[DETAIL] [Rope] Rope moved from 505,267 to 505,263
+[DETAIL] [Rope] Rope moved from 505,263 to 505,259
+[DETAIL] [Rope] Rope moved from 505,259 to 505,255
+[DETAIL] [Rope] Rope moved from 505,255 to 505,251
+[DETAIL] [Rope] Rope moved from 505,251 to 505,247
+[DETAIL] [Rope] Rope moved from 505,247 to 505,243
+[DETAIL] [Rope] Rope moved from 505,243 to 505,239
+[DETAIL] [Rope] Rope moved from 505,239 to 505,235
+[DETAIL] [Rope] Rope moved from 505,235 to 505,231
+[DETAIL] [Rope] Rope moved from 505,231 to 505,227
+[DETAIL] [Rope] Rope moved from 505,227 to 505,223
+[DETAIL] [Rope] Rope moved from 505,223 to 505,219
+[DETAIL] [Rope] Rope moved from 505,219 to 505,215
+[DETAIL] [Rope] Rope moved from 505,215 to 505,211
+[DETAIL] [Rope] Rope moved from 505,211 to 505,207
+[DETAIL] [Rope] Rope moved from 505,207 to 505,203
+[DETAIL] [Rope] Rope moved from 505,203 to 505,199
+[DETAIL] [Rope] Rope moved from 505,199 to 505,195
+[DETAIL] [Rope] Rope moved from 505,195 to 505,191
+[DETAIL] [Rope] Rope moved from 505,191 to 505,187
+[DETAIL] [Rope] Rope moved from 505,187 to 505,183
+[DETAIL] [Rope] Rope moved from 505,183 to 505,179
+[DETAIL] [Rope] Rope moved from 505,179 to 505,175
+[DETAIL] [Rope] Rope moved from 505,175 to 505,171
+[DETAIL] [Rope] Rope moved from 505,171 to 505,167
+[DETAIL] [Player Input] Player pressed right
+[DETAIL] [Player] Player is moving right
+[DETAIL] [Rope] Rope moved from 505,167 to 505,163
+[DETAIL] [Rope] Rope moved from 505,163 to 505,159
+[DETAIL] [Rope] Rope moved from 505,159 to 505,155
+[DETAIL] [Rope] Rope moved from 505,155 to 505,151
+[DETAIL] [Rope] Rope moved from 505,151 to 505,147
+[DETAIL] [Player Input] Player released right
+[DETAIL] [Player] Player stopped moving right
+[DETAIL] [Rope] Rope moved from 505,147 to 505,143
+[DETAIL] [Rope] Rope moved from 505,143 to 505,139
+[DETAIL] [Rope] Rope moved from 505,139 to 505,135
+[DETAIL] [Rope] Rope moved from 505,135 to 505,131
+[DETAIL] [Rope] Rope moved from 505,131 to 505,127
+[DETAIL] [Rope] Rope moved from 505,127 to 505,123
+[DETAIL] [Rope] Rope moved from 505,123 to 505,119
+[DETAIL] [Rope] Rope moved from 505,119 to 505,115
+[DETAIL] [Rope] Rope moved from 505,115 to 505,111
+[DETAIL] [Rope] Rope moved from 505,111 to 505,107
+[DETAIL] [Rope] Rope moved from 505,107 to 505,103
+[DETAIL] [Rope] Rope moved from 505,103 to 505,99
+[DETAIL] [Rope] Rope moved from 505,99 to 505,95
+[DETAIL] [Rope] Rope moved from 505,95 to 505,91
+[DETAIL] [Rope] Rope moved from 505,91 to 505,87
+[DETAIL] [Rope] Rope moved from 505,87 to 505,83
+[DETAIL] [Rope] Rope moved from 505,83 to 505,79
+[DETAIL] [Rope] Rope moved from 505,79 to 505,75
+[DETAIL] [Rope] Rope moved from 505,75 to 505,71
+[DETAIL] [Rope] Rope moved from 505,71 to 505,67
+[DETAIL] [Rope] Rope moved from 505,67 to 505,63
+[DETAIL] [Rope] Rope moved from 505,63 to 505,59
+[DETAIL] [Rope] Rope moved from 505,59 to 505,55
+[DETAIL] [Rope] Rope moved from 505,55 to 505,51
+[DETAIL] [Rope] Rope moved from 505,51 to 505,47
+[INFO] [Rope] Rope hit the roof
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Bubble Movement] Bubble moved from 390.09999999999525,457.12377178569784
+[DETAIL] [Bubble Movement] to 388.9999999999952,453.98773669931927
+[DETAIL] [Bubble Movement] Bubble moved from 300.70000000000147,209.13415246158698
+[DETAIL] [Bubble Movement] to 302.0000000000015,210.39365246158698
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Bubble Movement] Bubble moved from 392.2999999999953,463.4844574664172
+[DETAIL] [Bubble Movement] to 391.19999999999527,460.28925321091566
+[DETAIL] [Bubble Movement] Bubble moved from 298.10000000000144,206.64815246158696
+[DETAIL] [Bubble Movement] to 299.40000000000146,207.88565246158697
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Bubble Movement] Bubble moved from 394.49999999999534,469.9651534392456
+[DETAIL] [Bubble Movement] to 393.3999999999953,466.7096636398108
+[DETAIL] [Bubble Movement] Bubble moved from 295.5000000000014,204.20615246158698
+[DETAIL] [Bubble Movement] to 296.80000000000143,205.42165246158697
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[DETAIL] [Bubble Movement] Bubble moved from 396.6999999999954,476.5681239994077
+[DETAIL] [Bubble Movement] to 395.59999999999536,473.2512112180179
+[DETAIL] [Bubble Movement] Bubble moved from 292.9000000000014,201.80815246158699
+[DETAIL] [Bubble Movement] to 294.2000000000014,203.00165246158699
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Bubble Movement] Bubble bounced on the left wall
+[INFO] [Bubble Movement] Bubble reached max height
+[INFO] [Bubble Movement] Bubble bounced on the floor
+[INFO] [Level] Player collided with a bubble
+[INFO] [Bubble] Bubble created with diameter 32
+[INFO] [Bubble] Bubble created with diameter 64
+[INFO] [Level] Level created
+[INFO] [Game] Game lost

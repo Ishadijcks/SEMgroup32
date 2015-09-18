@@ -29,6 +29,7 @@ public class Powerup {
      * @param y
      */
     public Powerup(String name, int x, int y) {
+        Logger.log("Powerup created", 6, 4);
         this.name = name;
         this.x = x;
         this.y = y;
@@ -52,11 +53,13 @@ public class Powerup {
 	}
 
 	/**
-     * The powerup moves up and gets destroyed when it hits the roof
+     * The powerup moves down till it hits the floor
      */
     public void move() {
         if (y <= Driver.game.getCurrentLevel().getHeight() - (height -1) ) {
+            Logger.log("Powerup moved from "+x+","+y+ " to "+ x + ","+(y+Settings.getPowerupSpeed()), 6, 5,10);
             y += Settings.getPowerupSpeed();
+            
         }
     }
 
