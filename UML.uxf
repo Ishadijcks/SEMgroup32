@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>460</x>
-      <y>110</y>
+      <x>590</x>
+      <y>130</y>
       <w>210</w>
       <h>190</h>
     </coordinates>
@@ -22,18 +22,21 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>350</y>
+      <x>180</x>
+      <y>530</y>
       <w>300</w>
-      <h>130</h>
+      <h>210</h>
     </coordinates>
-    <panel_attributes>LogScreens
+    <panel_attributes>LogScreen
 --
--logScreen: boolean
+-logScreen: ArrayList&lt;JCheckBox&gt;
 -severityMin: int
 -logscreen: LogScreen
 -activeLog: boolean
 --
+-reloadData()
+-makeMainPanel()
+-makeRightPanel()
 -checkboxListener()
 -radioButtonListener()
 -makeHorizontalPanel()
@@ -44,10 +47,10 @@
   <element>
     <id>UMLPackage</id>
     <coordinates>
-      <x>20</x>
+      <x>30</x>
       <y>50</y>
-      <w>760</w>
-      <h>710</h>
+      <w>980</w>
+      <h>760</h>
     </coordinates>
     <panel_attributes>Logging
 --
@@ -57,13 +60,14 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
+      <x>180</x>
       <y>130</y>
       <w>300</w>
       <h>190</h>
     </coordinates>
     <panel_attributes>Logger
 --
+-logList:LinkedList&lt;LogObject&gt;
 -categoryString: String[]
 -severityString: String[]
 --
@@ -76,8 +80,36 @@ bg=red</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>100</x>
+      <x>590</x>
       <y>530</y>
+      <w>300</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>LogFilters
+--
+-category: ArrayList&lt;Integer&gt; 
+-severity: int
+--
++addCategory(Category)
++removeCategory(Category)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
+      <y>200</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>360</y>
       <w>300</w>
       <h>130</h>
     </coordinates>
@@ -90,5 +122,38 @@ bg=red</panel_attributes>
 --
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
+      <y>570</y>
+      <w>140</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>310</x>
+      <y>310</y>
+      <w>30</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;10.0;220.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>470</x>
+      <y>480</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;50.0;120.0;10.0</additional_attributes>
   </element>
 </diagram>
