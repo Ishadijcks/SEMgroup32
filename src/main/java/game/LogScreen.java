@@ -28,7 +28,6 @@ public class LogScreen extends JFrame {
     JButton startButton;
     JButton button;
     private LogFilters filters;
-    private Graphics2D g2d;
     private Driver driver;
     private JList list;
     private Container pane;
@@ -36,6 +35,8 @@ public class LogScreen extends JFrame {
     Font boldFont;
     Font basicFont;
     private ButtonGroup group;
+    private JFrame frame;
+    private JPanel mainPanel;
 
     public LogScreen() throws UnsupportedAudioFileException, IOException,
             LineUnavailableException {
@@ -46,7 +47,7 @@ public class LogScreen extends JFrame {
         basicFont = new Font("Serif", Font.PLAIN, 16);
 
         JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame frame = new JFrame("Logging Screen");
+        frame = new JFrame("Logging Screen");
         frame.setSize(800, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(true);
@@ -59,7 +60,7 @@ public class LogScreen extends JFrame {
         JPanel rightPanel = makeRightPanel();
 
         // Center Panel for the log self
-        JPanel mainPanel = makeMainPanel();
+        mainPanel = makeMainPanel();
 
         // Add every panel to the main frame
         frame.add(textLog, BorderLayout.PAGE_START);
@@ -67,6 +68,19 @@ public class LogScreen extends JFrame {
         frame.add(rightPanel, BorderLayout.LINE_END);
         frame.setVisible(true);
 
+    }
+
+    /**
+     * Reload the log list for new content.
+     */
+    public void reloadData() {
+        frame.remove(mainPanel);
+        mainPanel = makeMainPanel();
+        frame.add(mainPanel);
+        System.out.println("reload");
+        frame.invalidate();
+        frame.validate();
+       //frame.repaint();
     }
 
     private JPanel makeMainPanel() {
@@ -101,8 +115,8 @@ public class LogScreen extends JFrame {
         ItemListener radioListener = radioButtonListener();
         String[] sev = LogObject.getSeverityNames();
         group = new ButtonGroup();
-        for (int i = 0; i < sev.length; i++) {
-            JRadioButton textSev = new JRadioButton(cat[i]);
+        for (int i = 1; i < sev.length; i++) {
+            JRadioButton textSev = new JRadioButton(sev[i]);
             textSev.setFont(basicFont);
             textSev.setName(Integer.toString(i));
             rightPanel.add(textSev);

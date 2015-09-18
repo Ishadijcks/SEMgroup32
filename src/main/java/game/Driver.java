@@ -633,6 +633,9 @@ public class Driver extends JPanel {
             // 120 FPS
             Thread.sleep(1000 / Settings.getFps());
             totalFrames++;
+            if( LogSettings.isLogScreen() && totalFrames % 1000 == 0){
+                LogSettings.getLogscreen().reloadData();
+            }
         }
 
     }

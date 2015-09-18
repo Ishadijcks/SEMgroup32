@@ -41,7 +41,9 @@ class MyKeyListener extends KeyAdapter {
                     break;
                 case 76:
                 try {
-                    new LogScreen();
+                    LogScreen logScreen = new LogScreen();
+                    LogSettings.setLogScreen(true);
+                    LogSettings.setLogscreen(logScreen);
                 } catch (UnsupportedAudioFileException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
