@@ -533,20 +533,22 @@ public class Driver extends JPanel {
     /**
      * Check if the game has been won
      */
-    public static void checkGameWon(){
+    public static boolean checkGameWon(){
         int levelNumbers = game.getLevelList().size();
         if(game.getCurrentLevelInt() == 4)
         {
             frame.dispose();
             Logger.log("Frame destroyed",9 ,4);
             new WinningScreen(driver);
+            return true;
         }
+        return false;
     }
     
     /**
      * Check if the game has been lost
      */
-    public static void checkGameLost(){
+    public static boolean checkGameLost(){
         int livesLeft = game.getLives();
         if(livesLeft == 0 && game.inProgress())
         {
@@ -554,7 +556,9 @@ public class Driver extends JPanel {
             game.toggleProgress();
             new LosingScreen(driver);
             Logger.log("Game lost", 7, 4);
+            return true;
         }
+        return false;
     }
     
     public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, IOException, LineUnavailableException{
