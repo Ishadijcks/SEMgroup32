@@ -13,11 +13,7 @@ public class LogFilters {
 
     public LogFilters(){
         category = new ArrayList<Integer>();
-        category.add(1);
-        category.add(2);
-        category.add(3);
-        category.add(4);
-        severity = 5;
+        severity = 0;
     }
     /**
      * @return the category

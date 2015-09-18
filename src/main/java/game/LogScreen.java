@@ -76,7 +76,7 @@ public class LogScreen extends JFrame {
     public void reloadData() {
 
         frame.remove(mainPanel);
-        mainPanel = makeMainInnerPanel();
+        mainPanel = makeMainPanel();
         frame.add(mainPanel);
 
         System.out.println("reload");
@@ -150,7 +150,6 @@ public class LogScreen extends JFrame {
         ItemListener itemListener = new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 JRadioButton source = (JRadioButton) e.getItemSelectable();
-                System.out.println(source.getName());
                 filters.setSeverity(Integer.parseInt(source.getName()));
             }
         };
@@ -178,7 +177,6 @@ public class LogScreen extends JFrame {
             case 5:
                 label.setForeground(Color.gray);
                 break;
-
             }
             panel.add(label);
         }
@@ -190,7 +188,6 @@ public class LogScreen extends JFrame {
         int severity = filters.getSeverity();
         LinkedList<LogObject> ll = Logger.getFilteredLogs(category, severity);
         ArrayList<JPanel> jPanels = new ArrayList<JPanel>();
-        System.out.println(ll.size());
         for (int i = ll.size() - 1; i > -1; i--) {
             jPanels.add(makeHorizontalPanel(ll.get(i).getSeverity(), ll.get(i).toStringShort()));
         }
