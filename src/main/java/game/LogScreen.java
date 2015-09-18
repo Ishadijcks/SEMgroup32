@@ -12,6 +12,8 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,16 +27,23 @@ public class LogScreen extends JFrame {
 
     JButton startButton;
     JButton button;
+    private LogFilters filters;
     private Graphics2D g2d;
     private Driver driver;
     private JList list;
     private Container pane;
+    private ArrayList<JCheckBox> checkList;
+    Font boldFont;
+    Font basicFont;
+    private ButtonGroup group;
 
     public LogScreen() throws UnsupportedAudioFileException, IOException,
             LineUnavailableException {
 
         driver = new Driver();
-        String title = "Log Screen";
+        filters = new LogFilters();
+        boldFont = new Font("Serif", Font.BOLD, 18);
+        basicFont = new Font("Serif", Font.PLAIN, 16);
 
         JFrame.setDefaultLookAndFeelDecorated(true);
         JFrame frame = new JFrame("Logging Screen");
@@ -42,66 +51,101 @@ public class LogScreen extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(true);
 
-        Font boldFont = new Font("Serif", Font.BOLD, 18);
-        Font basicFont = new Font("Serif", Font.PLAIN, 16);
-
-        //Title top the screen
+        // Title top the screen
         JLabel textLog = new JLabel("Log");
         textLog.setFont(boldFont);
 
-        //Right panel with category and Severity
-        JPanel rightPanel = new JPanel();
-        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-        JLabel textCategory = new JLabel("Category");
-        textCategory.setFont(boldFont);
-        rightPanel.add(textCategory);
+        // Right panel with category and Severity
+        JPanel rightPanel = makeRightPanel();
 
-        String[] cat = LogObject.getCategoryNames();
-        for (int i = 0; i < cat.length; i++) {
-            JLabel textCat = new JLabel(cat[i]);
-            textCat.setFont(basicFont);
-            rightPanel.add(textCat);
-        }
-        
-        JLabel textSeverity = new JLabel("Severity");
-        textSeverity.setFont(boldFont);
-        rightPanel.add(textSeverity);
+        // Center Panel for the log self
+        JPanel mainPanel = makeMainPanel();
 
-        String[] sev = LogObject.getSeverityNames();
-        for (int i = 0; i < sev.length; i++) {
-            JLabel textSev = new JLabel(cat[i]);
-            textSev.setFont(basicFont);
-            rightPanel.add(textSev);
-        }
-        
-        //Center Panel for the log self
+        // Add every panel to the main frame
+        frame.add(textLog, BorderLayout.PAGE_START);
+        frame.add(mainPanel, BorderLayout.CENTER);
+        frame.add(rightPanel, BorderLayout.LINE_END);
+        frame.setVisible(true);
+
+    }
+
+    private JPanel makeMainPanel() {
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel mainInnerPanel = makeMainInnerPanel();
 
         JScrollPane scrollPane = new JScrollPane(mainInnerPanel);
         mainPanel.add(scrollPane);
+        return mainPanel;
+    }
 
-        // mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+    private JPanel makeRightPanel() {
+        JPanel rightPanel = new JPanel();
+        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+        JLabel textCategory = new JLabel("Category");
+        textCategory.setFont(boldFont);
+        rightPanel.add(textCategory);
+        ItemListener checkboxListener = checkboxListener();
+        checkList = new ArrayList<JCheckBox>();
+        String[] cat = LogObject.getCategoryNames();
+        for (int i = 0; i < cat.length; i++) {
+            JCheckBox textCat = new JCheckBox(cat[i]);
+            checkList.add(textCat);
+            textCat.setFont(basicFont);
+            rightPanel.add(textCat);
+            textCat.addItemListener(checkboxListener);
+        }
 
-        frame.add(textLog, BorderLayout.PAGE_START);
-        frame.add(mainPanel, BorderLayout.CENTER);
-        frame.add(rightPanel, BorderLayout.LINE_END);
+        JLabel textSeverity = new JLabel("Severity");
+        textSeverity.setFont(boldFont);
+        rightPanel.add(textSeverity);
+        ItemListener radioListener = radioButtonListener();
+        String[] sev = LogObject.getSeverityNames();
+        group = new ButtonGroup();
+        for (int i = 0; i < sev.length; i++) {
+            JRadioButton textSev = new JRadioButton(cat[i]);
+            textSev.setFont(basicFont);
+            textSev.setName(Integer.toString(i));
+            rightPanel.add(textSev);
+            textSev.addItemListener(radioListener);
+            group.add(textSev);
+        }
+        return rightPanel;
+    }
 
-        frame.add(mainPanel);
-        frame.setVisible(true);
-        /*
-         * startButton.addActionListener(new ActionListener() { public void
-         * actionPerformed(ActionEvent startGame) { driver.repaint(); } });
-         * frame.add(startButton); pane.add(button, BorderLayout.PAGE_START);
-         */
+    private ItemListener checkboxListener() {
+        ItemListener itemListener = new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                Object source = e.getItemSelectable();
+                for (int i = 0; i < checkList.size(); i++) {
+                    if (source == checkList.get(i)) {
+                        if (e.getStateChange() == ItemEvent.SELECTED) {
+                            filters.addCategory(i);
+                        } else {
+                            filters.removeCategory(i);
+                        }
+                    }
+                }
+            }
+        };
+        return itemListener;
+    }
 
+    private ItemListener radioButtonListener() {
+        ItemListener itemListener = new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+                JRadioButton source = (JRadioButton) e.getItemSelectable();
+                System.out.println(source.getName());
+                filters.setSeverity(Integer.parseInt(source.getName()));
+            }
+        };
+        return itemListener;
     }
 
     private JPanel makeHorizontalPanel(int severity, String... labelValues) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         for (String s : labelValues) {
             JLabel label = new JLabel(s);
-            switch(severity){
+            switch (severity) {
             case 1:
                 label.setForeground(Color.red);
                 break;
@@ -117,7 +161,7 @@ public class LogScreen extends JFrame {
             case 5:
                 label.setForeground(Color.gray);
                 break;
-                
+
             }
             panel.add(label);
         }
@@ -125,13 +169,9 @@ public class LogScreen extends JFrame {
     }
 
     private JPanel makeMainInnerPanel() {
-
-        Font basicFont = new Font("Serif", Font.PLAIN, 16);
-        ArrayList<Integer> category = new ArrayList<Integer>();
-        category.add(1);
-        category.add(2);
-        category.add(3);
-        LinkedList<LogObject> ll = Logger.getFilteredLogs(category, 5);
+        ArrayList<Integer> category = filters.getCategory();
+        int severity = filters.getSeverity();
+        LinkedList<LogObject> ll = Logger.getFilteredLogs(category, severity);
         int size = ll.size();
         ArrayList<JPanel> jPanels = new ArrayList<JPanel>();
         for (int i = 0; i < size; i++) {
