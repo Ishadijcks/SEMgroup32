@@ -4,6 +4,7 @@ public class LogSettings {
     static boolean logScreen = false;
     static int severityMin = 6;
     static LogScreen logscreen;
+    static boolean activeLog = false;
 
     /**
      * @return the logScreen
@@ -32,5 +33,14 @@ public class LogSettings {
      */
     public static void setLogscreen(LogScreen logscreen) {
         LogSettings.logscreen = logscreen;
+    }
+    
+    public static boolean getActiveLog(){
+        return activeLog;
+    }
+
+    public static void setActiveLog(boolean bool) {
+        activeLog = bool;
+        
     }
 }

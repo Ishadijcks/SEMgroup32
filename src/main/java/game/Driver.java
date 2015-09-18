@@ -562,6 +562,8 @@ public class Driver extends JPanel {
         setupGame();
         startScreen();
 
+        LogSettings.setActiveLog(true);
+        
         while (true) {
             if (game.inProgress()) {
                 curLevel = game.getCurrentLevel();
