@@ -74,13 +74,15 @@ public class LogScreen extends JFrame {
      * Reload the log list for new content.
      */
     public void reloadData() {
+
         frame.remove(mainPanel);
-        mainPanel = makeMainPanel();
+        mainPanel = makeMainInnerPanel();
         frame.add(mainPanel);
+
         System.out.println("reload");
         frame.invalidate();
         frame.validate();
-       //frame.repaint();
+        frame.repaint();
     }
 
     private JPanel makeMainPanel() {
@@ -167,7 +169,8 @@ public class LogScreen extends JFrame {
                 label.setForeground(Color.orange);
                 break;
             case 3:
-                label.setForeground(Color.yellow);
+                Color color = new Color(200, 150, 10);
+                label.setForeground(color);
                 break;
             case 4:
                 label.setForeground(Color.blue);
@@ -186,15 +189,13 @@ public class LogScreen extends JFrame {
         ArrayList<Integer> category = filters.getCategory();
         int severity = filters.getSeverity();
         LinkedList<LogObject> ll = Logger.getFilteredLogs(category, severity);
-        int size = ll.size();
         ArrayList<JPanel> jPanels = new ArrayList<JPanel>();
-        for (int i = 0; i < size; i++) {
-            jPanels.add(makeHorizontalPanel(ll.get(i).getSeverity(), ll.get(i)
-                    .getMessage()));
+        System.out.println(ll.size());
+        for (int i = ll.size() - 1; i > -1; i--) {
+            jPanels.add(makeHorizontalPanel(ll.get(i).getSeverity(), ll.get(i).toStringShort()));
         }
         JPanel mainInnerPanel = new JPanel();
-        mainInnerPanel
-                .setLayout(new BoxLayout(mainInnerPanel, BoxLayout.Y_AXIS));
+        mainInnerPanel.setLayout(new BoxLayout(mainInnerPanel, BoxLayout.Y_AXIS));
         for (int i = 0; i < jPanels.size(); i++) {
             mainInnerPanel.add(jPanels.get(i));
         }

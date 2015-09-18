@@ -70,6 +70,19 @@ public class LogObject {
     }
 
     /**
+     * method that converts the integer to a string.
+     * @return string
+     */
+    public String toStringShort() {
+        if (category < 0 || category >= categoryString.length) {
+            category = 8;
+            severity = 1;
+        }
+        return "[" + categoryString[category] + "] " + message;
+    }
+
+    
+    /**
      * get Category names.
      * 
      * @return string
