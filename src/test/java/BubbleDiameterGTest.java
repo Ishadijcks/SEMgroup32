@@ -17,7 +17,7 @@ public class BubbleDiameterGTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
-                { 4, 1.5},
+                { 4, 1},
                 { 8, 1 }, { 16, 1.3 }, { 32,  1.2}, 
                 { 64, 1.1 }, { 128, 1}, { 23123123, 1.3},
                 { -12, 1.3},{ 0, 1.3}, { Integer.MAX_VALUE, 1.3}});
