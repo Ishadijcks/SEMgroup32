@@ -15,9 +15,9 @@ public class BubbleDiameterMoveTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
-                { 4, 1.4 }, { 8, 1.3 }, { 16, 1.2 }, 
-                { 32, 1.1 }, { 64, 1.0 }, { 23123123, 1.2 },
-                { -123, 1.2 }, { 0, 1.2 } });
+                { 4, 1 }, { 8, 0.9 }, { 16, 1 }, 
+                { 32, 1.1 }, { 64, 1.3 }, { 23123123, 1 },
+                { -123, 1 }, { 0, 1 } });
     }
 
 
