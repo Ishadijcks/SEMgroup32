@@ -1,4 +1,9 @@
-package game;
+package game.screens;
+
+import game.Driver;
+import game.log.LogFilters;
+import game.log.LogObject;
+import game.log.Logger;
 
 import java.awt.BorderLayout;
 import java.awt.Button;

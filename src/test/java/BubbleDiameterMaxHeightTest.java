@@ -1,12 +1,12 @@
 
 import static org.junit.Assert.*;
-import game.Bubble;
-import game.Bubblex128;
-import game.Bubblex16;
-import game.Bubblex32;
-import game.Bubblex64;
-import game.Bubblex8;
 import game.Settings;
+import game.bubble.Bubble;
+import game.bubble.Bubblex128;
+import game.bubble.Bubblex16;
+import game.bubble.Bubblex32;
+import game.bubble.Bubblex64;
+import game.bubble.Bubblex8;
 
 import java.awt.Color;
 import java.util.Arrays;

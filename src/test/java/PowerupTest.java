@@ -7,7 +7,7 @@ import javax.swing.ImageIcon;
 import game.Driver;
 import game.Powerup;
 import game.Settings;
-import game.StartScreen;
+import game.screens.StartScreen;
 
 import org.junit.Before;
 import org.junit.Test;

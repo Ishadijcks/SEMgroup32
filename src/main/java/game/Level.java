@@ -1,5 +1,8 @@
 package game;
 
+import game.bubble.Bubble;
+import game.log.Logger;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;

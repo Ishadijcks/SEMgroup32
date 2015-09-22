@@ -1,5 +1,7 @@
 package game;
 
+import game.log.Logger;
+
 public class Rope {
     protected int x;
     protected int y;

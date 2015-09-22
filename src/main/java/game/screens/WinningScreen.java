@@ -1,4 +1,7 @@
-package game;
+package game.screens;
+
+import game.Driver;
+import game.Settings;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

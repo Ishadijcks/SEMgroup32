@@ -1,5 +1,7 @@
 package game;
 
+import game.log.Logger;
+
 
 public class GameCreator {
 

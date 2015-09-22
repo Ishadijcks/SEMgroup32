@@ -1,4 +1,6 @@
-package game;
+package game.log;
+
+import game.Driver;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

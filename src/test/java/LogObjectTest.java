@@ -1,7 +1,7 @@
 
 
 import static org.junit.Assert.*;
-import game.LogObject;
+import game.log.LogObject;
 
 import org.junit.Before;
 import org.junit.Test;

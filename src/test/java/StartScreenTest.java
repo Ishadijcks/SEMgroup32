@@ -1,6 +1,6 @@
 
 import static org.junit.Assert.*;
-import game.StartScreen;
+import game.screens.StartScreen;
 
 import javax.swing.JFrame;
 

@@ -2,8 +2,8 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import game.LogSettings;
-import game.Logger;
+import game.log.LogSettings;
+import game.log.Logger;
 
 import org.junit.Before;
 import org.junit.BeforeClass;

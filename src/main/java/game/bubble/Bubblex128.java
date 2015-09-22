@@ -1,4 +1,4 @@
-package game;
+package game.bubble;
 
 import java.awt.Color;
 import java.util.ArrayList;

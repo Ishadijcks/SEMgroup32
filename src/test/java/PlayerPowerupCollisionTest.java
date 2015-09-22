@@ -1,8 +1,8 @@
 import static org.junit.Assert.*;
-import game.Bubble;
 import game.Level;
 import game.Player;
 import game.Powerup;
+import game.bubble.Bubble;
 
 import java.util.ArrayList;
 import java.util.Arrays;
