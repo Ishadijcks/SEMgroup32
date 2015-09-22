@@ -3,12 +3,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import game.Bubble;
 import game.IceRope;
 import game.Level;
 import game.Player;
 import game.Powerup;
 import game.Rope;
+import game.bubble.Bubble;
 
 import java.util.ArrayList;
 

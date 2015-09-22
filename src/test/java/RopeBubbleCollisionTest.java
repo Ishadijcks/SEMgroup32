@@ -1,11 +1,11 @@
 
 import static org.junit.Assert.assertEquals;
-import game.Bubble;
-import game.Bubblex16;
 import game.Driver;
 import game.Level;
 import game.Player;
 import game.Rope;
+import game.bubble.Bubble;
+import game.bubble.Bubblex16;
 
 import java.util.ArrayList;
 import java.util.Arrays;

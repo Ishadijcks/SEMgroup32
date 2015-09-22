@@ -1,5 +1,7 @@
 package game;
 
+import game.log.Logger;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Image;

@@ -1,6 +1,9 @@
 package game;
 
 
+import game.log.Logger;
+import game.screens.StartScreen;
+
 import java.awt.Image;
 import java.net.URL;
 

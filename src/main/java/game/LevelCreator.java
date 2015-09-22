@@ -1,5 +1,11 @@
 package game;
 
+import game.bubble.Bubble;
+import game.bubble.Bubblex16;
+import game.bubble.Bubblex32;
+import game.bubble.Bubblex64;
+import game.log.Logger;
+
 import java.util.ArrayList;
 
 public class LevelCreator {

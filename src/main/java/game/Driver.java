@@ -1,5 +1,12 @@
 package game;
 
+import game.bubble.Bubble;
+import game.log.LogSettings;
+import game.log.Logger;
+import game.screens.LosingScreen;
+import game.screens.StartScreen;
+import game.screens.WinningScreen;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;

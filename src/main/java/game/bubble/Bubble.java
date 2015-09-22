@@ -1,4 +1,7 @@
-package game;
+package game.bubble;
+
+import game.Settings;
+import game.log.Logger;
 
 import java.awt.Color;
 import java.util.ArrayList;

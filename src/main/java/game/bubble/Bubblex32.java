@@ -1,24 +1,25 @@
-package game;
+package game.bubble;
 
 import java.awt.Color;
 import java.util.ArrayList;
 
-public class Bubblex8 extends Bubble {
+public class Bubblex32 extends Bubble {
 	
-	private final static int maxheight = 200;
-	private final static Color color = Settings.getDragonRed();
-	private final static double G = 1;
-	private final static int diameter = 8;
-	private static double speedX = 0.9;
+	private final static int maxheight = 120;
+	private final static Color color = Color.GREEN;
+	private final static double G = 1.2;
+	private final static int diameter = 32;
+	private static double speedX = 1.1;
 
-	public Bubblex8(double x, double y, boolean directionH,
-			boolean directionV) {
+	public Bubblex32(double x, double y, boolean directionH, boolean directionV) {
 		super(x, y, directionH, directionV, maxheight, color, G, diameter, speedX);
 	}
-
+	
 	@Override
 	public ArrayList<Bubble> destroyBubble(int x, int y) {
 		ArrayList<Bubble> retList = new ArrayList<Bubble>();
+		retList.add(new Bubblex16(x, y, false, false));
+		retList.add(new Bubblex16(x, y, true, false));
 		return retList;
 	}
 

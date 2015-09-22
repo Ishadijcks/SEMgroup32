@@ -2,8 +2,8 @@
 
 import static org.junit.Assert.*;
 import game.Driver;
-import game.LogObject;
-import game.Logger;
+import game.log.LogObject;
+import game.log.Logger;
 
 import org.junit.Before;
 import org.junit.Test;
