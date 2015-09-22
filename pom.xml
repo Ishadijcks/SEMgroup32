@@ -23,9 +23,35 @@
 	maar werkelijk geen idee wat daar precies staat. Niet nodig denk ik -->
 	
 	<build>
-		<!-- Hier moet misschien <directory> en <outputDirectory> tussen -->
+		<!-- Hier moet misschien een andere <directory> en <outputDirectory> staan -->
+		<directory>target</directory>
+		<outputDirectory>target/classes</outputDirectory>
 		<plugins>
-	
+			
+			<!-- Gekopieerd van een andere groep, werkt zo bij ons uiteraard niet maar ik denk dat het er wel bij moet. Graag input.
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>nl.joshuaslik.tudelft.SEM.Launcher</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>-->
+            
 			<!-- De Checkstyle plugin vergeleken met andere groepjes -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -91,9 +117,22 @@
 					<includeTests>true</includeTests>
 				</configuration>
 			</plugin>
-
+			
 		</plugins>
 	</build>
 </project>
 
+<!-- Belangrijk! Dit stukje moet er denk ik ergens tussen maar ik word er niet wijs uit waar precies:
+<reporting>
+    <outputDirectory>${basedir}/target/site</outputDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.0.1</version>
+        <reportSets>
+          <reportSet></reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting> -->
   
