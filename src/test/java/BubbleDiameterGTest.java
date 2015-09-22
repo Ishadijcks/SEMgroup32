@@ -1,6 +1,11 @@
 
 import static org.junit.Assert.*;
 import game.Bubble;
+import game.Bubblex128;
+import game.Bubblex16;
+import game.Bubblex32;
+import game.Bubblex64;
+import game.Bubblex8;
 import game.Settings;
 
 import java.awt.Color;
@@ -17,22 +22,20 @@ public class BubbleDiameterGTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
-                { 4, 1},
-                { 8, 1 }, { 16, 1.3 }, { 32,  1.2}, 
-                { 64, 1.1 }, { 128, 1}, { 23123123, 1.3},
-                { -12, 1.3},{ 0, 1.3}, { Integer.MAX_VALUE, 1.3}});
-    }
+                { 8, new Bubblex8(100,100,false,false), 1 }, { 16, new Bubblex16(100,100,false,false), 1.3 }, { 32, new Bubblex32(100,100,false,false),  1.2}, 
+                { 64, new Bubblex64(100,100,false,false), 1.1 }, { 128, new Bubblex128(100,100,false,false), 1} });
+        };
 
     private double expectedG;
     private Bubble bubble;
     
-    public BubbleDiameterGTest(int diameter, double expectedG) {
+    public BubbleDiameterGTest(int diameter, Bubble bub, double expectedG) {
         this.expectedG = expectedG;
-        bubble = new Bubble(diameter, 100, 100, false, false);
+        bubble = bub;
     }
 
     @Test
     public void test() {
-          assertTrue(expectedG == bubble.calculateG(bubble.getDiameter()));
+          assertTrue(expectedG == bubble.getG());
     }
 }

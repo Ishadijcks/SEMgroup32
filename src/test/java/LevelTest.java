@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import game.Bubble;
+import game.Bubblex16;
 import game.Level;
 import game.Player;
 import game.Powerup;
@@ -26,7 +27,7 @@ public class LevelTest {
 	
 	@Before
 	public void init() {
-		bubble = new Bubble(18,2,2,true,true);
+		bubble = new Bubblex16(2,2,true,true);
 		p = new ArrayList<Player>();
 		l = new Level(p);
 		bubbleList = new ArrayList<Bubble>();
@@ -39,16 +40,6 @@ public class LevelTest {
 		assertTrue(l.getBubbleList().equals(bubbleList));
 		assertTrue(l.getPlayerList().equals(p));
 		assertTrue(l.getPowerupList().equals(plist));
-	}
-
-
-
-	
-	@Test
-	public void testDestroyBubbleBig() {
-		l.addBubble(bubble);
-		l.destroyBubble(0);
-		assertEquals(2, l.getBubbleList().size());
 	}
 
 	@Test

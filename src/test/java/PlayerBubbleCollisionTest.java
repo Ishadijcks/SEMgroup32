@@ -1,5 +1,6 @@
 import static org.junit.Assert.*;
 import game.Bubble;
+import game.Bubblex16;
 import game.Level;
 import game.Player;
 import game.Rope;
@@ -30,7 +31,7 @@ public class PlayerBubbleCollisionTest {
     private boolean expected;
 
     public PlayerBubbleCollisionTest(int x, int y, boolean exp) {
-        bubble = new Bubble(18, x, y, true, true);
+        bubble = new Bubblex16(x, y, true, true);
         player = new Player("Test", 100);
         p = new ArrayList<Player>();
         p.add(player);
