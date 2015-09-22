@@ -1,13 +1,14 @@
 package game.screens;
 
 import game.Driver;
-import game.Game;
+import game.NormalGame;
 import game.MathFunctions;
 import game.GameCreator;
 import game.Level;
 import game.MyKeyListener;
 import game.Player;
 import game.Powerup;
+import game.Score;
 import game.Settings;
 import game.bubble.Bubble;
 import game.log.LogFilters;
@@ -40,7 +41,8 @@ import javax.swing.JPanel;
 
 public class GameScreen extends JPanel {
     public static int totalFrames = 1;
-    public static Game game;
+    public static NormalGame game;
+    public static Score score;
     private int animationRightCounter = 1;
     private int fireRightCounter = 1;
     private int animationLeftCounter = 1;
@@ -119,8 +121,9 @@ public class GameScreen extends JPanel {
        frame.repaint();
     }
 
-    public static void setupScreen(Game gameInput) {
+    public static void setupScreen(NormalGame gameInput, Score scoreInput) {
         game =gameInput;
+        score = scoreInput;
         try {
             gameScreen = new GameScreen();
         } catch (UnsupportedAudioFileException e1) {
@@ -523,7 +526,7 @@ public class GameScreen extends JPanel {
             g2d.drawString("Score: ", centerConstant, curLevel.getHeight() + 91
                     + topMargin);
             g2d.setColor(dragonRed);
-            g2d.drawString("" + game.getScore(), centerConstant + 135,
+            g2d.drawString("" + score.getScore(), centerConstant + 135,
                     curLevel.getHeight() + 91 + topMargin);
             g2d.setColor(Color.BLACK);
 

@@ -22,7 +22,7 @@ public class MyKeyListener extends KeyAdapter {
     public void keyPressed(KeyEvent evt) {
 
        
-        Game game = Driver.game;
+        NormalGame game = Driver.game;
 
         if (game.inProgress()) {
             
@@ -69,7 +69,7 @@ public class MyKeyListener extends KeyAdapter {
      */
     public void keyReleased(KeyEvent evt) {
 
-        Game game = Driver.game;
+        NormalGame game = Driver.game;
 
         switch (evt.getKeyCode()) {
 

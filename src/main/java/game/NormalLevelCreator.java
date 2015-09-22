@@ -8,7 +8,7 @@ import game.log.Logger;
 
 import java.util.ArrayList;
 
-public class LevelCreator {
+public class NormalLevelCreator {
 
     private static ArrayList<Player> playerList;
     private static int levelsAvailable = 5;

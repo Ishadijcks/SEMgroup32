@@ -41,6 +41,7 @@ import javax.swing.JPanel;
 
 /**
  * Class that executes the game
+ * 
  * @author Naomi
  *
  */
@@ -48,7 +49,8 @@ import javax.swing.JPanel;
 public class Driver extends JPanel {
 
     public static int totalFrames = 1;
-    public static Game game;
+    public static NormalGame game;
+    public static Score score;
     private static Level curLevel;
     private static Driver driver;
     private static boolean canDrawGame = true;
@@ -104,27 +106,25 @@ public class Driver extends JPanel {
     /**
      * Check if the game has been won
      */
-    public static boolean checkGameWon(){
+    public static boolean checkGameWon() {
         int levelNumbers = game.getLevelList().size();
-        if(game.getCurrentLevelInt() == 4)
-        {
+        if (game.getCurrentLevelInt() == 4) {
             System.out.println("won..");
             gameScreen.dispose();
-            Logger.log("Frame destroyed",9 ,4);
+            Logger.log("Frame destroyed", 9, 4);
             System.out.println("won..");
             new WinningScreen(driver);
             return true;
         }
         return false;
     }
-    
+
     /**
      * Check if the game has been lost
      */
-    public static boolean checkGameLost(){
+    public static boolean checkGameLost() {
         int livesLeft = game.getLives();
-        if(livesLeft == 0 && game.inProgress())
-        {
+        if (livesLeft == 0 && game.inProgress()) {
             gameScreen.dispose();
             game.toggleProgress();
             new LosingScreen(driver);
@@ -133,14 +133,16 @@ public class Driver extends JPanel {
         }
         return false;
     }
-    
-    public static void main(String[] args) throws InterruptedException, UnsupportedAudioFileException, IOException, LineUnavailableException{
+
+    public static void main(String[] args) throws InterruptedException,
+            UnsupportedAudioFileException, IOException,
+            LineUnavailableException {
         initGame();
         setupGame();
         startScreen();
 
         LogSettings.setActiveLog(true);
-        
+
         while (true) {
             if (game.inProgress()) {
                 curLevel = game.getCurrentLevel();
@@ -165,28 +167,29 @@ public class Driver extends JPanel {
                     game.getPlayerList().get(0).removeAllPowerUps();
                     game.resetLevel();
                 }
-                
-                int powerupListSize = game.getPlayerList().get(0).getPowerupList().size();
-                
+
+                int powerupListSize = game.getPlayerList().get(0)
+                        .getPowerupList().size();
+
                 if (powerupListSize > 0) {
-                    for(int i = 0; i < powerupListSize; i++)
-                    {
-                        if (game.getPlayerList().get(0).getPowerupList().get(i).getName()
-                                .equals("life")) {
-                            Powerup life = game.getPlayerList().get(0).getPowerupList().get(i);
+                    for (int i = 0; i < powerupListSize; i++) {
+                        if (game.getPlayerList().get(0).getPowerupList().get(i)
+                                .getName().equals("life")) {
+                            Powerup life = game.getPlayerList().get(0)
+                                    .getPowerupList().get(i);
                             game.getLife();
                             game.getPlayerList().get(0).removePowerUp(life);
-                        }
-                        else if (game.getPlayerList().get(0).getPowerupList().get(i).getName()
-                                .equals("ice")) {
+                        } else if (game.getPlayerList().get(0).getPowerupList()
+                                .get(i).getName().equals("ice")) {
                             iceRope = true;
-                            game.getPlayerList().get(0).getPowerupList().get(i).decreaseFramesLeft();
+                            game.getPlayerList().get(0).getPowerupList().get(i)
+                                    .decreaseFramesLeft();
+                        } else if (game.getPlayerList().get(0).getPowerupList()
+                                .get(i).getName().equals("speed")) {
+                            game.getPlayerList().get(0).getPowerupList().get(i)
+                                    .decreaseFramesLeft();
                         }
-                        else if (game.getPlayerList().get(0).getPowerupList().get(i).getName()
-                                .equals("speed")) {
-                            game.getPlayerList().get(0).getPowerupList().get(i).decreaseFramesLeft();
-                        }
-                        
+
                     }
                 }
                 iceRope = game.getPlayerList().get(0).hasIceRope();
@@ -212,44 +215,46 @@ public class Driver extends JPanel {
             // 120 FPS
             Thread.sleep(1000 / Settings.getFps());
             totalFrames++;
-            if( LogSettings.isLogScreen() && totalFrames % 500 == 0 && game.inProgress()){
+            if (LogSettings.isLogScreen() && totalFrames % 500 == 0
+                    && game.inProgress()) {
                 LogSettings.getLogscreen().reloadData();
             }
         }
 
     }
 
-    public static void initGame(){
-       try {
-        gameScreen = new GameScreen();
-    } catch (UnsupportedAudioFileException e) {
-        Logger.log("UnsupportedAudioFileException", 7, 2);
-        e.printStackTrace();
-    } catch (IOException e) {
-        Logger.log("IOException", 7, 2);
-        e.printStackTrace();
-    } catch (LineUnavailableException e) {
-        Logger.log("LineUnavailableException", 7, 2);
-        e.printStackTrace();
+    public static void initGame() {
+        try {
+            gameScreen = new GameScreen();
+        } catch (UnsupportedAudioFileException e) {
+            Logger.log("UnsupportedAudioFileException", 7, 2);
+            e.printStackTrace();
+        } catch (IOException e) {
+            Logger.log("IOException", 7, 2);
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            Logger.log("LineUnavailableException", 7, 2);
+            e.printStackTrace();
+        }
+        Logger.log("Main Frame created", 9, 4);
     }
-       Logger.log("Main Frame created",9,4);
-    }
-    
+
     /**
      * Set up the game
      */
-    public static void setupGame(){
-       
+    public static void setupGame() {
+
         driver = new Driver();
 
-        URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
-        String currentLocation = location.getFile();   
+        URL location = StartScreen.class.getProtectionDomain().getCodeSource()
+                .getLocation();
+        String currentLocation = location.getFile();
 
         Player isha = new Player("Isha", 350);
         Player tim = new Player("Tim", 80);
 
         game = GameCreator.createSinglePlayer(isha);
-
+        score = new Score();
         game.addPlayer(isha);
 
         player = game.getPlayerList().get(0);
@@ -259,13 +264,13 @@ public class Driver extends JPanel {
                         .getLevelWidth()));
         Settings.setLeftMargin(centerConstant);
 
-        GameScreen.setupScreen(game);
+        GameScreen.setupScreen(game, score);
     }
-    
+
     /**
      * Catching exceptions of the startscreen.
      */
-    public static void startScreen(){
+    public static void startScreen() {
         try {
             new StartScreen(driver);
         } catch (UnsupportedAudioFileException e1) {

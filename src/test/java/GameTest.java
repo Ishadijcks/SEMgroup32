@@ -3,7 +3,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import game.Game;
+import game.NormalGame;
 import game.Level;
 import game.Player;
 
@@ -15,7 +15,7 @@ import org.junit.Test;
 
 public class GameTest {
 	
-	public Game game;
+	public NormalGame game;
 	public ArrayList<Player> p;
 	public Level l;
 	public Level k;
@@ -24,7 +24,7 @@ public class GameTest {
 	
 	@Before
 	public void initGame() {
-		game = new Game();
+		game = new NormalGame();
 		p = new ArrayList<Player>();
 		l = new Level(p);
 		k = new Level(p);

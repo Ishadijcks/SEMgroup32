@@ -4,14 +4,14 @@ import game.log.Logger;
 
 import java.util.ArrayList;
 
-public class Game {
+public class NormalGame extends Game{
     private ArrayList<Level> levelList = new ArrayList<Level>();
     private ArrayList<Player> playerList;
     private int lives = Settings.getLives();
     private int currentLevel = 1;
     private boolean inProgress;
 
-    public Game() {
+    public NormalGame() {
         this.inProgress = false;
         this.playerList = new ArrayList<Player>();
        Logger.log("Game object created", 7, 5);
