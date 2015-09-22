@@ -9,9 +9,11 @@ public class Level {
     private ArrayList<Player> playerList;
     private ArrayList<Powerup> powerupList;
     private Rope rope = null;
+    private int numberOfRopes = 0;
     private int timeLeft;
     private int width = Settings.getLevelWidth();
     private int height = Settings.getLevelHeight();
+    private boolean increasedPowerupTime = false;
 
     /**
      * Constructor, initializes the bubble- and playerList
@@ -20,6 +22,7 @@ public class Level {
         this.bubbleList = new ArrayList<Bubble>();
         this.playerList = playerList;
         this.powerupList = new ArrayList<Powerup>();
+        Logger.log("Level created",8,4);
     }
 
     public void resetBubble() {
@@ -37,7 +40,7 @@ public class Level {
     public void setPowerupList(ArrayList<Powerup> powerupList) {
         this.powerupList = powerupList;
     }
-
+    
     /**
      * Checks if there is collision between player and a bubble
      * 
@@ -57,6 +60,7 @@ public class Level {
                     && player.getCollisionY() <= (bubble.getY() + bubble.getDiameter())
                     && (player.getY() + player.getHeight()) >= bubble.getY()) {
                 if (player.getCollisionY() <= bubble.getY()) {
+                    Logger.log("Player collided with a bubble",8,4);
                     return true;
                 }
             }
@@ -83,6 +87,7 @@ public class Level {
                                     .getY()) {
                             destroyBubble(i);
                             setRope(null);
+                            Logger.log("Rope collided with a bubble",8,4);
                             return true;
                         }
                     }
@@ -106,8 +111,31 @@ public class Level {
                     && (player1.getCollisionX() + player1.getWidth()) >= powerup.getX()
                     && player1.getCollisionY() <= (powerup.getY() + powerup.getHeight())
                     && (player1.getY() + player1.getHeight()) >= powerup.getY()) {
-                playerList.get(0).setPowerup(powerupList.get(i));
-                powerupList.remove(i);
+                
+                Logger.log("Player collided with a powerup",8,4);
+                
+                int powerupListSize = playerList.get(0).getPowerupList().size();
+                if(powerupListSize > 0)
+                {
+                    for(int i1 = 0; i1 < powerupListSize; i1++)
+                    {
+                        if(playerList.get(0).getPowerupList().get(i1).samePowerup(powerup))
+                        {
+                            playerList.get(0).getPowerupList().get(i1).resetFramesLeft();
+                            Logger.log("Power up time " +playerList.get(0).getPowerupList().get(i1).getName()+" reset", 6, 4);
+                            increasedPowerupTime = true;
+                            powerupList.remove(i);
+                        }
+                    }
+                }
+                if(!increasedPowerupTime)
+                {
+                    playerList.get(0).setPowerup(powerupList.get(i));
+                    Logger.log("Power up time " +powerupList.get(i).getName()+" added", 6, 4);
+                    
+                    powerupList.remove(i);
+                }
+                increasedPowerupTime = false;
                 return true;
             }
         }
@@ -131,7 +159,7 @@ public class Level {
         bubbleList.addAll(bubble.destroyBubble(x, y));
         
         if (Settings.getPowerupChance() > Math.random() * 100) {
-            Powerup powerup = generatePowerup(x, y, randomInt(1,2));
+            Powerup powerup = generatePowerup(x, y, randomInt(1,3));
             powerupList.add(powerup);
         }
     }
@@ -173,14 +201,21 @@ public class Level {
         return randomNum;
     }
 
-    public Powerup generatePowerup(int x, int y, int randomNum) {
-        int randomNumber = randomNum;
+    public Powerup generatePowerup(int x, int y, int randomNumber1) {
+        int randomNumber = randomNumber1;
         switch (randomNumber) {
         case 1:
+            Logger.log("Powerup speed spawned", 6, 4);
             return new Powerup("speed", x, y);
         case 2:
+            Logger.log("Powerup life spawned", 6, 4);
             return new Powerup("life", x, y);
+        case 3:
+            Logger.log("Powerup ice spawned", 6, 4);
+            return new Powerup("ice", x, y);
         default:
+            Logger.log("Powerup speed spawned", 6, 4);
+            Logger.log("generatePowerup switch default triggered",6, 3);
             return new Powerup("speed", x, y);
         }
     }
@@ -233,6 +268,10 @@ public class Level {
 
     public Rope getRope() {
         return rope;
+    }
+    
+    public int getNumberOfRopes() {
+        return this.numberOfRopes;
     }
 
     public void setRope(Rope rope) {

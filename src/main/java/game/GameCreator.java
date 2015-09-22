@@ -15,6 +15,7 @@ public class GameCreator {
         for (int i = 1; i < 6; i++) {
             game.addLevel(LevelCreator.getLevel(i));
         }
+        Logger.log("Singleplayer game created",7,4);
         return game;
     }
 
@@ -31,6 +32,7 @@ public class GameCreator {
         LevelCreator.setPlayerList(game.getPlayerList());
      
         game.addLevel(LevelCreator.getLevel1());
+        Logger.log("Multiplayer game created",7,4);
         return game;
     }
 }

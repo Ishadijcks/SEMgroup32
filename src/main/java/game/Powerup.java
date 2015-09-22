@@ -29,6 +29,7 @@ public class Powerup {
      * @param y
      */
     public Powerup(String name, int x, int y) {
+        Logger.log("Powerup created", 6, 4);
         this.name = name;
         this.x = x;
         this.y = y;
@@ -52,11 +53,13 @@ public class Powerup {
 	}
 
 	/**
-     * The powerup moves up and gets destroyed when it hits the roof
+     * The powerup moves down till it hits the floor
      */
     public void move() {
         if (y <= Driver.game.getCurrentLevel().getHeight() - (height -1) ) {
+            Logger.log("Powerup moved from "+x+","+y+ " to "+ x + ","+(y+Settings.getPowerupSpeed()), 6, 5,10);
             y += Settings.getPowerupSpeed();
+            
         }
     }
 
@@ -67,8 +70,37 @@ public class Powerup {
         framesLeft--;
     }
     
+    /**
+     * The powerup is active when the framesLeft count is higher than zero
+     */
     public boolean isActive(){
         return framesLeft > 0;
+    }
+    
+    /**
+     * DeActivate the powerup by setting the framesLeft counter to zero
+     */
+    public void deActivate(){
+        framesLeft = 0;
+    }
+    
+    /**
+     * Reset the framesLeft counter to the starting count
+     */
+    public void resetFramesLeft(){
+        framesLeft = 10*Settings.getFps();
+    }
+    
+    /**
+     * Compare the names of the powerup to determine if they are the same sort
+     */
+    public boolean samePowerup(Powerup that){
+        if(getName().equals(that.getName()))
+        {
+            return true;
+        }
+        
+        return false;
     }
     
     /**
@@ -112,6 +144,14 @@ public class Powerup {
     }
     
     /**
+     * Set the frames that are left of the powerup
+     * @return the frames left
+     */
+    public void setFramesLeft(int left){
+        framesLeft = left;
+    }
+    
+    /**
      * Get the name of the powerup
      * @return the name of the powerup
      */
@@ -127,6 +167,7 @@ public class Powerup {
         URL location = StartScreen.class.getProtectionDomain().getCodeSource()
                 .getLocation();
         String imageLocation = location.getFile();
+        imageLocation = imageLocation.replace("%20", " ");
         if(name.equals("speed"))
         {
             ImageIcon powerupspeed = new ImageIcon(imageLocation + "main/Images/Powerups/puspeed.png");
@@ -136,6 +177,11 @@ public class Powerup {
         {
             ImageIcon poweruplife = new ImageIcon(imageLocation + "main/Images/Powerups/pulife.png");
             return poweruplife;
+        }
+        if(name.equals("ice"))
+        {
+            ImageIcon powerupice = new ImageIcon(imageLocation + "main/Images/Powerups/puice.png");
+            return powerupice;
         }
         return null;
         

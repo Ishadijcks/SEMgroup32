@@ -20,6 +20,7 @@ public class LevelCreator {
             case 5:
                 return getLevel5();
             default:
+                Logger.log("getLevel switch default triggered",8, 3);
                 return getLevel1();
 
         }

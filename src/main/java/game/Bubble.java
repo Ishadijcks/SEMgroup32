@@ -31,7 +31,9 @@ public abstract class Bubble {
      */
     public Bubble(double x, double y, boolean directionH,
             boolean directionV) {
-        
+    	
+        //Logger.log("Bubble created with diameter " + diameter, 3, 4); <-- Dit moet naar deelclasses
+
         this.x = x;
         this.y = y;
 
@@ -40,25 +42,43 @@ public abstract class Bubble {
         this.newBubble = true;
         
     }
+    
 
     /**
      * get the correct X of the bubble
+     * 
      * @param x
      * @param diameter
      * @return the x of the bubble
      */
     public boolean correctX(double x, int diameter) {
-        return x > 0 && x < Settings.getLeftMargin() + Settings.getLevelWidth() - diameter;
+        if (x > 0
+                && x < Settings.getLeftMargin() + Settings.getLevelWidth()
+                        - diameter) {
+            return true;
+        } else {
+            Logger.log("Incorrect x", 3, 3);
+            return false;
+        }
     }
 
     /**
      * get the correct Y of the bubble
+     * 
      * @param y
      * @param diameter
      * @return the y of the bubble
      */
     public boolean correctY(double y, int diameter) {
-        return y > Settings.getTopMargin() && y < (Settings.getTopMargin() + Settings.getLevelHeight() - diameter);
+        if (y > Settings.getTopMargin()
+                && y < (Settings.getTopMargin() + Settings.getLevelHeight() - diameter)) {
+            return true;
+        }
+
+        else {
+            Logger.log("Incorrect y", 3, 3);
+            return false;
+        }
     }
 
     /**
@@ -67,16 +87,17 @@ public abstract class Bubble {
      * @param width
      * @param height
      */
+
     public abstract void move();
     
     /**
      * check if the bubble isn't outside of the borders.
      */
     public abstract void outOfBoardCheck();
-    
+
     /**
-     * Checks if the bubble needs to bounce cause of the borders.
-     * If needed bounce.
+     * Checks if the bubble needs to bounce cause of the borders. If needed
+     * bounce.
      */
     public abstract void bounceBorder();
     
@@ -92,11 +113,11 @@ public abstract class Bubble {
             x -= speedX;
         }
     }
-    
 
     public abstract int getDiameter();
     
     public abstract Color getColor();
+    
     /**
      * Updates the y location of the bubble.
      */
@@ -106,14 +127,26 @@ public abstract class Bubble {
      * switches the horizontal direction.
      */
     public void bounceH() {
+        if (directionH) {
+            Logger.log("Bubble bounced on the right wall", 2, 4, 1);
+        } else {
+            Logger.log("Bubble bounced on the left wall", 2, 4, 1);
+        }
         directionH = !directionH;
+
     }
 
     /**
      * switches the vertical direction.
      */
     public void bounceV() {
+        if (directionV) {
+            Logger.log("Bubble bounced on the floor", 2, 4, 1);
+        } else {
+            Logger.log("Bubble reached max height", 2, 4, 1);
+        }
         directionV = !directionV;
+
     }
 
     // Getters and Setters
@@ -128,7 +161,8 @@ public abstract class Bubble {
 
     /**
      * Give the direction of the bubble
-     * @return the horizontal direction 
+     * 
+     * @return the horizontal direction
      */
     public boolean isDirectionH() {
         return directionH;
@@ -136,14 +170,16 @@ public abstract class Bubble {
 
     /**
      * Set the direction of the bubble
+     * 
      * @param directionH
      */
     public void setDirectionH(boolean directionH) {
         this.directionH = directionH;
     }
-    
+
     /**
      * Get the vertical direction
+     * 
      * @return the vertical direction
      */
     public boolean isDirectionV() {
@@ -152,6 +188,7 @@ public abstract class Bubble {
 
     /**
      * Set the vertical direction of the bubble
+     * 
      * @param directionV
      */
     public void setDirectionV(boolean directionV) {
