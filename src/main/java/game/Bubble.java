@@ -12,8 +12,12 @@ public abstract class Bubble {
     protected double lastDownSpeed = 0;
     protected double lastUpSpeed = 1;
     protected boolean newBubble;
-
-    private double speedX;
+    
+    private int maxheight;
+    private Color color;
+    private double G;
+    private int diameter;
+    private double speedX; 
 
     protected double s;
     protected double sOld;
@@ -30,12 +34,18 @@ public abstract class Bubble {
      * @param y
      */
     public Bubble(double x, double y, boolean directionH,
-            boolean directionV) {
+            boolean directionV, int maxheight, Color color, double G, int diameter, double speedX) {
     	
-        //Logger.log("Bubble created with diameter " + diameter, 3, 4); <-- Dit moet naar deelclasses
+        Logger.log("Bubble created with diameter " + diameter, 3, 4);
 
         this.x = x;
         this.y = y;
+        
+        this.maxheight = maxheight;
+        this.color = color;
+        this.G = G;
+        this.diameter = diameter;
+        this.speedX = speedX;
 
         this.directionH = directionH;
         this.directionV = directionV;
@@ -87,21 +97,76 @@ public abstract class Bubble {
      * @param width
      * @param height
      */
-
-    public abstract void move();
+    public void move() {
+		outOfBoardCheck();
+        bounceBorder();
+        moveX();
+        moveY();
+	}
     
     /**
      * check if the bubble isn't outside of the borders.
      */
-    public abstract void outOfBoardCheck();
+    public void outOfBoardCheck() {
+		if (y < Settings.getTopMargin() || !(y > 0)) {
+            y = maxheight;
+        }
+	}
 
     /**
      * Checks if the bubble needs to bounce cause of the borders. If needed
      * bounce.
      */
-    public abstract void bounceBorder();
+    public void bounceBorder() {
+		if (x + diameter > Settings.getLeftMargin() + Settings.getLevelWidth()
+                && directionH || x <= Settings.getLeftMargin() && !directionH) {
+            bounceH();
+        }
+
+        if (y + diameter > Settings.getTopMargin() + Settings.getLevelHeight()
+                && directionV || y <= Settings.getTopMargin() && !directionV) {
+            bounceV();
+        }
+	}
     
     public abstract ArrayList<Bubble> destroyBubble(int x, int y);
+
+
+    public abstract int getDiameter();
+    
+    public abstract Color getColor();
+    
+    /**
+     * Updates the y location of the bubble.
+     */
+    public void moveY() {
+		if (directionV) {
+            sOld = 0.5 * G * t * t;
+            t += timeStep;
+            s = 0.5 * G * t * t;
+            v = (s - sOld) / timeStep;
+            lastDownSpeed = v;
+            y += lastDownSpeed;
+            lastDownSpeed += 0.05;
+        } else {
+            t = 0;
+            if (newBubble) {
+                newBubble = false;
+                lastDownSpeed = 4;
+            }
+            factor = ((y - maxheight) / (Settings.getTopMargin()
+                    + Settings.getLevelHeight() - maxheight));
+            lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
+            y -= lastUpSpeed;
+        }
+        if (lastUpSpeed < 0.5 && !directionV && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
+            timer += 0.4;
+        }
+        if (timer > 5) {
+            bounceV();
+            timer = 1;
+        }
+	}
     
     /**
      * Updates the x location of the bubble.
@@ -113,15 +178,6 @@ public abstract class Bubble {
             x -= speedX;
         }
     }
-
-    public abstract int getDiameter();
-    
-    public abstract Color getColor();
-    
-    /**
-     * Updates the y location of the bubble.
-     */
-    public abstract void moveY();
 
     /**
      * switches the horizontal direction.
@@ -194,5 +250,101 @@ public abstract class Bubble {
     public void setDirectionV(boolean directionV) {
         this.directionV = directionV;
     }
+
+
+	/**
+	 * @param speedX the speedX to set
+	 */
+	public void setSpeedX(double speedX) {
+		this.speedX = speedX;
+	}
+
+
+	/**
+	 * @return the speedX
+	 */
+	public double getSpeedX() {
+		return speedX;
+	}
+
+
+	/**
+	 * @return the g
+	 */
+	public double getG() {
+		return G;
+	}
+
+
+	/**
+	 * @return the maxheight
+	 */
+	public int getMaxheight() {
+		return maxheight;
+	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bubble other = (Bubble) obj;
+		if (Double.doubleToLongBits(G) != Double.doubleToLongBits(other.G))
+			return false;
+		if (color == null) {
+			if (other.color != null)
+				return false;
+		} else if (!color.equals(other.color))
+			return false;
+		if (diameter != other.diameter)
+			return false;
+		if (directionH != other.directionH)
+			return false;
+		if (directionV != other.directionV)
+			return false;
+		if (Double.doubleToLongBits(factor) != Double
+				.doubleToLongBits(other.factor))
+			return false;
+		if (Double.doubleToLongBits(lastDownSpeed) != Double
+				.doubleToLongBits(other.lastDownSpeed))
+			return false;
+		if (Double.doubleToLongBits(lastUpSpeed) != Double
+				.doubleToLongBits(other.lastUpSpeed))
+			return false;
+		if (maxheight != other.maxheight)
+			return false;
+		if (newBubble != other.newBubble)
+			return false;
+		if (Double.doubleToLongBits(s) != Double.doubleToLongBits(other.s))
+			return false;
+		if (Double.doubleToLongBits(sOld) != Double
+				.doubleToLongBits(other.sOld))
+			return false;
+		if (Double.doubleToLongBits(speedX) != Double
+				.doubleToLongBits(other.speedX))
+			return false;
+		if (Double.doubleToLongBits(t) != Double.doubleToLongBits(other.t))
+			return false;
+		if (Double.doubleToLongBits(timeStep) != Double
+				.doubleToLongBits(other.timeStep))
+			return false;
+		if (Double.doubleToLongBits(timer) != Double
+				.doubleToLongBits(other.timer))
+			return false;
+		if (Double.doubleToLongBits(v) != Double.doubleToLongBits(other.v))
+			return false;
+		if (Double.doubleToLongBits(x) != Double.doubleToLongBits(other.x))
+			return false;
+		if (Double.doubleToLongBits(y) != Double.doubleToLongBits(other.y))
+			return false;
+		return true;
+	}
 
 }

@@ -27,7 +27,7 @@ public class LevelCreator {
     }
 
     public static Level getLevel1() {
-        Bubble bubble1 = new Bubblex16(100, 100, false, false);
+        Bubble bubble1 = new Bubblex32(100, 100, false, false);
         Level level1 = new Level(playerList);
         level1.addBubble(bubble1);
         return level1;

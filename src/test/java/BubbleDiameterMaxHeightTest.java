@@ -1,6 +1,11 @@
 
 import static org.junit.Assert.*;
 import game.Bubble;
+import game.Bubblex128;
+import game.Bubblex16;
+import game.Bubblex32;
+import game.Bubblex64;
+import game.Bubblex8;
 import game.Settings;
 
 import java.awt.Color;
@@ -16,11 +21,9 @@ import org.junit.runners.Parameterized.Parameters;
 public class BubbleDiameterMaxHeightTest {
     @Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] { 
-                { 4, 180},
-                { 8, 180 }, { 16, 100 }, { 32, 90}, 
-                { 64, 40 }, { 128, 100}, { 23123123, 100},
-                { -12, 100},{ 0, 100}, { Integer.MAX_VALUE, 100}});
+        return Arrays.asList(new Object[][] {
+                { 8, new Bubblex8(100,100,false,false), 200 }, { 16, new Bubblex16(100,100,false,false), 150 }, { 32, new Bubblex32(100,100,false,false), 120}, 
+                { 64, new Bubblex64(100,100,false,false), 80 }, { 128, new Bubblex128(100,100,false,false), 40} });
     }
 
 
@@ -28,13 +31,13 @@ public class BubbleDiameterMaxHeightTest {
     private int expectedMaxHeight;
     private Bubble bubble;
     
-    public BubbleDiameterMaxHeightTest(int diameter, int expectedMaxHeight) {
+    public BubbleDiameterMaxHeightTest(int diameter, Bubble bub, int expectedMaxHeight) {
         this.expectedMaxHeight = expectedMaxHeight;
-        bubble = new Bubble(diameter, 100, 100, false, false);
+        bubble = bub;
     }
 
     @Test
     public void test() {
-          assertEquals(expectedMaxHeight, bubble.calculateMaxHeight(bubble.getDiameter()));
+          assertEquals(expectedMaxHeight, bubble.getMaxheight());
     }
 }

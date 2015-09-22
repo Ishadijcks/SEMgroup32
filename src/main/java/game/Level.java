@@ -85,6 +85,7 @@ public class Level {
                         if (bubbleList.get(i).getY()
                                 + bubbleList.get(i).getDiameter() >= rope
                                     .getY()) {
+                        	System.out.println(i);
                             destroyBubble(i);
                             setRope(null);
                             Logger.log("Rope collided with a bubble",8,4);

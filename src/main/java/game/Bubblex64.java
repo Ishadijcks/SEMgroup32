@@ -5,72 +5,14 @@ import java.util.ArrayList;
 
 public class Bubblex64 extends Bubble {
 	
-	private final int maxheight = 80;
-	private final Color color = Color.CYAN;
-	private final double G = 1.1;
-	private final int diameter = 64;
-	private double speedX = 1.3;
+	private final static int maxheight = 80;
+	private final static Color color = Color.CYAN;
+	private final static double G = 1.1;
+	private final static int diameter = 64;
+	private static double speedX = 1.3;
 
 	public Bubblex64(double x, double y, boolean directionH, boolean directionV) {
-		super(x, y, directionH, directionV);
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void move() {
-        bounceBorder();
-        moveX();
-        moveY();
-	}
-
-	@Override
-	public void outOfBoardCheck() {
-		if (y < Settings.getTopMargin() || !(y > 0)) {
-            y = maxheight;
-        }
-	}
-
-	@Override
-	public void bounceBorder() {
-		if (x + diameter > Settings.getLeftMargin() + Settings.getLevelWidth()
-                && directionH || x <= Settings.getLeftMargin() && !directionH) {
-            bounceH();
-        }
-
-        if (y + diameter > Settings.getTopMargin() + Settings.getLevelHeight()
-                && directionV || y <= Settings.getTopMargin() && !directionV) {
-            bounceV();
-        }
-	}
-
-	@Override
-	public void moveY() {
-		if (directionV) {
-            sOld = 0.5 * G * t * t;
-            t += timeStep;
-            s = 0.5 * G * t * t;
-            v = (s - sOld) / timeStep;
-            lastDownSpeed = v;
-            y += lastDownSpeed;
-            lastDownSpeed += 0.05;
-        } else {
-            t = 0;
-            if (newBubble) {
-                newBubble = false;
-                lastDownSpeed = 4;
-            }
-            factor = ((y - maxheight) / (Settings.getTopMargin()
-                    + Settings.getLevelHeight() - maxheight));
-            lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
-            y -= lastUpSpeed;
-        }
-        if (lastUpSpeed < 0.5 && !directionV && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
-            timer += 0.4;
-        }
-        if (timer > 5) {
-            bounceV();
-            timer = 1;
-        }
+		super(x, y, directionH, directionV, maxheight, color, G, diameter, speedX);
 	}
 	
 	@Override
