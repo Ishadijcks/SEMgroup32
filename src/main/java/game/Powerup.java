@@ -170,17 +170,17 @@ public class Powerup {
         imageLocation = imageLocation.replace("%20", " ");
         if(name.equals("speed"))
         {
-            ImageIcon powerupspeed = new ImageIcon(imageLocation + "main/Images/Powerups/puspeed.png");
+            ImageIcon powerupspeed = new ImageIcon(imageLocation + "main/Images/Powerups/puspeed.png", "speed");
             return powerupspeed;
         }
         if(name.equals("life"))
         {
-            ImageIcon poweruplife = new ImageIcon(imageLocation + "main/Images/Powerups/pulife.png");
+            ImageIcon poweruplife = new ImageIcon(imageLocation + "main/Images/Powerups/pulife.png", "life");
             return poweruplife;
         }
         if(name.equals("ice"))
         {
-            ImageIcon powerupice = new ImageIcon(imageLocation + "main/Images/Powerups/puice.png");
+            ImageIcon powerupice = new ImageIcon(imageLocation + "main/Images/Powerups/puice.png", "ice");
             return powerupice;
         }
         return null;

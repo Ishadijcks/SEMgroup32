@@ -100,4 +100,28 @@ public class LogObject {
         return severityString;
     }
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		LogObject other = (LogObject) obj;
+		if (category != other.category)
+			return false;
+		if (message == null) {
+			if (other.message != null)
+				return false;
+		} else if (!message.equals(other.message))
+			return false;
+		if (severity != other.severity)
+			return false;
+		return true;
+	}
+
 }

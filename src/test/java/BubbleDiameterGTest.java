@@ -24,7 +24,7 @@ public class BubbleDiameterGTest {
         return Arrays.asList(new Object[][] { 
                 { 8, new Bubblex8(100,100,false,false), 1 }, { 16, new Bubblex16(100,100,false,false), 1.3 }, { 32, new Bubblex32(100,100,false,false),  1.2}, 
                 { 64, new Bubblex64(100,100,false,false), 1.1 }, { 128, new Bubblex128(100,100,false,false), 1} });
-    }
+        };
 
     private double expectedG;
     private Bubble bubble;

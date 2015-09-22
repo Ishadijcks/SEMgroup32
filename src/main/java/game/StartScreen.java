@@ -110,7 +110,4 @@ public class StartScreen extends JFrame {
 
     }
 
-    public static void main(String args[]) {
-
-    }
-}
+ }

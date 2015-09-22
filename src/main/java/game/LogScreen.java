@@ -71,6 +71,13 @@ public class LogScreen extends JFrame {
     }
 
     /**
+	 * @return the frame
+	 */
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	/**
      * Reload the log list for new content.
      */
     public void reloadData() {

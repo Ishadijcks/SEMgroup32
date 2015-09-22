@@ -113,6 +113,13 @@ public class Game {
     }
 
     /**
+	 * @param currentLevel the currentLevel to set
+	 */
+	public void setCurrentLevelInt(int currentLevel) {
+		this.currentLevel = currentLevel;
+	}
+
+	/**
      * Get the lives of the player
      * @return the lives of the player
      */
@@ -121,6 +128,13 @@ public class Game {
     }
 
     /**
+	 * @param lives the lives to set
+	 */
+	public void setLives(int lives) {
+		this.lives = lives;
+	}
+
+	/**
      * Create an array with the players
      * @return the playerlist
      */

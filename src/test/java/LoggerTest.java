@@ -2,6 +2,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import game.LogSettings;
 import game.Logger;
 
 import org.junit.Before;
@@ -10,8 +11,8 @@ import org.junit.Test;
 
 public class LoggerTest {
 
-    @BeforeClass
-    public static void initTest() {
+    @Before
+    public void initTest() {
         Logger.log("Hoi", 1, 5);
         Logger.log("Hallo", 2, 4);
         Logger.log("Hoe", 3, 3);
@@ -31,6 +32,7 @@ public class LoggerTest {
         ArrayList<Integer> categoryList = new ArrayList<Integer>();
         categoryList.add(1);
         categoryList.add(2);
+        Logger.getFilteredLogs(categoryList, 4);
         assertEquals(4, Logger.getFilteredLogs(categoryList, 4).size());
         categoryList.add(3);
         assertEquals(7, Logger.getFilteredLogs(categoryList, 4).size());
