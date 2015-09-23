@@ -11,6 +11,7 @@ public class Level {
     private ArrayList<Bubble> bubbleList;
     private ArrayList<Player> playerList;
     private ArrayList<Powerup> powerupList;
+    private ArrayList<Wall> wallList;
     private Rope rope = null;
     private int numberOfRopes = 0;
     private int timeLeft;
@@ -25,6 +26,7 @@ public class Level {
         this.bubbleList = new ArrayList<Bubble>();
         this.playerList = playerList;
         this.powerupList = new ArrayList<Powerup>();
+        this.wallList = new ArrayList<Wall>();
         Logger.log("Level created",8,4);
     }
 
@@ -248,6 +250,12 @@ public class Level {
         }
     }
 
+    public void addWall(Wall wall) {
+        if (!wallList.contains(wall)) {
+            wallList.add(wall);
+        }
+    }
+    
     public boolean hasRope() {
         return rope != null;
     }
@@ -257,6 +265,10 @@ public class Level {
         return bubbleList;
     }
 
+    public ArrayList<Wall> getWallList() {
+        return wallList;
+    }
+    
     public ArrayList<Powerup> getPowerupList() {
         return powerupList;
     }
