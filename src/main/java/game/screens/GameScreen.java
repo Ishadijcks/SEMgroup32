@@ -11,6 +11,7 @@ import game.Player;
 import game.Powerup;
 import game.Score;
 import game.Settings;
+import game.Wall;
 import game.bubble.Bubble;
 import game.log.LogFilters;
 import game.log.LogSettings;
@@ -203,6 +204,17 @@ public class GameScreen extends JPanel {
                         bubble.getDiameter() + 2, bubble.getDiameter() + 2);
             }
 
+            // Draw the walls
+            for (int i = 0; i < curLevel.getWallList().size(); i++) {
+                Wall wall= curLevel.getWallList().get(i);
+                g2d.setColor(wall.getColor());
+              g2d.fillRect(wall.getX(), wall.getY()+Settings.getTopMargin(), wall.getWidth(), wall.getHeight());
+              g2d.setColor(Color.BLACK);
+                }
+
+            
+            
+            
             // Draw the ropes
             if (curLevel.hasRope() && !(iceRope)) {
                 shootRope = true;
@@ -511,7 +523,7 @@ public class GameScreen extends JPanel {
 
             Stroke normalStroke = new BasicStroke(1f);
             g2d.setStroke(normalStroke);
-
+            
             // Show the lives of the player
             g2d.setFont(new Font("Calibri", Font.BOLD, 40));
             g2d.drawString("Lives: ", centerConstant, curLevel.getHeight() + 45

@@ -130,7 +130,7 @@ public class SurvivalDriver extends Driver {
 
                 for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
                     Bubble bubble = curLevel.getBubbleList().get(i);
-                    bubble.move();
+                    bubble.move(curLevel.getWallList());
                 }
 
                 for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
@@ -178,7 +178,7 @@ public class SurvivalDriver extends Driver {
                 gameScreen.reload();
 
                 Player player1 = game.getPlayerList().get(0);
-                player1.move();
+                player1.move(curLevel.getWallList());
 
                 checkGameLost();
             }
