@@ -5,11 +5,11 @@ import game.log.Logger;
 import java.util.ArrayList;
 
 public class Game {
-    private ArrayList<Level> levelList = new ArrayList<Level>();
-    private ArrayList<Player> playerList;
-    private int lives = Settings.getLives();
-    private int currentLevel = 1;
-    private boolean inProgress;
+    protected ArrayList<Level> levelList = new ArrayList<Level>();
+    protected ArrayList<Player> playerList;
+    protected int lives = Settings.getLives();
+    protected int currentLevel = 1;
+    protected boolean inProgress;
 
     public Game() {
         this.inProgress = false;
@@ -51,20 +51,6 @@ public class Game {
         if (!this.inProgress)
             this.inProgress = true;
         Logger.log("Game started", 7,4);
-    }
-
-    /**
-     * Function that advances the player to the next level or makes the player
-     * win the whole game.
-     */
-    public void gameWon() {
-        if (currentLevel < levelList.size() - 1) {
-            currentLevel++;
-            Logger.log("Level completed", 8, 4);
-            inProgress = false;
-        } else {
-            inProgress = false;
-        }
     }
 
     /**

@@ -2,6 +2,7 @@
 
 import static org.junit.Assert.*;
 import game.Driver;
+import game.MathFunctions;
 import game.log.LogObject;
 import game.log.Logger;
 
@@ -25,7 +26,7 @@ public class DriverTest {
 
 	@Test
 	public void testRandomInt() {
-		assertEquals(1, Driver.randomInt(1, 1));
+		assertEquals(1, MathFunctions.randomInt(1, 1));
 	}
 
 	@Test

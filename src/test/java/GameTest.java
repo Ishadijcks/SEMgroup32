@@ -6,6 +6,7 @@ import static org.junit.Assert.fail;
 import game.NormalGame;
 import game.Level;
 import game.Player;
+import game.Score;
 
 import java.util.ArrayList;
 
@@ -48,8 +49,9 @@ public class GameTest {
 	@Test
 	public void testAddScore(){
 		int score = 5;
-		game.addScore(score);
-		assertEquals(game.getScore(),score);
+		Score score1 = new Score();
+		score1.addScore(score);
+		assertEquals(score1.getScore(),score1);
 	}
 	
 	@Test
