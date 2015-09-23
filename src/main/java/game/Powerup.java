@@ -59,7 +59,7 @@ public class Powerup {
      * The powerup moves down till it hits the floor
      */
     public void move() {
-        if (y <= Driver.game.getCurrentLevel().getHeight() - (height -1) ) {
+        if (y <= NormalDriver.game.getCurrentLevel().getHeight() - (height -1) ) {
             Logger.log("Powerup moved from "+x+","+y+ " to "+ x + ","+(y+Settings.getPowerupSpeed()), 6, 5,10);
             y += Settings.getPowerupSpeed();
             

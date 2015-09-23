@@ -1,6 +1,7 @@
 package game.screens;
 
 import game.Driver;
+import game.NormalDriver;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -30,7 +31,7 @@ public class StartScreen extends JFrame {
     final private Driver dr;
     final private JFrame jf;
 
-    public StartScreen(Driver driver, JFrame jframe) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
+    public StartScreen(Driver driver) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
 
         setTitle("Start screen");
         setSize(700, 700);
@@ -49,7 +50,7 @@ public class StartScreen extends JFrame {
             clip.open(audioInputStream);
             clip.loop(1000000);*/
 
-        
+        jf = new JFrame();
         setVisible(true);
 
         
@@ -84,7 +85,6 @@ public class StartScreen extends JFrame {
         stopButton.setBounds(55, 500, 250, 60);
         
         dr = driver;
-        jf = jframe;
 
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent startGame) {

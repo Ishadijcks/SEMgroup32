@@ -128,9 +128,9 @@ public class Player {
      * the level
      */
     public void shootRope() {
-        if (!Driver.game.getCurrentLevel()
+        if (!NormalDriver.game.getCurrentLevel()
                 .hasRope()) {
-            int ropeY = Driver.game.getCurrentLevel().getHeight()
+            int ropeY = NormalDriver.game.getCurrentLevel().getHeight()
                     - height;
             int ropeX = x + width / 2;
             int powerupListSize = powerupList.size();
@@ -141,7 +141,7 @@ public class Player {
                     if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
                     {
                             Rope rope = new IceRope(ropeX, ropeY);
-                            Driver.game.getCurrentLevel()
+                            NormalDriver.game.getCurrentLevel()
                             .setRope(rope);
                             return;
                     }
@@ -154,7 +154,7 @@ public class Player {
             }
             
             Rope rope = new Rope(ropeX, ropeY);
-            Driver.game.getCurrentLevel().setRope(rope);
+            NormalDriver.game.getCurrentLevel().setRope(rope);
             Logger.log("Shot a rope", 1, 4);
             
         }

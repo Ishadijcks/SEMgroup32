@@ -175,19 +175,19 @@ public class Level {
     public void addScore(int diameter){
         switch (diameter) {
         case 8:
-            Driver.game.addScore(10);
+            NormalDriver.score.addScore(10);
             break;
         case 16:
-            Driver.game.addScore(15);
+            NormalDriver.score.addScore(15);
             break;
         case 32:
-            Driver.game.addScore(20);
+            NormalDriver.score.addScore(20);
             break;
         case 64:
-            Driver.game.addScore(25);
+            NormalDriver.score.addScore(25);
             break;
         case 128:
-            Driver.game.addScore(30);
+            NormalDriver.score.addScore(30);
             break;
         default:
             break;
