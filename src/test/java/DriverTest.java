@@ -1,7 +1,7 @@
 
 
 import static org.junit.Assert.*;
-import game.Driver;
+import game.NormalDriver;
 import game.MathFunctions;
 import game.log.LogObject;
 import game.log.Logger;
@@ -11,11 +11,11 @@ import org.junit.Test;
 
 public class DriverTest {
 	
-	private Driver driver;
+	private NormalDriver driver;
 	
 	@Before
 	public void init(){
-		driver = new Driver();
+		driver = new NormalDriver();
 		driver.initGame();
 		driver.setupGame();
 	}

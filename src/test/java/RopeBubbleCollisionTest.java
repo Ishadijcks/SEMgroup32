@@ -1,6 +1,6 @@
 
 import static org.junit.Assert.assertEquals;
-import game.Driver;
+import game.NormalDriver;
 import game.Level;
 import game.Player;
 import game.Rope;
@@ -43,8 +43,8 @@ public class RopeBubbleCollisionTest {
         l.setRope(r);
         l.addBubble(bubble);
         this.expected = exp;
-        Driver.initGame();
-        Driver.setupGame();
+        NormalDriver.initGame();
+        NormalDriver.setupGame();
     }
 
     @Test

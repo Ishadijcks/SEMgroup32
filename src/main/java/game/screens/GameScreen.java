@@ -1,6 +1,7 @@
 package game.screens;
 
-import game.Driver;
+import game.Game;
+import game.NormalDriver;
 import game.NormalGame;
 import game.MathFunctions;
 import game.GameCreator;
@@ -41,7 +42,7 @@ import javax.swing.JPanel;
 
 public class GameScreen extends JPanel {
     public static int totalFrames = 1;
-    public static NormalGame game;
+    public static Game game;
     public static Score score;
     private int animationRightCounter = 1;
     private int fireRightCounter = 1;
@@ -121,7 +122,7 @@ public class GameScreen extends JPanel {
        frame.repaint();
     }
 
-    public static void setupScreen(NormalGame gameInput, Score scoreInput) {
+    public static void setupScreen(Game gameInput, Score scoreInput) {
         game =gameInput;
         score = scoreInput;
         try {

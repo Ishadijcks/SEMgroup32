@@ -1,6 +1,7 @@
 package game.screens;
 
 import game.Driver;
+import game.NormalDriver;
 import game.Settings;
 
 import java.awt.BorderLayout;
@@ -40,18 +41,7 @@ public class WinningScreen extends JFrame {
         
         setVisible(true);
         
-        URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
-        /* String currentLocation = location.getFile();      
-         String startScreenMusicLocation = currentLocation + "Music/startscreen.wav";
-         File music = new File(startScreenMusicLocation);
-         AudioInputStream audioInputStream =
-                 AudioSystem.getAudioInputStream(
-                     music);
-             Clip clip = AudioSystem.getClip();
-             clip.open(audioInputStream);
-             clip.loop(1000000);*/
-
-         
+        URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();         
          setVisible(true);
 
          
@@ -85,7 +75,7 @@ public class WinningScreen extends JFrame {
         playAgainButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent playAgainGame) {
                 setVisible(false);
-                Driver.setupGame();
+                dr.setupGame();
                 dr.startGame();
                 dispose();
             }
@@ -95,8 +85,8 @@ public class WinningScreen extends JFrame {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
                 dispose();
-                Driver.setupGame();
-                Driver.startScreen();
+                dr.setupGame();
+                dr.startScreen();
             }
         });
 

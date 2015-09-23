@@ -4,7 +4,7 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 
-import game.Driver;
+import game.NormalDriver;
 import game.Powerup;
 import game.Settings;
 import game.screens.StartScreen;
@@ -113,7 +113,7 @@ public class PowerupTest {
 	
 	@Test
 	public void testMove(){
-		Driver driver = new Driver();
+		NormalDriver driver = new NormalDriver();
 		driver.initGame();
 		driver.setupGame();
 		Powerup pow = new Powerup("ice", 100, 100);

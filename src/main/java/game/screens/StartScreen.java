@@ -1,6 +1,7 @@
 package game.screens;
 
 import game.Driver;
+import game.NormalDriver;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

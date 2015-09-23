@@ -17,7 +17,7 @@ public class Rope {
     public void move() {
         
             if (y <= Settings.getTopMargin() - 2) {
-                Driver.game.getCurrentLevel()
+                NormalDriver.game.getCurrentLevel()
                          .setRope(null);
                 Logger.log("Rope hit the roof", 5, 4);
              } else {

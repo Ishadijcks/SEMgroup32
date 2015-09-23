@@ -1,6 +1,6 @@
 package game.log;
 
-import game.Driver;
+import game.NormalDriver;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -35,7 +35,7 @@ public class Logger {
      */
     public static void log(String message, int category, int severity,
             int frameRepeat) {
-        if (Driver.totalFrames % frameRepeat == 0) {
+        if (NormalDriver.totalFrames % frameRepeat == 0) {
 
             LogObject tempLog = new LogObject(message, category, severity);
             logList.add(tempLog);
