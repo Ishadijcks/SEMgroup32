@@ -8,6 +8,7 @@ public class SurvivalGame extends Game {
     
     public SurvivalGame() {
         super();
+        lives = 1;
     }
     
 }

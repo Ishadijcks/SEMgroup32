@@ -1,6 +1,7 @@
 package game;
 
 import game.bubble.Bubble;
+import game.bubble.Bubblex128;
 import game.bubble.Bubblex16;
 import game.bubble.Bubblex32;
 import game.bubble.Bubblex64;
@@ -14,7 +15,7 @@ public class SurvivalLevelCreator {
 
     public static Level getLevel() {
         Bubble bubble1 = new Bubblex32(100, 100, false, false);
-        Level level1 = new Level(playerList);
+        Level level1 = new Level(playerList, false);
         level1.addBubble(bubble1);
         return level1;
     }

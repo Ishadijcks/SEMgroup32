@@ -45,17 +45,7 @@ public class LosingScreen extends JFrame {
         setVisible(true);
         
         URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
-        /* String currentLocation = location.getFile();      
-         String startScreenMusicLocation = currentLocation + "Music/startscreen.wav";
-         File music = new File(startScreenMusicLocation);
-         AudioInputStream audioInputStream =
-                 AudioSystem.getAudioInputStream(
-                     music);
-             Clip clip = AudioSystem.getClip();
-             clip.open(audioInputStream);
-             clip.loop(1000000);*/
 
-         
          setVisible(true);
 
          
