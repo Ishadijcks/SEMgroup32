@@ -10,30 +10,32 @@ public class Wall {
     private int height = Settings.getWallHeight();
     private Color color;
     private boolean isActive;
-    
-    public Wall (int x, Color color){
+    private int bouncedOn;
+
+    public Wall(int x, Color color) {
         this.x = x;
         this.y = 0;
         this.color = color;
         this.isActive = true;
+        this.bouncedOn = 0;
     }
-    
-    public int getHeight(){
+
+    public int getHeight() {
         return height;
     }
-    
-    public int getWidth(){
+
+    public int getWidth() {
         return width;
     }
-    
-    public Color getColor(){
+
+    public Color getColor() {
         return color;
     }
 
     public int getX() {
         return x;
     }
-    
+
     public int getY() {
         return y;
     }
@@ -41,5 +43,17 @@ public class Wall {
     public boolean isActive() {
         return isActive;
     }
-    
+
+    public void setActive(boolean bool) {
+        isActive = bool;
+    }
+
+    public int getBouncedOn() {
+        return bouncedOn;
+    }
+
+    public void BouncedOn() {
+        bouncedOn++;
+        setActive(false);
+    }
 }

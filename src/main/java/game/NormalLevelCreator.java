@@ -4,6 +4,7 @@ import game.bubble.Bubble;
 import game.bubble.Bubblex16;
 import game.bubble.Bubblex32;
 import game.bubble.Bubblex64;
+import game.bubble.Bubblex8;
 import game.log.Logger;
 
 import java.util.ArrayList;
@@ -33,18 +34,28 @@ public class NormalLevelCreator {
     }
 
     public static Level getLevel1() {
-        Bubble bubble1 = new Bubblex32(300, 100, false, false);
+        Bubble bubble1 = new Bubblex8(600, 100, false, false);
         Level level1 = new Level(playerList);
         level1.addBubble(bubble1);
-        BubbleWall wall3 = new BubbleWall(100);
-        level1.addWall(wall3);
-        PlayerWall wall4 = new PlayerWall(300);
-        level1.addWall(wall4);
-        PlayerWall wall2 = new PlayerWall(850);
+        BubbleWall wall1 = new BubbleWall(575);
+        BubbleWall wall2 = new BubbleWall(550);
+        BubbleWall wall3 = new BubbleWall(525);
+        BubbleWall wall4 = new BubbleWall(500);
+        BubbleWall wall5 = new BubbleWall(625);
+        BubbleWall wall6 = new BubbleWall(650);
+        BubbleWall wall7 = new BubbleWall(675);
+        BubbleWall wall8 = new BubbleWall(700);
+        level1.addWall(wall1);
         level1.addWall(wall2);
-        
-        DuoWall wall5 = new DuoWall(750);
+        level1.addWall(wall3);
+        level1.addWall(wall4);
         level1.addWall(wall5);
+        level1.addWall(wall6);
+        level1.addWall(wall7);
+        level1.addWall(wall8);
+        PlayerWall wall9 = new PlayerWall(300);
+        level1.addWall(wall9);
+        
         return level1;
     }
 

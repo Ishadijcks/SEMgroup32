@@ -121,7 +121,7 @@ public class NormalDriver extends Driver {
         }
         Logger.log("Main Frame created", 9, 4);
         driver = new NormalDriver();
-        Player isha = new Player("Isha", 350);
+        Player isha = new Player("Isha", 100);
         game = GameCreator.createSinglePlayer(isha);
         score = new Score();
         game.addPlayer(isha);
@@ -141,10 +141,7 @@ public class NormalDriver extends Driver {
             if (game.inProgress()) {
                 curLevel = game.getCurrentLevel();
 
-                for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
-                    Bubble bubble = curLevel.getBubbleList().get(i);
-                    bubble.move(curLevel.getWallList());
-                }
+                curLevel.moveBubbles();
 
                 for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
                     curLevel.getPowerupList().get(i).move();
@@ -241,7 +238,7 @@ public class NormalDriver extends Driver {
      */
     public void setupGame() {
         driver = new NormalDriver();
-        Player isha = new Player("Isha", 350);
+        Player isha = new Player("Isha", 100);
         game = GameCreator.createSinglePlayer(isha);
         score = new Score();
         game.addPlayer(isha);

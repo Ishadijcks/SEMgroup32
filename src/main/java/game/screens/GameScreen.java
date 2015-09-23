@@ -89,8 +89,8 @@ public class GameScreen extends JPanel {
     public void startGame() {
         frame.setVisible(true);
     }
-    
-    public void levelWon(){
+
+    public void levelWon() {
 
         System.out.println("next level albel");
         final JLabel label = new JLabel("test");
@@ -118,13 +118,13 @@ public class GameScreen extends JPanel {
      * refresh the screen.
      */
     public void reload() {
-       gameScreen.repaint();
-       repaint();
-       frame.repaint();
+        gameScreen.repaint();
+        repaint();
+        frame.repaint();
     }
 
     public static void setupScreen(Game gameInput, Score scoreInput) {
-        game =gameInput;
+        game = gameInput;
         score = scoreInput;
         try {
             gameScreen = new GameScreen();
@@ -144,7 +144,7 @@ public class GameScreen extends JPanel {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(false);
-        
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         try {
@@ -206,15 +206,16 @@ public class GameScreen extends JPanel {
 
             // Draw the walls
             for (int i = 0; i < curLevel.getWallList().size(); i++) {
-                Wall wall= curLevel.getWallList().get(i);
-                g2d.setColor(wall.getColor());
-              g2d.fillRect(wall.getX(), wall.getY()+Settings.getTopMargin(), wall.getWidth(), wall.getHeight());
-              g2d.setColor(Color.BLACK);
+                Wall wall = curLevel.getWallList().get(i);
+                if (wall.isActive()) {
+                    g2d.setColor(wall.getColor());
+                    g2d.fillRect(wall.getX(),
+                            wall.getY() + Settings.getTopMargin(),
+                            wall.getWidth(), wall.getHeight());
+                    g2d.setColor(Color.BLACK);
                 }
+            }
 
-            
-            
-            
             // Draw the ropes
             if (curLevel.hasRope() && !(iceRope)) {
                 shootRope = true;
@@ -523,7 +524,7 @@ public class GameScreen extends JPanel {
 
             Stroke normalStroke = new BasicStroke(1f);
             g2d.setStroke(normalStroke);
-            
+
             // Show the lives of the player
             g2d.setFont(new Font("Calibri", Font.BOLD, 40));
             g2d.drawString("Lives: ", centerConstant, curLevel.getHeight() + 45

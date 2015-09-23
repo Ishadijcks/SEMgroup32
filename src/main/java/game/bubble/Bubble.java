@@ -102,34 +102,14 @@ public abstract class Bubble {
      * @param width
      * @param height
      */
-    public void move(ArrayList<Wall> wallList) {
+    public void move() {
         outOfBoardCheck();
         bounceBorder();
-        bounceWall(wallList);
+        
         moveX();
         moveY();
     }
 
-    private void bounceWall(ArrayList<Wall> wallList) {
-
-        for (int i = 0; i < wallList.size(); i++) {
-            Wall wall = wallList.get(i);
-
-            // this.x <= (room.x+room.width) && (this.x+this.width) >= room.x &&
-            // this.y <= (room.y+room.height) && (room.y+room.height) >=
-            // room.y);
-
-            if (wall instanceof BubbleWall || wall instanceof DuoWall) {
-                if ((x <= (wall.getX() + wall.getWidth()) && (x + diameter) >= wall
-                        .getX()) && wall.isActive()) {
-                    System.out.println("Hit a wall");
-
-                    bounceH();
-                }
-            }
-        }
-
-    }
 
     /**
      * check if the bubble isn't outside of the borders.

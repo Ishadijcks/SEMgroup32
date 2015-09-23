@@ -28,6 +28,7 @@ public class Player {
     public Player(String name, int x) {
         this.name = name;
         this.x = x;
+        
         this.colX = x - 50;
         Logger.log("Player created", 1, 4);
     }
@@ -108,7 +109,7 @@ public class Player {
         if (movingRight) {
             if (x + stepSize + width < Settings.getLevelWidth()
                     + Settings.getLeftMargin() + 37) {
-                System.out.println(wallCollisionRight(wallList));
+             
                 if (!wallCollisionRight(wallList)) {
 
                     x += stepSize;

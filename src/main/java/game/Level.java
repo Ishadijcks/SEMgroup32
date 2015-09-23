@@ -27,7 +27,7 @@ public class Level {
         this.playerList = playerList;
         this.powerupList = new ArrayList<Powerup>();
         this.wallList = new ArrayList<Wall>();
-        Logger.log("Level created",8,4);
+        Logger.log("Level created", 8, 4);
     }
 
     public void resetBubble() {
@@ -45,7 +45,7 @@ public class Level {
     public void setPowerupList(ArrayList<Powerup> powerupList) {
         this.powerupList = powerupList;
     }
-    
+
     /**
      * Checks if there is collision between player and a bubble
      * 
@@ -53,19 +53,20 @@ public class Level {
      */
     public boolean checkCollisionPlayer() {
         for (int i = 0; i < bubbleList.size(); i++) {
-        	Bubble bubble = bubbleList.get(i);
+            Bubble bubble = bubbleList.get(i);
             // if the x of the player and the bubble is the same
             // then there is a chance the rope hits the bubble
             // /// Diameter NOT IN ACCOUNT JET AND SIZE OF PLAYER
             Player player = playerList.get(0);
 
-
             if (player.getX() <= (bubble.getX() + bubble.getDiameter())
-                    && (player.getCollisionX() + player.getWidth()) >= bubble.getX()
-                    && player.getCollisionY() <= (bubble.getY() + bubble.getDiameter())
+                    && (player.getCollisionX() + player.getWidth()) >= bubble
+                            .getX()
+                    && player.getCollisionY() <= (bubble.getY() + bubble
+                            .getDiameter())
                     && (player.getY() + player.getHeight()) >= bubble.getY()) {
                 if (player.getCollisionY() <= bubble.getY()) {
-                    Logger.log("Player collided with a bubble",8,4);
+                    Logger.log("Player collided with a bubble", 8, 4);
                     return true;
                 }
             }
@@ -90,10 +91,10 @@ public class Level {
                         if (bubbleList.get(i).getY()
                                 + bubbleList.get(i).getDiameter() >= rope
                                     .getY()) {
-                        	System.out.println(i);
+                       
                             destroyBubble(i);
                             setRope(null);
-                            Logger.log("Rope collided with a bubble",8,4);
+                            Logger.log("Rope collided with a bubble", 8, 4);
                             return true;
                         }
                     }
@@ -112,33 +113,36 @@ public class Level {
         Player player1 = playerList.get(0);
         for (int i = 0; i < powerupList.size(); i++) {
             Powerup powerup = powerupList.get(i);
-            
+
             if (player1.getCollisionX() <= (powerup.getX() + powerup.getWidth())
-                    && (player1.getCollisionX() + player1.getWidth()) >= powerup.getX()
-                    && player1.getCollisionY() <= (powerup.getY() + powerup.getHeight())
+                    && (player1.getCollisionX() + player1.getWidth()) >= powerup
+                            .getX()
+                    && player1.getCollisionY() <= (powerup.getY() + powerup
+                            .getHeight())
                     && (player1.getY() + player1.getHeight()) >= powerup.getY()) {
-                
-                Logger.log("Player collided with a powerup",8,4);
-                
+
+                Logger.log("Player collided with a powerup", 8, 4);
+
                 int powerupListSize = playerList.get(0).getPowerupList().size();
-                if(powerupListSize > 0)
-                {
-                    for(int i1 = 0; i1 < powerupListSize; i1++)
-                    {
-                        if(playerList.get(0).getPowerupList().get(i1).samePowerup(powerup))
-                        {
-                            playerList.get(0).getPowerupList().get(i1).resetFramesLeft();
-                            Logger.log("Power up time " +playerList.get(0).getPowerupList().get(i1).getName()+" reset", 6, 4);
+                if (powerupListSize > 0) {
+                    for (int i1 = 0; i1 < powerupListSize; i1++) {
+                        if (playerList.get(0).getPowerupList().get(i1)
+                                .samePowerup(powerup)) {
+                            playerList.get(0).getPowerupList().get(i1)
+                                    .resetFramesLeft();
+                            Logger.log("Power up time "
+                                    + playerList.get(0).getPowerupList()
+                                            .get(i1).getName() + " reset", 6, 4);
                             increasedPowerupTime = true;
                             powerupList.remove(i);
                         }
                     }
                 }
-                if(!increasedPowerupTime)
-                {
+                if (!increasedPowerupTime) {
                     playerList.get(0).setPowerup(powerupList.get(i));
-                    Logger.log("Power up time " +powerupList.get(i).getName()+" added", 6, 4);
-                    
+                    Logger.log("Power up time " + powerupList.get(i).getName()
+                            + " added", 6, 4);
+
                     powerupList.remove(i);
                 }
                 increasedPowerupTime = false;
@@ -150,6 +154,7 @@ public class Level {
 
     /**
      * Remove bubble.
+     * 
      * @param i
      */
     public void destroyBubble(int i) {
@@ -158,23 +163,24 @@ public class Level {
         int x = bubble.getX();
         int y = bubble.getY();
         int diameter = bubble.getDiameter();
-        
+
         addScore(diameter);
         bubbleList.remove(i);
 
         bubbleList.addAll(bubble.destroyBubble(x, y));
-        
+
         if (Settings.getPowerupChance() > Math.random() * 100) {
-            Powerup powerup = generatePowerup(x, y, randomInt(1,3));
+            Powerup powerup = generatePowerup(x, y, randomInt(1, 3));
             powerupList.add(powerup);
         }
     }
-    
+
     /**
      * Calls the add score method from the game.
+     * 
      * @param diameter
      */
-    public void addScore(int diameter){
+    public void addScore(int diameter) {
         switch (diameter) {
         case 8:
             NormalDriver.score.addScore(10);
@@ -195,8 +201,10 @@ public class Level {
             break;
         }
     }
+
     /**
      * Generate random integer.
+     * 
      * @param min
      * @param max
      * @return
@@ -221,7 +229,7 @@ public class Level {
             return new Powerup("ice", x, y);
         default:
             Logger.log("Powerup speed spawned", 6, 4);
-            Logger.log("generatePowerup switch default triggered",6, 3);
+            Logger.log("generatePowerup switch default triggered", 6, 3);
             return new Powerup("speed", x, y);
         }
     }
@@ -236,6 +244,33 @@ public class Level {
         if (!bubbleList.contains(bubble)) {
             bubbleList.add(bubble);
         }
+    }
+
+    public void moveBubbles() {
+        for (int i = 0; i < bubbleList.size(); i++) {
+            if(bubbleBounceWall(bubbleList.get(i))){
+                bubbleList.get(i).bounceH();
+                
+            }
+            bubbleList.get(i).move();
+        }
+    }
+
+    private boolean bubbleBounceWall(Bubble bubble) {
+
+        for (int i = 0; i < wallList.size(); i++) {
+            Wall wall = wallList.get(i);
+
+            if ((wall instanceof BubbleWall || wall instanceof DuoWall) && wall.isActive()) {
+                if ((bubble.getX() <= (wall.getX() + wall.getWidth()) && (bubble
+                        .getX() + bubble.getDiameter()) >= wall.getX())
+                        && wall.isActive()) {
+                    wall.BouncedOn();
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -255,7 +290,7 @@ public class Level {
             wallList.add(wall);
         }
     }
-    
+
     public boolean hasRope() {
         return rope != null;
     }
@@ -268,7 +303,7 @@ public class Level {
     public ArrayList<Wall> getWallList() {
         return wallList;
     }
-    
+
     public ArrayList<Powerup> getPowerupList() {
         return powerupList;
     }
@@ -285,7 +320,7 @@ public class Level {
     public Rope getRope() {
         return rope;
     }
-    
+
     public int getNumberOfRopes() {
         return this.numberOfRopes;
     }
