@@ -30,9 +30,11 @@ public class LosingScreen extends JFrame {
     JButton stopButton;
     final private Driver dr;
     
+    private int score;
+    
     JFrame gameFrame;
 
-    public LosingScreen(Driver driver){
+    public LosingScreen(Driver driver, int score){
 
         setTitle("You lost!");
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
@@ -41,6 +43,7 @@ public class LosingScreen extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.gameFrame = gameFrame;
+        this.score = score;
         
         setVisible(true);
         

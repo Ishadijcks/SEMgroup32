@@ -126,7 +126,7 @@ public class SurvivalDriver extends Driver {
             spawnTime = 7000;
             gameScreen.dispose();
             game.toggleProgress();
-            new LosingScreen(driver);
+            new LosingScreen(driver, Score.getScore());
             Logger.log("Game lost", 7, 4);
             return true;
         }
@@ -182,6 +182,8 @@ public class SurvivalDriver extends Driver {
                 if((currentTime - startTime) > spawnTime)
                 {
                     spawnTime = spawnTime - 1000;
+                    
+                    score.addScore(100);
                     
                     if(allBubbles == 2)
                     {
