@@ -53,6 +53,7 @@ public class NormalLevelCreator {
         level1.addWall(wall6);
         level1.addWall(wall7);
         level1.addWall(wall8);
+       
         PlayerWall wall9 = new PlayerWall(300);
         level1.addWall(wall9);
         
