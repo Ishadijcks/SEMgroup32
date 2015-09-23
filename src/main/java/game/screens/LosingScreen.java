@@ -1,6 +1,7 @@
 package game.screens;
 
 import game.Driver;
+import game.NormalDriver;
 import game.Settings;
 
 import java.awt.BorderLayout;
@@ -86,7 +87,7 @@ public class LosingScreen extends JFrame {
         tryAgainButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent tryAgainGame) {
                     setVisible(false);
-                    Driver.setupGame();
+                    dr.setupGame();
                     dr.startGame();
                     dispose();
             }
@@ -95,8 +96,8 @@ public class LosingScreen extends JFrame {
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
-                Driver.setupGame();
-                Driver.startScreen();
+                dr.setupGame();
+                dr.startScreen();
                 dispose();
             }
         });
