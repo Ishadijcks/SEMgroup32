@@ -35,6 +35,8 @@ public class Settings {
 
     private static Color dragonRed = new Color(135, 15, 15);
     
+    private static int wallWidth = 20;
+    private static int wallHeight = levelHeight;
 
 
     private static int topMargin = 50;
@@ -133,6 +135,15 @@ public class Settings {
     public static int getBubbleDefaultY() {
         return bubbleDefaultY;
     }
+
+    public static int getWallWidth() {
+        return wallWidth;
+    }
+
+    public static int getWallHeight() {
+        return wallHeight;
+    }
+
     
 
 }
