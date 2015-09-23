@@ -91,7 +91,7 @@ public class Level {
                         if (bubbleList.get(i).getY()
                                 + bubbleList.get(i).getDiameter() >= rope
                                     .getY()) {
-                       
+
                             destroyBubble(i);
                             setRope(null);
                             Logger.log("Rope collided with a bubble", 8, 4);
@@ -173,6 +173,8 @@ public class Level {
             Powerup powerup = generatePowerup(x, y, randomInt(1, 3));
             powerupList.add(powerup);
         }
+        
+        checkDuoWalls(playerList.get(0).getX());
     }
 
     /**
@@ -235,7 +237,7 @@ public class Level {
     }
 
     /**
-     * Add a bubble to the bubbleList
+     * Add a bubble to the bubbleList.
      * 
      * @param bubble
      *            bubble to add
@@ -246,26 +248,78 @@ public class Level {
         }
     }
 
+    /**
+     * Moves all the bubbles in the bubbleList.
+     */
     public void moveBubbles() {
         for (int i = 0; i < bubbleList.size(); i++) {
-            if(bubbleBounceWall(bubbleList.get(i))){
+            if (bubbleBounceWall(bubbleList.get(i))) {
                 bubbleList.get(i).bounceH();
-                
+
             }
             bubbleList.get(i).move();
         }
     }
 
+    public void checkDuoWalls(int playerX) {
+        for (int i = 0; i < wallList.size(); i++) {
+            Wall wall = wallList.get(i);
+            if (wall instanceof DuoWall) {
+                if (playerX < wall.getX()) {
+                    if(checkLeftOfWall(wall)){
+                    wall.setActive(false);
+                    }
+                    
+                } else {
+                    if(checkRightOfWall(wall)){
+                        wall.setActive(false);
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    public boolean checkLeftOfWall(Wall wall) {
+        for (int i = 0; i < bubbleList.size(); i++) {
+            if (bubbleList.get(i).getX() < wall.getX()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean checkRightOfWall(Wall wall) {
+        for (int i = 0; i < bubbleList.size(); i++) {
+            if (bubbleList.get(i).getX() > wall.getX()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /**
+     * Returns true if the bubble is going to bounce on a wall.
+     * 
+     * @param bubble
+     *            to check
+     * @return if the bubble is going to bounce on a wall
+     */
     private boolean bubbleBounceWall(Bubble bubble) {
 
         for (int i = 0; i < wallList.size(); i++) {
             Wall wall = wallList.get(i);
 
-            if ((wall instanceof BubbleWall || wall instanceof DuoWall) && wall.isActive()) {
+            if ((wall instanceof BubbleWall || wall instanceof DuoWall)
+                    && wall.isActive()) {
                 if ((bubble.getX() <= (wall.getX() + wall.getWidth()) && (bubble
                         .getX() + bubble.getDiameter()) >= wall.getX())
                         && wall.isActive()) {
-                    wall.BouncedOn();
+                    if (wall instanceof BubbleWall) {
+                        wall.BouncedOn();
+                    }
+
                     return true;
                 }
             }
