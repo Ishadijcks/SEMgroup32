@@ -19,6 +19,15 @@
 		<findbugs.version>3.0.0</findbugs.version>
 	</properties>
 	
+	<dependencies>
+    	<dependency>
+      		<groupId>junit</groupId>
+      		<artifactId>junit</artifactId>
+      		<version>4.0</version>
+      		<type>jar</type>
+      		<scope>test</scope>
+    	</dependency>
+    </dependencies>
 	<!-- Andere groepjes (andere weer niet) hebben nu <repositories> erin staan, 
 	maar werkelijk geen idee wat daar precies staat. Niet nodig denk ik -->
 	
