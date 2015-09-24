@@ -218,6 +218,13 @@ public class NormalDriver extends Driver {
     }
 
     /**
+     * getter returns game screen.
+     * @return game screen
+     */
+    public GameScreen getGameScreen(){
+        return gameScreen;
+    }
+    /**
      * initialize game.
      */
     public void initGame() {
