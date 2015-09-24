@@ -22,12 +22,14 @@ public class Player {
     private int stepSize = Settings.getPlayerStepSize();
     private boolean movingLeft = false;
     private boolean movingRight = false;
+    private boolean normalMode;
     private ArrayList<Powerup> powerupList = new ArrayList<Powerup>();
 
-    public Player(String name, int x) {
+    public Player(String name, int x, boolean isNormalMode) {
         this.name = name;
         this.x = x;
         this.colX = x - 50;
+        normalMode = isNormalMode;
         Logger.log("Player created", 1, 4);
     }
 
@@ -128,35 +130,71 @@ public class Player {
      * the level
      */
     public void shootRope() {
-        if (!NormalDriver.game.getCurrentLevel()
-                .hasRope()) {
-            int ropeY = NormalDriver.game.getCurrentLevel().getHeight()
-                    - height;
-            int ropeX = x + width / 2;
-            int powerupListSize = powerupList.size();
-            if(powerupListSize > 0)
-            {
-                for(int i = 0; i < powerupListSize; i++)
+        if(normalMode)
+        {
+            if (!NormalDriver.game.getCurrentLevel()
+                    .hasRope()) {
+                int ropeY = NormalDriver.game.getCurrentLevel().getHeight()
+                        - height;
+                int ropeX = x + width / 2;
+                int powerupListSize = powerupList.size();
+                if(powerupListSize > 0)
                 {
-                    if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
+                    for(int i = 0; i < powerupListSize; i++)
                     {
-                            Rope rope = new IceRope(ropeX, ropeY);
-                            NormalDriver.game.getCurrentLevel()
-                            .setRope(rope);
-                            return;
+                        if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
+                        {
+                                Rope rope = new IceRope(ropeX, ropeY, normalMode);
+                                NormalDriver.game.getCurrentLevel()
+                                .setRope(rope);
+                                return;
+                        }
+                        else if(powerupList.get(i).getName().equals("ice") && !(powerupList.get(i).isActive()))
+                        {
+                                powerupList.remove(i);
+                        }
                     }
-                    else if(powerupList.get(i).getName().equals("ice") && !(powerupList.get(i).isActive()))
-                    {
-                            powerupList.remove(i);
-                    }
+                    
                 }
                 
+                Rope rope = new Rope(ropeX, ropeY, normalMode);
+                NormalDriver.game.getCurrentLevel().setRope(rope);
+                Logger.log("Shot a rope", 1, 4);
+                
             }
-            
-            Rope rope = new Rope(ropeX, ropeY);
-            NormalDriver.game.getCurrentLevel().setRope(rope);
-            Logger.log("Shot a rope", 1, 4);
-            
+        }
+        else
+        {
+            if (!SurvivalDriver.game.getCurrentLevel()
+                    .hasRope()) {
+                int ropeY = SurvivalDriver.game.getCurrentLevel().getHeight()
+                        - height;
+                int ropeX = x + width / 2;
+                int powerupListSize = powerupList.size();
+                if(powerupListSize > 0)
+                {
+                    for(int i = 0; i < powerupListSize; i++)
+                    {
+                        if(powerupList.get(i).getName().equals("ice") && powerupList.get(i).isActive())
+                        {
+                                Rope rope = new IceRope(ropeX, ropeY, normalMode);
+                                SurvivalDriver.game.getCurrentLevel()
+                                .setRope(rope);
+                                return;
+                        }
+                        else if(powerupList.get(i).getName().equals("ice") && !(powerupList.get(i).isActive()))
+                        {
+                                powerupList.remove(i);
+                        }
+                    }
+                    
+                }
+                
+                Rope rope = new Rope(ropeX, ropeY, normalMode);
+                SurvivalDriver.game.getCurrentLevel().setRope(rope);
+                Logger.log("Shot a rope", 1, 4);
+                
+            }
         }
     }
     

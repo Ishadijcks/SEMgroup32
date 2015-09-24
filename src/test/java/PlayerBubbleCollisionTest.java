@@ -32,10 +32,10 @@ public class PlayerBubbleCollisionTest {
 
     public PlayerBubbleCollisionTest(int x, int y, boolean exp) {
         bubble = new Bubblex16(x, y, true, true);
-        player = new Player("Test", 100);
+        player = new Player("Test", 100, true);
         p = new ArrayList<Player>();
         p.add(player);
-        l = new Level(p);
+        l = new Level(p, true);
         bubbleList = new ArrayList<Bubble>();
         l.addBubble(bubble);
         this.expected = exp;
