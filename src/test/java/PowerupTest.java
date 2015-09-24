@@ -113,7 +113,7 @@ public class PowerupTest {
 	
 	@Test
 	public void testMove(){
-		NormalDriver driver = new NormalDriver();
+		NormalDriver driver = new NormalDriver(null);
 		driver.initGame();
 		driver.setupGame();
 		Powerup pow = new Powerup("ice", 100, 100, true);

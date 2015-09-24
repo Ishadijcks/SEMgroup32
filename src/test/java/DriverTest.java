@@ -15,7 +15,7 @@ public class DriverTest {
 	
 	@Before
 	public void init(){
-		driver = new NormalDriver();
+		driver = new NormalDriver(null);
 		driver.initGame();
 		driver.setupGame();
 	}
@@ -29,21 +29,11 @@ public class DriverTest {
 		assertEquals(1, MathFunctions.randomInt(1, 1));
 	}
 
-	@Test
-	public void testLevelWonFrameWithRemainingLevels() {
-        fail("Not yet implemented");
-		
-	}
-	
-	@Test
-	public void testLevelWonFrameWithNoRemainingLevels() {
-	    fail("Not yet implemented");
-	}
 
 	@Test
 	public void testStartGame() {
 		assertFalse(driver.game.inProgress());
-		driver.startGame();
+		driver.startGame("Isha");
 		assertTrue(driver.game.inProgress());
 	}
 

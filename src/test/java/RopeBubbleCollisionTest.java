@@ -43,8 +43,8 @@ public class RopeBubbleCollisionTest {
         l.setRope(r);
         l.addBubble(bubble);
         this.expected = exp;
-        NormalDriver nd = new NormalDriver();
-        nd.startGame();
+        NormalDriver nd = new NormalDriver(null);
+        nd.startGame("Isha");
         nd.setupGame();
         nd.initGame();
     }
