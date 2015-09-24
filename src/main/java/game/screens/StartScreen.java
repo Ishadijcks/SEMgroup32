@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class StartScreen extends JFrame {
 
@@ -52,7 +53,6 @@ public class StartScreen extends JFrame {
 
         jf = new JFrame();
         setVisible(true);
-
         
         String imageLocation = location.getFile();
         imageLocation = imageLocation.replace("%20", " ");
@@ -84,13 +84,26 @@ public class StartScreen extends JFrame {
         stopButton.setOpaque(true);
         stopButton.setBounds(55, 500, 250, 60);
         
+        Font font = new Font("Calibri", Font.PLAIN, 25);
+        JLabel nameInput = new JLabel("Enter name and start game: ");
+        nameInput.setFont(font);
+        nameInput.setSize(500, 50);
+        nameInput.setForeground(Color.WHITE);
+        nameInput.setLocation(335, 115);
+        
+        Font font2 = new Font("Calibri", Font.PLAIN, 25);
+        final JTextField tf = new JTextField(100);
+        tf.setSize(200,50);
+        tf.setLocation(375, 165);
+        tf.setFont(font2);
+        
         dr = driver;
 
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent startGame) {
                 setVisible(false);
                 dispose();
-                dr.startGame();
+                dr.startGame(tf.getText());
             }
         });
 
@@ -102,6 +115,10 @@ public class StartScreen extends JFrame {
         });
 
         setResizable(false);
+        
+        
+        add(nameInput);
+        add(tf);
         
         add(startButton);
         add(settingsButton);

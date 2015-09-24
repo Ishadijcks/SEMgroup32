@@ -3,6 +3,8 @@ package game.screens;
 import game.Driver;
 import game.NormalDriver;
 import game.Settings;
+import game.endScore;
+import game.Leaderboard;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -30,11 +32,12 @@ public class LosingScreen extends JFrame {
     JButton stopButton;
     final private Driver dr;
     
-    private int score;
+    private endScore score;
+    private Leaderboard leaderBoard;
     
     JFrame gameFrame;
 
-    public LosingScreen(Driver driver, int score){
+    public LosingScreen(Driver driver, final endScore score){
 
         setTitle("You lost!");
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
@@ -77,7 +80,7 @@ public class LosingScreen extends JFrame {
         stopButton.setBounds(55, 350, 350, 75);
 
         Font font = new Font("Calibri", Font.PLAIN, 55);
-        JLabel scoreLabel = new JLabel("Your score: " + score);
+        JLabel scoreLabel = new JLabel(score.getName() + "s score: " + score.getScore());
         scoreLabel.setFont(font);
         scoreLabel.setForeground(Color.WHITE);
         scoreLabel.setLocation(325, 10);
@@ -88,7 +91,7 @@ public class LosingScreen extends JFrame {
             public void actionPerformed(ActionEvent tryAgainGame) {
                     setVisible(false);
                     dr.setupGame();
-                    dr.startGame();
+                    dr.startGame(score.getName());
                     dispose();
             }
         });
@@ -110,6 +113,8 @@ public class LosingScreen extends JFrame {
         
         setSize(Settings.getScreenWidth() - 1, Settings.getScreenHeight() - 1);
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
+        
+        
 
     }
 

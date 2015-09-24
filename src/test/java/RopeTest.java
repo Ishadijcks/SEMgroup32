@@ -55,11 +55,6 @@ public class RopeTest {
         assertEquals(expectedYCoord, rope.getY());
     }
     
-    @Test
-    public void testMoveRopeTop() {
-        rope = new Rope(250, 40, true);
-        rope.move();
-        //assertEquals(null, rope.move());
-    }
+
 
 }

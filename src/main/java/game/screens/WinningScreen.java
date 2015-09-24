@@ -3,6 +3,7 @@ package game.screens;
 import game.Driver;
 import game.NormalDriver;
 import game.Settings;
+import game.endScore;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -31,7 +32,7 @@ public class WinningScreen extends JFrame {
     final private Driver dr;
     JFrame gameFrame;
 
-    public WinningScreen(Driver driver) {
+    public WinningScreen(Driver driver,  final String name) {
 
         setTitle("You won!");
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
@@ -76,7 +77,7 @@ public class WinningScreen extends JFrame {
             public void actionPerformed(ActionEvent playAgainGame) {
                 setVisible(false);
                 dr.setupGame();
-                dr.startGame();
+                dr.startGame(name);
                 dispose();
             }
         });

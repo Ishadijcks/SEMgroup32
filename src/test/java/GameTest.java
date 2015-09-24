@@ -46,13 +46,7 @@ public class GameTest {
 		assertEquals(1, game.getLevelList().size());
 	}
 	
-	@Test
-	public void testAddScore(){
-		int scoreNumber = 5;
-		Score score1 = new Score();
-		score1.addScore(scoreNumber);
-		assertEquals(Score.getScore(),score1);
-	}
+
 	
 	@Test
 	public void testAddLevelContains() {
