@@ -48,15 +48,21 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class NormalDriver extends Driver {
 
+    private static String name;
     public static NormalGame game;
     private static NormalDriver driver;
     private static GameScreen gameScreen;
 
+    public NormalDriver(String name)
+    {
+        this.name = name;
+    }
 
     /**
      * Frame to start the game
      */
-    public void startGame() {
+    public void startGame(String playerName) {
+        name = playerName;
         gameScreen.startGame();
         game.gameStart();
     }
@@ -82,7 +88,7 @@ public class NormalDriver extends Driver {
         if (game.getCurrentLevelInt() == 4) {
             gameScreen.dispose();
             Logger.log("Frame destroyed", 9, 4);
-            new WinningScreen(driver);
+            new WinningScreen(driver, name);
             return true;
         }
         return false;
@@ -96,7 +102,9 @@ public class NormalDriver extends Driver {
         if (livesLeft == 0 && game.inProgress()) {
             gameScreen.dispose();
             game.toggleProgress();
-            new LosingScreen(driver, Score.getScore());
+            endScore es = new endScore(name, Score.getScore());
+            Score.resetScore();
+            new LosingScreen(driver, es);
             Logger.log("Game lost", 7, 4);
             return true;
         }
@@ -120,18 +128,17 @@ public class NormalDriver extends Driver {
             e.printStackTrace();
         }
         Logger.log("Main Frame created", 9, 4);
-        driver = new NormalDriver();
-        Player isha = new Player("Isha", 350, true);
-        game = GameCreator.createSinglePlayer(isha);
+        driver = new NormalDriver(name);
+        Player player = new Player(name, 350, true);
+        game = GameCreator.createSinglePlayer(player);
         score = new Score();
-        game.addPlayer(isha);
+        game.addPlayer(player);
         player = game.getPlayerList().get(0);
         int centerConstant = (int) Math
                 .round(0.5 * (Settings.getScreenWidth() - Settings
                         .getLevelWidth()));
         Settings.setLeftMargin(centerConstant);
         GameScreen.setupScreen(game, score);
-        
         
         driver.startScreen();
 
@@ -240,11 +247,11 @@ public class NormalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        driver = new NormalDriver();
-        Player isha = new Player("Isha", 350, true);
-        game = GameCreator.createSinglePlayer(isha);
+        driver = new NormalDriver(name);
+        Player player = new Player(name, 350, true);
+        game = GameCreator.createSinglePlayer(player);
         score = new Score();
-        game.addPlayer(isha);
+        game.addPlayer(player);
         player = game.getPlayerList().get(0);
         int centerConstant = (int) Math
                 .round(0.5 * (Settings.getScreenWidth() - Settings

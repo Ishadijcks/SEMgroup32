@@ -39,6 +39,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class GameScreen extends JPanel {
     public static int totalFrames = 1;
@@ -364,8 +365,17 @@ public class GameScreen extends JPanel {
                 g2d.setFont(new Font("Calibri", Font.ITALIC, 25));
                 g2d.setColor(dragonRed);
 
-                g2d.drawString(player.getName(), player.getX() - 25,
-                        player.getY() - 70 + topMargin);
+                if(player.getName() != null)
+                {
+                    g2d.drawString(player.getName(), player.getX() - 25,
+                            player.getY() - 70 + topMargin);
+                }
+                else
+                {
+                    g2d.drawString("", player.getX() - 25,
+                            player.getY() - 70 + topMargin);
+                }
+                
 
                 g2d.setColor(Color.BLACK);
 

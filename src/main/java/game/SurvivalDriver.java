@@ -9,6 +9,7 @@ import game.bubble.Bubblex8;
 import game.log.LogSettings;
 import game.log.Logger;
 import game.screens.GameScreen;
+import game.screens.LeaderBoardScreen;
 import game.screens.LosingScreen;
 import game.screens.StartScreen;
 
@@ -16,6 +17,7 @@ import java.io.IOException;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.JTextField;
 
 /**
  * Class that executes the game.
@@ -28,6 +30,8 @@ public class SurvivalDriver extends Driver {
     public static SurvivalGame game;
     private static SurvivalDriver driver;
     private static GameScreen gameScreen;
+    private static String name;
+    private static Leaderboard lb = new Leaderboard();
     
     private static int allBubbles = 1;
     private static int bubbleNumber = 1;
@@ -38,10 +42,16 @@ public class SurvivalDriver extends Driver {
     private static Bubble bubble4;
     private static Bubble bubble5;
 
+    public SurvivalDriver(String name)
+    {
+        this.name = name;
+    }
+    
     /**
      * Frame to start the game.
      */
-    public void startGame() {
+    public void startGame(String playerName) {
+        name = playerName;
         gameScreen.startGame();
         game.gameStart();
     }
@@ -102,9 +112,14 @@ public class SurvivalDriver extends Driver {
             allBubbles = 1;
             bubbleNumber = 1;
             spawnTime = 7000;
+            endScore es = new endScore(name , Score.getScore());
+            lb.addScore(es);
+            lb.appendToFile();
+            Score.resetScore();
             gameScreen.dispose();
             game.toggleProgress();
-            new LosingScreen(driver, Score.getScore());
+            new LeaderBoardScreen(lb);
+            new LosingScreen(driver, es);
             Logger.log("Game lost", 7, 4);
             return true;
         }
@@ -135,13 +150,13 @@ public class SurvivalDriver extends Driver {
         int startTime = (int) System.currentTimeMillis();
         
         Logger.log("Main Frame created", 9, 4);
-        driver = new SurvivalDriver();
-        Player isha = new Player("Isha", 350, false);
+        driver = new SurvivalDriver(name);
+        Player player = new Player(name , 350, false);
         
-        game = GameCreator.createSurvival(isha);
+        game = GameCreator.createSurvival(player);
         score = new Score();
         
-        game.addPlayer(isha);
+        game.addPlayer(player);
         
         player = game.getPlayerList().get(0);
         
@@ -301,11 +316,11 @@ public class SurvivalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        driver = new SurvivalDriver();
-        Player isha = new Player("Isha", 350, false);
-        game = GameCreator.createSurvival(isha);
+        driver = new SurvivalDriver(name);
+        Player player = new Player(name, 350, false);
+        game = GameCreator.createSurvival(player);
         score = new Score();
-        game.addPlayer(isha);
+        game.addPlayer(player);
         player = game.getPlayerList().get(0);
         int centerConstant = (int) Math
                 .round(0.5 * (Settings.getScreenWidth() - Settings

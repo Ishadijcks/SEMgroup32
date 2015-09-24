@@ -218,6 +218,11 @@ public class Player {
     public String getName() {
         return name;
     }
+    
+    public void setName(String newName)
+    {
+        name = newName;
+    }
 
     public void setPowerup(Powerup powerup) {
         powerupList.add(powerup);

@@ -18,7 +18,7 @@ public abstract class Driver {
 
     public abstract void startScreen();
 
-    public abstract void startGame();
+    public abstract void startGame(String name);
 
     public abstract void setupGame();
     
