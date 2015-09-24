@@ -31,18 +31,13 @@ public class DriverTest {
 
 	@Test
 	public void testLevelWonFrameWithRemainingLevels() {
-        int initialCompCount = driver.getComponentCount();
-		driver.levelWonFrame();
-		assertEquals(initialCompCount+2, driver.getComponentCount());
+        fail("Not yet implemented");
 		
 	}
 	
 	@Test
 	public void testLevelWonFrameWithNoRemainingLevels() {
-		driver.game.setCurrentLevelInt(driver.game.getLevelList().size()-1);
-        int initialCompCount = driver.getComponentCount();
-		driver.levelWonFrame();
-		assertEquals(initialCompCount+2, driver.getComponentCount());
+	    fail("Not yet implemented");
 	}
 
 	@Test
@@ -50,13 +45,6 @@ public class DriverTest {
 		assertFalse(driver.game.inProgress());
 		driver.startGame();
 		assertTrue(driver.game.inProgress());
-	}
-
-	@Test
-	public void testAddStartButton() {
-		driver.addStartButton();
-		LogObject log = new LogObject("Start button added", 9, 4);
-		assertTrue(Logger.getLogList().getLast().equals(log));
 	}
 
 	@Test
