@@ -134,7 +134,7 @@ public class GameScreen extends JPanel {
         } catch (LineUnavailableException e1) {
             e1.printStackTrace();
         }
-        frame.addKeyListener(new MyKeyListener());
+        frame.addKeyListener(new MyKeyListener(gameInput));
         Logger.log("Added key listener", 9, 4);
         frame.add(gameScreen);
         frame.setSize(Settings.getScreenWidth(), Settings.getScreenHeight());

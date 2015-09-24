@@ -96,7 +96,7 @@ public class NormalDriver extends Driver {
         if (livesLeft == 0 && game.inProgress()) {
             gameScreen.dispose();
             game.toggleProgress();
-            new LosingScreen(driver);
+            new LosingScreen(driver, Score.getScore());
             Logger.log("Game lost", 7, 4);
             return true;
         }
@@ -121,7 +121,7 @@ public class NormalDriver extends Driver {
         }
         Logger.log("Main Frame created", 9, 4);
         driver = new NormalDriver();
-        Player isha = new Player("Isha", 350);
+        Player isha = new Player("Isha", 350, true);
         game = GameCreator.createSinglePlayer(isha);
         score = new Score();
         game.addPlayer(isha);
@@ -241,7 +241,7 @@ public class NormalDriver extends Driver {
      */
     public void setupGame() {
         driver = new NormalDriver();
-        Player isha = new Player("Isha", 350);
+        Player isha = new Player("Isha", 350, true);
         game = GameCreator.createSinglePlayer(isha);
         score = new Score();
         game.addPlayer(isha);

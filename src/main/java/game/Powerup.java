@@ -23,6 +23,8 @@ public class Powerup {
     int width = Settings.getPowerupWidth();
     int height = Settings.getPowerupHeight();
     
+    private boolean normalMode;
+    
     int framesLeft = 10*Settings.getFps();
     
     /**
@@ -31,11 +33,12 @@ public class Powerup {
      * @param x
      * @param y
      */
-    public Powerup(String name, int x, int y) {
+    public Powerup(String name, int x, int y, boolean isNormalMode) {
         Logger.log("Powerup created", 6, 4);
         this.name = name;
         this.x = x;
         this.y = y;
+        normalMode = isNormalMode;
     }
 
     
@@ -59,11 +62,21 @@ public class Powerup {
      * The powerup moves down till it hits the floor
      */
     public void move() {
-        if (y <= NormalDriver.game.getCurrentLevel().getHeight() - (height -1) ) {
-            Logger.log("Powerup moved from "+x+","+y+ " to "+ x + ","+(y+Settings.getPowerupSpeed()), 6, 5,10);
-            y += Settings.getPowerupSpeed();
-            
+        if(normalMode)
+        {
+            if (y <= NormalDriver.game.getCurrentLevel().getHeight() - (height -1) ) {
+                Logger.log("Powerup moved from "+x+","+y+ " to "+ x + ","+(y+Settings.getPowerupSpeed()), 6, 5,10);
+                y += Settings.getPowerupSpeed();
+            }
         }
+        else
+        {
+            if (y <= SurvivalDriver.game.getCurrentLevel().getHeight() - (height -1) ) {
+                Logger.log("Powerup moved from "+x+","+y+ " to "+ x + ","+(y+Settings.getPowerupSpeed()), 6, 5,10);
+                y += Settings.getPowerupSpeed();
+            }
+        }
+
     }
 
     /**
