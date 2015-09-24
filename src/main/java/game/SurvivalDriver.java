@@ -168,8 +168,6 @@ public class SurvivalDriver extends Driver {
         
         driver.startScreen();
 
-        driver.startScreen();
-
         LogSettings.setActiveLog(true);
 
         while (true) {

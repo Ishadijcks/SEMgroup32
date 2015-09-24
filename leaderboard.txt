@@ -1,11 +1,2 @@
-Naomi:300
-Isha:135
-Boning:100
-Boning:100
-Tim:100
-Floris:100
-Naomi:100
-Boning:0
-Boning:0
-Isha:0
+:0
 
