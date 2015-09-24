@@ -37,14 +37,16 @@ public class RopeBubbleCollisionTest {
     public RopeBubbleCollisionTest(int x, int y, boolean exp) {
         bubble = new Bubblex16(20, 50, true, true);
         p = new ArrayList<Player>();
-        l = new Level(p);
+        l = new Level(p, true);
         bubbleList = new ArrayList<Bubble>();
-        Rope r = new Rope(x, y);
+        Rope r = new Rope(x, y, true);
         l.setRope(r);
         l.addBubble(bubble);
         this.expected = exp;
-        NormalDriver.initGame();
-        NormalDriver.setupGame();
+        NormalDriver nd = new NormalDriver(null);
+        nd.startGame("Isha");
+        nd.setupGame();
+        nd.initGame();
     }
 
     @Test

@@ -26,7 +26,7 @@ public class IceRopeTest {
     public void init() {
         x = 0;
         y = 0;
-        rope = new IceRope(x, y);
+        rope = new IceRope(x, y, true);
     }
     
     @Test
@@ -43,7 +43,7 @@ public class IceRopeTest {
     
     @Test
     public void testMoveNormal() {
-        rope = new IceRope(250, 100);
+        rope = new IceRope(250, 100, true);
         rope.move();
         int expectedYCoord = 96;
         assertEquals(expectedYCoord, rope.getY());
@@ -51,7 +51,7 @@ public class IceRopeTest {
     
     @Test
     public void testMoveRopeTop() {
-        rope = new IceRope(250, 48);
+        rope = new IceRope(250, 48, true);
         rope.move();
         int expectedYCoord = 48;
         assertEquals(expectedYCoord, rope.getY());

@@ -27,9 +27,9 @@ public class GameTest {
 	public void initGame() {
 		game = new NormalGame();
 		p = new ArrayList<Player>();
-		l = new Level(p);
-		k = new Level(p);
-		player = new Player("TestPlayer", 1);
+		l = new Level(p, true);
+		k = new Level(p, true);
+		player = new Player("TestPlayer", 1, true);
 	}
 
 	@Test
@@ -46,13 +46,7 @@ public class GameTest {
 		assertEquals(1, game.getLevelList().size());
 	}
 	
-	@Test
-	public void testAddScore(){
-		int score = 5;
-		Score score1 = new Score();
-		score1.addScore(score);
-		assertEquals(score1.getScore(),score1);
-	}
+
 	
 	@Test
 	public void testAddLevelContains() {

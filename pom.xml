@@ -19,6 +19,15 @@
 		<findbugs.version>3.0.0</findbugs.version>
 	</properties>
 	
+	<dependencies>
+    	<dependency>
+      		<groupId>junit</groupId>
+      		<artifactId>junit</artifactId>
+      		<version>4.0</version>
+      		<type>jar</type>
+      		<scope>test</scope>
+    	</dependency>
+    </dependencies>
 	<!-- Andere groepjes (andere weer niet) hebben nu <repositories> erin staan, 
 	maar werkelijk geen idee wat daar precies staat. Niet nodig denk ik -->
 	
@@ -27,9 +36,8 @@
 		<directory>target</directory>
 		<outputDirectory>target/classes</outputDirectory>
 		<plugins>
-			
-			<!-- Gekopieerd van een andere groep, werkt zo bij ons uiteraard niet maar ik denk dat het er wel bij moet. Graag input.
 			<plugin>
+			<!-- Ik weet alleen de mainClass niet zeker -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.6</version>
@@ -37,11 +45,12 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>nl.joshuaslik.tudelft.SEM.Launcher</mainClass>
+                            <mainClass>game.Driver</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
+            
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -50,46 +59,39 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-            </plugin>-->
+            </plugin>
             
-			<!-- De Checkstyle plugin vergeleken met andere groepjes -->
+			<!-- De Checkstyle plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.14</version>
-				<configuration>
-					<failOnViolation>false</failOnViolation>
-					<configLocation>checkstyle.xml</configLocation>
-					<includeTestSourceDirectory>true</includeTestSourceDirectory>
-				</configuration>
+				<version>2.16</version>
 				<executions>
 					<execution>
-					<id>verify-style</id>
-                        		<phase>process-classes</phase>
-						<goals>
+						<id>validate</id>
+						<phase>validate</phase>
+						<configuration>
+							<configLocation>${basedir}/checkstyle.xml</configLocation>
+							<includeTestSourceDirectory>true</includeTestSourceDirectory>
+							<encoding>UTF-8</encoding>
+         					<consoleOutput>true</consoleOutput>
+         					<failsOnError>true</failsOnError>
+         					<linkXRef>false</linkXRef>
+						</configuration>
+                    	<goals>
 							<goal>check</goal>
 						</goals>
 					</execution>
-
 				</executions>
 			</plugin>
 
-			<!-- De pmd plugin vergeleken met andere groepjes -->
+			<!-- De pmd plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>4.0</version>
-				<executions>
-                    			<execution>
-                        			<id>verify-pmd</id>
-                        			<phase>process-classes</phase>
-                        			<goals>
-                        				<goal>pmd</goal>
-                				</goals>
-                    			</execution>
-                		</executions>
+				<version>3.5</version>
 				<configuration>
-					<format>xml</format>
+					<targetJDK>1.8</targetJDK>
 					<skipEmptyReport>false</skipEmptyReport>
 					<includeTests>true</includeTests>
 					<rulesets>

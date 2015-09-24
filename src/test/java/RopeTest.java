@@ -25,7 +25,7 @@ public class RopeTest {
     public void init() {
         x = 0;
         y = 0;
-        rope = new Rope(x, y);
+        rope = new Rope(x, y, true);
     }
     
     @Test
@@ -49,17 +49,12 @@ public class RopeTest {
     
     @Test
     public void testMoveNormal() {
-        rope = new Rope(250, 100);
+        rope = new Rope(250, 100, true);
         rope.move();
         int expectedYCoord = 96;
         assertEquals(expectedYCoord, rope.getY());
     }
     
-    @Test
-    public void testMoveRopeTop() {
-        rope = new Rope(250, 40);
-        rope.move();
-        //assertEquals(null, rope.move());
-    }
+
 
 }
