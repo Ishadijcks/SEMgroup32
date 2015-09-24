@@ -2,6 +2,12 @@ package game;
 
 import java.awt.Color;
 
+/**
+ * Class that keeps all the settings of the whole game.
+ * 
+ * @author Boning
+ *
+ */
 public class Settings {
 
     private static int fps = 120;
@@ -34,20 +40,24 @@ public class Settings {
     private static int powerupHeight = 10;
 
     private static Color dragonRed = new Color(135, 15, 15);
-    
-
 
     private static int topMargin = 50;
     private static int leftMargin = 0;
 
-    public static void setLeftMargin(int left ) {
+    /**
+     * Set the left margin.
+     * @param left what the margin should be.
+     */
+    public static void setLeftMargin(int left) {
         leftMargin = left;
     }
 
+    /**
+     * All the getters.
+     */
     public static int getLeftMargin() {
         return leftMargin;
     }
-
 
     public static int getFps() {
         return fps;
@@ -116,7 +126,6 @@ public class Settings {
     public static int getPowerupHeight() {
         return powerupHeight;
     }
-
 
     public static Color getDragonRed(){
         return dragonRed;

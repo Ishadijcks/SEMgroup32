@@ -76,12 +76,12 @@ public class LosingScreen extends JFrame {
         stopButton.setOpaque(true);
         stopButton.setBounds(55, 350, 350, 75);
 
-        Font font = new Font("Calibri", Font.PLAIN, 75);
+        Font font = new Font("Calibri", Font.PLAIN, 55);
         JLabel scoreLabel = new JLabel("Your score: " + score);
         scoreLabel.setFont(font);
         scoreLabel.setForeground(Color.WHITE);
-        scoreLabel.setLocation(250, 20);
-        scoreLabel.setSize(500, 500);
+        scoreLabel.setLocation(325, 10);
+        scoreLabel.setSize(700, 500);
         
         dr = driver;
         tryAgainButton.addActionListener(new ActionListener() {
