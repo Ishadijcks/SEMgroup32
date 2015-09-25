@@ -184,6 +184,7 @@ public class Powerup {
                 .getLocation();
         String imageLocation = location.getFile();
         imageLocation = imageLocation.replace("%20", " ");
+        imageLocation = imageLocation.replace("target/classes/", "src/");
         if(name.equals("speed"))
         {
             ImageIcon powerupspeed = new ImageIcon(imageLocation + "main/Images/Powerups/puspeed.png", "speed");

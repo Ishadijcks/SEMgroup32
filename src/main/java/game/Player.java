@@ -1,6 +1,9 @@
 package game;
 
 import game.log.Logger;
+import game.wall.DuoWall;
+import game.wall.PlayerWall;
+import game.wall.Wall;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
