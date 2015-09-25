@@ -38,7 +38,7 @@ public class NormalLevelCreator {
 
     public static Level getLevel1() {
 
-        Bubble bubble1 = new Bubblex32(100, 100, false, false);
+        Bubble bubble1 = new Bubblex8(100, 100, false, false);
 
         Level level1 = new NormalLevel(playerList);
 
@@ -77,7 +77,7 @@ public class NormalLevelCreator {
         level2.addBubble(bubble1);
         level2.addBubble(bubble2);
      
-        DuoWall wall = new DuoWall(450);
+        DuoWall wall = new DuoWall(700);
         DuoWall wall2 = new DuoWall(600);
         level2.addWall(wall);
         level2.addWall(wall2);

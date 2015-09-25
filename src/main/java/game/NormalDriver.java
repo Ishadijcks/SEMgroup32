@@ -207,7 +207,6 @@ public class NormalDriver extends Driver {
                 .round(0.5 * (Settings.getScreenWidth() - Settings
                         .getLevelWidth()));
         Settings.setLeftMargin(centerConstant);
-        GameScreen.setupScreen(game, score);
     }
 
 	@Override

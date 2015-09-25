@@ -9,9 +9,8 @@ public class DriverBuilder {
 	public static Driver buildDriver(int driver) {
 		switch(driver){
 			case 0:
-				return new NormalDriver("Ok");
+				return new NormalDriver("");
 			case 1:
-				System.out.println("OKOKOK");
 				return new SurvivalDriver("");
 		}
 		return null;

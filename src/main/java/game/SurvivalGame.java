@@ -74,7 +74,6 @@ public class SurvivalGame extends Game {
         SurvivalLevel curLevel = (SurvivalLevel) levelList.get(currentLevel -1);
         int currentTime = (int) System.currentTimeMillis();
         if ((currentTime - startTime) > spawnTime) {
-            System.out.println("trueeeeeeee");
             spawnTime = spawnTime - 1000;
             
             //score.addScore(100);

@@ -192,7 +192,6 @@ public class SurvivalDriver extends Driver {
                 .round(0.5 * (Settings.getScreenWidth() - Settings
                         .getLevelWidth()));
         Settings.setLeftMargin(centerConstant);
-        GameScreen.setupScreen(game, score);
     }
     /**
      * initialize game.
