@@ -1,13 +1,10 @@
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+
+import static org.junit.Assert.*;
 import game.Level;
-import game.NormalLevel;
 import game.Player;
 import game.Powerup;
-import game.Rope;
+import game.SurvivalLevel;
 import game.bubble.Bubble;
 import game.bubble.Bubblex16;
 
@@ -16,10 +13,9 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-
-public class LevelTest {
+public class SurvivalLevelTest {
 	
-	public Level l;
+	public SurvivalLevel l;
 	public Bubble bubble;
 	public Powerup powr;
 	public ArrayList<Player> p;
@@ -30,17 +26,18 @@ public class LevelTest {
 	public void init() {
 		bubble = new Bubblex16(2,2,true,true);
 		p = new ArrayList<Player>();
-		l = new NormalLevel(p);
+		l = new SurvivalLevel(p);
 		bubbleList = new ArrayList<Bubble>();
 		plist = new ArrayList<Powerup>();
 		powr = new Powerup("speed", 0,0, true);
 	}
 
 	@Test
-	public void testLevel() {
-		assertTrue(l.getBubbleList().equals(bubbleList));
-		assertTrue(l.getPlayerList().equals(p));
-		assertTrue(l.getPowerupList().equals(plist));
+	public void testDestroyBubble() {
+		l.addBubble(bubble);
+		assertTrue(l.getBubbleList().size() == 1);
+		l.destroyBubble(0);
+		assertTrue(l.getBubbleList().size() == 2);
 	}
 
 	@Test
@@ -51,16 +48,9 @@ public class LevelTest {
 	}
 	
 	@Test
-	public void testGeneratePowerupLife() {
-		Powerup pow = new Powerup("life", 0, 0, true);
-		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(2, 2));
-		assertTrue(pow.equals(pow2));
-	}
-	
-	@Test
 	public void testGeneratePowerupIce() {
 		Powerup pow = new Powerup("ice", 0, 0, true);
-		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(3, 3));
+		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(2, 2));
 		assertTrue(pow.equals(pow2));
 	}
 	
@@ -71,7 +61,6 @@ public class LevelTest {
 		assertTrue(pow.equals(pow2));
 	}
 
-
 	@Test
 	public void testAddBubble() {
 		assertTrue(l.getBubbleList().isEmpty());
@@ -80,18 +69,8 @@ public class LevelTest {
 	}
 
 	@Test
-	public void testAddPowerup() {
-		assertTrue(l.getPowerupList().isEmpty());
-		l.addPowerup(powr);
-		assertTrue(l.getPowerupList().contains(powr));
-	}
-
-	@Test
-	public void testSetRope() {
-		Rope r = new Rope(0, 0, true);
-		assertNull(l.getRope());
-		l.setRope(r);
-		assertEquals(r, l.getRope());
+	public void testSpawnBubble() {
+		l.spawnBubble();
 	}
 
 }

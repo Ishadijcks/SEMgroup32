@@ -14,7 +14,7 @@ public class GameCreatorTest {
 	public void testCreateMultiPlayer() {
 		Player player1 = new Player("Test", 0, true);
 		Player player2 = new Player("Swek", 0, true);
-		NormalGame game = new NormalGame();
+        NormalGame game = new NormalGame();
         game.addPlayer(player1);
         game.addPlayer(player2);
         NormalLevelCreator.setPlayerList(game.getPlayerList());

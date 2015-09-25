@@ -40,6 +40,10 @@ public class Leaderboard {
         this.scoreList = scoreList;
     }
     
+    public void resetScoreList() {
+    	this.scoreList = new ArrayList<endScore>();
+    }
+    
     /**
      * write the Leaderboard to a text file.
      * 

@@ -1,5 +1,6 @@
 package game.bubble;
 
+import game.Settings;
 import game.wall.BubbleWall;
 import game.wall.DuoWall;
 import game.Settings;

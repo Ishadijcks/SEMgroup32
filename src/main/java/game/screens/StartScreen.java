@@ -1,7 +1,10 @@
 package game.screens;
 
 import game.Driver;
+import game.DriverBuilder;
+import game.MainRunner;
 import game.NormalDriver;
+import game.SurvivalDriver;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -26,13 +29,13 @@ import javax.swing.JTextField;
 public class StartScreen extends JFrame {
 
     JButton startButton;
+    JButton startSurvButton;
     JButton settingsButton;
     JButton stopButton;
     
-    final private Driver dr;
     final private JFrame jf;
 
-    public StartScreen(Driver driver) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
+    public StartScreen() throws UnsupportedAudioFileException, IOException, LineUnavailableException{
 
         setTitle("Start screen");
         setSize(700, 700);
@@ -65,26 +68,33 @@ public class StartScreen extends JFrame {
         //setLayout(new FlowLayout());
         setLayout(null);
 
-        startButton = new JButton("Start game");
+        startButton = new JButton("Start Normal game");
         startButton.setBackground(Color.RED);
         startButton.setForeground(Color.WHITE);
         startButton.setFont(new Font("Calibri", Font.BOLD, 30));
         startButton.setOpaque(true);
         startButton.setBounds(55, 300, 250, 60);
+        
+        startSurvButton = new JButton("Start Survival game");
+        startSurvButton.setBackground(Color.RED);
+        startSurvButton.setForeground(Color.WHITE);
+        startSurvButton.setFont(new Font("Calibri", Font.BOLD, 30));
+        startSurvButton.setOpaque(true);
+        startSurvButton.setBounds(55, 400, 250, 60);
 
         settingsButton = new JButton("Settings");
         settingsButton.setBackground(Color.RED);
         settingsButton.setForeground(Color.WHITE);
         settingsButton.setFont(new Font("Calibri", Font.BOLD, 30));
         settingsButton.setOpaque(true);
-        settingsButton.setBounds(55, 400, 250, 60);
+        settingsButton.setBounds(55, 500, 250, 60);
 
         stopButton = new JButton("Exit");
         stopButton.setBackground(Color.RED);
         stopButton.setForeground(Color.WHITE);
         stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
         stopButton.setOpaque(true);
-        stopButton.setBounds(55, 500, 250, 60);
+        stopButton.setBounds(55, 600, 250, 60);
         
         Font font = new Font("Calibri", Font.PLAIN, 25);
         JLabel nameInput = new JLabel("Enter name and start game: ");
@@ -99,13 +109,30 @@ public class StartScreen extends JFrame {
         tf.setLocation(375, 165);
         tf.setFont(font2);
         
-        dr = driver;
 
         startButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent startGame) {
                 setVisible(false);
                 dispose();
-                dr.startGame(tf.getText());
+                Driver d = DriverBuilder.buildDriver(0);
+                d.setupGame();
+                d.initDriver();
+                d.initGame();
+                d.startGame("");
+                MainRunner.setDriver(d);
+            }
+        });
+        
+        startSurvButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent startGame) {
+                setVisible(false);
+                dispose();
+                Driver d = DriverBuilder.buildDriver(1);
+                d.setupGame();
+                d.initDriver();
+                d.initGame();
+                d.startGame("");
+                MainRunner.setDriver(d);
             }
         });
 
@@ -123,6 +150,7 @@ public class StartScreen extends JFrame {
         add(tf);
         
         add(startButton);
+        add(startSurvButton);
         add(settingsButton);
         add(stopButton);
 

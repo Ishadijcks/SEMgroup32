@@ -14,13 +14,13 @@ public class BubbleWallTest {
 	
 	@Before
 	public void init() {
-		w = new BubbleWall(10,11);
+		w = new BubbleWall(10);
 	}
 
 	@Test
 	public void testBubbleWall() {
 		assertEquals(10, w.getX());
-		assertEquals(11, w.getY());
+		assertEquals(0, w.getY());
 		assertEquals(Color.RED, w.getColor());
 	}
 

@@ -15,6 +15,7 @@ public abstract class Driver {
     protected static boolean canDrawGame = true;
     protected static boolean iceRope = false;
     protected static Player player;
+    public static Game game;
 
     public abstract void startScreen();
 
@@ -23,6 +24,10 @@ public abstract class Driver {
     public abstract void setupGame();
     
     public abstract void initGame();
+    
+    public abstract void initDriver();
+    
+    public abstract void driverHeart();
     
     
 

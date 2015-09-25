@@ -19,9 +19,7 @@ public class NormalLevelCreatorTest {
 
 	@Test
 	public void testGetLevelDefault() {
-		Bubble bubble1 = new Bubblex32(100, 100, false, false);
-        Level level1 = new NormalLevel(playerList);
-        level1.addBubble(bubble1);
+        Level level1 = NormalLevelCreator.getLevel1();
 		assertTrue(NormalLevelCreator.getLevel(Integer.MAX_VALUE).equals(level1));
 	}
 	
