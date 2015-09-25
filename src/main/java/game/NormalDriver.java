@@ -154,14 +154,14 @@ public class NormalDriver extends Driver {
 
                 for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
                     curLevel.getPowerupList().get(i).move();
-                    curLevel.checkPowerupCollision();
+                    curLevel.handlePowerupCollision();
                 }
 
                 if (curLevel.hasRope()) {
                     curLevel.getRope().move();
                 }
 
-                curLevel.checkCollisionRope();
+                curLevel.handleCollisionRope();
 
                 if (curLevel.checkCollisionPlayer()) {
                     game.getPlayerList().get(0).removeAllPowerUps();
