@@ -30,9 +30,5 @@ public class LogScreenTest {
 		
 	}
 
-	@Test
-	public void testReloadData() {
-		fail("Not yet implemented");
-	}
 
 }

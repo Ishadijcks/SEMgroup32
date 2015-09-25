@@ -12,17 +12,19 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class MyKeyListener extends KeyAdapter {
-
     
+    Game game;
+
+    public MyKeyListener(Game gameInput)
+    {
+        game = gameInput;
+    }
 
     /**
      * Checks what key is pressed, moves the player in that direction or shoots
      * a rope
      */
     public void keyPressed(KeyEvent evt) {
-
-       
-        NormalGame game = NormalDriver.game;
 
         if (game.inProgress()) {
             
@@ -74,8 +76,6 @@ public class MyKeyListener extends KeyAdapter {
      * direction
      */
     public void keyReleased(KeyEvent evt) {
-
-        NormalGame game = NormalDriver.game;
 
         switch (evt.getKeyCode()) {
 

@@ -8,7 +8,7 @@ public class GameCreator {
     public static SurvivalGame createSurvival(Player player1){
         SurvivalGame game = new SurvivalGame();
         game.addPlayer(player1);
-        NormalLevelCreator.setPlayerList(game.getPlayerList());
+        SurvivalLevelCreator.setPlayerList(game.getPlayerList());
         game.addLevel(SurvivalLevelCreator.getLevel());
         Logger.log("SurvivalGame game created",7,4);
         return game;

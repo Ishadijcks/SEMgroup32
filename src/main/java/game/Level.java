@@ -18,16 +18,21 @@ public class Level {
     private int width = Settings.getLevelWidth();
     private int height = Settings.getLevelHeight();
     private boolean increasedPowerupTime = false;
+    private boolean normalMode;
 
     /**
      * Constructor, initializes the bubble- and playerList
      */
-    public Level(ArrayList<Player> playerList) {
+    public Level(ArrayList<Player> playerList, boolean isNormalMode) {
         this.bubbleList = new ArrayList<Bubble>();
         this.playerList = playerList;
         this.powerupList = new ArrayList<Powerup>();
         this.wallList = new ArrayList<Wall>();
-        Logger.log("Level created", 8, 4);
+
+
+        Logger.log("Level created",8,4);
+        normalMode = isNormalMode;
+
     }
 
     public void resetBubble() {
@@ -170,8 +175,18 @@ public class Level {
         bubbleList.addAll(bubble.destroyBubble(x, y));
 
         if (Settings.getPowerupChance() > Math.random() * 100) {
-            Powerup powerup = generatePowerup(x, y, randomInt(1, 3));
-            powerupList.add(powerup);
+
+            if(normalMode)
+            {
+                Powerup powerup = generatePowerup(x, y, randomInt(1,3));
+                powerupList.add(powerup);
+            }
+            else
+            {
+                Powerup powerup = generatePowerup(x, y, randomInt(1,2));
+                powerupList.add(powerup);
+            }
+
         }
         
         checkDuoWalls(playerList.get(0).getX());
@@ -219,21 +234,43 @@ public class Level {
 
     public Powerup generatePowerup(int x, int y, int randomNumber1) {
         int randomNumber = randomNumber1;
-        switch (randomNumber) {
-        case 1:
-            Logger.log("Powerup speed spawned", 6, 4);
-            return new Powerup("speed", x, y);
-        case 2:
-            Logger.log("Powerup life spawned", 6, 4);
-            return new Powerup("life", x, y);
-        case 3:
-            Logger.log("Powerup ice spawned", 6, 4);
-            return new Powerup("ice", x, y);
-        default:
-            Logger.log("Powerup speed spawned", 6, 4);
-            Logger.log("generatePowerup switch default triggered", 6, 3);
-            return new Powerup("speed", x, y);
+
+        if(normalMode)
+        {
+            switch (randomNumber) {
+            case 1:
+                Logger.log("Powerup speed spawned", 6, 4);
+                return new Powerup("speed", x, y, normalMode);
+            case 2:
+                Logger.log("Powerup life spawned", 6, 4);
+                return new Powerup("life", x, y, normalMode);
+            case 3:
+                Logger.log("Powerup ice spawned", 6, 4);
+                return new Powerup("ice", x, y, normalMode);
+            default:
+                Logger.log("Powerup speed spawned", 6, 4);
+                Logger.log("generatePowerup switch default triggered",6, 3);
+                return new Powerup("speed", x, y, normalMode);
+            }
+
         }
+        else
+        {
+            switch (randomNumber) {
+            case 1:
+                Logger.log("Powerup speed spawned", 6, 4);
+                return new Powerup("speed", x, y, normalMode);
+            case 2:
+                Logger.log("Powerup ice spawned", 6, 4);
+                return new Powerup("ice", x, y, normalMode);
+            default:
+                Logger.log("Powerup speed spawned", 6, 4);
+                Logger.log("generatePowerup switch default triggered",6, 3);
+                return new Powerup("speed", x, y, normalMode);
+            }
+        }
+        
+        
     }
 
     /**
@@ -243,9 +280,17 @@ public class Level {
      *            bubble to add
      */
     public void addBubble(Bubble bubble) {
-        if (!bubbleList.contains(bubble)) {
+        if(normalMode)
+        {
+            if (!bubbleList.contains(bubble)) {
+                bubbleList.add(bubble);
+            }
+        }
+        else
+        {
             bubbleList.add(bubble);
         }
+       
     }
 
     /**
