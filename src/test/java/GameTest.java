@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import game.NormalGame;
 import game.Level;
+import game.NormalLevel;
 import game.NormalLevelCreator;
 import game.Player;
 import game.Score;
@@ -28,8 +29,8 @@ public class GameTest {
 	public void initGame() {
 		game = new NormalGame();
 		p = new ArrayList<Player>();
-		l = new Level(p, true);
-		k = new Level(p, true);
+		l = new NormalLevel(p);
+		k = new NormalLevel(p);
 		player = new Player("TestPlayer", 1, true);
 	}
 

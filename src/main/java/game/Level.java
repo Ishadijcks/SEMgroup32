@@ -77,14 +77,16 @@ public abstract class Level {
      * 
      * @return -1 if there is no collision otherwise the index of the bubble
      */
-    public void handleCollisionRope() {
+    public boolean handleCollisionRope() {
         if(hasRope()){
             int collision = Collisions.checkCollisionRope(bubbleList, rope);
             if (collision != -1) {
                 destroyBubble(collision);
                 setRope(null);
+                return true;
             }
         }
+        return false;
     }
 
     /**
@@ -223,7 +225,6 @@ public abstract class Level {
         this.rope = rope;
     }
 
-
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
@@ -244,8 +245,6 @@ public abstract class Level {
 		if (height != other.height)
 			return false;
 		if (increasedPowerupTime != other.increasedPowerupTime)
-			return false;
-		if (normalMode != other.normalMode)
 			return false;
 		if (numberOfRopes != other.numberOfRopes)
 			return false;
@@ -275,4 +274,5 @@ public abstract class Level {
 			return false;
 		return true;
 	}
+
 }

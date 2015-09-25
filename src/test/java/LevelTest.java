@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import game.Level;
+import game.NormalLevel;
 import game.Player;
 import game.Powerup;
 import game.Rope;
@@ -29,7 +30,7 @@ public class LevelTest {
 	public void init() {
 		bubble = new Bubblex16(2,2,true,true);
 		p = new ArrayList<Player>();
-		l = new Level(p, true);
+		l = new NormalLevel(p);
 		bubbleList = new ArrayList<Bubble>();
 		plist = new ArrayList<Powerup>();
 		powr = new Powerup("speed", 0,0, true);

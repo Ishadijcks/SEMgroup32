@@ -1,6 +1,7 @@
 package test.player;
 import static org.junit.Assert.*;
 import game.Level;
+import game.NormalLevel;
 import game.Player;
 import game.Rope;
 import game.bubble.Bubble;
@@ -36,7 +37,7 @@ public class PlayerBubbleCollisionTest {
         player = new Player("Test", 100, true);
         p = new ArrayList<Player>();
         p.add(player);
-        l = new Level(p, true);
+        l = new NormalLevel(p);
         bubbleList = new ArrayList<Bubble>();
         l.addBubble(bubble);
         this.expected = exp;
