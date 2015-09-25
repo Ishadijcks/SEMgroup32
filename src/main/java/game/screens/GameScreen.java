@@ -90,6 +90,7 @@ public class GameScreen extends JPanel {
 
     public void startGame() {
         frame.setVisible(true);
+        frame.requestFocus();
     }
 
     public void levelWon() {
