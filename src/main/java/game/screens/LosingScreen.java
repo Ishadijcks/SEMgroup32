@@ -57,6 +57,7 @@ public class LosingScreen extends JFrame {
          
          String imageLocation = location.getFile();
          imageLocation = imageLocation.replace("%20", " ");
+         imageLocation = imageLocation.replace("target/classes/", "src/");
 
          //setLayout(new BorderLayout());
          setContentPane(new JLabel(new ImageIcon(imageLocation

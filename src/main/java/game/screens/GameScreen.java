@@ -78,8 +78,6 @@ public class GameScreen extends JPanel {
         frame = new JFrame("Game Screen");
         imageLocation = imageLocation.replace("%20", " ");
         imageLocation = imageLocation.replace("target/classes/", "/");
-        
-        imageLocation = imageLocation.startsWith("/") ? imageLocation.substring(1) : imageLocation;
     }
 
     /**
