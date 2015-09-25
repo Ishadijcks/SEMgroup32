@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import game.NormalDriver;
 import game.Powerup;
 import game.Settings;
+import game.SurvivalDriver;
 import game.screens.StartScreen;
 
 import org.junit.Before;
@@ -112,11 +113,23 @@ public class PowerupTest {
 	}
 	
 	@Test
-	public void testMove(){
+	public void testMoveNormalMode(){
 		NormalDriver driver = new NormalDriver(null);
 		driver.initGame();
 		driver.setupGame();
 		Powerup pow = new Powerup("ice", 100, 100, true);
+		int deltaY = Settings.getPowerupSpeed();
+		int initY = 100;
+		pow.move();
+		assertEquals(initY + deltaY, pow.getY());
+	}
+	
+	@Test
+	public void testMoveSurvivalMode(){
+		SurvivalDriver driver = new SurvivalDriver(null);
+		driver.initGame();
+		driver.setupGame();
+		Powerup pow = new Powerup("ice", 100, 100, false);
 		int deltaY = Settings.getPowerupSpeed();
 		int initY = 100;
 		pow.move();

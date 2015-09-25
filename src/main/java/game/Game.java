@@ -155,4 +155,35 @@ public class Game {
     public void toggleProgress(){
         inProgress = !inProgress;
     }
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Game other = (Game) obj;
+		if (currentLevel != other.currentLevel)
+			return false;
+		if (inProgress != other.inProgress)
+			return false;
+		if (levelList == null) {
+			if (other.levelList != null)
+				return false;
+		} else if (!levelList.equals(other.levelList))
+			return false;
+		if (lives != other.lives)
+			return false;
+		if (playerList == null) {
+			if (other.playerList != null)
+				return false;
+		} else if (!playerList.equals(other.playerList))
+			return false;
+		return true;
+	}
 }

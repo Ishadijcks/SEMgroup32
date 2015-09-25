@@ -1,3 +1,4 @@
+package test.player;
 import static org.junit.Assert.*;
 import game.NormalDriver;
 import game.GameCreator;

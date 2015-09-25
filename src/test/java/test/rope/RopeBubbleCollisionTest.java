@@ -1,3 +1,4 @@
+package test.rope;
 
 import static org.junit.Assert.assertEquals;
 import game.NormalDriver;

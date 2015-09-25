@@ -6,7 +6,6 @@ public class MathFunctions {
 
     /**
      * Create a random integer
-     * 
      * @param min
      * @param max
      * @return a random integer
