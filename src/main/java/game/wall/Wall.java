@@ -1,4 +1,6 @@
-package game;
+package game.wall;
+
+import game.Settings;
 
 import java.awt.Color;
 
@@ -56,4 +58,5 @@ public class Wall {
         bouncedOn++;
         setActive(false);
     }
+
 }

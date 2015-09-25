@@ -1,8 +1,11 @@
+package test.player;
 import static org.junit.Assert.*;
 import game.Level;
+import game.NormalLevel;
 import game.Player;
-import game.Powerup;
+import game.Rope;
 import game.bubble.Bubble;
+import game.bubble.Bubblex16;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,35 +17,35 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class PlayerPowerupCollisionTest {
+public class PlayerBubbleCollisionTest {
 
-	@Parameters
+    @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
-        		{ 35, 550, true }, { 161, 550, true },
-        		{ 34, 550, false }, { 162, 550, false },
-        		{ 36, 550, true }, { 160, 550, true },
-        		{ 50, 550, true }, { 146, 550, true },
-        		{ 35, 440, true }, { 35, 550, true },
-        		{ 35, 439, false }, { 35, 551, false},
-        		{ 35, 450, true }, { 35, 540, true} });
+        		{ 100, 450, true }, { 1000, 0, false } });
     }
 
     public Level l;
     public Player player;
-    public Powerup pow;
+    public Bubble bubble;
+    public ArrayList<Bubble> bubbleList;
     public ArrayList<Player> p;
     private boolean expected;
 
-    public PlayerPowerupCollisionTest(int x, int y, boolean exp) {
+    public PlayerBubbleCollisionTest(int x, int y, boolean exp) {
+        bubble = new Bubblex16(x, y, true, true);
         player = new Player("Test", 100, true);
         p = new ArrayList<Player>();
         p.add(player);
-      
-        pow = new Powerup("speed", x, y, true);
-        l.addPowerup(pow);
+        l = new NormalLevel(p);
+        bubbleList = new ArrayList<Bubble>();
+        l.addBubble(bubble);
         this.expected = exp;
     }
 
-  
+    @Test
+    public void testCheckCollisionRope() {
+        assertEquals(this.expected, l.checkCollisionPlayer());
+    }
+
 }

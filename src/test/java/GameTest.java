@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import game.NormalGame;
 import game.Level;
+import game.NormalLevel;
+import game.NormalLevelCreator;
 import game.Player;
 import game.Score;
 
@@ -27,6 +29,8 @@ public class GameTest {
 	public void initGame() {
 		game = new NormalGame();
 		p = new ArrayList<Player>();
+		l = new NormalLevel(p);
+		k = new NormalLevel(p);
 		player = new Player("TestPlayer", 1, true);
 	}
 
@@ -96,6 +100,51 @@ public class GameTest {
 		int lives = game.getLives();
 		game.loseLife();
 		assertEquals(lives - 1, game.getLives());
+	}
+	
+	@Test
+	public void testSetLevelList() {
+		ArrayList<Level> llist = new ArrayList<Level>();
+		llist.add(k);
+		llist.add(l);
+		
+		assertTrue(game.getLevelList().isEmpty());
+		game.setLevelList(llist);
+		assertTrue(game.getLevelList().equals(llist));
+	}
+	
+	@Test
+	public void testResetLevel() {
+		Level firstLevel = NormalLevelCreator.getLevel(1);
+		game.addLevel(firstLevel);
+		assertTrue(game.getLives() == 5);
+		assertTrue(game.getCurrentLevel().equals(firstLevel));
+		game.resetLevel();
+		assertTrue(game.getCurrentLevel().equals(firstLevel));
+		assertTrue(game.getLives() == 4);
+	}
+	
+	@Test
+	public void testLoseLifeNoLifes() {
+		assertTrue(game.getLives() == 5);
+		game.loseLife();
+		assertTrue(game.getLives() == 4);
+	}
+	
+	@Test
+	public void testLoseLifeManyLifes() {
+		assertTrue(game.getLives() == 5);
+		game.setLives(0);
+		assertTrue(game.getLives() == 0);
+		game.loseLife();
+		assertTrue(game.getLives() == 0);
+	}
+	
+	@Test
+	public void testGetLife() {
+		assertTrue(game.getLives() == 5);
+		game.getLife();
+		assertTrue(game.getLives() == 6);
 	}
 
 }

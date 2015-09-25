@@ -1,4 +1,4 @@
-package game;
+package game.wall;
 
 import java.awt.Color;
 

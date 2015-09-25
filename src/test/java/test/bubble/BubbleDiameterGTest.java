@@ -1,3 +1,4 @@
+package test.bubble;
 
 import static org.junit.Assert.*;
 import game.Settings;
