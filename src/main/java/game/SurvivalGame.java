@@ -1,5 +1,7 @@
 package game;
 
+import java.util.ArrayList;
+
 /**
  * Class that handles everything of one game.
  * 
@@ -15,5 +17,8 @@ public class SurvivalGame extends Game {
         super();
         lives = 1;
     }
-    
+    public void update(){
+        SurvivalLevel sl = (SurvivalLevel) levelList.get(currentLevel -1);
+        sl.spawnBubble();
+    }
 }

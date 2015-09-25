@@ -172,6 +172,8 @@ public class SurvivalDriver extends Driver {
 
         while (true) {
             if (game.inProgress()) {
+                game.update();
+                
                 curLevel = game.getCurrentLevel();
                 
                 int currentTime = (int) System.currentTimeMillis();
