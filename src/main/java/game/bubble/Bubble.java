@@ -1,9 +1,9 @@
 package game.bubble;
 
-import game.BubbleWall;
-import game.DuoWall;
+import game.wall.BubbleWall;
+import game.wall.DuoWall;
 import game.Settings;
-import game.Wall;
+import game.wall.Wall;
 import game.log.Logger;
 
 import java.awt.Color;
