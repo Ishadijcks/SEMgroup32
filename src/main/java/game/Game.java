@@ -4,7 +4,7 @@ import game.log.Logger;
 
 import java.util.ArrayList;
 
-public class Game {
+public abstract class Game {
     protected ArrayList<Level> levelList = new ArrayList<Level>();
     protected ArrayList<Player> playerList;
     protected int lives = Settings.getLives();
