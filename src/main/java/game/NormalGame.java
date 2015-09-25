@@ -23,4 +23,16 @@ public class NormalGame extends Game {
             inProgress = false;
         }
     }
+
+	@Override
+	public void gameLost() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

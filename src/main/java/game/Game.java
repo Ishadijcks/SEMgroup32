@@ -155,6 +155,12 @@ public abstract class Game {
     public void toggleProgress(){
         inProgress = !inProgress;
     }
+    
+    public abstract void gameLost();
+    
+    public abstract void update();
+    
+    public abstract void gameWon();
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)

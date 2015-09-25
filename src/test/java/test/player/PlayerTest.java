@@ -1,5 +1,8 @@
 package test.player;
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import game.NormalDriver;
 import game.GameCreator;
 import game.Player;
@@ -7,6 +10,7 @@ import game.Powerup;
 import game.Settings;
 import game.SurvivalDriver;
 import game.SurvivalGame;
+import game.wall.Wall;
 
 import org.junit.Test;
 
@@ -55,7 +59,7 @@ public class PlayerTest {
     public void testMoveLeft() {
         int x = player.getX();
         player.movingLeft();
-     //   player.move();
+        player.move(new ArrayList<Wall>());
         assertEquals(x - Settings.getPlayerStepSize(), player.getX());
     }
 
@@ -64,7 +68,7 @@ public class PlayerTest {
     	Player play = new Player("test", 0, true);
         int x = player.getX();
         play.movingLeft();
-        play.move();
+        play.move(new ArrayList<Wall>());
         assertEquals(x, player.getX());
     }
 
@@ -72,7 +76,7 @@ public class PlayerTest {
     public void testMoveRight() {
         int x = player.getX();
         player.movingRight();
-   //     player.move();
+        player.move(new ArrayList<Wall>());
         assertEquals(x + Settings.getPlayerStepSize(), player.getX());
     }
 
@@ -81,7 +85,7 @@ public class PlayerTest {
     	Player play = new Player("test", 10000, true);
         int x = player.getX();
         play.movingRight();
-        play.move();
+        play.move(new ArrayList<Wall>());
         assertEquals(x, player.getX());
     }
     
@@ -91,7 +95,7 @@ public class PlayerTest {
         player.movingRight();
     	player.setPowerup(new Powerup("speed", 100, 60, true));
     	player.getPowerupList().get(0).deActivate();
-  //  	player.move();
+    	player.move(new ArrayList<Wall>());
         assertEquals(x + Settings.getPlayerStepSize(), player.getX());
     }
     
@@ -101,7 +105,7 @@ public class PlayerTest {
         player.movingRight();
     	player.setPowerup(new Powerup("ice", 100, 60, true));
     	player.getPowerupList().get(0).deActivate();
-   // 	player.move();
+    	player.move(new ArrayList<Wall>());
         assertEquals(x + Settings.getPlayerStepSize(), player.getX());
     }
 
@@ -125,7 +129,7 @@ public class PlayerTest {
         player.setPowerup(new Powerup("speed", 100, 60, true));
         int x = player.getX();
         player.movingLeft();
-   //     player.move();
+        player.move(new ArrayList<Wall>());
         assertEquals(x - Settings.getPlayerPowerupStepSize(), player.getX());
     }
 
@@ -134,7 +138,7 @@ public class PlayerTest {
         player.setPowerup(new Powerup("speed", 100, 60, true));
         int x = player.getX();
         player.movingRight();
-  //      player.move();
+        player.move(new ArrayList<Wall>());
         assertEquals(x + Settings.getPlayerPowerupStepSize(), player.getX());
     }
 

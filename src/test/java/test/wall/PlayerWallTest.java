@@ -14,13 +14,13 @@ public class PlayerWallTest {
 	
 	@Before
 	public void init(){
-		w = new PlayerWall(10,11);
+		w = new PlayerWall(10);
 	}
 
 	@Test
 	public void testPlayerWall() {
 		assertEquals(10, w.getX());
-		assertEquals(11, w.getY());
+		assertEquals(0, w.getY());
 		assertEquals(Color.GREEN, w.getColor());
 	}
 

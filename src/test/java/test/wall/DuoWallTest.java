@@ -15,13 +15,13 @@ public class DuoWallTest {
 	
 	@Before
 	public void init() {
-		w = new DuoWall(10,11);
+		w = new DuoWall(10);
 	}
 
 	@Test
 	public void testDuoWall() {
 		assertEquals(10, w.getX());
-		assertEquals(11, w.getY());
+		assertEquals(0, w.getY());
 		assertEquals(Color.BLUE, w.getColor());
 	}
 
