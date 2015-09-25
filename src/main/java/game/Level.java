@@ -68,26 +68,7 @@ public abstract class Level {
      * @return
      */
     public boolean checkCollisionPlayer() {
-        for (int i = 0; i < bubbleList.size(); i++) {
-            Bubble bubble = bubbleList.get(i);
-            // if the x of the player and the bubble is the same
-            // then there is a chance the rope hits the bubble
-            // /// Diameter NOT IN ACCOUNT JET AND SIZE OF PLAYER
-            Player player = playerList.get(0);
-
-            if (player.getX() <= (bubble.getX() + bubble.getDiameter())
-                    && (player.getCollisionX() + player.getWidth()) >= bubble
-                            .getX()
-                    && player.getCollisionY() <= (bubble.getY() + bubble
-                            .getDiameter())
-                    && (player.getY() + player.getHeight()) >= bubble.getY()) {
-                if (player.getCollisionY() <= bubble.getY()) {
-                    Logger.log("Player collided with a bubble", 8, 4);
-                    return true;
-                }
-            }
-        }
-        return false;
+        return Collisions.checkCollisionPlayer(bubbleList, playerList);
     }
 
     /**
@@ -95,78 +76,54 @@ public abstract class Level {
      * 
      * @return -1 if there is no collision otherwise the index of the bubble
      */
-    public boolean checkCollisionRope() {
-        if (hasRope()) {
-            for (int i = 0; i < bubbleList.size(); i++) {
-                // if the x of the rope and the bubble is the same
-                // then there is a chance the rope hits the bubble
-                // /// RADIUS NOT IN ACCOUNT JET
-                if (bubbleList.get(i).getX() <= rope.getX()) {
-                    if (bubbleList.get(i).getX()
-                            + bubbleList.get(i).getDiameter() >= rope.getX()) {
-                        if (bubbleList.get(i).getY()
-                                + bubbleList.get(i).getDiameter() >= rope
-                                    .getY()) {
-                            System.out.println(i);
-                            destroyBubble(i);
-                            setRope(null);
-                            Logger.log("Rope collided with a bubble", 8, 4);
-                            return true;
-                        }
-                    }
-                }
+    public void handleCollisionRope() {
+        if(hasRope()){
+            int collision = Collisions.checkCollisionRope(bubbleList, rope);
+            if (collision != -1) {
+                destroyBubble(collision);
+                setRope(null);
             }
         }
-        return false;
     }
 
     /**
      * Checks if the player collided with a powerup
      */
 
-    public boolean checkPowerupCollision() {
-
-        Player player1 = playerList.get(0);
-        for (int i = 0; i < powerupList.size(); i++) {
+    public boolean handlePowerupCollision() {
+        int i = Collisions.checkCollisionPowerup(playerList, powerupList);
+        if (i != -1) {
             Powerup powerup = powerupList.get(i);
-
-            if (player1.getCollisionX() <= (powerup.getX() + powerup.getWidth())
-                    && (player1.getCollisionX() + player1.getWidth()) >= powerup
-                            .getX()
-                    && player1.getCollisionY() <= (powerup.getY() + powerup
-                            .getHeight())
-                    && (player1.getY() + player1.getHeight()) >= powerup.getY()) {
-
-                Logger.log("Player collided with a powerup", 8, 4);
-
-                int powerupListSize = playerList.get(0).getPowerupList().size();
-                if (powerupListSize > 0) {
-                    for (int i1 = 0; i1 < powerupListSize; i1++) {
-                        if (playerList.get(0).getPowerupList().get(i1)
-                                .samePowerup(powerup)) {
-                            playerList.get(0).getPowerupList().get(i1)
-                                    .resetFramesLeft();
-                            Logger.log("Power up time "
-                                    + playerList.get(0).getPowerupList()
-                                            .get(i1).getName() + " reset", 6, 4);
-                            increasedPowerupTime = true;
-                            powerupList.remove(i);
-                        }
+            int powerupListSize = playerList.get(0).getPowerupList().size();
+            if (powerupListSize > 0) {
+                for (int i1 = 0; i1 < powerupListSize; i1++) {
+                    if (playerList.get(0).getPowerupList().get(i1)
+                            .samePowerup(powerup)) {
+                        playerList.get(0).getPowerupList().get(i1)
+                                .resetFramesLeft();
+                        Logger.log("Power up time "
+                                + playerList.get(0).getPowerupList().get(i1)
+                                        .getName() + " reset", 6, 4);
+                        increasedPowerupTime = true;
+                        powerupList.remove(i);
                     }
                 }
-                if (!increasedPowerupTime) {
-                    playerList.get(0).setPowerup(powerupList.get(i));
-                    Logger.log("Power up time " + powerupList.get(i).getName()
-                            + " added", 6, 4);
-
-                    powerupList.remove(i);
-                }
-                increasedPowerupTime = false;
-                return true;
             }
+            if (!increasedPowerupTime) {
+                playerList.get(0).setPowerup(powerupList.get(i));
+                Logger.log("Power up time " + powerupList.get(i).getName()
+                        + " added", 6, 4);
+
+                powerupList.remove(i);
+            }
+            increasedPowerupTime = false;
+            return true;
         }
         return false;
     }
+
+
+    
 
     /**
      * Calls the add score method from the game.
@@ -194,6 +151,7 @@ public abstract class Level {
             break;
         }
     }
+    
 
     /**
      * Generate random integer.

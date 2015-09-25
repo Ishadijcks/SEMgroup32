@@ -57,7 +57,6 @@ public class SurvivalLevel extends Level {
         if (Settings.getPowerupChance() > Math.random() * 100) {
             Powerup powerup = generatePowerup(x, y, randomInt(1, 2));
             powerupList.add(powerup);
-
         }
     }
 
