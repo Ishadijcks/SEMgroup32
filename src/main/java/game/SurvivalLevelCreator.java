@@ -21,7 +21,7 @@ public class SurvivalLevelCreator {
      */
     public static Level getLevel() {
         Bubble bubble1 = new Bubblex32(100, 100, false, false);
-        Level level1 = new Level(playerList, false);
+        Level level1 = new SurvivalLevel(playerList);
         level1.addBubble(bubble1);
         return level1;
     }

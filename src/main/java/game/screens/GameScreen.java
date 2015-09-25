@@ -74,15 +74,17 @@ public class GameScreen extends JPanel {
 
     public GameScreen() throws UnsupportedAudioFileException, IOException,
             LineUnavailableException {
-
         frame = new JFrame("Game Screen");
+        imageLocation = imageLocation.replace("%20", " ");
+        imageLocation = imageLocation.replace("target/classes/", "/");
+        
+        imageLocation = imageLocation.startsWith("/") ? imageLocation.substring(1) : imageLocation;
     }
 
     /**
      * dispose the screen.
      */
     public void dispose() {
-        System.out.println("dispose");
         frame.dispose();
     }
 
@@ -92,7 +94,6 @@ public class GameScreen extends JPanel {
     
     public void levelWon(){
 
-        System.out.println("next level albel");
         final JLabel label = new JLabel("test");
         label.setText("Congratulations! Level won!");
         frame.add(label);
@@ -172,7 +173,6 @@ public class GameScreen extends JPanel {
             // Calculate the margin left to center the board
             centerConstant = Settings.getLeftMargin();
             topMargin = Settings.getTopMargin();
-            imageLocation = imageLocation.replace("%20", " ");
             super.paint(graph);
             g2d = (Graphics2D) graph;
             g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -384,14 +384,13 @@ public class GameScreen extends JPanel {
                 // player.getWidth(), player.getHeight());
 
                 // Get the images of the left flying or right flying dragon
-                imageLocation = imageLocation.replace("%20", " ");
                 ImageIcon dragonLeft = new ImageIcon(imageLocation
-                        + "main/Images/dragon/dragonL" + animationLeftCounter
+                        + "src/main/Images/dragon/dragonL" + animationLeftCounter
                         + ".png");
                 ImageIcon dragonRight = new ImageIcon(imageLocation
-                        + "main/Images/dragon/dragonR" + animationRightCounter
+                        + "src/main/Images/dragon/dragonR" + animationRightCounter
                         + ".png");
-
+System.out.println(dragonLeft);
                 // Get the current X position of the player.
                 int newX = player.getX();
 
@@ -407,7 +406,7 @@ public class GameScreen extends JPanel {
                     // right now.
                     if (dragonIsRight && !(dragonIsMoving)) {
                         ImageIcon dragonRightNormal = new ImageIcon(
-                                imageLocation + "main/Images/dragon/dragonR"
+                                imageLocation + "src/main/Images/dragon/dragonR"
                                         + 10 + ".png");
                         g2d.drawImage(dragonRightNormal.getImage(),
                                 player.getX() - 50, player.getY(), this);
@@ -417,7 +416,7 @@ public class GameScreen extends JPanel {
                     // now.
                     else if (!(dragonIsMoving)) {
                         ImageIcon dragonLeftNormal = new ImageIcon(
-                                imageLocation + "main/Images/dragon/dragonL"
+                                imageLocation + "src/main/Images/dragon/dragonL"
                                         + 10 + ".png");
                         g2d.drawImage(dragonLeftNormal.getImage(),
                                 player.getX() - 50, player.getY(), this);
@@ -463,7 +462,7 @@ public class GameScreen extends JPanel {
                 // Draw the dragon spitting fire
                 if (dragonIsRight) {
                     ImageIcon dragonRightFire = new ImageIcon(imageLocation
-                            + "main/Images/dragon/fireR" + fireRightCounter
+                            + "src/main/Images/dragon/fireR" + fireRightCounter
                             + ".png");
                     g2d.drawImage(dragonRightFire.getImage(), game
                             .getPlayerList().get(0).getX() - 50, player.getY(),
@@ -473,7 +472,7 @@ public class GameScreen extends JPanel {
                     }
                 } else {
                     ImageIcon dragonLeftFire = new ImageIcon(imageLocation
-                            + "main/Images/dragon/fireL" + fireLeftCounter
+                            + "src/main/Images/dragon/fireL" + fireLeftCounter
                             + ".png");
                     g2d.drawImage(dragonLeftFire.getImage(), game
                             .getPlayerList().get(0).getX() - 50, player.getY(),
@@ -527,7 +526,7 @@ public class GameScreen extends JPanel {
             g2d.drawString("Lives: ", centerConstant, curLevel.getHeight() + 45
                     + topMargin);
             ImageIcon life = new ImageIcon(imageLocation
-                    + "main/Images/life.png");
+                    + "src/main/Images/life.png");
             for (int i = 0; i < game.getLives(); i++) {
                 g2d.drawImage(life.getImage(), centerConstant + 125 + 25 * i,
                         curLevel.getHeight() + 16 + topMargin, this);
