@@ -38,15 +38,11 @@ public class PlayerPowerupCollisionTest {
         player = new Player("Test", 100, true);
         p = new ArrayList<Player>();
         p.add(player);
-        l = new Level(p, true);
+      
         pow = new Powerup("speed", x, y, true);
         l.addPowerup(pow);
         this.expected = exp;
     }
 
-    @Test
-    public void testCheckCollisionRope() {
-        assertEquals(this.expected, l.checkPowerupCollision());
-    }
-
+  
 }

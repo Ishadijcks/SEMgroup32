@@ -35,7 +35,7 @@ public class PlayerBubbleCollisionTest {
         player = new Player("Test", 100, true);
         p = new ArrayList<Player>();
         p.add(player);
-        l = new Level(p, true);
+    
         bubbleList = new ArrayList<Bubble>();
         l.addBubble(bubble);
         this.expected = exp;

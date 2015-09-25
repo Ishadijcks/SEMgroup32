@@ -27,8 +27,6 @@ public class GameTest {
 	public void initGame() {
 		game = new NormalGame();
 		p = new ArrayList<Player>();
-		l = new Level(p, true);
-		k = new Level(p, true);
 		player = new Player("TestPlayer", 1, true);
 	}
 

@@ -37,7 +37,7 @@ public class RopeBubbleCollisionTest {
     public RopeBubbleCollisionTest(int x, int y, boolean exp) {
         bubble = new Bubblex16(20, 50, true, true);
         p = new ArrayList<Player>();
-        l = new Level(p, true);
+      
         bubbleList = new ArrayList<Bubble>();
         Rope r = new Rope(x, y, true);
         l.setRope(r);
@@ -49,9 +49,5 @@ public class RopeBubbleCollisionTest {
         nd.initGame();
     }
 
-    @Test
-    public void testCheckCollisionRope() {
-        assertEquals(this.expected, l.checkCollisionRope());
-    }
-
+  
 }
