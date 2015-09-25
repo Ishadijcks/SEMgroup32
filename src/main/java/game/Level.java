@@ -2,6 +2,8 @@ package game;
 
 import game.bubble.Bubble;
 import game.log.Logger;
+import game.wall.BubbleWall;
+import game.wall.DuoWall;
 import game.wall.Wall;
 
 import java.awt.Color;
