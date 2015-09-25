@@ -1,7 +1,7 @@
 
 
 import static org.junit.Assert.*;
-import game.LogScreen;
+import game.screens.LogScreen;
 
 import java.io.IOException;
 
@@ -30,9 +30,5 @@ public class LogScreenTest {
 		
 	}
 
-	@Test
-	public void testReloadData() {
-		fail("Not yet implemented");
-	}
 
 }

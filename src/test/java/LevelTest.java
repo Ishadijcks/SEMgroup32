@@ -3,11 +3,12 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import game.Bubble;
 import game.Level;
 import game.Player;
 import game.Powerup;
 import game.Rope;
+import game.bubble.Bubble;
+import game.bubble.Bubblex16;
 
 import java.util.ArrayList;
 
@@ -26,12 +27,12 @@ public class LevelTest {
 	
 	@Before
 	public void init() {
-		bubble = new Bubble(18,2,2,true,true);
+		bubble = new Bubblex16(2,2,true,true);
 		p = new ArrayList<Player>();
-		l = new Level(p);
+		l = new Level(p, true);
 		bubbleList = new ArrayList<Bubble>();
 		plist = new ArrayList<Powerup>();
-		powr = new Powerup("speed", 0,0);
+		powr = new Powerup("speed", 0,0, true);
 	}
 
 	@Test
@@ -41,33 +42,23 @@ public class LevelTest {
 		assertTrue(l.getPowerupList().equals(plist));
 	}
 
-
-
-	
-	@Test
-	public void testDestroyBubbleBig() {
-		l.addBubble(bubble);
-		l.destroyBubble(0);
-		assertEquals(2, l.getBubbleList().size());
-	}
-
 	@Test
 	public void testGeneratePowerupSpeed() {
-		Powerup pow = new Powerup("speed", 0, 0);
+		Powerup pow = new Powerup("speed", 0, 0, true);
 		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(1, 1));
 		assertTrue(pow.equals(pow2));
 	}
 	
 	@Test
 	public void testGeneratePowerupLife() {
-		Powerup pow = new Powerup("life", 0, 0);
+		Powerup pow = new Powerup("life", 0, 0, true);
 		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(2, 2));
 		assertTrue(pow.equals(pow2));
 	}
 	
 	@Test
 	public void testGeneratePowerupDefault() {
-		Powerup pow = new Powerup("speed", 0, 0);
+		Powerup pow = new Powerup("speed", 0, 0, true);
 		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(1000, 1000000));
 		assertTrue(pow.equals(pow2));
 	}
@@ -89,7 +80,7 @@ public class LevelTest {
 
 	@Test
 	public void testSetRope() {
-		Rope r = new Rope(0, 0);
+		Rope r = new Rope(0, 0, true);
 		assertNull(l.getRope());
 		l.setRope(r);
 		assertEquals(r, l.getRope());

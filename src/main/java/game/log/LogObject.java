@@ -1,4 +1,4 @@
-package game;
+package game.log;
 
 /**
  * A simple log object.

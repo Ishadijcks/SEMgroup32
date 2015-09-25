@@ -1,5 +1,8 @@
 package game;
 
+import game.bubble.Bubble;
+import game.log.Logger;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
@@ -8,21 +11,25 @@ public class Level {
     private ArrayList<Bubble> bubbleList;
     private ArrayList<Player> playerList;
     private ArrayList<Powerup> powerupList;
+    private ArrayList<Wall> wallList;
     private Rope rope = null;
     private int numberOfRopes = 0;
     private int timeLeft;
     private int width = Settings.getLevelWidth();
     private int height = Settings.getLevelHeight();
     private boolean increasedPowerupTime = false;
+    private boolean normalMode;
 
     /**
      * Constructor, initializes the bubble- and playerList
      */
-    public Level(ArrayList<Player> playerList) {
+    public Level(ArrayList<Player> playerList, boolean isNormalMode) {
         this.bubbleList = new ArrayList<Bubble>();
         this.playerList = playerList;
         this.powerupList = new ArrayList<Powerup>();
+        this.wallList = new ArrayList<Wall>();
         Logger.log("Level created",8,4);
+        normalMode = isNormalMode;
     }
 
     public void resetBubble() {
@@ -85,6 +92,7 @@ public class Level {
                         if (bubbleList.get(i).getY()
                                 + bubbleList.get(i).getDiameter() >= rope
                                     .getY()) {
+                        	System.out.println(i);
                             destroyBubble(i);
                             setRope(null);
                             Logger.log("Rope collided with a bubble",8,4);
@@ -152,21 +160,24 @@ public class Level {
         int x = bubble.getX();
         int y = bubble.getY();
         int diameter = bubble.getDiameter();
-        // Sets the color depending on the radius of the bubble
+        
         addScore(diameter);
         bubbleList.remove(i);
 
-        if (diameter > 10) {
-            Bubble newBubble1 = new Bubble(diameter / 2, x, y, false, false);
-            Bubble newBubble2 = new Bubble(diameter / 2, x, y, true, false);
-
-            bubbleList.add(newBubble1);
-            bubbleList.add(newBubble2);
-
-        }
+        bubbleList.addAll(bubble.destroyBubble(x, y));
+        
         if (Settings.getPowerupChance() > Math.random() * 100) {
-            Powerup powerup = generatePowerup(x, y, randomInt(1,3));
-            powerupList.add(powerup);
+            if(normalMode)
+            {
+                Powerup powerup = generatePowerup(x, y, randomInt(1,3));
+                powerupList.add(powerup);
+            }
+            else
+            {
+                Powerup powerup = generatePowerup(x, y, randomInt(1,2));
+                powerupList.add(powerup);
+            }
+            
         }
     }
     
@@ -177,19 +188,19 @@ public class Level {
     public void addScore(int diameter){
         switch (diameter) {
         case 8:
-            Driver.game.addScore(10);
+            NormalDriver.score.addScore(10);
             break;
         case 16:
-            Driver.game.addScore(15);
+            NormalDriver.score.addScore(15);
             break;
         case 32:
-            Driver.game.addScore(20);
+            NormalDriver.score.addScore(20);
             break;
         case 64:
-            Driver.game.addScore(25);
+            NormalDriver.score.addScore(25);
             break;
         case 128:
-            Driver.game.addScore(30);
+            NormalDriver.score.addScore(30);
             break;
         default:
             break;
@@ -209,21 +220,41 @@ public class Level {
 
     public Powerup generatePowerup(int x, int y, int randomNumber1) {
         int randomNumber = randomNumber1;
-        switch (randomNumber) {
-        case 1:
-            Logger.log("Powerup speed spawned", 6, 4);
-            return new Powerup("speed", x, y);
-        case 2:
-            Logger.log("Powerup life spawned", 6, 4);
-            return new Powerup("life", x, y);
-        case 3:
-            Logger.log("Powerup ice spawned", 6, 4);
-            return new Powerup("ice", x, y);
-        default:
-            Logger.log("Powerup speed spawned", 6, 4);
-            Logger.log("generatePowerup switch default triggered",6, 3);
-            return new Powerup("speed", x, y);
+        if(normalMode)
+        {
+            switch (randomNumber) {
+            case 1:
+                Logger.log("Powerup speed spawned", 6, 4);
+                return new Powerup("speed", x, y, normalMode);
+            case 2:
+                Logger.log("Powerup life spawned", 6, 4);
+                return new Powerup("life", x, y, normalMode);
+            case 3:
+                Logger.log("Powerup ice spawned", 6, 4);
+                return new Powerup("ice", x, y, normalMode);
+            default:
+                Logger.log("Powerup speed spawned", 6, 4);
+                Logger.log("generatePowerup switch default triggered",6, 3);
+                return new Powerup("speed", x, y, normalMode);
+            }
         }
+        else
+        {
+            switch (randomNumber) {
+            case 1:
+                Logger.log("Powerup speed spawned", 6, 4);
+                return new Powerup("speed", x, y, normalMode);
+            case 2:
+                Logger.log("Powerup ice spawned", 6, 4);
+                return new Powerup("ice", x, y, normalMode);
+            default:
+                Logger.log("Powerup speed spawned", 6, 4);
+                Logger.log("generatePowerup switch default triggered",6, 3);
+                return new Powerup("speed", x, y, normalMode);
+            }
+        }
+        
+        
     }
 
     /**
@@ -233,9 +264,17 @@ public class Level {
      *            bubble to add
      */
     public void addBubble(Bubble bubble) {
-        if (!bubbleList.contains(bubble)) {
+        if(normalMode)
+        {
+            if (!bubbleList.contains(bubble)) {
+                bubbleList.add(bubble);
+            }
+        }
+        else
+        {
             bubbleList.add(bubble);
         }
+       
     }
 
     /**
@@ -250,6 +289,12 @@ public class Level {
         }
     }
 
+    public void addWall(Wall wall) {
+        if (!wallList.contains(wall)) {
+            wallList.add(wall);
+        }
+    }
+    
     public boolean hasRope() {
         return rope != null;
     }
@@ -259,6 +304,10 @@ public class Level {
         return bubbleList;
     }
 
+    public ArrayList<Wall> getWallList() {
+        return wallList;
+    }
+    
     public ArrayList<Powerup> getPowerupList() {
         return powerupList;
     }

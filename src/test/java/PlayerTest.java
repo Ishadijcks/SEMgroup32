@@ -1,5 +1,5 @@
 import static org.junit.Assert.*;
-import game.Driver;
+import game.NormalDriver;
 import game.GameCreator;
 import game.Player;
 import game.Powerup;
@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class PlayerTest {
 
-    Player player = new Player("Isha", 500);
+    Player player = new Player("Isha", 500, true);
 
     @Test
     public void testPlayerConstructor() {
@@ -68,7 +68,7 @@ public class PlayerTest {
     public void testMoveDeactivatedSpeed() {
         int x = player.getX();
         player.movingRight();
-    	player.setPowerup(new Powerup("speed", 100, 60));
+    	player.setPowerup(new Powerup("speed", 100, 60, true));
     	player.getPowerupList().get(0).deActivate();
     	player.move();
         assertEquals(x + Settings.getPlayerStepSize(), player.getX());
@@ -78,7 +78,7 @@ public class PlayerTest {
     public void testMoveDeactivatedIceRope() {
         int x = player.getX();
         player.movingRight();
-    	player.setPowerup(new Powerup("ice", 100, 60));
+    	player.setPowerup(new Powerup("ice", 100, 60, true));
     	player.getPowerupList().get(0).deActivate();
     	player.move();
         assertEquals(x + Settings.getPlayerStepSize(), player.getX());
@@ -86,13 +86,13 @@ public class PlayerTest {
 
     @Test
     public void testSetPowerup() {
-        player.setPowerup(new Powerup("speed", 100, 60));
+        player.setPowerup(new Powerup("speed", 100, 60, true));
         assertTrue(player.getPowerupList().get(0).getName().equals("speed"));
     }
 
     @Test
     public void testRemovePowerup() {
-        Powerup speed = new Powerup("speed", 100, 60);
+        Powerup speed = new Powerup("speed", 100, 60, true);
         player.setPowerup(speed);
         assertTrue(player.getPowerupList().get(0).getName().equals("speed"));
         player.removePowerUp(speed);
@@ -101,7 +101,7 @@ public class PlayerTest {
 
     @Test
     public void testMovePowerupLeft() {
-        player.setPowerup(new Powerup("speed", 100, 60));
+        player.setPowerup(new Powerup("speed", 100, 60, true));
         int x = player.getX();
         player.movingLeft();
         player.move();
@@ -110,7 +110,7 @@ public class PlayerTest {
 
     @Test
     public void testMovePowerupRight() {
-        player.setPowerup(new Powerup("speed", 100, 60));
+        player.setPowerup(new Powerup("speed", 100, 60, true));
         int x = player.getX();
         player.movingRight();
         player.move();
@@ -119,34 +119,34 @@ public class PlayerTest {
 
     @Test
     public void testShootRope() {
-        Driver.game = GameCreator.createSinglePlayer(player);
-        assertFalse(Driver.game.getCurrentLevel()
+        NormalDriver.game = GameCreator.createSinglePlayer(player);
+        assertFalse(NormalDriver.game.getCurrentLevel()
                 .hasRope());
         player.shootRope();
-        assertTrue(Driver.game.getCurrentLevel()
+        assertTrue(NormalDriver.game.getCurrentLevel()
                 .hasRope());
     }
     
     @Test
     public void testShootIceRope(){
-        Driver.game = GameCreator.createSinglePlayer(player);
-        player.setPowerup(new Powerup("ice", 100, 60));
-        assertFalse(Driver.game.getCurrentLevel()
+        NormalDriver.game = GameCreator.createSinglePlayer(player);
+        player.setPowerup(new Powerup("ice", 100, 60, true));
+        assertFalse(NormalDriver.game.getCurrentLevel()
                 .hasRope());
         player.shootRope();
-        assertTrue(Driver.game.getCurrentLevel()
+        assertTrue(NormalDriver.game.getCurrentLevel()
                 .hasRope());
     }
     
     @Test
     public void testShotDeactivatedIceRope() {
-        Driver.game = GameCreator.createSinglePlayer(player);
-        player.setPowerup(new Powerup("ice", 100, 60));
+        NormalDriver.game = GameCreator.createSinglePlayer(player);
+        player.setPowerup(new Powerup("ice", 100, 60, true));
         player.getPowerupList().get(0).deActivate();
-        assertFalse(Driver.game.getCurrentLevel()
+        assertFalse(NormalDriver.game.getCurrentLevel()
                 .hasRope());
         player.shootRope();
-        assertTrue(Driver.game.getCurrentLevel()
+        assertTrue(NormalDriver.game.getCurrentLevel()
                 .hasRope());
     }
 
@@ -162,7 +162,7 @@ public class PlayerTest {
     
     @Test
     public void testRemoveAllPowerUpsEmptyList(){
-    	Driver.game = GameCreator.createSinglePlayer(player);
+    	NormalDriver.game = GameCreator.createSinglePlayer(player);
     	assertTrue(player.getPowerupList().isEmpty());
     	player.removeAllPowerUps();
     	assertTrue(player.getPowerupList().isEmpty());
@@ -170,8 +170,8 @@ public class PlayerTest {
     
     @Test
     public void testRemoveAllPowerUps1Element(){
-    	Driver.game = GameCreator.createSinglePlayer(player);
-    	player.getPowerupList().add(new Powerup("ice", 100, 60));
+    	NormalDriver.game = GameCreator.createSinglePlayer(player);
+    	player.getPowerupList().add(new Powerup("ice", 100, 60, true));
     	assertEquals(1, player.getPowerupList().size());
     	player.removeAllPowerUps();
     	assertTrue(player.getPowerupList().isEmpty());
@@ -179,9 +179,9 @@ public class PlayerTest {
     
     @Test
     public void testRemoveAllPowerUpsMultiElement(){
-    	Driver.game = GameCreator.createSinglePlayer(player);
-    	player.getPowerupList().add(new Powerup("ice", 100, 60));
-    	player.getPowerupList().add(new Powerup("ice", 100, 60));
+    	NormalDriver.game = GameCreator.createSinglePlayer(player);
+    	player.getPowerupList().add(new Powerup("ice", 100, 60, true));
+    	player.getPowerupList().add(new Powerup("ice", 100, 60, true));
     	assertEquals(2, player.getPowerupList().size());
     	player.removeAllPowerUps();
     	assertTrue(player.getPowerupList().isEmpty());
@@ -189,22 +189,22 @@ public class PlayerTest {
     
     @Test
     public void testHasIceRopeNoIceRope(){
-    	Driver.game = GameCreator.createSinglePlayer(player);
+    	NormalDriver.game = GameCreator.createSinglePlayer(player);
     	assertFalse(player.hasIceRope());
     }
     
     @Test
     public void testHasIceRopeWithIceRope(){
-    	Driver.game = GameCreator.createSinglePlayer(player);
-    	player.getPowerupList().add(new Powerup("ice", 100, 60));
+    	NormalDriver.game = GameCreator.createSinglePlayer(player);
+    	player.getPowerupList().add(new Powerup("ice", 100, 60, true));
     	assertTrue(player.hasIceRope());
     }
     
     @Test
     public void testHasPowerup() {
-    	Driver.game = GameCreator.createSinglePlayer(player);
+    	NormalDriver.game = GameCreator.createSinglePlayer(player);
     	assertFalse(player.hasPowerup());
-    	player.getPowerupList().add(new Powerup("ice", 100, 60));
+    	player.getPowerupList().add(new Powerup("ice", 100, 60, true));
     	assertTrue(player.hasPowerup());
     }
 

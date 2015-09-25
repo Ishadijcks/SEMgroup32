@@ -3,17 +3,13 @@
 
 import static org.junit.Assert.*;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-
 import java.util.ArrayList;
 import java.awt.Color;
 
-import game.Bubble;
 import game.Settings;
+import game.bubble.Bubble;
+import game.bubble.Bubblex16;
+import game.bubble.Bubblex8;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -21,18 +17,18 @@ public class BubbleTest {
 
 
     @Test
-    public void testBubbleDefault() {
-        Bubble bub = new Bubble(8, 10, 10, true, true);
-        assertTrue(bub.calculateG(-10) ==  1);
-        assertTrue(bub.calculateMaxHeight(-10) ==  40);
-        assertTrue(bub.calculateSpeedX(-10) ==  1);
-        assertTrue(bub.getColor().equals(Settings.getDragonRed()));
+    public void testBubbleConstructor() {
+        Bubble bub = new Bubblex8(10, 10, true, true);
+        assertTrue(bub.getX() ==  10);
+        assertTrue(bub.getY() ==  10);
+        assertTrue(bub.isDirectionH());
+        assertTrue(bub.isDirectionV());
         
     }
 
     @Test
     public void testBubbleSetters() {
-        Bubble bub = new Bubble(8, 10, 10, true, true);
+        Bubble bub = new Bubblex8(10, 10, true, true);
         assertTrue(bub.isDirectionH());
         assertTrue(bub.isDirectionV());
         bub.setDirectionH(false);
@@ -44,7 +40,7 @@ public class BubbleTest {
 
     @Test
     public void testBounceX() {
-        Bubble bub = new Bubble(4, Settings.getLeftMargin()+Settings.getLevelWidth()-5, Settings.getTopMargin()+Settings.getLevelHeight(), true, true);
+        Bubble bub = new Bubblex8(Settings.getLeftMargin()+Settings.getLevelWidth()-5, Settings.getTopMargin()+Settings.getLevelHeight(), true, true);
         assertTrue(bub.isDirectionH());
         
         for(int i = 0; i<6; i++){
@@ -56,7 +52,7 @@ public class BubbleTest {
     
     @Test
     public void testBounceY() {
-        Bubble bub = new Bubble(4, Settings.getLeftMargin(), Settings.getTopMargin()+Settings.getLevelHeight()-5, true, true);
+        Bubble bub = new Bubblex8(Settings.getLeftMargin(), Settings.getTopMargin()+Settings.getLevelHeight()-5, true, true);
         assertTrue(bub.isDirectionV());
         for(int i = 0; i<100; i++){
         bub.move();
@@ -67,7 +63,7 @@ public class BubbleTest {
     
     @Test
     public void testBounceMaxHeight() {
-        Bubble bub = new Bubble(16, Settings.getLeftMargin(), 75+5, true, false);
+        Bubble bub = new Bubblex16(Settings.getLeftMargin(), 75+5, true, false);
 
         assertFalse(bub.isDirectionV());
         for(int i = 0; i<100; i++){
@@ -79,7 +75,7 @@ public class BubbleTest {
 
     @Test
     public void testMove2() {
-        Bubble bub = new Bubble(4, Settings.getLeftMargin(), Settings.getTopMargin()+Settings.getLevelHeight(), true, true);
+        Bubble bub = new Bubblex8(Settings.getLeftMargin(), Settings.getTopMargin()+Settings.getLevelHeight(), true, true);
 
         bub.move();
         bub.move();
@@ -93,7 +89,7 @@ public class BubbleTest {
     
     @Test
     public void testBounceH() {
-        Bubble bubble = new Bubble(10, 10, 10, true, true);
+        Bubble bubble = new Bubblex8(10, 10, true, true);
         assertTrue(bubble.isDirectionH());
         bubble.bounceH();
         assertFalse(bubble.isDirectionH());
@@ -101,7 +97,7 @@ public class BubbleTest {
 
     @Test
     public void testBounceV() {
-        Bubble bubble = new Bubble(10, 10, 10, true, true);
+        Bubble bubble = new Bubblex8(10, 10, true, true);
         assertTrue(bubble.isDirectionV());
         bubble.bounceV();
         assertFalse(bubble.isDirectionV());

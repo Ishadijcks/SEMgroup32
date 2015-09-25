@@ -1,20 +1,21 @@
 
 
 import static org.junit.Assert.*;
-import game.Driver;
-import game.LogObject;
-import game.Logger;
+import game.NormalDriver;
+import game.MathFunctions;
+import game.log.LogObject;
+import game.log.Logger;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class DriverTest {
 	
-	private Driver driver;
+	private NormalDriver driver;
 	
 	@Before
 	public void init(){
-		driver = new Driver();
+		driver = new NormalDriver(null);
 		driver.initGame();
 		driver.setupGame();
 	}
@@ -25,37 +26,15 @@ public class DriverTest {
 
 	@Test
 	public void testRandomInt() {
-		assertEquals(1, Driver.randomInt(1, 1));
+		assertEquals(1, MathFunctions.randomInt(1, 1));
 	}
 
-	@Test
-	public void testLevelWonFrameWithRemainingLevels() {
-        int initialCompCount = driver.getComponentCount();
-		driver.levelWonFrame();
-		assertEquals(initialCompCount+2, driver.getComponentCount());
-		
-	}
-	
-	@Test
-	public void testLevelWonFrameWithNoRemainingLevels() {
-		driver.game.setCurrentLevelInt(driver.game.getLevelList().size()-1);
-        int initialCompCount = driver.getComponentCount();
-		driver.levelWonFrame();
-		assertEquals(initialCompCount+2, driver.getComponentCount());
-	}
 
 	@Test
 	public void testStartGame() {
 		assertFalse(driver.game.inProgress());
-		driver.startGame();
+		driver.startGame("Isha");
 		assertTrue(driver.game.inProgress());
-	}
-
-	@Test
-	public void testAddStartButton() {
-		driver.addStartButton();
-		LogObject log = new LogObject("Start button added", 9, 4);
-		assertTrue(Logger.getLogList().getLast().equals(log));
 	}
 
 	@Test

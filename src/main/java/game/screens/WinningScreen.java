@@ -1,4 +1,9 @@
-package game;
+package game.screens;
+
+import game.Driver;
+import game.NormalDriver;
+import game.Settings;
+import game.endScore;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,39 +24,25 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class LosingScreen extends JFrame {
+public class WinningScreen extends JFrame {
 
-    JButton tryAgainButton;
+    JButton playAgainButton;
     JButton settingsButton;
     JButton stopButton;
     final private Driver dr;
-    
     JFrame gameFrame;
 
-    public LosingScreen(Driver driver){
+    public WinningScreen(Driver driver,  final String name) {
 
-        setTitle("You lost!");
+        setTitle("You won!");
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.gameFrame = gameFrame;
         
         setVisible(true);
         
-        URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
-        /* String currentLocation = location.getFile();      
-         String startScreenMusicLocation = currentLocation + "Music/startscreen.wav";
-         File music = new File(startScreenMusicLocation);
-         AudioInputStream audioInputStream =
-                 AudioSystem.getAudioInputStream(
-                     music);
-             Clip clip = AudioSystem.getClip();
-             clip.open(audioInputStream);
-             clip.loop(1000000);*/
-
-         
+        URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();         
          setVisible(true);
 
          
@@ -60,55 +51,53 @@ public class LosingScreen extends JFrame {
 
          //setLayout(new BorderLayout());
          setContentPane(new JLabel(new ImageIcon(imageLocation
-                 + "main/Images/loseScreenBackground.png")));
+                 + "main/Images/winScreenBackground.png")));
          //setLayout(new FlowLayout());
 
         setLayout(null);
 
-        tryAgainButton = new JButton("Try again");
-        tryAgainButton.setBackground(Color.DARK_GRAY);
-        tryAgainButton.setForeground(Color.WHITE);
-        tryAgainButton.setFont(new Font("Calibri", Font.BOLD, 30));
-        tryAgainButton.setOpaque(true);
-        tryAgainButton.setBounds(Settings.getScreenWidth()/2 + 70, Settings.getScreenHeight()/2 - 52, 350, 75);
+        playAgainButton = new JButton("Play again");
+        playAgainButton.setBackground(Color.PINK);
+        playAgainButton.setForeground(Color.WHITE);
+        playAgainButton.setFont(new Font("Calibri", Font.BOLD, 30));
+        playAgainButton.setOpaque(true);
+        playAgainButton.setBounds(Settings.getScreenWidth()/2 + 70, Settings.getScreenHeight()/2 - 52, 350, 75);
 
         stopButton = new JButton("Exit");
-        stopButton.setBackground(Color.DARK_GRAY);
+        stopButton.setBackground(Color.PINK);
         stopButton.setForeground(Color.WHITE);
         stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
         stopButton.setOpaque(true);
         stopButton.setBounds(55, 350, 350, 75);
+        
 
         dr = driver;
-        tryAgainButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent tryAgainGame) {
-                    setVisible(false);
-                    Driver.setupGame();
-                    dr.startGame();
-                    dispose();
+
+        playAgainButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent playAgainGame) {
+                setVisible(false);
+                dr.setupGame();
+                dr.startGame(name);
+                dispose();
             }
         });
 
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
-                Driver.setupGame();
-                Driver.startScreen();
                 dispose();
+                dr.setupGame();
+                dr.startScreen();
             }
         });
 
         setResizable(false);
         
-        add(tryAgainButton);
+        add(playAgainButton);
         add(stopButton);
         
         setSize(Settings.getScreenWidth() - 1, Settings.getScreenHeight() - 1);
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
-
     }
 
-    public static void main(String args[]) {
-
-    }
 }

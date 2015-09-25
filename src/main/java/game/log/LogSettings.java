@@ -1,4 +1,6 @@
-package game;
+package game.log;
+
+import game.screens.LogScreen;
 
 public class LogSettings {
     static boolean logScreen = false;

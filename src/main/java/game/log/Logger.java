@@ -1,4 +1,6 @@
-package game;
+package game.log;
+
+import game.NormalDriver;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -33,7 +35,7 @@ public class Logger {
      */
     public static void log(String message, int category, int severity,
             int frameRepeat) {
-        if (Driver.totalFrames % frameRepeat == 0) {
+        if (NormalDriver.totalFrames % frameRepeat == 0) {
 
             LogObject tempLog = new LogObject(message, category, severity);
             logList.add(tempLog);
@@ -87,7 +89,7 @@ public class Logger {
             ArrayList<Integer> category, int minSeverity) {
         LinkedList<LogObject> filteredList = new LinkedList<LogObject>();
         LogObject lo;
-            System.out.println(logList);
+            //System.out.println(logList);
         for (int i = 0; i < logList.size(); i++) {
             lo = logList.get(i);
             if (category.contains(lo.getCategory())

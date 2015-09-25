@@ -1,4 +1,9 @@
-package game;
+package game.screens;
+
+import game.NormalDriver;
+import game.log.LogFilters;
+import game.log.LogObject;
+import game.log.Logger;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
@@ -28,7 +33,7 @@ public class LogScreen extends JFrame {
     JButton startButton;
     JButton button;
     private LogFilters filters;
-    private Driver driver;
+    private NormalDriver driver;
     private JList list;
     private Container pane;
     private ArrayList<JCheckBox> checkList;
@@ -41,7 +46,7 @@ public class LogScreen extends JFrame {
     public LogScreen() throws UnsupportedAudioFileException, IOException,
             LineUnavailableException {
 
-        driver = new Driver();
+        driver = new NormalDriver("");
         filters = new LogFilters();
         boldFont = new Font("Serif", Font.BOLD, 18);
         basicFont = new Font("Serif", Font.PLAIN, 16);

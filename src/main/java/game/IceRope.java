@@ -1,10 +1,12 @@
 package game;
 
+import game.log.Logger;
+
 public class IceRope extends Rope{
 
-    public IceRope(int x, int y) {
+    public IceRope(int x, int y, boolean isNormalMode) {
        
-        super(x, y);
+        super(x, y, isNormalMode);
         Logger.log("Ice rope created", 5 ,4);
     }
 

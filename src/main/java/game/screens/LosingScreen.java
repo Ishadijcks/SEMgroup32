@@ -1,4 +1,10 @@
-package game;
+package game.screens;
+
+import game.Driver;
+import game.NormalDriver;
+import game.Settings;
+import game.endScore;
+import game.Leaderboard;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,36 +25,33 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class WinningScreen extends JFrame {
+public class LosingScreen extends JFrame {
 
-    JButton playAgainButton;
+    JButton tryAgainButton;
     JButton settingsButton;
     JButton stopButton;
     final private Driver dr;
+    
+    private endScore score;
+    private Leaderboard leaderBoard;
+    
     JFrame gameFrame;
 
-    public WinningScreen(Driver driver) {
+    public LosingScreen(Driver driver, final endScore score){
 
-        setTitle("You won!");
+        setTitle("You lost!");
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        this.gameFrame = gameFrame;
+        this.score = score;
         
         setVisible(true);
         
         URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
-        /* String currentLocation = location.getFile();      
-         String startScreenMusicLocation = currentLocation + "Music/startscreen.wav";
-         File music = new File(startScreenMusicLocation);
-         AudioInputStream audioInputStream =
-                 AudioSystem.getAudioInputStream(
-                     music);
-             Clip clip = AudioSystem.getClip();
-             clip.open(audioInputStream);
-             clip.loop(1000000);*/
 
-         
          setVisible(true);
 
          
@@ -57,53 +60,63 @@ public class WinningScreen extends JFrame {
 
          //setLayout(new BorderLayout());
          setContentPane(new JLabel(new ImageIcon(imageLocation
-                 + "main/Images/winScreenBackground.png")));
+                 + "main/Images/loseScreenBackground.png")));
          //setLayout(new FlowLayout());
 
         setLayout(null);
 
-        playAgainButton = new JButton("Play again");
-        playAgainButton.setBackground(Color.PINK);
-        playAgainButton.setForeground(Color.WHITE);
-        playAgainButton.setFont(new Font("Calibri", Font.BOLD, 30));
-        playAgainButton.setOpaque(true);
-        playAgainButton.setBounds(Settings.getScreenWidth()/2 + 70, Settings.getScreenHeight()/2 - 52, 350, 75);
+        tryAgainButton = new JButton("Try again");
+        tryAgainButton.setBackground(Color.DARK_GRAY);
+        tryAgainButton.setForeground(Color.WHITE);
+        tryAgainButton.setFont(new Font("Calibri", Font.BOLD, 30));
+        tryAgainButton.setOpaque(true);
+        tryAgainButton.setBounds(Settings.getScreenWidth()/2 + 70, Settings.getScreenHeight()/2 - 52, 350, 75);
 
         stopButton = new JButton("Exit");
-        stopButton.setBackground(Color.PINK);
+        stopButton.setBackground(Color.DARK_GRAY);
         stopButton.setForeground(Color.WHITE);
         stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
         stopButton.setOpaque(true);
         stopButton.setBounds(55, 350, 350, 75);
+
+        Font font = new Font("Calibri", Font.PLAIN, 55);
+        JLabel scoreLabel = new JLabel(score.getName() + "s score: " + score.getScore());
+        scoreLabel.setFont(font);
+        scoreLabel.setForeground(Color.WHITE);
+        scoreLabel.setLocation(325, 10);
+        scoreLabel.setSize(700, 500);
         
-
         dr = driver;
-
-        playAgainButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent playAgainGame) {
-                setVisible(false);
-                Driver.setupGame();
-                dr.startGame();
-                dispose();
+        tryAgainButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent tryAgainGame) {
+                    setVisible(false);
+                    dr.setupGame();
+                    dr.startGame(score.getName());
+                    dispose();
             }
         });
 
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
+                dr.setupGame();
+                dr.startScreen();
                 dispose();
-                Driver.setupGame();
-                Driver.startScreen();
             }
         });
 
         setResizable(false);
         
-        add(playAgainButton);
+        add(tryAgainButton);
         add(stopButton);
+        add(scoreLabel);
         
         setSize(Settings.getScreenWidth() - 1, Settings.getScreenHeight() - 1);
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
+        
+        
+
     }
 
+   
 }

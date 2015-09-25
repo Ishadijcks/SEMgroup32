@@ -1,4 +1,4 @@
-package game;
+package game.log;
 
 import java.util.ArrayList;
 

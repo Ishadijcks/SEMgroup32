@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import game.LogFilters;
+import game.log.LogFilters;
 
 import org.junit.Before;
 import org.junit.Test;
