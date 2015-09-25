@@ -1,3 +1,4 @@
+package test.logger;
 
 
 import static org.junit.Assert.*;

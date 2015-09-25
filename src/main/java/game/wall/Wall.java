@@ -1,4 +1,6 @@
-package game;
+package game.wall;
+
+import game.Settings;
 
 import java.awt.Color;
 
@@ -27,5 +29,19 @@ public class Wall {
     public Color getColor(){
         return color;
     }
+
+	/**
+	 * @return the x
+	 */
+	public int getX() {
+		return x;
+	}
+
+	/**
+	 * @return the y
+	 */
+	public int getY() {
+		return y;
+	}
     
 }

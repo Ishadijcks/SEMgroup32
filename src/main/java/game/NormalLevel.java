@@ -14,10 +14,6 @@ public class NormalLevel extends Level {
      */
     public NormalLevel(ArrayList<Player> playerList) {
         super(playerList);
-        this.bubbleList = new ArrayList<Bubble>();
-        this.playerList = playerList;
-        this.powerupList = new ArrayList<Powerup>();
-        this.wallList = new ArrayList<Wall>();
         Logger.log("Level created", 8, 4);
     }
 

@@ -6,9 +6,8 @@ public class endScore {
     private int score;
     
     public endScore(String name, int score) {
-    
-    this.name = name;
-    this.score = score;
+	    this.name = name;
+	    this.score = score;
     }
 
     public String getName() {

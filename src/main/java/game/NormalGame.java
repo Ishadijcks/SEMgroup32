@@ -15,7 +15,7 @@ public class NormalGame extends Game {
      * win the whole game.
      */
     public void gameWon() {
-        if (currentLevel < levelList.size() - 1) {
+        if (currentLevel < levelList.size() ) {
             currentLevel++;
             Logger.log("Level completed", 8, 4);
             inProgress = false;

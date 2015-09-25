@@ -2,6 +2,7 @@ package game;
 
 import game.bubble.Bubble;
 import game.log.Logger;
+import game.wall.Wall;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -76,14 +77,16 @@ public abstract class Level {
      * 
      * @return -1 if there is no collision otherwise the index of the bubble
      */
-    public void handleCollisionRope() {
+    public boolean handleCollisionRope() {
         if(hasRope()){
             int collision = Collisions.checkCollisionRope(bubbleList, rope);
             if (collision != -1) {
                 destroyBubble(collision);
                 setRope(null);
+                return true;
             }
         }
+        return false;
     }
 
     /**
@@ -221,4 +224,55 @@ public abstract class Level {
     public void setRope(Rope rope) {
         this.rope = rope;
     }
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Level other = (Level) obj;
+		if (bubbleList == null) {
+			if (other.bubbleList != null)
+				return false;
+		} else if (!bubbleList.equals(other.bubbleList))
+			return false;
+		if (height != other.height)
+			return false;
+		if (increasedPowerupTime != other.increasedPowerupTime)
+			return false;
+		if (numberOfRopes != other.numberOfRopes)
+			return false;
+		if (playerList == null) {
+			if (other.playerList != null)
+				return false;
+		} else if (!playerList.equals(other.playerList))
+			return false;
+		if (powerupList == null) {
+			if (other.powerupList != null)
+				return false;
+		} else if (!powerupList.equals(other.powerupList))
+			return false;
+		if (rope == null) {
+			if (other.rope != null)
+				return false;
+		} else if (!rope.equals(other.rope))
+			return false;
+		if (timeLeft != other.timeLeft)
+			return false;
+		if (wallList == null) {
+			if (other.wallList != null)
+				return false;
+		} else if (!wallList.equals(other.wallList))
+			return false;
+		if (width != other.width)
+			return false;
+		return true;
+	}
+
 }
