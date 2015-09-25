@@ -86,4 +86,11 @@ public class MyKeyListener extends KeyAdapter {
             break;
         }
     }
+
+	/**
+	 * @return the game
+	 */
+	public Game getGame() {
+		return game;
+	}
 }
