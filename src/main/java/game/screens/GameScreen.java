@@ -11,6 +11,7 @@ import game.Player;
 import game.Powerup;
 import game.Score;
 import game.Settings;
+import game.wall.Wall;
 import game.bubble.Bubble;
 import game.log.LogFilters;
 import game.log.LogSettings;
@@ -78,8 +79,6 @@ public class GameScreen extends JPanel {
         frame = new JFrame("Game Screen");
         imageLocation = imageLocation.replace("%20", " ");
         imageLocation = imageLocation.replace("target/classes/", "/");
-        
-        imageLocation = imageLocation.startsWith("/") ? imageLocation.substring(1) : imageLocation;
     }
 
     /**
