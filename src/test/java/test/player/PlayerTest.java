@@ -55,7 +55,7 @@ public class PlayerTest {
     public void testMoveLeft() {
         int x = player.getX();
         player.movingLeft();
-        player.move();
+     //   player.move();
         assertEquals(x - Settings.getPlayerStepSize(), player.getX());
     }
 
@@ -72,7 +72,7 @@ public class PlayerTest {
     public void testMoveRight() {
         int x = player.getX();
         player.movingRight();
-        player.move();
+   //     player.move();
         assertEquals(x + Settings.getPlayerStepSize(), player.getX());
     }
 
@@ -91,7 +91,7 @@ public class PlayerTest {
         player.movingRight();
     	player.setPowerup(new Powerup("speed", 100, 60, true));
     	player.getPowerupList().get(0).deActivate();
-    	player.move();
+  //  	player.move();
         assertEquals(x + Settings.getPlayerStepSize(), player.getX());
     }
     
@@ -101,7 +101,7 @@ public class PlayerTest {
         player.movingRight();
     	player.setPowerup(new Powerup("ice", 100, 60, true));
     	player.getPowerupList().get(0).deActivate();
-    	player.move();
+   // 	player.move();
         assertEquals(x + Settings.getPlayerStepSize(), player.getX());
     }
 
@@ -125,7 +125,7 @@ public class PlayerTest {
         player.setPowerup(new Powerup("speed", 100, 60, true));
         int x = player.getX();
         player.movingLeft();
-        player.move();
+   //     player.move();
         assertEquals(x - Settings.getPlayerPowerupStepSize(), player.getX());
     }
 
@@ -134,7 +134,7 @@ public class PlayerTest {
         player.setPowerup(new Powerup("speed", 100, 60, true));
         int x = player.getX();
         player.movingRight();
-        player.move();
+  //      player.move();
         assertEquals(x + Settings.getPlayerPowerupStepSize(), player.getX());
     }
 

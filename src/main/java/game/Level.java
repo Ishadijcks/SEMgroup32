@@ -28,7 +28,9 @@ public abstract class Level {
         this.playerList = playerList;
         this.powerupList = new ArrayList<Powerup>();
         this.wallList = new ArrayList<Wall>();
+
         Logger.log("Level created", 8, 4);
+
     }
 
     /**
@@ -69,7 +71,9 @@ public abstract class Level {
      * @return
      */
     public boolean checkCollisionPlayer() {
+
         return Collisions.checkCollisionPlayer(bubbleList, playerList);
+
     }
 
     /**
@@ -77,6 +81,7 @@ public abstract class Level {
      * 
      * @return -1 if there is no collision otherwise the index of the bubble
      */
+
     public boolean handleCollisionRope() {
         if(hasRope()){
             int collision = Collisions.checkCollisionRope(bubbleList, rope);
@@ -97,6 +102,7 @@ public abstract class Level {
         int i = Collisions.checkCollisionPowerup(playerList, powerupList);
         if (i != -1) {
             Powerup powerup = powerupList.get(i);
+
             int powerupListSize = playerList.get(0).getPowerupList().size();
             if (powerupListSize > 0) {
                 for (int i1 = 0; i1 < powerupListSize; i1++) {
@@ -111,6 +117,7 @@ public abstract class Level {
                         powerupList.remove(i);
                     }
                 }
+
             }
             if (!increasedPowerupTime) {
                 playerList.get(0).setPowerup(powerupList.get(i));
@@ -126,7 +133,6 @@ public abstract class Level {
     }
 
 
-    
 
     /**
      * Calls the add score method from the game.
@@ -154,7 +160,7 @@ public abstract class Level {
             break;
         }
     }
-    
+
 
     /**
      * Generate random integer.
@@ -167,6 +173,86 @@ public abstract class Level {
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
         return randomNum;
+    }
+
+
+    /**
+     * Moves all the bubbles in the bubbleList.
+     */
+    public void moveBubbles() {
+        for (int i = 0; i < bubbleList.size(); i++) {
+            if (bubbleBounceWall(bubbleList.get(i))) {
+                bubbleList.get(i).bounceH();
+
+            }
+            bubbleList.get(i).move();
+        }
+    }
+
+    public void checkDuoWalls(int playerX) {
+        for (int i = 0; i < wallList.size(); i++) {
+            Wall wall = wallList.get(i);
+            if (wall instanceof DuoWall) {
+                if (playerX < wall.getX()) {
+                    if(checkLeftOfWall(wall)){
+                    wall.setActive(false);
+                    }
+                    
+                } else {
+                    if(checkRightOfWall(wall)){
+                        wall.setActive(false);
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    public boolean checkLeftOfWall(Wall wall) {
+        for (int i = 0; i < bubbleList.size(); i++) {
+            if (bubbleList.get(i).getX() < wall.getX()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean checkRightOfWall(Wall wall) {
+        for (int i = 0; i < bubbleList.size(); i++) {
+            if (bubbleList.get(i).getX() > wall.getX()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    /**
+     * Returns true if the bubble is going to bounce on a wall.
+     * 
+     * @param bubble
+     *            to check
+     * @return if the bubble is going to bounce on a wall
+     */
+    private boolean bubbleBounceWall(Bubble bubble) {
+
+        for (int i = 0; i < wallList.size(); i++) {
+            Wall wall = wallList.get(i);
+
+            if ((wall instanceof BubbleWall || wall instanceof DuoWall)
+                    && wall.isActive()) {
+                if ((bubble.getX() <= (wall.getX() + wall.getWidth()) && (bubble
+                        .getX() + bubble.getDiameter()) >= wall.getX())
+                        && wall.isActive()) {
+                    if (wall instanceof BubbleWall) {
+                        wall.BouncedOn();
+                    }
+
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**

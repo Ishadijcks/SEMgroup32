@@ -11,6 +11,7 @@ import game.Player;
 import game.Powerup;
 import game.Score;
 import game.Settings;
+import game.Wall;
 import game.bubble.Bubble;
 import game.log.LogFilters;
 import game.log.LogSettings;
@@ -91,8 +92,8 @@ public class GameScreen extends JPanel {
     public void startGame() {
         frame.setVisible(true);
     }
-    
-    public void levelWon(){
+
+    public void levelWon() {
 
         final JLabel label = new JLabel("test");
         label.setText("Congratulations! Level won!");
@@ -119,13 +120,13 @@ public class GameScreen extends JPanel {
      * refresh the screen.
      */
     public void reload() {
-       gameScreen.repaint();
-       repaint();
-       frame.repaint();
+        gameScreen.repaint();
+        repaint();
+        frame.repaint();
     }
 
     public static void setupScreen(Game gameInput, Score scoreInput) {
-        game =gameInput;
+        game = gameInput;
         score = scoreInput;
         try {
             gameScreen = new GameScreen();
@@ -145,7 +146,7 @@ public class GameScreen extends JPanel {
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(false);
-        
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         try {
@@ -202,6 +203,18 @@ public class GameScreen extends JPanel {
 
                 g2d.drawOval(bubble.getX() - 1, bubble.getY() - 1,
                         bubble.getDiameter() + 2, bubble.getDiameter() + 2);
+            }
+
+            // Draw the walls
+            for (int i = 0; i < curLevel.getWallList().size(); i++) {
+                Wall wall = curLevel.getWallList().get(i);
+                if (wall.isActive()) {
+                    g2d.setColor(wall.getColor());
+                    g2d.fillRect(wall.getX(),
+                            wall.getY() + Settings.getTopMargin(),
+                            wall.getWidth(), wall.getHeight());
+                    g2d.setColor(Color.BLACK);
+                }
             }
 
             // Draw the ropes

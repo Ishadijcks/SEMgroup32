@@ -168,7 +168,7 @@ public class SurvivalDriver extends Driver {
                 gameScreen.reload();
 
                 Player player1 = game.getPlayerList().get(0);
-                player1.move();
+                player1.move(curLevel.getWallList());
 
                 if (checkGameLost()) {
                     gameLost();

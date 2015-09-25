@@ -41,6 +41,12 @@ public class MyKeyListener extends KeyAdapter {
                     Logger.log("Player pressed right", 0, 5);
                     game.getPlayerList().get(0).movingRight();
                     break;
+                case 38:
+                    Logger.log("Player pressed up", 0, 5);
+                    game.getPlayerList().get(0).shootRope();
+                    break;   
+                    
+                    
                 case 32:
                     Logger.log("Player pressed space", 0, 5);
                     game.getPlayerList().get(0).shootRope();
