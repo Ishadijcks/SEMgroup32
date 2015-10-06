@@ -72,28 +72,28 @@ public class StartScreen extends JFrame {
         startButton.setForeground(Color.WHITE);
         startButton.setFont(new Font("Calibri", Font.BOLD, 30));
         startButton.setOpaque(true);
-        startButton.setBounds(55, 300, 250, 60);
+        startButton.setBounds(55, 250, 350, 60);
         
         startSurvButton = new JButton("Start Survival game");
         startSurvButton.setBackground(Color.RED);
         startSurvButton.setForeground(Color.WHITE);
         startSurvButton.setFont(new Font("Calibri", Font.BOLD, 30));
         startSurvButton.setOpaque(true);
-        startSurvButton.setBounds(55, 400, 250, 60);
+        startSurvButton.setBounds(55, 350, 350, 60);
 
         settingsButton = new JButton("Settings");
         settingsButton.setBackground(Color.RED);
         settingsButton.setForeground(Color.WHITE);
         settingsButton.setFont(new Font("Calibri", Font.BOLD, 30));
         settingsButton.setOpaque(true);
-        settingsButton.setBounds(55, 500, 250, 60);
+        settingsButton.setBounds(55, 450, 350, 60);
 
         stopButton = new JButton("Exit");
         stopButton.setBackground(Color.RED);
         stopButton.setForeground(Color.WHITE);
         stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
         stopButton.setOpaque(true);
-        stopButton.setBounds(55, 600, 250, 60);
+        stopButton.setBounds(55, 550, 350, 60);
         
         Font font = new Font("Calibri", Font.PLAIN, 25);
         JLabel nameInput = new JLabel("Enter name and start game: ");
