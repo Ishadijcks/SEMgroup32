@@ -212,8 +212,8 @@ public class GameScreen extends JPanel {
                 Wall wall = curLevel.getWallList().get(i);
                 if (wall.isActive()) {
                     g2d.setColor(wall.getColor());
-                    g2d.fillRect(wall.getX(),
-                            wall.getY() + Settings.getTopMargin(),
+                    g2d.fillRect(wall.getxCoord(),
+                            wall.getyCoord() + Settings.getTopMargin(),
                             wall.getWidth(), wall.getHeight());
                     g2d.setColor(Color.BLACK);
                 }

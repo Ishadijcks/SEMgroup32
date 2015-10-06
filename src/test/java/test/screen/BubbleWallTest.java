@@ -19,8 +19,8 @@ public class BubbleWallTest {
 
 	@Test
 	public void testBubbleWall() {
-		assertEquals(10, w.getX());
-		assertEquals(0, w.getY());
+		assertEquals(10, w.getxCoord());
+		assertEquals(0, w.getyCoord());
 		assertEquals(Color.RED, w.getColor());
 	}
 
