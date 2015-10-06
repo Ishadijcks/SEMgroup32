@@ -1,8 +1,6 @@
 package game.screens;
 
 import game.Game;
-
-import game.MathFunctions;
 import game.Level;
 import game.MyKeyListener;
 import game.Player;
@@ -25,6 +23,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Random;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -232,11 +231,12 @@ public class GameScreen extends JPanel {
                 shootRope = true;
                 ropeDurationCounter--;
 
-                int rInt127to153 = MathFunctions.randomInt(127, 153);
-                int rInt51to102 = MathFunctions.randomInt(51, 102);
-                int rInt69to240 = MathFunctions.randomInt(69, 240);
-                int rInt255to8 = MathFunctions.randomInt(69, 240);
-                int rInt6to11 = MathFunctions.randomInt(6, 11);
+                Random rand = new Random();
+                int rInt127to153 = rand.nextInt((153 - 127) + 1) + 127;
+                int rInt51to102 = rand.nextInt((102 - 51) + 1) + 51;
+                int rInt69to240 = rand.nextInt((240 - 69) + 1) + 69;
+                int rInt255to8 = rand.nextInt((255 - 8) + 1) + 8;
+                int rInt6to11 = rand.nextInt((11 - 6) + 1) + 6;
 
                 Color fire1 = new Color(255, rInt127to153, 0);
                 Color fire2 = new Color(255, rInt51to102, 0);
@@ -263,7 +263,7 @@ public class GameScreen extends JPanel {
                         g2d.setColor(colors[i]);
                         g2d.setStroke(strokes[i]);
 
-                        int random = MathFunctions.randomInt(0, 4);
+                        int random = rand.nextInt((4 - 0) + 1) + 0;
                         if ((i == 0) && random == 2) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
                                     .getRope().getY(), curLevel.getRope()
@@ -285,7 +285,7 @@ public class GameScreen extends JPanel {
                         g2d.setColor(colors[i]);
                         g2d.setStroke(strokes[i]);
 
-                        int random = MathFunctions.randomInt(0, 4);
+                        int random = rand.nextInt((4 - 0) + 1) + 0;
                         if ((i == 0) && random == 2) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
                                     .getRope().getY(), curLevel.getRope()
@@ -309,10 +309,11 @@ public class GameScreen extends JPanel {
                 shootRope = true;
                 ropeDurationCounter--;
 
-                int rInt219to255 = MathFunctions.randomInt(219, 255);
-                int rInt120to102 = MathFunctions.randomInt(120, 236);
-                int rInt70to133 = MathFunctions.randomInt(70, 133);
-                int rInt6to33 = MathFunctions.randomInt(6, 11);
+                Random rand = new Random();
+                int rInt219to255 = rand.nextInt((255 - 219) + 1) + 219;
+                int rInt120to102 = rand.nextInt((120 - 102) + 1) + 102;
+                int rInt70to133 = rand.nextInt((133 - 70) + 1) + 70;
+                int rInt6to33 = rand.nextInt((33 - 6) + 1) + 6;
 
                 Color fire1 = new Color(0, rInt219to255, 255);
                 Color fire2 = new Color(36, rInt120to102, 165);
@@ -339,7 +340,7 @@ public class GameScreen extends JPanel {
                         g2d.setColor(colors[i]);
                         g2d.setStroke(strokes[i]);
 
-                        int random = MathFunctions.randomInt(0, 4);
+                        int random = rand.nextInt((4 - 0) + 1) + 0;
                         if ((i == 0) && random == 2) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
                                     .getRope().getY(), curLevel.getRope()
@@ -361,7 +362,7 @@ public class GameScreen extends JPanel {
                         g2d.setColor(colors[i]);
                         g2d.setStroke(strokes[i]);
 
-                        int random = MathFunctions.randomInt(0, 4);
+                        int random = rand.nextInt((4 - 0) + 1) + 0;
                         if ((i == 0) && random == 2) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
                                     .getRope().getY(), curLevel.getRope()
