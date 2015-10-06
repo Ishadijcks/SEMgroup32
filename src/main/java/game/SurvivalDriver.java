@@ -1,26 +1,19 @@
 package game;
 
 import game.bubble.Bubble;
-import game.bubble.Bubblex128;
-import game.bubble.Bubblex16;
-import game.bubble.Bubblex32;
-import game.bubble.Bubblex64;
-import game.bubble.Bubblex8;
 import game.log.LogSettings;
 import game.log.Logger;
 import game.screens.GameScreen;
 import game.screens.LeaderBoardScreen;
 import game.screens.LosingScreen;
-import game.screens.StartScreen;
 
 import java.io.IOException;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JTextField;
 
 /**
- * Class that executes the game.
+ * Class that executes a survival game.
  * 
  * @author Boning
  *
@@ -32,6 +25,10 @@ public class SurvivalDriver extends Driver {
     private static String name;
     private static Leaderboard lb = new Leaderboard();
 
+    /** Constructor for a survival driver that will get the name of a player.
+     * 
+     * @param name Name that the player entered
+     */
     public SurvivalDriver(String name) {
         this.name = name;
     }
@@ -62,7 +59,6 @@ public class SurvivalDriver extends Driver {
     /**
      * Check if the game has been lost.
      * 
-     * @return Gives true if the game has ended, otherwise gives false.
      */
     public static void gameLost() {
         game.gameLost();
@@ -76,6 +72,9 @@ public class SurvivalDriver extends Driver {
         new LosingScreen(driver, es);
     }
     
+    /**
+     * Initialise the driver.
+     */
     public void initDriver() {
     	try {
             gameScreen = new GameScreen();
@@ -193,8 +192,9 @@ public class SurvivalDriver extends Driver {
                         .getLevelWidth()));
         Settings.setLeftMargin(centerConstant);
     }
+    
     /**
-     * initialize game.
+     * initialise the game.
      */
     public void initGame() {
         try {
@@ -212,9 +212,11 @@ public class SurvivalDriver extends Driver {
         Logger.log("Main Frame created", 9, 4);
     }
 
+    /** 
+     * Method that should make a screen where the player can select different options.
+     */
 	@Override
 	public void startScreen() {
-		// TODO Auto-generated method stub
 		
 	}
 }

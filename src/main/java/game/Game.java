@@ -4,6 +4,11 @@ import game.log.Logger;
 
 import java.util.ArrayList;
 
+/**
+ * Class that will handle everything of 1 game session.
+ * @author Boning
+ *
+ */
 public abstract class Game {
     protected ArrayList<Level> levelList = new ArrayList<Level>();
     protected ArrayList<Player> playerList;
@@ -11,6 +16,9 @@ public abstract class Game {
     protected int currentLevel = 1;
     protected boolean inProgress;
 
+    /**
+     * Constructor that will initialise a player list.
+     */
     public Game() {
         this.inProgress = false;
         this.playerList = new ArrayList<Player>();
@@ -18,7 +26,7 @@ public abstract class Game {
     }
 
     /**
-     * Returns the levelList
+     * Returns the levelList.
      * 
      * @return the levelList (ArrayList)
      */
@@ -26,12 +34,16 @@ public abstract class Game {
         return levelList;
     }
 
+    /**
+     * Sets the levelList.
+     * @param levels List of all levels
+     */
     public void setLevelList(ArrayList<Level> levels) {
         levelList = levels;
     }
 
     /**
-     * Adds a level to the levelList
+     * Adds a level to the levelList.
      * 
      * @param level
      *            level to add
@@ -40,21 +52,22 @@ public abstract class Game {
         if (!levelList.contains(level)) {
             levelList.add(level);
         }
-        Logger.log("Level added to the game",7 ,4);
+        Logger.log("Level added to the game", 7, 4); 
     }
 
 
     /**
-     * If the game is paused, start the game
+     * If the game is paused, start the game.
      */
     public void gameStart() {
-        if (!this.inProgress)
+        if (!this.inProgress) {
             this.inProgress = true;
-        Logger.log("Game started", 7,4);
+            Logger.log("Game started", 7, 4); 
+        }
     }
 
     /**
-     * Add a player to the playerList
+     * Add a player to the playerList.
      * 
      * @param player
      *            player to add
@@ -63,13 +76,11 @@ public abstract class Game {
         if (!playerList.contains(player)) {
             playerList.add(player);
         }
-        Logger.log("Player "+player.getName()+ " added to the game", 1, 4);
+        Logger.log("Player " + player.getName() + " added to the game", 1, 4);
     }
 
-    // Getters and setters
-
     /**
-     * Returns the currentLevel
+     * Returns the currentLevel.
      * 
      * @return the current level
      */
@@ -78,8 +89,7 @@ public abstract class Game {
     }
 
     /**
-     * Returns the currentLevel as an integer
-     * 
+     * Returns the currentLevel as an integer.
      * @return the current level as an integer
      */
     public int getCurrentLevelInt() {
@@ -87,6 +97,7 @@ public abstract class Game {
     }
 
     /**
+     * Setter for the currentLevel.
 	 * @param currentLevel the currentLevel to set
 	 */
 	public void setCurrentLevelInt(int currentLevel) {
@@ -94,7 +105,7 @@ public abstract class Game {
 	}
 
 	/**
-     * Get the lives of the player
+     * Get the lives of the player.
      * @return the lives of the player
      */
     public int getLives() {
@@ -102,6 +113,7 @@ public abstract class Game {
     }
 
     /**
+     * Setter for the amount of lives.
 	 * @param lives the lives to set
 	 */
 	public void setLives(int lives) {
@@ -109,7 +121,7 @@ public abstract class Game {
 	}
 
 	/**
-     * Create an array with the players
+     * Create an array with the players.
      * @return the playerlist
      */
     public ArrayList<Player> getPlayerList() {
@@ -117,79 +129,102 @@ public abstract class Game {
     }
 
     /**
-     * Reset the level if you lost a life
+     * Reset the level if you lose a life.
      */
     public void resetLevel() {
-        levelList.set(currentLevel-1, NormalLevelCreator.getLevel(currentLevel));
+        levelList.set(currentLevel - 1, NormalLevelCreator.getLevel(currentLevel));
         loseLife();
 
     }
 
     /**
-     * Method to control losing a life
+     * Method to control losing a life.
      */
     public void loseLife() {
         lives--;
-        if(lives < 0)
-        {
+        if (lives < 0) {
             lives = 0;
         }
     }
 
     /**
-     * Method to control getting a life (thanks to powerups e.g.)
+     * Method to control getting a life (thanks to powerups e.g.).
      */
     public void getLife() {
         lives++;
     }
 
     /**
-     * Method to show that the game is in progress
+     * Method to show that the game is in progress.
      * @return a boolean that is true if the game is in progress.
      */
     public boolean inProgress() {
         return this.inProgress;
     }
     
-    
-    public void toggleProgress(){
+    /**
+     * Method to toggle the inProgress of the game.
+     */
+    public void toggleProgress() {
         inProgress = !inProgress;
     }
     
+    /**
+     * Checks if a game is lost.
+     */
     public abstract void gameLost();
     
+    /**
+     * Updates the state of a game.
+     */
     public abstract void update();
     
+    /**
+     * Checks if a game is won.
+     */
     public abstract void gameWon();
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/**
+	 * Generated equals method to check if all attributes 
+	 * equals another of the same class.
+	 * @param obj Object that it will compare to
+     * @return true if the object is from the same type and has the same attributes
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Game other = (Game) obj;
-		if (currentLevel != other.currentLevel)
+		if (currentLevel != other.currentLevel) {
 			return false;
-		if (inProgress != other.inProgress)
+		}
+		if (inProgress != other.inProgress) {
 			return false;
+		}
 		if (levelList == null) {
-			if (other.levelList != null)
+			if (other.levelList != null) {
 				return false;
-		} else if (!levelList.equals(other.levelList))
+			}
+		} else if (!levelList.equals(other.levelList)) {
 			return false;
-		if (lives != other.lives)
+		}
+		if (lives != other.lives) {
 			return false;
+		}
 		if (playerList == null) {
-			if (other.playerList != null)
+			if (other.playerList != null) {
 				return false;
-		} else if (!playerList.equals(other.playerList))
+			}
+		} else if (!playerList.equals(other.playerList)) {
 			return false;
+		}
 		return true;
 	}
 }

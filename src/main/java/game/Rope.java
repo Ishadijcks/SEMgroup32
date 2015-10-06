@@ -2,77 +2,108 @@ package game;
 
 import game.log.Logger;
 
+/**
+ * Rope class. 
+ * @author Boning
+ */
 public class Rope {
-    protected int x;
-    protected int y;
+    protected int xCoord;
+    protected int yCoord;
     
     private boolean normalMode;
 
-    public Rope(int x, int y, boolean isNormalMode) {
-        this.x = x;
-        this.y = y;
+    /**
+     * Constructor for a rope.
+     * @param xCoord x-Coordinate of the rope
+     * @param yCoord y-Coordinate of the rope
+     * @param isNormalMode checks if it is a normal game of a survival game
+     */
+    public Rope(int xCoord, int yCoord, boolean isNormalMode) {
+        this.xCoord = xCoord;
+        this.yCoord = yCoord;
         normalMode = isNormalMode;
     }
 
     /**
-     * The rope moves up and gets destroyed when it hits the roof
+     * The rope moves up and gets destroyed when it hits the roof.
      */
     public void move() {
-            if(normalMode)  
-            {
-                if (y <= Settings.getTopMargin() - 2) {
+            if (normalMode) {
+                if (yCoord <= Settings.getTopMargin() - 2) {
                     NormalDriver.game.getCurrentLevel()
                              .setRope(null);
                     Logger.log("Rope hit the roof", 5, 4);
                  } else {
-                     Logger.log("Rope moved from "+x+","+y+ " to "+ x + ","+(y-Settings.getRopeSpeed()), 5, 5);
-                     y -= Settings.getRopeSpeed();
+                     Logger.log("Rope moved from " + xCoord + "," + yCoord
+                             + " to " + xCoord + "," + (yCoord - Settings.getRopeSpeed()), 5, 5);
+                     yCoord -= Settings.getRopeSpeed();
                  } 
             }
-            else
-            {
-                if (y <= Settings.getTopMargin() - 2) {
+            else {
+                if (yCoord <= Settings.getTopMargin() - 2) {
                     SurvivalDriver.game.getCurrentLevel()
                              .setRope(null);
                     Logger.log("Rope hit the roof", 5, 4);
                  } else {
-                     Logger.log("Rope moved from "+x+","+y+ " to "+ x + ","+(y-Settings.getRopeSpeed()), 5, 5);
-                     y -= Settings.getRopeSpeed();
+                     Logger.log("Rope moved from " + xCoord + "," + yCoord 
+                             + " to " + xCoord + "," + (yCoord - Settings.getRopeSpeed()), 5, 5);
+                     yCoord -= Settings.getRopeSpeed();
                  } 
             }
             
     }
     
+    /**
+     * Increase the x-Coordinate.
+     * @param extra Increased amount to the x-Coordinate
+     */
     public void addX(int extra) {
-        this.x += extra;
+        this.xCoord += extra;
     }
 
+    /**
+     * Getter for the x-Coordinate.
+     * @return the x-Coordinate of the rope
+     */
     public int getX() {
-        return x;
+        return xCoord;
     }
 
+    /**
+     * Getter for the y-Coordinate.
+     * @return the y-Coordinate of the rope
+     */
     public int getY() {
-        return y;
+        return yCoord;
     }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
+	/**
+	 * Generated equals method to check if a rope object equals
+	 * another rope object.
+	 * @param obj Object that it will compare to
+	 * @return true if the object is from the same type and has the same attributes
 	 */
-	@Override
+    @Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Rope other = (Rope) obj;
-		if (normalMode != other.normalMode)
+		if (normalMode != other.normalMode) {
 			return false;
-		if (x != other.x)
+		}
+		if (xCoord != other.xCoord) {
 			return false;
-		if (y != other.y)
+		}
+		if (yCoord != other.yCoord) {
 			return false;
+		}
 		return true;
 	}
 }

@@ -8,15 +8,27 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import game.log.LogSettings;
 import game.screens.StartScreen;
 
+/**
+ * Class that will execute the whole game.
+ * @author Boning
+ *
+ */
 public class MainRunner {
 	
 	private static Driver driver;
 	private static boolean driverIsSet;
 
+	/**
+	 * Constructor of the main runner class.
+	 */
 	public MainRunner() {
 		driverIsSet = false;
 	}
 
+	/**
+	 * main method will be executed.
+	 * @param args standard java thingie
+	 */
 	public static void main(String[] args) {
 		driverIsSet = false;
 		
@@ -24,22 +36,19 @@ public class MainRunner {
 			new StartScreen();
 		} catch (UnsupportedAudioFileException | IOException
 				| LineUnavailableException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
-		while(true){
-			
-			try{
+		while (true) {
+			try {
 				driver.driverHeart();
-			}catch(Exception e){}
+			} catch (Exception e) { }
 
 	        // 120 FPS
 	        try {
 				Thread.sleep(1000 / Settings.getFps());
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	        driver.totalFrames++;
@@ -51,6 +60,10 @@ public class MainRunner {
 
 	}
 	
+	/**
+	 * Set the normal or survival driver as a game.
+	 * @param buildDriver driver that will be used to build a game
+	 */
 	public static void setDriver(Driver buildDriver) {
 		driver = buildDriver;
 		driverIsSet = true;
