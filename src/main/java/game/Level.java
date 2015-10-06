@@ -2,6 +2,7 @@ package game;
 
 import game.bubble.Bubble;
 import game.log.Logger;
+import game.powerups.Powerup;
 import game.wall.BubbleWall;
 import game.wall.DuoWall;
 import game.wall.Wall;
@@ -36,15 +37,6 @@ public abstract class Level {
     }
 
     /**
-     * Remove bubble.
-     * 
-     * @param i
-     */
-    public abstract void destroyBubble(int i);
-
-    public abstract Powerup generatePowerup(int x, int y, int randomNumber1);
-
-    /**
      * Add a bubble to the bubbleList
      * 
      * @param bubble
@@ -66,75 +58,6 @@ public abstract class Level {
     public void setPowerupList(ArrayList<Powerup> powerupList) {
         this.powerupList = powerupList;
     }
-
-    /**
-     * Checks if there is collision between player and a bubble
-     * 
-     * @return
-     */
-    public boolean checkCollisionPlayer() {
-
-        return Collisions.checkCollisionPlayer(bubbleList, playerList);
-
-    }
-
-    /**
-     * Checks if there is collision between rope and a bubble
-     * 
-     * @return -1 if there is no collision otherwise the index of the bubble
-     */
-
-    public boolean handleCollisionRope() {
-        if(hasRope()){
-            int collision = Collisions.checkCollisionRope(bubbleList, rope);
-            if (collision != -1) {
-                destroyBubble(collision);
-                setRope(null);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Checks if the player collided with a powerup
-     */
-
-    public boolean handlePowerupCollision() {
-        int i = Collisions.checkCollisionPowerup(playerList, powerupList);
-        if (i != -1) {
-            Powerup powerup = powerupList.get(i);
-
-            int powerupListSize = playerList.get(0).getPowerupList().size();
-            if (powerupListSize > 0) {
-                for (int i1 = 0; i1 < powerupListSize; i1++) {
-                    if (playerList.get(0).getPowerupList().get(i1)
-                            .samePowerup(powerup)) {
-                        playerList.get(0).getPowerupList().get(i1)
-                                .resetFramesLeft();
-                        Logger.log("Power up time "
-                                + playerList.get(0).getPowerupList().get(i1)
-                                        .getName() + " reset", 6, 4);
-                        increasedPowerupTime = true;
-                        powerupList.remove(i);
-                    }
-                }
-
-            }
-            if (!increasedPowerupTime) {
-                playerList.get(0).setPowerup(powerupList.get(i));
-                Logger.log("Power up time " + powerupList.get(i).getName()
-                        + " added", 6, 4);
-
-                powerupList.remove(i);
-            }
-            increasedPowerupTime = false;
-            return true;
-        }
-        return false;
-    }
-
-
 
     /**
      * Calls the add score method from the game.

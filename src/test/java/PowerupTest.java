@@ -5,9 +5,9 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 
 import game.NormalDriver;
-import game.Powerup;
 import game.Settings;
 import game.SurvivalDriver;
+import game.powerups.Powerup;
 import game.screens.StartScreen;
 
 import org.junit.Before;

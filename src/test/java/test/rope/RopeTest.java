@@ -8,10 +8,10 @@ import game.GameCreator;
 import game.Level;
 import game.NormalDriver;
 import game.Player;
-import game.Powerup;
 import game.Rope;
 import game.SurvivalDriver;
 import game.bubble.Bubble;
+import game.powerups.Powerup;
 
 import java.util.ArrayList;
 

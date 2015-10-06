@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import game.NormalDriver;
 import game.GameCreator;
 import game.Player;
-import game.Powerup;
 import game.Settings;
 import game.SurvivalDriver;
 import game.SurvivalGame;
+import game.powerups.Powerup;
 import game.wall.Wall;
 
 import org.junit.Test;

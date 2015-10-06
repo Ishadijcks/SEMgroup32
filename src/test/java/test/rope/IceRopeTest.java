@@ -7,9 +7,9 @@ import static org.junit.Assert.fail;
 import game.IceRope;
 import game.Level;
 import game.Player;
-import game.Powerup;
 import game.Rope;
 import game.bubble.Bubble;
+import game.powerups.Powerup;
 
 import java.util.ArrayList;
 

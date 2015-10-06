@@ -1,8 +1,12 @@
 package game;
 
 import game.log.Logger;
+import game.observers.Observable;
+import game.observers.Observer;
+import game.observers.RopeCollisionObserver;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Game {
     protected ArrayList<Level> levelList = new ArrayList<Level>();
@@ -64,6 +68,20 @@ public abstract class Game {
             playerList.add(player);
         }
         Logger.log("Player "+player.getName()+ " added to the game", 1, 4);
+    }
+    
+    public void moveEntities() {
+    	Level currentLevel = this.getCurrentLevel();
+    	
+    	currentLevel.moveBubbles();
+    	
+    	for (int i = 0; i < currentLevel.getPowerupList().size(); i++) {
+    		currentLevel.getPowerupList().get(i).move();
+        }
+    	
+    	if (currentLevel.hasRope()) {
+            currentLevel.getRope().move();
+        }
     }
 
     // Getters and setters

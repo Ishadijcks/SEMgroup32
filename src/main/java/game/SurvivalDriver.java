@@ -8,6 +8,7 @@ import game.bubble.Bubblex64;
 import game.bubble.Bubblex8;
 import game.log.LogSettings;
 import game.log.Logger;
+import game.powerups.Powerup;
 import game.screens.GameScreen;
 import game.screens.LeaderBoardScreen;
 import game.screens.LosingScreen;

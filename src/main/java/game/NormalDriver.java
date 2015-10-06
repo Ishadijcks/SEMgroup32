@@ -3,6 +3,7 @@ package game;
 import game.bubble.Bubble;
 import game.log.LogSettings;
 import game.log.Logger;
+import game.powerups.Powerup;
 import game.screens.GameScreen;
 import game.screens.LogScreen;
 import game.screens.LosingScreen;
@@ -52,10 +53,13 @@ public class NormalDriver extends Driver {
     private static String name;
     private static NormalDriver driver;
     private static GameScreen gameScreen;
+    
+    private Collisions collisions;
 
     public NormalDriver(String name)
     {
         this.name = name;
+        this.collisions = new Collisions();
     }
 
     /**
@@ -98,54 +102,13 @@ public class NormalDriver extends Driver {
         return false;
     }
 
-    public void driverHeart() {
+    public void driverHeart() { 
         
-	    if (game.inProgress()) {
+	    if (game.inProgress()) 	{
 	        curLevel = game.getCurrentLevel();
 	
-	        curLevel.moveBubbles();
-	
-	        for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
-	            curLevel.getPowerupList().get(i).move();
-	            curLevel.handlePowerupCollision();
-	        }
-	
-	        if (curLevel.hasRope()) {
-	            curLevel.getRope().move();
-	        }
-	
-	        curLevel.handleCollisionRope();
-	
-	        if (curLevel.checkCollisionPlayer()) {
-	            game.getPlayerList().get(0).removeAllPowerUps();
-	            game.resetLevel();
-	        }
-	
-	        int powerupListSize = game.getPlayerList().get(0)
-	                .getPowerupList().size();
-	
-	        if (powerupListSize > 0) {
-	            for (int i = 0; i < powerupListSize; i++) {
-	                if (game.getPlayerList().get(0).getPowerupList().get(i)
-	                        .getName().equals("life")) {
-	                    Powerup life = game.getPlayerList().get(0)
-	                            .getPowerupList().get(i);
-	                    game.getLife();
-	                    game.getPlayerList().get(0).removePowerUp(life);
-	                } else if (game.getPlayerList().get(0).getPowerupList()
-	                        .get(i).getName().equals("ice")) {
-	                    iceRope = true;
-	                    game.getPlayerList().get(0).getPowerupList().get(i)
-	                            .decreaseFramesLeft();
-	                } else if (game.getPlayerList().get(0).getPowerupList()
-	                        .get(i).getName().equals("speed")) {
-	                    game.getPlayerList().get(0).getPowerupList().get(i)
-	                            .decreaseFramesLeft();
-	                }
-	
-	            }
-	        }
-	        iceRope = game.getPlayerList().get(0).hasIceRope();
+	        game.moveEntities();
+	        collisions.allCollisions(game);
 	
 	        gameScreen.reload();
 	
@@ -164,8 +127,8 @@ public class NormalDriver extends Driver {
 	        checkGameLost();
 	        checkGameWon();
 	    }
+    }
 	
-	}
 
 
     /**

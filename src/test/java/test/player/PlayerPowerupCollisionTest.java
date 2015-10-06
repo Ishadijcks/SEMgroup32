@@ -3,8 +3,8 @@ import static org.junit.Assert.*;
 import game.Level;
 import game.NormalLevel;
 import game.Player;
-import game.Powerup;
 import game.bubble.Bubble;
+import game.powerups.Powerup;
 
 import java.util.ArrayList;
 import java.util.Arrays;

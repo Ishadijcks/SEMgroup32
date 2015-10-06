@@ -38,7 +38,7 @@ public class NormalLevelCreator {
 
     public static Level getLevel1() {
 
-        Bubble bubble1 = new Bubblex8(100, 100, false, false);
+        Bubble bubble1 = new Bubblex16(100, 100, false, false);
 
         Level level1 = new NormalLevel(playerList);
 

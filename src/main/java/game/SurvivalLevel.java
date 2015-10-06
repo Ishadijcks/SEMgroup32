@@ -2,6 +2,7 @@ package game;
 
 import game.bubble.Bubble;
 import game.log.Logger;
+import game.powerups.Powerup;
 
 import java.awt.Color;
 import java.util.ArrayList;
@@ -15,22 +16,6 @@ public class SurvivalLevel extends Level {
     public SurvivalLevel(ArrayList<Player> playerList) {
         super(playerList);
         Logger.log("Level created", 8, 4);
-    }
-
-    public Powerup generatePowerup(int x, int y, int randomNumber1) {
-        int randomNumber = randomNumber1;
-        switch (randomNumber) {
-        case 1:
-            Logger.log("Powerup speed spawned", 6, 4);
-            return new Powerup("speed", x, y, false);
-        case 2:
-            Logger.log("Powerup ice spawned", 6, 4);
-            return new Powerup("ice", x, y, false);
-        default:
-            Logger.log("Powerup speed spawned", 6, 4);
-            Logger.log("generatePowerup switch default triggered", 6, 3);
-            return new Powerup("speed", x, y, false);
-        }
     }
 
     /**

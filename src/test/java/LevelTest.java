@@ -6,10 +6,10 @@ import static org.junit.Assert.fail;
 import game.Level;
 import game.NormalLevel;
 import game.Player;
-import game.Powerup;
 import game.Rope;
 import game.bubble.Bubble;
 import game.bubble.Bubblex16;
+import game.powerups.Powerup;
 
 import java.util.ArrayList;
 

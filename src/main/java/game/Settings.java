@@ -21,6 +21,7 @@ public class Settings {
     private static int playerWidth = 111;
     private static int playerStepSize = 2;
     private static int playerPowerupStepSize = 5;
+    private static boolean playerHasIceRope = false;
 
     private static int bubbleDefaultDiameter = 16;
     private static int bubbleDefaultX = 10;
@@ -45,6 +46,8 @@ public class Settings {
 
     private static int topMargin = 50;
     private static int leftMargin = 0;
+    
+    private static boolean dieThreads = false;
 
     /**
      * Set the left margin.
@@ -95,6 +98,14 @@ public class Settings {
 
     public static int getPlayerPowerupStepSize() {
         return playerPowerupStepSize;
+    }
+    
+    public static boolean getPlayerHasIceRope() {
+    	return playerHasIceRope;
+    }
+    
+    public static void setPlayerHasIceRope(boolean setter) {
+    	playerHasIceRope = setter;
     }
 
     public static int getLives() {
@@ -152,6 +163,20 @@ public class Settings {
     public static int getWallHeight() {
         return wallHeight;
     }
+
+	/**
+	 * @return the dieThreads
+	 */
+	public static boolean getDieThreads() {
+		return dieThreads;
+	}
+
+	/**
+	 * @param dieThreads the dieThreads to set
+	 */
+	public static void setDieThreads(boolean dieThreads) {
+		Settings.dieThreads = dieThreads;
+	}
 
     
 

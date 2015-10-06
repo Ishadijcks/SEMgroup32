@@ -1,6 +1,10 @@
-package game;
+package game.powerups;
 
 
+import game.Game;
+import game.NormalDriver;
+import game.Settings;
+import game.SurvivalDriver;
 import game.log.Logger;
 import game.screens.StartScreen;
 
@@ -14,11 +18,13 @@ import javax.swing.ImageIcon;
  * @author Naomi
  *
  */
-public class Powerup {
+public abstract class Powerup {
     String name;
     private int x;
     private int y;
     private Image image;
+    
+    protected Game game;
     
     int width = Settings.getPowerupWidth();
     int height = Settings.getPowerupHeight();
@@ -40,23 +46,8 @@ public class Powerup {
         this.y = y;
         normalMode = isNormalMode;
     }
-
     
-    @Override
-	public boolean equals(Object obj) {
-		if(obj instanceof Powerup){
-			obj = (Powerup) obj;
-			if(((Powerup) obj).name.equals(this.name))
-				if(((Powerup) obj).x == this.x)
-					if(((Powerup) obj).y == this.y)
-						if(((Powerup) obj).width == this.width)
-							if(((Powerup) obj).height == this.height)
-								if(((Powerup) obj).framesLeft == this.framesLeft)
-									return true;
-		}
-		return false;
-		
-	}
+    public abstract void executeEffect();
 
 	/**
      * The powerup moves down till it hits the floor
@@ -203,5 +194,37 @@ public class Powerup {
         return null;
         
     }
+
+    @Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Powerup){
+			obj = (Powerup) obj;
+			if(((Powerup) obj).name.equals(this.name))
+				if(((Powerup) obj).x == this.x)
+					if(((Powerup) obj).y == this.y)
+						if(((Powerup) obj).width == this.width)
+							if(((Powerup) obj).height == this.height)
+								if(((Powerup) obj).framesLeft == this.framesLeft)
+									return true;
+		}
+		return false;
+		
+	}
+
+	/**
+	 * @param x the x to set
+	 */
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	/**
+	 * @param y the y to set
+	 */
+	public void setY(int y) {
+		this.y = y;
+	}
+	
+	public abstract void setGame(Game game);
     
 }
