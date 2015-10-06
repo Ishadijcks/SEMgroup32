@@ -40,7 +40,6 @@ public class Collisions {
                         if (bubbleList.get(i).getY()
                                 + bubbleList.get(i).getDiameter() >= rope
                                     .getY()) {
-                            System.out.println(i);
                             Logger.log("Rope collided with a bubble", 8, 4);
                             return i;
                         }

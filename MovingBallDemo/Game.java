@@ -35,7 +35,6 @@ public class Game extends JPanel  {
 		JFrame frame = new JFrame("Bounce test");
 		Game game = new Game();
 		frame.add(game);
-		System.out.println(frame.isFocusable());
 		frame.setSize(300, 400);
 		frame.setVisible(true);
 		

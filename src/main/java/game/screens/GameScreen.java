@@ -21,6 +21,7 @@ import game.wall.Wall;
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -90,29 +91,31 @@ public class GameScreen extends JPanel {
 
     public void startGame() {
         frame.setVisible(true);
+        frame.setFocusable(true);
+        frame.requestFocusInWindow();
+        frame.requestFocus();
     }
 
     public void levelWon() {
-
+    	
+    	
         final JLabel label = new JLabel("test");
         label.setText("Congratulations! Level won!");
-        frame.add(label);
+        gameScreen.add(label);
         final JButton nextLevel = new JButton("Next Level");
-        nextLevel.setVerticalTextPosition(AbstractButton.BOTTOM);
-        nextLevel.setHorizontalTextPosition(AbstractButton.CENTER);
-        nextLevel.setMnemonic(KeyEvent.VK_M);
-        nextLevel.setFocusable(false);
-        nextLevel.setBounds(700, 950, 250, 50);
+        nextLevel.setBounds(300, 50,140, 50 );
         nextLevel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 canDrawGame = true;
                 game.gameStart();
-                remove(nextLevel);
-                remove(label);
+                gameScreen.remove(nextLevel);
+                gameScreen.remove(label);
             }
         });
-        frame.add(nextLevel);
-        frame.validate();
+        gameScreen.add(nextLevel);
+        gameScreen.validate();
+        validate();
+        reload();
     }
 
     /**
@@ -402,7 +405,6 @@ public class GameScreen extends JPanel {
                 ImageIcon dragonRight = new ImageIcon(imageLocation
                         + "src/main/Images/dragon/dragonR" + animationRightCounter
                         + ".png");
-System.out.println(dragonLeft);
                 // Get the current X position of the player.
                 int newX = player.getX();
 

@@ -51,7 +51,6 @@ public class LogScreen extends JFrame {
         boldFont = new Font("Serif", Font.BOLD, 18);
         basicFont = new Font("Serif", Font.PLAIN, 16);
 
-        JFrame.setDefaultLookAndFeelDecorated(true);
         frame = new JFrame("Logging Screen");
         frame.setSize(800, 800);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -91,7 +90,6 @@ public class LogScreen extends JFrame {
         mainPanel = makeMainPanel();
         frame.add(mainPanel);
 
-        System.out.println("reload");
         frame.invalidate();
         frame.validate();
         frame.repaint();

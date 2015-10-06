@@ -64,7 +64,6 @@ public class StartScreen extends JFrame {
         //setLayout(new BorderLayout());
         setContentPane(new JLabel(new ImageIcon(imageLocation
                 + "main/Images/StartscreenBackground.png")));
-        System.out.println(imageLocation + "main/Images/StartscreenBackground.png");
         //setLayout(new FlowLayout());
         setLayout(null);
 
@@ -117,7 +116,6 @@ public class StartScreen extends JFrame {
                 Driver d = DriverBuilder.buildDriver(0);
                 d.setupGame();
                 d.initDriver();
-                d.initGame();
                 d.startGame("");
                 MainRunner.setDriver(d);
             }
@@ -130,7 +128,6 @@ public class StartScreen extends JFrame {
                 Driver d = DriverBuilder.buildDriver(1);
                 d.setupGame();
                 d.initDriver();
-                d.initGame();
                 d.startGame("");
                 MainRunner.setDriver(d);
             }

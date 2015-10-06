@@ -52,11 +52,4 @@ public class DriverTest {
 		assertTrue(driver.checkGameLost());
 	}
 
-	@Test
-	public void testStartScreen() {
-		driver.startScreen();
-		LogObject log = new LogObject("Start screen created", 9, 4);
-		assertTrue(Logger.getLogList().getLast().equals(log));
-	}
-
 }
