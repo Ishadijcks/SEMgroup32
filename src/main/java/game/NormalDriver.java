@@ -8,6 +8,7 @@ import game.screens.LogScreen;
 import game.screens.LosingScreen;
 import game.screens.StartScreen;
 import game.screens.WinningScreen;
+import game.wall.Wall;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

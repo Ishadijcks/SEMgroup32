@@ -11,7 +11,7 @@ import game.Player;
 import game.Powerup;
 import game.Score;
 import game.Settings;
-import game.Wall;
+import game.wall.Wall;
 import game.bubble.Bubble;
 import game.log.LogFilters;
 import game.log.LogSettings;
