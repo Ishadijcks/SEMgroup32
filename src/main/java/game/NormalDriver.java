@@ -50,7 +50,6 @@ import javax.swing.JPanel;
 public class NormalDriver extends Driver {
 
     private static String name;
-    public static NormalGame game;
     private static NormalDriver driver;
     private static GameScreen gameScreen;
 
@@ -62,24 +61,11 @@ public class NormalDriver extends Driver {
     /**
      * Frame to start the game
      */
+    @Override
     public void startGame(String playerName) {
         name = playerName;
         gameScreen.startGame();
         game.gameStart();
-    }
-
-
-    public void startScreen() {
-        try {
-            new StartScreen(driver);
-        } catch (UnsupportedAudioFileException e1) {
-            e1.printStackTrace();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        } catch (LineUnavailableException e1) {
-            e1.printStackTrace();
-        }
-        Logger.log("Start screen created", 9, 4);
     }
     
     /**
@@ -112,117 +98,75 @@ public class NormalDriver extends Driver {
         return false;
     }
 
-    public static void main(String[] args) throws InterruptedException,
-            UnsupportedAudioFileException, IOException,
-            LineUnavailableException {
+    public void driverHeart() {
         
-        try {
-            gameScreen = new GameScreen();
-        } catch (UnsupportedAudioFileException e) {
-            Logger.log("UnsupportedAudioFileException", 7, 2);
-            e.printStackTrace();
-        } catch (IOException e) {
-            Logger.log("IOException", 7, 2);
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            Logger.log("LineUnavailableException", 7, 2);
-            e.printStackTrace();
-        }
-        Logger.log("Main Frame created", 9, 4);
+	    if (game.inProgress()) {
+	        curLevel = game.getCurrentLevel();
+	
+	        curLevel.moveBubbles();
+	
+	        for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
+	            curLevel.getPowerupList().get(i).move();
+	            curLevel.handlePowerupCollision();
+	        }
+	
+	        if (curLevel.hasRope()) {
+	            curLevel.getRope().move();
+	        }
+	
+	        curLevel.handleCollisionRope();
+	
+	        if (curLevel.checkCollisionPlayer()) {
+	            game.getPlayerList().get(0).removeAllPowerUps();
+	            game.resetLevel();
+	        }
+	
+	        int powerupListSize = game.getPlayerList().get(0)
+	                .getPowerupList().size();
+	
+	        if (powerupListSize > 0) {
+	            for (int i = 0; i < powerupListSize; i++) {
+	                if (game.getPlayerList().get(0).getPowerupList().get(i)
+	                        .getName().equals("life")) {
+	                    Powerup life = game.getPlayerList().get(0)
+	                            .getPowerupList().get(i);
+	                    game.getLife();
+	                    game.getPlayerList().get(0).removePowerUp(life);
+	                } else if (game.getPlayerList().get(0).getPowerupList()
+	                        .get(i).getName().equals("ice")) {
+	                    iceRope = true;
+	                    game.getPlayerList().get(0).getPowerupList().get(i)
+	                            .decreaseFramesLeft();
+	                } else if (game.getPlayerList().get(0).getPowerupList()
+	                        .get(i).getName().equals("speed")) {
+	                    game.getPlayerList().get(0).getPowerupList().get(i)
+	                            .decreaseFramesLeft();
+	                }
+	
+	            }
+	        }
+	        iceRope = game.getPlayerList().get(0).hasIceRope();
+	
+	        gameScreen.reload();
+	
+	        Player player1 = game.getPlayerList().get(0);
+	        player1.move(curLevel.getWallList());
+	
+	        if (curLevel.getBubbleList().size() == 0) {
+	            boolean once = true;
+	            if (once) {
+	                once = false;
+	                canDrawGame = false;
+	                gameScreen.levelWon();
+	            }
+	            game.gameWon();
+	        }
+	        checkGameLost();
+	        checkGameWon();
+	    }
+	
+	}
 
-        driver = new NormalDriver(name);
-        Player player = new Player(name, 350, true);
-        game = GameCreator.createSinglePlayer(player);
-
-        score = new Score();
-        game.addPlayer(player);
-        player = game.getPlayerList().get(0);
-        int centerConstant = (int) Math
-                .round(0.5 * (Settings.getScreenWidth() - Settings
-                        .getLevelWidth()));
-        Settings.setLeftMargin(centerConstant);
-        GameScreen.setupScreen(game, score);
-        
-        driver.startScreen();
-
-        LogSettings.setActiveLog(true);
-
-        while (true) {
-            if (game.inProgress()) {
-                curLevel = game.getCurrentLevel();
-
-                curLevel.moveBubbles();
-
-                for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
-                    curLevel.getPowerupList().get(i).move();
-                    curLevel.handlePowerupCollision();
-                }
-
-                if (curLevel.hasRope()) {
-                    curLevel.getRope().move();
-                }
-
-                curLevel.handleCollisionRope();
-
-                if (curLevel.checkCollisionPlayer()) {
-                    game.getPlayerList().get(0).removeAllPowerUps();
-                    game.resetLevel();
-                }
-
-                int powerupListSize = game.getPlayerList().get(0)
-                        .getPowerupList().size();
-
-                if (powerupListSize > 0) {
-                    for (int i = 0; i < powerupListSize; i++) {
-                        if (game.getPlayerList().get(0).getPowerupList().get(i)
-                                .getName().equals("life")) {
-                            Powerup life = game.getPlayerList().get(0)
-                                    .getPowerupList().get(i);
-                            game.getLife();
-                            game.getPlayerList().get(0).removePowerUp(life);
-                        } else if (game.getPlayerList().get(0).getPowerupList()
-                                .get(i).getName().equals("ice")) {
-                            iceRope = true;
-                            game.getPlayerList().get(0).getPowerupList().get(i)
-                                    .decreaseFramesLeft();
-                        } else if (game.getPlayerList().get(0).getPowerupList()
-                                .get(i).getName().equals("speed")) {
-                            game.getPlayerList().get(0).getPowerupList().get(i)
-                                    .decreaseFramesLeft();
-                        }
-
-                    }
-                }
-                iceRope = game.getPlayerList().get(0).hasIceRope();
-
-                gameScreen.reload();
-
-                Player player1 = game.getPlayerList().get(0);
-                player1.move(curLevel.getWallList());
-
-                if (curLevel.getBubbleList().size() == 0) {
-                    boolean once = true;
-                    if (once) {
-                        once = false;
-                        canDrawGame = false;
-                        gameScreen.levelWon();
-                    }
-                    game.gameWon();
-                }
-                checkGameLost();
-                checkGameWon();
-            }
-
-            // 120 FPS
-            Thread.sleep(1000 / Settings.getFps());
-            totalFrames++;
-            if (LogSettings.isLogScreen() && totalFrames % 500 == 0
-                    && game.inProgress()) {
-                LogSettings.getLogscreen().reloadData();
-            }
-        }
-
-    }
 
     /**
      * getter returns game screen.
@@ -254,8 +198,6 @@ public class NormalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-
-        driver = new NormalDriver(name);
         Player player = new Player(name, 350, true);
         game = GameCreator.createSinglePlayer(player);
 
@@ -268,6 +210,50 @@ public class NormalDriver extends Driver {
         Settings.setLeftMargin(centerConstant);
         GameScreen.setupScreen(game, score);
     }
+
+	@Override
+	public void initDriver() {
+
+
+        
+        try {
+            gameScreen = new GameScreen();
+        } catch (UnsupportedAudioFileException e) {
+            Logger.log("UnsupportedAudioFileException", 7, 2);
+            e.printStackTrace();
+        } catch (IOException e) {
+            Logger.log("IOException", 7, 2);
+            e.printStackTrace();
+        } catch (LineUnavailableException e) {
+            Logger.log("LineUnavailableException", 7, 2);
+            e.printStackTrace();
+        }
+        Logger.log("Main Frame created", 9, 4);
+
+        //driver = new NormalDriver(name);
+        Player player = new Player(name, 350, true);
+        game = GameCreator.createSinglePlayer(player);
+
+        score = new Score();
+        game.addPlayer(player);
+        player = game.getPlayerList().get(0);
+        int centerConstant = (int) Math
+                .round(0.5 * (Settings.getScreenWidth() - Settings
+                        .getLevelWidth()));
+        Settings.setLeftMargin(centerConstant);
+        GameScreen.setupScreen(game, score);
+        
+        this.startGame(name);
+
+        LogSettings.setActiveLog(true);
+		
+	}
+
+	@Override
+	public void startScreen() {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

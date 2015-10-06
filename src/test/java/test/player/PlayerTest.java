@@ -1,10 +1,16 @@
 package test.player;
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import game.NormalDriver;
 import game.GameCreator;
 import game.Player;
 import game.Powerup;
 import game.Settings;
+import game.SurvivalDriver;
+import game.SurvivalGame;
+import game.wall.Wall;
 
 import org.junit.Test;
 
@@ -53,16 +59,34 @@ public class PlayerTest {
     public void testMoveLeft() {
         int x = player.getX();
         player.movingLeft();
-     //   player.move();
+        player.move(new ArrayList<Wall>());
         assertEquals(x - Settings.getPlayerStepSize(), player.getX());
+    }
+
+    @Test
+    public void testMoveLeftBoundary() {
+    	Player play = new Player("test", 0, true);
+        int x = player.getX();
+        play.movingLeft();
+        play.move(new ArrayList<Wall>());
+        assertEquals(x, player.getX());
     }
 
     @Test
     public void testMoveRight() {
         int x = player.getX();
         player.movingRight();
-   //     player.move();
+        player.move(new ArrayList<Wall>());
         assertEquals(x + Settings.getPlayerStepSize(), player.getX());
+    }
+
+    @Test
+    public void testMoveRightBoundary() {
+    	Player play = new Player("test", 10000, true);
+        int x = player.getX();
+        play.movingRight();
+        play.move(new ArrayList<Wall>());
+        assertEquals(x, player.getX());
     }
     
     @Test
@@ -71,7 +95,7 @@ public class PlayerTest {
         player.movingRight();
     	player.setPowerup(new Powerup("speed", 100, 60, true));
     	player.getPowerupList().get(0).deActivate();
-  //  	player.move();
+    	player.move(new ArrayList<Wall>());
         assertEquals(x + Settings.getPlayerStepSize(), player.getX());
     }
     
@@ -81,7 +105,7 @@ public class PlayerTest {
         player.movingRight();
     	player.setPowerup(new Powerup("ice", 100, 60, true));
     	player.getPowerupList().get(0).deActivate();
-   // 	player.move();
+    	player.move(new ArrayList<Wall>());
         assertEquals(x + Settings.getPlayerStepSize(), player.getX());
     }
 
@@ -105,7 +129,7 @@ public class PlayerTest {
         player.setPowerup(new Powerup("speed", 100, 60, true));
         int x = player.getX();
         player.movingLeft();
-   //     player.move();
+        player.move(new ArrayList<Wall>());
         assertEquals(x - Settings.getPlayerPowerupStepSize(), player.getX());
     }
 
@@ -114,17 +138,28 @@ public class PlayerTest {
         player.setPowerup(new Powerup("speed", 100, 60, true));
         int x = player.getX();
         player.movingRight();
-  //      player.move();
+        player.move(new ArrayList<Wall>());
         assertEquals(x + Settings.getPlayerPowerupStepSize(), player.getX());
     }
 
     @Test
-    public void testShootRope() {
+    public void testShootRopeNormalGame() {
         NormalDriver.game = GameCreator.createSinglePlayer(player);
         assertFalse(NormalDriver.game.getCurrentLevel()
                 .hasRope());
         player.shootRope();
         assertTrue(NormalDriver.game.getCurrentLevel()
+                .hasRope());
+    }
+    
+    @Test
+    public void testShootRopeSurvivalGame() {
+    	Player play = new Player("Isha", 500, false);
+    	SurvivalDriver.game = GameCreator.createSurvival(play);
+        assertFalse(SurvivalDriver.game.getCurrentLevel()
+                .hasRope());
+        play.shootRope();
+        assertTrue(SurvivalDriver.game.getCurrentLevel()
                 .hasRope());
     }
     
@@ -140,6 +175,18 @@ public class PlayerTest {
     }
     
     @Test
+    public void testShotIceRopeSurvivalGame() {
+    	Player play = new Player("Isha", 500, false);
+    	SurvivalDriver.game = GameCreator.createSurvival(play);
+    	play.setPowerup(new Powerup("ice", 100, 60, true));
+        assertFalse(SurvivalDriver.game.getCurrentLevel()
+                .hasRope());
+        play.shootRope();
+        assertTrue(SurvivalDriver.game.getCurrentLevel()
+                .hasRope());
+    }
+    
+    @Test
     public void testShotDeactivatedIceRope() {
         NormalDriver.game = GameCreator.createSinglePlayer(player);
         player.setPowerup(new Powerup("ice", 100, 60, true));
@@ -148,6 +195,19 @@ public class PlayerTest {
                 .hasRope());
         player.shootRope();
         assertTrue(NormalDriver.game.getCurrentLevel()
+                .hasRope());
+    }
+    
+    @Test
+    public void testShotDeactivatedIceRopeSurvivalGame() {
+    	Player play = new Player("Isha", 500, false);
+    	SurvivalDriver.game = GameCreator.createSurvival(play);
+    	play.setPowerup(new Powerup("ice", 100, 60, true));
+    	play.getPowerupList().get(0).deActivate();
+        assertFalse(SurvivalDriver.game.getCurrentLevel()
+                .hasRope());
+        play.shootRope();
+        assertTrue(SurvivalDriver.game.getCurrentLevel()
                 .hasRope());
     }
 
@@ -207,6 +267,13 @@ public class PlayerTest {
     	assertFalse(player.hasPowerup());
     	player.getPowerupList().add(new Powerup("ice", 100, 60, true));
     	assertTrue(player.hasPowerup());
+    }
+    
+    @Test
+    public void testSetName() {
+    	assertTrue(player.getName().equals("Isha"));
+    	player.setName("NietIsha");
+    	assertTrue(player.getName().equals("NietIsha"));
     }
 
 }

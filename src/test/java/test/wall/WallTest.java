@@ -16,13 +16,13 @@ public class WallTest {
 	
 	@Before
 	public void init() {
-		w = new Wall(10,11,Color.PINK);
+		w = new Wall(10,Color.PINK);
 	}
 
 	@Test
 	public void testWall() {
 		assertEquals(10, w.getX());
-		assertEquals(11, w.getY());
+		assertEquals(0, w.getY());
 		assertEquals(Color.PINK, w.getColor());
 	}
 

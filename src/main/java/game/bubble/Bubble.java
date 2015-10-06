@@ -1,5 +1,6 @@
 package game.bubble;
 
+import game.Settings;
 import game.wall.BubbleWall;
 import game.wall.DuoWall;
 import game.Settings;
@@ -241,7 +242,7 @@ public abstract class Bubble {
     }
 
     /**
-     * Get the vertical direction
+     * Get the vertical direction.
      * 
      * @return the vertical direction
      */
@@ -250,9 +251,9 @@ public abstract class Bubble {
     }
 
     /**
-     * Set the vertical direction of the bubble
+     * Set the vertical direction of the bubble.
      * 
-     * @param directionV
+     * @param directionV 
      */
     public void setDirectionV(boolean directionV) {
         this.directionV = directionV;

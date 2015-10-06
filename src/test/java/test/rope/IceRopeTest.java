@@ -21,7 +21,7 @@ public class IceRopeTest {
     
     public int x;
     public int y;
-    Rope rope;
+    private IceRope rope;
     
     @Before
     public void init() {
