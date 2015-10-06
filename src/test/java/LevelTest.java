@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import game.Level;
+import game.MathFunctions;
 import game.NormalLevel;
 import game.Player;
 import game.Powerup;
@@ -46,28 +47,28 @@ public class LevelTest {
 	@Test
 	public void testGeneratePowerupSpeed() {
 		Powerup pow = new Powerup("speed", 0, 0, true);
-		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(1, 1));
+		Powerup pow2 = l.generatePowerup(0, 0, MathFunctions.randomInt(1, 1));
 		assertTrue(pow.equals(pow2));
 	}
 	
 	@Test
 	public void testGeneratePowerupLife() {
 		Powerup pow = new Powerup("life", 0, 0, true);
-		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(2, 2));
+		Powerup pow2 = l.generatePowerup(0, 0, MathFunctions.randomInt(2, 2));
 		assertTrue(pow.equals(pow2));
 	}
 	
 	@Test
 	public void testGeneratePowerupIce() {
 		Powerup pow = new Powerup("ice", 0, 0, true);
-		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(3, 3));
+		Powerup pow2 = l.generatePowerup(0, 0, MathFunctions.randomInt(3, 3));
 		assertTrue(pow.equals(pow2));
 	}
 	
 	@Test
 	public void testGeneratePowerupDefault() {
 		Powerup pow = new Powerup("speed", 0, 0, true);
-		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(1000, 1000000));
+		Powerup pow2 = l.generatePowerup(0, 0, MathFunctions.randomInt(1000, 1000000));
 		assertTrue(pow.equals(pow2));
 	}
 

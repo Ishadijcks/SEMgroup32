@@ -2,10 +2,18 @@ package game.wall;
 
 import java.awt.Color;
 
+/**
+ * Wall class of a player wall.
+ * @author Boning
+ */
 public class PlayerWall extends Wall {
 
-    public PlayerWall (int x){
-        super(x,Color.green);
+    /**
+     * Constructor of a player wall.
+     * @param xCoord xCoord-Coordinate of the wall
+     */
+    public PlayerWall(int xCoord) {
+        super(xCoord, Color.green);
     }
     
 }

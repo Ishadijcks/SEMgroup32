@@ -88,7 +88,6 @@ public class NormalLevelCreator {
         Bubble bubble1 = new Bubblex16(320, 250, false, true);
         Bubble bubble2 = new Bubblex32(720, 100, false, false);
 
-
         Level level2 = new NormalLevel(playerList);
 
         level2.addBubble(bubble1);

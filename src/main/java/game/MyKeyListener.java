@@ -99,6 +99,7 @@ public class MyKeyListener extends KeyAdapter {
             Logger.log("Player released right", 0, 5);
             game.getPlayerList().get(0).stopMovingRight();
             break;
+            
         default:
             break;
         }
