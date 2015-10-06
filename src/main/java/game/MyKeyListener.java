@@ -11,18 +11,27 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+/**
+ * Keylistener that will handle all key inputs.
+ * @author Boning
+ *
+ */
 public class MyKeyListener extends KeyAdapter {
     
     Game game;
 
-    public MyKeyListener(Game gameInput)
-    {
+    /**
+     * Constructor for the key listener class.
+     * @param gameInput The game where the listener is active
+     */
+    public MyKeyListener(Game gameInput) {
         game = gameInput;
     }
 
     /**
      * Checks what key is pressed, moves the player in that direction or shoots
-     * a rope
+     * a rope.
+     * @param evt Keyevent 
      */
     public void keyPressed(KeyEvent evt) {
 
@@ -65,7 +74,7 @@ public class MyKeyListener extends KeyAdapter {
                 }
                     break;
                 default:
-                    Logger.log("keyPressed switch default triggered",0, 3);
+                    Logger.log("keyPressed switch default triggered", 0, 3);
                     break;
             }
         }
@@ -73,7 +82,7 @@ public class MyKeyListener extends KeyAdapter {
 
     /**
      * Checks what key is released, makes the player stop moving in that
-     * direction
+     * direction.
      */
     public void keyReleased(KeyEvent evt) {
 
@@ -90,11 +99,16 @@ public class MyKeyListener extends KeyAdapter {
             Logger.log("Player released right", 0, 5);
             game.getPlayerList().get(0).stopMovingRight();
             break;
+            
+        default:
+            break;
         }
+        
     }
 
 	/**
-	 * @return the game
+	 * Getter of the game.
+	 * @return the current game
 	 */
 	public Game getGame() {
 		return game;

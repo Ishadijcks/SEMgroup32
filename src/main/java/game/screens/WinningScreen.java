@@ -1,29 +1,24 @@
 package game.screens;
 
 import game.Driver;
-import game.NormalDriver;
 import game.Settings;
-import game.endScore;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/**
+ * Class that will create a winning screen.
+ * @author Boning
+ *
+ */
 public class WinningScreen extends JFrame {
 
     JButton playAgainButton;
@@ -32,6 +27,11 @@ public class WinningScreen extends JFrame {
     final private Driver dr;
     JFrame gameFrame;
 
+    /**
+     * Constructor for the winning screen class.
+     * @param driver where the screen comes from
+     * @param name of the player
+     */
     public WinningScreen(Driver driver,  final String name) {
 
         setTitle("You won!");
@@ -46,14 +46,12 @@ public class WinningScreen extends JFrame {
          setVisible(true);
 
          
-         String imageLocation = location.getFile();
-         imageLocation = imageLocation.replace("%20", " ");
-         imageLocation = imageLocation.replace("target/classes/", "src/");
+        String imageLocation = location.getFile();
+        imageLocation = imageLocation.replace("%20", " ");
+        imageLocation = imageLocation.replace("target/classes/", "src/");
 
-         //setLayout(new BorderLayout());
-         setContentPane(new JLabel(new ImageIcon(imageLocation
-                 + "main/Images/winScreenBackground.png")));
-         //setLayout(new FlowLayout());
+        setContentPane(new JLabel(new ImageIcon(imageLocation
+                + "main/Images/winScreenBackground.png")));
 
         setLayout(null);
 
@@ -62,7 +60,7 @@ public class WinningScreen extends JFrame {
         playAgainButton.setForeground(Color.WHITE);
         playAgainButton.setFont(new Font("Calibri", Font.BOLD, 30));
         playAgainButton.setOpaque(true);
-        playAgainButton.setBounds(Settings.getScreenWidth()/2 + 70, Settings.getScreenHeight()/2 - 52, 350, 75);
+        playAgainButton.setBounds(Settings.getScreenWidth() / 2 + 70, Settings.getScreenHeight() / 2 - 52, 350, 75);
 
         stopButton = new JButton("Exit");
         stopButton.setBackground(Color.PINK);

@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Random;
+
 import game.bubble.Bubble;
 import game.bubble.Bubblex128;
 import game.bubble.Bubblex16;
@@ -7,10 +9,8 @@ import game.bubble.Bubblex32;
 import game.bubble.Bubblex64;
 import game.bubble.Bubblex8;
 
-import java.util.ArrayList;
-
 /**
- * Class that handles everything of one game.
+ * Class that handles everything of one survival game.
  * 
  * @author Boning
  *
@@ -19,7 +19,7 @@ public class SurvivalGame extends Game {
     private static int spawnTime = 7000;
     private static int allBubbles = 1;
     private static int bubbleNumber = 1;
-    int startTime;
+    private int startTime;
     private static Bubble bubble1;
     private static Bubble bubble2;
     private static Bubble bubble3;
@@ -27,12 +27,12 @@ public class SurvivalGame extends Game {
     private static Bubble bubble5;
     
     /**
-     * Constructor of the class.
+     * Constructor of a survival game.
      */
     public SurvivalGame() {
         super();
         lives = 1;
-        startTime =(int) System.currentTimeMillis();
+        startTime = (int) System.currentTimeMillis();
     }
     
     /**
@@ -40,8 +40,9 @@ public class SurvivalGame extends Game {
      * @param bubbleNumber The bubble sort which will be generated.
      */
     public static void randomPlacedBubble(int bubbleNumber) {
-        int randX = MathFunctions.randomInt(10, Settings.getLevelWidth() - 10);
-        int randY = MathFunctions.randomInt(10, Settings.getLevelHeight() - 200);
+        Random rand = new Random();
+        int randX = rand.nextInt(((Settings.getLevelWidth() - 10) - 10) + 1) + 10; 
+        int randY = rand.nextInt(((Settings.getLevelHeight() - 200) - 10) + 1) + 10;
         
         switch (bubbleNumber) {
         case 1:
@@ -65,13 +66,20 @@ public class SurvivalGame extends Game {
         }
     }
 
-    public void gameLost(){
+    /**
+     * Checks if a game is lost.
+     */
+    public void gameLost() {
 
         allBubbles = 1;
         bubbleNumber = 1;
     }
-    public void update(){
-        SurvivalLevel curLevel = (SurvivalLevel) levelList.get(currentLevel -1);
+    
+    /**
+     * Updates the state of a game.
+     */
+    public void update() {
+        SurvivalLevel curLevel = (SurvivalLevel) levelList.get(currentLevel - 1);
         int currentTime = (int) System.currentTimeMillis();
         if ((currentTime - startTime) > spawnTime) {
             spawnTime = spawnTime - 1000;
@@ -123,9 +131,11 @@ public class SurvivalGame extends Game {
         }
     }
 
+    /**
+     * Checks if a game is won.
+     */
 	@Override
 	public void gameWon() {
-		// TODO Auto-generated method stub
 		
 	}
 }

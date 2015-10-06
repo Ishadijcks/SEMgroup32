@@ -11,6 +11,7 @@ import game.observers.PowerupCollisionObserver;
 import game.observers.RopeCollisionObserver;
 import game.powerups.Powerup;
 
+
 public class Collisions implements Observable{
 	
 	private Game game;
@@ -29,7 +30,13 @@ public class Collisions implements Observable{
     	checkCollisionPowerup(game.getPlayerList(), curLevel.getPowerupList());
     	checkCollisionPlayer(game.getCurrentLevel().getBubbleList(), game.getCurrentLevel().getPlayerList());
     }
-
+    
+    /** Checks the collisions of the bubbles with the player.
+     * 
+     * @param bubbleList List of bubbles 
+     * @param playerList List of players
+     * @return true if there is a collision, false otherwise
+     */
 	public boolean checkCollisionPlayer(ArrayList<Bubble> bubbleList,
             ArrayList<Player> playerList) {
         for (int i = 0; i < bubbleList.size(); i++) {
@@ -55,6 +62,12 @@ public class Collisions implements Observable{
         return false;
     }
 
+    /** Checks the collisions of the rope with the player.
+     * 
+     * @param bubbleList List of bubbles
+     * @param rope The rope of the player
+     * @return The index of the bubble will be returned, it will return -1 if there is no collision
+     */
     public int checkCollisionRope(ArrayList<Bubble> bubbleList,
             Rope rope) {
             for (int i = 0; i < bubbleList.size(); i++) {
@@ -74,26 +87,31 @@ public class Collisions implements Observable{
         return -1;
     }
     
-
+	/** Checks the collisions of powerups with the player.
+     * 
+     * @param playerList List of players
+     * @param powerupList List of powerups
+     * @return The powerup that collided will be returned, if there are no collisions then it will return -1
+     */
     public int checkCollisionPowerup(ArrayList<Player> playerList, ArrayList<Powerup> powerupList) {
-    Player player1 = playerList.get(0);
-    for (int i = 0; i < powerupList.size(); i++) {
-        Powerup powerup = powerupList.get(i);
-
-        if (player1.getCollisionX() <= (powerup.getX() + powerup.getWidth())
-                && (player1.getCollisionX() + player1.getWidth()) >= powerup
-                        .getX()
-                && player1.getCollisionY() <= (powerup.getY() + powerup
-                        .getHeight())
-                && (player1.getY() + player1.getHeight()) >= powerup.getY()) {
-
-            Logger.log("Player collided with a powerup", 8, 4);
-            powerupColObserver.update(powerupList.get(i), player1, game);
-
-           return i;
-        }
-    }
-    return -1;
+	    Player player1 = playerList.get(0);
+	    for (int i = 0; i < powerupList.size(); i++) {
+	        Powerup powerup = powerupList.get(i);
+	
+	        if (player1.getCollisionX() <= (powerup.getX() + powerup.getWidth())
+	                && (player1.getCollisionX() + player1.getWidth()) >= powerup
+	                        .getX()
+	                && player1.getCollisionY() <= (powerup.getY() + powerup
+	                        .getHeight())
+	                && (player1.getY() + player1.getHeight()) >= powerup.getY()) {
+	
+	            Logger.log("Player collided with a powerup", 8, 4);
+	            powerupColObserver.update(powerupList.get(i), player1, game);
+	
+	           return i;
+	        }
+	    }
+	    return -1;
     }
 
 	@Override

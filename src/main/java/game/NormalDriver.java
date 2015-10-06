@@ -42,9 +42,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * Class that executes the game
+ * Class that executes the game.
  * 
- * @author Naomi
+ * @author Boning
  *
  */
 @SuppressWarnings("serial")
@@ -56,6 +56,10 @@ public class NormalDriver extends Driver {
     
     private Collisions collisions;
 
+    /** 
+     * Constructor that will pass the name of the player.
+     * @param name Name that the player entered
+     */
     public NormalDriver(String name)
     {
         this.name = name;
@@ -63,7 +67,7 @@ public class NormalDriver extends Driver {
     }
 
     /**
-     * Frame to start the game
+     * Frame to start the game.
      */
     @Override
     public void startGame(String playerName) {
@@ -73,10 +77,11 @@ public class NormalDriver extends Driver {
     }
     
     /**
-     * Check if the game has been won
+     * Check if the game has been won.
+     * @return true if the game is won, false otherwise
      */
     public static boolean checkGameWon() {
-        if (game.getCurrentLevelInt() == game.getLevelList().size() - 1) {
+        if (game.getCurrentLevelInt() == 4) {
             gameScreen.dispose();
             Logger.log("Frame destroyed", 9, 4);
             new WinningScreen(driver, name);
@@ -86,7 +91,8 @@ public class NormalDriver extends Driver {
     }
 
     /**
-     * Check if the game has been lost
+     * Check if the game has been lost.
+     * @return true if the game is lost, false otherwise
      */
     public static boolean checkGameLost() {
         int livesLeft = game.getLives();
@@ -102,7 +108,11 @@ public class NormalDriver extends Driver {
         return false;
     }
 
-    public void driverHeart() { 
+
+    /**
+     * Method that will take care of everything that happens in a game session.
+     */
+    public void driverHeart() {
         
 	    if (game.inProgress()) 	{
 	        curLevel = game.getCurrentLevel();
@@ -132,14 +142,15 @@ public class NormalDriver extends Driver {
 
 
     /**
-     * getter returns game screen.
+     * Getter returns game screen.
      * @return game screen
      */
-    public GameScreen getGameScreen(){
+    public GameScreen getGameScreen() {
         return gameScreen;
     }
+    
     /**
-     * initialize game.
+     * Initialise the game.
      */
     public void initGame() {
         try {
@@ -173,11 +184,11 @@ public class NormalDriver extends Driver {
         Settings.setLeftMargin(centerConstant);
     }
 
+    /**
+     * Initialise the driver.
+     */
 	@Override
 	public void initDriver() {
-
-
-        
         try {
             gameScreen = new GameScreen();
         } catch (UnsupportedAudioFileException e) {
@@ -192,7 +203,6 @@ public class NormalDriver extends Driver {
         }
         Logger.log("Main Frame created", 9, 4);
 
-        //driver = new NormalDriver(name);
         Player player = new Player(name, 350, true);
         game = GameCreator.createSinglePlayer(player);
 
@@ -211,9 +221,11 @@ public class NormalDriver extends Driver {
 		
 	}
 
+	 /** 
+      * Method that should make a screen where the player can select different options.
+      */
 	@Override
 	public void startScreen() {
-		// TODO Auto-generated method stub
 		
 	}
 

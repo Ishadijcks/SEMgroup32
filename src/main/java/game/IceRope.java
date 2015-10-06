@@ -2,27 +2,36 @@ package game;
 
 import game.log.Logger;
 
-public class IceRope extends Rope{
+/**
+ * Class that will control a rope with an ice powerup.
+ * @author Boning
+ *
+ */
+public class IceRope extends Rope {
 
-    public IceRope(int x, int y, boolean isNormalMode) {
+    /**
+     * Constructor for an icerope.
+     * @param xCoord x-Coordinate of the rope
+     * @param yCoord y-Coordinate of the rope
+     * @param isNormalMode checks if it is a normal game of a survival game
+     */
+    public IceRope(int xCoord, int yCoord, boolean isNormalMode) {
        
-        super(x, y, isNormalMode);
-        Logger.log("Ice rope created", 5 ,4);
+        super(xCoord, yCoord, isNormalMode);
+        Logger.log("Ice rope created", 5 , 4);
     }
 
     /**
-     * The rope moves up and gets destroyed when it hits the roof
+     * The rope moves up and gets destroyed when it hits the roof.
      */
     @Override
     public void move() {
         Logger.log("Ice rope moved", 5, 5, 100);
-       if (super.y <= Settings.getTopMargin() - 2) 
-       {
+       if (super.yCoord <= Settings.getTopMargin() - 2) {
           return;
        } 
-       else 
-       {
-           super.y -= Settings.getRopeSpeed();
+       else {
+           super.yCoord -= Settings.getRopeSpeed();
        } 
     }
     

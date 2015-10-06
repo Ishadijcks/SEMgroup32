@@ -1,173 +1,185 @@
 package game.bubble;
 
 import game.Settings;
-import game.wall.BubbleWall;
-import game.wall.DuoWall;
-import game.Settings;
-import game.wall.Wall;
 import game.log.Logger;
 
 import java.awt.Color;
 import java.util.ArrayList;
 
+/**
+ * Abstract class of a bubble.
+ * @author Boning
+ *
+ */
 public abstract class Bubble {
-    protected double x = 10;
-    protected double y = 10;
+    protected double xCoord = 10;
+    protected double yCoord = 10;
     protected double timer = 1;
-    protected boolean directionH;
-    protected boolean directionV;
+    protected boolean directionHorizontal;
+    protected boolean directionVertical;
     protected double lastDownSpeed = 0;
     protected double lastUpSpeed = 1;
     protected boolean newBubble;
 
     private int maxheight;
     private Color color;
-    private double G;
+    private double gravitation;
     private int diameter;
     private double speedX;
 
-    protected double s;
+    protected double shifting;
     protected double sOld;
-    protected double t = 0;
-    protected double v;
+    protected double time = 0;
+    protected double velocity;
     protected double timeStep = 0.01;
     protected double factor = 2;
 
-    /**
-     * the constructor sets the starting coordinates, the moving location, the
-     * diameter.
-     * 
-     * @param x
-     * @param y
-     */
-    public Bubble(double x, double y, boolean directionH, boolean directionV,
-            int maxheight, Color color, double G, int diameter, double speedX) {
+   /**
+    * Constructor which will make a new bubble with the given parameters.
+    * @param xCoord x-Coordinate
+    * @param yCoord y-Coordinate
+    * @param directionHorizontal horizontal direction
+    * @param directionVertical vertical direction
+    * @param maxheight max bounce height
+    * @param color of the ball
+    * @param gravitation of the ball
+    * @param diameter of the ball
+    * @param speedX speed of the x-Coordination movement
+    */
+    public Bubble(double xCoord, double yCoord, boolean directionHorizontal, boolean directionVertical,
+            int maxheight, Color color, double gravitation, int diameter, double speedX) {
 
         Logger.log("Bubble created with diameter " + diameter, 3, 4);
 
-        this.x = x;
-        this.y = y;
+        this.xCoord = xCoord;
+        this.yCoord = yCoord;
 
         this.maxheight = maxheight;
         this.color = color;
-        this.G = G;
+        this.gravitation = gravitation;
         this.diameter = diameter;
         this.speedX = speedX;
 
-        this.directionH = directionH;
-        this.directionV = directionV;
+        this.directionHorizontal = directionHorizontal;
+        this.directionVertical = directionVertical;
         this.newBubble = true;
 
     }
 
     /**
-     * get the correct X of the bubble
-     * 
-     * @param x
-     * @param diameter
-     * @return the x of the bubble
+     * Checks if x-Coordinate is in the boundaries.
+     * @param xCoord of the bubble
+     * @param diameter of the bubble
+     * @return true if the bubble is placed correctly between the boundaries, false otherwise
      */
-    public boolean correctX(double x, int diameter) {
-        if (x > 0
-                && x < Settings.getLeftMargin() + Settings.getLevelWidth()
+    public boolean correctX(double xCoord, int diameter) {
+        if (xCoord > 0
+                && xCoord < Settings.getLeftMargin() + Settings.getLevelWidth()
                         - diameter) {
             return true;
         } else {
-            Logger.log("Incorrect x", 3, 3);
+            Logger.log("Incorrect xCoord", 3, 3);
             return false;
         }
     }
 
     /**
-     * get the correct Y of the bubble
-     * 
-     * @param y
-     * @param diameter
-     * @return the y of the bubble
+     * Checks if y-Coordinate is in the boundaries.
+     * @param yCoord of the bubble
+     * @param diameter of the bubble
+     * @return true if the bubble is placed correctly between the boundaries, false otherwise
      */
-    public boolean correctY(double y, int diameter) {
-        if (y > Settings.getTopMargin()
-                && y < (Settings.getTopMargin() + Settings.getLevelHeight() - diameter)) {
+    public boolean correctY(double yCoord, int diameter) {
+        if (yCoord > Settings.getTopMargin()
+                && yCoord < (Settings.getTopMargin() + Settings.getLevelHeight() - diameter)) {
             return true;
         }
 
         else {
-            Logger.log("Incorrect y", 3, 3);
+            Logger.log("Incorrect yCoord", 3, 3);
             return false;
         }
     }
 
     /**
-     * The method that controls bubble movement.
-     * 
-     * @param width
-     * @param height
+     * Move the bubble.
      */
     public void move() {
         outOfBoardCheck();
-        bounceBorder();
-        
+        bounceBorder();      
         moveX();
         moveY();
     }
 
-
     /**
-     * check if the bubble isn't outside of the borders.
+     * Check if the bubble isn'time outside of the borders.
      */
     public void outOfBoardCheck() {
-        if (y < Settings.getTopMargin() || !(y > 0)) {
-            y = maxheight;
+        if (yCoord < Settings.getTopMargin() || !(yCoord > 0)) {
+            yCoord = maxheight;
         }
     }
 
     /**
-     * Checks if the bubble needs to bounce cause of the borders. If needed
-     * bounce.
+     * Checks if the bubble bounced against the borders.
      */
     public void bounceBorder() {
-        if (x + diameter > Settings.getLeftMargin() + Settings.getLevelWidth()
-                && directionH || x <= Settings.getLeftMargin() && !directionH) {
+        if (xCoord + diameter > Settings.getLeftMargin() + Settings.getLevelWidth()
+                && directionHorizontal || xCoord <= Settings.getLeftMargin() && !directionHorizontal) {
             bounceH();
         }
 
-        if (y + diameter > Settings.getTopMargin() + Settings.getLevelHeight()
-                && directionV || y <= Settings.getTopMargin() && !directionV) {
+        if (yCoord + diameter > Settings.getTopMargin() + Settings.getLevelHeight()
+                && directionVertical || yCoord <= Settings.getTopMargin() && !directionVertical) {
             bounceV();
         }
     }
 
-    public abstract ArrayList<Bubble> destroyBubble(int x, int y);
+    /**
+     * Destroy a bubble.
+     * @param xCoord of the bubble
+     * @param yCoord of the bubble
+     * @return new list of bubbles with the given bubble removed
+     */
+    public abstract ArrayList<Bubble> destroyBubble(int xCoord, int yCoord);
 
+    /**
+     * Get the diameter of the bubble.
+     * @return diameter of the bubble
+     */
     public abstract int getDiameter();
 
+    /**
+     * Get the color of the bubble.
+     * @return color of the bubble
+     */
     public abstract Color getColor();
 
     /**
-     * Updates the y location of the bubble.
+     * Updates the y-Coordinate location of the bubble.
      */
     public void moveY() {
-        if (directionV) {
-            sOld = 0.5 * G * t * t;
-            t += timeStep;
-            s = 0.5 * G * t * t;
-            v = (s - sOld) / timeStep;
-            lastDownSpeed = v;
-            y += lastDownSpeed;
+        if (directionVertical) {
+            sOld = 0.5 * gravitation * time * time;
+            time += timeStep;
+            shifting = 0.5 * gravitation * time * time;
+            velocity = (shifting - sOld) / timeStep;
+            lastDownSpeed = velocity;
+            yCoord += lastDownSpeed;
             lastDownSpeed += 0.05;
         } else {
-            t = 0;
+            time = 0;
             if (newBubble) {
                 newBubble = false;
                 lastDownSpeed = 4;
             }
-            factor = ((y - maxheight) / (Settings.getTopMargin()
+            factor = ((yCoord - maxheight) / (Settings.getTopMargin()
                     + Settings.getLevelHeight() - maxheight));
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
-            y -= lastUpSpeed;
+            yCoord -= lastUpSpeed;
         }
-        if (lastUpSpeed < 0.5 && !directionV
-                && y < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
+        if (lastUpSpeed < 0.5 && !directionVertical
+                && yCoord < Settings.getTopMargin() + Settings.getLevelHeight() - 50) {
             timer += 0.4;
         }
         if (timer > 5) {
@@ -177,68 +189,72 @@ public abstract class Bubble {
     }
 
     /**
-     * Updates the x location of the bubble.
+     * Updates the x-Coordinate location of the bubble.
      */
     public void moveX() {
-        if (directionH) {
-            x += speedX;
+        if (directionHorizontal) {
+            xCoord += speedX;
         } else {
-            x -= speedX;
+            xCoord -= speedX;
         }
     }
 
     /**
-     * switches the horizontal direction.
+     * Switches the horizontal direction.
      */
     public void bounceH() {
-        if (directionH) {
+        if (directionHorizontal) {
             Logger.log("Bubble bounced on the right wall", 2, 4, 1);
         } else {
             Logger.log("Bubble bounced on the left wall", 2, 4, 1);
         }
-        directionH = !directionH;
+        directionHorizontal = !directionHorizontal;
 
     }
 
     /**
-     * switches the vertical direction.
+     * Switches the vertical direction.
      */
     public void bounceV() {
-        if (directionV) {
+        if (directionVertical) {
             Logger.log("Bubble bounced on the floor", 2, 4, 1);
         } else {
             Logger.log("Bubble reached max height", 2, 4, 1);
         }
-        directionV = !directionV;
+        directionVertical = !directionVertical;
 
-    }
-
-    // Getters and Setters
-
-    public int getX() {
-        return (int) Math.round(x);
-    }
-
-    public int getY() {
-        return (int) Math.round(y);
     }
 
     /**
-     * Give the direction of the bubble
-     * 
+     * Get the x-Coordinate of the bubble.
+     * @return x-Coordinate of the bubble
+     */
+    public int getX() {
+        return (int) Math.round(xCoord);
+    }
+
+    /**
+     * Get the y-Coordinate of the bubble.
+     * @return y-Coordinate of the bubble
+     */
+    public int getY() {
+        return (int) Math.round(yCoord);
+    }
+
+    /**
+     * Give the horizontal direction of the bubble.
      * @return the horizontal direction
      */
     public boolean isDirectionH() {
-        return directionH;
+        return directionHorizontal;
     }
 
     /**
-     * Set the direction of the bubble
-     * 
-     * @param directionH
+     * Set the horizontal direction of the bubble.
+     * @param directionHorizontal new horizontal directions
      */
-    public void setDirectionH(boolean directionH) {
-        this.directionH = directionH;
+    public void setDirectionH(boolean directionHorizontal) {
+        this.directionHorizontal = directionHorizontal;
     }
 
     /**
@@ -247,16 +263,16 @@ public abstract class Bubble {
      * @return the vertical direction
      */
     public boolean isDirectionV() {
-        return directionV;
+        return directionVertical;
     }
 
     /**
      * Set the vertical direction of the bubble.
      * 
-     * @param directionV 
+     * @param directionVertical 
      */
-    public void setDirectionV(boolean directionV) {
-        this.directionV = directionV;
+    public void setDirectionV(boolean directionVertical) {
+        this.directionVertical = directionVertical;
     }
 
     /**
@@ -275,10 +291,10 @@ public abstract class Bubble {
     }
 
     /**
-     * @return the g
+     * @return the gravitation
      */
     public double getG() {
-        return G;
+        return gravitation;
     }
 
     /**
@@ -288,10 +304,11 @@ public abstract class Bubble {
         return maxheight;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
+    /**
+     * Generated equals method to check if all attributes 
+     * equals another of the same class.
+     * @param obj Object that it will compare to
+     * @return true if the object is from the same type and has the same attributes
      */
     @Override
     public boolean equals(Object obj) {
@@ -302,7 +319,7 @@ public abstract class Bubble {
         if (getClass() != obj.getClass())
             return false;
         Bubble other = (Bubble) obj;
-        if (Double.doubleToLongBits(G) != Double.doubleToLongBits(other.G))
+        if (Double.doubleToLongBits(gravitation) != Double.doubleToLongBits(other.gravitation))
             return false;
         if (color == null) {
             if (other.color != null)
@@ -311,9 +328,9 @@ public abstract class Bubble {
             return false;
         if (diameter != other.diameter)
             return false;
-        if (directionH != other.directionH)
+        if (directionHorizontal != other.directionHorizontal)
             return false;
-        if (directionV != other.directionV)
+        if (directionVertical != other.directionVertical)
             return false;
         if (Double.doubleToLongBits(factor) != Double
                 .doubleToLongBits(other.factor))
@@ -328,7 +345,7 @@ public abstract class Bubble {
             return false;
         if (newBubble != other.newBubble)
             return false;
-        if (Double.doubleToLongBits(s) != Double.doubleToLongBits(other.s))
+        if (Double.doubleToLongBits(shifting) != Double.doubleToLongBits(other.shifting))
             return false;
         if (Double.doubleToLongBits(sOld) != Double
                 .doubleToLongBits(other.sOld))
@@ -336,7 +353,7 @@ public abstract class Bubble {
         if (Double.doubleToLongBits(speedX) != Double
                 .doubleToLongBits(other.speedX))
             return false;
-        if (Double.doubleToLongBits(t) != Double.doubleToLongBits(other.t))
+        if (Double.doubleToLongBits(time) != Double.doubleToLongBits(other.time))
             return false;
         if (Double.doubleToLongBits(timeStep) != Double
                 .doubleToLongBits(other.timeStep))
@@ -344,11 +361,11 @@ public abstract class Bubble {
         if (Double.doubleToLongBits(timer) != Double
                 .doubleToLongBits(other.timer))
             return false;
-        if (Double.doubleToLongBits(v) != Double.doubleToLongBits(other.v))
+        if (Double.doubleToLongBits(velocity) != Double.doubleToLongBits(other.velocity))
             return false;
-        if (Double.doubleToLongBits(x) != Double.doubleToLongBits(other.x))
+        if (Double.doubleToLongBits(xCoord) != Double.doubleToLongBits(other.xCoord))
             return false;
-        if (Double.doubleToLongBits(y) != Double.doubleToLongBits(other.y))
+        if (Double.doubleToLongBits(yCoord) != Double.doubleToLongBits(other.yCoord))
             return false;
         return true;
     }

@@ -12,6 +12,7 @@ import game.bubble.Bubblex16;
 import game.powerups.Powerup;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,6 +26,7 @@ public class LevelTest {
 	public ArrayList<Player> p;
 	public ArrayList<Bubble> bubbleList;
 	public ArrayList<Powerup> plist;
+	public Random rand;
 	
 	@Before
 	public void init() {
@@ -34,6 +36,7 @@ public class LevelTest {
 		bubbleList = new ArrayList<Bubble>();
 		plist = new ArrayList<Powerup>();
 		powr = new Powerup("speed", 0,0, true);
+		rand = new Random();
 	}
 
 	@Test
@@ -46,28 +49,32 @@ public class LevelTest {
 	@Test
 	public void testGeneratePowerupSpeed() {
 		Powerup pow = new Powerup("speed", 0, 0, true);
-		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(1, 1));
+		int randomInt = rand.nextInt((1 - 1) + 1) + 1;
+		Powerup pow2 = l.generatePowerup(0, 0, randomInt);
 		assertTrue(pow.equals(pow2));
 	}
 	
 	@Test
 	public void testGeneratePowerupLife() {
 		Powerup pow = new Powerup("life", 0, 0, true);
-		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(2, 2));
+		int randomInt = rand.nextInt((2 - 2) + 1) + 2;
+		Powerup pow2 = l.generatePowerup(0, 0, randomInt);
 		assertTrue(pow.equals(pow2));
 	}
 	
 	@Test
 	public void testGeneratePowerupIce() {
 		Powerup pow = new Powerup("ice", 0, 0, true);
-		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(3, 3));
+		int randomInt = rand.nextInt((3 - 3) + 1) + 3;
+		Powerup pow2 = l.generatePowerup(0, 0, randomInt);
 		assertTrue(pow.equals(pow2));
 	}
 	
 	@Test
 	public void testGeneratePowerupDefault() {
 		Powerup pow = new Powerup("speed", 0, 0, true);
-		Powerup pow2 = l.generatePowerup(0, 0, l.randomInt(1000, 1000000));
+		int randomInt = rand.nextInt((1000000 - 1000) + 1) + 1000;
+		Powerup pow2 = l.generatePowerup(0, 0, randomInt);
 		assertTrue(pow.equals(pow2));
 	}
 

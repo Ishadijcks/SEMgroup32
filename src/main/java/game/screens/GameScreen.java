@@ -1,10 +1,6 @@
 package game.screens;
 
 import game.Game;
-import game.NormalDriver;
-import game.NormalGame;
-import game.MathFunctions;
-import game.GameCreator;
 import game.Level;
 import game.MyKeyListener;
 import game.Player;
@@ -12,16 +8,13 @@ import game.Score;
 import game.Settings;
 import game.wall.Wall;
 import game.bubble.Bubble;
-import game.log.LogFilters;
 import game.log.LogSettings;
 import game.log.Logger;
 import game.powerups.Powerup;
 import game.wall.Wall;
 
 import java.awt.BasicStroke;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -29,21 +22,23 @@ import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
+/**
+ * Class that will create everything on a screen for a game.
+ * @author Boning
+ *
+ */
 public class GameScreen extends JPanel {
     public static int totalFrames = 1;
     public static Game game;
@@ -58,7 +53,6 @@ public class GameScreen extends JPanel {
     private static boolean dragonIsRight = true;
     private static boolean canDrawGame = true;
     private static boolean addOnce = false;
-    private boolean dragonJustStopped = false;
     private boolean dragonIsMoving = false;
     private boolean shootRope = false;
     private static boolean iceRope = false;
@@ -66,7 +60,6 @@ public class GameScreen extends JPanel {
             .getCodeSource().getLocation();
     private static String imageLocation = location.getFile();
     private static Color dragonRed = new Color(135, 15, 15);
-    private static Level curLevel;
     private Graphics2D g2d;
     private int topMargin;
     private int centerConstant;
@@ -75,6 +68,12 @@ public class GameScreen extends JPanel {
     private static JFrame frame;
     private static GameScreen gameScreen;
 
+    /**
+     * Constructor for the game screen class.
+     * @throws UnsupportedAudioFileException exception
+     * @throws IOException exception
+     * @throws LineUnavailableException exception
+     */
     public GameScreen() throws UnsupportedAudioFileException, IOException,
             LineUnavailableException {
         frame = new JFrame("Game Screen");
@@ -83,12 +82,15 @@ public class GameScreen extends JPanel {
     }
 
     /**
-     * dispose the screen.
+     * Dispose the screen.
      */
     public void dispose() {
         frame.dispose();
     }
 
+    /**
+     * Start a new game.
+     */
     public void startGame() {
         frame.setVisible(true);
         frame.setFocusable(true);
@@ -96,14 +98,15 @@ public class GameScreen extends JPanel {
         frame.requestFocus();
     }
 
+    /**
+     * Level is won by player.
+     */
     public void levelWon() {
-    	
-    	
         final JLabel label = new JLabel("test");
         label.setText("Congratulations! Level won!");
         gameScreen.add(label);
         final JButton nextLevel = new JButton("Next Level");
-        nextLevel.setBounds(300, 50,140, 50 );
+        nextLevel.setBounds(300, 50, 140, 50);
         nextLevel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 canDrawGame = true;
@@ -119,7 +122,7 @@ public class GameScreen extends JPanel {
     }
 
     /**
-     * refresh the screen.
+     * Refresh the screen.
      */
     public void reload() {
         gameScreen.repaint();
@@ -127,6 +130,11 @@ public class GameScreen extends JPanel {
         frame.repaint();
     }
 
+    /**
+     * Setup a screen.
+     * @param gameInput type of game that will be played
+     * @param scoreInput score of the player
+     */
     public static void setupScreen(Game gameInput, Score scoreInput) {
         game = gameInput;
         score = scoreInput;
@@ -165,7 +173,7 @@ public class GameScreen extends JPanel {
     }
 
     /**
-     * Method to draw the game
+     * Method to draw the game.
      */
     @Override
     public void paint(Graphics graph) {
@@ -212,8 +220,8 @@ public class GameScreen extends JPanel {
                 Wall wall = curLevel.getWallList().get(i);
                 if (wall.isActive()) {
                     g2d.setColor(wall.getColor());
-                    g2d.fillRect(wall.getX(),
-                            wall.getY() + Settings.getTopMargin(),
+                    g2d.fillRect(wall.getxCoord(),
+                            wall.getyCoord() + Settings.getTopMargin(),
                             wall.getWidth(), wall.getHeight());
                     g2d.setColor(Color.BLACK);
                 }
@@ -224,11 +232,12 @@ public class GameScreen extends JPanel {
                 shootRope = true;
                 ropeDurationCounter--;
 
-                int rInt127to153 = MathFunctions.randomInt(127, 153);
-                int rInt51to102 = MathFunctions.randomInt(51, 102);
-                int rInt69to240 = MathFunctions.randomInt(69, 240);
-                int rInt255to8 = MathFunctions.randomInt(69, 240);
-                int rInt6to11 = MathFunctions.randomInt(6, 11);
+                Random rand = new Random();
+                int rInt127to153 = rand.nextInt((153 - 127) + 1) + 127;
+                int rInt51to102 = rand.nextInt((102 - 51) + 1) + 51;
+                int rInt69to240 = rand.nextInt((240 - 69) + 1) + 69;
+                int rInt255to8 = rand.nextInt((255 - 8) + 1) + 8;
+                int rInt6to11 = rand.nextInt((11 - 6) + 1) + 6;
 
                 Color fire1 = new Color(255, rInt127to153, 0);
                 Color fire2 = new Color(255, rInt51to102, 0);
@@ -255,7 +264,7 @@ public class GameScreen extends JPanel {
                         g2d.setColor(colors[i]);
                         g2d.setStroke(strokes[i]);
 
-                        int random = MathFunctions.randomInt(0, 4);
+                        int random = rand.nextInt((4 - 0) + 1) + 0;
                         if ((i == 0) && random == 2) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
                                     .getRope().getY(), curLevel.getRope()
@@ -277,7 +286,7 @@ public class GameScreen extends JPanel {
                         g2d.setColor(colors[i]);
                         g2d.setStroke(strokes[i]);
 
-                        int random = MathFunctions.randomInt(0, 4);
+                        int random = rand.nextInt((4 - 0) + 1) + 0;
                         if ((i == 0) && random == 2) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
                                     .getRope().getY(), curLevel.getRope()
@@ -301,10 +310,11 @@ public class GameScreen extends JPanel {
                 shootRope = true;
                 ropeDurationCounter--;
 
-                int rInt219to255 = MathFunctions.randomInt(219, 255);
-                int rInt120to102 = MathFunctions.randomInt(120, 236);
-                int rInt70to133 = MathFunctions.randomInt(70, 133);
-                int rInt6to33 = MathFunctions.randomInt(6, 11);
+                Random rand = new Random();
+                int rInt219to255 = rand.nextInt((255 - 219) + 1) + 219;
+                int rInt120to102 = rand.nextInt((120 - 102) + 1) + 102;
+                int rInt70to133 = rand.nextInt((133 - 70) + 1) + 70;
+                int rInt6to33 = rand.nextInt((33 - 6) + 1) + 6;
 
                 Color fire1 = new Color(0, rInt219to255, 255);
                 Color fire2 = new Color(36, rInt120to102, 165);
@@ -331,7 +341,7 @@ public class GameScreen extends JPanel {
                         g2d.setColor(colors[i]);
                         g2d.setStroke(strokes[i]);
 
-                        int random = MathFunctions.randomInt(0, 4);
+                        int random = rand.nextInt((4 - 0) + 1) + 0;
                         if ((i == 0) && random == 2) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
                                     .getRope().getY(), curLevel.getRope()
@@ -353,7 +363,7 @@ public class GameScreen extends JPanel {
                         g2d.setColor(colors[i]);
                         g2d.setStroke(strokes[i]);
 
-                        int random = MathFunctions.randomInt(0, 4);
+                        int random = rand.nextInt((4 - 0) + 1) + 0;
                         if ((i == 0) && random == 2) {
                             g2d.drawLine(curLevel.getRope().getX(), curLevel
                                     .getRope().getY(), curLevel.getRope()
@@ -380,13 +390,11 @@ public class GameScreen extends JPanel {
                 g2d.setFont(new Font("Calibri", Font.ITALIC, 25));
                 g2d.setColor(dragonRed);
 
-                if(player.getName() != null)
-                {
+                if (player.getName() != null) {
                     g2d.drawString(player.getName(), player.getX() - 25,
                             player.getY() - 70 + topMargin);
                 }
-                else
-                {
+                else {
                     g2d.drawString("", player.getX() - 25,
                             player.getY() - 70 + topMargin);
                 }

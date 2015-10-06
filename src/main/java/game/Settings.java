@@ -4,7 +4,6 @@ import java.awt.Color;
 
 /**
  * Class that keeps all the settings of the whole game.
- * 
  * @author Boning
  *
  */
@@ -58,44 +57,64 @@ public class Settings {
     }
 
     /**
-     * All the getters.
+     * @return the fps
      */
-    public static int getLeftMargin() {
-        return leftMargin;
-    }
-
     public static int getFps() {
         return fps;
     }
 
+    /**
+     * @return the screenWidth
+     */
     public static int getScreenWidth() {
         return screenWidth;
     }
 
+    /**
+     * @return the screenHeight
+     */
     public static int getScreenHeight() {
         return screenHeight;
     }
 
+    /**
+     * @return the levelWidth
+     */
     public static int getLevelWidth() {
         return levelWidth;
     }
 
+    /**
+     * @return the levelHeight
+     */
     public static int getLevelHeight() {
         return levelHeight;
     }
 
+    /**
+     * @return the playerHeight
+     */
     public static int getPlayerHeight() {
         return playerHeight;
     }
 
+    /**
+     * @return the playerWidth
+     */
     public static int getPlayerWidth() {
         return playerWidth;
     }
 
+    /**
+     * @return the playerStepSize
+     */
     public static int getPlayerStepSize() {
         return playerStepSize;
     }
 
+    /**
+     * @return the playerPowerupStepSize
+     */
     public static int getPlayerPowerupStepSize() {
         return playerPowerupStepSize;
     }
@@ -108,58 +127,93 @@ public class Settings {
     	playerHasIceRope = setter;
     }
 
-    public static int getLives() {
-        return lives;
-    }
-
-    public static int getRopeSpeed() {
-        return ropeSpeed;
-    }
-
-    public static int getSmallestBubbleSize() {
-        return smallestBubbleSize;
-    }
-
-    public static int getTopMargin() {
-        return topMargin;
-    }
-
-    public static int getPowerupSpeed() {
-        return powerupSpeed;
-    }
-
-    public static int getPowerupChance() {
-        return powerupChance;
-    }
-
-    public static int getPowerupWidth() {
-        return powerupWidth;
-    }
-
-    public static int getPowerupHeight() {
-        return powerupHeight;
-    }
-
-    public static Color getDragonRed(){
-        return dragonRed;
-    }
-    
+    /**
+     * @return the bubbleDefaultDiameter
+     */
     public static int getBubbleDefaultDiameter() {
         return bubbleDefaultDiameter;
     }
 
+    /**
+     * @return the bubbleDefaultX
+     */
     public static int getBubbleDefaultX() {
         return bubbleDefaultX;
     }
 
+    /**
+     * @return the bubbleDefaultY
+     */
     public static int getBubbleDefaultY() {
         return bubbleDefaultY;
     }
 
+    /**
+     * @return the lives
+     */
+    public static int getLives() {
+        return lives;
+    }
+
+    /**
+     * @return the ropeSpeed
+     */
+    public static int getRopeSpeed() {
+        return ropeSpeed;
+    }
+
+    /**
+     * @return the smallestBubbleSize
+     */
+    public static int getSmallestBubbleSize() {
+        return smallestBubbleSize;
+    }
+
+    /**
+     * @return the powerupSpeed
+     */
+    public static int getPowerupSpeed() {
+        return powerupSpeed;
+    }
+
+    /**
+     * @return the powerupChance
+     */
+    public static int getPowerupChance() {
+        return powerupChance;
+    }
+
+    /**
+     * @return the powerupWidth
+     */
+    public static int getPowerupWidth() {
+        return powerupWidth;
+    }
+
+    /**
+     * @return the powerupHeight
+     */
+    public static int getPowerupHeight() {
+        return powerupHeight;
+    }
+
+    /**
+     * @return the dragonRed
+     */
+    public static Color getDragonRed() {
+        return dragonRed;
+    }
+
+    /**
+     * @return the wallWidth
+     */
     public static int getWallWidth() {
         return wallWidth;
     }
 
+    /**
+     * @return the wallHeight
+     */
     public static int getWallHeight() {
         return wallHeight;
     }
@@ -178,6 +232,18 @@ public class Settings {
 		Settings.dieThreads = dieThreads;
 	}
 
-    
+    /**
+     * @return the topMargin
+     */
+    public static int getTopMargin() {
+        return topMargin;
+    }
+
+    /**
+     * @return the leftMargin
+     */
+    public static int getLeftMargin() {
+        return leftMargin;
+    }
 
 }

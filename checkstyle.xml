@@ -79,9 +79,7 @@
       <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
     </module>
     <module name="FinalClass"/>
-    <module name="HideUtilityClassConstructor"/>
     <module name="InterfaceIsType"/>
-    <module name="VisibilityModifier"/>
     <module name="ArrayTypeStyle"/>
     <module name="FinalParameters">
       <property name="severity" value="ignore"/>
@@ -94,7 +92,7 @@
     <module name="UpperEll"/>
     <module name="FallThrough"/>
     <module name="MethodLength">
-      <property name="max" value="30"/>
+      <property name="max" value="150"/>
     </module>
   </module>
   <module name="NewlineAtEndOfFile">

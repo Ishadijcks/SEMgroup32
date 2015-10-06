@@ -7,9 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Class that creates a level for the survival mode.
- * 
  * @author Boning
- *
  */
 public class SurvivalLevelCreator {
 
