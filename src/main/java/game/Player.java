@@ -141,7 +141,7 @@ public class Player {
             Wall wall = wallList.get(i);
             if (wall instanceof PlayerWall || wall instanceof DuoWall) {
                 if (xCoord + stepSize <= (wall.getxCoord() + wall.getWidth())
-                        && (xCoord + stepSize + width) >= wall.getyCoord() && wall.isActive()) {
+                        && (xCoord + stepSize + width) >= wall.getxCoord() && wall.isActive()) {
                     return true;
                 }
             }
