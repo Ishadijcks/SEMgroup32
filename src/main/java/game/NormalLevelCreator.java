@@ -56,24 +56,10 @@ public class NormalLevelCreator {
         Level level1 = new NormalLevel(playerList);
 
         level1.addBubble(bubble1);
-        BubbleWall wall1 = new BubbleWall(575);
-        BubbleWall wall2 = new BubbleWall(550);
-        BubbleWall wall3 = new BubbleWall(525);
-        BubbleWall wall4 = new BubbleWall(500);
-        BubbleWall wall5 = new BubbleWall(625);
-        BubbleWall wall6 = new BubbleWall(650);
-        BubbleWall wall7 = new BubbleWall(675);
-        BubbleWall wall8 = new BubbleWall(700);
+        BubbleWall wall1 = new BubbleWall(300);
         level1.addWall(wall1);
-        level1.addWall(wall2);
-        level1.addWall(wall3);
-        level1.addWall(wall4);
-        level1.addWall(wall5);
-        level1.addWall(wall6);
-        level1.addWall(wall7);
-        level1.addWall(wall8);
        
-        PlayerWall wall9 = new PlayerWall(300);
+        PlayerWall wall9 = new PlayerWall(575);
         level1.addWall(wall9);
         
         return level1;
@@ -93,8 +79,8 @@ public class NormalLevelCreator {
         level2.addBubble(bubble1);
         level2.addBubble(bubble2);
      
-        DuoWall wall = new DuoWall(700);
-        DuoWall wall2 = new DuoWall(600);
+        BubbleWall wall = new BubbleWall(700);
+        PlayerWall wall2 = new PlayerWall(600);
         level2.addWall(wall);
         level2.addWall(wall2);
         return level2;

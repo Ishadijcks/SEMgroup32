@@ -77,7 +77,7 @@ public class NormalDriver extends Driver {
      * @return true if the game is won, false otherwise
      */
     public static boolean checkGameWon() {
-        if (game.getCurrentLevelInt() == 4) {
+        if (game.getCurrentLevelInt() == game.getLevelList().size()) {
             gameScreen.dispose();
             Logger.log("Frame destroyed", 9, 4);
             new WinningScreen(driver, name);
@@ -186,7 +186,7 @@ public class NormalDriver extends Driver {
     }
     
     /**
-     * Initialise the game.
+     * Initialize the game.
      */
     public void initGame() {
         try {
