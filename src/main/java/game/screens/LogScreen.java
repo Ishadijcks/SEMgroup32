@@ -6,21 +6,13 @@ import game.log.LogObject;
 import game.log.Logger;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -28,6 +20,11 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 
+/**
+ * Class that will make a screen for the logger.
+ * @author Boning
+ *
+ */
 public class LogScreen extends JFrame {
 
     JButton startButton;
@@ -43,6 +40,12 @@ public class LogScreen extends JFrame {
     private JFrame frame;
     private JPanel mainPanel;
 
+    /**
+     * Constructor for the log screen class.
+     * @throws UnsupportedAudioFileException exception
+     * @throws IOException exception
+     * @throws LineUnavailableException exception
+     */
     public LogScreen() throws UnsupportedAudioFileException, IOException,
             LineUnavailableException {
 
@@ -95,6 +98,10 @@ public class LogScreen extends JFrame {
         frame.repaint();
     }
 
+    /**
+     * Makes the main panel.
+     * @return main panel
+     */
     private JPanel makeMainPanel() {
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel mainInnerPanel = makeMainInnerPanel();
@@ -104,6 +111,10 @@ public class LogScreen extends JFrame {
         return mainPanel;
     }
 
+    /**
+     * Makes the right panel.
+     * @return right panel
+     */
     private JPanel makeRightPanel() {
         JPanel rightPanel = new JPanel();
         rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
@@ -138,6 +149,10 @@ public class LogScreen extends JFrame {
         return rightPanel;
     }
 
+    /**
+     * Checks if a checkbox is clicked or not.
+     * @return item listener
+     */
     private ItemListener checkboxListener() {
         ItemListener itemListener = new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
@@ -156,6 +171,10 @@ public class LogScreen extends JFrame {
         return itemListener;
     }
 
+    /**
+     * Checks if a radio button is clicked or not.
+     * @return item listener
+     */
     private ItemListener radioButtonListener() {
         ItemListener itemListener = new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
@@ -166,6 +185,12 @@ public class LogScreen extends JFrame {
         return itemListener;
     }
 
+    /**
+     * Makes the horizontal panel.
+     * @param severity how many activities the logger will show
+     * @param labelValues types of labels
+     * @return horizontal panel
+     */
     private JPanel makeHorizontalPanel(int severity, String... labelValues) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         for (String s : labelValues) {
@@ -187,12 +212,18 @@ public class LogScreen extends JFrame {
             case 5:
                 label.setForeground(Color.gray);
                 break;
+            default:
+                break;
             }
             panel.add(label);
         }
         return panel;
     }
 
+    /**
+     * Makes the inner panel.
+     * @return inner panel
+     */
     private JPanel makeMainInnerPanel() {
         ArrayList<Integer> category = filters.getCategory();
         int severity = filters.getSeverity();
