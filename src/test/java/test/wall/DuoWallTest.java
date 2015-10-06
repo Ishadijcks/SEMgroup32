@@ -20,8 +20,8 @@ public class DuoWallTest {
 
 	@Test
 	public void testDuoWall() {
-		assertEquals(10, w.getX());
-		assertEquals(0, w.getY());
+		assertEquals(10, w.getxCoord());
+		assertEquals(0, w.getyCoord());
 		assertEquals(Color.BLUE, w.getColor());
 	}
 

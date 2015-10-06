@@ -203,7 +203,7 @@ public abstract class Level {
         for (int i = 0; i < wallList.size(); i++) {
             Wall wall = wallList.get(i);
             if (wall instanceof DuoWall) {
-                if (playerX < wall.getX()) {
+                if (playerX < wall.getxCoord()) {
                     if (checkLeftOfWall(wall)) {
                     wall.setActive(false);
                     }
@@ -226,7 +226,7 @@ public abstract class Level {
      */
     public boolean checkLeftOfWall(Wall wall) {
         for (int i = 0; i < bubbleList.size(); i++) {
-            if (bubbleList.get(i).getX() < wall.getX()) {
+            if (bubbleList.get(i).getX() < wall.getxCoord()) {
                 return false;
             }
         }
@@ -240,7 +240,7 @@ public abstract class Level {
      */
     public boolean checkRightOfWall(Wall wall) {
         for (int i = 0; i < bubbleList.size(); i++) {
-            if (bubbleList.get(i).getX() > wall.getX()) {
+            if (bubbleList.get(i).getX() > wall.getxCoord()) {
                 return false;
             }
         }
@@ -261,11 +261,11 @@ public abstract class Level {
 
             if ((wall instanceof BubbleWall || wall instanceof DuoWall)
                     && wall.isActive()) {
-                if ((bubble.getX() <= (wall.getX() + wall.getWidth()) && (bubble
-                        .getX() + bubble.getDiameter()) >= wall.getX())
+                if ((bubble.getX() <= (wall.getxCoord() + wall.getWidth()) && (bubble
+                        .getX() + bubble.getDiameter()) >= wall.getxCoord())
                         && wall.isActive()) {
                     if (wall instanceof BubbleWall) {
-                        wall.BouncedOn();
+                        wall.bouncedOn();
                     }
 
                     return true;

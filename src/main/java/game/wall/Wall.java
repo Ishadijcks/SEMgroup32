@@ -4,107 +4,185 @@ import game.Settings;
 
 import java.awt.Color;
 
+/**
+ * Wall class.
+ * @author Boning
+ *
+ */
 public class Wall {
 
-    private int x;
-    private int y;
+    private int xCoord;
+    private int yCoord;
     private int width = Settings.getWallWidth();
     private int height = Settings.getWallHeight();
     private Color color;
     private boolean isActive;
     private int bouncedOn;
 
-    public Wall(int x, Color color) {
-        this.x = x;
-        this.y = 0;
+    /**
+     * Constructor of a wall.
+     * @param xCoord x-Coordinate of the wall
+     * @param color of the wall
+     */
+    public Wall(int xCoord, Color color) {
+        this.xCoord = xCoord;
+        this.yCoord = 0;
         this.color = color;
         this.isActive = true;
         this.bouncedOn = 0;
     }
 
-    public int getHeight() {
-        return height;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
+    /**
+     * Checks if a wall is active or not.
+     * @return true if it is active, false otherwise
+     */
     public boolean isActive() {
         return isActive;
     }
 
+    /**
+     * Set the wall to active or not active.
+     * @param bool true for active, false for not active
+     */
     public void setActive(boolean bool) {
         isActive = bool;
     }
 
+    /**
+     * Checks if a ball bounced on the wall.
+     */
+    public void bouncedOn() {
+        bouncedOn++;
+        setActive(false);
+    }
+ 
+	/**
+     * @return the xCoord
+     */
+    public int getxCoord() {
+        return xCoord;
+    }
+
+    /**
+     * @return the yCoord
+     */
+    public int getyCoord() {
+        return yCoord;
+    }
+
+    /**
+     * @return the width
+     */
+    public int getWidth() {
+        return width;
+    }
+
+    /**
+     * @return the height
+     */
+    public int getHeight() {
+        return height;
+    }
+
+    /**
+     * @return the color
+     */
+    public Color getColor() {
+        return color;
+    }
+
+    /**
+     * @return the bouncedOn
+     */
     public int getBouncedOn() {
         return bouncedOn;
     }
 
-    public void BouncedOn() {
-        bouncedOn++;
-        setActive(false);
+    /**
+     * @param xCoord the xCoord to set
+     */
+    public void setxCoord(int xCoord) {
+        this.xCoord = xCoord;
     }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + bouncedOn;
-		result = prime * result + ((color == null) ? 0 : color.hashCode());
-		result = prime * result + height;
-		result = prime * result + (isActive ? 1231 : 1237);
-		result = prime * result + width;
-		result = prime * result + x;
-		result = prime * result + y;
-		return result;
-	}
+    /**
+     * @param yCoord the yCoord to set
+     */
+    public void setyCoord(int yCoord) {
+        this.yCoord = yCoord;
+    }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+    /**
+     * @param width the width to set
+     */
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    /**
+     * @param height the height to set
+     */
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    /**
+     * @param color the color to set
+     */
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    /**
+     * @param bouncedOn the bouncedOn to set
+     */
+    public void setBouncedOn(int bouncedOn) {
+        this.bouncedOn = bouncedOn;
+    }
+
+    /**
+     * Generated equals method to check if all attributes 
+     * equals another of the same class.
+     * @param obj Object that it will compare to
+     * @return true if the object is from the same type and has the same attributes
+     */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Wall other = (Wall) obj;
-		if (bouncedOn != other.bouncedOn)
+		if (bouncedOn != other.bouncedOn) {
 			return false;
+		}
 		if (color == null) {
-			if (other.color != null)
+			if (other.color != null) {
 				return false;
-		} else if (!color.equals(other.color))
+			}
+		} else if (!color.equals(other.color)) {
 			return false;
-		if (height != other.height)
+		}
+		if (height != other.height) {
 			return false;
-		if (isActive != other.isActive)
+		}
+		if (isActive != other.isActive) {
 			return false;
-		if (width != other.width)
+		}
+		if (width != other.width) {
 			return false;
-		if (x != other.x)
+		}
+		if (xCoord != other.xCoord) {
 			return false;
-		if (y != other.y)
+		}
+		if (yCoord != other.yCoord) {
 			return false;
+		}
 		return true;
 	}
 

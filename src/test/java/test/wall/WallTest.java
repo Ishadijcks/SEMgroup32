@@ -21,8 +21,8 @@ public class WallTest {
 
 	@Test
 	public void testWall() {
-		assertEquals(10, w.getX());
-		assertEquals(0, w.getY());
+		assertEquals(10, w.getxCoord());
+		assertEquals(0, w.getyCoord());
 		assertEquals(Color.PINK, w.getColor());
 	}
 

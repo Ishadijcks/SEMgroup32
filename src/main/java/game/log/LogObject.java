@@ -19,9 +19,9 @@ public class LogObject {
     /**
      * The constructor for the log object.
      * 
-     * @param message
-     * @param categoryInput
-     * @param severityInput
+     * @param message of the logger
+     * @param categoryInput of the message
+     * @param severityInput of the logger
      */
     public LogObject(String message, int categoryInput, int severityInput) {
         this.message = message;
@@ -100,27 +100,37 @@ public class LogObject {
         return severityString;
     }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+    /**
+     * Generated equals method to check if all attributes 
+     * equals another of the same class.
+     * @param obj Object that it will compare to
+     * @return true if the object is from the same type and has the same attributes
+     */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		LogObject other = (LogObject) obj;
-		if (category != other.category)
+		if (category != other.category) {
 			return false;
+		}
 		if (message == null) {
-			if (other.message != null)
+			if (other.message != null) {
 				return false;
-		} else if (!message.equals(other.message))
+			}
+		} else if (!message.equals(other.message)) {
 			return false;
-		if (severity != other.severity)
+		}
+		if (severity != other.severity) {
 			return false;
+		}
 		return true;
 	}
 

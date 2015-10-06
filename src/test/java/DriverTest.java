@@ -1,10 +1,10 @@
 
 
 import static org.junit.Assert.*;
+
+import java.util.Random;
+
 import game.NormalDriver;
-import game.MathFunctions;
-import game.log.LogObject;
-import game.log.Logger;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +26,9 @@ public class DriverTest {
 
 	@Test
 	public void testRandomInt() {
-		assertEquals(1, MathFunctions.randomInt(1, 1));
+	    Random rand = new Random();
+	    int randomInt = rand.nextInt((1 - 1) + 1) + 1;
+		assertEquals(1, randomInt);
 	}
 
 
