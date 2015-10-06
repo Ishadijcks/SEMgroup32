@@ -17,7 +17,7 @@ public abstract class Game {
     protected boolean inProgress;
 
     /**
-     * Constructor that will initialise a player list.
+     * Constructor that will initialize a player list.
      */
     public Game() {
         this.inProgress = false;

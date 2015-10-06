@@ -32,7 +32,7 @@ public class GameCreator {
         NormalGame game = new NormalGame();
         game.addPlayer(player1);
         NormalLevelCreator.setPlayerList(game.getPlayerList());
-        for (int i = 1; i < 6; i++) {
+        for (int i = 1; i < 7; i++) {
             game.addLevel(NormalLevelCreator.getLevel(i));
         }
         Logger.log("Singleplayer game created", 7, 4);

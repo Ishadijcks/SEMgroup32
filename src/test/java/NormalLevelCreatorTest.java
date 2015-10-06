@@ -22,10 +22,5 @@ public class NormalLevelCreatorTest {
         Level level1 = NormalLevelCreator.getLevel1();
 		assertTrue(NormalLevelCreator.getLevel(Integer.MAX_VALUE).equals(level1));
 	}
-	
-	@Test
-	public void testGetLevelsAvailable() {
-		assertTrue(NormalLevelCreator.getLevelsAvailable() == 5);
-	}
 
 }

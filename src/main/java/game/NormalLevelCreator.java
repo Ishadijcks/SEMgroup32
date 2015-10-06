@@ -129,11 +129,4 @@ public class NormalLevelCreator {
         playerList = pList;
     }
 
-    /**
-     * Getter for the available levels.
-     * @return number of levels that are available
-     */
-    public static int getLevelsAvailable() {
-        return levelsAvailable;
-    }
 }
