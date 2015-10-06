@@ -4,7 +4,6 @@ import java.awt.Color;
 
 /**
  * Class that keeps all the settings of the whole game.
- * 
  * @author Boning
  *
  */
@@ -54,8 +53,9 @@ public class Settings {
         leftMargin = left;
     }
 
+    /********************************************************************************************/
     /**
-     * All the getters.
+     * All the getters for all different attributes.
      */
     public static int getLeftMargin() {
         return leftMargin;
@@ -152,7 +152,7 @@ public class Settings {
     public static int getWallHeight() {
         return wallHeight;
     }
-
+    /********************************************************************************************/
     
 
 }

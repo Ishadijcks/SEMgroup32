@@ -6,10 +6,12 @@ import game.wall.BubbleWall;
 import game.wall.DuoWall;
 import game.wall.Wall;
 
-import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Random;
 
+/**
+ * Class that will handle everything in a level.
+ * @author Boning
+ */
 public abstract class Level {
     protected ArrayList<Bubble> bubbleList;
     protected ArrayList<Player> playerList;
@@ -23,7 +25,8 @@ public abstract class Level {
     protected boolean increasedPowerupTime = false;
 
     /**
-     * Constructor, initializes the bubble- and playerList
+     * Constructor, initializes the bubble- and playerList.
+     * @param playerList list of players in the level
      */
     public Level(ArrayList<Player> playerList) {
         this.bubbleList = new ArrayList<Bubble>();
@@ -38,39 +41,60 @@ public abstract class Level {
     /**
      * Remove bubble.
      * 
-     * @param i
+     * @param i The index of the bubble that should be destroyed
      */
     public abstract void destroyBubble(int i);
 
-    public abstract Powerup generatePowerup(int x, int y, int randomNumber1);
+    /**
+     * Generate a random powerup.
+     * @param xCoord x-Coordinate of the powerup
+     * @param yCoord y-Coordinate of the powerup
+     * @param randomNumber1 randomNumber to select the type of the powerup
+     * @return The generated powerup
+     */
+    public abstract Powerup generatePowerup(int xCoord, int yCoord, int randomNumber1);
 
     /**
-     * Add a bubble to the bubbleList
+     * Add a bubble to the bubbleList.
      * 
-     * @param bubble
+     * @param bubble The bubble that is added
      */
     public abstract void addBubble(Bubble bubble);
 
+    /**
+     * Resets all bubbles by setting the list to null.
+     */
     public void resetBubble() {
         bubbleList = null;
     }
 
+    /**
+     * Getter for the list of the players.
+     * @return the list of players
+     */
     public ArrayList<Player> getPlayerList() {
         return playerList;
     }
 
+    /**
+     * Setter for the list of the players.
+     * @param playerList The new list of players that should be used
+     */
     public void setPlayerList(ArrayList<Player> playerList) {
         this.playerList = playerList;
     }
 
+    /**
+     * Setter for the list of the powerups.
+     * @param powerupList The new list of the powerups that should be used
+     */
     public void setPowerupList(ArrayList<Powerup> powerupList) {
         this.powerupList = powerupList;
     }
 
     /**
-     * Checks if there is collision between player and a bubble
-     * 
-     * @return
+     * Checks if there is collision between player and a bubble.
+     * @return true if there is a collision between a player and a bubble
      */
     public boolean checkCollisionPlayer() {
 
@@ -79,13 +103,11 @@ public abstract class Level {
     }
 
     /**
-     * Checks if there is collision between rope and a bubble
-     * 
+     * Checks if there is collision between rope and a bubble.
      * @return -1 if there is no collision otherwise the index of the bubble
      */
-
     public boolean handleCollisionRope() {
-        if(hasRope()){
+        if (hasRope()) {
             int collision = Collisions.checkCollisionRope(bubbleList, rope);
             if (collision != -1) {
                 destroyBubble(collision);
@@ -97,9 +119,9 @@ public abstract class Level {
     }
 
     /**
-     * Checks if the player collided with a powerup
+     * Checks if the player collided with a powerup.
+     * @return true if there is a collision, false otherwise
      */
-
     public boolean handlePowerupCollision() {
         int i = Collisions.checkCollisionPowerup(playerList, powerupList);
         if (i != -1) {
@@ -134,12 +156,9 @@ public abstract class Level {
         return false;
     }
 
-
-
     /**
      * Calls the add score method from the game.
-     * 
-     * @param diameter
+     * @param diameter the diameter of the ball
      */
     public void addScore(int diameter) {
         switch (diameter) {
@@ -163,21 +182,6 @@ public abstract class Level {
         }
     }
 
-
-    /**
-     * Generate random integer.
-     * 
-     * @param min
-     * @param max
-     * @return
-     */
-    public int randomInt(int min, int max) {
-        Random rand = new Random();
-        int randomNum = rand.nextInt((max - min) + 1) + min;
-        return randomNum;
-    }
-
-
     /**
      * Moves all the bubbles in the bubbleList.
      */
@@ -191,17 +195,21 @@ public abstract class Level {
         }
     }
 
+    /**
+     * Checks if there is a duo wall.
+     * @param playerX x-Coordinate of the player
+     */
     public void checkDuoWalls(int playerX) {
         for (int i = 0; i < wallList.size(); i++) {
             Wall wall = wallList.get(i);
             if (wall instanceof DuoWall) {
                 if (playerX < wall.getX()) {
-                    if(checkLeftOfWall(wall)){
+                    if (checkLeftOfWall(wall)) {
                     wall.setActive(false);
                     }
                     
                 } else {
-                    if(checkRightOfWall(wall)){
+                    if (checkRightOfWall(wall)) {
                         wall.setActive(false);
                     }
                 }
@@ -211,6 +219,11 @@ public abstract class Level {
 
     }
 
+    /**
+     * Check the left side of the wall.
+     * @param wall The wall that is checked
+     * @return True if the bubble is left of the wall, false if it is right
+     */
     public boolean checkLeftOfWall(Wall wall) {
         for (int i = 0; i < bubbleList.size(); i++) {
             if (bubbleList.get(i).getX() < wall.getX()) {
@@ -220,6 +233,11 @@ public abstract class Level {
         return true;
     }
 
+    /**
+     * Check the right side of the wall.
+     * @param wall The wall that is checked
+     * @return True if the bubble is right of the wall, false if it is left
+     */
     public boolean checkRightOfWall(Wall wall) {
         for (int i = 0; i < bubbleList.size(); i++) {
             if (bubbleList.get(i).getX() > wall.getX()) {
@@ -258,7 +276,7 @@ public abstract class Level {
     }
 
     /**
-     * Add a powerup to the powerupList
+     * Add a powerup to the powerupList.
      * 
      * @param powerup
      *            powerup to add
@@ -269,97 +287,148 @@ public abstract class Level {
         }
     }
 
+    /**
+     * Add a wall to a level.
+     * @param wall that is added
+     */
     public void addWall(Wall wall) {
         if (!wallList.contains(wall)) {
             wallList.add(wall);
         }
     }
 
+    /**
+     * Checks if the level has a rope.
+     * @return true if it has, false otherwise
+     */
     public boolean hasRope() {
         return rope != null;
     }
 
-    // Getters and Setters
+    /**
+     * Getter for the bubble list.
+     * @return List of the bubbles
+     */
     public ArrayList<Bubble> getBubbleList() {
         return bubbleList;
     }
 
+    /**
+     * Getter for the wall list.
+     * @return List of the walls
+     */
     public ArrayList<Wall> getWallList() {
         return wallList;
     }
 
+    /**
+     * Getter for the powerup list.
+     * @return List of the powerups
+     */
     public ArrayList<Powerup> getPowerupList() {
         return powerupList;
     }
 
-    // Getters and Setters
+    /**
+     * Getter of the height of the level.
+     * @return height of the level
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * Getter of the width of the level.
+     * @return width of the level
+     */
     public int getWidth() {
         return width;
     }
 
+    /**
+     * Getter of the rope of the level.
+     * @return rope of the level
+     */
     public Rope getRope() {
         return rope;
     }
 
-    public int getNumberOfRopes() {
-        return this.numberOfRopes;
-    }
-
+    /**
+     * Setter for the rope.
+     * @param rope that is active
+     */
     public void setRope(Rope rope) {
         this.rope = rope;
     }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+    /**
+     * Generated equals method to check if all attributes 
+     * equals another of the same class.
+     * @param obj Object that it will compare to
+     * @return true if the object is from the same type and has the same attributes
+     */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Level other = (Level) obj;
 		if (bubbleList == null) {
-			if (other.bubbleList != null)
+			if (other.bubbleList != null) {
 				return false;
-		} else if (!bubbleList.equals(other.bubbleList))
+			}
+		} else if (!bubbleList.equals(other.bubbleList)) {
 			return false;
-		if (height != other.height)
+		}
+		if (height != other.height) {
 			return false;
-		if (increasedPowerupTime != other.increasedPowerupTime)
+		}
+		if (increasedPowerupTime != other.increasedPowerupTime) {
 			return false;
-		if (numberOfRopes != other.numberOfRopes)
+		}
+		if (numberOfRopes != other.numberOfRopes) {
 			return false;
+		}
 		if (playerList == null) {
-			if (other.playerList != null)
+			if (other.playerList != null) {
 				return false;
-		} else if (!playerList.equals(other.playerList))
+			}
+		} else if (!playerList.equals(other.playerList)) {
 			return false;
+		}
 		if (powerupList == null) {
-			if (other.powerupList != null)
+			if (other.powerupList != null) {
 				return false;
-		} else if (!powerupList.equals(other.powerupList))
+			}
+		} else if (!powerupList.equals(other.powerupList)) {
 			return false;
+		}
 		if (rope == null) {
-			if (other.rope != null)
+			if (other.rope != null) {
 				return false;
-		} else if (!rope.equals(other.rope))
+			}
+		} else if (!rope.equals(other.rope)) {
 			return false;
-		if (timeLeft != other.timeLeft)
+		}
+		if (timeLeft != other.timeLeft) {
 			return false;
+		}
 		if (wallList == null) {
-			if (other.wallList != null)
+			if (other.wallList != null) {
 				return false;
-		} else if (!wallList.equals(other.wallList))
+			}
+		} else if (!wallList.equals(other.wallList)) {
 			return false;
-		if (width != other.width)
+		}
+		if (width != other.width) {
 			return false;
+		}
 		return true;
 	}
 

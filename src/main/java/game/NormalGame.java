@@ -2,10 +2,16 @@ package game;
 
 import game.log.Logger;
 
-import java.util.ArrayList;
-
+/**
+ * Class that will handle a normal game session.
+ * @author Boning
+ *
+ */
 public class NormalGame extends Game {
     
+    /**
+     * Constructor for a normal game.
+     */
     public NormalGame() {
         super();
     }
@@ -15,7 +21,7 @@ public class NormalGame extends Game {
      * win the whole game.
      */
     public void gameWon() {
-        if (currentLevel < levelList.size() ) {
+        if (currentLevel < levelList.size()) {
             currentLevel++;
             Logger.log("Level completed", 8, 4);
             inProgress = false;
@@ -24,15 +30,19 @@ public class NormalGame extends Game {
         }
     }
 
+    /**
+     * Checks if a game is lost.
+     */
 	@Override
 	public void gameLost() {
-		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+     * Updates the state of a game.
+     */
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
 		
 	}
 }

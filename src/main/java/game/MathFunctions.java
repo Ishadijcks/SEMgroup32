@@ -2,12 +2,17 @@ package game;
 
 import java.util.Random;
 
+/**
+ * Class that has all mathematical functions.
+ * @author Boning
+ *
+ */
 public class MathFunctions {
 
     /**
-     * Create a random integer
-     * @param min
-     * @param max
+     * Create a random integer.
+     * @param min minimal value of the integer
+     * @param max maximal value of the integer
      * @return a random integer
      */
     public static int randomInt(int min, int max) {
