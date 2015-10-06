@@ -3,13 +3,10 @@ package game.screens;
 import game.Driver;
 import game.DriverFactory;
 import game.MainRunner;
-<<<<<<< HEAD
 import game.NormalDriver;
 import game.NormalDriverFactory;
 import game.SurvivalDriver;
 import game.SurvivalDriverFactory;
-=======
->>>>>>> master
 
 import java.awt.Color;
 import java.awt.Font;

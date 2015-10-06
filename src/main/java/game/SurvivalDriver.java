@@ -25,6 +25,8 @@ public class SurvivalDriver extends Driver {
     private static GameScreen gameScreen;
     private static String name;
     private static Leaderboard lb = new Leaderboard();
+    
+    private Collisions collisions;
 
     /** Constructor for a survival driver that will get the name of a player.
      * 
@@ -32,6 +34,7 @@ public class SurvivalDriver extends Driver {
      */
     public SurvivalDriver(String name) {
         this.name = name;
+        this.collisions = new Collisions();
     }
 
     /**
@@ -115,58 +118,12 @@ public class SurvivalDriver extends Driver {
      */
     public void driverHeart() {
         if (game.inProgress()) {
-            game.update();
-
             curLevel = game.getCurrentLevel();
-
-            for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
-                Bubble bubble = curLevel.getBubbleList().get(i);
-                bubble.move();
-            }
-
-            for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
-                curLevel.getPowerupList().get(i).move();
-                curLevel.handlePowerupCollision();
-            }
-
-            if (curLevel.hasRope()) {
-                curLevel.getRope().move();
-            }
-
-            curLevel.handleCollisionRope();
-
-            if (curLevel.checkCollisionPlayer()) {
-                game.getPlayerList().get(0).removeAllPowerUps();
-                game.resetLevel();
-            }
-
-            int powerupListSize = game.getPlayerList().get(0)
-                    .getPowerupList().size();
-
-            if (powerupListSize > 0) {
-                for (int i = 0; i < powerupListSize; i++) {
-                    if (game.getPlayerList().get(0).getPowerupList().get(i)
-                            .getName().equals("life")) {
-                        Powerup life = game.getPlayerList().get(0)
-                                .getPowerupList().get(i);
-                        game.getLife();
-                        game.getPlayerList().get(0).removePowerUp(life);
-                    } else if (game.getPlayerList().get(0).getPowerupList()
-                            .get(i).getName().equals("ice")) {
-                        iceRope = true;
-                        game.getPlayerList().get(0).getPowerupList().get(i)
-                                .decreaseFramesLeft();
-                    } else if (game.getPlayerList().get(0).getPowerupList()
-                            .get(i).getName().equals("speed")) {
-                        game.getPlayerList().get(0).getPowerupList().get(i)
-                                .decreaseFramesLeft();
-                    }
-
-                }
-            }
-            iceRope = game.getPlayerList().get(0).hasIceRope();
-
-            gameScreen.reload();
+        	
+	        game.moveEntities();
+	        collisions.allCollisions(game);
+	
+	        gameScreen.reload();
 
             Player player1 = game.getPlayerList().get(0);
             player1.move(curLevel.getWallList());
