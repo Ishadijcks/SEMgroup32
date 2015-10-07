@@ -2,6 +2,7 @@ package game.screens;
 
 import game.Driver;
 import game.DriverBuilder;
+import game.Game;
 import game.MainRunner;
 
 import java.awt.Color;
