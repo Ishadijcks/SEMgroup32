@@ -34,7 +34,6 @@ public class GameCreator {
         NormalLevelCreator.setPlayerList(game.getPlayerList());
         for (int i = 1; i < 9; i++) {
             game.addLevel(NormalLevelCreator.getLevel(i));
-            System.out.println("ADD LEVELTJEEE");
         }
         Logger.log("Singleplayer game created", 7, 4);
         return game;

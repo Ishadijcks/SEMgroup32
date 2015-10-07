@@ -41,9 +41,7 @@ public abstract class Game {
      *            level to add
      */
     public void addLevel(Level level) {
-            System.out.println("add level " + level.toString());
             levelList.add(level);
-            System.out.println(levelList.size());
         Logger.log("Level added to the game", 7, 4); 
     }
 
