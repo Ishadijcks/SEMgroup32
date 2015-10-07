@@ -2,16 +2,20 @@ package game.log;
 
 import java.util.ArrayList;
 
+/**
+ * Class that filter the logs.
+ * @author Boning
+ *
+ */
 public class LogFilters {
-    /*
-     * categoryString = { "Player Input", "Player","Bubble Movement", "Bubble",
-     * "Collisions", "Rope", "Powerup", "Game", "Level", "UI" }; severityString
-     * = { "", "ERROR", "EXCEPTION", "WARNING", "INFO", "DETAIL" };
-     */
+
     private ArrayList<Integer> category;
     private int severity;
 
-    public LogFilters(){
+    /**
+     * Constructor for the logfilters class.
+     */
+    public LogFilters() {
         category = new ArrayList<Integer>();
         severity = 0;
     }

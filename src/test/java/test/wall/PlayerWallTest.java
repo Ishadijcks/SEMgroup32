@@ -19,8 +19,8 @@ public class PlayerWallTest {
 
 	@Test
 	public void testPlayerWall() {
-		assertEquals(10, w.getX());
-		assertEquals(0, w.getY());
+		assertEquals(10, w.getxCoord());
+		assertEquals(0, w.getyCoord());
 		assertEquals(Color.GREEN, w.getColor());
 	}
 

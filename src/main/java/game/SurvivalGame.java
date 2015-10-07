@@ -1,5 +1,7 @@
 package game;
 
+import java.util.Random;
+
 import game.bubble.Bubble;
 import game.bubble.Bubblex128;
 import game.bubble.Bubblex16;
@@ -38,8 +40,9 @@ public class SurvivalGame extends Game {
      * @param bubbleNumber The bubble sort which will be generated.
      */
     public static void randomPlacedBubble(int bubbleNumber) {
-        int randX = MathFunctions.randomInt(10, Settings.getLevelWidth() - 10);
-        int randY = MathFunctions.randomInt(10, Settings.getLevelHeight() - 200);
+        Random rand = new Random();
+        int randX = rand.nextInt(((Settings.getLevelWidth() - 10) - 10) + 1) + 10; 
+        int randY = rand.nextInt(((Settings.getLevelHeight() - 200) - 10) + 1) + 10;
         
         switch (bubbleNumber) {
         case 1:

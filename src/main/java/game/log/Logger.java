@@ -3,17 +3,19 @@ package game.log;
 import game.NormalDriver;
 
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 
+/**
+ * Class of the logger.
+ * @author Boning
+ *
+ */
 public class Logger {
     private static LinkedList<LogObject> logList = new LinkedList<LogObject>();
     public static String[] categoryString = { "Player Input", "Player",
@@ -29,9 +31,10 @@ public class Logger {
     /**
      * The logging method called to create a log object.
      * 
-     * @param message
-     * @param category
-     * @param severity
+     * @param message that will be logged
+     * @param category of the message
+     * @param severity of the logger
+     * @param frameRepeat repeat it for x frames
      */
     public static void log(String message, int category, int severity,
             int frameRepeat) {
@@ -46,9 +49,9 @@ public class Logger {
     /**
      * The logging method called to create a log object.
      * 
-     * @param message
-     * @param category
-     * @param severity
+     * @param message that will be logged
+     * @param category of the message
+     * @param severity of the logger
      */
     public static void log(String message, int category, int severity) {
             LogObject tempLog = new LogObject(message, category, severity);
@@ -57,9 +60,9 @@ public class Logger {
     }
 
     /**
-     * write a log object to a text file.
+     * Write a log object to a text file.
      * 
-     * @param log
+     * @param log logger 
      */
     public static void appendToFile(LogObject log) {
         PrintWriter writer;
@@ -81,9 +84,9 @@ public class Logger {
 
     /**
      * Returns the list of logs filtered on category and severity.
-     * 
-     * @param category
-     * @param minSeverity
+     * @param category of the message
+     * @param minSeverity of the logger
+     * @return list of loggers
      */
     public static LinkedList<LogObject> getFilteredLogs(
             ArrayList<Integer> category, int minSeverity) {
@@ -101,6 +104,7 @@ public class Logger {
     }
 
 	/**
+	 * Getter for the log list.
 	 * @return the logList
 	 */
 	public static LinkedList<LogObject> getLogList() {

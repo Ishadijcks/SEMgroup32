@@ -4,6 +4,7 @@ import game.bubble.Bubble;
 import game.log.Logger;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Class that will handle everything in a survival level.
@@ -61,7 +62,9 @@ public class SurvivalLevel extends Level {
         bubbleList.addAll(bubble.destroyBubble(x, y));
 
         if (Settings.getPowerupChance() > Math.random() * 100) {
-            Powerup powerup = generatePowerup(x, y, MathFunctions.randomInt(1, 2));
+            Random rand = new Random();
+            int randomNum = rand.nextInt((2 - 1) + 1) + 1;
+            Powerup powerup = generatePowerup(x, y, randomNum);
             powerupList.add(powerup);
         }
     }
