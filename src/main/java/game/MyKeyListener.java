@@ -2,6 +2,7 @@ package game;
 
 import game.log.LogSettings;
 import game.log.Logger;
+import game.screens.GameScreen;
 import game.screens.LogScreen;
 
 import java.awt.event.KeyAdapter;

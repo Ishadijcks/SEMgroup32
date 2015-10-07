@@ -9,7 +9,6 @@ import game.Score;
 import game.Settings;
 import game.wall.Wall;
 import game.bubble.Bubble;
-import game.log.LogSettings;
 import game.log.Logger;
 
 import java.awt.BasicStroke;

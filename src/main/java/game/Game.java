@@ -1,6 +1,7 @@
 package game;
 
 import game.log.Logger;
+import game.screens.GameScreen;
 
 import java.util.ArrayList;
 
@@ -134,6 +135,13 @@ public abstract class Game {
                 NormalLevelCreator.getLevel(currentLevel));
         loseLife();
 
+    }
+    
+    /**
+     * Ends the game and disposes the screen.
+     */
+    public void endGame() {
+        
     }
 
     /**

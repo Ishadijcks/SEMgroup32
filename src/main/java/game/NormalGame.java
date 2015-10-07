@@ -40,6 +40,15 @@ public class NormalGame extends Game {
 	}
 	
 	/**
+     * Ends the game and disposes the screen.
+     */
+	@Override
+    public void endGame() {
+        this.setLives(0);
+        this.toggleProgress();
+    }
+	
+	/**
      * Game is paused.
      */
 	@Override
