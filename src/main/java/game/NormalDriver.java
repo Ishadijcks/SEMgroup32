@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
 
@@ -53,12 +54,13 @@ public class NormalDriver extends Driver {
     private static NormalDriver driver;
     private static GameScreen gameScreen;
 
-    /** 
+    /**
      * Constructor that will pass the name of the player.
-     * @param name Name that the player entered
+     * 
+     * @param name
+     *            Name that the player entered
      */
-    public NormalDriver(String name)
-    {
+    public NormalDriver(String name) {
         this.name = name;
     }
 
@@ -71,9 +73,10 @@ public class NormalDriver extends Driver {
         gameScreen.startGame();
         game.gameStart();
     }
-    
+
     /**
      * Check if the game has been won.
+     * 
      * @return true if the game is won, false otherwise
      */
     public static boolean checkGameWon() {
@@ -85,11 +88,10 @@ public class NormalDriver extends Driver {
         }
         return false;
     }
-    
-    
 
     /**
      * Check if the game has been lost.
+     * 
      * @return true if the game is lost, false otherwise
      */
     public static boolean checkGameLost() {
@@ -110,83 +112,102 @@ public class NormalDriver extends Driver {
      * Method that will take care of everything that happens in a game session.
      */
     public void driverHeart() {
-        
-	    if (game.inProgress()) {
-	        curLevel = game.getCurrentLevel();
-	        curLevel.moveBubbles();
-	        
-	        for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
-	            curLevel.getPowerupList().get(i).move();
-	            curLevel.handlePowerupCollision();
-	        }
-	
-	        if (curLevel.hasRope()) {
-	            curLevel.getRope().move();
-	        }
-	
-	        curLevel.handleCollisionRope();
-	
-	        if (curLevel.checkCollisionPlayer()) {
-	            game.getPlayerList().get(0).removeAllPowerUps();
-	            game.resetLevel();
-	        }
-	
-	        int powerupListSize = game.getPlayerList().get(0)
-	                .getPowerupList().size();
-	
-	        if (powerupListSize > 0) {
-	            for (int i = 0; i < powerupListSize; i++) {
-	                if (game.getPlayerList().get(0).getPowerupList().get(i)
-	                        .getName().equals("life")) {
-	                    Powerup life = game.getPlayerList().get(0)
-	                            .getPowerupList().get(i);
-	                    game.getLife();
-	                    game.getPlayerList().get(0).removePowerUp(life);
-	                } else if (game.getPlayerList().get(0).getPowerupList()
-	                        .get(i).getName().equals("ice")) {
-	                    iceRope = true;
-	                    game.getPlayerList().get(0).getPowerupList().get(i)
-	                            .decreaseFramesLeft();
-	                } else if (game.getPlayerList().get(0).getPowerupList()
-	                        .get(i).getName().equals("speed")) {
-	                    game.getPlayerList().get(0).getPowerupList().get(i)
-	                            .decreaseFramesLeft();
-	                }
-	
-	            }
-	        }
-	        iceRope = game.getPlayerList().get(0).hasIceRope();
-	
-	        gameScreen.reload();
-	
-	        Player player1 = game.getPlayerList().get(0);
-	        player1.move(curLevel.getWallList());
-	
-	        if (curLevel.getBubbleList().size() == 0) {
-	            boolean once = true;
-	            if (once) {
-	                once = false;
-	                canDrawGame = false;
-	                gameScreen.levelWon();
-	                //player.setXCoord(350);
-	            }
-	            game.gameWon();
-	        }
-	        checkGameLost();
-	        checkGameWon();
-	    }
-	
-	}
 
+        if (game.inProgress()) {
+            curLevel = game.getCurrentLevel();
+            curLevel.moveBubbles();
+
+            for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
+                curLevel.getPowerupList().get(i).move();
+                curLevel.handlePowerupCollision();
+            }
+
+            if (curLevel.hasRope()) {
+                curLevel.getRope().move();
+            }
+
+            curLevel.handleCollisionRope();
+
+            if (curLevel.checkCollisionPlayer()) {
+                game.getPlayerList().get(0).removeAllPowerUps();
+                game.resetLevel();
+            }
+
+            int powerupListSize = game.getPlayerList().get(0).getPowerupList()
+                    .size();
+
+            if (powerupListSize > 0) {
+                for (int i = 0; i < powerupListSize; i++) {
+                    if (game.getPlayerList().get(0).getPowerupList().get(i)
+                            .getName().equals("life")) {
+                        Powerup life = game.getPlayerList().get(0)
+                                .getPowerupList().get(i);
+                        game.getLife();
+                        game.getPlayerList().get(0).removePowerUp(life);
+                    } else if (game.getPlayerList().get(0).getPowerupList()
+                            .get(i).getName().equals("ice")) {
+                        iceRope = true;
+                        game.getPlayerList().get(0).getPowerupList().get(i)
+                                .decreaseFramesLeft();
+                    } else if (game.getPlayerList().get(0).getPowerupList()
+                            .get(i).getName().equals("speed")) {
+                        game.getPlayerList().get(0).getPowerupList().get(i)
+                                .decreaseFramesLeft();
+                    }
+
+                }
+            }
+            iceRope = game.getPlayerList().get(0).hasIceRope();
+
+            gameScreen.reload();
+
+            Player player1 = game.getPlayerList().get(0);
+            player1.move(curLevel.getWallList());
+
+            if (curLevel.getBubbleList().size() == 0) {
+                System.out.println("no bubbles");
+                boolean once = true;
+                if (once) {
+                    once = false;
+                    canDrawGame = false;
+                    gameScreen.levelWon();
+                    resetPlayerLocation(player1);
+
+                    // player.setXCoord(350);
+                }
+                game.gameWon();
+            }
+            checkGameLost();
+            checkGameWon();
+        }
+
+    }
 
     /**
+     * Set player to spawn point.
+     * @param player current player.
+     */
+    public void resetPlayerLocation(Player player) {
+        while (player.getX() < Settings.getPlayerSpawnPoint() - 10) {
+            player.movingRight();
+            ArrayList<Wall> wallList = new ArrayList<Wall>();
+            player.move(wallList);
+        }
+        while (player.getX() > Settings.getPlayerSpawnPoint() + 10) {
+            player.movingLeft();
+            ArrayList<Wall> wallList = new ArrayList<Wall>();
+            player.move(wallList);
+        }
+    }
+    /**
      * Getter returns game screen.
+     * 
      * @return game screen
      */
     public GameScreen getGameScreen() {
         return gameScreen;
     }
-    
+
     /**
      * Initialize the game.
      */
@@ -211,7 +232,7 @@ public class NormalDriver extends Driver {
      */
     public void setupGame() {
         player = new Player(name, Settings.getPlayerSpawnPoint(), true);
-        
+
         game = GameCreator.createSinglePlayer(player);
 
         score = new Score();
@@ -226,8 +247,8 @@ public class NormalDriver extends Driver {
     /**
      * Initialize the driver.
      */
-	@Override
-	public void initDriver() {
+    @Override
+    public void initDriver() {
         try {
             gameScreen = new GameScreen();
         } catch (UnsupportedAudioFileException e) {
@@ -250,20 +271,20 @@ public class NormalDriver extends Driver {
                         .getLevelWidth()));
         Settings.setLeftMargin(centerConstant);
         GameScreen.setupScreen(game, score);
-        
+
         this.startGame(name);
 
         LogSettings.setActiveLog(true);
-		
-	}
 
-	 /** 
-      * Method that should make a screen where the player can select different options.
-      */
-	@Override
-	public void startScreen() {
-		
-	}
+    }
 
+    /**
+     * Method that should make a screen where the player can select different
+     * options.
+     */
+    @Override
+    public void startScreen() {
+
+    }
 
 }

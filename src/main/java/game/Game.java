@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Class that will handle everything of 1 game session.
+ * 
  * @author Boning
  *
  */
@@ -22,7 +23,7 @@ public abstract class Game {
     public Game() {
         this.inProgress = false;
         this.playerList = new ArrayList<Player>();
-       Logger.log("Game object created", 7, 5);
+        Logger.log("Game object created", 7, 5);
     }
 
     /**
@@ -43,9 +44,8 @@ public abstract class Game {
     public void addLevel(Level level) {
         levelList.add(level);
         levelList.add(level);
-        Logger.log("Level added to the game", 7, 4); 
+        Logger.log("Level added to the game", 7, 4);
     }
-
 
     /**
      * If the game is paused, start the game.
@@ -53,7 +53,7 @@ public abstract class Game {
     public void gameStart() {
         if (!this.inProgress) {
             this.inProgress = true;
-            Logger.log("Game started", 7, 4); 
+            Logger.log("Game started", 7, 4);
         }
     }
 
@@ -81,6 +81,7 @@ public abstract class Game {
 
     /**
      * Returns the currentLevel as an integer.
+     * 
      * @return the current level as an integer
      */
     public int getCurrentLevelInt() {
@@ -89,14 +90,17 @@ public abstract class Game {
 
     /**
      * Setter for the currentLevel.
-	 * @param currentLevel the currentLevel to set
-	 */
-	public void setCurrentLevelInt(int currentLevel) {
-		this.currentLevel = currentLevel;
-	}
+     * 
+     * @param currentLevel
+     *            the currentLevel to set
+     */
+    public void setCurrentLevelInt(int currentLevel) {
+        this.currentLevel = currentLevel;
+    }
 
-	/**
+    /**
      * Get the lives of the player.
+     * 
      * @return the lives of the player
      */
     public int getLives() {
@@ -105,14 +109,17 @@ public abstract class Game {
 
     /**
      * Setter for the amount of lives.
-	 * @param lives the lives to set
-	 */
-	public void setLives(int lives) {
-		this.lives = lives;
-	}
+     * 
+     * @param lives
+     *            the lives to set
+     */
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
 
-	/**
+    /**
      * Create an array with the players.
+     * 
      * @return the playerlist
      */
     public ArrayList<Player> getPlayerList() {
@@ -123,7 +130,8 @@ public abstract class Game {
      * Reset the level if you lose a life.
      */
     public void resetLevel() {
-        levelList.set(currentLevel - 1, NormalLevelCreator.getLevel(currentLevel));
+        levelList.set(currentLevel - 1,
+                NormalLevelCreator.getLevel(currentLevel));
         loseLife();
 
     }
@@ -147,82 +155,86 @@ public abstract class Game {
 
     /**
      * Method to show that the game is in progress.
+     * 
      * @return a boolean that is true if the game is in progress.
      */
     public boolean inProgress() {
         return this.inProgress;
     }
-    
+
     /**
      * Method to toggle the inProgress of the game.
      */
     public void toggleProgress() {
         inProgress = !inProgress;
     }
-    
+
     /**
      * Checks if a game is lost.
      */
     public abstract void gameLost();
-    
+
     /**
      * Updates the state of a game.
      */
     public abstract void update();
-    
+
     /**
      * Game is paused.
      */
     public void pauseGame() {
-        
+
     }
-    
+
     /**
      * Checks if a game is won.
      */
     public abstract void gameWon();
 
-	/**
-	 * Generated equals method to check if all attributes 
-	 * equals another of the same class.
-	 * @param obj Object that it will compare to
-     * @return true if the object is from the same type and has the same attributes
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		Game other = (Game) obj;
-		if (currentLevel != other.currentLevel) {
-			return false;
-		}
-		if (inProgress != other.inProgress) {
-			return false;
-		}
-		if (levelList == null) {
-			if (other.levelList != null) {
-				return false;
-			}
-		} else if (!levelList.equals(other.levelList)) {
-			return false;
-		}
-		if (lives != other.lives) {
-			return false;
-		}
-		if (playerList == null) {
-			if (other.playerList != null) {
-				return false;
-			}
-		} else if (!playerList.equals(other.playerList)) {
-			return false;
-		}
-		return true;
-	}
+    /**
+     * Generated equals method to check if all attributes equals another of the
+     * same class.
+     * 
+     * @param obj
+     *            Object that it will compare to
+     * @return true if the object is from the same type and has the same
+     *         attributes
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Game other = (Game) obj;
+        if (currentLevel != other.currentLevel) {
+            return false;
+        }
+        if (inProgress != other.inProgress) {
+            return false;
+        }
+        if (levelList == null) {
+            if (other.levelList != null) {
+                return false;
+            }
+        } else if (!levelList.equals(other.levelList)) {
+            return false;
+        }
+        if (lives != other.lives) {
+            return false;
+        }
+        if (playerList == null) {
+            if (other.playerList != null) {
+                return false;
+            }
+        } else if (!playerList.equals(other.playerList)) {
+            return false;
+        }
+        return true;
+    }
 }

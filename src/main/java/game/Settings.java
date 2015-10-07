@@ -4,7 +4,6 @@ import java.awt.Color;
 
 /**
  * Class that keeps all the settings of the whole game.
- * 
  * @author Boning
  *
  */
@@ -16,7 +15,7 @@ public class Settings {
 
     private static int levelWidth = 850;
     private static int levelHeight = 500;
-
+    
     private static int pauseWidth = 850;
     private static int pauseHeight = 500;
 
@@ -31,7 +30,7 @@ public class Settings {
     private static int lives = 5;
     private static int ropeSpeed = 4;
     private static int smallestBubbleSize = 5;
-
+    
     private static int powerupSpeed = 2;
     private static int powerupChance = 100;
     private static int powerupWidth = 15;
@@ -43,22 +42,19 @@ public class Settings {
 
     private static int topMargin = 50;
     private static int leftMargin = 0;
-
+    
     private static int playerSpawnPoint = 350;
 
     /**
      * @return the playerSpawnPoint
      */
     public static int getPlayerSpawnPoint() {
-        return (int) Math.round(0.5 * (screenWidth - levelWidth) + 0.5
-                * levelWidth);
+        return (int)Math.round(0.5 * (screenWidth - levelWidth) + 0.5 * levelWidth);
     }
 
     /**
      * Set the left margin.
-     * 
-     * @param left
-     *            what the margin should be.
+     * @param left what the margin should be.
      */
     public static void setLeftMargin(int left) {
         leftMargin = left;
@@ -98,7 +94,7 @@ public class Settings {
     public static int getLevelHeight() {
         return levelHeight;
     }
-
+    
     /**
      * @return the pauseHeight
      */
