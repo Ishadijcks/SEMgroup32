@@ -35,14 +35,6 @@ public abstract class Game {
     }
 
     /**
-     * Sets the levelList.
-     * @param levels List of all levels
-     */
-    public void setLevelList(ArrayList<Level> levels) {
-        levelList = levels;
-    }
-
-    /**
      * Adds a level to the levelList.
      * 
      * @param level

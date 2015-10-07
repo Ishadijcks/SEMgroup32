@@ -73,7 +73,7 @@ public class SurvivalDriver extends Driver {
     }
     
     /**
-     * Initialise the driver.
+     * Initialize the driver.
      */
     public void initDriver() {
     	try {
@@ -89,8 +89,6 @@ public class SurvivalDriver extends Driver {
             e.printStackTrace();
         }
         Logger.log("Main Frame created", 9, 4);
-
-        Player player = new Player(name, 350, false);
         game = GameCreator.createSurvival(player);
         score = new Score();
         game.addPlayer(player);
@@ -182,7 +180,7 @@ public class SurvivalDriver extends Driver {
      */
     public void setupGame() {
         driver = new SurvivalDriver(name);
-        Player player = new Player(name, 350, false);
+        player = new Player(name, 350, false);
         game = GameCreator.createSurvival(player);
         score = new Score();
         game.addPlayer(player);
@@ -194,7 +192,7 @@ public class SurvivalDriver extends Driver {
     }
     
     /**
-     * initialise the game.
+     * initialize the game.
      */
     public void initGame() {
         try {
@@ -219,4 +217,5 @@ public class SurvivalDriver extends Driver {
 	public void startScreen() {
 		
 	}
+
 }
