@@ -21,6 +21,7 @@ public class NormalLevelCreator {
 
     private static ArrayList<Player> playerList;
     private static int levelsAvailable = 5;
+    static Bubble bubble = new Bubblex8(100, 100, false, false);
 
     /**
      * Return the level.
@@ -73,7 +74,7 @@ public class NormalLevelCreator {
         BubbleWall wall1 = new BubbleWall(300);
         level.addWall(wall1);
 
-        PlayerWall wall9 = new PlayerWall(575);
+        PlayerWall wall9 = new PlayerWall(675);
         level.addWall(wall9);
 
         return level;

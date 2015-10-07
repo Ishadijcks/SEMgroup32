@@ -85,6 +85,8 @@ public class NormalDriver extends Driver {
         }
         return false;
     }
+    
+    
 
     /**
      * Check if the game has been lost.
@@ -112,7 +114,7 @@ public class NormalDriver extends Driver {
 	    if (game.inProgress()) {
 	        curLevel = game.getCurrentLevel();
 	        curLevel.moveBubbles();
-	
+	        
 	        for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
 	            curLevel.getPowerupList().get(i).move();
 	            curLevel.handlePowerupCollision();
@@ -166,6 +168,7 @@ public class NormalDriver extends Driver {
 	                once = false;
 	                canDrawGame = false;
 	                gameScreen.levelWon();
+	                //player.setXCoord(350);
 	            }
 	            game.gameWon();
 	        }
@@ -207,7 +210,8 @@ public class NormalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        player = new Player(name, 350, true);
+        player = new Player(name, Settings.getPlayerSpawnPoint(), true);
+        
         game = GameCreator.createSinglePlayer(player);
 
         score = new Score();
