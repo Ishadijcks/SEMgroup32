@@ -157,18 +157,6 @@ public class GameScreen extends JPanel {
         frame.setVisible(false);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        try {
-            LogScreen logScreen = new LogScreen();
-            LogSettings.setLogScreen(true);
-            LogSettings.setLogscreen(logScreen);
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
     }
 
     /**

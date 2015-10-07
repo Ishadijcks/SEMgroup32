@@ -1,6 +1,7 @@
 package game;
 
 import game.log.Logger;
+import game.screens.GameScreen;
 import game.screens.PauseScreen;
 
 /**
@@ -38,6 +39,15 @@ public class NormalGame extends Game {
 	public void gameLost() {
 		
 	}
+	
+	/**
+     * Ends the game and disposes the screen.
+     */
+	@Override
+    public void endGame() {
+        this.setLives(0);
+        this.toggleProgress();
+    }
 	
 	/**
      * Game is paused.

@@ -2,6 +2,7 @@ package game;
 
 import game.log.LogSettings;
 import game.log.Logger;
+import game.screens.GameScreen;
 import game.screens.LogScreen;
 
 import java.awt.event.KeyAdapter;
@@ -58,7 +59,7 @@ public class MyKeyListener extends KeyAdapter {
                     game.getPlayerList().get(0).shootRope();
                     break;  
                 case 40:
-                    Logger.log("Player pressed right", 0, 5);
+                    Logger.log("Player pressed cheat this level!", 0, 5);
                     int curLevel = game.getCurrentLevelInt();
                     game.getLevelList().get(curLevel).resetBubble();
                     break;
