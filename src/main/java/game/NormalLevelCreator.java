@@ -65,18 +65,14 @@ public class NormalLevelCreator {
      * @return Level 1
      */
     public static Level getLevel1() {
-
         Bubble bubble1 = new Bubblex8(100, 100, false, false);
-
-        Level level = new NormalLevel(playerList);
-
+        NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
         BubbleWall wall1 = new BubbleWall(300);
         level.addWall(wall1);
-
         PlayerWall wall9 = new PlayerWall(675);
         level.addWall(wall9);
-
+        level.setLevelNumber(1);
         return level;
     }
 
@@ -86,19 +82,16 @@ public class NormalLevelCreator {
      * @return Level 2
      */
     public static Level getLevel2() {
-
         Bubble bubble1 = new Bubblex16(320, 250, false, true);
         Bubble bubble2 = new Bubblex32(720, 100, false, false);
-
-        Level level = new NormalLevel(playerList);
-
+        NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
         level.addBubble(bubble2);
-
         BubbleWall wall = new BubbleWall(700);
         PlayerWall wall2 = new PlayerWall(600);
         level.addWall(wall);
         level.addWall(wall2);
+        level.setLevelNumber(2);
         return level;
     }
 
@@ -110,9 +103,10 @@ public class NormalLevelCreator {
     public static Level getLevel3() {
         Bubble bubble1 = new Bubblex32(620, 300, false, true);
         Bubble bubble2 = new Bubblex64(120, 200, false, false);
-        Level level = new NormalLevel(playerList);
+        NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
         level.addBubble(bubble2);
+        level.setLevelNumber(3);
         return level;
     }
 
@@ -123,8 +117,9 @@ public class NormalLevelCreator {
      */
     public static Level getLevel4() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
-        Level level = new NormalLevel(playerList);
+        NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
+        level.setLevelNumber(4);
         return level;
     }
 
@@ -135,8 +130,9 @@ public class NormalLevelCreator {
      */
     public static Level getLevel5() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
-        Level level = new NormalLevel(playerList);
+        NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
+        level.setLevelNumber(5);
         return level;
     }
 
@@ -147,10 +143,11 @@ public class NormalLevelCreator {
      */
     public static Level getLevel6() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
-        Level level = new NormalLevel(playerList);
+        NormalLevel level = new NormalLevel(playerList);
         PlayerWall wall1 = new PlayerWall(500);
         level.addBubble(bubble1);
         level.addWall(wall1);
+        level.setLevelNumber(6);
         return level;
     }
 
@@ -162,12 +159,13 @@ public class NormalLevelCreator {
     public static Level getLevel7() {
         System.out.println("level 7");
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
-        Level level = new NormalLevel(playerList);
+        NormalLevel level = new NormalLevel(playerList);
         PlayerWall wall1 = new PlayerWall(600);
         PlayerWall wall2 = new PlayerWall(200);
         level.addBubble(bubble1);
         level.addWall(wall1);
         level.addWall(wall2);
+        level.setLevelNumber(7);
         return level;
     }
 
@@ -179,9 +177,10 @@ public class NormalLevelCreator {
     public static Level getLevel8() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
         Bubble bubble2 = new Bubblex64(320, 100, false, true);
-        Level level = new NormalLevel(playerList);
+        NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
         level.addBubble(bubble2);
+        level.setLevelNumber(8);
         return level;
     }
 
@@ -191,11 +190,12 @@ public class NormalLevelCreator {
      * @return Level 9
      */
     public static Level getLevel9() {
-        Level level = new NormalLevel(playerList);
+        NormalLevel level = new NormalLevel(playerList);
         for (int i = 0; i < 4; i++) {
             Bubble bubble = new Bubblex16(320, 100, false, true);
             level.addBubble(bubble);
         }
+        level.setLevelNumber(9);
         return level;
     }
 
@@ -205,11 +205,12 @@ public class NormalLevelCreator {
      * @return Level 10
      */
     public static Level getLevel10() {
-        Level level = new NormalLevel(playerList);
+        NormalLevel level = new NormalLevel(playerList);
         for (int i = 0; i < 8; i++) {
             Bubble bubble = new Bubblex8(320, 100, false, true);
             level.addBubble(bubble);
         }
+        level.setLevelNumber(10);
         return level;
     }
 

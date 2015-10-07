@@ -3,6 +3,7 @@ package game.screens;
 import game.Game;
 import game.Level;
 import game.MyKeyListener;
+import game.NormalLevel;
 import game.Player;
 import game.Powerup;
 import game.Score;
@@ -549,9 +550,11 @@ public class GameScreen extends JPanel {
             g2d.setColor(Color.BLACK);
 
             // Show current level number
+            if(curLevel instanceof NormalLevel){
+                NormalLevel curNormalLevel = (NormalLevel)curLevel;
             g2d.drawString("Level:", centerConstant, 45);
             g2d.setColor(dragonRed);
-            g2d.drawString(game.getCurrentLevelInt() + " ",
+            g2d.drawString(curNormalLevel.getLevelNumber() + " ",
                     centerConstant + 110, 45);
             g2d.setColor(Color.BLACK);
 
@@ -559,6 +562,7 @@ public class GameScreen extends JPanel {
             g2d.drawString(" " + (game.getCurrentLevelInt() + 1), 1350,
                     curLevel.getHeight() + 51);
             g2d.setColor(Color.BLACK);
+            }
         } catch (IndexOutOfBoundsException e) {
 
         }

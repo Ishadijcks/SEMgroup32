@@ -8,13 +8,17 @@ import java.util.Random;
 
 /**
  * Class that will handle everything in a normal level.
+ * 
  * @author Boning
  */
 public class NormalLevel extends Level {
+    private int levelNumber;
 
     /**
      * Constructor, initializes the bubble- and playerList.
-     * @param playerList list of players that will be added
+     * 
+     * @param playerList
+     *            list of players that will be added
      */
     public NormalLevel(ArrayList<Player> playerList) {
         super(playerList);
@@ -23,9 +27,13 @@ public class NormalLevel extends Level {
 
     /**
      * Generate a random powerup.
-     * @param xCoord x-Coordinate of the powerup
-     * @param yCoord y-Coordinate of the powerup
-     * @param randomNumber1 randomNumber to select the type of the powerup
+     * 
+     * @param xCoord
+     *            x-Coordinate of the powerup
+     * @param yCoord
+     *            y-Coordinate of the powerup
+     * @param randomNumber1
+     *            randomNumber to select the type of the powerup
      * @return The generated powerup
      */
     public Powerup generatePowerup(int xCoord, int yCoord, int randomNumber1) {
@@ -50,7 +58,8 @@ public class NormalLevel extends Level {
     /**
      * Remove bubble.
      * 
-     * @param i The index of the bubble that should be destroyed
+     * @param i
+     *            The index of the bubble that should be destroyed
      */
     public void destroyBubble(int i) {
 
@@ -76,11 +85,30 @@ public class NormalLevel extends Level {
     /**
      * Add a bubble to the bubbleList.
      * 
-     * @param bubble The bubble that is added
+     * @param bubble
+     *            The bubble that is added
      */
     public void addBubble(Bubble bubble) {
         if (!bubbleList.contains(bubble)) {
             bubbleList.add(bubble);
         }
+    }
+
+    /**
+     * set The level number.
+     * 
+     * @param levelNumber level number
+     */
+    public void setLevelNumber(int levelNumber) {
+        this.levelNumber = levelNumber;
+    }
+
+    /**
+     * get The level number.
+     * 
+     * @return integer
+     */
+    public int getLevelNumber() {
+        return (this.levelNumber);
     }
 }

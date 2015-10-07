@@ -230,10 +230,10 @@ public class NormalDriver extends Driver {
     /**
      * Set up the game.
      */
-    public void setupGame() {
+    public void setupGame(int startingLevel) {
         player = new Player(name, Settings.getPlayerSpawnPoint(), true);
 
-        game = GameCreator.createSinglePlayer(player);
+        game = GameCreator.createSinglePlayer(player,startingLevel);
 
         score = new Score();
         game.addPlayer(player);

@@ -77,7 +77,7 @@ public class StartScreen extends JFrame {
         survivalGameButton.setOpaque(true);
         survivalGameButton.setBounds(55, 350, 350, 60);
 
-        settingsButton = new JButton("Settings");
+        settingsButton = new JButton("Select Level");
         settingsButton.setBackground(Color.RED);
         settingsButton.setForeground(Color.WHITE);
         settingsButton.setFont(new Font("Calibri", Font.BOLD, 30));
@@ -109,7 +109,7 @@ public class StartScreen extends JFrame {
                 setVisible(false);
                 dispose();
                 Driver d = DriverBuilder.buildDriver(0);
-                d.setupGame();
+                d.setupGame(1);
                 d.initDriver();
                 d.startGame("");
                 MainRunner.setDriver(d);
@@ -121,17 +121,18 @@ public class StartScreen extends JFrame {
                 setVisible(false);
                 dispose();
                 Driver d = DriverBuilder.buildDriver(1);
-                d.setupGame();
+                d.setupGame(1);
                 d.initDriver();
                 d.startGame("");
                 MainRunner.setDriver(d);
             }
         });
 
-        stopButton.addActionListener(new ActionListener() {
+        settingsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
                 dispose();
+                LevelOverviewScreen levelOverviewScreen = new LevelOverviewScreen();
             }
         });
 

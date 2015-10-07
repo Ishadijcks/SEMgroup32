@@ -1,7 +1,8 @@
 package game;
 
-/** 
+/**
  * Abstract class for the Normal- and SurvivalDriver.
+ * 
  * @author Boning
  *
  */
@@ -14,37 +15,40 @@ public abstract class Driver {
     protected static Player player;
     public static Game game;
 
-    /** 
-     * Method that should make a screen where the player can select different options.
+    /**
+     * Method that should make a screen where the player can select different
+     * options.
      */
     public abstract void startScreen();
 
-    /** 
+    /**
      * Method to start the game.
-     * @param name Name that the player entered
+     * 
+     * @param name
+     *            Name that the player entered
      */
     public abstract void startGame(String name);
 
     /**
      * Set up the game.
+     * 
+     * @param startingLevel begin level number
      */
-    public abstract void setupGame();
-    
+    public abstract void setupGame(int startingLevel);
+
     /**
      * Initialise the game.
      */
     public abstract void initGame();
-    
+
     /**
      * Initialise the driver.
      */
     public abstract void initDriver();
-    
+
     /**
      * Method that will take care of everything that happens in a game session.
      */
     public abstract void driverHeart();
-    
-    
 
 }
