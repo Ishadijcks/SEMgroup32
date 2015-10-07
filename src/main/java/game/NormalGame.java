@@ -1,7 +1,6 @@
 package game;
 
 import game.log.Logger;
-import game.screens.GameScreen;
 import game.screens.PauseScreen;
 
 /**

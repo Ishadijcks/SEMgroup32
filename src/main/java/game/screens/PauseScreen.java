@@ -1,6 +1,5 @@
 package game.screens;
 
-import game.Driver;
 import game.Game;
 import game.NormalGame;
 import game.Settings;
@@ -9,15 +8,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.URL;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 /**
  * Class that will create a pausing screen.
@@ -35,7 +28,7 @@ public class PauseScreen extends JFrame {
      * @param game where the screen comes from
      * @param name of the player
      */
-    public PauseScreen(final String name, NormalGame game) {
+    public PauseScreen(final String name, Game game) {
 
         setTitle("Paused game");
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());

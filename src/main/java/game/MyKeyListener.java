@@ -58,11 +58,6 @@ public class MyKeyListener extends KeyAdapter {
                     Logger.log("Player pressed up", 0, 5);
                     game.getPlayerList().get(0).shootRope();
                     break;  
-                case 40:
-                    Logger.log("Player pressed cheat this level!", 0, 5);
-                    int curLevel = game.getCurrentLevelInt();
-                    game.getLevelList().get(curLevel).resetBubble();
-                    break;
                 case 32:
                     Logger.log("Player pressed space", 0, 5);
                     game.getPlayerList().get(0).shootRope();

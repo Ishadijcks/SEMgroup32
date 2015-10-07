@@ -104,7 +104,6 @@ public class StartScreen extends JFrame {
         tf.setLocation(375, 165);
         tf.setFont(font2);
         
-
         normalGameButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent startGame) {
                 setVisible(false);

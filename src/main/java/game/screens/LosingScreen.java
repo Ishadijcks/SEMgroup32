@@ -1,7 +1,9 @@
 package game.screens;
 
 import game.Driver;
+import game.NormalDriver;
 import game.Settings;
+import game.SurvivalDriver;
 import game.endScore;
 import game.Leaderboard;
 
@@ -9,8 +11,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URL;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -90,8 +95,6 @@ public class LosingScreen extends JFrame {
         tryAgainButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent tryAgainGame) {
                     setVisible(false);
-                    dr.setupGame();
-                    dr.startGame(score.getName());
                     dispose();
             }
         });
@@ -99,8 +102,13 @@ public class LosingScreen extends JFrame {
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
-                dr.setupGame();
-                dr.startScreen();
+                try {
+                    new StartScreen();
+                } catch (UnsupportedAudioFileException | IOException
+                        | LineUnavailableException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 dispose();
             }
         });
