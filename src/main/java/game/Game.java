@@ -49,9 +49,8 @@ public abstract class Game {
      *            level to add
      */
     public void addLevel(Level level) {
-        if (!levelList.contains(level)) {
-            levelList.add(level);
-        }
+        levelList.add(level);
+        System.out.println("Added");
         Logger.log("Level added to the game", 7, 4); 
     }
 
@@ -178,6 +177,13 @@ public abstract class Game {
      * Updates the state of a game.
      */
     public abstract void update();
+    
+    /**
+     * Game is paused.
+     */
+    public void pauseGame() {
+        
+    }
     
     /**
      * Checks if a game is won.

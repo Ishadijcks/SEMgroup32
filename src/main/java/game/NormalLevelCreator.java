@@ -20,6 +20,7 @@ public class NormalLevelCreator {
 
     private static ArrayList<Player> playerList;
     private static int levelsAvailable = 5;
+    static Bubble bubble = new Bubblex8(100, 100, false, false);
 
     /**
      * Return the level.
@@ -76,8 +77,10 @@ public class NormalLevelCreator {
 
         Level level2 = new NormalLevel(playerList);
 
-        level2.addBubble(bubble1);
-        level2.addBubble(bubble2);
+        
+        level2.addBubble(bubble);
+        //level2.addBubble(bubble1);
+        //level2.addBubble(bubble2);
      
         BubbleWall wall = new BubbleWall(700);
         PlayerWall wall2 = new PlayerWall(600);
@@ -93,10 +96,11 @@ public class NormalLevelCreator {
     public static Level getLevel3() {
         Bubble bubble1 = new Bubblex32(620, 300, false, true);
         Bubble bubble2 = new Bubblex64(120, 200, false, false);
-        Level level2 = new NormalLevel(playerList);
-        level2.addBubble(bubble1);
-        level2.addBubble(bubble2);
-        return level2;
+        Level level3 = new NormalLevel(playerList);
+        level3.addBubble(bubble);
+        //level3.addBubble(bubble1);
+        //level3.addBubble(bubble2);
+        return level3;
     }
 
     /**
@@ -105,9 +109,10 @@ public class NormalLevelCreator {
      */
     public static Level getLevel4() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
-        Level level2 = new NormalLevel(playerList);
-        level2.addBubble(bubble1);
-        return level2;
+        Level level4 = new NormalLevel(playerList);
+        level4.addBubble(bubble);
+        //level4.addBubble(bubble1);
+        return level4;
     }
 
     /**
@@ -116,9 +121,10 @@ public class NormalLevelCreator {
      */
     public static Level getLevel5() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
-        Level level2 = new NormalLevel(playerList);
-        level2.addBubble(bubble1);
-        return level2;
+        Level level5 = new NormalLevel(playerList);
+        level5.addBubble(bubble);
+        //level5.addBubble(bubble1);
+        return level5;
     }
 
     /**

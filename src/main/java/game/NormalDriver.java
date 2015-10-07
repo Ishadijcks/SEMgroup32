@@ -85,6 +85,8 @@ public class NormalDriver extends Driver {
         }
         return false;
     }
+    
+    
 
     /**
      * Check if the game has been lost.
@@ -113,6 +115,8 @@ public class NormalDriver extends Driver {
 	        curLevel = game.getCurrentLevel();
 	
 	        curLevel.moveBubbles();
+	        
+	        System.out.println(game.getLevelList().size() + "   Size");
 	
 	        for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
 	            curLevel.getPowerupList().get(i).move();

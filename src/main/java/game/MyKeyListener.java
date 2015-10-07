@@ -36,10 +36,13 @@ public class MyKeyListener extends KeyAdapter {
     public void keyPressed(KeyEvent evt) {
 
         if (game.inProgress()) {
-            
 
             switch (evt.getKeyCode()) {
 
+                case 27:
+                Logger.log("Player pressed Escape", 0, 5);
+                game.pauseGame();
+                break;
             // Left
                 case 37:
                     Logger.log("Player pressed Left", 0, 5);
@@ -53,9 +56,12 @@ public class MyKeyListener extends KeyAdapter {
                 case 38:
                     Logger.log("Player pressed up", 0, 5);
                     game.getPlayerList().get(0).shootRope();
-                    break;   
-                    
-                    
+                    break;  
+                case 40:
+                    Logger.log("Player pressed right", 0, 5);
+                    int curLevel = game.getCurrentLevelInt();
+                    game.getLevelList().get(curLevel).resetBubble();
+                    break;
                 case 32:
                     Logger.log("Player pressed space", 0, 5);
                     game.getPlayerList().get(0).shootRope();

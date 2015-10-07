@@ -15,6 +15,9 @@ public class Settings {
 
     private static int levelWidth = 850;
     private static int levelHeight = 500;
+    
+    private static int pauseWidth = 850;
+    private static int pauseHeight = 500;
 
     private static int playerHeight = 161;
     private static int playerWidth = 111;
@@ -86,6 +89,13 @@ public class Settings {
      */
     public static int getLevelHeight() {
         return levelHeight;
+    }
+    
+    /**
+     * @return the pauseHeight
+     */
+    public static int getPauseHeight() {
+        return pauseHeight;
     }
 
     /**
