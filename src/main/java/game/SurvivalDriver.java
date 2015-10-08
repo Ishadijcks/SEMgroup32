@@ -1,9 +1,7 @@
 package game;
 
-import game.bubble.Bubble;
 import game.log.LogSettings;
 import game.log.Logger;
-import game.powerups.Powerup;
 import game.screens.GameScreen;
 import game.screens.LeaderBoardScreen;
 import game.screens.LosingScreen;
@@ -33,12 +31,13 @@ public class SurvivalDriver extends Driver {
      * @param name Name that the player entered
      */
     public SurvivalDriver(String name) {
-        this.name = name;
+        SurvivalDriver.name = name;
         this.collisions = new Collisions();
     }
 
     /**
      * Frame to start the game.
+     * @param playerName string.
      */
     public void startGame(String playerName) {
         name = playerName;
@@ -66,7 +65,7 @@ public class SurvivalDriver extends Driver {
      */
     public static void gameLost() {
         game.gameLost();
-        endScore es = new endScore(name, Score.getScore());
+        EndScore es = new EndScore(name, Score.getScore());
         lb.addScore(es);
         lb.appendToFile();
         Score.resetScore();

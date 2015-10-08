@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 /**
  * Class that will control a player.
+ * 
  * @author Boning
  *
  */
@@ -29,14 +30,18 @@ public class Player {
 
     /**
      * Constructor for a player.
-     * @param name of the player
-     * @param xCoord x-Coordinate of the player
-     * @param isNormalMode true if it is a normal game, false otherwise
+     * 
+     * @param name
+     *            of the player
+     * @param xCoord
+     *            x-Coordinate of the player
+     * @param isNormalMode
+     *            true if it is a normal game, false otherwise
      */
     public Player(String name, int xCoord, boolean isNormalMode) {
         this.name = name;
         this.xCoord = xCoord;
-        
+
         this.colX = xCoord - 50;
         normalMode = isNormalMode;
         Logger.log("Player created", 1, 4);
@@ -76,14 +81,15 @@ public class Player {
 
     /**
      * Moves the player left or right, depending on what key is pressed.
-     * @param wallList list of walls
+     * 
+     *            list of walls
      */
     public void move() {
         if (movingLeft && !Settings.isRestrictMovingLeft()) {
             if (xCoord - stepSize > Settings.getLeftMargin()) {
-                    xCoord -= stepSize;
-                    colX -= stepSize;
-                    Settings.setRestrictMovingRight(false);
+                xCoord -= stepSize;
+                colX -= stepSize;
+                Settings.setRestrictMovingRight(false);
             } else {
                 Logger.log("Player is at the left border", 1, 4);
             }
@@ -92,9 +98,9 @@ public class Player {
         if (movingRight && !Settings.isRestrictMovingRight()) {
             if (xCoord + stepSize + width < Settings.getLevelWidth()
                     + Settings.getLeftMargin() + 37) {
-                    xCoord += stepSize;
-                    colX += stepSize;
-                    Settings.setRestrictMovingLeft(false);
+                xCoord += stepSize;
+                colX += stepSize;
+                Settings.setRestrictMovingLeft(false);
             } else {
                 Logger.log("Player is at the right border", 1, 4);
             }
@@ -107,39 +113,34 @@ public class Player {
      */
     public void shootRope() {
         if (normalMode) {
-            if (!NormalDriver.game.getCurrentLevel()
-                    .hasRope()) {
+            if (!NormalDriver.game.getCurrentLevel().hasRope()) {
                 int ropeY = NormalDriver.game.getCurrentLevel().getHeight()
                         - height;
                 int ropeX = xCoord + width / 2;
-                if(Settings.getPlayerHasIceRope()){
-                	Rope rope = new IceRope(ropeX, ropeY, normalMode);
-                    NormalDriver.game.getCurrentLevel()
-                    .setRope(rope);
+                if (Settings.getPlayerHasIceRope()) {
+                    Rope rope = new IceRope(ropeX, ropeY, normalMode);
+                    NormalDriver.game.getCurrentLevel().setRope(rope);
                     return;
-                }else{
-	                Rope rope = new Rope(ropeX, ropeY, normalMode);
-	                NormalDriver.game.getCurrentLevel().setRope(rope);
-	                Logger.log("Shot a rope", 1, 4);
+                } else {
+                    Rope rope = new Rope(ropeX, ropeY, normalMode);
+                    NormalDriver.game.getCurrentLevel().setRope(rope);
+                    Logger.log("Shot a rope", 1, 4);
                 }
-                
+
             }
-        }
-        else {
-            if (!SurvivalDriver.game.getCurrentLevel()
-                    .hasRope()) {
+        } else {
+            if (!SurvivalDriver.game.getCurrentLevel().hasRope()) {
                 int ropeY = SurvivalDriver.game.getCurrentLevel().getHeight()
                         - height;
                 int ropeX = xCoord + width / 2;
-                if(Settings.getPlayerHasIceRope()){
-                	Rope rope = new IceRope(ropeX, ropeY, normalMode);
-                    NormalDriver.game.getCurrentLevel()
-                    .setRope(rope);
+                if (Settings.getPlayerHasIceRope()) {
+                    Rope rope = new IceRope(ropeX, ropeY, normalMode);
+                    NormalDriver.game.getCurrentLevel().setRope(rope);
                     return;
-                }else{
-	                Rope rope = new Rope(ropeX, ropeY, normalMode);
-	                NormalDriver.game.getCurrentLevel().setRope(rope);
-	                Logger.log("Shot a rope", 1, 4);                    
+                } else {
+                    Rope rope = new Rope(ropeX, ropeY, normalMode);
+                    NormalDriver.game.getCurrentLevel().setRope(rope);
+                    Logger.log("Shot a rope", 1, 4);
                 }
             }
         }
@@ -147,6 +148,7 @@ public class Player {
 
     /**
      * Checks if the player has an ice rope.
+     * 
      * @return true if it has, false otherwise
      */
     public boolean hasIceRope() {
@@ -155,15 +157,18 @@ public class Player {
 
     /**
      * Getter for the name of the player.
+     * 
      * @return String name of player
      */
     public String getName() {
         return name;
     }
-    
+
     /**
      * Setter for the name of the player.
-     * @param newName for the player
+     * 
+     * @param newName
+     *            for the player
      */
     public void setName(String newName) {
         name = newName;
@@ -171,6 +176,7 @@ public class Player {
 
     /**
      * Getter for the moving left attribute.
+     * 
      * @return true if player is moving left, false otherwise
      */
     public boolean getMovingLeft() {
@@ -179,6 +185,7 @@ public class Player {
 
     /**
      * Getter for the moving right attribute.
+     * 
      * @return true if player is moving right, false otherwise
      */
     public boolean getMovingRight() {
@@ -187,6 +194,7 @@ public class Player {
 
     /**
      * Getter for the x-Coordinate.
+     * 
      * @return xCoord x-Coordinate
      */
     public int getX() {
@@ -195,6 +203,7 @@ public class Player {
 
     /**
      * Getter for the y-Coordinate.
+     * 
      * @return yCoord y-Coordinate
      */
     public int getY() {
@@ -203,6 +212,7 @@ public class Player {
 
     /**
      * Getter for the collisionX attribute.
+     * 
      * @return x-Coordinate of the collision.
      */
     public int getCollisionX() {
@@ -211,6 +221,7 @@ public class Player {
 
     /**
      * Getter for the collisionY attribute.
+     * 
      * @return y-Coordinate of the collision.
      */
     public int getCollisionY() {
@@ -219,6 +230,7 @@ public class Player {
 
     /**
      * Getter for the width of the player.
+     * 
      * @return width of the player
      */
     public int getWidth() {
@@ -227,24 +239,26 @@ public class Player {
 
     /**
      * Getter for the height of the player.
+     * 
      * @return height of the player
      */
     public int getHeight() {
         return height;
     }
 
-	/**
-	 * @return the stepSize
-	 */
-	public int getStepSize() {
-		return stepSize;
-	}
+    /**
+     * @return the stepSize
+     */
+    public int getStepSize() {
+        return stepSize;
+    }
 
-	/**
-	 * @param stepSize the stepSize to set
-	 */
-	public void setStepSize(int stepSize) {
-		this.stepSize = stepSize;
-	}
+    /**
+     * @param stepSize
+     *            the stepSize to set
+     */
+    public void setStepSize(int stepSize) {
+        this.stepSize = stepSize;
+    }
 
 }

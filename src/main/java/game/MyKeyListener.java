@@ -31,7 +31,7 @@ public class MyKeyListener extends KeyAdapter {
     /**
      * Checks what key is pressed, moves the player in that direction or shoots
      * a rope.
-     * @param evt Keyevent 
+     * @param evt Key event 
      */
     public void keyPressed(KeyEvent evt) {
 
@@ -81,6 +81,7 @@ public class MyKeyListener extends KeyAdapter {
     }
 
     /**
+     * 
      * Checks what key is released, makes the player stop moving in that
      * direction.
      */

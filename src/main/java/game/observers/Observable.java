@@ -1,9 +1,29 @@
 package game.observers;
 
+/**
+ * Observable class.
+ * 
+ * @author Floris
+ *
+ */
 public interface Observable {
 
-	public void registerObserver(Observer ob);
-	public void removeObserver();
-	public void notifyObservers();
+    /**
+     * register the observer.
+     * 
+     * @param ob
+     *            Observer
+     */
+    void registerObserver(Observer ob);
+
+    /**
+     * Removed The observer.
+     */
+    void removeObserver();
+    
+    /**
+     * Notify all observers.
+     */
+    void notifyObservers();
 
 }

@@ -13,39 +13,46 @@ import game.powerups.IcePowerup;
 import game.powerups.Powerup;
 import game.powerups.PowerupFactory;
 
+/**
+ * The rope with bubble collision class.
+ * @author Floris
+ *
+ */
 public class RopeCollisionObserver extends Observer {
-	
-	PowerupFactory pfac = new PowerupFactory();
 
-	public RopeCollisionObserver(Collisions collisions) {
-		super(collisions);
-	}
+    PowerupFactory pfac = new PowerupFactory();
+    /**
+     * The Observer for rope collisions with bubbles.
+     * @param collisions object
+     */
+    public RopeCollisionObserver(Collisions collisions) {
+        super(collisions);
+    }
 
-	@Override
-	public void update(Object bub, Object rop, Game g) {
-		Bubble bubble = ((Bubble)bub);
-		Rope rope = ((Rope)rop);
-		Game game = ((Game)g);
-		Level currentLevel = game.getCurrentLevel();
-		ArrayList<Bubble> bubbleList = game.getCurrentLevel().getBubbleList();
-		
-        int bubblePos_x = bubble.getX();
-        int bubblePos_y = bubble.getY();
+    @Override
+    public void update(Object bub, Object rop, Game g) {
+        Bubble bubble = ((Bubble) bub);
+        Rope rope = ((Rope) rop);
+        Game game = ((Game) g);
+        Level currentLevel = game.getCurrentLevel();
+        ArrayList<Bubble> bubbleList = game.getCurrentLevel().getBubbleList();
+
+        int bubblePosX = bubble.getX();
+        int bubblePosY = bubble.getY();
 
         NormalDriver.score.addScore(bubble.getScoreWorth());
-        bubbleList.addAll(bubble.destroyBubble(bubblePos_x, bubblePos_y));
+        bubbleList.addAll(bubble.destroyBubble(bubblePosX, bubblePosY));
         bubbleList.remove(bubble);
 
-        
         currentLevel.setRope(null);
 
         if (Settings.getPowerupChance() > Math.random() * 100) {
             Powerup powerup = pfac.createRandomPowerup();
-            powerup.setX(bubblePos_x);
-            powerup.setY(bubblePos_y);
+            powerup.setX(bubblePosX);
+            powerup.setY(bubblePosY);
             currentLevel.getPowerupList().add(powerup);
 
         }
-	}
+    }
 
 }

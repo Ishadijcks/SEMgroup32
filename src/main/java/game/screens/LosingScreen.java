@@ -2,7 +2,7 @@ package game.screens;
 
 import game.Driver;
 import game.Settings;
-import game.endScore;
+import game.EndScore;
 import game.Leaderboard;
 
 import java.awt.Color;
@@ -28,7 +28,7 @@ public class LosingScreen extends JFrame {
     JButton stopButton;
     final private Driver dr;
     
-    private endScore score;
+    private EndScore score;
     private Leaderboard leaderBoard;
     
     JFrame gameFrame;
@@ -38,7 +38,7 @@ public class LosingScreen extends JFrame {
      * @param driver where the screen comes from
      * @param score what the player got
      */
-    public LosingScreen(Driver driver, final endScore score) {
+    public LosingScreen(Driver driver, final EndScore score) {
 
         setTitle("You lost!");
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());

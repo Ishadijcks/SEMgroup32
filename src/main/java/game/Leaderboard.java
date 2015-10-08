@@ -14,13 +14,13 @@ import java.util.ArrayList;
  */
 public class Leaderboard {
     
-    private static ArrayList<endScore> scoreList = new ArrayList<endScore>();
+    private static ArrayList<EndScore> scoreList = new ArrayList<EndScore>();
     
     /**
      * Add a new score to the leaderboard.
      * @param newScore New score that will be added
      */
-    public void addScore(endScore newScore) {
+    public void addScore(EndScore newScore) {
         if (scoreList.size() != 0) {
             for (int i = 0; i < scoreList.size(); i++) {
                 if (scoreList.get(i).getScore() < newScore.getScore()) {
@@ -40,7 +40,7 @@ public class Leaderboard {
      * Getter for the score list.
      * @return List of the scores
      */
-    public ArrayList<endScore> getScoreList() {
+    public ArrayList<EndScore> getScoreList() {
         return scoreList;
     }
 
@@ -48,7 +48,7 @@ public class Leaderboard {
      * Setter for the score list.
      * @param scoreList A new score list that will be used
      */
-    public void setScoreList(ArrayList<endScore> scoreList) {
+    public void setScoreList(ArrayList<EndScore> scoreList) {
         this.scoreList = scoreList;
     }
     
@@ -56,7 +56,7 @@ public class Leaderboard {
      * Reset the score list.
      */
     public void resetScoreList() {
-    	this.scoreList = new ArrayList<endScore>();
+    	this.scoreList = new ArrayList<EndScore>();
     }
     
     /**
