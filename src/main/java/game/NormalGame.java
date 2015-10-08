@@ -23,6 +23,8 @@ public class NormalGame extends Game {
      */
     public void gameWon() {
         if (currentLevel < levelList.size()) {
+            LevelCompletion.setLevelCompleted(currentLevel);
+            System.out.println("levelcomp" + currentLevel);
             currentLevel++;
             Logger.log("Level completed", 8, 4);
             inProgress = false;

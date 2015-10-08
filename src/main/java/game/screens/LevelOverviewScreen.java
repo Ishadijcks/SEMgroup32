@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import game.Driver;
 import game.DriverBuilder;
 import game.Leaderboard;
+import game.LevelCompletion;
 import game.MainRunner;
 
 import javax.swing.JButton;
@@ -40,7 +41,7 @@ public class LevelOverviewScreen extends JFrame {
         setLayout(null);
 
         Font font = new Font("Calibri", Font.PLAIN, 30);
-        JLabel label = new JLabel("Select a level to play:");
+        JLabel label = new JLabel("Select a already completed level to play:");
         label.setFont(font);
         label.setSize(500, 50);
         label.setForeground(Color.BLACK);
@@ -48,14 +49,16 @@ public class LevelOverviewScreen extends JFrame {
         add(label);
 
         for (int i = 1; i < 7; i++) {
-            levelButton = new JButton("Level " + i);
-            levelButton.setBackground(Color.RED);
-            levelButton.setForeground(Color.WHITE);
-            levelButton.setFont(new Font("Calibri", Font.BOLD, 30));
-            levelButton.setOpaque(true);
-            levelButton.setBounds(20, -30 + i * 100, 300, 60);
-            add(levelButton);
-            levelButton.addActionListener(new ButtonActionListener(i));
+            if (LevelCompletion.isLevelCompleted(i)) {
+                levelButton = new JButton("Level " + i);
+                levelButton.setBackground(Color.RED);
+                levelButton.setForeground(Color.WHITE);
+                levelButton.setFont(new Font("Calibri", Font.BOLD, 30));
+                levelButton.setOpaque(true);
+                levelButton.setBounds(20, -30 + i * 100, 300, 60);
+                add(levelButton);
+                levelButton.addActionListener(new ButtonActionListener(i));
+            }
         }
     }
 

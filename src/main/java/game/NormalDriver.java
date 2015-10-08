@@ -165,15 +165,12 @@ public class NormalDriver extends Driver {
             player1.move(curLevel.getWallList());
 
             if (curLevel.getBubbleList().size() == 0) {
-                System.out.println("no bubbles");
                 boolean once = true;
                 if (once) {
                     once = false;
                     canDrawGame = false;
                     gameScreen.levelWon();
                     resetPlayerLocation(player1);
-
-                    // player.setXCoord(350);
                 }
                 game.gameWon();
             }
@@ -185,20 +182,23 @@ public class NormalDriver extends Driver {
 
     /**
      * Set player to spawn point.
-     * @param player current player.
+     * 
+     * @param player
+     *            current player.
      */
     public void resetPlayerLocation(Player player) {
-        while (player.getX() < Settings.getPlayerSpawnPoint() - 10) {
-            player.movingRight();
-            ArrayList<Wall> wallList = new ArrayList<Wall>();
-            player.move(wallList);
-        }
-        while (player.getX() > Settings.getPlayerSpawnPoint() + 10) {
-            player.movingLeft();
-            ArrayList<Wall> wallList = new ArrayList<Wall>();
-            player.move(wallList);
-        }
+            while (player.getX() < Settings.getPlayerSpawnPoint() - 10) {
+                player.movingRight();
+                ArrayList<Wall> wallList = new ArrayList<Wall>();
+                player.move(wallList);
+            }
+            while (player.getX() > Settings.getPlayerSpawnPoint() + 10) {
+                player.movingLeft();
+                ArrayList<Wall> wallList = new ArrayList<Wall>();
+                player.move(wallList);
+            }
     }
+
     /**
      * Getter returns game screen.
      * 
@@ -233,7 +233,7 @@ public class NormalDriver extends Driver {
     public void setupGame(int startingLevel) {
         player = new Player(name, Settings.getPlayerSpawnPoint(), true);
 
-        game = GameCreator.createSinglePlayer(player,startingLevel);
+        game = GameCreator.createSinglePlayer(player, startingLevel);
 
         score = new Score();
         game.addPlayer(player);
