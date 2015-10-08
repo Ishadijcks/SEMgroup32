@@ -18,11 +18,9 @@ public class WallPlayerCollisionObserver extends Observer {
 		if(player.getMovingRight()){
 			Settings.setRestrictMovingRight(true);
 			Settings.setRestrictMovingLeft(false);
-			System.out.println("IREST");
 		} else if(player.getMovingLeft()){
 			Settings.setRestrictMovingLeft(true);
 			Settings.setRestrictMovingRight(false);
-			System.out.println("LEFT");
 		}
 
 	}

@@ -27,7 +27,6 @@ public class SpeedPowerupTimer extends PowerupTimer {
 		}
     	Settings.setDieThreads(false);
 		player.setStepSize(Settings.getPlayerStepSize());
-		System.out.println("DONE");
 	}
 
 }

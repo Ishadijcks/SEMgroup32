@@ -113,7 +113,6 @@ public class Player {
                         - height;
                 int ropeX = xCoord + width / 2;
                 if(Settings.getPlayerHasIceRope()){
-                	System.out.println("YISSS");
                 	Rope rope = new IceRope(ropeX, ropeY, normalMode);
                     NormalDriver.game.getCurrentLevel()
                     .setRope(rope);

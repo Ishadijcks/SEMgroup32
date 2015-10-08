@@ -27,7 +27,6 @@ public class IcePowerupTimer extends PowerupTimer {
 		}
 		game.getCurrentLevel().setRope(null);
 		Settings.setPlayerHasIceRope(false);
-		System.out.println("DONE");
 	}
 
 }
