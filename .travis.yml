@@ -7,6 +7,8 @@ script:
   - mvn site
 
 notifications:
+	email:false
+
   webhooks:
     - http://octopull.rmhartog.me/api/travis/webhook
 before_install:
