@@ -144,7 +144,7 @@ public class NormalLevelCreator {
     public static Level getLevel6() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
         NormalLevel level = new NormalLevel(playerList);
-        PlayerWall wall1 = new PlayerWall(500);
+        PlayerWall wall1 = new PlayerWall(400);
         level.addBubble(bubble1);
         level.addWall(wall1);
         level.setLevelNumber(6);

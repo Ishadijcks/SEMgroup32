@@ -70,19 +70,12 @@ public class LosingScreen extends JFrame {
 
         setLayout(null);
 
-        tryAgainButton = new JButton("Try again");
-        tryAgainButton.setBackground(Color.DARK_GRAY);
-        tryAgainButton.setForeground(Color.WHITE);
-        tryAgainButton.setFont(new Font("Calibri", Font.BOLD, 30));
-        tryAgainButton.setOpaque(true);
-        tryAgainButton.setBounds(Settings.getScreenWidth() / 2 + 70, Settings.getScreenHeight() / 2 - 52, 350, 75);
-
         stopButton = new JButton("Exit");
         stopButton.setBackground(Color.DARK_GRAY);
         stopButton.setForeground(Color.WHITE);
         stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
         stopButton.setOpaque(true);
-        stopButton.setBounds(55, 350, 350, 75);
+        stopButton.setBounds(205, 350, 550, 75);
 
         Font font = new Font("Calibri", Font.PLAIN, 55);
         JLabel scoreLabel = new JLabel(score.getName() + "s score: " + score.getScore());
@@ -92,12 +85,6 @@ public class LosingScreen extends JFrame {
         scoreLabel.setSize(700, 500);
         
         dr = driver;
-        tryAgainButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent tryAgainGame) {
-                    setVisible(false);
-                    dispose();
-            }
-        });
 
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
@@ -114,8 +101,7 @@ public class LosingScreen extends JFrame {
         });
 
         setResizable(false);
-        
-        add(tryAgainButton);
+
         add(stopButton);
         add(scoreLabel);
         

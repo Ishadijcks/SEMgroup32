@@ -37,9 +37,8 @@ public class PauseScreen extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         setVisible(true);
-
         setLayout(null);
-
+        
         resumeButton = new JButton("Resume game");
         resumeButton.setForeground(Color.BLACK);
         resumeButton.setFont(new Font("Calibri", Font.BOLD, 30));
