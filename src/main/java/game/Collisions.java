@@ -9,7 +9,12 @@ import game.observers.Observable;
 import game.observers.Observer;
 import game.observers.PowerupCollisionObserver;
 import game.observers.RopeCollisionObserver;
+import game.observers.WallBubbleCollisionObserver;
+import game.observers.WallPlayerCollisionObserver;
 import game.powerups.Powerup;
+import game.wall.BubbleWall;
+import game.wall.DuoWall;
+import game.wall.Wall;
 
 
 public class Collisions implements Observable{
@@ -18,6 +23,8 @@ public class Collisions implements Observable{
     private Observer ropeColObserver = new RopeCollisionObserver(this);
     private Observer powerupColObserver = new PowerupCollisionObserver(this);
     private Observer bubbleColObserver = new BubbleCollisionObserver(this);
+    private Observer wallBubbleColObserver = new WallBubbleCollisionObserver(this);
+    private Observer wallPlayerColObserver = new WallPlayerCollisionObserver(this);
 
     public Collisions() {
 	}
@@ -29,6 +36,8 @@ public class Collisions implements Observable{
     		checkCollisionRope(curLevel.getBubbleList(),curLevel.getRope());
     	checkCollisionPowerup(game.getPlayerList(), curLevel.getPowerupList());
     	checkCollisionPlayer(game.getCurrentLevel().getBubbleList(), game.getCurrentLevel().getPlayerList());
+    	checkPlayerCollisionWall(game.getCurrentLevel().getWallList(), game.getCurrentLevel().getPlayerList());
+    	checkBubbleCollisionWall(game.getCurrentLevel().getWallList(), game.getCurrentLevel().getBubbleList());
     }
     
     /** Checks the collisions of the bubbles with the player.
@@ -112,6 +121,29 @@ public class Collisions implements Observable{
 	        }
 	    }
 	    return -1;
+    }
+    
+    public boolean checkPlayerCollisionWall(ArrayList<Wall> wallList, ArrayList<Player> playerList){
+    	Player player = playerList.get(0);
+    	for(Wall wall : wallList){
+    		if(wall.expectPlayerCollision(player.getX(), player.getMovingLeft())){
+    			wallPlayerColObserver.update(wall, player, game);
+    			return true;
+    		}
+    	}
+    	return false;
+    }
+    
+    public boolean checkBubbleCollisionWall(ArrayList<Wall> wallList, ArrayList<Bubble> bubbleList) {
+    	for(Bubble bubble : bubbleList){
+	    	for(Wall wall : wallList){
+	    		if(wall.expectBubbleCollision(bubble.getX(), bubble.getDiameter())){
+	    			wallBubbleColObserver.update(wall, bubble, game);
+	    			return true;
+	    		}
+	    	}
+    	}
+    	return false;
     }
 
 	@Override

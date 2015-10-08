@@ -78,68 +78,27 @@ public class Player {
      * Moves the player left or right, depending on what key is pressed.
      * @param wallList list of walls
      */
-    public void move(ArrayList<Wall> wallList) {
-        if (movingLeft) {
+    public void move() {
+        if (movingLeft && !Settings.isRestrictMovingLeft()) {
             if (xCoord - stepSize > Settings.getLeftMargin()) {
-                if (!wallCollisionLeft(wallList)) {
                     xCoord -= stepSize;
                     colX -= stepSize;
-                }
+                    Settings.setRestrictMovingRight(false);
             } else {
                 Logger.log("Player is at the left border", 1, 4);
             }
         }
 
-        if (movingRight) {
+        if (movingRight && !Settings.isRestrictMovingRight()) {
             if (xCoord + stepSize + width < Settings.getLevelWidth()
                     + Settings.getLeftMargin() + 37) {
-             
-                if (!wallCollisionRight(wallList)) {
-
                     xCoord += stepSize;
                     colX += stepSize;
-                }
-
+                    Settings.setRestrictMovingLeft(false);
             } else {
                 Logger.log("Player is at the right border", 1, 4);
             }
         }
-    }
-
-    /**
-     * Checks collisions with the right side of walls.
-     * @param wallList List of walls that will be checked
-     * @return true if there is a collision, false otherwise
-     */
-    public boolean wallCollisionRight(ArrayList<Wall> wallList) {
-        for (int i = 0; i < wallList.size(); i++) {
-            Wall wall = wallList.get(i);
-            if (wall instanceof PlayerWall || wall instanceof DuoWall) {
-                if (xCoord + stepSize <= (wall.getxCoord() + wall.getWidth())
-                        && (xCoord + stepSize + width) >= wall.getxCoord() && wall.isActive()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Checks collisions with the left side of walls.
-     * @param wallList List of walls that will be checked
-     * @return true if there is a collision, false otherwise
-     */
-    public boolean wallCollisionLeft(ArrayList<Wall> wallList) {
-        for (int i = 0; i < wallList.size(); i++) {
-            Wall wall = wallList.get(i);
-            if (wall instanceof PlayerWall || wall instanceof DuoWall) {
-                if (xCoord - stepSize <= (wall.getxCoord() + wall.getWidth())
-                        && (xCoord - stepSize + width) >= wall.getxCoord() && wall.isActive()) {
-                    return true;
-                }
-            }
-        }
-        return false;
     }
 
     /**

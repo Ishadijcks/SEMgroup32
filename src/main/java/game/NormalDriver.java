@@ -81,7 +81,7 @@ public class NormalDriver extends Driver {
      * @return true if the game is won, false otherwise
      */
     public static boolean checkGameWon() {
-        if (game.getCurrentLevelInt() == 4) {
+        if (game.getCurrentLevelInt() == game.getLevelList().size()-1) {
             gameScreen.dispose();
             Logger.log("Frame destroyed", 9, 4);
             new WinningScreen(driver, name);
@@ -123,7 +123,7 @@ public class NormalDriver extends Driver {
 	        gameScreen.reload();
 	
 	        Player player1 = game.getPlayerList().get(0);
-	        player1.move(curLevel.getWallList());
+	        player1.move();
 	
 	        if (curLevel.getBubbleList().size() == 0) {
 	            boolean once = true;

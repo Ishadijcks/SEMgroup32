@@ -7,7 +7,9 @@ import javax.swing.ImageIcon;
 import game.NormalDriver;
 import game.Settings;
 import game.SurvivalDriver;
+import game.powerups.IcePowerup;
 import game.powerups.Powerup;
+import game.powerups.SpeedPowerup;
 import game.screens.StartScreen;
 
 import org.junit.Before;
@@ -28,14 +30,14 @@ public class PowerupTest {
 		y = 5;
 		String name = "speed";
 
-		powerup = new Powerup(name, x, y, true);
+		powerup = new SpeedPowerup(name, x, y, true);
 	}
 
 	@Test
 	public void testEquals() {
-		Powerup powerup1 = new Powerup("name", 2, 3, true);
-		Powerup powerup2 = new Powerup("name", 2, 3, true);
-		Powerup powerup3 = new Powerup("name", 2, 4, true);
+		Powerup powerup1 = new SpeedPowerup("name", 2, 3, true);
+		Powerup powerup2 = new SpeedPowerup("name", 2, 3, true);
+		Powerup powerup3 = new SpeedPowerup("name", 2, 4, true);
 		assertTrue(powerup1.equals(powerup2));
 		assertFalse(powerup1.equals(powerup3));
 
@@ -68,14 +70,14 @@ public class PowerupTest {
 
 	@Test
 	public void testGetName() {
-		Powerup powerup2 = new Powerup("speed", x, y, true);
+		Powerup powerup2 = new SpeedPowerup("speed", x, y, true);
 		assertEquals(powerup, powerup2);
 		
 	}
 	
 	@Test
 	public void testGetImageIconSpeed() {
-		Powerup pow = new Powerup("speed", 100, 100, true);
+		Powerup pow = new SpeedPowerup("speed", 100, 100, true);
         URL location = StartScreen.class.getProtectionDomain().getCodeSource()
                 .getLocation();
         String imageLocation = location.getFile();
@@ -86,7 +88,7 @@ public class PowerupTest {
 	
 	@Test
 	public void testGetImageIconLife(){
-		Powerup pow = new Powerup("life", 100, 100, true);
+		Powerup pow = new SpeedPowerup("life", 100, 100, true);
         URL location = StartScreen.class.getProtectionDomain().getCodeSource()
                 .getLocation();
         String imageLocation = location.getFile();
@@ -97,7 +99,7 @@ public class PowerupTest {
 	
 	@Test
 	public void testGetImageIconIce(){
-		Powerup pow = new Powerup("ice", 100, 100, true);
+		Powerup pow = new IcePowerup("ice", 100, 100, true);
         URL location = StartScreen.class.getProtectionDomain().getCodeSource()
                 .getLocation();
         String imageLocation = location.getFile();
@@ -108,7 +110,7 @@ public class PowerupTest {
 	
 	@Test
 	public void testGetImageIconNull(){
-		Powerup pow = new Powerup("randomstring", 100, 100, true);
+		Powerup pow = new SpeedPowerup("randomstring", 100, 100, true);
 		assertNull(pow.getImageIcon());
 	}
 	
@@ -117,7 +119,7 @@ public class PowerupTest {
 		NormalDriver driver = new NormalDriver(null);
 		driver.initGame();
 		driver.setupGame();
-		Powerup pow = new Powerup("ice", 100, 100, true);
+		Powerup pow = new IcePowerup("ice", 100, 100, true);
 		int deltaY = Settings.getPowerupSpeed();
 		int initY = 100;
 		pow.move();
@@ -129,7 +131,7 @@ public class PowerupTest {
 		SurvivalDriver driver = new SurvivalDriver(null);
 		driver.initGame();
 		driver.setupGame();
-		Powerup pow = new Powerup("ice", 100, 100, false);
+		Powerup pow = new IcePowerup("ice", 100, 100, false);
 		int deltaY = Settings.getPowerupSpeed();
 		int initY = 100;
 		pow.move();
@@ -138,21 +140,21 @@ public class PowerupTest {
 	
 	@Test
 	public void testSamePowerupSamecoords(){
-		Powerup pow = new Powerup("ice", 100, 100, true);
-		assertTrue(pow.samePowerup(new Powerup("ice", 100,100, true)));
-		assertFalse(pow.samePowerup(new Powerup("nothing", 100, 100, true)));
+		Powerup pow = new IcePowerup("ice", 100, 100, true);
+		assertTrue(pow.samePowerup(new IcePowerup("ice", 100,100, true)));
+		assertFalse(pow.samePowerup(new IcePowerup("nothing", 100, 100, true)));
 	}
 	
 	@Test
 	public void testSamePowerupDiffcoords(){
-		Powerup pow = new Powerup("ice", 100, 100, true);
-		assertTrue(pow.samePowerup(new Powerup("ice", 10,10, true)));
-		assertFalse(pow.samePowerup(new Powerup("nothing", 10, 10, true)));
+		Powerup pow = new IcePowerup("ice", 100, 100, true);
+		assertTrue(pow.samePowerup(new IcePowerup("ice", 10,10, true)));
+		assertFalse(pow.samePowerup(new IcePowerup("nothing", 10, 10, true)));
 	}
 	
 	@Test
 	public void testDecreaseFramesLeft(){
-		Powerup pow = new Powerup("ice", 100, 100, true);
+		Powerup pow = new IcePowerup("ice", 100, 100, true);
 		int initFrames = pow.getFramesLeft();
 		pow.decreaseFramesLeft();
 		assertEquals(initFrames - 1, pow.getFramesLeft());
@@ -160,7 +162,7 @@ public class PowerupTest {
 	
 	@Test
 	public void testResetFramesLeft(){
-		Powerup pow = new Powerup("ice", 100, 100, true);
+		Powerup pow = new IcePowerup("ice", 100, 100, true);
 		int initFrames = pow.getFramesLeft();
 		pow.decreaseFramesLeft();
 		assertNotSame(initFrames, pow.getFramesLeft());
@@ -170,7 +172,7 @@ public class PowerupTest {
 	
 	@Test
 	public void testSetFramesLeft(){
-		Powerup pow = new Powerup("ice", 100, 100, true);
+		Powerup pow = new IcePowerup("ice", 100, 100, true);
 		pow.setFramesLeft(5);
 		assertEquals(5, pow.getFramesLeft());
 	}

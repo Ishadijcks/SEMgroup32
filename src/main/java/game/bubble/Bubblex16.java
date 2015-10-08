@@ -25,6 +25,7 @@ public class Bubblex16 extends Bubble {
      */
 	public Bubblex16(double xCoord, double yCoord, boolean directionHorizontal, boolean directionVertical) {
 		super(xCoord, yCoord, directionHorizontal, directionVertical, maxheight, color, gravitation, diameter, speedX);
+		this.scoreWorth = 15;
 	}
 	
 	/**

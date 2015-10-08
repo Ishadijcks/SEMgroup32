@@ -28,6 +28,7 @@ public class Bubblex8 extends Bubble {
 	public Bubblex8(double xCoord, double yCoord, boolean directionHorizontal,
 			boolean directionVertical) {
 		super(xCoord, yCoord, directionHorizontal, directionVertical, maxheight, color, gravitation, diameter, speedX);
+		this.scoreWorth = 10;
 	}
 
 	/**

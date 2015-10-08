@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import game.Collisions;
 import game.Game;
 import game.Level;
+import game.NormalDriver;
 import game.Rope;
 import game.Settings;
 import game.bubble.Bubble;
@@ -30,9 +31,8 @@ public class RopeCollisionObserver extends Observer {
 		
         int bubblePos_x = bubble.getX();
         int bubblePos_y = bubble.getY();
-        int diameter = bubble.getDiameter();
 
-        currentLevel.addScore(diameter);
+        NormalDriver.score.addScore(bubble.getScoreWorth());
         bubbleList.addAll(bubble.destroyBubble(bubblePos_x, bubblePos_y));
         bubbleList.remove(bubble);
 

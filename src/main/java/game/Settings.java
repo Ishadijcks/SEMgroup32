@@ -21,6 +21,8 @@ public class Settings {
     private static int playerStepSize = 2;
     private static int playerPowerupStepSize = 5;
     private static boolean playerHasIceRope = false;
+    private static boolean restrictMovingRight = false;
+    private static boolean restrictMovingLeft = false;
 
     private static int bubbleDefaultDiameter = 16;
     private static int bubbleDefaultX = 10;
@@ -245,5 +247,33 @@ public class Settings {
     public static int getLeftMargin() {
         return leftMargin;
     }
+
+	/**
+	 * @return the restrictMovingRight
+	 */
+	public static boolean isRestrictMovingRight() {
+		return restrictMovingRight;
+	}
+
+	/**
+	 * @param restrictMovingRight the restrictMovingRight to set
+	 */
+	public static void setRestrictMovingRight(boolean restrictMovingRight) {
+		Settings.restrictMovingRight = restrictMovingRight;
+	}
+
+	/**
+	 * @return the restrictMovingLeft
+	 */
+	public static boolean isRestrictMovingLeft() {
+		return restrictMovingLeft;
+	}
+
+	/**
+	 * @param restrictMovingLeft the restrictMovingLeft to set
+	 */
+	public static void setRestrictMovingLeft(boolean restrictMovingLeft) {
+		Settings.restrictMovingLeft = restrictMovingLeft;
+	}
 
 }
