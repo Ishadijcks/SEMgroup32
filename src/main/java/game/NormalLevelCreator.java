@@ -87,10 +87,14 @@ public class NormalLevelCreator {
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
         level.addBubble(bubble2);
-        BubbleWall wall = new BubbleWall(700);
-        PlayerWall wall2 = new PlayerWall(600);
+        BubbleWall wall = new BubbleWall(300);
+        PlayerWall wall2 = new PlayerWall(700);
+        BubbleWall wall3 = new BubbleWall(850);
+        BubbleWall wall4 = new BubbleWall(900);
         level.addWall(wall);
         level.addWall(wall2);
+        level.addWall(wall3);
+        level.addWall(wall4);
         level.setLevelNumber(2);
         return level;
     }
