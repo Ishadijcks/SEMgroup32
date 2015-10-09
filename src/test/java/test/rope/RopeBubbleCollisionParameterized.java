@@ -19,7 +19,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class RopeBubbleCollisionTest {
+public class RopeBubbleCollisionParameterized {
 
     @Parameters
     public static Collection<Object[]> data() {
@@ -36,7 +36,7 @@ public class RopeBubbleCollisionTest {
     public ArrayList<Player> p;
     private boolean expected;
 
-    public RopeBubbleCollisionTest(int x, int y, boolean exp) {
+    public RopeBubbleCollisionParameterized(int x, int y, boolean exp) {
         bubble = new Bubblex16(20, 50, true, true);
         p = new ArrayList<Player>();
         l = new NormalLevel(p);
