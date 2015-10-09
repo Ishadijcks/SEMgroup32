@@ -5,12 +5,13 @@ import game.Level;
 import game.MyKeyListener;
 import game.NormalLevel;
 import game.Player;
-import game.Powerup;
 import game.Score;
 import game.Settings;
 import game.wall.Wall;
 import game.bubble.Bubble;
 import game.log.Logger;
+import game.powerups.Powerup;
+import game.wall.Wall;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

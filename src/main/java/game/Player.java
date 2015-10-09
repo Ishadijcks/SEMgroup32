@@ -1,6 +1,7 @@
 package game;
 
 import game.log.Logger;
+import game.powerups.Powerup;
 import game.wall.DuoWall;
 import game.wall.PlayerWall;
 import game.wall.Wall;
@@ -25,8 +26,6 @@ public class Player {
     private int stepSize = Settings.getPlayerStepSize();
     private boolean movingLeft = false;
     private boolean movingRight = false;
-    private boolean normalMode;
-    private ArrayList<Powerup> powerupList = new ArrayList<Powerup>();
 
     /**
      * Constructor for a player.
@@ -38,12 +37,11 @@ public class Player {
      * @param isNormalMode
      *            true if it is a normal game, false otherwise
      */
-    public Player(String name, int xCoord, boolean isNormalMode) {
+    public Player(String name, int xCoord) {
         this.name = name;
         this.xCoord = xCoord;
 
         this.colX = xCoord - 50;
-        normalMode = isNormalMode;
         Logger.log("Player created", 1, 4);
     }
 
@@ -85,62 +83,31 @@ public class Player {
      * @param x new xcoord player
      */
     public void setXCoord(int x) {
+        System.out.println("xx..");
         xCoord = x;
     }
 
     /**
      * Moves the player left or right, depending on what key is pressed.
-     * 
-     * @param wallList
      *            list of walls
      */
-    public void move(ArrayList<Wall> wallList) {
-        int powerupListSize = powerupList.size();
-        if (powerupListSize > 0) {
-            for (int i = 0; i < powerupListSize; i++) {
-                if (powerupList.get(i).getName().equals("speed")
-                        && powerupList.get(i).isActive()) {
-                    stepSize = Settings.getPlayerPowerupStepSize();
-                } else if (powerupList.get(i).getName().equals("speed")
-                        && !(powerupList.get(i).isActive())) {
-                    powerupList.remove(i);
-                    stepSize = Settings.getPlayerStepSize();
-                    powerupListSize = powerupList.size();
-                    Logger.log("Speed powerup removed", 6, 4);
-                } else if (powerupList.get(i).getName().equals("ice")
-                        && !(powerupList.get(i).isActive())) {
-                    powerupList.remove(i);
-                    powerupListSize = powerupList.size();
-                    Logger.log("Icerope powerup removed", 6, 4);
-                }
-            }
-        }
-
-        if (powerupList.size() == 0) {
-            stepSize = Settings.getPlayerStepSize();
-        }
-
-        if (movingLeft) {
+    public void move() {
+        if (movingLeft && !Settings.isRestrictMovingLeft()) {
             if (xCoord - stepSize > Settings.getLeftMargin()) {
-                if (!wallCollisionLeft(wallList)) {
-                    xCoord -= stepSize;
-                    colX -= stepSize;
-                }
+                xCoord -= stepSize;
+                colX -= stepSize;
+                Settings.setRestrictMovingRight(false);
             } else {
                 Logger.log("Player is at the left border", 1, 4);
             }
         }
 
-        if (movingRight) {
+        if (movingRight && !Settings.isRestrictMovingRight()) {
             if (xCoord + stepSize + width < Settings.getLevelWidth()
                     + Settings.getLeftMargin() + 37) {
-
-                if (!wallCollisionRight(wallList)) {
-
-                    xCoord += stepSize;
-                    colX += stepSize;
-                }
-
+                xCoord += stepSize;
+                colX += stepSize;
+                Settings.setRestrictMovingLeft(false);
             } else {
                 Logger.log("Player is at the right border", 1, 4);
             }
@@ -188,83 +155,13 @@ public class Player {
         }
         return false;
     }
-
-    /**
-     * The player shoots a rope from his current position The rope is added to
-     * the level.
-     */
-    public void shootRope() {
-        if (normalMode) {
-            if (!NormalDriver.game.getCurrentLevel().hasRope()) {
-                int ropeY = NormalDriver.game.getCurrentLevel().getHeight()
-                        - height;
-                int ropeX = xCoord + width / 2;
-                int powerupListSize = powerupList.size();
-                if (powerupListSize > 0) {
-                    for (int i = 0; i < powerupListSize; i++) {
-                        if (powerupList.get(i).getName().equals("ice")
-                                && powerupList.get(i).isActive()) {
-                            Rope rope = new IceRope(ropeX, ropeY, normalMode);
-                            NormalDriver.game.getCurrentLevel().setRope(rope);
-                            return;
-                        } else if (powerupList.get(i).getName().equals("ice")
-                                && !(powerupList.get(i).isActive())) {
-                            powerupList.remove(i);
-                        }
-                    }
-
-                }
-
-                Rope rope = new Rope(ropeX, ropeY, normalMode);
-                NormalDriver.game.getCurrentLevel().setRope(rope);
-                Logger.log("Shot a rope", 1, 4);
-
-            }
-        } else {
-            if (!SurvivalDriver.game.getCurrentLevel().hasRope()) {
-                int ropeY = SurvivalDriver.game.getCurrentLevel().getHeight()
-                        - height;
-                int ropeX = xCoord + width / 2;
-                int powerupListSize = powerupList.size();
-                if (powerupListSize > 0) {
-                    for (int i = 0; i < powerupListSize; i++) {
-                        if (powerupList.get(i).getName().equals("ice")
-                                && powerupList.get(i).isActive()) {
-                            Rope rope = new IceRope(ropeX, ropeY, normalMode);
-                            SurvivalDriver.game.getCurrentLevel().setRope(rope);
-                            return;
-                        } else if (powerupList.get(i).getName().equals("ice")
-                                && !(powerupList.get(i).isActive())) {
-                            powerupList.remove(i);
-                        }
-
-                    }
-
-                }
-
-                Rope rope = new Rope(ropeX, ropeY, normalMode);
-                SurvivalDriver.game.getCurrentLevel().setRope(rope);
-                Logger.log("Shot a rope", 1, 4);
-            }
-        }
-    }
-
     /**
      * Checks if the player has an ice rope.
      * 
      * @return true if it has, false otherwise
      */
     public boolean hasIceRope() {
-        int powerupListSize = powerupList.size();
-        if (powerupListSize > 0) {
-            for (int i = 0; i < powerupListSize; i++) {
-                if (powerupList.get(i).getName().equals("ice")
-                        && powerupList.get(i).isActive()) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        return Settings.getPlayerHasIceRope();
     }
 
     /**
@@ -284,16 +181,6 @@ public class Player {
      */
     public void setName(String newName) {
         name = newName;
-    }
-
-    /**
-     * Setter for a powerup.
-     * 
-     * @param powerup
-     *            that the player has
-     */
-    public void setPowerup(Powerup powerup) {
-        powerupList.add(powerup);
     }
 
     /**
@@ -369,32 +256,11 @@ public class Player {
     }
 
     /**
-     * Getter for the powerup list.
-     * 
-     * @return List of powerups
-     */
-    public ArrayList<Powerup> getPowerupList() {
-        return powerupList;
-    }
-
-    /**
-     * Remove a powerup from the player.
-     * 
-     * @param pu
-     *            powerup that will be removed
-     */
-    public void removePowerUp(Powerup pu) {
-        powerupList.remove(pu);
-    }
-
-    /**
      * Remove all powerups of the player.
+     * @return the stepSize
      */
-    public void removeAllPowerUps() {
-        while (powerupList.size() != 0) {
-            powerupList.get(0).deActivate();
-            powerupList.remove(0);
-        }
+    public int getStepSize() {
+        return stepSize;
     }
 
     /**
@@ -402,8 +268,8 @@ public class Player {
      * 
      * @return true if the player has 1 powerup or more, false otherwise
      */
-    public boolean hasPowerup() {
-        return this.powerupList.size() != 0;
+    public void setStepSize(int stepSize) {
+        this.stepSize = stepSize;
     }
 
 }

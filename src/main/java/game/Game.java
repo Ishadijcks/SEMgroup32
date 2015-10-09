@@ -37,14 +37,25 @@ public abstract class Game {
     }
 
     /**
+     * <<<<<<< HEAD ======= Sets the levelList.
+     * 
+     * @param levels
+     *            List of all levels
+     */
+    public void setLevelList(ArrayList<Level> levels) {
+        levelList = levels;
+    }
+
+    /**
      * Adds a level to the levelList.
      * 
      * @param level
      *            level to add
      */
     public void addLevel(Level level) {
-        levelList.add(level);
-        levelList.add(level);
+        if (!levelList.contains(level)) {
+            levelList.add(level);
+        }
         Logger.log("Level added to the game", 7, 4);
     }
 
@@ -69,6 +80,23 @@ public abstract class Game {
             playerList.add(player);
         }
         Logger.log("Player " + player.getName() + " added to the game", 1, 4);
+    }
+
+    /**
+     * Move entities in the level.
+     */
+    public void moveEntities() {
+        Level currentLevel = this.getCurrentLevel();
+
+        currentLevel.moveBubbles();
+
+        for (int i = 0; i < currentLevel.getPowerupList().size(); i++) {
+            currentLevel.getPowerupList().get(i).move();
+        }
+
+        if (currentLevel.hasRope()) {
+            currentLevel.getRope().move();
+        }
     }
 
     /**
@@ -136,12 +164,12 @@ public abstract class Game {
         loseLife();
 
     }
-    
+
     /**
      * Ends the game and disposes the screen.
      */
     public void endGame() {
-        
+
     }
 
     /**
@@ -190,9 +218,7 @@ public abstract class Game {
     /**
      * Game is paused.
      */
-    public void pauseGame() {
-
-    }
+    public abstract void pauseGame();
 
     /**
      * Checks if a game is won.

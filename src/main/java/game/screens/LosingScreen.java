@@ -1,10 +1,8 @@
 package game.screens;
 
 import game.Driver;
-import game.NormalDriver;
 import game.Settings;
-import game.SurvivalDriver;
-import game.endScore;
+import game.EndScore;
 import game.Leaderboard;
 
 import java.awt.Color;
@@ -23,6 +21,7 @@ import javax.swing.JLabel;
 
 /**
  * Class that will create a losing screen.
+ * 
  * @author Boning
  *
  */
@@ -32,18 +31,21 @@ public class LosingScreen extends JFrame {
     JButton settingsButton;
     JButton stopButton;
     final private Driver dr;
-    
-    private endScore score;
+
+    private EndScore score;
     private Leaderboard leaderBoard;
-    
+
     JFrame gameFrame;
 
     /**
      * Constructor for the losing screen class.
-     * @param driver where the screen comes from
-     * @param score what the player got
+     * 
+     * @param driver
+     *            where the screen comes from
+     * @param score
+     *            what the player got
      */
-    public LosingScreen(Driver driver, final endScore score) {
+    public LosingScreen(Driver driver, final EndScore score) {
 
         setTitle("You lost!");
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
@@ -53,20 +55,20 @@ public class LosingScreen extends JFrame {
 
         this.gameFrame = gameFrame;
         this.score = score;
-        
-        setVisible(true);
-        
-        URL location = StartScreen.class.getProtectionDomain().getCodeSource().getLocation();
 
         setVisible(true);
 
-         
+        URL location = StartScreen.class.getProtectionDomain().getCodeSource()
+                .getLocation();
+
+        setVisible(true);
+
         String imageLocation = location.getFile();
         imageLocation = imageLocation.replace("%20", " ");
         imageLocation = imageLocation.replace("target/classes/", "src/");
 
         setContentPane(new JLabel(new ImageIcon(imageLocation
-                 + "main/Images/loseScreenBackground.png")));
+                + "main/Images/loseScreenBackground.png")));
 
         setLayout(null);
 
@@ -78,12 +80,13 @@ public class LosingScreen extends JFrame {
         stopButton.setBounds(205, 350, 550, 75);
 
         Font font = new Font("Calibri", Font.PLAIN, 55);
-        JLabel scoreLabel = new JLabel(score.getName() + "s score: " + score.getScore());
+        JLabel scoreLabel = new JLabel(score.getName() + "s score: "
+                + score.getScore());
         scoreLabel.setFont(font);
         scoreLabel.setForeground(Color.WHITE);
         scoreLabel.setLocation(325, 10);
         scoreLabel.setSize(700, 500);
-        
+
         dr = driver;
 
         stopButton.addActionListener(new ActionListener() {
@@ -104,11 +107,10 @@ public class LosingScreen extends JFrame {
 
         add(stopButton);
         add(scoreLabel);
-        
+
         setSize(Settings.getScreenWidth() - 1, Settings.getScreenHeight() - 1);
-        setSize(Settings.getScreenWidth(), Settings.getScreenHeight());  
+        setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
 
     }
 
-   
 }

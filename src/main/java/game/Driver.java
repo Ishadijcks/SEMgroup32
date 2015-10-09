@@ -13,6 +13,7 @@ public abstract class Driver {
     protected static boolean canDrawGame = true;
     protected static boolean iceRope = false;
     protected static Player player;
+    protected Collisions collisions;
     public static Game game;
 
     /**
@@ -34,7 +35,7 @@ public abstract class Driver {
      * 
      * @param startingLevel begin level number
      */
-    public abstract void setupGame(int startingLevel);
+    public abstract void setupGame();
 
     /**
      * Initialise the game.

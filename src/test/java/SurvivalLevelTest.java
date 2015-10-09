@@ -3,10 +3,11 @@
 import static org.junit.Assert.*;
 import game.Level;
 import game.Player;
-import game.Powerup;
 import game.SurvivalLevel;
 import game.bubble.Bubble;
 import game.bubble.Bubblex16;
+import game.powerups.Powerup;
+import game.powerups.SpeedPowerup;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -31,40 +32,8 @@ public class SurvivalLevelTest {
 		l = new SurvivalLevel(p);
 		bubbleList = new ArrayList<Bubble>();
 		plist = new ArrayList<Powerup>();
-		powr = new Powerup("speed", 0,0, true);
+		powr = new SpeedPowerup("speed", 0,0, true);
 		rand = new Random();
-	}
-
-	@Test
-	public void testDestroyBubble() {
-		l.addBubble(bubble);
-		assertTrue(l.getBubbleList().size() == 1);
-		l.destroyBubble(0);
-		assertTrue(l.getBubbleList().size() == 2);
-	}
-
-	@Test
-	public void testGeneratePowerupSpeed() {
-		Powerup pow = new Powerup("speed", 0, 0, true);
-		int randomInt = rand.nextInt((1 - 1) + 1) + 1;
-		Powerup pow2 = l.generatePowerup(0, 0, randomInt);
-		assertTrue(pow.equals(pow2));
-	}
-	
-	@Test
-	public void testGeneratePowerupIce() {
-		Powerup pow = new Powerup("ice", 0, 0, true);
-		int randomInt = rand.nextInt((2 - 2) + 1) + 2;
-		Powerup pow2 = l.generatePowerup(0, 0, randomInt);
-		assertTrue(pow.equals(pow2));
-	}
-	
-	@Test
-	public void testGeneratePowerupDefault() {
-		Powerup pow = new Powerup("speed", 0, 0, true);
-		int randomInt = rand.nextInt((1000000 - 1000) + 1) + 1000;
-		Powerup pow2 = l.generatePowerup(0, 0, randomInt);
-		assertTrue(pow.equals(pow2));
 	}
 
 	@Test

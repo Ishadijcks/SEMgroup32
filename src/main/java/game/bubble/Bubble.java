@@ -33,6 +33,7 @@ public abstract class Bubble {
     protected double velocity;
     protected double timeStep = 0.01;
     protected double factor = 2;
+    protected int scoreWorth;
 
    /**
     * Constructor which will make a new bubble with the given parameters.
@@ -302,6 +303,14 @@ public abstract class Bubble {
      */
     public int getMaxheight() {
         return maxheight;
+    }
+    
+    public int getScoreWorth(){
+    	return this.scoreWorth;
+    }
+    
+    public void setScoreWorth(int newWorth){
+    	this.scoreWorth = newWorth;
     }
 
     /**

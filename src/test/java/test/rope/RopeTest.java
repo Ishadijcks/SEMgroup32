@@ -4,14 +4,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import game.GameCreator;
+import game.GameFactory;
 import game.Level;
 import game.NormalDriver;
 import game.Player;
-import game.Powerup;
 import game.Rope;
 import game.SurvivalDriver;
 import game.bubble.Bubble;
+import game.powerups.Powerup;
 
 import java.util.ArrayList;
 
@@ -30,8 +30,7 @@ public class RopeTest {
     public void init() {
         x = 0;
         y = 0;
-        rope = new Rope(x, y, true);
-        survRope = new Rope(x,y,false);
+        rope = new Rope(x, y);
     }
     
     @Test
@@ -55,7 +54,7 @@ public class RopeTest {
     
     @Test
     public void testMoveNormal() {
-        rope = new Rope(250, 100, true);
+        rope = new Rope(250, 100);
         rope.move();
         int expectedYCoord = 96;
         assertEquals(expectedYCoord, rope.getY());
@@ -63,28 +62,11 @@ public class RopeTest {
     
     @Test
     public void testMoveRoofNormal() {
-    	NormalDriver.game = GameCreator.createSinglePlayer(new Player("Test",0,true));
-        rope = new Rope(250, 0, true);
+    	NormalDriver.game = GameFactory.createSinglePlayer(new Player("Test",0));
+        rope = new Rope(250, 0);
         rope.move();
         int expectedYCoord = 0;
         assertEquals(expectedYCoord, rope.getY());
-    }
-    
-    @Test
-    public void testMoveSurvival() {
-    	survRope = new Rope(250, 100, false);
-        survRope.move();
-        int expectedYCoord = 96;
-        assertEquals(expectedYCoord, survRope.getY());
-    }
-    
-    @Test
-    public void testMoveRoofSurvival() {
-    	SurvivalDriver.game = GameCreator.createSurvival(new Player("Test",0,true));
-        rope = new Rope(250, 0, false);
-        survRope.move();
-        int expectedYCoord = 0;
-        assertEquals(expectedYCoord, survRope.getY());
     }
     
 

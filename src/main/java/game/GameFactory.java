@@ -7,7 +7,7 @@ import game.log.Logger;
  * @author Boning
  *
  */
-public class GameCreator {
+public class GameFactory {
 
     /**
      * Create a new survival game.
@@ -28,11 +28,11 @@ public class GameCreator {
 	 * @param player1 the player that will be put in the game
 	 * @return a game with a single player
 	 */
-    public static NormalGame createSinglePlayer(Player player1,int startingLevel) {
+    public static NormalGame createSinglePlayer(Player player1) {
         NormalGame game = new NormalGame();
         game.addPlayer(player1);
         NormalLevelCreator.setPlayerList(game.getPlayerList());
-        for (int i = startingLevel; i < 9; i++) {
+        for (int i = 1; i < 9; i++) {
             game.addLevel(NormalLevelCreator.getLevel(i));
         }
         Logger.log("Singleplayer game created", 7, 4);

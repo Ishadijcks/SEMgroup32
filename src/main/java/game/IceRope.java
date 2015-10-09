@@ -15,9 +15,9 @@ public class IceRope extends Rope {
      * @param yCoord y-Coordinate of the rope
      * @param isNormalMode checks if it is a normal game of a survival game
      */
-    public IceRope(int xCoord, int yCoord, boolean isNormalMode) {
+    public IceRope(int xCoord, int yCoord) {
        
-        super(xCoord, yCoord, isNormalMode);
+        super(xCoord, yCoord);
         Logger.log("Ice rope created", 5 , 4);
     }
 

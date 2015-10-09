@@ -4,6 +4,7 @@ import java.awt.Color;
 
 /**
  * Class that keeps all the settings of the whole game.
+ * 
  * @author Boning
  *
  */
@@ -15,7 +16,7 @@ public class Settings {
 
     private static int levelWidth = 850;
     private static int levelHeight = 500;
-    
+
     private static int pauseWidth = 350;
     private static int pauseHeight = 250;
 
@@ -23,6 +24,9 @@ public class Settings {
     private static int playerWidth = 111;
     private static int playerStepSize = 2;
     private static int playerPowerupStepSize = 5;
+    private static boolean playerHasIceRope = false;
+    private static boolean restrictMovingRight = false;
+    private static boolean restrictMovingLeft = false;
 
     private static int bubbleDefaultDiameter = 16;
     private static int bubbleDefaultX = 10;
@@ -30,31 +34,36 @@ public class Settings {
     private static int lives = 5;
     private static int ropeSpeed = 4;
     private static int smallestBubbleSize = 5;
-    
+
     private static int powerupSpeed = 2;
     private static int powerupChance = 40;
     private static int powerupWidth = 15;
     private static int powerupHeight = 10;
 
     private static Color dragonRed = new Color(135, 15, 15);
-    private static int wallWidth = 20;
+    private static int wallWidth = 10;
     private static int wallHeight = levelHeight;
 
     private static int topMargin = 50;
     private static int leftMargin = 0;
-    
+
     private static int playerSpawnPoint = 350;
 
     /**
      * @return the playerSpawnPoint
      */
     public static int getPlayerSpawnPoint() {
-        return (int)Math.round(0.5 * (screenWidth - levelWidth) + 0.5 * levelWidth);
+        return (int) Math.round(0.5 * (screenWidth - levelWidth) + 0.5
+                * levelWidth);
     }
+
+    private static boolean dieThreads = false;
 
     /**
      * Set the left margin.
-     * @param left what the margin should be.
+     * 
+     * @param left
+     *            what the margin should be.
      */
     public static void setLeftMargin(int left) {
         leftMargin = left;
@@ -94,14 +103,14 @@ public class Settings {
     public static int getLevelHeight() {
         return levelHeight;
     }
-    
+
     /**
      * @return the pauseHeight
      */
     public static int getPauseHeight() {
         return pauseHeight;
     }
-    
+
     /**
      * @return the pauseWidth
      */
@@ -135,6 +144,25 @@ public class Settings {
      */
     public static int getPlayerPowerupStepSize() {
         return playerPowerupStepSize;
+    }
+
+    /**
+     * Has IceRope class.
+     * 
+     * @return true if ice rope is true.
+     */
+    public static boolean getPlayerHasIceRope() {
+        return playerHasIceRope;
+    }
+
+    /**
+     * Set the players Ice rope.
+     * 
+     * @param setter
+     *            of the rope.
+     */
+    public static void setPlayerHasIceRope(boolean setter) {
+        playerHasIceRope = setter;
     }
 
     /**
@@ -229,6 +257,21 @@ public class Settings {
     }
 
     /**
+     * @return the dieThreads
+     */
+    public static boolean getDieThreads() {
+        return dieThreads;
+    }
+
+    /**
+     * @param dieThreads
+     *            the dieThreads to set
+     */
+    public static void setDieThreads(boolean dieThreads) {
+        Settings.dieThreads = dieThreads;
+    }
+
+    /**
      * @return the topMargin
      */
     public static int getTopMargin() {
@@ -240,6 +283,36 @@ public class Settings {
      */
     public static int getLeftMargin() {
         return leftMargin;
+    }
+
+    /**
+     * @return the restrictMovingRight
+     */
+    public static boolean isRestrictMovingRight() {
+        return restrictMovingRight;
+    }
+
+    /**
+     * @param restrictMovingRight
+     *            the restrictMovingRight to set
+     */
+    public static void setRestrictMovingRight(boolean restrictMovingRight) {
+        Settings.restrictMovingRight = restrictMovingRight;
+    }
+
+    /**
+     * @return the restrictMovingLeft
+     */
+    public static boolean isRestrictMovingLeft() {
+        return restrictMovingLeft;
+    }
+
+    /**
+     * @param restrictMovingLeft
+     *            the restrictMovingLeft to set
+     */
+    public static void setRestrictMovingLeft(boolean restrictMovingLeft) {
+        Settings.restrictMovingLeft = restrictMovingLeft;
     }
 
 }
