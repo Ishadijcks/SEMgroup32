@@ -42,6 +42,9 @@ public abstract class Powerup {
         this.yCoord = yCoord;
     }
     
+    /**
+     * What will happen if you pick the powerup up.
+     */
     public abstract void executeEffect();
 
     /**
@@ -166,27 +169,7 @@ public abstract class Powerup {
      * @return the image of the powerup
      */
     public abstract ImageIcon getImageIcon();
-    /*public ImageIcon getImageIcon() {
-        URL location = StartScreen.class.getProtectionDomain().getCodeSource()
-                .getLocation();
-        String imageLocation = location.getFile();
-        imageLocation = imageLocation.replace("%20", " ");
-        imageLocation = imageLocation.replace("target/classes/", "src/");
-        if (name.equals("speed")) {
-            ImageIcon powerupspeed = new ImageIcon(imageLocation + "main/Images/Powerups/puspeed.png", "speed");
-            return powerupspeed;
-        }
-        if (name.equals("life")) {
-            ImageIcon poweruplife = new ImageIcon(imageLocation + "main/Images/Powerups/pulife.png", "life");
-            return poweruplife;
-        }
-        if (name.equals("ice")) {
-            ImageIcon powerupice = new ImageIcon(imageLocation + "main/Images/Powerups/puice.png", "ice");
-            return powerupice;
-        }
-        return null;
-        
-    }*/
+
 
 	/**
 	 * @param x the x to set
@@ -202,6 +185,10 @@ public abstract class Powerup {
 		this.yCoord = y;
 	}
 	
+	/**
+	 * Set the game.
+	 * @param game in which powerups will spawn
+	 */
 	public abstract void setGame(Game game);
     
 }

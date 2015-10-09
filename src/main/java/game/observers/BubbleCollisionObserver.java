@@ -24,6 +24,12 @@ public class BubbleCollisionObserver extends Observer {
         super(collisions);
     }
 
+    /**
+     * The update method of the observer.
+     * @param target object
+     * @param cause object
+     * @param game object
+     */
     @Override
     public void update(Object bub, Object plyr, Game game) {
         Bubble bubble = (Bubble) bub;

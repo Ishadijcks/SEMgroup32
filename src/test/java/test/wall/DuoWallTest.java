@@ -11,18 +11,29 @@ import org.junit.Test;
 
 public class DuoWallTest {
 	
-	private DuoWall w;
+	private DuoWall wall;
 	
 	@Before
 	public void init() {
-		w = new DuoWall(10);
+		wall = new DuoWall(10);
 	}
 
 	@Test
 	public void testDuoWall() {
-		assertEquals(10, w.getxCoord());
-		assertEquals(0, w.getyCoord());
-		assertEquals(Color.BLUE, w.getColor());
+		assertEquals(10, wall.getxCoord());
+		assertEquals(0, wall.getyCoord());
+		assertEquals(Color.BLUE, wall.getColor());
 	}
+	
+	@Test
+    public void testexpectPlayerCollision() {
+        assertFalse(wall.expectPlayerCollision(10, true));
+    }
+	
+	@Test
+    public void tesexpectBubbleCollision() {
+        assertTrue(wall.expectBubbleCollision(10, 500));
+        assertFalse(wall.expectBubbleCollision(100, 1));
+    }
 
 }

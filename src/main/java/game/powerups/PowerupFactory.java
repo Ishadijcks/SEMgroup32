@@ -2,8 +2,17 @@ package game.powerups;
 
 import java.util.Random;
 
+/**
+ * Class that will generate the powerups.
+ * @author Boning
+ *
+ */
 public class PowerupFactory {
 
+    /**
+     * Generates a random powerup.
+     * @return powerup that is generated
+     */
 	public Powerup createRandomPowerup(){
 		Powerup pow = null;
 		Random rand = new Random();

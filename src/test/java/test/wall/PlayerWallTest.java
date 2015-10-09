@@ -10,18 +10,28 @@ import org.junit.Test;
 
 public class PlayerWallTest {
 	
-	private PlayerWall w;
+	private PlayerWall wall;
 	
 	@Before
 	public void init(){
-		w = new PlayerWall(10);
+		wall = new PlayerWall(10);
 	}
 
 	@Test
 	public void testPlayerWall() {
-		assertEquals(10, w.getxCoord());
-		assertEquals(0, w.getyCoord());
-		assertEquals(Color.GREEN, w.getColor());
+		assertEquals(10, wall.getxCoord());
+		assertEquals(0, wall.getyCoord());
+		assertEquals(Color.GREEN, wall.getColor());
 	}
+	
+	@Test
+    public void testExpectPlayerCollision() {
+        assertFalse(wall.expectPlayerCollision(10, true));
+    }
+    
+    @Test
+    public void tesexpectBubbleCollision() {
+        assertFalse(wall.expectBubbleCollision(100, 1));
+    }
 
 }

@@ -4,12 +4,24 @@ import game.Game;
 import game.Player;
 import game.Settings;
 
+/**
+ * Special timer for the speed powerup.
+ * @author Boning
+ *
+ */
 public class SpeedPowerupTimer extends PowerupTimer {
 
+    /**
+     * Constructor for the Speedpowerup timer.
+     * @param game in which the timer is active
+     */
 	public SpeedPowerupTimer(Game game) {
 		super(game);
 	}
 
+	/**
+     * Let the counter start.
+     */
 	@Override
 	public void run() {
 

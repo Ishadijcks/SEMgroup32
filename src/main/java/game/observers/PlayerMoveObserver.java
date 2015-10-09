@@ -11,7 +11,7 @@ import game.Game;
 public class PlayerMoveObserver extends Observer {
 
     /**
-     * Observs player movement.
+     * Observes player movement.
      * @param collisions collision class for all collisions
      */
     public PlayerMoveObserver(Collisions collisions) {
@@ -19,6 +19,12 @@ public class PlayerMoveObserver extends Observer {
         // TODO Auto-generated constructor stub
     }
 
+    /**
+     * The update method of the observer.
+     * @param target object
+     * @param cause object
+     * @param game object
+     */
     @Override
     public void update(Object target, Object cause, Game game) {
         // TODO Auto-generated method stub
