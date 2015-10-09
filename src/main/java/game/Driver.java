@@ -16,11 +16,6 @@ public abstract class Driver {
     public static Game game;
 
     /** 
-     * Method that should make a screen where the player can select different options.
-     */
-    public abstract void startScreen();
-
-    /** 
      * Method to start the game.
      * @param name Name that the player entered
      */
@@ -30,11 +25,6 @@ public abstract class Driver {
      * Set up the game.
      */
     public abstract void setupGame();
-    
-    /**
-     * Initialise the game.
-     */
-    public abstract void initGame();
     
     /**
      * Initialise the driver.

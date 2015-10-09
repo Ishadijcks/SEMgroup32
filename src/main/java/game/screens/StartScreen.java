@@ -116,7 +116,7 @@ public class StartScreen extends JFrame {
                 Driver d = dFactory.buildDriver();
                 d.setupGame();
                 d.initDriver();
-                d.startGame("");
+                d.startGame(tf.getText());
                 MainRunner.setDriver(d);
             }
         });
@@ -129,7 +129,7 @@ public class StartScreen extends JFrame {
                 Driver d = dFactory.buildDriver();
                 d.setupGame();
                 d.initDriver();
-                d.startGame("");
+                d.startGame(tf.getText());
                 MainRunner.setDriver(d);
             }
         });

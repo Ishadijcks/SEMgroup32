@@ -30,8 +30,7 @@ public class NormalDriver extends Driver {
      * @param name
      *            Name that the player entered
      */
-    public NormalDriver(String name) {
-        NormalDriver.name = name;
+    public NormalDriver() {
         this.collisions = new Collisions();
     }
 
@@ -112,35 +111,7 @@ public class NormalDriver extends Driver {
 	        checkGameWon();
 	    }
     }
-
-    /**
-     * Getter returns game screen.
-     * 
-     * @return game screen
-     */
-    public GameScreen getGameScreen() {
-        return gameScreen;
-    }
-
-    /**
-     * Initialise the game.
-     */
-    public void initGame() {
-        try {
-            gameScreen = new GameScreen();
-        } catch (UnsupportedAudioFileException e) {
-            Logger.log("UnsupportedAudioFileException", 7, 2);
-            e.printStackTrace();
-        } catch (IOException e) {
-            Logger.log("IOException", 7, 2);
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            Logger.log("LineUnavailableException", 7, 2);
-            e.printStackTrace();
-        }
-        Logger.log("Main Frame created", 9, 4);
-    }
-
+    
     /**
      * Set up the game.
      */
@@ -150,7 +121,7 @@ public class NormalDriver extends Driver {
 
         score = new Score();
         game.addPlayer(player);
-        player = game.getPlayerList().get(0);
+
         int centerConstant = (int) Math
                 .round(0.5 * (Settings.getScreenWidth() - Settings
                         .getLevelWidth()));
@@ -176,30 +147,9 @@ public class NormalDriver extends Driver {
         }
         Logger.log("Main Frame created", 9, 4);
 
-        Player player = new Player(name, 350);
-        game = GameFactory.createSinglePlayer(player);
-
-        score = new Score();
-        game.addPlayer(player);
-        player = game.getPlayerList().get(0);
-        int centerConstant = (int) Math
-                .round(0.5 * (Settings.getScreenWidth() - Settings
-                        .getLevelWidth()));
-        Settings.setLeftMargin(centerConstant);
         GameScreen.setupScreen(game, score);
 
-        this.startGame(name);
-
         LogSettings.setActiveLog(true);
-
-    }
-
-    /**
-     * Method that should make a screen where the player can select different
-     * options.
-     */
-    @Override
-    public void startScreen() {
 
     }
 

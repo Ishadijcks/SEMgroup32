@@ -100,7 +100,6 @@ public class LosingScreen extends JFrame {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
                 dr.setupGame();
-                dr.startScreen();
                 dispose();
             }
         });

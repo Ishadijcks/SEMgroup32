@@ -33,6 +33,7 @@ public class GameFactory {
         game.addPlayer(player1);
         NormalLevelFactory nLevelFac = new NormalLevelFactory(game.getPlayerList());
         game.setLevelList(nLevelFac.getAllLevels());
+        Logger.log("NormalGame game created", 7, 4);
         return game;
     }
 

@@ -15,17 +15,18 @@ import org.junit.Test;
 
 public class NormalLevelCreatorTest {
 
-	private static ArrayList<Player> playerList;
+	private ArrayList<Player> playerList;
+	private NormalLevelFactory nFac = new NormalLevelFactory(playerList);
 
 	@Test
 	public void testGetLevelDefault() {
-        Level level1 = NormalLevelFactory.getLevel1();
-		assertTrue(NormalLevelFactory.getLevel(Integer.MAX_VALUE).equals(level1));
+        Level level1 = nFac.getLevel1();
+		assertTrue(nFac.getLevel(Integer.MAX_VALUE).equals(level1));
 	}
 	
 	@Test
 	public void testGetLevelsAvailable() {
-		assertTrue(NormalLevelFactory.getLevelsAvailable() == 5);
+		assertTrue(nFac.getLevelsAvailable() == 5);
 	}
 
 }

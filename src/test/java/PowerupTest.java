@@ -116,9 +116,9 @@ public class PowerupTest {
 	
 	@Test
 	public void testMoveNormalMode(){
-		NormalDriver driver = new NormalDriver(null);
-		driver.initGame();
+		NormalDriver driver = new NormalDriver();
 		driver.setupGame();
+		driver.initDriver();
 		Powerup pow = new IcePowerup("ice", 100, 100, true);
 		int deltaY = Settings.getPowerupSpeed();
 		int initY = 100;
@@ -128,9 +128,9 @@ public class PowerupTest {
 	
 	@Test
 	public void testMoveSurvivalMode(){
-		SurvivalDriver driver = new SurvivalDriver(null);
-		driver.initGame();
+		SurvivalDriver driver = new SurvivalDriver();
 		driver.setupGame();
+		driver.initDriver();
 		Powerup pow = new IcePowerup("ice", 100, 100, false);
 		int deltaY = Settings.getPowerupSpeed();
 		int initY = 100;

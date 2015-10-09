@@ -51,7 +51,7 @@ public class NormalGameTest {
 	@Test
 	public void testGameWonNthLevel() {
 		game.addLevel(l);
-		game.addLevel(NormalLevelFactory.getLevel1());
+		game.addLevel(new NormalLevelFactory(game.getPlayerList()).getLevel1());
 		assertFalse(game.inProgress());
 		game.gameStart();
 		assertTrue(game.getCurrentLevelInt() == 1);

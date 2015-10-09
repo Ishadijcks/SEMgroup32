@@ -45,4 +45,11 @@ public class NormalGame extends Game {
 	public void update() {
 		
 	}
+
+	@Override
+	public void resetLevel() {
+    	NormalLevelFactory nLevelFac = new NormalLevelFactory(playerList);
+        levelList.set(currentLevel - 1,
+                nLevelFac.getLevel(currentLevel));
+    }
 }

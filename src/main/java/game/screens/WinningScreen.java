@@ -86,7 +86,6 @@ public class WinningScreen extends JFrame {
                 setVisible(false);
                 dispose();
                 dr.setupGame();
-                dr.startScreen();
             }
         });
 
