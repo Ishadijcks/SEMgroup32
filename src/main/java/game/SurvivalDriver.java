@@ -30,6 +30,7 @@ public class SurvivalDriver extends Driver {
      * @param name Name that the player entered
      */
     public SurvivalDriver() {
+    	super();
         this.collisions = new Collisions();
     }
 

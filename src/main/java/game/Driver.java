@@ -16,6 +16,9 @@ public abstract class Driver {
     protected Collisions collisions;
     public static Game game;
 
+    public Driver(){
+    	System.setProperty("java.awt.headless", "true");
+    }
     /** 
      * Method to start the game.
      * 
