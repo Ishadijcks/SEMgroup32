@@ -37,7 +37,7 @@ public class LevelTest {
 		l = new NormalLevel(p);
 		bubbleList = new ArrayList<Bubble>();
 		plist = new ArrayList<Powerup>();
-		powr = new SpeedPowerup("speed", 0,0, true);
+		powr = new SpeedPowerup(0,0);
 		rand = new Random();
 	}
 
