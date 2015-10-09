@@ -6,6 +6,9 @@ script:
   - mvn test
   - mvn site
 
+ branches:
+  only:
+   -travis-build
 notifications:
   webhooks:
     - http://octopull.rmhartog.me/api/travis/webhook
