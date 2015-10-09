@@ -5,7 +5,6 @@ import game.log.Logger;
 import game.screens.GameScreen;
 import game.screens.LeaderBoardScreen;
 import game.screens.LosingScreen;
-
 import java.io.IOException;
 
 import javax.sound.sampled.LineUnavailableException;
@@ -107,8 +106,7 @@ public class SurvivalDriver extends Driver {
         driver = new SurvivalDriver();
         player = new Player(name, Settings.getPlayerSpawnPoint());
         game = GameFactory.createSurvival(player);
-        
-        score = new Score();
+        score = Score.getInstance();
         game.addPlayer(player);
 
         int centerConstant = (int) Math
@@ -117,13 +115,9 @@ public class SurvivalDriver extends Driver {
         Settings.setLeftMargin(centerConstant);
     }
     
-    /**
-<<<<<<< HEAD
-     * Initialise the driver.
-=======
-     * initialize the game.
->>>>>>> master
-     */
+   /**
+    * init the driver.
+    */
     public void initDriver() {
     	try {
             gameScreen = new GameScreen();

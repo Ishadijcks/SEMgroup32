@@ -109,7 +109,6 @@ public class NormalDriver extends Driver {
             checkGameWon();
         }
     }
-    
     /**
      * Set up the game.
      */
@@ -117,7 +116,7 @@ public class NormalDriver extends Driver {
         Player player = new Player(name, Settings.getPlayerSpawnPoint());
         game = GameFactory.createSinglePlayer(player);
 
-        score = new Score();
+        score = Score.getInstance();
         game.addPlayer(player);
 
         int centerConstant = (int) Math
