@@ -17,7 +17,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class PlayerBubbleCollisionParameterized {
+public abstract class PlayerBubbleCollisionParameterized {
 
     @Parameters
     public static Collection<Object[]> data() {

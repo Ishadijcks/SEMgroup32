@@ -19,7 +19,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class RopeBubbleCollisionParameterized {
+public abstract class RopeBubbleCollisionParameterized {
 
     @Parameters
     public static Collection<Object[]> data() {
