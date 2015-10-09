@@ -6,11 +6,14 @@ script:
   - mvn test
   - mvn site
 
+ branches:
+  only:
+   -travis-build
 notifications:
-	email:false
-
   webhooks:
     - http://octopull.rmhartog.me/api/travis/webhook
+  email:
+    - false
 before_install:
   - "[ \"$BUILD_PR_BRANCH\" = \"true\" ] && git checkout $TRAVIS_BRANCH && echo \"OCTOPULL_SHA=$(git rev-parse HEAD)\"; true"
 env:
