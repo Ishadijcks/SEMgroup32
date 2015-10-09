@@ -21,6 +21,12 @@ public class WallPlayerCollisionObserver extends Observer {
         // TODO Auto-generated constructor stub
     }
 
+    /**
+     * The update method of the observer.
+     * @param target object
+     * @param cause object
+     * @param game object
+     */
     @Override
     public void update(Object wall, Object plyr, Game game) {
         Player player = (Player) plyr;

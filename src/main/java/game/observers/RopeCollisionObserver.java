@@ -30,6 +30,12 @@ public class RopeCollisionObserver extends Observer {
         super(collisions);
     }
 
+    /**
+     * The update method of the observer.
+     * @param target object
+     * @param cause object
+     * @param game object
+     */
     @Override
     public void update(Object bub, Object rop, Game g) {
         Bubble bubble = ((Bubble) bub);
