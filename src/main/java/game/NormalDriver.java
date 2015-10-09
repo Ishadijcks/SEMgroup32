@@ -131,7 +131,7 @@ public class NormalDriver extends Driver {
         driver = new NormalDriver(name);
         Player player = new Player(name, 350);
         game = GameFactory.createSurvival(player);
-        score = new Score();
+        score = Score.getInstance();
         game.addPlayer(player);
         player = game.getPlayerList().get(0);
         int centerConstant = (int) Math
@@ -166,7 +166,7 @@ public class NormalDriver extends Driver {
         Player player = new Player(name, Settings.getPlayerSpawnPoint());
         game = GameFactory.createSinglePlayer(player);
 
-        score = new Score();
+        score = Score.getInstance();
         game.addPlayer(player);
         player = game.getPlayerList().get(0);
         int centerConstant = (int) Math
@@ -196,7 +196,7 @@ public class NormalDriver extends Driver {
 
         Player player = new Player(name, Settings.getPlayerSpawnPoint());
         game = GameFactory.createSinglePlayer(player);
-        score = new Score();
+        score = Score.getInstance();
         game.addPlayer(player);
         player = game.getPlayerList().get(0);
         int centerConstant = (int) Math

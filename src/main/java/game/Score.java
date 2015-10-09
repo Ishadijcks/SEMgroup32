@@ -8,14 +8,23 @@ import game.log.Logger;
  * @author Boning
  *
  */
-public class Score {
-    static int score;
+public final class Score {
+    private static volatile Score uniqueInstance;
+    static int score = 0;
+
+    private Score() {
+    }
 
     /**
-     * Constructor of the score class.
+     * The constructor checks if only 1 score class is in the game.
+     * 
+     * @return the unique Instance score class.
      */
-    public Score() {
-        score = 0;
+    public static synchronized Score getInstance() {
+        if (uniqueInstance == null) {
+            uniqueInstance = new Score();
+        }
+        return uniqueInstance;
     }
 
     /**
