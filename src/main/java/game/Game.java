@@ -159,9 +159,8 @@ public abstract class Game {
      */
     public void resetLevel() {
         levelList.set(currentLevel - 1,
-                NormalLevelCreator.getLevel(currentLevel));
+                NormalLevelFactory.getLevel(currentLevel));
         loseLife();
-
     }
 
     /**

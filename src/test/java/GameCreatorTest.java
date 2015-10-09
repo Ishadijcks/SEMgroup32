@@ -3,7 +3,7 @@
 import static org.junit.Assert.*;
 import game.GameFactory;
 import game.NormalGame;
-import game.NormalLevelCreator;
+import game.NormalLevelFactory;
 import game.Player;
 
 import org.junit.Test;
@@ -17,9 +17,9 @@ public class GameCreatorTest {
         NormalGame game = new NormalGame();
         game.addPlayer(player1);
         game.addPlayer(player2);
-        NormalLevelCreator.setPlayerList(game.getPlayerList());
+        NormalLevelFactory.setPlayerList(game.getPlayerList());
      
-        game.addLevel(NormalLevelCreator.getLevel1());
+        game.addLevel(NormalLevelFactory.getLevel1());
         
         GameFactory crtr = new GameFactory();
         assertTrue(crtr.createMultiPlayer(player1, player2).equals(game));

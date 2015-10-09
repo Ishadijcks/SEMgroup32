@@ -9,15 +9,19 @@ import java.util.ArrayList;
  * Class that creates a level for the survival mode.
  * @author Boning
  */
-public class SurvivalLevelCreator {
+public class SurvivalLevelFactory {
 
-    private static ArrayList<Player> playerList;
+    private ArrayList<Player> playerList;
+    
+    public SurvivalLevelFactory(ArrayList<Player> pList){
+    	this.playerList = pList;
+    }
 
     /**
      * Returns the level that is created.
      * @return Level The level that is created
      */
-    public static Level getLevel() {
+    public Level getLevel() {
         Bubble bubble1 = new Bubblex32(100, 100, false, false);
         Level level1 = new SurvivalLevel(playerList);
         level1.addBubble(bubble1);
@@ -28,7 +32,7 @@ public class SurvivalLevelCreator {
      * Set the playerList.
      * @param pList The list that should be used to set the playerList.
      */
-    public static void setPlayerList(ArrayList<Player> pList) {
+    public void setPlayerList(ArrayList<Player> pList) {
         playerList = pList;
     }
 

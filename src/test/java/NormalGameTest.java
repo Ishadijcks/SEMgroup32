@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import game.Level;
 import game.NormalGame;
 import game.NormalLevel;
-import game.NormalLevelCreator;
+import game.NormalLevelFactory;
 import game.Player;
 
 import java.util.ArrayList;
@@ -51,7 +51,7 @@ public class NormalGameTest {
 	@Test
 	public void testGameWonNthLevel() {
 		game.addLevel(l);
-		game.addLevel(NormalLevelCreator.getLevel1());
+		game.addLevel(NormalLevelFactory.getLevel1());
 		assertFalse(game.inProgress());
 		game.gameStart();
 		assertTrue(game.getCurrentLevelInt() == 1);
