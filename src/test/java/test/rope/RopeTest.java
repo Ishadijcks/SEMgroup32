@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import game.GameCreator;
+import game.GameFactory;
 import game.Level;
 import game.NormalDriver;
 import game.Player;
@@ -62,7 +62,7 @@ public class RopeTest {
     
     @Test
     public void testMoveRoofNormal() {
-    	NormalDriver.game = GameCreator.createSinglePlayer(new Player("Test",0));
+    	NormalDriver.game = GameFactory.createSinglePlayer(new Player("Test",0));
         rope = new Rope(250, 0);
         rope.move();
         int expectedYCoord = 0;

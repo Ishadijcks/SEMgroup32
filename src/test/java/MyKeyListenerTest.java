@@ -1,7 +1,7 @@
 
 
 import static org.junit.Assert.*;
-import game.GameCreator;
+import game.GameFactory;
 import game.MyKeyListener;
 import game.NormalDriver;
 import game.Player;
@@ -22,13 +22,13 @@ public class MyKeyListenerTest {
 	@Before
 	public void init() {
 		p = new Player("test",0);
-		NormalDriver.game = GameCreator.createSinglePlayer(p);
+		NormalDriver.game = GameFactory.createSinglePlayer(p);
 		key = new MyKeyListener(NormalDriver.game);
 	}
 	
 	@Test
 	public void testMyKeyListener() {
-		assertTrue(key.getGame().equals(GameCreator.createSinglePlayer(p)));
+		assertTrue(key.getGame().equals(GameFactory.createSinglePlayer(p)));
 	}
 
 	@Test

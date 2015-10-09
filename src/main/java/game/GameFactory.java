@@ -7,7 +7,7 @@ import game.log.Logger;
  * @author Boning
  *
  */
-public class GameCreator {
+public class GameFactory {
 
     /**
      * Create a new survival game.

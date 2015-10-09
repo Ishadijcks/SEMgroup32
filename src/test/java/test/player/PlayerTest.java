@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import java.util.ArrayList;
 
 import game.NormalDriver;
-import game.GameCreator;
+import game.GameFactory;
 import game.Player;
 import game.Settings;
 import game.SurvivalDriver;
@@ -101,7 +101,7 @@ public class PlayerTest {
     
     @Test
     public void testHasIceRopeNoIceRope(){
-    	NormalDriver.game = GameCreator.createSinglePlayer(player);
+    	NormalDriver.game = GameFactory.createSinglePlayer(player);
     	assertFalse(player.hasIceRope());
     }
     

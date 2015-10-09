@@ -1,7 +1,7 @@
 
 
 import static org.junit.Assert.*;
-import game.GameCreator;
+import game.GameFactory;
 import game.NormalGame;
 import game.NormalLevelCreator;
 import game.Player;
@@ -21,7 +21,7 @@ public class GameCreatorTest {
      
         game.addLevel(NormalLevelCreator.getLevel1());
         
-        GameCreator crtr = new GameCreator();
+        GameFactory crtr = new GameFactory();
         assertTrue(crtr.createMultiPlayer(player1, player2).equals(game));
 	}
 
