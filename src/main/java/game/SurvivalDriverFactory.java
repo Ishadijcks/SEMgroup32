@@ -13,6 +13,10 @@ public class SurvivalDriverFactory extends DriverFactory {
     public SurvivalDriverFactory() {
     }
 
+    /**
+     * Builds a survival driver.
+     * @return Retruns a driver.
+     */
     @Override
     public Driver buildDriver() {
         return new SurvivalDriver();

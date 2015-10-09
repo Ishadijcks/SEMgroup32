@@ -20,6 +20,12 @@ public class WallBubbleCollisionObserver extends Observer {
         // TODO Auto-generated constructor stub
     }
 
+    /**
+     * The update method of the observer.
+     * @param target object
+     * @param cause object
+     * @param game object
+     */
     @Override
     public void update(Object wall, Object bubb, Game game) {
         Bubble bubble = (Bubble) bubb;

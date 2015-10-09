@@ -22,6 +22,12 @@ public class PowerupCollisionObserver extends Observer {
         super(collisions);
     }
 
+    /**
+     * The update method of the observer.
+     * @param target object
+     * @param cause object
+     * @param game object
+     */
     @Override
     public void update(Object pow, Object plyr, Game game) {
         Powerup powerup = (Powerup) pow;
