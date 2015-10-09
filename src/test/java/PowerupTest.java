@@ -110,8 +110,19 @@ public class PowerupTest {
 	}
 	
 	@Test
+	public void testMoveNormalMode(){
+		NormalDriver driver = new NormalDriver();
+		driver.setupGame();
+		driver.initDriver();
+		Powerup pow = new IcePowerup(100, 100);
+		int deltaY = Settings.getPowerupSpeed();
+		int initY = 100;
+		pow.move();
+		assertEquals(initY + deltaY, pow.getY());
+	}
+	
+	@Test
 	public void testMoveSurvivalMode(){
-		System.setProperty("java.awt.headless", "true");
 		SurvivalDriver driver = new SurvivalDriver();
 		driver.setupGame();
 		driver.initDriver();
