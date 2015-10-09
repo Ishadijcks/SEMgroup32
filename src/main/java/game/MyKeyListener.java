@@ -18,7 +18,8 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  */
 public class MyKeyListener extends KeyAdapter {
     
-    Game game;
+    private Game game;
+    private RopeFactory rFac;
 
     /**
      * Constructor for the key listener class.
@@ -26,6 +27,7 @@ public class MyKeyListener extends KeyAdapter {
      */
     public MyKeyListener(Game gameInput) {
         game = gameInput;
+        rFac = new RopeFactory();
     }
 
     /**
@@ -52,13 +54,15 @@ public class MyKeyListener extends KeyAdapter {
                     break;
                 case 38:
                     Logger.log("Player pressed up", 0, 5);
-                    game.getPlayerList().get(0).shootRope();
+                    if(!Driver.game.getCurrentLevel().hasRope())
+                    	Driver.game.getCurrentLevel().setRope(rFac.createRope(Settings.getPlayerHasIceRope()));
                     break;   
                     
                     
                 case 32:
                     Logger.log("Player pressed space", 0, 5);
-                    game.getPlayerList().get(0).shootRope();
+                    if(!Driver.game.getCurrentLevel().hasRope())
+                    	Driver.game.getCurrentLevel().setRope(rFac.createRope(Settings.getPlayerHasIceRope()));
                     break;
                 case 76:
                 try {

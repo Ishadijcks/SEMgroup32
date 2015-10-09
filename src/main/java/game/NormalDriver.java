@@ -172,7 +172,7 @@ public class NormalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        Player player = new Player(name, 350, true);
+        Player player = new Player(name, 350);
         game = GameCreator.createSinglePlayer(player);
 
         score = new Score();
@@ -203,7 +203,7 @@ public class NormalDriver extends Driver {
         }
         Logger.log("Main Frame created", 9, 4);
 
-        Player player = new Player(name, 350, true);
+        Player player = new Player(name, 350);
         game = GameCreator.createSinglePlayer(player);
 
         score = new Score();

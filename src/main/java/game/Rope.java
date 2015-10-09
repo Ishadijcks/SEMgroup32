@@ -9,8 +9,6 @@ import game.log.Logger;
 public class Rope {
     protected int xCoord;
     protected int yCoord;
-    
-    private boolean normalMode;
 
     /**
      * Constructor for a rope.
@@ -18,38 +16,24 @@ public class Rope {
      * @param yCoord y-Coordinate of the rope
      * @param isNormalMode checks if it is a normal game of a survival game
      */
-    public Rope(int xCoord, int yCoord, boolean isNormalMode) {
+    public Rope(int xCoord, int yCoord) {
         this.xCoord = xCoord;
         this.yCoord = yCoord;
-        normalMode = isNormalMode;
     }
 
     /**
      * The rope moves up and gets destroyed when it hits the roof.
      */
     public void move() {
-            if (normalMode) {
-                if (yCoord <= Settings.getTopMargin() - 2) {
-                    NormalDriver.game.getCurrentLevel()
-                             .setRope(null);
-                    Logger.log("Rope hit the roof", 5, 4);
-                 } else {
-                     Logger.log("Rope moved from " + xCoord + "," + yCoord
-                             + " to " + xCoord + "," + (yCoord - Settings.getRopeSpeed()), 5, 5);
-                     yCoord -= Settings.getRopeSpeed();
-                 } 
-            }
-            else {
-                if (yCoord <= Settings.getTopMargin() - 2) {
-                    SurvivalDriver.game.getCurrentLevel()
-                             .setRope(null);
-                    Logger.log("Rope hit the roof", 5, 4);
-                 } else {
-                     Logger.log("Rope moved from " + xCoord + "," + yCoord 
-                             + " to " + xCoord + "," + (yCoord - Settings.getRopeSpeed()), 5, 5);
-                     yCoord -= Settings.getRopeSpeed();
-                 } 
-            }
+        if (yCoord <= Settings.getTopMargin() - 2) {
+            Driver.game.getCurrentLevel()
+                     .setRope(null);
+            Logger.log("Rope hit the roof", 5, 4);
+         } else {
+             Logger.log("Rope moved from " + xCoord + "," + yCoord
+                     + " to " + xCoord + "," + (yCoord - Settings.getRopeSpeed()), 5, 5);
+             yCoord -= Settings.getRopeSpeed();
+         }
             
     }
     
@@ -95,9 +79,6 @@ public class Rope {
 			return false;
 		}
 		Rope other = (Rope) obj;
-		if (normalMode != other.normalMode) {
-			return false;
-		}
 		if (xCoord != other.xCoord) {
 			return false;
 		}

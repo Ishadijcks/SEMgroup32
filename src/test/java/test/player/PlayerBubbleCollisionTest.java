@@ -34,7 +34,7 @@ public class PlayerBubbleCollisionTest {
 
     public PlayerBubbleCollisionTest(int x, int y, boolean exp) {
         bubble = new Bubblex16(x, y, true, true);
-        player = new Player("Test", 100, true);
+        player = new Player("Test", 100);
         p = new ArrayList<Player>();
         p.add(player);
         l = new NormalLevel(p);

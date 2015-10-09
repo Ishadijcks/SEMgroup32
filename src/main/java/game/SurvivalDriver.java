@@ -94,7 +94,7 @@ public class SurvivalDriver extends Driver {
         }
         Logger.log("Main Frame created", 9, 4);
 
-        Player player = new Player(name, 350, false);
+        Player player = new Player(name, 350);
         game = GameCreator.createSurvival(player);
         score = new Score();
         game.addPlayer(player);
@@ -140,7 +140,7 @@ public class SurvivalDriver extends Driver {
      */
     public void setupGame() {
         driver = new SurvivalDriver(name);
-        Player player = new Player(name, 350, false);
+        Player player = new Player(name, 350);
         game = GameCreator.createSurvival(player);
         score = new Score();
         game.addPlayer(player);

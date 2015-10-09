@@ -41,7 +41,7 @@ public class RopeBubbleCollisionTest {
         p = new ArrayList<Player>();
         l = new NormalLevel(p);
         bubbleList = new ArrayList<Bubble>();
-        Rope r = new Rope(x, y, true);
+        Rope r = new Rope(x, y);
         l.setRope(r);
         l.addBubble(bubble);
         this.expected = exp;

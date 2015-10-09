@@ -25,7 +25,6 @@ public class Player {
     private int stepSize = Settings.getPlayerStepSize();
     private boolean movingLeft = false;
     private boolean movingRight = false;
-    private boolean normalMode;
 
     /**
      * Constructor for a player.
@@ -33,12 +32,11 @@ public class Player {
      * @param xCoord x-Coordinate of the player
      * @param isNormalMode true if it is a normal game, false otherwise
      */
-    public Player(String name, int xCoord, boolean isNormalMode) {
+    public Player(String name, int xCoord) {
         this.name = name;
         this.xCoord = xCoord;
         
         this.colX = xCoord - 50;
-        normalMode = isNormalMode;
         Logger.log("Player created", 1, 4);
     }
 
@@ -97,50 +95,6 @@ public class Player {
                     Settings.setRestrictMovingLeft(false);
             } else {
                 Logger.log("Player is at the right border", 1, 4);
-            }
-        }
-    }
-
-    /**
-     * The player shoots a rope from his current position The rope is added to
-     * the level.
-     */
-    public void shootRope() {
-        if (normalMode) {
-            if (!NormalDriver.game.getCurrentLevel()
-                    .hasRope()) {
-                int ropeY = NormalDriver.game.getCurrentLevel().getHeight()
-                        - height;
-                int ropeX = xCoord + width / 2;
-                if(Settings.getPlayerHasIceRope()){
-                	Rope rope = new IceRope(ropeX, ropeY, normalMode);
-                    NormalDriver.game.getCurrentLevel()
-                    .setRope(rope);
-                    return;
-                }else{
-	                Rope rope = new Rope(ropeX, ropeY, normalMode);
-	                NormalDriver.game.getCurrentLevel().setRope(rope);
-	                Logger.log("Shot a rope", 1, 4);
-                }
-                
-            }
-        }
-        else {
-            if (!SurvivalDriver.game.getCurrentLevel()
-                    .hasRope()) {
-                int ropeY = SurvivalDriver.game.getCurrentLevel().getHeight()
-                        - height;
-                int ropeX = xCoord + width / 2;
-                if(Settings.getPlayerHasIceRope()){
-                	Rope rope = new IceRope(ropeX, ropeY, normalMode);
-                    NormalDriver.game.getCurrentLevel()
-                    .setRope(rope);
-                    return;
-                }else{
-	                Rope rope = new Rope(ropeX, ropeY, normalMode);
-	                NormalDriver.game.getCurrentLevel().setRope(rope);
-	                Logger.log("Shot a rope", 1, 4);                    
-                }
             }
         }
     }

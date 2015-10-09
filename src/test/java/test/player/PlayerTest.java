@@ -16,7 +16,7 @@ import org.junit.Test;
 
 public class PlayerTest {
 
-    Player player = new Player("Isha", 500, true);
+    Player player = new Player("Isha", 500);
 
     @Test
     public void testPlayerConstructor() {
@@ -65,7 +65,7 @@ public class PlayerTest {
 
     @Test
     public void testMoveLeftBoundary() {
-    	Player play = new Player("test", 0, true);
+    	Player play = new Player("test", 0);
         int x = player.getX();
         play.movingLeft();
         play.move();
@@ -82,32 +82,11 @@ public class PlayerTest {
 
     @Test
     public void testMoveRightBoundary() {
-    	Player play = new Player("test", 10000, true);
+    	Player play = new Player("test", 10000);
         int x = player.getX();
         play.movingRight();
         play.move();
         assertEquals(x, player.getX());
-    }
-
-    @Test
-    public void testShootRopeNormalGame() {
-        NormalDriver.game = GameCreator.createSinglePlayer(player);
-        assertFalse(NormalDriver.game.getCurrentLevel()
-                .hasRope());
-        player.shootRope();
-        assertTrue(NormalDriver.game.getCurrentLevel()
-                .hasRope());
-    }
-    
-    @Test
-    public void testShootRopeSurvivalGame() {
-    	Player play = new Player("Isha", 500, false);
-    	SurvivalDriver.game = GameCreator.createSurvival(play);
-        assertFalse(SurvivalDriver.game.getCurrentLevel()
-                .hasRope());
-        play.shootRope();
-        assertTrue(SurvivalDriver.game.getCurrentLevel()
-                .hasRope());
     }
 
     @Test

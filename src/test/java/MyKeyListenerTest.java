@@ -21,7 +21,7 @@ public class MyKeyListenerTest {
 
 	@Before
 	public void init() {
-		p = new Player("test",0,true);
+		p = new Player("test",0);
 		NormalDriver.game = GameCreator.createSinglePlayer(p);
 		key = new MyKeyListener(NormalDriver.game);
 	}

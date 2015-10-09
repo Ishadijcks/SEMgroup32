@@ -38,7 +38,7 @@ public class PlayerPowerupCollisionTest {
     private boolean expected;
 
     public PlayerPowerupCollisionTest(int x, int y, boolean exp) {
-        player = new Player("Test", 100, true);
+        player = new Player("Test", 100);
         p = new ArrayList<Player>();
         p.add(player);
         l = new NormalLevel(p);
