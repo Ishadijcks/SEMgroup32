@@ -45,7 +45,7 @@ public class NormalGameTest {
 		assertTrue(game.inProgress());
 		game.gameWon();
 		assertFalse(game.inProgress());
-		assertTrue(game.getCurrentLevelInt() == 1);
+		assertTrue(game.getCurrentLevelInt() == 2);
 	}
 	
 	@Test

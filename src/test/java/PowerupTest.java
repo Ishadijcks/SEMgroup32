@@ -8,6 +8,7 @@ import game.NormalDriver;
 import game.Settings;
 import game.SurvivalDriver;
 import game.powerups.IcePowerup;
+import game.powerups.LifePowerup;
 import game.powerups.Powerup;
 import game.powerups.SpeedPowerup;
 import game.screens.StartScreen;
@@ -88,7 +89,7 @@ public class PowerupTest {
 	
 	@Test
 	public void testGetImageIconLife(){
-		Powerup pow = new SpeedPowerup(100, 100);
+		Powerup pow = new LifePowerup(100, 100);
         URL location = StartScreen.class.getProtectionDomain().getCodeSource()
                 .getLocation();
         String imageLocation = location.getFile();
@@ -106,12 +107,6 @@ public class PowerupTest {
         imageLocation = imageLocation.replace("%20", " ");
 		ImageIcon expected = new ImageIcon(imageLocation + "main/Images/Powerups/puice.png", "ice");
 		assertTrue(pow.getImageIcon().getDescription().equals(expected.getDescription()));
-	}
-	
-	@Test
-	public void testGetImageIconNull(){
-		Powerup pow = new SpeedPowerup(100, 100);
-		assertNull(pow.getImageIcon());
 	}
 	
 	@Test
