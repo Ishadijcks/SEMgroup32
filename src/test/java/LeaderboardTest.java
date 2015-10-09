@@ -6,25 +6,25 @@ import java.io.File;
 import java.util.ArrayList;
 
 import game.Leaderboard;
-import game.endScore;
+import game.EndScore;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class LeaderboardTest {
 	
-	private ArrayList<endScore> scoreList;
+	private ArrayList<EndScore> scoreList;
 	private Leaderboard led;
 	
 	@Before
 	public void init() {
 		led = new Leaderboard();
-		scoreList = new ArrayList<endScore>();
+		scoreList = new ArrayList<EndScore>();
 	}
 
 	@Test
 	public void testAddScoreFromZero() {
-		endScore sc = new endScore("Imeand", 100);
+		EndScore sc = new EndScore("Imeand", 100);
 		assertTrue(led.getScoreList().isEmpty());
 		led.addScore(sc);
 		assertTrue(led.getScoreList().contains(sc));
@@ -32,8 +32,8 @@ public class LeaderboardTest {
 	
 	@Test
 	public void testAddScoreHighest() {
-		endScore sc = new endScore("Imeand", 100);
-		endScore sc1 = new endScore("Ding", 150);
+		EndScore sc = new EndScore("Imeand", 100);
+		EndScore sc1 = new EndScore("Ding", 150);
 		led.resetScoreList();
 		assertTrue(led.getScoreList().isEmpty());
 		led.addScore(sc);
@@ -44,8 +44,8 @@ public class LeaderboardTest {
 	
 	@Test
 	public void testAddScoreFromN() {
-		endScore sc = new endScore("Imeand", 100);
-		endScore sc1 = new endScore("Uhu", 50);
+		EndScore sc = new EndScore("Imeand", 100);
+		EndScore sc1 = new EndScore("Uhu", 50);
 		assertTrue(led.getScoreList().isEmpty());
 		led.addScore(sc);
 		assertTrue(led.getScoreList().contains(sc));
@@ -55,7 +55,7 @@ public class LeaderboardTest {
 
 	@Test
 	public void testSetScoreList() {
-		endScore sc = new endScore("sodfj", 100);
+		EndScore sc = new EndScore("sodfj", 100);
 		scoreList.add(sc);
 		assertFalse(led.getScoreList().equals(scoreList));
 		led.setScoreList(scoreList);
@@ -71,7 +71,7 @@ public class LeaderboardTest {
 	@Test
 	public void testFullLeaderBoardOne() {
 		led.resetScoreList();
-		endScore sc = new endScore("ddd", 101);
+		EndScore sc = new EndScore("ddd", 101);
 		led.addScore(sc);
 		assertTrue(led.fullLeaderBoard().equals("ddd:101\n"));
 	}
@@ -79,8 +79,8 @@ public class LeaderboardTest {
 	@Test
 	public void testFullLeaderBoardN() {
 		led.resetScoreList();
-		endScore sc = new endScore("ddd", 101);
-		endScore sc1 = new endScore("dddd", 20);
+		EndScore sc = new EndScore("ddd", 101);
+		EndScore sc1 = new EndScore("dddd", 20);
 		led.addScore(sc);
 		led.addScore(sc1);
 		assertTrue(led.fullLeaderBoard().equals("ddd:101\ndddd:20\n"));
@@ -90,7 +90,7 @@ public class LeaderboardTest {
 	public void testResetScoreList() {
 		led.resetScoreList();
 		assertTrue(led.getScoreList().isEmpty());
-		led.addScore(new endScore("ding",100));
+		led.addScore(new EndScore("ding",100));
 		assertTrue(led.getScoreList().size() == 1);
 		led.resetScoreList();
 		assertTrue(led.getScoreList().isEmpty());

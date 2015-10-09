@@ -1,36 +1,43 @@
 package game;
 
-/** 
+/**
  * Class the will keep the score at the end of a game session.
+ * 
  * @author Boning
  *
  */
-public class endScore {
-    
+public class EndScore {
+
     private String name;
     private int score;
-    
-    /** 
+
+    /**
      * Constructor of the endScore.
-     * @param name Name of the player
-     * @param score Score that the player got
+     * 
+     * @param name
+     *            Name of the player
+     * @param score
+     *            Score that the player got
      */
-    public endScore(String name, int score) {
-	    this.name = name;
-	    this.score = score;
+    public EndScore(String name, int score) {
+        this.name = name;
+        this.score = score;
     }
 
-    /** 
+    /**
      * Getter for the name of the player.
+     * 
      * @return Name of the player
      */
     public String getName() {
         return name;
     }
 
-    /** 
+    /**
      * Setter for the name of the player.
-     * @param name Name of the player
+     * 
+     * @param name
+     *            Name of the player
      */
     public void setName(String name) {
         this.name = name;
@@ -38,6 +45,7 @@ public class endScore {
 
     /**
      * Getter for the score of the player.
+     * 
      * @return Score of the player.
      */
     public int getScore() {
@@ -46,14 +54,17 @@ public class endScore {
 
     /**
      * Setter for the score of the player.
-     * @param score Score of the player
+     * 
+     * @param score
+     *            Score of the player
      */
     public void setScore(int score) {
         this.score = score;
     }
-    
-    /** 
+
+    /**
      * Gives a string representation of this class.
+     * 
      * @return String of the name + the score of the player
      */
     public String toString() {

@@ -12,23 +12,36 @@ import game.observers.RopeCollisionObserver;
 import game.observers.WallBubbleCollisionObserver;
 import game.observers.WallPlayerCollisionObserver;
 import game.powerups.Powerup;
-import game.wall.BubbleWall;
-import game.wall.DuoWall;
 import game.wall.Wall;
 
+/**
+ * Handles all the collisions.
+ * @author Tim
+ *
+ */
+public class Collisions implements Observable {
 
-public class Collisions implements Observable{
-	
-	private Game game;
+    private Game game;
     private Observer ropeColObserver = new RopeCollisionObserver(this);
     private Observer powerupColObserver = new PowerupCollisionObserver(this);
     private Observer bubbleColObserver = new BubbleCollisionObserver(this);
-    private Observer wallBubbleColObserver = new WallBubbleCollisionObserver(this);
-    private Observer wallPlayerColObserver = new WallPlayerCollisionObserver(this);
+    private Observer wallBubbleColObserver = new WallBubbleCollisionObserver(
+            this);
+    private Observer wallPlayerColObserver = new WallPlayerCollisionObserver(
+            this);
 
+    /**
+     * constructor.
+     */
     public Collisions() {
 	}
-    
+
+    /**
+     * All the possible collisions in the game.
+     * 
+     * @param game
+     *            current game.
+     */
     public void allCollisions(Game game){
     	this.game = game;
     	Level curLevel = game.getCurrentLevel();
@@ -44,14 +57,17 @@ public class Collisions implements Observable{
     	checkPlayerCollisionWall(wallList, playerList);
     	checkBubbleCollisionWall(wallList, bubbleList);
     }
-    
-    /** Checks the collisions of the bubbles with the player.
+
+    /**
+     * Checks the collisions of the bubbles with the player.
      * 
-     * @param bubbleList List of bubbles 
-     * @param playerList List of players
+     * @param bubbleList
+     *            List of bubbles
+     * @param playerList
+     *            List of players
      * @return true if there is a collision, false otherwise
      */
-	public boolean checkCollisionPlayer(ArrayList<Bubble> bubbleList,
+    public boolean checkCollisionPlayer(ArrayList<Bubble> bubbleList,
             ArrayList<Player> playerList) {
 		
 		Player player = playerList.get(0);
@@ -73,11 +89,15 @@ public class Collisions implements Observable{
         return false;
     }
 
-    /** Checks the collisions of the rope with the player.
+    /**
+     * Checks the collisions of the rope with the bubble.
      * 
-     * @param bubbleList List of bubbles
-     * @param rope The rope of the player
-     * @return The index of the bubble will be returned, it will return -1 if there is no collision
+     * @param bubbleList
+     *            List of bubbles
+     * @param rope
+     *            The rope of the player
+     * @return The index of the bubble will be returned, it will return -1 if
+     *         there is no collision
      */
     public boolean checkCollisionRope(ArrayList<Bubble> bubbleList,
             Rope rope) {
@@ -97,12 +117,34 @@ public class Collisions implements Observable{
     	}
         return false;
     }
-    
-	/** Checks the collisions of powerups with the player.
+
+    /**
+     * Checks the player collision with wall.
      * 
-     * @param playerList List of players
-     * @param powerupList List of powerups
-     * @return The powerup that collided will be returned, if there are no collisions then it will return -1
+     * @param wallList
+     *            all the walls in the current level
+     * @param playerList
+     *            All the players in the current level
+     * @return return true if collision
+     */
+    public boolean checkPlayerCollisionWall(ArrayList<Wall> wallList,
+            ArrayList<Player> playerList) {
+        Player player = playerList.get(0);
+        for (Wall wall : wallList) {
+            if (wall.expectPlayerCollision(player.getX(),
+                    player.getMovingLeft())) {
+                wallPlayerColObserver.update(wall, player, game);
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Checks a collision between the player and a powerup.
+     * @param playerList
+     * @param powerupList
+     * @return
      */
     public boolean checkCollisionPowerup(ArrayList<Player> playerList, ArrayList<Powerup> powerupList) {
 	    Player player1 = playerList.get(0);
@@ -123,44 +165,44 @@ public class Collisions implements Observable{
 	    return false;
     }
     
-    public boolean checkPlayerCollisionWall(ArrayList<Wall> wallList, ArrayList<Player> playerList){
-    	Player player = playerList.get(0);
-    	for(Wall wall : wallList){
-    		if(wall.expectPlayerCollision(player.getX(), player.getMovingLeft())){
-    			wallPlayerColObserver.update(wall, player, game);
-    			return true;
-    		}
-    	}
-    	return false;
+    /**
+     * Checks the collisions between wall and bubble.
+     * 
+     * @param wallList
+     *            all walls in current level
+     * @param bubbleList
+     *            all bubbles in current level
+     * @return true if collides
+     */
+    public boolean checkBubbleCollisionWall(ArrayList<Wall> wallList,
+            ArrayList<Bubble> bubbleList) {
+        for (Bubble bubble : bubbleList) {
+            for (Wall wall : wallList) {
+                if (wall.expectBubbleCollision(bubble.getX(),
+                        bubble.getDiameter())) {
+                    wallBubbleColObserver.update(wall, bubble, game);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
-    
-    public boolean checkBubbleCollisionWall(ArrayList<Wall> wallList, ArrayList<Bubble> bubbleList) {
-    	for(Bubble bubble : bubbleList){
-	    	for(Wall wall : wallList){
-	    		if(wall.expectBubbleCollision(bubble.getX(), bubble.getDiameter())){
-	    			wallBubbleColObserver.update(wall, bubble, game);
-	    			return true;
-	    		}
-	    	}
-    	}
-    	return false;
+
+    @Override
+    public void registerObserver(Observer ob) {
+        // TODO Auto-generated method stub
+
     }
 
-	@Override
-	public void registerObserver(Observer ob) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void removeObserver() {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void removeObserver() {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public void notifyObservers() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void notifyObservers() {
+        // TODO Auto-generated method stub
+
+    }
 }

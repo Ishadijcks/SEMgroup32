@@ -121,10 +121,18 @@ public class Settings {
         return playerPowerupStepSize;
     }
     
+    /**
+     * Has IceRope class.
+     * @return true if ice rope is true.
+     */
     public static boolean getPlayerHasIceRope() {
     	return playerHasIceRope;
     }
     
+    /**
+     * Set the players Ice rope.
+     * @param setter of the rope.
+     */
     public static void setPlayerHasIceRope(boolean setter) {
     	playerHasIceRope = setter;
     }
