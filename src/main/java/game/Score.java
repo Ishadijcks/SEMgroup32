@@ -4,6 +4,7 @@ import game.log.Logger;
 
 /**
  * Score class.
+ * 
  * @author Boning
  *
  */
@@ -19,7 +20,9 @@ public class Score {
 
     /**
      * Increase the score by an amount.
-     * @param add amount that will be increased
+     * 
+     * @param add
+     *            amount that will be increased
      */
     public static void addScore(int add) {
         score += add;
@@ -28,12 +31,13 @@ public class Score {
 
     /**
      * Add score to the players score.
+     * 
      * @return score of the player
      */
     public static int getScore() {
         return score;
     }
-    
+
     /**
      * Reset the score.
      */

@@ -1,44 +1,13 @@
 package game;
 
-import game.bubble.Bubble;
 import game.log.LogSettings;
 import game.log.Logger;
 import game.screens.GameScreen;
-import game.screens.LogScreen;
 import game.screens.LosingScreen;
-import game.screens.StartScreen;
 import game.screens.WinningScreen;
-import game.wall.Wall;
-
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.Stroke;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Random;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.AbstractButton;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 /**
  * Class that executes the game.
@@ -53,13 +22,17 @@ public class NormalDriver extends Driver {
     private static NormalDriver driver;
     private static GameScreen gameScreen;
 
-    /** 
+    private Collisions collisions;
+
+    /**
      * Constructor that will pass the name of the player.
-     * @param name Name that the player entered
+     * 
+     * @param name
+     *            Name that the player entered
      */
-    public NormalDriver(String name)
-    {
-        this.name = name;
+    public NormalDriver(String name) {
+        NormalDriver.name = name;
+        this.collisions = new Collisions();
     }
 
     /**
@@ -71,13 +44,14 @@ public class NormalDriver extends Driver {
         gameScreen.startGame();
         game.gameStart();
     }
-    
+
     /**
      * Check if the game has been won.
+     * 
      * @return true if the game is won, false otherwise
      */
     public static boolean checkGameWon() {
-        if (game.getCurrentLevelInt() == 4) {
+        if (game.getCurrentLevelInt() == game.getLevelList().size() - 1) {
             gameScreen.dispose();
             Logger.log("Frame destroyed", 9, 4);
             new WinningScreen(driver, name);
@@ -88,6 +62,7 @@ public class NormalDriver extends Driver {
 
     /**
      * Check if the game has been lost.
+     * 
      * @return true if the game is lost, false otherwise
      */
     public static boolean checkGameLost() {
@@ -95,7 +70,7 @@ public class NormalDriver extends Driver {
         if (livesLeft == 0 && game.inProgress()) {
             gameScreen.dispose();
             game.toggleProgress();
-            endScore es = new endScore(name, Score.getScore());
+            EndScore es = new EndScore(name, Score.getScore());
             Score.resetScore();
             new LosingScreen(driver, es);
             Logger.log("Game lost", 7, 4);
@@ -109,57 +84,20 @@ public class NormalDriver extends Driver {
      */
     public void driverHeart() {
         
-	    if (game.inProgress()) {
+	    if (game.inProgress()) 	{
 	        curLevel = game.getCurrentLevel();
 	
-	        curLevel.moveBubbles();
-	
-	        for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
-	            curLevel.getPowerupList().get(i).move();
-	            curLevel.handlePowerupCollision();
-	        }
-	
-	        if (curLevel.hasRope()) {
-	            curLevel.getRope().move();
-	        }
-	
-	        curLevel.handleCollisionRope();
-	
-	        if (curLevel.checkCollisionPlayer()) {
-	            game.getPlayerList().get(0).removeAllPowerUps();
-	            game.resetLevel();
-	        }
-	
-	        int powerupListSize = game.getPlayerList().get(0)
-	                .getPowerupList().size();
-	
-	        if (powerupListSize > 0) {
-	            for (int i = 0; i < powerupListSize; i++) {
-	                if (game.getPlayerList().get(0).getPowerupList().get(i)
-	                        .getName().equals("life")) {
-	                    Powerup life = game.getPlayerList().get(0)
-	                            .getPowerupList().get(i);
-	                    game.getLife();
-	                    game.getPlayerList().get(0).removePowerUp(life);
-	                } else if (game.getPlayerList().get(0).getPowerupList()
-	                        .get(i).getName().equals("ice")) {
-	                    iceRope = true;
-	                    game.getPlayerList().get(0).getPowerupList().get(i)
-	                            .decreaseFramesLeft();
-	                } else if (game.getPlayerList().get(0).getPowerupList()
-	                        .get(i).getName().equals("speed")) {
-	                    game.getPlayerList().get(0).getPowerupList().get(i)
-	                            .decreaseFramesLeft();
-	                }
-	
-	            }
-	        }
-	        iceRope = game.getPlayerList().get(0).hasIceRope();
+	        game.moveEntities();
+	        collisions.allCollisions(game);
 	
 	        gameScreen.reload();
-	
+	        
+	        // It is important that the player moves after all the collisions
+	        // are checked. Since the collisions decide if the player can move
+	        // one step ahead or not. If the player moves first the collisions
+	        // detection will be too late.
 	        Player player1 = game.getPlayerList().get(0);
-	        player1.move(curLevel.getWallList());
+	        player1.move();
 	
 	        if (curLevel.getBubbleList().size() == 0) {
 	            boolean once = true;
@@ -173,18 +111,17 @@ public class NormalDriver extends Driver {
 	        checkGameLost();
 	        checkGameWon();
 	    }
-	
-	}
-
+    }
 
     /**
      * Getter returns game screen.
+     * 
      * @return game screen
      */
     public GameScreen getGameScreen() {
         return gameScreen;
     }
-    
+
     /**
      * Initialise the game.
      */
@@ -208,8 +145,8 @@ public class NormalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        Player player = new Player(name, 350, true);
-        game = GameCreator.createSinglePlayer(player);
+        Player player = new Player(name, 350);
+        game = GameFactory.createSinglePlayer(player);
 
         score = new Score();
         game.addPlayer(player);
@@ -223,8 +160,8 @@ public class NormalDriver extends Driver {
     /**
      * Initialise the driver.
      */
-	@Override
-	public void initDriver() {
+    @Override
+    public void initDriver() {
         try {
             gameScreen = new GameScreen();
         } catch (UnsupportedAudioFileException e) {
@@ -239,8 +176,8 @@ public class NormalDriver extends Driver {
         }
         Logger.log("Main Frame created", 9, 4);
 
-        Player player = new Player(name, 350, true);
-        game = GameCreator.createSinglePlayer(player);
+        Player player = new Player(name, 350);
+        game = GameFactory.createSinglePlayer(player);
 
         score = new Score();
         game.addPlayer(player);
@@ -250,20 +187,20 @@ public class NormalDriver extends Driver {
                         .getLevelWidth()));
         Settings.setLeftMargin(centerConstant);
         GameScreen.setupScreen(game, score);
-        
+
         this.startGame(name);
 
         LogSettings.setActiveLog(true);
-		
-	}
 
-	 /** 
-      * Method that should make a screen where the player can select different options.
-      */
-	@Override
-	public void startScreen() {
-		
-	}
+    }
 
+    /**
+     * Method that should make a screen where the player can select different
+     * options.
+     */
+    @Override
+    public void startScreen() {
+
+    }
 
 }

@@ -9,7 +9,7 @@ import java.awt.Color;
  * @author Boning
  *
  */
-public class Wall {
+public abstract class Wall {
 
     private int xCoord;
     private int yCoord;
@@ -17,7 +17,6 @@ public class Wall {
     private int height = Settings.getWallHeight();
     private Color color;
     private boolean isActive;
-    private int bouncedOn;
 
     /**
      * Constructor of a wall.
@@ -29,8 +28,21 @@ public class Wall {
         this.yCoord = 0;
         this.color = color;
         this.isActive = true;
-        this.bouncedOn = 0;
     }
+    
+    /** Returns true if a collision between the wall and player is
+     * expected. Otherwise false.
+     * @param xCoord
+     * @return
+     */
+    public abstract boolean expectPlayerCollision(int xCoord, boolean movingLeft);
+    
+    /** Returns true if a collision between the wall and bubble is
+     * expected. Otherwise false.
+     * @param xCoord
+     * @return
+     */
+    public abstract boolean expectBubbleCollision(int xCoord, int BubbleDiameter);
 
     /**
      * Checks if a wall is active or not.
@@ -46,14 +58,6 @@ public class Wall {
      */
     public void setActive(boolean bool) {
         isActive = bool;
-    }
-
-    /**
-     * Checks if a ball bounced on the wall.
-     */
-    public void bouncedOn() {
-        bouncedOn++;
-        setActive(false);
     }
  
 	/**
@@ -92,13 +96,6 @@ public class Wall {
     }
 
     /**
-     * @return the bouncedOn
-     */
-    public int getBouncedOn() {
-        return bouncedOn;
-    }
-
-    /**
      * @param xCoord the xCoord to set
      */
     public void setxCoord(int xCoord) {
@@ -134,13 +131,6 @@ public class Wall {
     }
 
     /**
-     * @param bouncedOn the bouncedOn to set
-     */
-    public void setBouncedOn(int bouncedOn) {
-        this.bouncedOn = bouncedOn;
-    }
-
-    /**
      * Generated equals method to check if all attributes 
      * equals another of the same class.
      * @param obj Object that it will compare to
@@ -158,9 +148,6 @@ public class Wall {
 			return false;
 		}
 		Wall other = (Wall) obj;
-		if (bouncedOn != other.bouncedOn) {
-			return false;
-		}
 		if (color == null) {
 			if (other.color != null) {
 				return false;

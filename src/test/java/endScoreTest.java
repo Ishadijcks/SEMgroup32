@@ -1,18 +1,18 @@
 
 
 import static org.junit.Assert.*;
-import game.endScore;
+import game.EndScore;
 
 import org.junit.Before;
 import org.junit.Test;
 
 public class endScoreTest {
 	
-	private endScore score;
+	private EndScore score;
 	
 	@Before
 	public void init(){
-		score = new endScore("testPerson", 500);
+		score = new EndScore("testPerson", 500);
 	}
 
 	@Test

@@ -27,7 +27,7 @@ public class NormalGameTest {
 		p = new ArrayList<Player>();
 		l = new NormalLevel(p);
 		k = new NormalLevel(p);
-		player = new Player("TestPlayer", 1, true);
+		player = new Player("TestPlayer", 1);
 	}
 
 	@Test

@@ -7,9 +7,9 @@ import static org.junit.Assert.fail;
 import game.IceRope;
 import game.Level;
 import game.Player;
-import game.Powerup;
 import game.Rope;
 import game.bubble.Bubble;
+import game.powerups.Powerup;
 
 import java.util.ArrayList;
 
@@ -27,7 +27,7 @@ public class IceRopeTest {
     public void init() {
         x = 0;
         y = 0;
-        rope = new IceRope(x, y, true);
+        rope = new IceRope(x, y);
     }
     
     @Test
@@ -44,7 +44,7 @@ public class IceRopeTest {
     
     @Test
     public void testMoveNormal() {
-        rope = new IceRope(250, 100, true);
+        rope = new IceRope(250, 100);
         rope.move();
         int expectedYCoord = 96;
         assertEquals(expectedYCoord, rope.getY());
@@ -52,7 +52,7 @@ public class IceRopeTest {
     
     @Test
     public void testMoveRopeTop() {
-        rope = new IceRope(250, 48, true);
+        rope = new IceRope(250, 48);
         rope.move();
         int expectedYCoord = 48;
         assertEquals(expectedYCoord, rope.getY());

@@ -1,6 +1,5 @@
 package game;
 
-import game.bubble.Bubble;
 import game.log.LogSettings;
 import game.log.Logger;
 import game.screens.GameScreen;
@@ -24,17 +23,21 @@ public class SurvivalDriver extends Driver {
     private static GameScreen gameScreen;
     private static String name;
     private static Leaderboard lb = new Leaderboard();
+    
+    private Collisions collisions;
 
     /** Constructor for a survival driver that will get the name of a player.
      * 
      * @param name Name that the player entered
      */
     public SurvivalDriver(String name) {
-        this.name = name;
+        SurvivalDriver.name = name;
+        this.collisions = new Collisions();
     }
 
     /**
      * Frame to start the game.
+     * @param playerName string.
      */
     public void startGame(String playerName) {
         name = playerName;
@@ -62,7 +65,7 @@ public class SurvivalDriver extends Driver {
      */
     public static void gameLost() {
         game.gameLost();
-        endScore es = new endScore(name, Score.getScore());
+        EndScore es = new EndScore(name, Score.getScore());
         lb.addScore(es);
         lb.appendToFile();
         Score.resetScore();
@@ -90,8 +93,8 @@ public class SurvivalDriver extends Driver {
         }
         Logger.log("Main Frame created", 9, 4);
 
-        Player player = new Player(name, 350, false);
-        game = GameCreator.createSurvival(player);
+        Player player = new Player(name, 350);
+        game = GameFactory.createSurvival(player);
         score = new Score();
         game.addPlayer(player);
         player = game.getPlayerList().get(0);
@@ -114,61 +117,15 @@ public class SurvivalDriver extends Driver {
      */
     public void driverHeart() {
         if (game.inProgress()) {
-            game.update();
-
             curLevel = game.getCurrentLevel();
-
-            for (int i = 0; i < curLevel.getBubbleList().size(); i++) {
-                Bubble bubble = curLevel.getBubbleList().get(i);
-                bubble.move();
-            }
-
-            for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
-                curLevel.getPowerupList().get(i).move();
-                curLevel.handlePowerupCollision();
-            }
-
-            if (curLevel.hasRope()) {
-                curLevel.getRope().move();
-            }
-
-            curLevel.handleCollisionRope();
-
-            if (curLevel.checkCollisionPlayer()) {
-                game.getPlayerList().get(0).removeAllPowerUps();
-                game.resetLevel();
-            }
-
-            int powerupListSize = game.getPlayerList().get(0)
-                    .getPowerupList().size();
-
-            if (powerupListSize > 0) {
-                for (int i = 0; i < powerupListSize; i++) {
-                    if (game.getPlayerList().get(0).getPowerupList().get(i)
-                            .getName().equals("life")) {
-                        Powerup life = game.getPlayerList().get(0)
-                                .getPowerupList().get(i);
-                        game.getLife();
-                        game.getPlayerList().get(0).removePowerUp(life);
-                    } else if (game.getPlayerList().get(0).getPowerupList()
-                            .get(i).getName().equals("ice")) {
-                        iceRope = true;
-                        game.getPlayerList().get(0).getPowerupList().get(i)
-                                .decreaseFramesLeft();
-                    } else if (game.getPlayerList().get(0).getPowerupList()
-                            .get(i).getName().equals("speed")) {
-                        game.getPlayerList().get(0).getPowerupList().get(i)
-                                .decreaseFramesLeft();
-                    }
-
-                }
-            }
-            iceRope = game.getPlayerList().get(0).hasIceRope();
-
-            gameScreen.reload();
+        	
+	        game.moveEntities();
+	        collisions.allCollisions(game);
+	
+	        gameScreen.reload();
 
             Player player1 = game.getPlayerList().get(0);
-            player1.move(curLevel.getWallList());
+            player1.move();
 
             if (checkGameLost()) {
                 gameLost();
@@ -182,8 +139,8 @@ public class SurvivalDriver extends Driver {
      */
     public void setupGame() {
         driver = new SurvivalDriver(name);
-        Player player = new Player(name, 350, false);
-        game = GameCreator.createSurvival(player);
+        Player player = new Player(name, 350);
+        game = GameFactory.createSurvival(player);
         score = new Score();
         game.addPlayer(player);
         player = game.getPlayerList().get(0);

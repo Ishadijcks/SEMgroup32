@@ -1,8 +1,12 @@
 package game.screens;
 
 import game.Driver;
-import game.DriverBuilder;
+import game.DriverFactory;
 import game.MainRunner;
+import game.NormalDriver;
+import game.NormalDriverFactory;
+import game.SurvivalDriver;
+import game.SurvivalDriverFactory;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -108,7 +112,8 @@ public class StartScreen extends JFrame {
             public void actionPerformed(ActionEvent startGame) {
                 setVisible(false);
                 dispose();
-                Driver d = DriverBuilder.buildDriver(0);
+                DriverFactory dFactory = new NormalDriverFactory();
+                Driver d = dFactory.buildDriver();
                 d.setupGame();
                 d.initDriver();
                 d.startGame("");
@@ -120,7 +125,8 @@ public class StartScreen extends JFrame {
         	public void actionPerformed(ActionEvent startGame) {
                 setVisible(false);
                 dispose();
-                Driver d = DriverBuilder.buildDriver(1);
+                DriverFactory dFactory = new SurvivalDriverFactory();
+                Driver d = dFactory.buildDriver();
                 d.setupGame();
                 d.initDriver();
                 d.startGame("");

@@ -2,6 +2,7 @@ package test.wall;
 
 import static org.junit.Assert.*;
 import game.Settings;
+import game.wall.DuoWall;
 import game.wall.Wall;
 
 import org.junit.Before;
@@ -16,14 +17,14 @@ public class WallTest {
 	
 	@Before
 	public void init() {
-		w = new Wall(10,Color.PINK);
+		w = new DuoWall(10);
 	}
 
 	@Test
 	public void testWall() {
 		assertEquals(10, w.getxCoord());
 		assertEquals(0, w.getyCoord());
-		assertEquals(Color.PINK, w.getColor());
+		assertEquals(Color.blue, w.getColor());
 	}
 
 	@Test

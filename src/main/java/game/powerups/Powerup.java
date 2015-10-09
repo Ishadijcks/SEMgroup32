@@ -1,6 +1,10 @@
-package game;
+package game.powerups;
 
 
+import game.Game;
+import game.NormalDriver;
+import game.Settings;
+import game.SurvivalDriver;
 import game.log.Logger;
 import game.screens.StartScreen;
 
@@ -13,11 +17,13 @@ import javax.swing.ImageIcon;
  * Class that controls the powerups.
  * @author Boning
  */
-public class Powerup {
+public abstract class Powerup {
     String name;
     private int xCoord;
     private int yCoord;
     private Image image;
+    
+    protected Game game;
     
     int width = Settings.getPowerupWidth();
     int height = Settings.getPowerupHeight();
@@ -39,6 +45,8 @@ public class Powerup {
         this.yCoord = yCoord;
         normalMode = isNormalMode;
     }
+    
+    public abstract void executeEffect();
 
     /**
      * Generated equals method to check if all attributes 
@@ -212,5 +220,21 @@ public class Powerup {
         return null;
         
     }
+
+	/**
+	 * @param x the x to set
+	 */
+	public void setX(int x) {
+		this.xCoord = x;
+	}
+
+	/**
+	 * @param y the y to set
+	 */
+	public void setY(int y) {
+		this.yCoord = y;
+	}
+	
+	public abstract void setGame(Game game);
     
 }
