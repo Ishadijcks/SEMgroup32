@@ -51,7 +51,7 @@ public abstract class Level {
      * Resets all bubbles by setting the list to null.
      */
     public void resetBubble() {
-        bubbleList = null;
+        bubbleList = new ArrayList<Bubble>();
     }
 
     /**

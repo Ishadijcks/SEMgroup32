@@ -22,7 +22,7 @@ public class SurvivalDriver extends Driver {
     private static SurvivalDriver driver;
     private static GameScreen gameScreen;
     private static String name;
-    private static Leaderboard lb = new Leaderboard();
+    private static Leaderboard leaderBoard = new Leaderboard();
     
     private Collisions collisions;
 
@@ -66,17 +66,17 @@ public class SurvivalDriver extends Driver {
     public static void gameLost() {
         game.gameLost();
         EndScore es = new EndScore(name, Score.getScore());
-        lb.addScore(es);
-        lb.appendToFile();
+        leaderBoard.addScore(es);
+        leaderBoard.appendToFile();
         Score.resetScore();
         gameScreen.dispose();
         game.toggleProgress();
-        new LeaderBoardScreen(lb);
+        new LeaderBoardScreen(leaderBoard);
         new LosingScreen(driver, es);
     }
     
     /**
-     * Initialise the driver.
+     * Initialize the driver.
      */
     public void initDriver() {
     	try {
@@ -92,8 +92,6 @@ public class SurvivalDriver extends Driver {
             e.printStackTrace();
         }
         Logger.log("Main Frame created", 9, 4);
-
-        Player player = new Player(name, 350);
         game = GameFactory.createSurvival(player);
         score = new Score();
         game.addPlayer(player);
@@ -139,7 +137,7 @@ public class SurvivalDriver extends Driver {
      */
     public void setupGame() {
         driver = new SurvivalDriver(name);
-        Player player = new Player(name, 350);
+        player = new Player(name, Settings.getPlayerSpawnPoint());
         game = GameFactory.createSurvival(player);
         score = new Score();
         game.addPlayer(player);
@@ -151,7 +149,7 @@ public class SurvivalDriver extends Driver {
     }
     
     /**
-     * initialise the game.
+     * initialize the game.
      */
     public void initGame() {
         try {
@@ -176,4 +174,5 @@ public class SurvivalDriver extends Driver {
 	public void startScreen() {
 		
 	}
+
 }

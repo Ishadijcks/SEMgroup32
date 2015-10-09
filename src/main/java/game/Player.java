@@ -78,8 +78,17 @@ public class Player {
     }
 
     /**
-     * Moves the player left or right, depending on what key is pressed.
+     * Set the x coordinate of the player.
      * 
+     * @param x new xcoord player
+     */
+    public void setXCoord(int x) {
+        System.out.println("xx..");
+        xCoord = x;
+    }
+
+    /**
+     * Moves the player left or right, depending on what key is pressed.
      *            list of walls
      */
     public void move() {
@@ -104,7 +113,7 @@ public class Player {
             }
         }
     }
-    
+
     /**
      * Checks if the player has an ice rope.
      * 
@@ -206,6 +215,7 @@ public class Player {
     }
 
     /**
+     * Remove all powerups of the player.
      * @return the stepSize
      */
     public int getStepSize() {
@@ -213,8 +223,9 @@ public class Player {
     }
 
     /**
-     * @param stepSize
-     *            the stepSize to set
+     * Check if the player has a powerup.
+     * 
+     * @return true if the player has 1 powerup or more, false otherwise
      */
     public void setStepSize(int stepSize) {
         this.stepSize = stepSize;
