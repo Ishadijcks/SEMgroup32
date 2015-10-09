@@ -13,28 +13,81 @@ import java.awt.Color;
 
 public class WallTest {
 	
-	private Wall w;
+	private Wall wall;
+	private Wall otherWall;
 	
 	@Before
 	public void init() {
-		w = new DuoWall(10);
+		wall = new DuoWall(10);
+		otherWall = new DuoWall(10);
 	}
 
 	@Test
 	public void testWall() {
-		assertEquals(10, w.getxCoord());
-		assertEquals(0, w.getyCoord());
-		assertEquals(Color.blue, w.getColor());
+		assertEquals(10, wall.getxCoord());
+		assertEquals(0, wall.getyCoord());
+		assertEquals(Color.blue, wall.getColor());
 	}
+	
+	@Test
+    public void testEquals() {
+        assertTrue(wall.equals(otherWall));
+    }
 
 	@Test
 	public void testGetHeight() {
-		assertEquals(Settings.getWallHeight(), w.getHeight());
+		assertEquals(Settings.getWallHeight(), wall.getHeight());
 	}
 
 	@Test
 	public void testGetWidth() {
-		assertEquals(Settings.getWallWidth(), w.getWidth());
+		assertEquals(Settings.getWallWidth(), wall.getWidth());
 	}
+	
+	@Test
+    public void testGetColor() {
+        assertEquals(Color.blue, wall.getColor());
+    }
+	
+	@Test
+    public void testSetHeight() {
+	    wall.setHeight(500);
+        assertEquals(500, wall.getHeight());
+    }
+
+    @Test
+    public void testSetWidth() {
+        wall.setWidth(500);
+        assertEquals(500, wall.getWidth());
+    }
+    
+    @Test
+    public void testSetxCoord() {
+        wall.setxCoord(55);
+        assertEquals(55, wall.getxCoord());
+    }
+    
+    @Test
+    public void testSetyCoord() {
+        wall.setyCoord(55);
+        assertEquals(55, wall.getyCoord());
+    }
+    
+    @Test
+    public void testSetColor() {
+        wall.setColor(Color.pink);
+        assertEquals(Color.pink, wall.getColor());
+    }
+    
+    @Test
+    public void testIsActive() {
+        assertTrue(wall.isActive());
+    }
+    
+    @Test
+    public void testSetActive() {
+        wall.setActive(false);
+        assertFalse(wall.isActive());
+    }
 
 }
