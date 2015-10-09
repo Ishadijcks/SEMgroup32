@@ -11,13 +11,13 @@ public class PowerupFactory {
 		
 		switch(powType){
 		case 0:
-			pow = new SpeedPowerup("speed", 0, 0, true);
+			pow = new SpeedPowerup(0, 0);
 			break;
 		case 1:
-			pow = new IcePowerup("ice", 0, 0, true);
+			pow = new IcePowerup(0, 0);
 			break;
 		case 2:
-			pow = new LifePowerup("life", 0, 0, true);
+			pow = new LifePowerup(0, 0);
 			break;
 		}
 		

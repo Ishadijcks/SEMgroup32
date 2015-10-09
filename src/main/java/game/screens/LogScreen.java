@@ -49,7 +49,7 @@ public class LogScreen extends JFrame {
     public LogScreen() throws UnsupportedAudioFileException, IOException,
             LineUnavailableException {
 
-        driver = new NormalDriver("");
+        driver = new NormalDriver();
         filters = new LogFilters();
         boldFont = new Font("Serif", Font.BOLD, 18);
         basicFont = new Font("Serif", Font.PLAIN, 16);

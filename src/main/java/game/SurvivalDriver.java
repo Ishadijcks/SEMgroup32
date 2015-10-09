@@ -30,8 +30,7 @@ public class SurvivalDriver extends Driver {
      * 
      * @param name Name that the player entered
      */
-    public SurvivalDriver(String name) {
-        SurvivalDriver.name = name;
+    public SurvivalDriver() {
         this.collisions = new Collisions();
     }
 
@@ -74,38 +73,6 @@ public class SurvivalDriver extends Driver {
         new LeaderBoardScreen(leaderBoard);
         new LosingScreen(driver, es);
     }
-    
-    /**
-     * Initialize the driver.
-     */
-    public void initDriver() {
-    	try {
-            gameScreen = new GameScreen();
-        } catch (UnsupportedAudioFileException e) {
-            Logger.log("UnsupportedAudioFileException", 7, 2);
-            e.printStackTrace();
-        } catch (IOException e) {
-            Logger.log("IOException", 7, 2);
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            Logger.log("LineUnavailableException", 7, 2);
-            e.printStackTrace();
-        }
-        Logger.log("Main Frame created", 9, 4);
-        game = GameFactory.createSurvival(player);
-        score = new Score();
-        game.addPlayer(player);
-        player = game.getPlayerList().get(0);
-        int centerConstant = (int) Math
-                .round(0.5 * (Settings.getScreenWidth() - Settings
-                        .getLevelWidth()));
-        Settings.setLeftMargin(centerConstant);
-        GameScreen.setupScreen(game, score);
-        
-        this.startGame(name);
-        
-        LogSettings.setActiveLog(true);
-    }
 
     /**
      * Setup the beginscreen and handels the actual game.
@@ -118,6 +85,7 @@ public class SurvivalDriver extends Driver {
             curLevel = game.getCurrentLevel();
         	
 	        game.moveEntities();
+	        game.update();
 	        collisions.allCollisions(game);
 	
 	        gameScreen.reload();
@@ -136,12 +104,13 @@ public class SurvivalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        driver = new SurvivalDriver(name);
+        driver = new SurvivalDriver();
         player = new Player(name, Settings.getPlayerSpawnPoint());
         game = GameFactory.createSurvival(player);
+        
         score = new Score();
         game.addPlayer(player);
-        player = game.getPlayerList().get(0);
+
         int centerConstant = (int) Math
                 .round(0.5 * (Settings.getScreenWidth() - Settings
                         .getLevelWidth()));
@@ -149,10 +118,14 @@ public class SurvivalDriver extends Driver {
     }
     
     /**
+<<<<<<< HEAD
+     * Initialise the driver.
+=======
      * initialize the game.
+>>>>>>> master
      */
-    public void initGame() {
-        try {
+    public void initDriver() {
+    	try {
             gameScreen = new GameScreen();
         } catch (UnsupportedAudioFileException e) {
             Logger.log("UnsupportedAudioFileException", 7, 2);
@@ -165,14 +138,10 @@ public class SurvivalDriver extends Driver {
             e.printStackTrace();
         }
         Logger.log("Main Frame created", 9, 4);
+        
+        GameScreen.setupScreen(game, score);
+        
+        
+        LogSettings.setActiveLog(true);
     }
-
-    /** 
-     * Method that should make a screen where the player can select different options.
-     */
-	@Override
-	public void startScreen() {
-		
-	}
-
 }

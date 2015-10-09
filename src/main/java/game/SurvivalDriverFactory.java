@@ -15,7 +15,7 @@ public class SurvivalDriverFactory extends DriverFactory {
 
     @Override
     public Driver buildDriver() {
-        return new SurvivalDriver("");
+        return new SurvivalDriver();
     }
 
 }

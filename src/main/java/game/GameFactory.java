@@ -17,8 +17,8 @@ public class GameFactory {
     public static SurvivalGame createSurvival(Player player1) {
         SurvivalGame game = new SurvivalGame();
         game.addPlayer(player1);
-        SurvivalLevelCreator.setPlayerList(game.getPlayerList());
-        game.addLevel(SurvivalLevelCreator.getLevel());
+        SurvivalLevelFactory sLevelFac = new SurvivalLevelFactory(game.getPlayerList());
+        game.addLevel(sLevelFac.getLevel());
         Logger.log("SurvivalGame game created", 7, 4);
         return game;
     }
@@ -31,11 +31,9 @@ public class GameFactory {
     public static NormalGame createSinglePlayer(Player player1) {
         NormalGame game = new NormalGame();
         game.addPlayer(player1);
-        NormalLevelCreator.setPlayerList(game.getPlayerList());
-        for (int i = 1; i < 9; i++) {
-            game.addLevel(NormalLevelCreator.getLevel(i));
-        }
-        Logger.log("Singleplayer game created", 7, 4);
+        NormalLevelFactory nLevelFac = new NormalLevelFactory(game.getPlayerList());
+        game.setLevelList(nLevelFac.getAllLevels());
+        Logger.log("NormalGame game created", 7, 4);
         return game;
     }
 
@@ -49,9 +47,8 @@ public class GameFactory {
         NormalGame game = new NormalGame();
         game.addPlayer(player1);
         game.addPlayer(player2);
-        NormalLevelCreator.setPlayerList(game.getPlayerList());
-     
-        game.addLevel(NormalLevelCreator.getLevel1());
+        NormalLevelFactory nLevelFac = new NormalLevelFactory(game.getPlayerList());
+        game.setLevelList(nLevelFac.getAllLevels());
         Logger.log("Multiplayer game created", 7, 4);
         return game;
     }

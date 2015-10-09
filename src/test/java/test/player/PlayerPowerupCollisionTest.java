@@ -42,7 +42,7 @@ public class PlayerPowerupCollisionTest {
         p = new ArrayList<Player>();
         p.add(player);
         l = new NormalLevel(p);
-        pow = new SpeedPowerup("speed", x, y, true);
+        pow = new SpeedPowerup(x, y);
         l.addPowerup(pow);
         this.expected = exp;
     }

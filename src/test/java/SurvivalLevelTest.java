@@ -27,12 +27,12 @@ public class SurvivalLevelTest {
 	
 	@Before
 	public void init() {
-		bubble = new Bubblex16(2,2,true,true);
+		bubble = new Bubblex16(2, 2, true, true);
 		p = new ArrayList<Player>();
 		l = new SurvivalLevel(p);
 		bubbleList = new ArrayList<Bubble>();
 		plist = new ArrayList<Powerup>();
-		powr = new SpeedPowerup("speed", 0,0, true);
+		powr = new SpeedPowerup(0, 0);
 		rand = new Random();
 	}
 

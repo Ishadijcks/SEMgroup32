@@ -379,4 +379,32 @@ public abstract class Bubble {
         return true;
     }
 
+	/**
+	 * @return the xCoord
+	 */
+	public double getxCoord() {
+		return xCoord;
+	}
+
+	/**
+	 * @param xCoord the xCoord to set
+	 */
+	public void setxCoord(double xCoord) {
+		this.xCoord = xCoord;
+	}
+
+	/**
+	 * @return the yCoord
+	 */
+	public double getyCoord() {
+		return yCoord;
+	}
+
+	/**
+	 * @param yCoord the yCoord to set
+	 */
+	public void setyCoord(double yCoord) {
+		this.yCoord = yCoord;
+	}
+
 }
