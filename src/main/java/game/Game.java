@@ -1,6 +1,7 @@
 package game;
 
 import game.log.Logger;
+import game.screens.GameScreen;
 
 import java.util.ArrayList;
 
@@ -18,7 +19,7 @@ public abstract class Game {
     protected boolean inProgress;
 
     /**
-     * Constructor that will initialise a player list.
+     * Constructor that will initialize a player list.
      */
     public Game() {
         this.inProgress = false;
@@ -36,7 +37,7 @@ public abstract class Game {
     }
 
     /**
-     * Sets the levelList.
+     * <<<<<<< HEAD ======= Sets the levelList.
      * 
      * @param levels
      *            List of all levels
@@ -160,6 +161,13 @@ public abstract class Game {
     public abstract void resetLevel();
 
     /**
+     * Ends the game and disposes the screen.
+     */
+    public void endGame() {
+
+    }
+
+    /**
      * Method to control losing a life.
      */
     public void loseLife() {
@@ -201,6 +209,11 @@ public abstract class Game {
      * Updates the state of a game.
      */
     public abstract void update();
+
+    /**
+     * Game is paused.
+     */
+    public abstract void pauseGame();
 
     /**
      * Checks if a game is won.

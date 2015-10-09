@@ -1,11 +1,16 @@
 package game.powerups;
 
+import java.net.URL;
+
+import javax.swing.ImageIcon;
+
 import game.Game;
+import game.screens.StartScreen;
 
 public class LifePowerup extends Powerup {
 
-	public LifePowerup(String name, int x, int y, boolean isNormalMode) {
-		super(name, x, y, isNormalMode);
+	public LifePowerup(int x, int y) {
+		super(x, y);
 	}
 
 	@Override
@@ -16,6 +21,17 @@ public class LifePowerup extends Powerup {
 	@Override
 	public void setGame(Game game) {
 		this.game = game;		
+	}
+
+	@Override
+	public ImageIcon getImageIcon() {
+		 URL location = StartScreen.class.getProtectionDomain().getCodeSource()
+		            .getLocation();
+		String imageLocation = location.getFile();
+		imageLocation = imageLocation.replace("%20", " ");
+		imageLocation = imageLocation.replace("target/classes/", "src/");
+        ImageIcon poweruplife = new ImageIcon(imageLocation + "main/Images/Powerups/pulife.png", "life");
+        return poweruplife;
 	}
 
 }

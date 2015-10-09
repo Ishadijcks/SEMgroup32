@@ -1,14 +1,18 @@
 package game.screens;
 
 import game.Driver;
+import game.NormalDriver;
 import game.Settings;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.net.URL;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -54,44 +58,31 @@ public class WinningScreen extends JFrame {
                 + "main/Images/winScreenBackground.png")));
 
         setLayout(null);
-
-        playAgainButton = new JButton("Play again");
-        playAgainButton.setBackground(Color.PINK);
-        playAgainButton.setForeground(Color.WHITE);
-        playAgainButton.setFont(new Font("Calibri", Font.BOLD, 30));
-        playAgainButton.setOpaque(true);
-        playAgainButton.setBounds(Settings.getScreenWidth() / 2 + 70, Settings.getScreenHeight() / 2 - 52, 350, 75);
-
+        
         stopButton = new JButton("Exit");
         stopButton.setBackground(Color.PINK);
         stopButton.setForeground(Color.WHITE);
         stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
         stopButton.setOpaque(true);
-        stopButton.setBounds(55, 350, 350, 75);
+        stopButton.setBounds(205, 350, 550, 75);
         
-
         dr = driver;
-
-        playAgainButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent playAgainGame) {
-                setVisible(false);
-                dr.setupGame();
-                dr.startGame(name);
-                dispose();
-            }
-        });
 
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
+                try {
+                    new StartScreen();
+                } catch (UnsupportedAudioFileException | IOException
+                        | LineUnavailableException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 dispose();
-                dr.setupGame();
             }
         });
 
-        setResizable(false);
-        
-        add(playAgainButton);
+
         add(stopButton);
         
         setSize(Settings.getScreenWidth() - 1, Settings.getScreenHeight() - 1);

@@ -9,6 +9,7 @@ import game.bubble.Bubblex16;
 import game.bubble.Bubblex32;
 import game.bubble.Bubblex64;
 import game.bubble.Bubblex8;
+import game.screens.PauseScreen;
 
 /**
  * Class that handles everything of one survival game.
@@ -29,6 +30,24 @@ public class SurvivalGame extends Game {
         super();
         lives = 1;
         startTime = (int) System.currentTimeMillis();
+    }
+    
+    /**
+     * Ends the game and disposes the screen.
+     */
+    @Override
+    public void endGame() {
+        this.setLives(0);
+        this.toggleProgress();
+    }
+    
+    /**
+     * Game is paused.
+     */
+    @Override
+    public void pauseGame() {
+        super.toggleProgress();
+        new PauseScreen(super.getPlayerList().get(0).getName(), this);
     }
     
     /**

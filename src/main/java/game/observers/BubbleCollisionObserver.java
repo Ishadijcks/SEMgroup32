@@ -31,7 +31,6 @@ public class BubbleCollisionObserver extends Observer {
 
         Settings.setDieThreads(true);
         game.resetLevel();
-        game.loseLife();
     }
 
 }

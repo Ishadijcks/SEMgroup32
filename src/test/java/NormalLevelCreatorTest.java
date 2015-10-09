@@ -26,7 +26,7 @@ public class NormalLevelCreatorTest {
 	
 	@Test
 	public void testGetLevelsAvailable() {
-		assertTrue(nFac.getLevelsAvailable() == 5);
+		assertTrue(nFac.getLevelsAvailable() == 10);
 	}
 
 }

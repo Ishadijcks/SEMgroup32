@@ -3,12 +3,12 @@ package game.screens;
 import game.Game;
 import game.Level;
 import game.MyKeyListener;
+import game.NormalLevel;
 import game.Player;
 import game.Score;
 import game.Settings;
 import game.wall.Wall;
 import game.bubble.Bubble;
-import game.log.LogSettings;
 import game.log.Logger;
 import game.powerups.Powerup;
 import game.wall.Wall;
@@ -158,18 +158,6 @@ public class GameScreen extends JPanel {
         frame.setVisible(false);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        try {
-            LogScreen logScreen = new LogScreen();
-            LogSettings.setLogScreen(true);
-            LogSettings.setLogscreen(logScreen);
-        } catch (UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -563,9 +551,11 @@ public class GameScreen extends JPanel {
             g2d.setColor(Color.BLACK);
 
             // Show current level number
+            if(curLevel instanceof NormalLevel){
+                NormalLevel curNormalLevel = (NormalLevel)curLevel;
             g2d.drawString("Level:", centerConstant, 45);
             g2d.setColor(dragonRed);
-            g2d.drawString(game.getCurrentLevelInt() + " ",
+            g2d.drawString(curNormalLevel.getLevelNumber() + " ",
                     centerConstant + 110, 45);
             g2d.setColor(Color.BLACK);
 
@@ -573,6 +563,7 @@ public class GameScreen extends JPanel {
             g2d.drawString(" " + (game.getCurrentLevelInt() + 1), 1350,
                     curLevel.getHeight() + 51);
             g2d.setColor(Color.BLACK);
+            }
         } catch (IndexOutOfBoundsException e) {
 
         }

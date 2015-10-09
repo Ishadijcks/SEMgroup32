@@ -1,11 +1,15 @@
 package game;
 
 import game.log.LogSettings;
+import game.wall.Wall;
 import game.log.Logger;
 import game.screens.GameScreen;
 import game.screens.LosingScreen;
 import game.screens.WinningScreen;
+
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
@@ -21,7 +25,6 @@ public class NormalDriver extends Driver {
     private static String name;
     private static NormalDriver driver;
     private static GameScreen gameScreen;
-
     private Collisions collisions;
 
     /**
@@ -82,41 +85,36 @@ public class NormalDriver extends Driver {
      * Method that will take care of everything that happens in a game session.
      */
     public void driverHeart() {
-        
-	    if (game.inProgress()) 	{
-	        curLevel = game.getCurrentLevel();
-	
-	        game.moveEntities();
-	        collisions.allCollisions(game);
-	
-	        gameScreen.reload();
-	        
-	        // It is important that the player moves after all the collisions
-	        // are checked. Since the collisions decide if the player can move
-	        // one step ahead or not. If the player moves first the collisions
-	        // detection will be too late.
-	        Player player1 = game.getPlayerList().get(0);
-	        player1.move();
-	
-	        if (curLevel.getBubbleList().size() == 0) {
-	            boolean once = true;
-	            if (once) {
-	                once = false;
-	                canDrawGame = false;
-	                gameScreen.levelWon();
-	            }
-	            game.gameWon();
-	        }
-	        checkGameLost();
-	        checkGameWon();
-	    }
+        if (game.inProgress()) {
+            curLevel = game.getCurrentLevel();
+
+            game.moveEntities();
+            collisions.allCollisions(game);
+
+            gameScreen.reload();
+
+            // It is important that the player moves after all the collisions
+            // are checked. Since the collisions decide if the player can move
+            // one step ahead or not. If the player moves first the collisions
+            // detection will be too late.
+            Player player1 = game.getPlayerList().get(0);
+            player1.move();
+
+            if (curLevel.getBubbleList().size() == 0) {
+                canDrawGame = false;
+                gameScreen.levelWon();
+                game.gameWon();
+            }
+            checkGameLost();
+            checkGameWon();
+        }
     }
     
     /**
      * Set up the game.
      */
     public void setupGame() {
-        Player player = new Player(name, 350);
+        Player player = new Player(name, Settings.getPlayerSpawnPoint());
         game = GameFactory.createSinglePlayer(player);
 
         score = new Score();
@@ -129,7 +127,7 @@ public class NormalDriver extends Driver {
     }
 
     /**
-     * Initialise the driver.
+     * Initialize the driver.
      */
     @Override
     public void initDriver() {
@@ -146,7 +144,6 @@ public class NormalDriver extends Driver {
             e.printStackTrace();
         }
         Logger.log("Main Frame created", 9, 4);
-
         GameScreen.setupScreen(game, score);
 
         LogSettings.setActiveLog(true);
