@@ -45,7 +45,7 @@ public class BubbleTest {
         assertTrue(bub.isDirectionH());
         
         for(int i = 0; i<6; i++){
-        bub.move();
+        	bub.move();
         }
         assertFalse(bub.isDirectionH());
       
@@ -56,7 +56,7 @@ public class BubbleTest {
         Bubble bub = new Bubblex8(Settings.getLeftMargin(), Settings.getTopMargin()+Settings.getLevelHeight()-5, true, true);
         assertTrue(bub.isDirectionV());
         for(int i = 0; i<100; i++){
-        bub.move();
+        	bub.move();
         }
         assertFalse(bub.isDirectionV());
       
@@ -68,7 +68,7 @@ public class BubbleTest {
 
         assertFalse(bub.isDirectionV());
         for(int i = 0; i<100; i++){
-        bub.move();
+        	bub.move();
         }
         assertTrue(bub.isDirectionV());
       
