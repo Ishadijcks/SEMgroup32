@@ -17,7 +17,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class PlayerPowerupCollisionTest {
+public abstract class PlayerPowerupCollisionParameterized {
 
 	@Parameters
     public static Collection<Object[]> data() {
@@ -37,7 +37,7 @@ public class PlayerPowerupCollisionTest {
     public ArrayList<Player> p;
     private boolean expected;
 
-    public PlayerPowerupCollisionTest(int x, int y, boolean exp) {
+    public PlayerPowerupCollisionParameterized(int x, int y, boolean exp) {
         player = new Player("Test", 100);
         p = new ArrayList<Player>();
         p.add(player);

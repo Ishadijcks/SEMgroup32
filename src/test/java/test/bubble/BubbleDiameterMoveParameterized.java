@@ -17,7 +17,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public class BubbleDiameterMoveTest {
+public abstract class BubbleDiameterMoveParameterized {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
@@ -30,7 +30,7 @@ public class BubbleDiameterMoveTest {
     private double expectedMove;
     private Bubble bubble;
 
-    public BubbleDiameterMoveTest(int diameter, Bubble bub, double expectedMove) {
+    public BubbleDiameterMoveParameterized(int diameter, Bubble bub, double expectedMove) {
         
         this.expectedMove = expectedMove;
         bubble = bub;
