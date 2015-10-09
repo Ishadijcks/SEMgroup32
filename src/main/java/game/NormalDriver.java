@@ -34,7 +34,6 @@ public class NormalDriver extends Driver {
      *            Name that the player entered
      */
     public NormalDriver() {
-    	super();
         this.collisions = new Collisions();
     }
 

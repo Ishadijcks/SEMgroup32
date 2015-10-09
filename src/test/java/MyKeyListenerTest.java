@@ -56,13 +56,6 @@ public class MyKeyListenerTest {
 	}
 	
 	@Test
-	public void testKeyPressedKeyEventLog() {
-		KeyEvent k = new KeyEvent(new JButton(), 0, 0, 0, 76);
-		NormalDriver.game.gameStart();
-		key.keyPressed(k);
-	}
-	
-	@Test
 	public void testKeyPressedKeyEventDefault() {
 		KeyEvent k = new KeyEvent(new JButton(), 0, 0, 0, 99);
 		NormalDriver.game.gameStart();
