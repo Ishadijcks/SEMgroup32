@@ -31,8 +31,8 @@ public class SpeedPowerup extends Powerup {
 		String imageLocation = location.getFile();
 		imageLocation = imageLocation.replace("%20", " ");
 		imageLocation = imageLocation.replace("target/classes/", "src/");
-		ImageIcon poweruplife = new ImageIcon(imageLocation + "main/Images/Powerups/puspeed.png", "speed");
-		return poweruplife;
+		ImageIcon powerupspeed = new ImageIcon(imageLocation + "main/Images/Powerups/puspeed.png", "speed");
+		return powerupspeed;
 	}
 
 }
