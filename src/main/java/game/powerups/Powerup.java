@@ -1,6 +1,7 @@
 package game.powerups;
 
 
+import game.Driver;
 import game.Game;
 import game.NormalDriver;
 import game.Settings;
@@ -18,7 +19,6 @@ import javax.swing.ImageIcon;
  * @author Boning
  */
 public abstract class Powerup {
-    String name;
     private int xCoord;
     private int yCoord;
     private Image image;
@@ -28,8 +28,6 @@ public abstract class Powerup {
     int width = Settings.getPowerupWidth();
     int height = Settings.getPowerupHeight();
     
-    private boolean normalMode;
-    
     int framesLeft = 10*Settings.getFps();
     
     /**
@@ -38,12 +36,10 @@ public abstract class Powerup {
      * @param xCoord
      * @param yCoord
      */
-    public Powerup(String name, int xCoord, int yCoord, boolean isNormalMode) {
+    public Powerup(int xCoord, int yCoord) {
         Logger.log("Powerup created", 6, 4);
-        this.name = name;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
-        normalMode = isNormalMode;
     }
     
     public abstract void executeEffect();
@@ -58,18 +54,17 @@ public abstract class Powerup {
 	public boolean equals(Object obj) {
 		if (obj instanceof Powerup) {
 			obj = (Powerup) obj;
-			if (((Powerup) obj).name.equals(this.name)) {
-				if (((Powerup) obj).xCoord == this.xCoord) {
-					if (((Powerup) obj).yCoord == this.yCoord) {
-						if (((Powerup) obj).width == this.width) {
-							if (((Powerup) obj).height == this.height) {
-								if (((Powerup) obj).framesLeft == this.framesLeft) {
-									return true;
-								}
+			if (((Powerup) obj).xCoord == this.xCoord) {
+				if (((Powerup) obj).yCoord == this.yCoord) {
+					if (((Powerup) obj).width == this.width) {
+						if (((Powerup) obj).height == this.height) {
+							if (((Powerup) obj).framesLeft == this.framesLeft) {
+								return true;
 							}
 						}
 					}
 				}
+				
 			}
 		}
 		return false;
@@ -80,20 +75,12 @@ public abstract class Powerup {
      * The powerup moves down till it hits the floor.
      */
     public void move() {
-        if (normalMode) {
-            if (yCoord <= NormalDriver.game.getCurrentLevel().getHeight() - (height - 1)) {
-                Logger.log("Powerup moved from " + xCoord + "," + yCoord + " to " + xCoord 
-                        + "," + (yCoord + Settings.getPowerupSpeed()), 6, 5, 10);
-                yCoord += Settings.getPowerupSpeed();
-            }
+        if (yCoord <= Driver.game.getCurrentLevel().getHeight() - (height - 1)) {
+            Logger.log("Powerup moved from " + xCoord + "," + yCoord + " to " + xCoord 
+                    + "," + (yCoord + Settings.getPowerupSpeed()), 6, 5, 10);
+            yCoord += Settings.getPowerupSpeed();
         }
-        else {
-            if (yCoord <= SurvivalDriver.game.getCurrentLevel().getHeight() - (height - 1)) {
-                Logger.log("Powerup moved from " + xCoord + "," + yCoord + " to " + xCoord
-                        + "," + (yCoord + Settings.getPowerupSpeed()), 6, 5, 10);
-                yCoord += Settings.getPowerupSpeed();
-            }
-        }
+        
 
     }
 
@@ -124,19 +111,6 @@ public abstract class Powerup {
      */
     public void resetFramesLeft() {
         framesLeft = 10 * Settings.getFps();
-    }
-    
-    /**
-     * Compare the names of the powerup to determine if they are the same sort.
-     * @param that given object that will be compared
-     * @return true if it is of the same type, false otherwise
-     */
-    public boolean samePowerup(Powerup that) {
-        if (getName().equals(that.getName())) {
-            return true;
-        }
-        
-        return false;
     }
     
     /**
@@ -188,18 +162,11 @@ public abstract class Powerup {
     }
     
     /**
-     * Get the name of the powerup.
-     * @return the name of the powerup
-     */
-    public String getName() {
-        return name;
-    }
-    
-    /**
      * Get the image of the powerup.
      * @return the image of the powerup
      */
-    public ImageIcon getImageIcon() {
+    public abstract ImageIcon getImageIcon();
+    /*public ImageIcon getImageIcon() {
         URL location = StartScreen.class.getProtectionDomain().getCodeSource()
                 .getLocation();
         String imageLocation = location.getFile();
@@ -219,7 +186,7 @@ public abstract class Powerup {
         }
         return null;
         
-    }
+    }*/
 
 	/**
 	 * @param x the x to set

@@ -15,9 +15,9 @@ public class DriverTest {
 	
 	@Before
 	public void init(){
-		driver = new NormalDriver(null);
-		driver.initGame();
+		driver = new NormalDriver();
 		driver.setupGame();
+		driver.initDriver();
 	}
 
 	@Test

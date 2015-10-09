@@ -3,6 +3,7 @@ package game.observers;
 import java.util.ArrayList;
 
 import game.Collisions;
+import game.Driver;
 import game.Game;
 import game.Level;
 import game.NormalDriver;
@@ -40,7 +41,7 @@ public class RopeCollisionObserver extends Observer {
         int bubblePosX = bubble.getX();
         int bubblePosY = bubble.getY();
 
-        NormalDriver.score.addScore(bubble.getScoreWorth());
+        Driver.score.addScore(bubble.getScoreWorth());
         bubbleList.addAll(bubble.destroyBubble(bubblePosX, bubblePosY));
         bubbleList.remove(bubble);
 

@@ -25,12 +25,19 @@ public class Rope {
         this.xCoord = xCoord;
         this.yCoord = yCoord;
     }
+    
+    public boolean isAtTop(){
+    	 if (yCoord <= Settings.getTopMargin() - 2) {
+    		 return true;
+    	 }
+    	 return false;
+    }
 
     /**
      * The rope moves up and gets destroyed when it hits the roof.
      */
     public void move() {
-        if (yCoord <= Settings.getTopMargin() - 2) {
+        if (isAtTop()) {
             Driver.game.getCurrentLevel()
                      .setRope(null);
             Logger.log("Rope hit the roof", 5, 4);

@@ -14,7 +14,7 @@ public class NormalDriverFactory extends DriverFactory {
 	
 	@Override
 	public Driver buildDriver() {
-		return new NormalDriver("");
+		return new NormalDriver();
 	}
 
 }

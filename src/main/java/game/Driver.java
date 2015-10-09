@@ -16,13 +16,7 @@ public abstract class Driver {
     protected Collisions collisions;
     public static Game game;
 
-    /**
-     * Method that should make a screen where the player can select different
-     * options.
-     */
-    public abstract void startScreen();
-
-    /**
+    /** 
      * Method to start the game.
      * 
      * @param name
@@ -36,11 +30,6 @@ public abstract class Driver {
      * @param startingLevel begin level number
      */
     public abstract void setupGame();
-
-    /**
-     * Initialise the game.
-     */
-    public abstract void initGame();
 
     /**
      * Initialise the driver.

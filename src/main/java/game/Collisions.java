@@ -155,7 +155,6 @@ public class Collisions implements Observable {
                     && player1.getCollisionY() <= (powerup.getY() + powerup
                             .getHeight())
                     && (player1.getY() + player1.getHeight()) >= powerup.getY()) {
-
                 Logger.log("Player collided with a powerup", 8, 4);
                 powerupColObserver.update(powerup, player1, game);
 

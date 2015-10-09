@@ -45,10 +45,10 @@ public class RopeBubbleCollisionTest {
         l.setRope(r);
         l.addBubble(bubble);
         this.expected = exp;
-        NormalDriver nd = new NormalDriver(null);
+        NormalDriver nd = new NormalDriver();
         nd.startGame("Isha");
         nd.setupGame();
-        nd.initGame();
+        nd.initDriver();
     }
 
     @Test

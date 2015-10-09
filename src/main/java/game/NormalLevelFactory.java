@@ -16,10 +16,26 @@ import java.util.ArrayList;
  * 
  * @author Boning
  */
-public class NormalLevelCreator {
+public class NormalLevelFactory {
 
     private static ArrayList<Player> playerList;
-    private static int levelsAvailable = 5;
+    private static int levelsAvailable = 10;
+    
+    public NormalLevelFactory(ArrayList<Player> pList) {
+    	this.playerList = pList;
+    }
+    
+    /** Get an arraylist of all the levels that can be built
+     * within this class.
+     * @return ArrayList<Level>
+     */
+    public ArrayList<Level> getAllLevels() {
+    	ArrayList<Level> levelList = new ArrayList<Level>();
+    	for(int i = 1; i < levelsAvailable + 1; i++){
+    		levelList.add(getLevel(i));
+    	}
+    	return levelList;
+    }
 
     /**
      * Return the level.
@@ -28,7 +44,7 @@ public class NormalLevelCreator {
      *            number of the level that you want
      * @return Level that is selected
      */
-    public static Level getLevel(int level) {
+    public Level getLevel(int level) {
         switch (level) {
         case 1:
             return getLevel1();
@@ -62,7 +78,7 @@ public class NormalLevelCreator {
      * 
      * @return Level 1
      */
-    public static Level getLevel1() {
+    public Level getLevel1() {
         Bubble bubble1 = new Bubblex8(100, 100, false, false);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
@@ -79,7 +95,7 @@ public class NormalLevelCreator {
      * 
      * @return Level 2
      */
-    public static Level getLevel2() {
+    public Level getLevel2() {
         Bubble bubble1 = new Bubblex16(320, 250, false, true);
         Bubble bubble2 = new Bubblex32(720, 100, false, false);
         NormalLevel level = new NormalLevel(playerList);
@@ -102,7 +118,7 @@ public class NormalLevelCreator {
      * 
      * @return Level 3
      */
-    public static Level getLevel3() {
+    public Level getLevel3() {
         Bubble bubble1 = new Bubblex32(620, 300, false, true);
         Bubble bubble2 = new Bubblex64(120, 200, false, false);
         NormalLevel level = new NormalLevel(playerList);
@@ -117,7 +133,7 @@ public class NormalLevelCreator {
      * 
      * @return Level 4
      */
-    public static Level getLevel4() {
+    public Level getLevel4() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
@@ -130,7 +146,7 @@ public class NormalLevelCreator {
      * 
      * @return Level 5
      */
-    public static Level getLevel5() {
+    public Level getLevel5() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
@@ -224,6 +240,13 @@ public class NormalLevelCreator {
      */
     public static void setPlayerList(ArrayList<Player> pList) {
         playerList = pList;
+    }
+    
+    /** The total amount of playable levels
+     * @return int of the total amount of playable levels
+     */
+    public int getLevelsAvailable() {
+        return levelsAvailable;
     }
 
 }

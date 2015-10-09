@@ -158,12 +158,7 @@ public abstract class Game {
     /**
      * Reset the level if you lose a life.
      */
-    public void resetLevel() {
-        levelList.set(currentLevel - 1,
-                NormalLevelCreator.getLevel(currentLevel));
-        loseLife();
-
-    }
+    public abstract void resetLevel();
 
     /**
      * Ends the game and disposes the screen.

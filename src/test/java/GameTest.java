@@ -6,7 +6,7 @@ import static org.junit.Assert.fail;
 import game.NormalGame;
 import game.Level;
 import game.NormalLevel;
-import game.NormalLevelCreator;
+import game.NormalLevelFactory;
 import game.Player;
 import game.Score;
 
@@ -115,13 +115,12 @@ public class GameTest {
 	
 	@Test
 	public void testResetLevel() {
-		Level firstLevel = NormalLevelCreator.getLevel(1);
+		Level firstLevel = new NormalLevelFactory(game.getPlayerList()).getLevel(1);
 		game.addLevel(firstLevel);
 		assertTrue(game.getLives() == 5);
 		assertTrue(game.getCurrentLevel().equals(firstLevel));
 		game.resetLevel();
 		assertTrue(game.getCurrentLevel().equals(firstLevel));
-		assertTrue(game.getLives() == 4);
 	}
 	
 	@Test
