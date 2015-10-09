@@ -20,7 +20,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public abstract class BubbleDestroyParameterized {
+public abstract class BubbleDestroyTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
@@ -35,7 +35,7 @@ public abstract class BubbleDestroyParameterized {
     private Bubble bubble;
 
     
-    public BubbleDestroyParameterized(Bubble bub, ArrayList<Bubble> expectedList) {
+    public BubbleDestroyTest(Bubble bub, ArrayList<Bubble> expectedList) {
         this.expectedList = expectedList;
         bubble = bub;
     }
