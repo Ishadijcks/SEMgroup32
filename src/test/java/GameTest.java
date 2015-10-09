@@ -84,7 +84,7 @@ public class GameTest {
 		assertEquals(1, game.getCurrentLevelInt());
 		game.gameWon();
 		assertFalse(game.inProgress());
-		assertEquals(1, game.getCurrentLevelInt());
+		assertEquals(2, game.getCurrentLevelInt());
 	}
 
 
