@@ -22,12 +22,9 @@ public class NormalGame extends Game {
      * win the whole game.
      */
     public void gameWon() {
-        System.out.println("levelList.size()" + levelList.size());
         if (currentLevel <= levelList.size() + 2) {
             LevelCompletion.setLevelCompleted(currentLevel);
-            System.out.println("levelcomp" + currentLevel);
             currentLevel++;
-            System.out.println("currentLevel.int" + currentLevel);
             Logger.log("Level completed", 8, 4);
             inProgress = false;
         } else {

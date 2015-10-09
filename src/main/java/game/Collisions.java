@@ -16,6 +16,7 @@ import game.wall.Wall;
 
 /**
  * Handles all the collisions.
+ * 
  * @author Tim
  *
  */
@@ -34,7 +35,7 @@ public class Collisions implements Observable {
      * constructor.
      */
     public Collisions() {
-	}
+    }
 
     /**
      * All the possible collisions in the game.
@@ -42,20 +43,21 @@ public class Collisions implements Observable {
      * @param game
      *            current game.
      */
-    public void allCollisions(Game game){
-    	this.game = game;
-    	Level curLevel = game.getCurrentLevel();
-    	ArrayList<Player> playerList = game.getPlayerList();
-    	ArrayList<Bubble> bubbleList = curLevel.getBubbleList();
-    	ArrayList<Wall> wallList = curLevel.getWallList();
-    	ArrayList<Powerup> powerupList = curLevel.getPowerupList();
+    public void allCollisions(Game game) {
+        this.game = game;
+        Level curLevel = game.getCurrentLevel();
+        ArrayList<Player> playerList = game.getPlayerList();
+        ArrayList<Bubble> bubbleList = curLevel.getBubbleList();
+        ArrayList<Wall> wallList = curLevel.getWallList();
+        ArrayList<Powerup> powerupList = curLevel.getPowerupList();
 
-    	if(curLevel.hasRope())
-    		checkCollisionRope(bubbleList, curLevel.getRope());
-    	checkCollisionPowerup(playerList, powerupList);
-    	checkCollisionPlayer(bubbleList, playerList);
-    	checkPlayerCollisionWall(wallList, playerList);
-    	checkBubbleCollisionWall(wallList, bubbleList);
+        if (curLevel.hasRope()) {
+            checkCollisionRope(bubbleList, curLevel.getRope());
+        }
+        checkCollisionPowerup(playerList, powerupList);
+        checkCollisionPlayer(bubbleList, playerList);
+        checkPlayerCollisionWall(wallList, playerList);
+        checkBubbleCollisionWall(wallList, bubbleList);
     }
 
     /**
@@ -69,10 +71,10 @@ public class Collisions implements Observable {
      */
     public boolean checkCollisionPlayer(ArrayList<Bubble> bubbleList,
             ArrayList<Player> playerList) {
-		
-		Player player = playerList.get(0);
-		
-		for(Bubble bubble : bubbleList){
+
+        Player player = playerList.get(0);
+
+        for (Bubble bubble : bubbleList) {
             if (player.getX() <= (bubble.getX() + bubble.getDiameter())
                     && (player.getCollisionX() + player.getWidth()) >= bubble
                             .getX()
@@ -85,7 +87,7 @@ public class Collisions implements Observable {
                     return true;
                 }
             }
-		}
+        }
         return false;
     }
 
@@ -99,22 +101,18 @@ public class Collisions implements Observable {
      * @return The index of the bubble will be returned, it will return -1 if
      *         there is no collision
      */
-    public boolean checkCollisionRope(ArrayList<Bubble> bubbleList,
-            Rope rope) {
-    	for(Bubble bubble : bubbleList){
-    		if (bubble.getX() <= rope.getX()) {
-                if (bubble.getX()
-                        + bubble.getDiameter() >= rope.getX()) {
-                    if (bubble.getY()
-                            + bubble.getDiameter() >= rope
-                                .getY()) {
+    public boolean checkCollisionRope(ArrayList<Bubble> bubbleList, Rope rope) {
+        for (Bubble bubble : bubbleList) {
+            if (bubble.getX() <= rope.getX()) {
+                if (bubble.getX() + bubble.getDiameter() >= rope.getX()) {
+                    if (bubble.getY() + bubble.getDiameter() >= rope.getY()) {
                         Logger.log("Rope collided with a bubble", 8, 4);
                         ropeColObserver.update(bubble, rope, game);
                         return true;
                     }
                 }
             }
-    	}
+        }
         return false;
     }
 
@@ -139,32 +137,34 @@ public class Collisions implements Observable {
         }
         return false;
     }
-    
+
     /**
      * Checks a collision between the player and a powerup.
-     * @param playerList
-     * @param powerupList
-     * @return
+     * 
+     * @param playerList all players
+     * @param powerupList all power ups
+     * @return boolean
      */
-    public boolean checkCollisionPowerup(ArrayList<Player> playerList, ArrayList<Powerup> powerupList) {
-	    Player player1 = playerList.get(0);
-	    for(Powerup powerup : powerupList){
-	    	if (player1.getCollisionX() <= (powerup.getX() + powerup.getWidth())
-	                && (player1.getCollisionX() + player1.getWidth()) >= powerup
-	                        .getX()
-	                && player1.getCollisionY() <= (powerup.getY() + powerup
-	                        .getHeight())
-	                && (player1.getY() + player1.getHeight()) >= powerup.getY()) {
-	
-	            Logger.log("Player collided with a powerup", 8, 4);
-	            powerupColObserver.update(powerup, player1, game);
-	
-	           return true;
-	        }
-	    }
-	    return false;
+    public boolean checkCollisionPowerup(ArrayList<Player> playerList,
+            ArrayList<Powerup> powerupList) {
+        Player player1 = playerList.get(0);
+        for (Powerup powerup : powerupList) {
+            if (player1.getCollisionX() <= (powerup.getX() + powerup.getWidth())
+                    && (player1.getCollisionX() + player1.getWidth()) >= powerup
+                            .getX()
+                    && player1.getCollisionY() <= (powerup.getY() + powerup
+                            .getHeight())
+                    && (player1.getY() + player1.getHeight()) >= powerup.getY()) {
+
+                Logger.log("Player collided with a powerup", 8, 4);
+                powerupColObserver.update(powerup, player1, game);
+
+                return true;
+            }
+        }
+        return false;
     }
-    
+
     /**
      * Checks the collisions between wall and bubble.
      * 

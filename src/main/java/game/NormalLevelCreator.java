@@ -7,7 +7,6 @@ import game.bubble.Bubblex64;
 import game.bubble.Bubblex8;
 import game.log.Logger;
 import game.wall.BubbleWall;
-import game.wall.DuoWall;
 import game.wall.PlayerWall;
 
 import java.util.ArrayList;
@@ -21,7 +20,6 @@ public class NormalLevelCreator {
 
     private static ArrayList<Player> playerList;
     private static int levelsAvailable = 5;
-    static Bubble bubble = new Bubblex8(100, 100, false, false);
 
     /**
      * Return the level.

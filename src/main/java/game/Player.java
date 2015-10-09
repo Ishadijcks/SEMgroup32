@@ -115,47 +115,6 @@ public class Player {
     }
 
     /**
-     * Checks collisions with the right side of walls.
-     * 
-     * @param wallList
-     *            List of walls that will be checked
-     * @return true if there is a collision, false otherwise
-     */
-    public boolean wallCollisionRight(ArrayList<Wall> wallList) {
-        for (int i = 0; i < wallList.size(); i++) {
-            Wall wall = wallList.get(i);
-            if (wall instanceof PlayerWall || wall instanceof DuoWall) {
-                if (xCoord + stepSize <= (wall.getxCoord() + wall.getWidth())
-                        && (xCoord + stepSize + width) >= wall.getxCoord()
-                        && wall.isActive()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Checks collisions with the left side of walls.
-     * 
-     * @param wallList
-     *            List of walls that will be checked
-     * @return true if there is a collision, false otherwise
-     */
-    public boolean wallCollisionLeft(ArrayList<Wall> wallList) {
-        for (int i = 0; i < wallList.size(); i++) {
-            Wall wall = wallList.get(i);
-            if (wall instanceof PlayerWall || wall instanceof DuoWall) {
-                if (xCoord - stepSize <= (wall.getxCoord() + wall.getWidth())
-                        && (xCoord - stepSize + width) >= wall.getxCoord()
-                        && wall.isActive()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    /**
      * Checks if the player has an ice rope.
      * 
      * @return true if it has, false otherwise

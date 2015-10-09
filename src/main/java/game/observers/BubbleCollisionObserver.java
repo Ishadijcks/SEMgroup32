@@ -30,7 +30,7 @@ public class BubbleCollisionObserver extends Observer {
         Player player = (Player) plyr;
 
         Settings.setDieThreads(true);
-        //game.resetLevel();
+        game.resetLevel();
     }
 
 }
