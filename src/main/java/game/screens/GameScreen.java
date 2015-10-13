@@ -82,8 +82,6 @@ public class GameScreen extends JPanel {
      */
     public GameScreen() {
         frame = new JFrame("Game Screen");
-        imageLocation = imageLocation.replace("%20", " ");
-        imageLocation = imageLocation.replace("target/classes/", "/");
         this.painter = new Painter(this, game, score);
     }
 

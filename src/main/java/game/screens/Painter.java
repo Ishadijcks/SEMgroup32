@@ -61,7 +61,9 @@ public class Painter{
     }
     public void paint(Graphics2D g2d) {
         try {
-            
+
+            imageLocation = imageLocation.replace("%20", " ");
+            imageLocation = imageLocation.replace("target/classes/", "/");
             iceRope = game.getPlayerList().get(0).hasIceRope();
 
             // TODO Split up in methods
