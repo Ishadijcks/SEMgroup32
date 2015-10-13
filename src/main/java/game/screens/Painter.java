@@ -13,9 +13,7 @@ import game.wall.Wall;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.Stroke;
 import java.net.URL;
 import java.util.Random;
@@ -24,7 +22,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Painter{
+/**
+ * Class that will paint everything in a game.
+ * @author Boning
+ *
+ */
+public class Painter {
     public static int totalFrames = 1;
     public static Game game;
     public static Score score;
@@ -50,28 +53,33 @@ public class Painter{
     private int centerConstant;
     private static Color bg = new Color(191, 191, 191);
     private static Player player;
-    private static JFrame frame;
-    private static GameScreen gameScreen;
     private static JPanel panel;
 
+    /**
+     * Constructor that will make a painter object.
+     * @param panel The panel where it will paint on
+     * @param gameInput The game that is currently being displayed
+     * @param scoreInput The current score of the player
+     */
     public Painter(JPanel panel, Game gameInput, Score scoreInput) {
         game = gameInput;
         score = scoreInput;
         this.panel = panel;
+        
+        centerConstant = Settings.getLeftMargin();
+        topMargin = Settings.getTopMargin();
+        
+        imageLocation = imageLocation.replace("%20", " ");
+        imageLocation = imageLocation.replace("target/classes/", "/");
+        iceRope = game.getPlayerList().get(0).hasIceRope();
     }
+    
+    /**
+     * Paint everything that has to be painted.
+     * @param g2d Graphics object that will help us paint
+     */
     public void paint(Graphics2D g2d) {
-        try {
             this.g2d = g2d;
-
-            imageLocation = imageLocation.replace("%20", " ");
-            imageLocation = imageLocation.replace("target/classes/", "/");
-            iceRope = game.getPlayerList().get(0).hasIceRope();
-
-            // TODO Split up in methods
-            centerConstant = Settings.getLeftMargin();
-            topMargin = Settings.getTopMargin();
-
-            Level curLevel = game.getCurrentLevel();
             
             // Draw the board for each level
             drawLevel();
@@ -86,102 +94,116 @@ public class Painter{
             drawRopes();
 
             // Draw all the players
-            for (int i = 0; i < game.getPlayerList().size(); i++) {
-                player = game.getPlayerList().get(i);
+            drawPlayer();
 
-                g2d.setFont(new Font("Calibri", Font.ITALIC, 25));
-                g2d.setColor(dragonRed);
+            // Draw the powerups
+            drawPowerups();
 
-                if (player.getName() != null) {
-                    g2d.drawString(player.getName(), player.getX() - 25,
-                            player.getY() - 70 + topMargin);
-                } else {
-                    g2d.drawString("", player.getX() - 25, player.getY() - 70
-                            + topMargin);
-                }
+            // Show the lives of the player
+            drawLives();
 
-                g2d.setColor(Color.BLACK);
+            // Show the score of the player
+            drawScore();
 
-                // g2d.fillRect(player.getX(),
-                // player.getY() + 2,
-                // player.getWidth(), player.getHeight());
+            // Show current level number
+            drawLevelNumber();
+    }
+    
+    /**
+     * Draw the player.
+     */
+    public void drawPlayer() {
+        for (int i = 0; i < game.getPlayerList().size(); i++) {
+            player = game.getPlayerList().get(i);
 
-                // Get the images of the left flying or right flying dragon
-                ImageIcon dragonLeft = new ImageIcon(imageLocation
-                        + "src/main/Images/dragon/dragonL"
-                        + animationLeftCounter + ".png");
-                ImageIcon dragonRight = new ImageIcon(imageLocation
-                        + "src/main/Images/dragon/dragonR"
-                        + animationRightCounter + ".png");
-                // Get the current X position of the player.
-                int newX = player.getX();
+            g2d.setFont(new Font("Calibri", Font.ITALIC, 25));
+            g2d.setColor(dragonRed);
 
-                if (ropeDurationCounter < 40 || !(shootRope)) {
-                    // Check if the player is moving.
-                    if (oldX != newX) {
-                        dragonIsMoving = true;
-                    } else {
-                        dragonIsMoving = false;
-                    }
-
-                    // The dragon was last moving right and should be facing
-                    // right now.
-                    if (dragonIsRight && !(dragonIsMoving)) {
-                        ImageIcon dragonRightNormal = new ImageIcon(
-                                imageLocation
-                                        + "src/main/Images/dragon/dragonR" + 10
-                                        + ".png");
-                        g2d.drawImage(dragonRightNormal.getImage(),
-                                player.getX() - 50, player.getY(), panel);
-                    }
-
-                    // The dragon was last moving left and should be facing left
-                    // now.
-                    else if (!(dragonIsMoving)) {
-                        ImageIcon dragonLeftNormal = new ImageIcon(
-                                imageLocation
-                                        + "src/main/Images/dragon/dragonL" + 10
-                                        + ".png");
-                        g2d.drawImage(dragonLeftNormal.getImage(),
-                                player.getX() - 50, player.getY(), panel);
-                    }
-
-                    // If the dragon is going right, the animation for flying
-                    // right is enabled //curLevel.getHeight() -
-                    // player.getHeight() - 117 + topMargin
-                    if (oldX < newX) {
-                        g2d.drawImage(dragonRight.getImage(),
-                                player.getX() - 50, player.getY(), panel);
-                        dragonIsRight = true;
-                        if (slowDownCounter % 24 == 0) {
-                            animationRightCounter++;
-                        }
-                        if (animationRightCounter == 7) {
-                            animationRightCounter = 4;
-                        }
-                    }
-
-                    // If the dragon is going left, the animation for flying
-                    // left is enabled //
-                    else if (oldX > newX) {
-                        g2d.drawImage(dragonLeft.getImage(),
-                                player.getX() - 50, player.getY(), panel);
-                        dragonIsRight = false;
-                        if (slowDownCounter % 24 == 0) {
-                            animationLeftCounter++;
-                        }
-                        if (animationLeftCounter == 7) {
-                            animationLeftCounter = 4;
-                        }
-                    }
-                }
-                if (oldX == newX) {
-                    animationRightCounter = 1;
-                    animationLeftCounter = 1;
-                }
-
+            if (player.getName() != null) {
+                g2d.drawString(player.getName(), player.getX() - 25,
+                        player.getY() - 70 + topMargin);
+            } else {
+                g2d.drawString("", player.getX() - 25, player.getY() - 70
+                        + topMargin);
             }
 
+            g2d.setColor(Color.BLACK);
+
+            // Get the images of the left flying or right flying dragon
+            ImageIcon dragonLeft = new ImageIcon(imageLocation
+                    + "src/main/Images/dragon/dragonL"
+                    + animationLeftCounter + ".png");
+            ImageIcon dragonRight = new ImageIcon(imageLocation
+                    + "src/main/Images/dragon/dragonR"
+                    + animationRightCounter + ".png");
+            // Get the current X position of the player.
+            int newX = player.getX();
+
+            if (ropeDurationCounter < 40 || !(shootRope)) {
+                // Check if the player is moving.
+                if (oldX != newX) {
+                    dragonIsMoving = true;
+                } else {
+                    dragonIsMoving = false;
+                }
+
+                // The dragon was last moving right and should be facing
+                // right now.
+                if (dragonIsRight && !(dragonIsMoving)) {
+                    ImageIcon dragonRightNormal = new ImageIcon(
+                            imageLocation
+                                    + "src/main/Images/dragon/dragonR" + 10
+                                    + ".png");
+                    g2d.drawImage(dragonRightNormal.getImage(),
+                            player.getX() - 50, player.getY(), panel);
+                }
+
+                // The dragon was last moving left and should be facing left
+                // now.
+                else if (!(dragonIsMoving)) {
+                    ImageIcon dragonLeftNormal = new ImageIcon(
+                            imageLocation
+                                    + "src/main/Images/dragon/dragonL" + 10
+                                    + ".png");
+                    g2d.drawImage(dragonLeftNormal.getImage(),
+                            player.getX() - 50, player.getY(), panel);
+                }
+
+                // If the dragon is going right, the animation for flying
+                // right is enabled //curLevel.getHeight() -
+                // player.getHeight() - 117 + topMargin
+                if (oldX < newX) {
+                    g2d.drawImage(dragonRight.getImage(),
+                            player.getX() - 50, player.getY(), panel);
+                    dragonIsRight = true;
+                    if (slowDownCounter % 24 == 0) {
+                        animationRightCounter++;
+                    }
+                    if (animationRightCounter == 7) {
+                        animationRightCounter = 4;
+                    }
+                }
+
+                // If the dragon is going left, the animation for flying
+                // left is enabled //
+                else if (oldX > newX) {
+                    g2d.drawImage(dragonLeft.getImage(),
+                            player.getX() - 50, player.getY(), panel);
+                    dragonIsRight = false;
+                    if (slowDownCounter % 24 == 0) {
+                        animationLeftCounter++;
+                    }
+                    if (animationLeftCounter == 7) {
+                        animationLeftCounter = 4;
+                    }
+                }
+            }
+            
+            if (oldX == newX) {
+                animationRightCounter = 1;
+                animationLeftCounter = 1;
+            }
+            
             if (shootRope && ropeDurationCounter > 40) {
                 // Draw the dragon spitting fire
                 if (dragonIsRight) {
@@ -206,9 +228,8 @@ public class Painter{
                     }
                 }
             }
-
-            // Update the old x coordinate of the player with the current
-            // one.
+            
+            // Update the old x coordinate of the player with the current one.
             oldX = game.getPlayerList().get(0).getX();
 
             // When the dragon is in it's last state of the animation, the
@@ -219,7 +240,7 @@ public class Painter{
             if (animationRightCounter == 10) {
                 animationRightCounter = 1;
             }
-            if (!curLevel.hasRope()) {
+            if (!game.getCurrentLevel().hasRope()) {
                 shootRope = false;
                 fireRightCounter = 1;
                 fireLeftCounter = 1;
@@ -229,59 +250,7 @@ public class Painter{
 
             slowDownCounter++;
 
-            // Draw the powerups
-            for (int i = 0; i < curLevel.getPowerupList().size(); i++) {
-                Powerup powerup = curLevel.getPowerupList().get(i);
-
-                ImageIcon powerupImage = powerup.getImageIcon();
-
-                if (powerupImage != null) {
-                    g2d.drawImage(powerupImage.getImage(), powerup.getX(),
-                            powerup.getY() + 13, panel);
-                }
-
-            }
-
-            Stroke normalStroke = new BasicStroke(1f);
-            g2d.setStroke(normalStroke);
-
-            // Show the lives of the player
-            g2d.setFont(new Font("Calibri", Font.BOLD, 40));
-            g2d.drawString("Lives: ", centerConstant, curLevel.getHeight() + 45
-                    + topMargin);
-            ImageIcon life = new ImageIcon(imageLocation
-                    + "src/main/Images/life.png");
-            for (int i = 0; i < game.getLives(); i++) {
-                g2d.drawImage(life.getImage(), centerConstant + 125 + 25 * i,
-                        curLevel.getHeight() + 16 + topMargin, panel);
-            }
-
-            // Show the score of the player
-            g2d.drawString("Score: ", centerConstant, curLevel.getHeight() + 91
-                    + topMargin);
-            g2d.setColor(dragonRed);
-            g2d.drawString("" + score.getScore(), centerConstant + 135,
-                    curLevel.getHeight() + 91 + topMargin);
-            g2d.setColor(Color.BLACK);
-
-            // Show current level number
-            if (curLevel instanceof NormalLevel) {
-                NormalLevel curNormalLevel = (NormalLevel) curLevel;
-                g2d.drawString("Level:", centerConstant, 45);
-                g2d.setColor(dragonRed);
-                g2d.drawString(curNormalLevel.getLevelNumber() + " ",
-                        centerConstant + 110, 45);
-                g2d.setColor(Color.BLACK);
-
-                g2d.setColor(dragonRed);
-                g2d.drawString(" " + (game.getCurrentLevelInt() + 1), 1350,
-                        curLevel.getHeight() + 51);
-                g2d.setColor(Color.BLACK);
-            }
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println(e);
         }
-
     }
     
     /**
@@ -503,6 +472,69 @@ public class Painter{
         g2d.setStroke(normalStroke);
     }
     
+    /**
+     * Draw all powerups.
+     */
+    public void drawPowerups() {
+        for (int i = 0; i < game.getCurrentLevel().getPowerupList().size(); i++) {
+            Powerup powerup = game.getCurrentLevel().getPowerupList().get(i);
+
+            ImageIcon powerupImage = powerup.getImageIcon();
+
+            if (powerupImage != null) {
+                g2d.drawImage(powerupImage.getImage(), powerup.getX(),
+                        powerup.getY() + 13, panel);
+            }
+
+        }
+        Stroke normalStroke = new BasicStroke(1f);
+        g2d.setStroke(normalStroke);
+    }
     
+    /**
+     * Draw lives of player.
+     */
+    public void drawLives() {
+        g2d.setFont(new Font("Calibri", Font.BOLD, 40));
+        g2d.drawString("Lives: ", centerConstant, game.getCurrentLevel().getHeight() + 45
+                + topMargin);
+        ImageIcon life = new ImageIcon(imageLocation
+                + "src/main/Images/life.png");
+        for (int i = 0; i < game.getLives(); i++) {
+            g2d.drawImage(life.getImage(), centerConstant + 125 + 25 * i,
+                    game.getCurrentLevel().getHeight() + 16 + topMargin, panel);
+        }
+    }
+    
+    /**
+     * Draw score of player.
+     */
+    public void drawScore() {
+        g2d.drawString("Score: ", centerConstant, game.getCurrentLevel().getHeight() + 91
+                + topMargin);
+        g2d.setColor(dragonRed);
+        g2d.drawString("" + score.getScore(), centerConstant + 135,
+                game.getCurrentLevel().getHeight() + 91 + topMargin);
+        g2d.setColor(Color.BLACK);
+    }
+    
+    /**
+     * Draw the levelnumber.
+     */
+    public void drawLevelNumber() {
+        if (game.getCurrentLevel() instanceof NormalLevel) {
+            NormalLevel curNormalLevel = (NormalLevel) game.getCurrentLevel();
+            g2d.drawString("Level:", centerConstant, 45);
+            g2d.setColor(dragonRed);
+            g2d.drawString(curNormalLevel.getLevelNumber() + " ",
+                    centerConstant + 110, 45);
+            g2d.setColor(Color.BLACK);
+
+            g2d.setColor(dragonRed);
+            g2d.drawString(" " + (game.getCurrentLevelInt() + 1), 1350,
+                    game.getCurrentLevel().getHeight() + 51);
+            g2d.setColor(Color.BLACK);
+        }
+    }
 
 }
