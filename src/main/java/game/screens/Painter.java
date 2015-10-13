@@ -54,14 +54,13 @@ public class Painter{
     private static GameScreen gameScreen;
     private static JPanel panel;
 
-    public Painter(JPanel panel) {
-        System.out.println("constructor called");
+    public Painter(JPanel panel, Game gameInput, Score scoreInput) {
+        game = gameInput;
+        score = scoreInput;
         this.panel = panel;
     }
     public void paint() {
-        System.out.println("paint called");
         try {
-            System.out.println("paint try");
             
             iceRope = game.getPlayerList().get(0).hasIceRope();
 
