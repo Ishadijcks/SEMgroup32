@@ -83,7 +83,6 @@ public class Player {
      * @param x new xcoord player
      */
     public void setXCoord(int x) {
-        System.out.println("xx..");
         xCoord = x;
     }
 

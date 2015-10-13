@@ -19,7 +19,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public abstract class BubbleDiameterColorParameterized {
+public class BubbleDiameterColorTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
@@ -31,7 +31,7 @@ public abstract class BubbleDiameterColorParameterized {
     private Bubble bubble;
 
     
-    public BubbleDiameterColorParameterized(int diameter, Bubble bub, Color expectedColor) {
+    public BubbleDiameterColorTest(int diameter, Bubble bub, Color expectedColor) {
         this.expectedColor = expectedColor;
         bubble = bub;
     }
