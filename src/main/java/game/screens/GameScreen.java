@@ -66,6 +66,7 @@ public class GameScreen extends JPanel {
     private static Color bg = new Color(191, 191, 191);
     private static Player player;
     private static JFrame frame;
+    private static Graphics2D g2d;
     private static GameScreen gameScreen;
     private static Painter painter;
 
@@ -165,8 +166,16 @@ public class GameScreen extends JPanel {
      */
     @Override
     public void paint(Graphics graph) {
+        
+        // Calculate the margin left to center the board
+        centerConstant = Settings.getLeftMargin();
+        topMargin = Settings.getTopMargin();
+        g2d = (Graphics2D) graph;
         super.paint(graph);
-        painter.paint();
+        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                RenderingHints.VALUE_ANTIALIAS_ON);
+        
+        painter.paint(g2d);
     }
 
 }

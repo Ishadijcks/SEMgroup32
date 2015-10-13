@@ -59,19 +59,14 @@ public class Painter{
         score = scoreInput;
         this.panel = panel;
     }
-    public void paint() {
+    public void paint(Graphics2D g2d) {
         try {
             
             iceRope = game.getPlayerList().get(0).hasIceRope();
 
-            // Calculate the margin left to center the board
+            // TODO Split up in methods
             centerConstant = Settings.getLeftMargin();
             topMargin = Settings.getTopMargin();
-            g2d = (Graphics2D) panel.getGraphics();
-            g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                    RenderingHints.VALUE_ANTIALIAS_ON);
-
-            // TODO Split up in methods
 
             // Draw the game board
             Level curLevel = game.getCurrentLevel();
