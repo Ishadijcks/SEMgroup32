@@ -4,12 +4,24 @@ import game.Settings;
 
 import java.util.Random;
 
+/**
+ * Class that creates bubbles.
+ * @author Boning
+ *
+ */
 public class BubbleFactory {
 
+    /**
+     * Constructor for the bubble class.
+     */
 	public BubbleFactory() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Get a random bubble on random coordinates.
+	 * @return Bubble that is created
+	 */
 	public Bubble getRandomPlacedBubble(){
         Random rand = new Random();
         int randX = rand.nextInt(((Settings.getLevelWidth() - 10) - 10) + 1) + 10; 
@@ -22,6 +34,10 @@ public class BubbleFactory {
 		
 	}
 	
+	/**
+	 * Get a random bubble without coordinates.
+	 * @return Bubble that is either 8, 16, 32, 64 or 128
+	 */
 	public Bubble getRandomBubble(){
 		Bubble bubble = null;
 		Random rand = new Random();
