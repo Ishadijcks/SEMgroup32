@@ -30,6 +30,7 @@ public class LevelOverviewScreen extends JFrame {
     static JLabel[] allLabels = new JLabel[500];
     JButton levelButton;
     JButton stopButton;
+    Font basicFont;
 
     /**
      * Constructor for the leaderboard screen class.
@@ -43,24 +44,12 @@ public class LevelOverviewScreen extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         setLayout(null);
+        basicFont = new Font("Calibri", Font.PLAIN, 30);
 
-        stopButton = new JButton("Exit");
-        stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
-        stopButton.setOpaque(true);
-        stopButton.setBounds(300, 700, 250, 50);
+        addStopButton();
 
-        stopButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent closeScreen) {
-                setVisible(false);
-                new StartScreen();
-                dispose();
-            }
-        });
-        add(stopButton);
-
-        Font font = new Font("Calibri", Font.PLAIN, 30);
         JLabel label = new JLabel("Select a already completed level to play:");
-        label.setFont(font);
+        label.setFont(basicFont);
         label.setSize(500, 50);
         label.setForeground(Color.BLACK);
         label.setLocation(35, 15);
@@ -97,13 +86,27 @@ public class LevelOverviewScreen extends JFrame {
             setVisible(false);
             dispose();
             DriverFactory dFactory = new NormalDriverFactory();
-            Driver d = dFactory.buildDriver();
-            d.setupGame();
-            d.initDriver();
-            d.startGame("");
-            d.game.setCurrentLevelInt(levelNumber);
-            MainRunner.setDriver(d);
+            Driver driver = dFactory.buildDriver();
+            driver.setupGame();
+            driver.initDriver();
+            driver.startGame("");
+            driver.game.setCurrentLevelInt(levelNumber);
+            MainRunner.setDriver(driver);
         }
     }
+    public void addStopButton(){
+        stopButton = new JButton("Exit");
+        stopButton.setFont(basicFont);
+        stopButton.setOpaque(true);
+        stopButton.setBounds(300, 700, 250, 50);
 
+        stopButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent closeScreen) {
+                setVisible(false);
+                new StartScreen();
+                dispose();
+            }
+        });
+        add(stopButton);
+    }
 }
