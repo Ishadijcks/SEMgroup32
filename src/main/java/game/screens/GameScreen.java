@@ -41,30 +41,11 @@ import javax.swing.JPanel;
  *
  */
 public class GameScreen extends JPanel {
-    public static int totalFrames = 1;
     public static Game game;
     public static Score score;
-    private int animationRightCounter = 1;
-    private int fireRightCounter = 1;
-    private int animationLeftCounter = 1;
-    private int fireLeftCounter = 1;
-    private int slowDownCounter = 100;
-    private int ropeDurationCounter = 0;
-    private int oldX;
-    private static boolean dragonIsRight = true;
     private static boolean canDrawGame = true;
-    private static boolean addOnce = false;
-    private boolean dragonIsMoving = false;
-    private boolean shootRope = false;
-    private static boolean iceRope = false;
-    private static URL location = StartScreen.class.getProtectionDomain()
-            .getCodeSource().getLocation();
-    private static String imageLocation = location.getFile();
-    private static Color dragonRed = new Color(135, 15, 15);
     private int topMargin;
     private int centerConstant;
-    private static Color bg = new Color(191, 191, 191);
-    private static Player player;
     private static JFrame frame;
     private static Graphics2D g2d;
     private static GameScreen gameScreen;
