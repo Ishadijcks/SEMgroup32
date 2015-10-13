@@ -22,7 +22,7 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class BubbleDestroyTest {
     @Parameters
-    public static Collection<Object[]> data() {
+    public Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
                 { new Bubblex8(100,100,false,false), new ArrayList<Bubble>() }, 
                 { new Bubblex16(100,100,false,false), new ArrayList<Bubble>(Arrays.asList(new Bubblex8(100,100,false,false), new Bubblex8(100,100,true,false))) }, 
