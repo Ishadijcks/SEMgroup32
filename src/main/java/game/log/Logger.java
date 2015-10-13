@@ -92,7 +92,6 @@ public class Logger {
             ArrayList<Integer> category, int minSeverity) {
         LinkedList<LogObject> filteredList = new LinkedList<LogObject>();
         LogObject lo;
-            //System.out.println(logList);
         for (int i = 0; i < logList.size(); i++) {
             lo = logList.get(i);
             if (category.contains(lo.getCategory())
