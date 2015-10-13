@@ -71,7 +71,7 @@ public class Painter {
         
         imageLocation = imageLocation.replace("%20", " ");
         imageLocation = imageLocation.replace("target/classes/", "/");
-        iceRope = game.getPlayerList().get(0).hasIceRope();
+        
     }
     
     /**
@@ -81,175 +81,37 @@ public class Painter {
     public void paint(Graphics2D g2d) {
             this.g2d = g2d;
             
-            // Draw the board for each level
-            drawLevel();
+            drawLevel(); // Draw the board for each level
 
-            // Draw all the bubbles with a black border
-            drawBubbles();
+            drawBubbles(); // Draw the bubbles of the level with a black border
 
-            // Draw the walls
-            drawWalls();
+            drawWalls(); // Draw the walls of the level
 
-            // Draw the ropes
-            drawRopes();
+            drawRopes(); // Draw the rope of the player
 
-            // Draw all the players
-            drawPlayer();
+            drawPlayer(); // Draw the player
 
-            // Draw the powerups
-            drawPowerups();
+            drawPowerups(); // Draw the powerups
 
-            // Show the lives of the player
-            drawLives();
+            drawLives(); // Show the lives of the player
 
-            // Show the score of the player
-            drawScore();
+            drawScore(); // Show the score of the player
 
-            // Show current level number
-            drawLevelNumber();
+            drawLevelNumber(); // Show the number of the current level
     }
     
     /**
-     * Draw the player.
+     * Draw the board for all levels.
      */
-    public void drawPlayer() {
-        for (int i = 0; i < game.getPlayerList().size(); i++) {
-            player = game.getPlayerList().get(i);
-
-            g2d.setFont(new Font("Calibri", Font.ITALIC, 25));
-            g2d.setColor(dragonRed);
-
-            if (player.getName() != null) {
-                g2d.drawString(player.getName(), player.getX() - 25,
-                        player.getY() - 70 + topMargin);
-            } else {
-                g2d.drawString("", player.getX() - 25, player.getY() - 70
-                        + topMargin);
-            }
-
+    public void drawLevel() {
+        iceRope = game.getPlayerList().get(0).hasIceRope();
+        g2d.drawRect(centerConstant, 50, game.getCurrentLevel().getWidth(),
+                game.getCurrentLevel().getHeight());
+        if (canDrawGame) {
+            g2d.setColor(bg);
+            g2d.fillRect(centerConstant + 1, 51, game.getCurrentLevel().getWidth() - 1,
+                    game.getCurrentLevel().getHeight() - 1);
             g2d.setColor(Color.BLACK);
-
-            // Get the images of the left flying or right flying dragon
-            ImageIcon dragonLeft = new ImageIcon(imageLocation
-                    + "src/main/Images/dragon/dragonL"
-                    + animationLeftCounter + ".png");
-            ImageIcon dragonRight = new ImageIcon(imageLocation
-                    + "src/main/Images/dragon/dragonR"
-                    + animationRightCounter + ".png");
-            // Get the current X position of the player.
-            int newX = player.getX();
-
-            if (ropeDurationCounter < 40 || !(shootRope)) {
-                // Check if the player is moving.
-                if (oldX != newX) {
-                    dragonIsMoving = true;
-                } else {
-                    dragonIsMoving = false;
-                }
-
-                // The dragon was last moving right and should be facing
-                // right now.
-                if (dragonIsRight && !(dragonIsMoving)) {
-                    ImageIcon dragonRightNormal = new ImageIcon(
-                            imageLocation
-                                    + "src/main/Images/dragon/dragonR" + 10
-                                    + ".png");
-                    g2d.drawImage(dragonRightNormal.getImage(),
-                            player.getX() - 50, player.getY(), panel);
-                }
-
-                // The dragon was last moving left and should be facing left
-                // now.
-                else if (!(dragonIsMoving)) {
-                    ImageIcon dragonLeftNormal = new ImageIcon(
-                            imageLocation
-                                    + "src/main/Images/dragon/dragonL" + 10
-                                    + ".png");
-                    g2d.drawImage(dragonLeftNormal.getImage(),
-                            player.getX() - 50, player.getY(), panel);
-                }
-
-                // If the dragon is going right, the animation for flying
-                // right is enabled //curLevel.getHeight() -
-                // player.getHeight() - 117 + topMargin
-                if (oldX < newX) {
-                    g2d.drawImage(dragonRight.getImage(),
-                            player.getX() - 50, player.getY(), panel);
-                    dragonIsRight = true;
-                    if (slowDownCounter % 24 == 0) {
-                        animationRightCounter++;
-                    }
-                    if (animationRightCounter == 7) {
-                        animationRightCounter = 4;
-                    }
-                }
-
-                // If the dragon is going left, the animation for flying
-                // left is enabled //
-                else if (oldX > newX) {
-                    g2d.drawImage(dragonLeft.getImage(),
-                            player.getX() - 50, player.getY(), panel);
-                    dragonIsRight = false;
-                    if (slowDownCounter % 24 == 0) {
-                        animationLeftCounter++;
-                    }
-                    if (animationLeftCounter == 7) {
-                        animationLeftCounter = 4;
-                    }
-                }
-            }
-            
-            if (oldX == newX) {
-                animationRightCounter = 1;
-                animationLeftCounter = 1;
-            }
-            
-            if (shootRope && ropeDurationCounter > 40) {
-                // Draw the dragon spitting fire
-                if (dragonIsRight) {
-                    ImageIcon dragonRightFire = new ImageIcon(imageLocation
-                            + "src/main/Images/dragon/fireR" + fireRightCounter
-                            + ".png");
-                    g2d.drawImage(dragonRightFire.getImage(), game
-                            .getPlayerList().get(0).getX() - 50, player.getY(),
-                            panel);
-                    if (fireRightCounter < 3 && slowDownCounter % 8 == 0) {
-                        fireRightCounter++;
-                    }
-                } else {
-                    ImageIcon dragonLeftFire = new ImageIcon(imageLocation
-                            + "src/main/Images/dragon/fireL" + fireLeftCounter
-                            + ".png");
-                    g2d.drawImage(dragonLeftFire.getImage(), game
-                            .getPlayerList().get(0).getX() - 50, player.getY(),
-                            panel);
-                    if (fireLeftCounter < 3 && slowDownCounter % 8 == 0) {
-                        fireLeftCounter++;
-                    }
-                }
-            }
-            
-            // Update the old x coordinate of the player with the current one.
-            oldX = game.getPlayerList().get(0).getX();
-
-            // When the dragon is in it's last state of the animation, the
-            // animation will reset itself.
-            if (animationLeftCounter == 10) {
-                animationLeftCounter = 1;
-            }
-            if (animationRightCounter == 10) {
-                animationRightCounter = 1;
-            }
-            if (!game.getCurrentLevel().hasRope()) {
-                shootRope = false;
-                fireRightCounter = 1;
-                fireLeftCounter = 1;
-                addOnce = false;
-                ropeDurationCounter = 100;
-            }
-
-            slowDownCounter++;
-
         }
     }
     
@@ -263,7 +125,6 @@ public class Painter {
             g2d.fillOval(bubble.getX(), bubble.getY(),
                     bubble.getDiameter(), bubble.getDiameter());
             g2d.setColor(Color.black);
-
             g2d.drawOval(bubble.getX() - 1, bubble.getY() - 1,
                     bubble.getDiameter() + 2, bubble.getDiameter() + 2);
         }
@@ -286,28 +147,12 @@ public class Painter {
     }
     
     /**
-     * Draw the board for all levels.
-     */
-    public void drawLevel() {
-        g2d.drawRect(centerConstant, 50, game.getCurrentLevel().getWidth(),
-                game.getCurrentLevel().getHeight());
-        if (canDrawGame) {
-            g2d.setColor(bg);
-            g2d.fillRect(centerConstant + 1, 51, game.getCurrentLevel().getWidth() - 1,
-                    game.getCurrentLevel().getHeight() - 1);
-            g2d.setColor(Color.BLACK);
-        }
-    
-    }
-    
-    /**
      * Draw all the ropes.
      */
     public void drawRopes() {
         if (game.getCurrentLevel().hasRope() && !(iceRope)) {
             drawNormalRope();
         }
-
         if (game.getCurrentLevel().hasRope() && iceRope) {
             drawIceRope();
         }
@@ -320,6 +165,30 @@ public class Painter {
         shootRope = true;
         ropeDurationCounter--;
 
+        Color[] colors = getNormalRopeColors();
+        Stroke[] strokes = getBasicStrokes();
+
+        g2d.setColor(colors[3]);
+        g2d.setStroke(strokes[3]);
+
+        if (dragonIsRight) {
+            drawNormalRopeDragonRight();
+
+        } else {
+            drawNormalRopeDragonLeft();
+        }
+
+        // Set g2d back to normal settings
+        g2d.setColor(Color.BLACK);
+        Stroke normalStroke = new BasicStroke(1f);
+        g2d.setStroke(normalStroke);
+    }
+    
+    /**
+     * Gives 4 different colors for making the rope look like fire.
+     * @return array of 4 different colors
+     */
+    public Color[] getNormalRopeColors() {
         Random rand = new Random();
         int rInt127to153 = rand.nextInt((153 - 127) + 1) + 127;
         int rInt51to102 = rand.nextInt((102 - 51) + 1) + 51;
@@ -331,66 +200,68 @@ public class Painter {
         Color fire2 = new Color(255, rInt51to102, 0);
         Color fire3 = new Color(255, rInt69to240, 0);
         Color fire4 = new Color(250, rInt255to8, rInt6to11);
+        
+        Color[] res = { fire4, fire3, fire2, fire1 };
+        return res;
+    }
+    
+    /**
+     * Draw a normal rope while the dragon is facing to the right side.
+     */
+    public void drawNormalRopeDragonRight() {
+        Random rand = new Random();
+        Color[] colors = getNormalRopeColors();
+        Stroke[] strokes = getBasicStrokes();
+        
+        if (!(addOnce)) {
+            game.getCurrentLevel().getRope().addX(-6);
+            addOnce = true;
+        }
+        for (int i = 0; i < 4; i++) {
+            g2d.setColor(colors[i]);
+            g2d.setStroke(strokes[i]);
 
-        Stroke stroke1 = new BasicStroke(1f);
-        Stroke stroke2 = new BasicStroke(3f);
-        Stroke stroke3 = new BasicStroke(5f);
-        Stroke stroke4 = new BasicStroke(7f);
-
-        Color[] colors = { fire4, fire3, fire2, fire1 };
-        Stroke[] strokes = { stroke4, stroke3, stroke2, stroke1 };
-
-        g2d.setColor(fire4);
-        g2d.setStroke(stroke4);
-
-        if (dragonIsRight) {
-            if (!(addOnce)) {
-                game.getCurrentLevel().getRope().addX(-6);
-                addOnce = true;
-            }
-            for (int i = 0; i < 4; i++) {
-                g2d.setColor(colors[i]);
-                g2d.setStroke(strokes[i]);
-
-                int random = rand.nextInt((4 - 0) + 1) + 0;
-                if ((i == 0) && random == 2) {
-                    g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
-                            .getRope().getY(), game.getCurrentLevel().getRope()
-                            .getX(), game.getCurrentLevel().getHeight() + 43);
-                } else if (i == 1 || i == 2 || i == 3) {
-                    g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
-                            .getRope().getY(), game.getCurrentLevel().getRope()
-                            .getX(), game.getCurrentLevel().getHeight() + 43);
-                }
-
+            int random = rand.nextInt((4 - 0) + 1) + 0;
+            if ((i == 0) && random == 2) {
+                g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
+                        .getRope().getY(), game.getCurrentLevel().getRope()
+                        .getX(), game.getCurrentLevel().getHeight() + 43);
+            } else if (i == 1 || i == 2 || i == 3) {
+                g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
+                        .getRope().getY(), game.getCurrentLevel().getRope()
+                        .getX(), game.getCurrentLevel().getHeight() + 43);
             }
 
-        } else {
-            if (!(addOnce)) {
-                game.getCurrentLevel().getRope().addX(-32);
-                addOnce = true;
-            }
-            for (int i = 0; i < 4; i++) {
-                g2d.setColor(colors[i]);
-                g2d.setStroke(strokes[i]);
+        }
+    }
+    
+    /**
+     * Draw a normal rope while the dragon is facing to the left side.
+     */
+    public void drawNormalRopeDragonLeft() {
+        Random rand = new Random();
+        Color[] colors = getNormalRopeColors();
+        Stroke[] strokes = getBasicStrokes();
+        
+        if (!(addOnce)) {
+            game.getCurrentLevel().getRope().addX(-32);
+            addOnce = true;
+        }
+        for (int i = 0; i < 4; i++) {
+            g2d.setColor(colors[i]);
+            g2d.setStroke(strokes[i]);
 
-                int random = rand.nextInt((4 - 0) + 1) + 0;
-                if ((i == 0) && random == 2) {
-                    g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
-                            .getRope().getY(), game.getCurrentLevel().getRope()
-                            .getX(), game.getCurrentLevel().getHeight() + 43);
-                } else if (i == 1 || i == 2 || i == 3) {
-                    g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
-                            .getRope().getY(), game.getCurrentLevel().getRope()
-                            .getX(), game.getCurrentLevel().getHeight() + 43);
-                }
+            int random = rand.nextInt((4 - 0) + 1) + 0;
+            if ((i == 0) && random == 2) {
+                g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
+                        .getRope().getY(), game.getCurrentLevel().getRope()
+                        .getX(), game.getCurrentLevel().getHeight() + 43);
+            } else if (i == 1 || i == 2 || i == 3) {
+                g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
+                        .getRope().getY(), game.getCurrentLevel().getRope()
+                        .getX(), game.getCurrentLevel().getHeight() + 43);
             }
         }
-
-        // Set g2d back to normal settings
-        g2d.setColor(Color.BLACK);
-        Stroke normalStroke = new BasicStroke(1f);
-        g2d.setStroke(normalStroke);
     }
     
     /**
@@ -401,6 +272,31 @@ public class Painter {
         ropeDurationCounter--;
 
         Random rand = new Random();
+        Color[] colors = getIceRopeColors();
+        Stroke[] strokes = getBasicStrokes();
+
+        g2d.setColor(colors[3]);
+        g2d.setStroke(strokes[3]);
+
+        if (dragonIsRight) {
+            drawIceRopeDragonRight();
+
+        } else {
+            drawIceRopeDragonLeft();
+        }
+
+        // Set g2d back to normal settings
+        g2d.setColor(Color.BLACK);
+        Stroke normalStroke = new BasicStroke(1f);
+        g2d.setStroke(normalStroke);
+    }
+    
+    /**
+     * Gives 4 different colors for making the rope look like ice.
+     * @return array of 4 different colors
+     */
+    public Color[] getIceRopeColors() {
+        Random rand = new Random();
         int rInt219to255 = rand.nextInt((255 - 219) + 1) + 219;
         int rInt120to102 = rand.nextInt((120 - 102) + 1) + 102;
         int rInt70to133 = rand.nextInt((133 - 70) + 1) + 70;
@@ -410,66 +306,137 @@ public class Painter {
         Color fire2 = new Color(36, rInt120to102, 165);
         Color fire3 = new Color(29, rInt70to133, 209);
         Color fire4 = new Color(14, rInt6to33, 120);
+        
+        Color[] res = { fire4, fire3, fire2, fire1 };
+        return res;
+    }
+    
+    /**
+     * Draw an ice rope while the dragon is facing to the right side.
+     */
+    public void drawIceRopeDragonRight() {
+        Random rand = new Random();
+        Color[] colors = getIceRopeColors();
+        Stroke[] strokes = getBasicStrokes();
+        
+        if (!(addOnce)) {
+            game.getCurrentLevel().getRope().addX(-6);
+            addOnce = true;
+        }
+        for (int i = 0; i < 4; i++) {
+            g2d.setColor(colors[i]);
+            g2d.setStroke(strokes[i]);
 
+            int random = rand.nextInt((4 - 0) + 1) + 0;
+            if ((i == 0) && random == 2) {
+                g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
+                        .getRope().getY(), game.getCurrentLevel().getRope()
+                        .getX(), game.getCurrentLevel().getHeight() + 45);
+            } else if (i == 1 || i == 2 || i == 3) {
+                g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
+                        .getRope().getY(), game.getCurrentLevel().getRope()
+                        .getX(), game.getCurrentLevel().getHeight() + 45);
+            }
+
+        }
+    }
+    
+    /**
+     * Draw an ice rope while the dragon is facing to the left side.
+     */
+    public void drawIceRopeDragonLeft() {
+        Random rand = new Random();
+        Color[] colors = getIceRopeColors();
+        Stroke[] strokes = getBasicStrokes();
+        
+        if (!(addOnce)) {
+            game.getCurrentLevel().getRope().addX(-32);
+            addOnce = true;
+        }
+        for (int i = 0; i < 4; i++) {
+            g2d.setColor(colors[i]);
+            g2d.setStroke(strokes[i]);
+
+            int random = rand.nextInt((4 - 0) + 1) + 0;
+            if ((i == 0) && random == 2) {
+                g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
+                        .getRope().getY(), game.getCurrentLevel().getRope()
+                        .getX(), game.getCurrentLevel().getHeight() + 43);
+            } else if (i == 1 || i == 2 || i == 3) {
+                g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
+                        .getRope().getY(), game.getCurrentLevel().getRope()
+                        .getX(), game.getCurrentLevel().getHeight() + 43);
+            }
+        }
+    }
+    
+    /**
+     * Gives 4 different strokes that differ in thickness.
+     * @return array of 4 different strokes
+     */
+    public Stroke[] getBasicStrokes() {
         Stroke stroke1 = new BasicStroke(1f);
         Stroke stroke2 = new BasicStroke(3f);
         Stroke stroke3 = new BasicStroke(5f);
         Stroke stroke4 = new BasicStroke(7f);
+        
+        Stroke[] res = { stroke4, stroke3, stroke2, stroke1 };
+        return res;
+    }
+    
+    /**
+     * Draw the player.
+     */
+    public void drawPlayer() {
+            drawPlayerName();
+            
+            // Get the current X position of the player.
+            int newX = player.getX();
 
-        Color[] colors = { fire4, fire3, fire2, fire1 };
-        Stroke[] strokes = { stroke4, stroke3, stroke2, stroke1 };
-
-        g2d.setColor(fire4);
-        g2d.setStroke(stroke4);
-
-        if (dragonIsRight) {
-            if (!(addOnce)) {
-                game.getCurrentLevel().getRope().addX(-6);
-                addOnce = true;
-            }
-            for (int i = 0; i < 4; i++) {
-                g2d.setColor(colors[i]);
-                g2d.setStroke(strokes[i]);
-
-                int random = rand.nextInt((4 - 0) + 1) + 0;
-                if ((i == 0) && random == 2) {
-                    g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
-                            .getRope().getY(), game.getCurrentLevel().getRope()
-                            .getX(), game.getCurrentLevel().getHeight() + 45);
-                } else if (i == 1 || i == 2 || i == 3) {
-                    g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
-                            .getRope().getY(), game.getCurrentLevel().getRope()
-                            .getX(), game.getCurrentLevel().getHeight() + 45);
+            if (ropeDurationCounter < 40 || !(shootRope)) {
+                // Check if the player is moving.
+                if (oldX != newX) {
+                    dragonIsMoving = true;
+                } else {
+                    dragonIsMoving = false;
                 }
 
+                drawDragonStandingStill();
+                drawDragonFlying(newX);
             }
+            if (oldX == newX) {
+                animationRightCounter = 1;
+                animationLeftCounter = 1;
+            }
+            
+            drawDragonSpittingFire();
+            
+            drawPlayerUpdateVar();
+    }
+    
+    /**
+     * Update all variables that the draw player function requires. 
+     */
+    public void drawPlayerUpdateVar() {
+        // Update the old x coordinate of the player with the current one
+        oldX = game.getPlayerList().get(0).getX();
 
-        } else {
-            if (!(addOnce)) {
-                game.getCurrentLevel().getRope().addX(-32);
-                addOnce = true;
-            }
-            for (int i = 0; i < 4; i++) {
-                g2d.setColor(colors[i]);
-                g2d.setStroke(strokes[i]);
-
-                int random = rand.nextInt((4 - 0) + 1) + 0;
-                if ((i == 0) && random == 2) {
-                    g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
-                            .getRope().getY(), game.getCurrentLevel().getRope()
-                            .getX(), game.getCurrentLevel().getHeight() + 43);
-                } else if (i == 1 || i == 2 || i == 3) {
-                    g2d.drawLine(game.getCurrentLevel().getRope().getX(), game.getCurrentLevel()
-                            .getRope().getY(), game.getCurrentLevel().getRope()
-                            .getX(), game.getCurrentLevel().getHeight() + 43);
-                }
-            }
+        // When the dragon is in it's last state of the animation, the
+        // animation will reset itself.
+        if (animationLeftCounter == 10) {
+            animationLeftCounter = 1;
         }
-
-        // Set g2d back to normal settings
-        g2d.setColor(Color.BLACK);
-        Stroke normalStroke = new BasicStroke(1f);
-        g2d.setStroke(normalStroke);
+        if (animationRightCounter == 10) {
+            animationRightCounter = 1;
+        }
+        if (!game.getCurrentLevel().hasRope()) {
+            shootRope = false;
+            fireRightCounter = 1;
+            fireLeftCounter = 1;
+            addOnce = false;
+            ropeDurationCounter = 100;
+        }
+        slowDownCounter++;
     }
     
     /**
@@ -536,5 +503,131 @@ public class Painter {
             g2d.setColor(Color.BLACK);
         }
     }
+    
+    /**
+     * Draws the name of the player.
+     */
+    public void drawPlayerName() {
+            player = game.getPlayerList().get(0);
 
+            g2d.setFont(new Font("Calibri", Font.ITALIC, 25));
+            g2d.setColor(dragonRed);
+
+            if (player.getName() != null) {
+                g2d.drawString(player.getName(), player.getX() - 25,
+                        player.getY() - 70 + topMargin);
+            } else {
+                g2d.drawString("", player.getX() - 25, player.getY() - 70
+                        + topMargin);
+            }
+
+            g2d.setColor(Color.BLACK);
+    }
+    
+    /**
+     * Draw the dragon standing still and doing nothing.
+     */
+    public void drawDragonStandingStill() {
+        // The dragon was last moving right and should be facing
+        // right now.
+        if (dragonIsRight && !(dragonIsMoving)) {
+            ImageIcon dragonRightNormal = new ImageIcon(
+                    imageLocation
+                            + "src/main/Images/dragon/dragonR" + 10
+                            + ".png");
+            g2d.drawImage(dragonRightNormal.getImage(),
+                    player.getX() - 50, player.getY(), panel);
+        }
+        
+        // The dragon was last moving left and should be facing left
+        // now.
+        else if (!(dragonIsMoving)) {
+            ImageIcon dragonLeftNormal = new ImageIcon(
+                    imageLocation + "src/main/Images/dragon/dragonL"
+                            + 10 + ".png");
+            g2d.drawImage(dragonLeftNormal.getImage(),
+                    player.getX() - 50, player.getY(), panel);
+        }
+    }
+    
+    /**
+     * Draw the dragon flying either to the left or to the right.
+     */
+    public void drawDragonFlying(int newX) {
+        drawDragonFlyRight(newX);
+        drawDragonFlyLeft(newX);
+    }
+    
+    /**
+     * Draw the dragon flying to the right.
+     */
+    public void drawDragonFlyRight(int newX) {
+        ImageIcon dragonRight = new ImageIcon(imageLocation
+                + "src/main/Images/dragon/dragonR"
+                + animationRightCounter + ".png");
+        
+        // If the dragon is going right, the animation for flying is enabled
+        if (oldX < newX) {
+            g2d.drawImage(dragonRight.getImage(),
+                    player.getX() - 50, player.getY(), panel);
+            dragonIsRight = true;
+            if (slowDownCounter % 24 == 0) {
+                animationRightCounter++;
+            }
+            if (animationRightCounter == 7) {
+                animationRightCounter = 4;
+            }
+        }
+    }
+    
+    /**
+     * Draw the dragon flying to the left.
+     */
+    public void drawDragonFlyLeft(int newX) {
+        ImageIcon dragonLeft = new ImageIcon(imageLocation
+                + "src/main/Images/dragon/dragonL"
+                + animationLeftCounter + ".png");
+        
+        // If the dragon is going left, the animation for flying left is enabled
+        if (oldX > newX) {
+            g2d.drawImage(dragonLeft.getImage(),
+                    player.getX() - 50, player.getY(), panel);
+            dragonIsRight = false;
+            if (slowDownCounter % 24 == 0) {
+                animationLeftCounter++;
+            }
+            if (animationLeftCounter == 7) {
+                animationLeftCounter = 4;
+            }
+        }
+    }
+    
+    /**
+     * Draw the dragon spitting fire.
+     */
+    public void drawDragonSpittingFire() {
+        if (shootRope && ropeDurationCounter > 40) {
+            if (dragonIsRight) {
+                ImageIcon dragonRightFire = new ImageIcon(imageLocation
+                        + "src/main/Images/dragon/fireR" + fireRightCounter
+                        + ".png");
+                g2d.drawImage(dragonRightFire.getImage(), game
+                        .getPlayerList().get(0).getX() - 50, player.getY(),
+                        panel);
+                if (fireRightCounter < 3 && slowDownCounter % 8 == 0) {
+                    fireRightCounter++;
+                }
+            } else {
+                ImageIcon dragonLeftFire = new ImageIcon(imageLocation
+                        + "src/main/Images/dragon/fireL" + fireLeftCounter
+                        + ".png");
+                g2d.drawImage(dragonLeftFire.getImage(), game
+                        .getPlayerList().get(0).getX() - 50, player.getY(),
+                        panel);
+                if (fireLeftCounter < 3 && slowDownCounter % 8 == 0) {
+                    fireLeftCounter++;
+                }
+            }
+        }
+    } 
 }
