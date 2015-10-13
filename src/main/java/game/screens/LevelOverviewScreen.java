@@ -45,28 +45,9 @@ public class LevelOverviewScreen extends JFrame {
         setVisible(true);
         setLayout(null);
         basicFont = new Font("Calibri", Font.PLAIN, 30);
-
         addStopButton();
-
-        JLabel label = new JLabel("Select a already completed level to play:");
-        label.setFont(basicFont);
-        label.setSize(500, 50);
-        label.setForeground(Color.BLACK);
-        label.setLocation(35, 15);
-        add(label);
-
-        for (int i = 1; i < 7; i++) {
-            if (LevelCompletion.isLevelCompleted(i)) {
-                levelButton = new JButton("Level " + i);
-                levelButton.setBackground(Color.RED);
-                levelButton.setForeground(Color.WHITE);
-                levelButton.setFont(new Font("Calibri", Font.BOLD, 30));
-                levelButton.setOpaque(true);
-                levelButton.setBounds(20, -30 + i * 100, 300, 60);
-                add(levelButton);
-                levelButton.addActionListener(new ButtonActionListener(i));
-            }
-        }
+        addSimpleLabel();
+        addLevelButtons();
     }
 
     /**
@@ -94,7 +75,23 @@ public class LevelOverviewScreen extends JFrame {
             MainRunner.setDriver(driver);
         }
     }
-    public void addStopButton(){
+
+    /**
+     * Add the label to the top of the screen.
+     */
+    public void addSimpleLabel() {
+        JLabel label = new JLabel("Select a already completed level to play:");
+        label.setFont(basicFont);
+        label.setSize(500, 50);
+        label.setForeground(Color.BLACK);
+        label.setLocation(35, 15);
+        add(label);
+    }
+
+    /**
+     * Add the stop button to the screen.
+     */
+    public void addStopButton() {
         stopButton = new JButton("Exit");
         stopButton.setFont(basicFont);
         stopButton.setOpaque(true);
@@ -108,5 +105,23 @@ public class LevelOverviewScreen extends JFrame {
             }
         });
         add(stopButton);
+    }
+
+    /**
+     * Add all the level buttons of completed levels to the screen.
+     */
+    public void addLevelButtons() {
+        for (int i = 1; i < 7; i++) {
+            if (LevelCompletion.isLevelCompleted(i)) {
+                levelButton = new JButton("Level " + i);
+                levelButton.setBackground(Color.RED);
+                levelButton.setForeground(Color.WHITE);
+                levelButton.setFont(new Font("Calibri", Font.BOLD, 30));
+                levelButton.setOpaque(true);
+                levelButton.setBounds(20, -30 + i * 100, 300, 60);
+                add(levelButton);
+                levelButton.addActionListener(new ButtonActionListener(i));
+            }
+        }
     }
 }
