@@ -43,7 +43,7 @@ public class WinningScreen extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
         setVisible(true);
-        setBackgroundImage();
+        addBackgroundImage();
         addStopButton();
         setSize(Settings.getScreenWidth() - 1, Settings.getScreenHeight() - 1);
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
@@ -72,7 +72,7 @@ public class WinningScreen extends JFrame {
     /**
      * sets the background image of the screen.
      */
-    public void setBackgroundImage() {
+    public void addBackgroundImage() {
         URL location = StartScreen.class.getProtectionDomain().getCodeSource()
                 .getLocation();
         setVisible(true);

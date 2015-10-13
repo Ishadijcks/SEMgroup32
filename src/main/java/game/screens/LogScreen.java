@@ -31,7 +31,6 @@ public class LogScreen extends JFrame {
     JButton startButton;
     JButton button;
     private LogFilters filters;
-    private NormalDriver driver;
     private JList list;
     private Container pane;
     private ArrayList<JCheckBox> checkList;
@@ -53,8 +52,6 @@ public class LogScreen extends JFrame {
      */
     public LogScreen() throws UnsupportedAudioFileException, IOException,
             LineUnavailableException {
-
-        driver = new NormalDriver();
         filters = new LogFilters();
         boldFont = new Font("Serif", Font.BOLD, 18);
         basicFont = new Font("Serif", Font.PLAIN, 16);
