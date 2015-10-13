@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 
 /**
  * Class that will create a pausing screen.
+ * 
  * @author Boning
  *
  */
@@ -25,8 +26,11 @@ public class PauseScreen extends JFrame {
 
     /**
      * Constructor for the pausing screen class.
-     * @param game where the screen comes from
-     * @param name of the player
+     * 
+     * @param game
+     *            where the screen comes from
+     * @param name
+     *            of the player
      */
     public PauseScreen(final String name, Game game) {
 
@@ -35,22 +39,24 @@ public class PauseScreen extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
         setVisible(true);
         setLayout(null);
-        
+        addResumeButton(game);
+        addStopButton(game);
+        setSize(Settings.getPauseWidth() - 1, Settings.getPauseHeight() - 1);
+        setSize(Settings.getPauseWidth(), Settings.getPauseHeight());
+    }
+
+    /**
+     * Add resume button to screen.
+     * @param game for the onclick action
+     */
+    public void addResumeButton(Game game) {
         resumeButton = new JButton("Resume game");
         resumeButton.setForeground(Color.BLACK);
         resumeButton.setFont(new Font("Calibri", Font.BOLD, 30));
         resumeButton.setOpaque(true);
         resumeButton.setBounds(50, 90, 250, 50);
-
-        stopButton = new JButton("Exit");
-        resumeButton.setForeground(Color.BLACK);
-        stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
-        stopButton.setOpaque(true);
-        stopButton.setBounds(50, 150, 250, 50);
-
         resumeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent playAgainGame) {
                 setVisible(false);
@@ -58,7 +64,20 @@ public class PauseScreen extends JFrame {
                 dispose();
             }
         });
+        add(resumeButton);
+    }
 
+    /**
+     * add stop button to screen.
+     * @param game for the onclick action
+     */
+    public void addStopButton(Game game) {
+        stopButton = new JButton("Exit");
+        resumeButton.setForeground(Color.BLACK);
+        stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
+        stopButton.setOpaque(true);
+        stopButton.setBounds(50, 150, 250, 50);
+        add(stopButton);
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
@@ -66,14 +85,6 @@ public class PauseScreen extends JFrame {
                 dispose();
             }
         });
-
-        setResizable(false);
-        
-        add(resumeButton);
-        add(stopButton);
-        
-        setSize(Settings.getPauseWidth() - 1, Settings.getPauseHeight() - 1);
-        setSize(Settings.getPauseWidth(), Settings.getPauseHeight());
     }
 
 }

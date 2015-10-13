@@ -26,69 +26,61 @@ import javax.swing.JLabel;
  *
  */
 public class LosingScreen extends JFrame {
-
-    JButton tryAgainButton;
-    JButton settingsButton;
     JButton stopButton;
-    final private Driver dr;
-
-    private EndScore score;
-    private Leaderboard leaderBoard;
-
+    EndScore score;
     JFrame gameFrame;
 
     /**
      * Constructor for the losing screen class.
      * 
-     * @param driver
+     * @param driverInput
      *            where the screen comes from
      * @param score
      *            what the player got
      */
-    public LosingScreen(Driver driver, final EndScore score) {
-
+    public LosingScreen(Driver driverInput, final EndScore score) {
+        this.score = score;
         setTitle("You lost!");
         setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        this.gameFrame = gameFrame;
-        this.score = score;
-
         setVisible(true);
+        setLayout(null);
+        addBackgroundImage();
+        addStopButton();
+        addScoreLabel();
+        setResizable(false);
+        setSize(Settings.getScreenWidth() - 1, Settings.getScreenHeight() - 1);
+        setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
 
+    }
+
+    /**
+     * adds the background image to the screen.
+     */
+    public void addBackgroundImage() {
         URL location = StartScreen.class.getProtectionDomain().getCodeSource()
                 .getLocation();
-
-        setVisible(true);
-
         String imageLocation = location.getFile();
         imageLocation = imageLocation.replace("%20", " ");
         imageLocation = imageLocation.replace("target/classes/", "src/");
-
         setContentPane(new JLabel(new ImageIcon(imageLocation
                 + "main/Images/loseScreenBackground.png")));
 
-        setLayout(null);
+    }
 
+    /**
+     * Add the stop button to the screen.
+     */
+    public void addStopButton() {
         stopButton = new JButton("Exit");
-        stopButton.setBackground(Color.DARK_GRAY);
+        stopButton.setBackground(Color.PINK);
         stopButton.setForeground(Color.WHITE);
         stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
         stopButton.setOpaque(true);
         stopButton.setBounds(205, 350, 550, 75);
-
-        Font font = new Font("Calibri", Font.PLAIN, 55);
-        JLabel scoreLabel = new JLabel(score.getName() + "s score: "
-                + score.getScore());
-        scoreLabel.setFont(font);
-        scoreLabel.setForeground(Color.WHITE);
-        scoreLabel.setLocation(325, 10);
-        scoreLabel.setSize(700, 500);
-
-        dr = driver;
-
+        add(stopButton);
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
@@ -96,15 +88,19 @@ public class LosingScreen extends JFrame {
                 dispose();
             }
         });
-
-        setResizable(false);
-
-        add(stopButton);
-        add(scoreLabel);
-
-        setSize(Settings.getScreenWidth() - 1, Settings.getScreenHeight() - 1);
-        setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
-
     }
 
+    /**
+     * Add the score label to the screen.
+     */
+    public void addScoreLabel() {
+        Font font = new Font("Calibri", Font.PLAIN, 55);
+        JLabel scoreLabel = new JLabel(score.getName() + "s score: "
+                + score.getScore());
+        scoreLabel.setFont(font);
+        scoreLabel.setForeground(Color.WHITE);
+        scoreLabel.setLocation(325, 10);
+        scoreLabel.setSize(700, 500);
+        add(scoreLabel);
+    }
 }
