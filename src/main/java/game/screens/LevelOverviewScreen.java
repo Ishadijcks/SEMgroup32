@@ -52,12 +52,7 @@ public class LevelOverviewScreen extends JFrame {
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
-                try {
-                    new StartScreen();
-                } catch (UnsupportedAudioFileException | IOException
-                        | LineUnavailableException e) {
-                    e.printStackTrace();
-                }
+                new StartScreen();
                 dispose();
             }
         });

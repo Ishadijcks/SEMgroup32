@@ -74,8 +74,7 @@ public class GameScreen extends JPanel {
      * @throws IOException exception
      * @throws LineUnavailableException exception
      */
-    public GameScreen() throws UnsupportedAudioFileException, IOException,
-            LineUnavailableException {
+    public GameScreen(){
         frame = new JFrame("Game Screen");
         imageLocation = imageLocation.replace("%20", " ");
         imageLocation = imageLocation.replace("target/classes/", "/");
@@ -138,15 +137,7 @@ public class GameScreen extends JPanel {
     public static void setupScreen(Game gameInput, Score scoreInput) {
         game = gameInput;
         score = scoreInput;
-        try {
-            gameScreen = new GameScreen();
-        } catch (UnsupportedAudioFileException e1) {
-            e1.printStackTrace();
-        } catch (IOException e1) {
-            e1.printStackTrace();
-        } catch (LineUnavailableException e1) {
-            e1.printStackTrace();
-        }
+        gameScreen = new GameScreen();
         frame.addKeyListener(new MyKeyListener(gameInput));
         Logger.log("Added key listener", 9, 4);
         frame.add(gameScreen);

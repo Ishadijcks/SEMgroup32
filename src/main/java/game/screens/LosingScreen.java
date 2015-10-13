@@ -92,13 +92,7 @@ public class LosingScreen extends JFrame {
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
-                try {
-                    new StartScreen();
-                } catch (UnsupportedAudioFileException | IOException
-                        | LineUnavailableException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                new StartScreen();
                 dispose();
             }
         });

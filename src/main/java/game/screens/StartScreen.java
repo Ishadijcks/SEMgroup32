@@ -44,7 +44,7 @@ public class StartScreen extends JFrame {
      * @throws IOException exception
      * @throws LineUnavailableException exception
      */
-    public StartScreen() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+    public StartScreen(){
 
         setTitle("Start screen");
         setSize(700, 700);
