@@ -33,7 +33,7 @@ public final class Score {
      * @param add
      *            amount that will be increased
      */
-    public static void addScore(int add) {
+    public void addScore(int add) {
         score += add;
         Logger.log(score + " points gained. Total score is now " + score, 7, 5);
     }
@@ -43,14 +43,14 @@ public final class Score {
      * 
      * @return score of the player
      */
-    public static int getScore() {
+    public int getScore() {
         return score;
     }
 
     /**
      * Reset the score.
      */
-    public static void resetScore() {
+    public void resetScore() {
         score = 0;
     }
 }
