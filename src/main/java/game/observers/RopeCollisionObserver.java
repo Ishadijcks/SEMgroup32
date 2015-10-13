@@ -28,6 +28,7 @@ public class RopeCollisionObserver extends Observer {
      */
     public RopeCollisionObserver(Collisions collisions) {
         super(collisions);
+        collisions.registerObserver(this);
     }
 
     /**

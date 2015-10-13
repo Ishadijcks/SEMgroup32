@@ -23,6 +23,7 @@ import game.wall.Wall;
 public class Collisions implements Observable {
 
     private Game game;
+    private ArrayList<Observer> observers = new ArrayList<Observer>();
     private Observer ropeColObserver = new RopeCollisionObserver(this);
     private Observer powerupColObserver = new PowerupCollisionObserver(this);
     private Observer bubbleColObserver = new BubbleCollisionObserver(this);
@@ -189,13 +190,12 @@ public class Collisions implements Observable {
 
     @Override
     public void registerObserver(Observer ob) {
-        // TODO Auto-generated method stub
-
+    	observers.add(ob);
     }
 
     @Override
-    public void removeObserver() {
-        // TODO Auto-generated method stub
+    public void removeObserver(Observer ob) {
+        observers.remove(ob);
 
     }
 

@@ -18,7 +18,7 @@ public class WallPlayerCollisionObserver extends Observer {
      */
     public WallPlayerCollisionObserver(Collisions collisions) {
         super(collisions);
-        // TODO Auto-generated constructor stub
+        collisions.registerObserver(this);
     }
 
     /**

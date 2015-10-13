@@ -17,7 +17,7 @@ public class WallBubbleCollisionObserver extends Observer {
      */
     public WallBubbleCollisionObserver(Collisions collisions) {
         super(collisions);
-        // TODO Auto-generated constructor stub
+        collisions.registerObserver(this);
     }
 
     /**
