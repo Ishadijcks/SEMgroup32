@@ -72,8 +72,8 @@ public class NormalDriver extends Driver {
         if (livesLeft == 0 && game.inProgress()) {
             gameScreen.dispose();
             game.toggleProgress();
-            EndScore es = new EndScore(name, Score.getScore());
-            Score.resetScore();
+            EndScore es = new EndScore(name, score.getScore());
+            score.resetScore();
             new LosingScreen(driver, es);
             Logger.log("Game lost", 7, 4);
             return true;
