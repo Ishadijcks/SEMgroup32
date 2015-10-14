@@ -175,7 +175,6 @@ public class NormalLevelFactory {
      * @return Level 7
      */
     public static Level getLevel7() {
-        System.out.println("level 7");
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
         NormalLevel level = new NormalLevel(playerList);
         PlayerWall wall1 = new PlayerWall(600);

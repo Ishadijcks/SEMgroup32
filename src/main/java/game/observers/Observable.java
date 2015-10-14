@@ -19,7 +19,7 @@ public interface Observable {
     /**
      * Removed The observer.
      */
-    void removeObserver();
+    void removeObserver(Observer ob);
     
     /**
      * Notify all observers.

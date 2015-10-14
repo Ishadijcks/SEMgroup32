@@ -16,28 +16,30 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+/**
+ * DOC..
+ * @author flori
+ *
+ */
 @RunWith(Parameterized.class)
-public abstract class BubbleDiameterMoveParameterized {
+public class BubbleDiameterGTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
-                { 128, new Bubblex128(100,100,false,false), 1 }, { 8, new Bubblex8(100,100,false,false), 0.9 }, { 16, new Bubblex16(100,100,false,false), 1 }, 
-                { 32, new Bubblex32(100,100,false,false), 1.1 }, { 64, new Bubblex64(100,100,false,false), 1.3 } });
-    }
+                { 8, new Bubblex8(100,100,false,false), 1 }, { 16, new Bubblex16(100,100,false,false), 1.3 }, { 32, new Bubblex32(100,100,false,false),  1.2}, 
+                { 64, new Bubblex64(100,100,false,false), 1.1 }, { 128, new Bubblex128(100,100,false,false), 1} });
+        };
 
-
-    
-    private double expectedMove;
+    private double expectedG;
     private Bubble bubble;
-
-    public BubbleDiameterMoveParameterized(int diameter, Bubble bub, double expectedMove) {
-        
-        this.expectedMove = expectedMove;
+    
+    public BubbleDiameterGTest(int diameter, Bubble bub, double expectedG) {
+        this.expectedG = expectedG;
         bubble = bub;
     }
 
     @Test
     public void test() {
-        assertTrue(expectedMove == bubble.getSpeedX());
+          assertTrue(expectedG == bubble.getG());
     }
 }

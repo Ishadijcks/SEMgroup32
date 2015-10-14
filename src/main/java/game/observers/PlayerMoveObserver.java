@@ -16,7 +16,7 @@ public class PlayerMoveObserver extends Observer {
      */
     public PlayerMoveObserver(Collisions collisions) {
         super(collisions);
-        // TODO Auto-generated constructor stub
+        collisions.registerObserver(this);
     }
 
     /**

@@ -20,6 +20,7 @@ public class PowerupCollisionObserver extends Observer {
      */
     public PowerupCollisionObserver(Collisions collisions) {
         super(collisions);
+        collisions.registerObserver(this);
     }
 
     /**

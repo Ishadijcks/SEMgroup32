@@ -19,7 +19,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
-public abstract class BubbleDiameterMaxHeightParameterized {
+public class BubbleDiameterMaxHeightTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
@@ -32,7 +32,7 @@ public abstract class BubbleDiameterMaxHeightParameterized {
     private int expectedMaxHeight;
     private Bubble bubble;
     
-    public BubbleDiameterMaxHeightParameterized(int diameter, Bubble bub, int expectedMaxHeight) {
+    public BubbleDiameterMaxHeightTest(int diameter, Bubble bub, int expectedMaxHeight) {
         this.expectedMaxHeight = expectedMaxHeight;
         bubble = bub;
     }
