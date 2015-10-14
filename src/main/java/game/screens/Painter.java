@@ -31,18 +31,11 @@ public class Painter {
     public static int totalFrames = 1;
     public static Game game;
     public static Score score;
-    private int animationRightCounter = 1;
-    private int fireRightCounter = 1;
-    private int animationLeftCounter = 1;
-    private int fireLeftCounter = 1;
-    private int slowDownCounter = 100;
-    private int ropeDurationCounter = 0;
-    private int oldX;
-    private static boolean dragonIsRight = true;
+    public int ropeDurationCounter = 0;
+    public static boolean dragonIsRight = true;
     private static boolean canDrawGame = true;
-    private static boolean addOnce = false;
-    private boolean dragonIsMoving = false;
-    private boolean shootRope = false;
+    public static boolean addOnce = false;
+    public boolean shootRope = false;
     private static boolean iceRope = false;
     private static URL location = StartScreen.class.getProtectionDomain()
             .getCodeSource().getLocation();
@@ -52,8 +45,8 @@ public class Painter {
     private int topMargin;
     private int centerConstant;
     private static Color bg = new Color(191, 191, 191);
-    private static Player player;
     private static JPanel panel;
+    private static DrawPlayer playerDrawer; 
 
     /**
      * Constructor that will make a painter object.
@@ -71,7 +64,7 @@ public class Painter {
         
         imageLocation = imageLocation.replace("%20", " ");
         imageLocation = imageLocation.replace("target/classes/", "/");
-        
+        playerDrawer = new DrawPlayer(game, this.panel, this);
     }
     
     /**
@@ -155,6 +148,8 @@ public class Painter {
      */
     public void drawNormalRope() {
         shootRope = true;
+        playerDrawer.shootRope = true;
+        
         ropeDurationCounter--;
 
         Color[] colors = getNormalRopeColors();
@@ -261,6 +256,7 @@ public class Painter {
      */
     public void drawIceRope() {
         shootRope = true;
+        playerDrawer.shootRope = true;
         ropeDurationCounter--;
 
         Random rand = new Random();
@@ -380,55 +376,7 @@ public class Painter {
      * Draw the player.
      */
     public void drawPlayer() {
-            drawPlayerName();
-            
-            // Get the current X position of the player.
-            int newX = player.getX();
-
-            if (ropeDurationCounter < 40 || !(shootRope)) {
-                // Check if the player is moving.
-                if (oldX != newX) {
-                    dragonIsMoving = true;
-                } else {
-                    dragonIsMoving = false;
-                }
-
-                drawDragonStandingStill();
-                drawDragonFlying(newX);
-            }
-            if (oldX == newX) {
-                animationRightCounter = 1;
-                animationLeftCounter = 1;
-            }
-            
-            drawDragonSpittingFire();
-            
-            drawPlayerUpdateVar();
-    }
-    
-    /**
-     * Update all variables that the draw player function requires. 
-     */
-    public void drawPlayerUpdateVar() {
-        // Update the old x coordinate of the player with the current one
-        oldX = game.getPlayerList().get(0).getX();
-
-        // When the dragon is in it's last state of the animation, the
-        // animation will reset itself.
-        if (animationLeftCounter == 10) {
-            animationLeftCounter = 1;
-        }
-        if (animationRightCounter == 10) {
-            animationRightCounter = 1;
-        }
-        if (!game.getCurrentLevel().hasRope()) {
-            shootRope = false;
-            fireRightCounter = 1;
-            fireLeftCounter = 1;
-            addOnce = false;
-            ropeDurationCounter = 100;
-        }
-        slowDownCounter++;
+           playerDrawer.drawPlayer(this.g2d);
     }
     
     /**
@@ -496,130 +444,4 @@ public class Painter {
         }
     }
     
-    /**
-     * Draws the name of the player.
-     */
-    public void drawPlayerName() {
-            player = game.getPlayerList().get(0);
-
-            g2d.setFont(new Font("Calibri", Font.ITALIC, 25));
-            g2d.setColor(dragonRed);
-
-            if (player.getName() != null) {
-                g2d.drawString(player.getName(), player.getX() - 25,
-                        player.getY() - 70 + topMargin);
-            } else {
-                g2d.drawString("", player.getX() - 25, player.getY() - 70
-                        + topMargin);
-            }
-
-            g2d.setColor(Color.BLACK);
-    }
-    
-    /**
-     * Draw the dragon standing still and doing nothing.
-     */
-    public void drawDragonStandingStill() {
-        // The dragon was last moving right and should be facing
-        // right now.
-        if (dragonIsRight && !(dragonIsMoving)) {
-            ImageIcon dragonRightNormal = new ImageIcon(
-                    imageLocation
-                            + "src/main/Images/dragon/dragonR" + 10
-                            + ".png");
-            g2d.drawImage(dragonRightNormal.getImage(),
-                    player.getX() - 50, player.getY(), panel);
-        }
-        
-        // The dragon was last moving left and should be facing left
-        // now.
-        else if (!(dragonIsMoving)) {
-            ImageIcon dragonLeftNormal = new ImageIcon(
-                    imageLocation + "src/main/Images/dragon/dragonL"
-                            + 10 + ".png");
-            g2d.drawImage(dragonLeftNormal.getImage(),
-                    player.getX() - 50, player.getY(), panel);
-        }
-    }
-    
-    /**
-     * Draw the dragon flying either to the left or to the right.
-     */
-    public void drawDragonFlying(int newX) {
-        drawDragonFlyRight(newX);
-        drawDragonFlyLeft(newX);
-    }
-    
-    /**
-     * Draw the dragon flying to the right.
-     */
-    public void drawDragonFlyRight(int newX) {
-        ImageIcon dragonRight = new ImageIcon(imageLocation
-                + "src/main/Images/dragon/dragonR"
-                + animationRightCounter + ".png");
-        
-        // If the dragon is going right, the animation for flying is enabled
-        if (oldX < newX) {
-            g2d.drawImage(dragonRight.getImage(),
-                    player.getX() - 50, player.getY(), panel);
-            dragonIsRight = true;
-            if (slowDownCounter % 24 == 0) {
-                animationRightCounter++;
-            }
-            if (animationRightCounter == 7) {
-                animationRightCounter = 4;
-            }
-        }
-    }
-    
-    /**
-     * Draw the dragon flying to the left.
-     */
-    public void drawDragonFlyLeft(int newX) {
-        ImageIcon dragonLeft = new ImageIcon(imageLocation
-                + "src/main/Images/dragon/dragonL"
-                + animationLeftCounter + ".png");
-        
-        // If the dragon is going left, the animation for flying left is enabled
-        if (oldX > newX) {
-            g2d.drawImage(dragonLeft.getImage(),
-                    player.getX() - 50, player.getY(), panel);
-            dragonIsRight = false;
-            if (slowDownCounter % 24 == 0) {
-                animationLeftCounter++;
-            }
-            if (animationLeftCounter == 7) {
-                animationLeftCounter = 4;
-            }
-        }
-    }
-    
-    /**
-     * Draw the dragon spitting fire.
-     */
-    public void drawDragonSpittingFire() {
-        if (shootRope && ropeDurationCounter > 40) {
-            if (dragonIsRight) {
-                ImageIcon dragonRightFire = new ImageIcon(imageLocation
-                        + "src/main/Images/dragon/fireR" + fireRightCounter
-                        + ".png");
-                g2d.drawImage(dragonRightFire.getImage(), game
-                        .getPlayerList().get(0).getX() - 50, player.getY(),
-                        panel);
-                if (fireRightCounter < 3 && slowDownCounter % 8 == 0) {
-                    fireRightCounter++;
-                }
-            } else {
-                ImageIcon dragonLeftFire = new ImageIcon(imageLocation
-                        + "src/main/Images/dragon/fireL" + fireLeftCounter
-                        + ".png");
-                g2d.drawImage(dragonLeftFire.getImage(), game
-                        .getPlayerList().get(0).getX() - 50, player.getY(),
-                        panel);
-                if (fireLeftCounter < 3 && slowDownCounter % 8 == 0) {
-                    fireLeftCounter++;
-                }
-            }
-        }
-    } 
 }
