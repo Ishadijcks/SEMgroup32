@@ -22,6 +22,7 @@ public class BubbleCollisionObserver extends Observer {
      */
     public BubbleCollisionObserver(Collisions collisions) {
         super(collisions);
+        collisions.registerObserver(this);
     }
 
     /**
