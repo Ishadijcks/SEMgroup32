@@ -42,14 +42,8 @@ public class StartScreen extends JFrame {
      * Constructor of the start screen class.
      */
     public StartScreen() {
-
-        setTitle("Start screen");
         setSize(700, 700);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
-        setLayout(null);
-        setVisible(true);
+        ScreenBuilder.initScreen(this, "Start screen");
 
         addBackgroundImage();
         addTextField();

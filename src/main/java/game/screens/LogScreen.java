@@ -1,6 +1,5 @@
 package game.screens;
 
-import game.NormalDriver;
 import game.log.LogFilters;
 import game.log.LogObject;
 import game.log.Logger;

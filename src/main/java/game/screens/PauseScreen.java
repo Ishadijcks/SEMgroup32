@@ -33,14 +33,7 @@ public class PauseScreen extends JFrame {
      *            of the player
      */
     public PauseScreen(final String name, Game game) {
-
-        setTitle("Paused game");
-        setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-        setLayout(null);
+        ScreenBuilder.initScreen(this, "Paused game");
         addResumeButton(game);
         addStopButton(game);
         setSize(Settings.getPauseWidth() - 1, Settings.getPauseHeight() - 1);

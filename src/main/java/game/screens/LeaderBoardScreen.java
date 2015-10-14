@@ -25,12 +25,8 @@ public class LeaderBoardScreen extends JFrame {
      *            of which will be made a screen
      */
     public LeaderBoardScreen(Leaderboard leaderBoard) {
-        setTitle("Leaderboard");
+        ScreenBuilder.initScreen(this, "Leaderboard");
         setSize(450, 450);
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-        setLayout(null);
         this.leaderBoard = leaderBoard;
         addScoreList();
     }

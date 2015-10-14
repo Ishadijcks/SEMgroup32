@@ -34,13 +34,7 @@ public class EndScreen extends JFrame {
      *            of the button.
      */
     public EndScreen(Driver driverInput, String background, Color colorButton) {
-        setTitle("You won!");
-        setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
-        setResizable(false);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
-        setVisible(true);
+        ScreenBuilder.initScreen(this, "");
         addBackgroundImage(background);
         addStopButton(colorButton);
         setSize(Settings.getScreenWidth() - 1, Settings.getScreenHeight() - 1);
