@@ -12,6 +12,11 @@ import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+/**
+ * Draws the player in-game.
+ * @author Boning
+ *
+ */
 public class DrawPlayer {
 
     public static Game game;
@@ -37,6 +42,12 @@ public class DrawPlayer {
     private static JPanel panel;
     private static Painter painter;
     
+    /**
+     * Constructor for the draw player game.
+     * @param game in where the player will be drawn
+     * @param panel where everything will be drawn
+     * @param painter that will use this class
+     */
     public DrawPlayer(Game game, JPanel panel, Painter painter){
         this.game = game;
         this.panel = panel;
