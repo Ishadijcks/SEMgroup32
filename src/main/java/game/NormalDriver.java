@@ -56,7 +56,7 @@ public class NormalDriver extends Driver {
         if (game.getCurrentLevelInt() == game.getLevelList().size() - 1) {
             gameScreen.dispose();
             Logger.log("Frame destroyed", 9, 4);
-            new WinningScreen(driver, name);
+            new WinningScreen(driver);
             return true;
         }
         return false;
