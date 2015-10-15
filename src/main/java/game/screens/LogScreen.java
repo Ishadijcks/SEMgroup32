@@ -1,6 +1,5 @@
 package game.screens;
 
-import game.NormalDriver;
 import game.log.LogFilters;
 import game.log.LogObject;
 import game.log.Logger;
@@ -22,6 +21,7 @@ import javax.swing.*;
 
 /**
  * Class that will make a screen for the logger.
+ * 
  * @author Boning
  *
  */
@@ -30,7 +30,6 @@ public class LogScreen extends JFrame {
     JButton startButton;
     JButton button;
     private LogFilters filters;
-    private NormalDriver driver;
     private JList list;
     private Container pane;
     private ArrayList<JCheckBox> checkList;
@@ -42,57 +41,52 @@ public class LogScreen extends JFrame {
 
     /**
      * Constructor for the log screen class.
-     * @throws UnsupportedAudioFileException exception
-     * @throws IOException exception
-     * @throws LineUnavailableException exception
+     * 
+     * @throws UnsupportedAudioFileException
+     *             exception
+     * @throws IOException
+     *             exception
+     * @throws LineUnavailableException
+     *             exception
      */
     public LogScreen() throws UnsupportedAudioFileException, IOException,
             LineUnavailableException {
-
-        driver = new NormalDriver();
         filters = new LogFilters();
         boldFont = new Font("Serif", Font.BOLD, 18);
         basicFont = new Font("Serif", Font.PLAIN, 16);
-
         frame = new JFrame("Logging Screen");
-        frame.setSize(800, 800);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(true);
-
+        setSize(800, 800);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(true);
         // Title top the screen
         JLabel textLog = new JLabel("Log");
         textLog.setFont(boldFont);
-
         // Right panel with category and Severity
         JPanel rightPanel = makeRightPanel();
-
         // Center Panel for the log self
         mainPanel = makeMainPanel();
-
         // Add every panel to the main frame
-        frame.add(textLog, BorderLayout.PAGE_START);
-        frame.add(mainPanel, BorderLayout.CENTER);
-        frame.add(rightPanel, BorderLayout.LINE_END);
-        frame.setVisible(true);
+        add(textLog, BorderLayout.PAGE_START);
+        add(mainPanel, BorderLayout.CENTER);
+        add(rightPanel, BorderLayout.LINE_END);
+        setVisible(true);
 
     }
 
     /**
-	 * @return the frame
-	 */
-	public JFrame getFrame() {
-		return frame;
-	}
+     * @return the frame
+     */
+    public JFrame getFrame() {
+        return frame;
+    }
 
-	/**
+    /**
      * Reload the log list for new content.
      */
     public void reloadData() {
-
         frame.remove(mainPanel);
         mainPanel = makeMainPanel();
         frame.add(mainPanel);
-
         frame.invalidate();
         frame.validate();
         frame.repaint();
@@ -100,12 +94,12 @@ public class LogScreen extends JFrame {
 
     /**
      * Makes the main panel.
+     * 
      * @return main panel
      */
     private JPanel makeMainPanel() {
         JPanel mainPanel = new JPanel(new BorderLayout());
         JPanel mainInnerPanel = makeMainInnerPanel();
-
         JScrollPane scrollPane = new JScrollPane(mainInnerPanel);
         mainPanel.add(scrollPane);
         return mainPanel;
@@ -113,25 +107,20 @@ public class LogScreen extends JFrame {
 
     /**
      * Makes the right panel.
+     * 
      * @return right panel
      */
     private JPanel makeRightPanel() {
         JPanel rightPanel = new JPanel();
-        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-        JLabel textCategory = new JLabel("Category");
-        textCategory.setFont(boldFont);
-        rightPanel.add(textCategory);
-        ItemListener checkboxListener = checkboxListener();
-        checkList = new ArrayList<JCheckBox>();
-        String[] cat = LogObject.getCategoryNames();
-        for (int i = 0; i < cat.length; i++) {
-            JCheckBox textCat = new JCheckBox(cat[i]);
-            checkList.add(textCat);
-            textCat.setFont(basicFont);
-            rightPanel.add(textCat);
-            textCat.addItemListener(checkboxListener);
-        }
+        addCategory(rightPanel);    
+        addTextSeverity(rightPanel);
+        return rightPanel;
+    }
 
+    /**
+     * Add the text severity labels and buttons.
+     */
+    private void addTextSeverity(JPanel rightPanel) {
         JLabel textSeverity = new JLabel("Severity");
         textSeverity.setFont(boldFont);
         rightPanel.add(textSeverity);
@@ -146,11 +135,33 @@ public class LogScreen extends JFrame {
             textSev.addItemListener(radioListener);
             group.add(textSev);
         }
-        return rightPanel;
+    }
+
+    /**
+     * Add the category box with text and checkbuttons.
+     * 
+     * @param rightPanel
+     */
+    private void addCategory(JPanel rightPanel) {
+        rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
+        JLabel textCategory = new JLabel("Category");
+        textCategory.setFont(boldFont);
+        rightPanel.add(textCategory);
+        ItemListener checkboxListener = checkboxListener();
+        checkList = new ArrayList<JCheckBox>();
+        String[] cat = LogObject.getCategoryNames();
+        for (int i = 0; i < cat.length; i++) {
+            JCheckBox textCat = new JCheckBox(cat[i]);
+            checkList.add(textCat);
+            textCat.setFont(basicFont);
+            rightPanel.add(textCat);
+            textCat.addItemListener(checkboxListener);
+        }
     }
 
     /**
      * Checks if a checkbox is clicked or not.
+     * 
      * @return item listener
      */
     private ItemListener checkboxListener() {
@@ -173,6 +184,7 @@ public class LogScreen extends JFrame {
 
     /**
      * Checks if a radio button is clicked or not.
+     * 
      * @return item listener
      */
     private ItemListener radioButtonListener() {
@@ -187,8 +199,11 @@ public class LogScreen extends JFrame {
 
     /**
      * Makes the horizontal panel.
-     * @param severity how many activities the logger will show
-     * @param labelValues types of labels
+     * 
+     * @param severity
+     *            how many activities the logger will show
+     * @param labelValues
+     *            types of labels
      * @return horizontal panel
      */
     private JPanel makeHorizontalPanel(int severity, String... labelValues) {
@@ -222,6 +237,7 @@ public class LogScreen extends JFrame {
 
     /**
      * Makes the inner panel.
+     * 
      * @return inner panel
      */
     private JPanel makeMainInnerPanel() {
@@ -230,10 +246,12 @@ public class LogScreen extends JFrame {
         LinkedList<LogObject> ll = Logger.getFilteredLogs(category, severity);
         ArrayList<JPanel> jPanels = new ArrayList<JPanel>();
         for (int i = ll.size() - 1; i > -1; i--) {
-            jPanels.add(makeHorizontalPanel(ll.get(i).getSeverity(), ll.get(i).toStringShort()));
+            jPanels.add(makeHorizontalPanel(ll.get(i).getSeverity(), ll.get(i)
+                    .toStringShort()));
         }
         JPanel mainInnerPanel = new JPanel();
-        mainInnerPanel.setLayout(new BoxLayout(mainInnerPanel, BoxLayout.Y_AXIS));
+        mainInnerPanel
+                .setLayout(new BoxLayout(mainInnerPanel, BoxLayout.Y_AXIS));
         for (int i = 0; i < jPanels.size(); i++) {
             mainInnerPanel.add(jPanels.get(i));
         }

@@ -34,14 +34,7 @@ public class MainRunner {
      */
     public static void main(String[] args) {
         driverIsSet = false;
-
-        try {
-            new StartScreen();
-        } catch (UnsupportedAudioFileException | IOException
-                | LineUnavailableException e) {
-            e.printStackTrace();
-        }
-
+        new StartScreen();
         while (true) {
             try {
                 driver.driverHeart();
