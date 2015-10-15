@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 import game.bubble.Bubble;
 import game.log.Logger;
-import game.observers.BubbleCollisionObserver;
+import game.observers.PlayerController;
 import game.observers.Observable;
 import game.observers.Observer;
-import game.observers.PowerupCollisionObserver;
-import game.observers.RopeCollisionObserver;
-import game.observers.WallBubbleCollisionObserver;
-import game.observers.WallPlayerCollisionObserver;
+import game.observers.PowerupController;
+import game.observers.BubbleController;
+import game.observers.PlayerController;
 import game.powerups.Powerup;
 import game.wall.Wall;
 
@@ -24,13 +23,6 @@ public class Collisions implements Observable {
 
     private Game game;
     private ArrayList<Observer> observers = new ArrayList<Observer>();
-    private Observer ropeColObserver = new RopeCollisionObserver(this);
-    private Observer powerupColObserver = new PowerupCollisionObserver(this);
-    private Observer bubbleColObserver = new BubbleCollisionObserver(this);
-    private Observer wallBubbleColObserver = new WallBubbleCollisionObserver(
-            this);
-    private Observer wallPlayerColObserver = new WallPlayerCollisionObserver(
-            this);
 
     /**
      * constructor.
@@ -84,7 +76,7 @@ public class Collisions implements Observable {
                     && (player.getY() + player.getHeight()) >= bubble.getY()) {
                 if (player.getCollisionY() <= bubble.getY()) {
                     Logger.log("Player collided with a bubble", 8, 4);
-                    bubbleColObserver.update(bubble, player, game);
+                    notifyBubblePlayerEvent();
                     return true;
                 }
             }
@@ -108,7 +100,7 @@ public class Collisions implements Observable {
                 if (bubble.getX() + bubble.getDiameter() >= rope.getX()) {
                     if (bubble.getY() + bubble.getDiameter() >= rope.getY()) {
                         Logger.log("Rope collided with a bubble", 8, 4);
-                        ropeColObserver.update(bubble, rope, game);
+                        notifyRopeBubbleEvent(bubble);
                         return true;
                     }
                 }
@@ -132,7 +124,7 @@ public class Collisions implements Observable {
         for (Wall wall : wallList) {
             if (wall.expectPlayerCollision(player.getX(),
                     player.getMovingLeft())) {
-                wallPlayerColObserver.update(wall, player, game);
+                notifyWallPlayerEvent();
                 return true;
             }
         }
@@ -157,7 +149,7 @@ public class Collisions implements Observable {
                             .getHeight())
                     && (player1.getY() + player1.getHeight()) >= powerup.getY()) {
                 Logger.log("Player collided with a powerup", 8, 4);
-                powerupColObserver.update(powerup, player1, game);
+                notifyPowerupPlayerEvent(powerup);
 
                 return true;
             }
@@ -180,7 +172,7 @@ public class Collisions implements Observable {
             for (Wall wall : wallList) {
                 if (wall.expectBubbleCollision(bubble.getX(),
                         bubble.getDiameter())) {
-                    wallBubbleColObserver.update(wall, bubble, game);
+                    notifyWallBubbleEvent(bubble);
                     return true;
                 }
             }
@@ -204,4 +196,36 @@ public class Collisions implements Observable {
         // TODO Auto-generated method stub
 
     }
+    
+    public void notifyBubblePlayerEvent() {
+    	for(Observer o : observers) {
+    		o.bubblePlayerEvent();
+    	}
+    }
+    
+    public void notifyRopeBubbleEvent(Bubble bubble) {
+    	for(Observer o : observers) {
+    		o.ropeBubbleEvent(bubble);
+    	}
+    }
+    
+    public void notifyWallPlayerEvent() {
+    	for(Observer o : observers) {
+    		o.wallPlayerEvent();
+    	}
+    }
+    
+    public void notifyPowerupPlayerEvent(Powerup powerup) {
+    	for(Observer o : observers) {
+    		o.powerupPlayerEvent(powerup);
+    	}
+    }
+    
+    public void notifyWallBubbleEvent(Bubble bubble) {
+    	for(Observer o : observers) {
+    		o.wallBubbleEvent(bubble);
+    	}
+    }
+    
+    
 }

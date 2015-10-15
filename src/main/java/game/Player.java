@@ -26,6 +26,11 @@ public class Player {
     private int stepSize = Settings.getPlayerStepSize();
     private boolean movingLeft = false;
     private boolean movingRight = false;
+    
+    //THIS MIGHT BE MOVED TO PLAYERPOWERUP CLASS OR SOMETHING
+    private boolean hasIceRope = false;
+    private final int powerupStepSize = 5;
+    private final int normalStepSize = 2;
 
     /**
      * Constructor for a player.
@@ -119,7 +124,15 @@ public class Player {
      * @return true if it has, false otherwise
      */
     public boolean hasIceRope() {
-        return Settings.getPlayerHasIceRope();
+        return this.hasIceRope;
+    }
+    
+    /**
+     * Sets the hasicerope boolean
+     * @param hasIceRope
+     */
+    public void setIceRope(Boolean hasIceRope) {
+    	this.hasIceRope = hasIceRope;
     }
 
     /**
@@ -228,6 +241,17 @@ public class Player {
      */
     public void setStepSize(int stepSize) {
         this.stepSize = stepSize;
+    }
+    
+    /**
+     * @return the powerupstepsize of the player
+     */
+    public int getPlayerPowerupStepSize() {
+    	return this.powerupStepSize;
+    }
+    
+    public int getPlayerNormalStepSize() {
+    	return this.normalStepSize;
     }
 
 }
