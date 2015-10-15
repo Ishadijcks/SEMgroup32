@@ -1,6 +1,5 @@
 package game.observers;
 
-import game.Collisions;
 import game.Game;
 
 /**
