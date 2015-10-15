@@ -1,18 +1,17 @@
 package game.observers;
 
-import java.util.ArrayList;
-
 import game.Collisions;
 import game.Driver;
 import game.Game;
 import game.Level;
-import game.NormalDriver;
 import game.Rope;
-import game.Settings;
 import game.bubble.Bubble;
-import game.powerups.IcePowerup;
 import game.powerups.Powerup;
 import game.powerups.PowerupFactory;
+
+import java.util.ArrayList;
+
+import settings.powerupSettings;
 
 /**
  * The rope with bubble collision class.
@@ -54,7 +53,7 @@ public class RopeCollisionObserver extends Observer {
 
         currentLevel.setRope(null);
 
-        if (Settings.getPowerupChance() > Math.random() * 100) {
+        if (powerupSettings.getPowerupChance() > Math.random() * 100) {
             Powerup powerup = pfac.createRandomPowerup();
             powerup.setX(bubblePosX);
             powerup.setY(bubblePosY);

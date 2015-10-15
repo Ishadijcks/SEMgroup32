@@ -1,8 +1,8 @@
 package game.bubble;
 
-import game.Settings;
-
 import java.util.Random;
+
+import settings.screenSettings;
 
 /**
  * Class that creates bubbles.
@@ -24,8 +24,8 @@ public class BubbleFactory {
 	 */
 	public Bubble getRandomPlacedBubble(){
         Random rand = new Random();
-        int randX = rand.nextInt(((Settings.getLevelWidth() - 10) - 10) + 1) + 10; 
-        int randY = rand.nextInt(((Settings.getLevelHeight() - 200) - 10) + 1) + 10;
+        int randX = rand.nextInt(((screenSettings.getLevelWidth() - 10) - 10) + 1) + 10; 
+        int randY = rand.nextInt(((screenSettings.getLevelHeight() - 200) - 10) + 1) + 10;
         
         Bubble bubble = getRandomBubble();
         bubble.setxCoord(randX);

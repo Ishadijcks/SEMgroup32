@@ -5,10 +5,14 @@ import game.log.Logger;
 import game.screens.GameScreen;
 import game.screens.LeaderBoardScreen;
 import game.screens.LosingScreen;
+
 import java.io.IOException;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+
+import settings.playerSettings;
+import settings.screenSettings;
 
 /**
  * Class that executes a survival game.
@@ -107,15 +111,15 @@ public class SurvivalDriver extends Driver {
      */
     public void setupGame() {
         driver = new SurvivalDriver();
-        player = new Player(name, Settings.getPlayerSpawnPoint());
+        player = new Player(name, playerSettings.getPlayerSpawnPoint());
         game = GameFactory.createSurvival(player);
         score = Score.getInstance();
         game.addPlayer(player);
 
         int centerConstant = (int) Math
-                .round(0.5 * (Settings.getScreenWidth() - Settings
+                .round(0.5 * (screenSettings.getScreenWidth() - screenSettings
                         .getLevelWidth()));
-        Settings.setLeftMargin(centerConstant);
+        screenSettings.setLeftMargin(centerConstant);
     }
 
     /**

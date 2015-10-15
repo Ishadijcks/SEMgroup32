@@ -1,14 +1,17 @@
 package test.wall;
 
-import static org.junit.Assert.*;
-import game.Settings;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import game.wall.DuoWall;
 import game.wall.Wall;
+
+import java.awt.Color;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import java.awt.Color;
+import settings.wallSettings;
 
 
 public class WallTest {
@@ -36,12 +39,12 @@ public class WallTest {
 
 	@Test
 	public void testGetHeight() {
-		assertEquals(Settings.getWallHeight(), wall.getHeight());
+		assertEquals(wallSettings.getWallHeight(), wall.getHeight());
 	}
 
 	@Test
 	public void testGetWidth() {
-		assertEquals(Settings.getWallWidth(), wall.getWidth());
+		assertEquals(wallSettings.getWallWidth(), wall.getWidth());
 	}
 	
 	@Test

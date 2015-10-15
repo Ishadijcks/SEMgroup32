@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import settings.screenSettings;
 import game.log.LogSettings;
 import game.screens.StartScreen;
 
@@ -43,7 +44,7 @@ public class MainRunner {
 
             // 120 FPS
             try {
-                Thread.sleep(1000 / Settings.getFps());
+                Thread.sleep(1000 / screenSettings.getFps());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

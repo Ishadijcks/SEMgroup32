@@ -1,8 +1,8 @@
 package game.wall;
 
-import game.Settings;
-
 import java.awt.Color;
+
+import settings.playerSettings;
 
 /**
  * Wall class of a player wall.
@@ -21,8 +21,8 @@ public class PlayerWall extends Wall {
 	@Override
 	public boolean expectPlayerCollision(int xCoord, boolean movingLeft) {
 		int plyrXCoord = xCoord;
-		int plyrStepSize = Settings.getPlayerStepSize();
-		int plyrWidth = Settings.getPlayerWidth();
+		int plyrStepSize = playerSettings.getPlayerStepSize();
+		int plyrWidth = playerSettings.getPlayerWidth();
 		if(this.isActive())
 			if((plyrXCoord - plyrStepSize <= this.getxCoord() + this.getWidth()
 					&& plyrXCoord - plyrStepSize >= this.getxCoord() && movingLeft) 

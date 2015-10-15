@@ -1,7 +1,6 @@
 package test.bubble;
 
-import static org.junit.Assert.*;
-import game.Settings;
+import static org.junit.Assert.assertTrue;
 import game.bubble.Bubble;
 import game.bubble.Bubblex128;
 import game.bubble.Bubblex16;
@@ -18,12 +17,14 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+import settings.playerSettings;
+
 @RunWith(Parameterized.class)
 public class BubbleDiameterColorTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { 
-                { 8, new Bubblex8(100,100,false,false), Settings.getDragonRed() }, { 16, new Bubblex16(100,100,false,false), Color.BLACK }, { 32, new Bubblex32(100,100,false,false), Color.GREEN}, 
+                { 8, new Bubblex8(100,100,false,false), playerSettings.getDragonRed() }, { 16, new Bubblex16(100,100,false,false), Color.BLACK }, { 32, new Bubblex32(100,100,false,false), Color.GREEN}, 
                 { 64, new Bubblex64(100,100,false,false), Color.CYAN }, { 128, new Bubblex128(100,100,false,false), Color.PINK }});
     }
 
