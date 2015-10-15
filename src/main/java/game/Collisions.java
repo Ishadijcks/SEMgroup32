@@ -197,30 +197,53 @@ public class Collisions implements Observable {
 
     }
     
+    /**
+     * Notify the observers when a bubble collided
+     * with a player
+     */
     public void notifyBubblePlayerEvent() {
     	for(Observer o : observers) {
     		o.bubblePlayerEvent();
     	}
     }
     
+    /**
+     * Notify the observers when a bubble collided
+     * with a rope
+     * @param bubble that is part of the collision
+     */
     public void notifyRopeBubbleEvent(Bubble bubble) {
     	for(Observer o : observers) {
     		o.ropeBubbleEvent(bubble);
     	}
     }
     
+    /**
+     * Notify the observers when a player collides
+     * with a wall
+     */
     public void notifyWallPlayerEvent() {
     	for(Observer o : observers) {
     		o.wallPlayerEvent();
     	}
     }
     
+    /**
+     * Notify the observers when a player collides
+     * with a powerup
+     * @param powerup that is part of the collision
+     */
     public void notifyPowerupPlayerEvent(Powerup powerup) {
     	for(Observer o : observers) {
     		o.powerupPlayerEvent(powerup);
     	}
     }
     
+    /**
+     * Notify the observers when a bubble collides
+     * with a wall
+     * @param bubble that is part of the collision
+     */
     public void notifyWallBubbleEvent(Bubble bubble) {
     	for(Observer o : observers) {
     		o.wallBubbleEvent(bubble);
