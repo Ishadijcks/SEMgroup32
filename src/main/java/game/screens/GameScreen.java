@@ -1,38 +1,26 @@
 package game.screens;
 
 import game.Game;
-import game.Level;
 import game.MyKeyListener;
-import game.NormalLevel;
-import game.Player;
 import game.Score;
-import game.Settings;
-import game.wall.Wall;
-import game.bubble.Bubble;
 import game.log.Logger;
-import game.powerups.Powerup;
-import game.wall.Wall;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Stroke;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.net.URL;
-import java.util.Random;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import settings.screenSettings;
+
 
 /**
  * Class that will create everything on a screen for a game.
@@ -130,9 +118,9 @@ public class GameScreen extends JPanel {
         frame.addKeyListener(new MyKeyListener(gameInput));
         Logger.log("Added key listener", 9, 4);
         frame.add(gameScreen);
-        frame.setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
-        Logger.log("Screen size set to " + Settings.getScreenWidth() + " by "
-                + Settings.getScreenWidth(), 9, 4);
+        frame.setSize(screenSettings.getScreenWidth(), screenSettings.getScreenHeight());
+        Logger.log("Screen size set to " + screenSettings.getScreenWidth() + " by "
+                + screenSettings.getScreenWidth(), 9, 4);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(false);
@@ -147,8 +135,8 @@ public class GameScreen extends JPanel {
     public void paint(Graphics graph) {
         
         // Calculate the margin left to center the board
-        centerConstant = Settings.getLeftMargin();
-        topMargin = Settings.getTopMargin();
+        centerConstant = screenSettings.getLeftMargin();
+        topMargin = screenSettings.getTopMargin();
         g2d = (Graphics2D) graph;
         super.paint(graph);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,

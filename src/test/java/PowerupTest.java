@@ -1,11 +1,8 @@
-import static org.junit.Assert.*;
-
-import java.net.URL;
-
-import javax.swing.ImageIcon;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
 import game.NormalDriver;
-import game.Settings;
 import game.SurvivalDriver;
 import game.powerups.IcePowerup;
 import game.powerups.LifePowerup;
@@ -13,17 +10,26 @@ import game.powerups.Powerup;
 import game.powerups.SpeedPowerup;
 import game.screens.StartScreen;
 
+import java.net.URL;
+
+import javax.swing.ImageIcon;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import settings.powerupSettings;
+import settings.screenSettings;
+
+import com.sun.scenario.Settings;
 
 public class PowerupTest {
 
 	public int x;
 	public int y;
 	public Powerup powerup;
-	int framesLeft=10*Settings.getFps();
-    int height = Settings.getPowerupHeight();
-    int width = Settings.getPowerupWidth();
+	int framesLeft=10*screenSettings.getFps();
+    int height = powerupSettings.getPowerupHeight();
+    int width = powerupSettings.getPowerupWidth();
 
 	@Before
 	public void init() {
@@ -115,7 +121,7 @@ public class PowerupTest {
 		driver.setupGame();
 		driver.initDriver();
 		Powerup pow = new IcePowerup(100, 100);
-		int deltaY = Settings.getPowerupSpeed();
+		int deltaY = powerupSettings.getPowerupSpeed();
 		int initY = 100;
 		pow.move();
 		assertEquals(initY + deltaY, pow.getY());
@@ -127,7 +133,7 @@ public class PowerupTest {
 		driver.setupGame();
 		driver.initDriver();
 		Powerup pow = new IcePowerup(100, 100);
-		int deltaY = Settings.getPowerupSpeed();
+		int deltaY = powerupSettings.getPowerupSpeed();
 		int initY = 100;
 		pow.move();
 		assertEquals(initY + deltaY, pow.getY());

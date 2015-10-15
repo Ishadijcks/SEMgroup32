@@ -1,7 +1,6 @@
 package game.screens;
 
 import game.Driver;
-import game.Settings;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,6 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import settings.screenSettings;
 
 /**
  * Class that will create a winning screen.
@@ -37,8 +38,8 @@ public class EndScreen extends JFrame {
         ScreenBuilder.initScreen(this, "");
         addBackgroundImage(background);
         addStopButton(colorButton);
-        setSize(Settings.getScreenWidth() - 1, Settings.getScreenHeight() - 1);
-        setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
+        setSize(screenSettings.getScreenWidth() - 1, screenSettings.getScreenHeight() - 1);
+        setSize(screenSettings.getScreenWidth(), screenSettings.getScreenHeight());
     }
 
     /**

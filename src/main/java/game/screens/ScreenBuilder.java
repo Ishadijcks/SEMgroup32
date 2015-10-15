@@ -1,8 +1,8 @@
 package game.screens;
 
-import game.Settings;
-
 import javax.swing.JFrame;
+
+import settings.screenSettings;
 
 /**
  * Screen builder sets up basic screens.
@@ -22,7 +22,7 @@ public class ScreenBuilder {
      */
     public static JFrame initScreen(JFrame frame, String title) {
         frame.setTitle(title);
-        frame.setSize(Settings.getScreenWidth(), Settings.getScreenHeight());
+        frame.setSize(screenSettings.getScreenWidth(), screenSettings.getScreenHeight());
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

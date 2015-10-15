@@ -1,18 +1,16 @@
 package test.player;
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-
-import game.NormalDriver;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import game.GameFactory;
+import game.NormalDriver;
 import game.Player;
-import game.Settings;
-import game.SurvivalDriver;
-import game.SurvivalGame;
-import game.powerups.Powerup;
-import game.wall.Wall;
 
 import org.junit.Test;
+
+import settings.playerSettings;
+
+import com.sun.scenario.Settings;
 
 public class PlayerTest {
 
@@ -60,7 +58,7 @@ public class PlayerTest {
         int x = player.getX();
         player.movingLeft();
         player.move();
-        assertEquals(x - Settings.getPlayerStepSize(), player.getX());
+        assertEquals(x - playerSettings.getPlayerStepSize(), player.getX());
     }
 
     @Test
@@ -77,7 +75,7 @@ public class PlayerTest {
         int x = player.getX();
         player.movingRight();
         player.move();
-        assertEquals(x + Settings.getPlayerStepSize(), player.getX());
+        assertEquals(x + playerSettings.getPlayerStepSize(), player.getX());
     }
 
     @Test
@@ -91,12 +89,12 @@ public class PlayerTest {
 
     @Test
     public void testGetWidth() {
-        assertEquals(Settings.getPlayerWidth(), player.getWidth());
+        assertEquals(playerSettings.getPlayerWidth(), player.getWidth());
     }
 
     @Test
     public void testGetHeight() {
-        assertEquals(Settings.getPlayerHeight(), player.getHeight());
+        assertEquals(playerSettings.getPlayerHeight(), player.getHeight());
     }
     
     @Test

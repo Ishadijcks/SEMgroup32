@@ -3,8 +3,8 @@ package game.observers;
 import game.Collisions;
 import game.Game;
 import game.Player;
-import game.Settings;
 import game.bubble.Bubble;
+import settings.threadSettings;
 
 /**
  * Bubble with player Collision clas.
@@ -36,7 +36,7 @@ public class BubbleCollisionObserver extends Observer {
         Bubble bubble = (Bubble) bub;
         Player player = (Player) plyr;
 
-        Settings.setDieThreads(true);
+        threadSettings.setDieThreads(true);
         game.resetLevel();
     }
 

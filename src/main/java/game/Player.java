@@ -8,6 +8,9 @@ import game.wall.Wall;
 
 import java.util.ArrayList;
 
+import settings.playerSettings;
+import settings.screenSettings;
+
 /**
  * Class that will control a player.
  * 
@@ -17,13 +20,13 @@ import java.util.ArrayList;
 public class Player {
     private String name;
     private int xCoord;
-    private int yCoord = Settings.getLevelHeight() - Settings.getPlayerHeight()
-            + Settings.getTopMargin();
+    private int yCoord = screenSettings.getLevelHeight() - playerSettings.getPlayerHeight()
+            + screenSettings.getTopMargin();
     private int colY = yCoord + 61;
     private int colX;
-    private int height = Settings.getPlayerHeight();
-    private int width = Settings.getPlayerWidth();
-    private int stepSize = Settings.getPlayerStepSize();
+    private int height = playerSettings.getPlayerHeight();
+    private int width = playerSettings.getPlayerWidth();
+    private int stepSize = playerSettings.getPlayerStepSize();
     private boolean movingLeft = false;
     private boolean movingRight = false;
 
@@ -91,22 +94,22 @@ public class Player {
      *            list of walls
      */
     public void move() {
-        if (movingLeft && !Settings.isRestrictMovingLeft()) {
-            if (xCoord - stepSize > Settings.getLeftMargin()) {
+        if (movingLeft && !playerSettings.isRestrictMovingLeft()) {
+            if (xCoord - stepSize > screenSettings.getLeftMargin()) {
                 xCoord -= stepSize;
                 colX -= stepSize;
-                Settings.setRestrictMovingRight(false);
+                playerSettings.setRestrictMovingRight(false);
             } else {
                 Logger.log("Player is at the left border", 1, 4);
             }
         }
 
-        if (movingRight && !Settings.isRestrictMovingRight()) {
-            if (xCoord + stepSize + width < Settings.getLevelWidth()
-                    + Settings.getLeftMargin() + 37) {
+        if (movingRight && !playerSettings.isRestrictMovingRight()) {
+            if (xCoord + stepSize + width < screenSettings.getLevelWidth()
+                    + screenSettings.getLeftMargin() + 37) {
                 xCoord += stepSize;
                 colX += stepSize;
-                Settings.setRestrictMovingLeft(false);
+                playerSettings.setRestrictMovingLeft(false);
             } else {
                 Logger.log("Player is at the right border", 1, 4);
             }
@@ -119,7 +122,7 @@ public class Player {
      * @return true if it has, false otherwise
      */
     public boolean hasIceRope() {
-        return Settings.getPlayerHasIceRope();
+        return playerSettings.getPlayerHasIceRope();
     }
 
     /**

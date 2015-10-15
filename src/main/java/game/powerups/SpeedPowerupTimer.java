@@ -2,7 +2,8 @@ package game.powerups;
 
 import game.Game;
 import game.Player;
-import game.Settings;
+import settings.playerSettings;
+import settings.threadSettings;
 
 /**
  * Special timer for the speed powerup.
@@ -30,15 +31,15 @@ public class SpeedPowerupTimer extends PowerupTimer {
 		Player player = game.getPlayerList().get(0);
 		while (System.currentTimeMillis() < end)
 		{
-		    if(player.getStepSize() != Settings.getPlayerPowerupStepSize() && !Settings.getDieThreads())
-		    	player.setStepSize(Settings.getPlayerPowerupStepSize());
-		    if(Settings.getDieThreads()){
-		    	Settings.setDieThreads(false);
+		    if(player.getStepSize() != playerSettings.getPlayerPowerupStepSize() && !threadSettings.getDieThreads())
+		    	player.setStepSize(playerSettings.getPlayerPowerupStepSize());
+		    if(threadSettings.getDieThreads()){
+		    	threadSettings.setDieThreads(false);
 		    	end = System.currentTimeMillis();
 		    }
 		}
-    	Settings.setDieThreads(false);
-		player.setStepSize(Settings.getPlayerStepSize());
+    	threadSettings.setDieThreads(false);
+		player.setStepSize(playerSettings.getPlayerStepSize());
 	}
 
 }

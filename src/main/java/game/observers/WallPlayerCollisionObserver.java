@@ -3,7 +3,7 @@ package game.observers;
 import game.Collisions;
 import game.Game;
 import game.Player;
-import game.Settings;
+import settings.playerSettings;
 
 /**
  * Wall with Player collisions observer.
@@ -31,11 +31,11 @@ public class WallPlayerCollisionObserver extends Observer {
     public void update(Object wall, Object plyr, Game game) {
         Player player = (Player) plyr;
         if (player.getMovingRight()) {
-            Settings.setRestrictMovingRight(true);
-            Settings.setRestrictMovingLeft(false);
+            playerSettings.setRestrictMovingRight(true);
+            playerSettings.setRestrictMovingLeft(false);
         } else if (player.getMovingLeft()) {
-            Settings.setRestrictMovingLeft(true);
-            Settings.setRestrictMovingRight(false);
+            playerSettings.setRestrictMovingLeft(true);
+            playerSettings.setRestrictMovingRight(false);
         }
 
     }
