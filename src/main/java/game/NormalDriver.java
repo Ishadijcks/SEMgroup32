@@ -1,7 +1,8 @@
 package game;
 
+import settings.playerSettings;
+import settings.screenSettings;
 import game.log.LogSettings;
-import game.wall.Wall;
 import game.log.Logger;
 import game.observers.BubbleController;
 import game.observers.GameController;
@@ -11,12 +12,6 @@ import game.observers.PowerupController;
 import game.screens.GameScreen;
 import game.screens.LosingScreen;
 import game.screens.WinningScreen;
-
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  * Class that executes the game.
@@ -126,16 +121,16 @@ public class NormalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        Player player = new Player(name, Settings.getPlayerSpawnPoint());
+        Player player = new Player(name, playerSettings.getPlayerSpawnPoint());
         game = GameFactory.createSinglePlayer(player);
-
+        
         score = Score.getInstance();
         game.addPlayer(player);
 
         int centerConstant = (int) Math
-                .round(0.5 * (Settings.getScreenWidth() - Settings
+                .round(0.5 * (screenSettings.getScreenWidth() - screenSettings
                         .getLevelWidth()));
-        Settings.setLeftMargin(centerConstant);
+        screenSettings.setLeftMargin(centerConstant);
     }
 
     /**

@@ -1,7 +1,6 @@
 package test.bubble;
 
-import static org.junit.Assert.*;
-import game.Settings;
+import static org.junit.Assert.assertEquals;
 import game.bubble.Bubble;
 import game.bubble.Bubblex128;
 import game.bubble.Bubblex16;
@@ -9,7 +8,6 @@ import game.bubble.Bubblex32;
 import game.bubble.Bubblex64;
 import game.bubble.Bubblex8;
 
-import java.awt.Color;
 import java.util.Arrays;
 import java.util.Collection;
 

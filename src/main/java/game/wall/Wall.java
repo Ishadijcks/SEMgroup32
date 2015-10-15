@@ -1,8 +1,12 @@
 package game.wall;
 
-import game.Settings;
+
+
 
 import java.awt.Color;
+
+import settings.screenSettings;
+import settings.wallSettings;
 
 /**
  * Wall class.
@@ -14,8 +18,8 @@ public abstract class Wall {
 
     private int xCoord;
     private int yCoord;
-    private int width = Settings.getWallWidth();
-    private int height = Settings.getWallHeight();
+    private int width = wallSettings.getWallWidth();
+    private int height = wallSettings.getWallHeight();
     private Color color;
     private boolean isActive;
 

@@ -2,18 +2,15 @@ package test.bubble;
 
 
 
-import static org.junit.Assert.*;
-
-import java.util.ArrayList;
-import java.awt.Color;
-
-import game.Settings;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import game.bubble.Bubble;
 import game.bubble.Bubblex16;
 import game.bubble.Bubblex8;
 
-import org.junit.Before;
 import org.junit.Test;
+
+import settings.screenSettings;
 public class BubbleTest {
 
 
@@ -41,7 +38,7 @@ public class BubbleTest {
 
     @Test
     public void testBounceX() {
-        Bubble bub = new Bubblex8(Settings.getLeftMargin()+Settings.getLevelWidth()-5, Settings.getTopMargin()+Settings.getLevelHeight(), true, true);
+        Bubble bub = new Bubblex8(screenSettings.getLeftMargin()+screenSettings.getLevelWidth()-5, screenSettings.getTopMargin()+screenSettings.getLevelHeight(), true, true);
         assertTrue(bub.isDirectionH());
         
         for(int i = 0; i<6; i++){
@@ -53,7 +50,7 @@ public class BubbleTest {
     
     @Test
     public void testBounceY() {
-        Bubble bub = new Bubblex8(Settings.getLeftMargin(), Settings.getTopMargin()+Settings.getLevelHeight()-5, true, true);
+        Bubble bub = new Bubblex8(screenSettings.getLeftMargin(), screenSettings.getTopMargin()+screenSettings.getLevelHeight()-5, true, true);
         assertTrue(bub.isDirectionV());
         for(int i = 0; i<100; i++){
         	bub.move();
@@ -64,7 +61,7 @@ public class BubbleTest {
     
     @Test
     public void testBounceMaxHeight() {
-        Bubble bub = new Bubblex16(Settings.getLeftMargin(), 75+5, true, false);
+        Bubble bub = new Bubblex16(screenSettings.getLeftMargin(), 75+5, true, false);
 
         assertFalse(bub.isDirectionV());
         for(int i = 0; i<100; i++){
@@ -76,7 +73,7 @@ public class BubbleTest {
 
     @Test
     public void testMove2() {
-        Bubble bub = new Bubblex8(Settings.getLeftMargin(), Settings.getTopMargin()+Settings.getLevelHeight(), true, true);
+        Bubble bub = new Bubblex8(screenSettings.getLeftMargin(), screenSettings.getTopMargin()+screenSettings.getLevelHeight(), true, true);
 
         bub.move();
         bub.move();

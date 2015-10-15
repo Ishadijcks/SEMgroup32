@@ -3,16 +3,14 @@ package game.powerups;
 
 import game.Driver;
 import game.Game;
-import game.NormalDriver;
-import game.Settings;
-import game.SurvivalDriver;
 import game.log.Logger;
-import game.screens.StartScreen;
 
 import java.awt.Image;
-import java.net.URL;
 
 import javax.swing.ImageIcon;
+
+import settings.powerupSettings;
+import settings.screenSettings;
 
 /**
  * Class that controls the powerups.
@@ -25,10 +23,10 @@ public abstract class Powerup {
     
     protected Game game;
     
-    int width = Settings.getPowerupWidth();
-    int height = Settings.getPowerupHeight();
+    int width = powerupSettings.getPowerupWidth();
+    int height = powerupSettings.getPowerupHeight();
     
-    int framesLeft = 10*Settings.getFps();
+    int framesLeft = 10*screenSettings.getFps();
     
     /**
      * Constructor of the powerup.
@@ -80,8 +78,8 @@ public abstract class Powerup {
     public void move() {
         if (yCoord <= Driver.game.getCurrentLevel().getHeight() - (height - 1)) {
             Logger.log("Powerup moved from " + xCoord + "," + yCoord + " to " + xCoord 
-                    + "," + (yCoord + Settings.getPowerupSpeed()), 6, 5, 10);
-            yCoord += Settings.getPowerupSpeed();
+                    + "," + (yCoord + powerupSettings.getPowerupSpeed()), 6, 5, 10);
+            yCoord += powerupSettings.getPowerupSpeed();
         }
         
 
@@ -117,7 +115,7 @@ public abstract class Powerup {
      * Reset the framesLeft counter to the starting count.
      */
     public void resetFramesLeft() {
-        framesLeft = 10 * Settings.getFps();
+        framesLeft = 10 * screenSettings.getFps();
     }
     
     /**

@@ -2,7 +2,6 @@ package game.screens;
 
 import game.Game;
 import game.Player;
-import game.Settings;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -11,6 +10,8 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+
+import settings.screenSettings;
 
 /**
  * Draws the player in-game.
@@ -53,7 +54,7 @@ public class DrawPlayer {
         this.panel = panel;
         this.painter = painter;
         
-        topMargin = Settings.getTopMargin();
+        topMargin = screenSettings.getTopMargin();
         imageLocation = imageLocation.replace("%20", " ");
         imageLocation = imageLocation.replace("target/classes/", "/");
     }

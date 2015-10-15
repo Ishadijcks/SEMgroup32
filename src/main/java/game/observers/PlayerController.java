@@ -1,10 +1,10 @@
 package game.observers;
 
+import settings.playerSettings;
 import game.Collisions;
 import game.Driver;
 import game.Game;
 import game.Player;
-import game.Settings;
 import game.bubble.Bubble;
 import game.powerups.Powerup;
 
@@ -46,11 +46,11 @@ public class PlayerController extends Observer {
 	public void wallPlayerEvent() {
 		Player player = Driver.game.getPlayerList().get(0);
         if (player.getMovingRight()) {
-            Settings.setRestrictMovingRight(true);
-            Settings.setRestrictMovingLeft(false);
+            playerSettings.setRestrictMovingRight(true);
+            playerSettings.setRestrictMovingLeft(false);
         } else if (player.getMovingLeft()) {
-            Settings.setRestrictMovingLeft(true);
-            Settings.setRestrictMovingRight(false);
+        	playerSettings.setRestrictMovingLeft(true);
+        	playerSettings.setRestrictMovingRight(false);
         }
 		
 	}
