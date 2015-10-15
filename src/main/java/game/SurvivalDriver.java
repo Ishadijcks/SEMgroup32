@@ -122,7 +122,7 @@ public class SurvivalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        driver = new SurvivalDriver();
+        driver = this;
         player = new Player(name, playerSettings.getPlayerSpawnPoint());
         game = GameFactory.createSurvival(player);
         score = Score.getInstance();
