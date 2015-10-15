@@ -223,7 +223,7 @@ public class DrawPlayer {
      * Draw the dragon spitting fire.
      */
     public void drawDragonSpittingFire() {
-        System.out.println("Shooting rope: " + shootRope);
+      
         if (shootRope && ropeDurationCounter > 40) {
             if (dragonIsRight) {
                 ImageIcon dragonRightFire = new ImageIcon(imageLocation
