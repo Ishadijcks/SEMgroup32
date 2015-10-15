@@ -22,12 +22,14 @@ public class SurvivalDriver extends Driver {
     private static GameScreen gameScreen;
     private static String name;
     private static Leaderboard leaderBoard = new Leaderboard();
-    
+
     private Collisions collisions;
 
-    /** Constructor for a survival driver that will get the name of a player.
+    /**
+     * Constructor for a survival driver that will get the name of a player.
      * 
-     * @param name Name that the player entered
+     * @param name
+     *            Name that the player entered
      */
     public SurvivalDriver() {
         this.collisions = new Collisions();
@@ -35,7 +37,9 @@ public class SurvivalDriver extends Driver {
 
     /**
      * Frame to start the game.
-     * @param playerName string.
+     * 
+     * @param playerName
+     *            string.
      */
     public void startGame(String playerName) {
         name = playerName;
@@ -82,12 +86,12 @@ public class SurvivalDriver extends Driver {
     public void driverHeart() {
         if (game.inProgress()) {
             curLevel = game.getCurrentLevel();
-        	
-	        game.moveEntities();
-	        game.update();
-	        collisions.allCollisions(game);
-	
-	        gameScreen.reload();
+
+            game.moveEntities();
+            game.update();
+            collisions.allCollisions(game);
+
+            gameScreen.reload();
 
             Player player1 = game.getPlayerList().get(0);
             player1.move();
@@ -97,7 +101,6 @@ public class SurvivalDriver extends Driver {
             }
         }
     }
-
 
     /**
      * Set up the game.
@@ -114,28 +117,16 @@ public class SurvivalDriver extends Driver {
                         .getLevelWidth()));
         Settings.setLeftMargin(centerConstant);
     }
-    
-   /**
-    * init the driver.
-    */
+
+    /**
+     * init the driver.
+     */
     public void initDriver() {
-    	try {
-            gameScreen = new GameScreen();
-        } catch (UnsupportedAudioFileException e) {
-            Logger.log("UnsupportedAudioFileException", 7, 2);
-            e.printStackTrace();
-        } catch (IOException e) {
-            Logger.log("IOException", 7, 2);
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            Logger.log("LineUnavailableException", 7, 2);
-            e.printStackTrace();
-        }
+        gameScreen = new GameScreen();
         Logger.log("Main Frame created", 9, 4);
-        
+
         GameScreen.setupScreen(game, score);
-        
-        
+
         LogSettings.setActiveLog(true);
     }
 }

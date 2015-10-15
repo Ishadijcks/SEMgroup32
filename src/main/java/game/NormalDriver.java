@@ -56,7 +56,7 @@ public class NormalDriver extends Driver {
         if (game.getCurrentLevelInt() == game.getLevelList().size() - 1) {
             gameScreen.dispose();
             Logger.log("Frame destroyed", 9, 4);
-            new WinningScreen(driver, name);
+            new WinningScreen(driver);
             return true;
         }
         return false;
@@ -109,6 +109,7 @@ public class NormalDriver extends Driver {
             checkGameWon();
         }
     }
+
     /**
      * Set up the game.
      */
@@ -130,18 +131,7 @@ public class NormalDriver extends Driver {
      */
     @Override
     public void initDriver() {
-        try {
-            gameScreen = new GameScreen();
-        } catch (UnsupportedAudioFileException e) {
-            Logger.log("UnsupportedAudioFileException", 7, 2);
-            e.printStackTrace();
-        } catch (IOException e) {
-            Logger.log("IOException", 7, 2);
-            e.printStackTrace();
-        } catch (LineUnavailableException e) {
-            Logger.log("LineUnavailableException", 7, 2);
-            e.printStackTrace();
-        }
+        gameScreen = new GameScreen();
         Logger.log("Main Frame created", 9, 4);
         GameScreen.setupScreen(game, score);
 
