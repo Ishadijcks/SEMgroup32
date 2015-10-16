@@ -33,17 +33,17 @@ public class CollisionsFactoryTest {
 
     @Test
     public void buildCollisionInstanceofcheck2() {
-        assertTrue(cf.buildRopeBubbleCollision() instanceof PlayerPowerupCollision);
+        assertTrue(cf.buildRopeBubbleCollision() instanceof RopeBubbleCollision);
     }
 
     @Test
     public void buildCollisionInstanceofcheck3() {
-        assertTrue(cf.buildWallBubbleCollision() instanceof RopeBubbleCollision);
+        assertTrue(cf.buildWallBubbleCollision() instanceof WallBubbleCollision);
     }
 
     @Test
     public void buildCollisionInstanceofcheck4() {
-        assertTrue(cf.buildPlayerBubbleCollision() instanceof WallBubbleCollision);
+        assertTrue(cf.buildPlayerBubbleCollision() instanceof PlayerBubbleCollision);
     }
     
     @Test
