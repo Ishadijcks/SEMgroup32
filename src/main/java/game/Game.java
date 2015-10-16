@@ -203,11 +203,6 @@ public abstract class Game {
     }
 
     /**
-     * Checks if a game is lost.
-     */
-    public abstract void gameLost();
-
-    /**
      * Updates the state of a game.
      */
     public abstract void update();
@@ -220,7 +215,9 @@ public abstract class Game {
     /**
      * Checks if a game is won.
      */
-    public abstract void gameWon();
+    public void gameWon(){
+    	
+    }
 
     /**
      * Generated equals method to check if all attributes equals another of the

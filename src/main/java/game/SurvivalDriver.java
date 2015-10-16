@@ -80,7 +80,6 @@ public class SurvivalDriver extends Driver {
      * 
      */
     public static void gameLost() {
-        game.gameLost();
         EndScore es = new EndScore(name, score.getScore());
         leaderBoard.addScore(es);
         leaderBoard.appendToFile();
