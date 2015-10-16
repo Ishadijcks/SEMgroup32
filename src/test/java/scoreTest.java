@@ -10,7 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class scoreTest {
+public class ScoreTest {
 
     private Score score;
     private Score score2;
