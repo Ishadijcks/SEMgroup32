@@ -66,20 +66,6 @@ public class SurvivalGame extends Game {
         }
     }
 
-    /**
-     * Checks if a game is won.
-     */
-	@Override
-	public void gameWon() {
-		
-	}
-
-	@Override
-	public void gameLost() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public void resetLevel() {
     	SurvivalDriver.gameLost();
