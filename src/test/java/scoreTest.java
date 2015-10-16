@@ -22,13 +22,9 @@ public class ScoreTest {
     }
 
     @Test
-    public void testAddScore() {
+    public void testAddScoreAndSingelton() {
         score.addScore(2);
         assertEquals(score.getScore(), 2);
-    }
-    
-    @Test
-    public void testSingeltonScore() {
         assertEquals(score2.getScore(), score.getScore());
     }
 
