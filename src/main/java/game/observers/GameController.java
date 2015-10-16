@@ -14,40 +14,10 @@ public class GameController extends Observer {
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void ropeBubbleEvent(Bubble bubble) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void bubblePlayerEvent() {
 		threadSettings.setDieThreads(true);
         Driver.game.resetLevel();
         Driver.game.loseLife();
-	}
-
-	@Override
-	public void wallPlayerEvent() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void wallBubbleEvent(Bubble bubble) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void powerupPlayerEvent(Powerup powerup) {
-        
-
 	}
 
 }

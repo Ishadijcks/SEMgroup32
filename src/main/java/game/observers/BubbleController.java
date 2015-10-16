@@ -19,41 +19,10 @@ public class BubbleController extends Observer {
     public BubbleController(Collision collisions) {
         super(collisions);
         collisions.registerObserver(this);
-    }
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void ropeBubbleEvent(Bubble bubble) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void bubblePlayerEvent() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void wallPlayerEvent() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void wallBubbleEvent(Bubble bubble) {
 		bubble.bounceH();		
 	}
-
-	@Override
-	public void powerupPlayerEvent(Powerup powerup) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

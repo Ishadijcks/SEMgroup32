@@ -15,12 +15,6 @@ public class LevelController extends Observer {
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void ropeBubbleEvent(Bubble bubble) {
 		ArrayList<Bubble> bubbleList = Driver.game.getCurrentLevel().getBubbleList();
 		Driver.game.getCurrentLevel().setRope(null);
@@ -31,24 +25,6 @@ public class LevelController extends Observer {
         Driver.score.addScore(bubble.getScoreWorth());
         bubbleList.addAll(bubble.destroyBubble(bubblePosX, bubblePosY));
         bubbleList.remove(bubble);
-
-	}
-
-	@Override
-	public void bubblePlayerEvent() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void wallPlayerEvent() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void wallBubbleEvent(Bubble bubble) {
-		// TODO Auto-generated method stub
 
 	}
 

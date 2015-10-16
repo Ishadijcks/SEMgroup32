@@ -30,12 +30,6 @@ public class PowerupController extends Observer {
     }
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void ropeBubbleEvent(Bubble bubble) {
 		
 		int bubblePosX = bubble.getX();
@@ -48,24 +42,6 @@ public class PowerupController extends Observer {
 	        powerup.addToLevel();
 	
 	    }
-		
-	}
-
-	@Override
-	public void bubblePlayerEvent() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void wallPlayerEvent() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void wallBubbleEvent(Bubble bubble) {
-		// TODO Auto-generated method stub
 		
 	}
 

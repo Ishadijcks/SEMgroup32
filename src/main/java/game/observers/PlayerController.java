@@ -25,24 +25,6 @@ public class PlayerController extends Observer {
     }
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void ropeBubbleEvent(Bubble bubble) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void bubblePlayerEvent() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void wallPlayerEvent() {
 		Player player = Driver.game.getPlayerList().get(0);
         if (player.getMovingRight()) {
@@ -52,18 +34,6 @@ public class PlayerController extends Observer {
         	playerSettings.setRestrictMovingLeft(true);
         	playerSettings.setRestrictMovingRight(false);
         }
-		
-	}
-
-	@Override
-	public void wallBubbleEvent(Bubble bubble) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void powerupPlayerEvent(Powerup powerup) {
-		// TODO Auto-generated method stub
 		
 	}
 
