@@ -20,30 +20,24 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 /**
- * Class that will create a screen for the leaderboard.
+ * Class that will create a screen for the level overview.
  * 
  * @author Boning
  */
 public class LevelOverviewScreen extends JFrame {
 
-    Leaderboard leaderBoard;
-    static JLabel[] allLabels = new JLabel[500];
     JButton levelButton;
     JButton stopButton;
     Font basicFont;
 
     /**
-     * Constructor for the leaderboard screen class.
+     * Constructor for the level overview screen class.
      * 
      * of which will be made a screen
      */
     public LevelOverviewScreen() {
-        setTitle("Levels");
         setSize(800, 800);
-        setResizable(false);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-        setLayout(null);
+        ScreenBuilder.initScreen(this, "Levels");
         basicFont = new Font("Calibri", Font.PLAIN, 30);
         addStopButton();
         addSimpleLabel();
@@ -52,7 +46,6 @@ public class LevelOverviewScreen extends JFrame {
 
     /**
      * Listeners for the level buttons.
-     * 
      * @author Tim
      *
      */
