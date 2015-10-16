@@ -206,7 +206,7 @@ public class LogScreen extends JFrame {
      *            types of labels
      * @return horizontal panel
      */
-    private JPanel makeHorizontalPanel(int severity, String... labelValues) {
+    public JPanel makeHorizontalPanel(int severity, String... labelValues) {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         for (String s : labelValues) {
             JLabel label = new JLabel(s);
