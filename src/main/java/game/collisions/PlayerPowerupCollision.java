@@ -39,8 +39,8 @@ public class PlayerPowerupCollision extends Collision {
 
 	@Override
 	public void notifyListeningObservers(Object object) {
-		Powerup powerup = (Powerup)object;
-    	for(Observer o : observers) {
+		Powerup powerup = (Powerup) object;
+    	for (Observer o : observers) {
     		o.powerupPlayerEvent(powerup);
     	}
 	}

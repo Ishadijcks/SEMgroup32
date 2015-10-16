@@ -26,7 +26,7 @@ public class WallPlayerCollision extends Collision {
 
 	@Override
 	public void notifyListeningObservers() {
-    	for(Observer o : observers) {
+    	for (Observer o : observers) {
     		o.wallPlayerEvent();
     	}
 

@@ -33,8 +33,8 @@ public class WallBubbleCollision extends Collision {
 
 	@Override
 	public void notifyListeningObservers(Object object) {
-		Bubble bubble = (Bubble)object;
-    	for(Observer o : observers) {
+		Bubble bubble = (Bubble) object;
+    	for (Observer o : observers) {
     		o.wallBubbleEvent(bubble);
     	}
 	}

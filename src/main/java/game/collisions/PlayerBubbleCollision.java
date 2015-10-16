@@ -41,7 +41,7 @@ public class PlayerBubbleCollision extends Collision {
 
 	@Override
 	public void notifyListeningObservers() {
-		for(Observer o : observers) {
+		for (Observer o : observers) {
     		o.bubblePlayerEvent();
     	}
 	}
