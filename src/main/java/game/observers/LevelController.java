@@ -2,14 +2,14 @@ package game.observers;
 
 import java.util.ArrayList;
 
-import game.Collisions;
 import game.Driver;
 import game.bubble.Bubble;
+import game.collisions.Collision;
 import game.powerups.Powerup;
 
 public class LevelController extends Observer {
 
-	public LevelController(Collisions subject) {
+	public LevelController(Collision subject) {
 		super(subject);
 		subject.registerObserver(this);
 	}

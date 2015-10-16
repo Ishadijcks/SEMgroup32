@@ -1,11 +1,11 @@
 package game.observers;
 
 import settings.playerSettings;
-import game.Collisions;
 import game.Driver;
 import game.Game;
 import game.Player;
 import game.bubble.Bubble;
+import game.collisions.Collision;
 import game.powerups.Powerup;
 
 /**
@@ -19,7 +19,7 @@ public class PlayerController extends Observer {
      * Constructor.
      * @param collisions class for all collision
      */
-    public PlayerController(Collisions collisions) {
+    public PlayerController(Collision collisions) {
         super(collisions);
         collisions.registerObserver(this);
     }

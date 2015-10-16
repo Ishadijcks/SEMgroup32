@@ -1,5 +1,7 @@
 package game;
 
+import game.collisions.Collision;
+
 /**
  * Abstract class for the Normal- and SurvivalDriver.
  * 
@@ -13,7 +15,7 @@ public abstract class Driver {
     protected static boolean canDrawGame = true;
     protected static boolean iceRope = false;
     protected static Player player;
-    protected Collisions collisions;
+    protected Collision collisions;
     public static Game game;
 
     /** 

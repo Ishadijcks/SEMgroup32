@@ -1,11 +1,11 @@
 package game.observers;
 
 import settings.powerupSettings;
-import game.Collisions;
 import game.Driver;
 import game.Game;
 import game.Player;
 import game.bubble.Bubble;
+import game.collisions.Collision;
 import game.log.Logger;
 import game.powerups.IcePowerup;
 import game.powerups.Powerup;
@@ -24,7 +24,7 @@ public class PowerupController extends Observer {
      * Powerup with player collisions observer constructor.
      * @param collisions class for all collisions
      */
-    public PowerupController(Collisions collisions) {
+    public PowerupController(Collision collisions) {
         super(collisions);
         collisions.registerObserver(this);
     }
