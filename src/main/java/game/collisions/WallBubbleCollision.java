@@ -5,8 +5,16 @@ import game.bubble.Bubble;
 import game.observers.Observer;
 import game.wall.Wall;
 
+/**
+ * wall and bubble collision class.
+ * @author Floris
+ *
+ */
 public class WallBubbleCollision extends Collision {
 
+    /**
+     * The constructor same as the super class Collision.
+     */
 	public WallBubbleCollision() {
 		super();
 	}

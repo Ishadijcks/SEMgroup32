@@ -5,8 +5,16 @@ import game.Player;
 import game.observers.Observer;
 import game.wall.Wall;
 
+/**
+ * wall and player collision class.
+ * @author Floris
+ *
+ */
 public class WallPlayerCollision extends Collision {
 
+    /**
+     * The constructor same as the super class Collision.
+     */
 	public WallPlayerCollision() {
 		super();
 	}

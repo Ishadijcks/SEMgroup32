@@ -6,8 +6,16 @@ import game.log.Logger;
 import game.observers.Observer;
 import game.powerups.Powerup;
 
+/**
+ * Player and powerup collision class.
+ * @author Floris
+ *
+ */
 public class PlayerPowerupCollision extends Collision {
 
+    /**
+     * The constructor same as the super class Collision.
+     */
 	public PlayerPowerupCollision() {
 		super();
 	}

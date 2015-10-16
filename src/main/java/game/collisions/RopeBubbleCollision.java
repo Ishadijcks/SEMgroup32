@@ -6,8 +6,16 @@ import game.bubble.Bubble;
 import game.log.Logger;
 import game.observers.Observer;
 
+/**
+ * Bubble and rope collision class.
+ * @author Floris
+ *
+ */
 public class RopeBubbleCollision extends Collision {
 
+    /**
+     * The constructor same as the super class Collision.
+     */
 	public RopeBubbleCollision() {
 		super();
 	}

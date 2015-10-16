@@ -11,8 +11,16 @@ import game.observers.Observer;
 import game.observers.PlayerController;
 import game.observers.PowerupController;
 
+/**
+ * Bubble and player collision class.
+ * @author Floris
+ *
+ */
 public class PlayerBubbleCollision extends Collision {
 
+    /**
+     * The constructor same as the super class Collision.
+     */
 	public PlayerBubbleCollision() {
 		super();
 	}
