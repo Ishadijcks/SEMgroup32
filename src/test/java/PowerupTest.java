@@ -130,8 +130,6 @@ public class PowerupTest {
 	@Test
 	public void testMoveSurvivalMode(){
 		SurvivalDriver driver = new SurvivalDriver();
-		driver.setupGame();
-		driver.initDriver();
 		Powerup pow = new IcePowerup(100, 100);
 		int deltaY = powerupSettings.getPowerupSpeed();
 		int initY = 100;

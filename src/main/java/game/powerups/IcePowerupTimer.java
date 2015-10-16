@@ -10,7 +10,7 @@ import settings.threadSettings;
  *
  */
 public class IcePowerupTimer extends PowerupTimer {
-
+	
     /**
      * Constructor for the Icepowerup timer.
      * @param game in which the timer is active

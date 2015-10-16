@@ -11,6 +11,8 @@ import settings.threadSettings;
  *
  */
 public class SpeedPowerupTimer extends PowerupTimer {
+	
+	private Player player;
 
     /**
      * Constructor for the Speedpowerup timer.
@@ -18,6 +20,7 @@ public class SpeedPowerupTimer extends PowerupTimer {
      */
 	public SpeedPowerupTimer(Game game) {
 		super(game);
+		this.player = game.getPlayerList().get(0);
 	}
 
 	/**
@@ -28,7 +31,6 @@ public class SpeedPowerupTimer extends PowerupTimer {
 
 		long start = System.currentTimeMillis();
 		long end = start + 5*1000; // 5 seconds * 1000 ms/sec
-		Player player = game.getPlayerList().get(0);
 		while (System.currentTimeMillis() < end)
 		{
 		    if(player.getStepSize() != playerSettings.getPlayerPowerupStepSize() && !threadSettings.getDieThreads())

@@ -4,6 +4,11 @@ import settings.playerSettings;
 import settings.screenSettings;
 import game.log.LogSettings;
 import game.log.Logger;
+import game.observers.BubbleController;
+import game.observers.GameController;
+import game.observers.LevelController;
+import game.observers.PlayerController;
+import game.observers.PowerupController;
 import game.screens.GameScreen;
 import game.screens.LosingScreen;
 import game.screens.WinningScreen;
@@ -29,7 +34,14 @@ public class NormalDriver extends Driver {
      *            Name that the player entered
      */
     public NormalDriver() {
+        setupGame();
+        initDriver();
         this.collisions = new Collisions();
+        new BubbleController(collisions);
+        new GameController(collisions);
+        new LevelController(collisions);
+        new PowerupController(collisions);
+        new PlayerController(collisions);
     }
 
     /**

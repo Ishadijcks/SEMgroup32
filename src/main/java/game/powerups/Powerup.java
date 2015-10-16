@@ -84,6 +84,10 @@ public abstract class Powerup {
         
 
     }
+    
+    public void addToLevel() {
+    	Driver.game.getCurrentLevel().getPowerupList().add(this);
+    }
 
     /**
      * Decrease the frames that are left.

@@ -29,6 +29,11 @@ public class Player {
     private int stepSize = playerSettings.getPlayerStepSize();
     private boolean movingLeft = false;
     private boolean movingRight = false;
+    
+    //THIS MIGHT BE MOVED TO PLAYERPOWERUP CLASS OR SOMETHING
+    private boolean hasIceRope = false;
+    private final int powerupStepSize = 5;
+    private final int normalStepSize = 2;
 
     /**
      * Constructor for a player.
@@ -231,6 +236,17 @@ public class Player {
      */
     public void setStepSize(int stepSize) {
         this.stepSize = stepSize;
+    }
+    
+    /**
+     * @return the powerupstepsize of the player
+     */
+    public int getPlayerPowerupStepSize() {
+    	return this.powerupStepSize;
+    }
+    
+    public int getPlayerNormalStepSize() {
+    	return this.normalStepSize;
     }
 
 }

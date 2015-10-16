@@ -2,6 +2,11 @@ package game;
 
 import game.log.LogSettings;
 import game.log.Logger;
+import game.observers.BubbleController;
+import game.observers.GameController;
+import game.observers.LevelController;
+import game.observers.PlayerController;
+import game.observers.PowerupController;
 import game.screens.GameScreen;
 import game.screens.LeaderBoardScreen;
 import game.screens.LosingScreen;
@@ -36,7 +41,14 @@ public class SurvivalDriver extends Driver {
      *            Name that the player entered
      */
     public SurvivalDriver() {
+        setupGame();
+        initDriver();
         this.collisions = new Collisions();
+        new BubbleController(collisions);
+        new GameController(collisions);
+        new LevelController(collisions);
+        new PowerupController(collisions);
+        new PlayerController(collisions);
     }
 
     /**
@@ -110,7 +122,7 @@ public class SurvivalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        driver = new SurvivalDriver();
+        driver = this;
         player = new Player(name, playerSettings.getPlayerSpawnPoint());
         game = GameFactory.createSurvival(player);
         score = Score.getInstance();

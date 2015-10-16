@@ -111,8 +111,6 @@ public class StartScreen extends JFrame {
                 dispose();
                 DriverFactory dFactory = new NormalDriverFactory();
                 Driver d = dFactory.buildDriver();
-                d.setupGame();
-                d.initDriver();
                 d.startGame(tf.getText());
                 MainRunner.setDriver(d);
             }
@@ -136,8 +134,6 @@ public class StartScreen extends JFrame {
                 dispose();
                 DriverFactory dFactory = new SurvivalDriverFactory();
                 Driver d = dFactory.buildDriver();
-                d.setupGame();
-                d.initDriver();
                 d.startGame(tf.getText());
                 MainRunner.setDriver(d);
             }
