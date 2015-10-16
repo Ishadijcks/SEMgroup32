@@ -44,9 +44,9 @@ public class LeaderboardTest {
 	
 	@Test
 	public void testAddScoreFromN() {
+	    led = new Leaderboard();
 		EndScore sc = new EndScore("Imeand", 100);
 		EndScore sc1 = new EndScore("Uhu", 50);
-		assertTrue(led.getScoreList().isEmpty());
 		led.addScore(sc);
 		assertTrue(led.getScoreList().contains(sc));
 		led.addScore(sc1);
