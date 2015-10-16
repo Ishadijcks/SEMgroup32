@@ -1,11 +1,11 @@
 package game.observers;
 
 import settings.playerSettings;
-import game.Collisions;
 import game.Driver;
 import game.Game;
 import game.Player;
 import game.bubble.Bubble;
+import game.collisions.Collision;
 import game.powerups.Powerup;
 
 /**
@@ -19,28 +19,10 @@ public class PlayerController extends Observer {
      * Constructor.
      * @param collisions class for all collision
      */
-    public PlayerController(Collisions collisions) {
+    public PlayerController(Collision collisions) {
         super(collisions);
         collisions.registerObserver(this);
     }
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void ropeBubbleEvent(Bubble bubble) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void bubblePlayerEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void wallPlayerEvent() {
@@ -52,18 +34,6 @@ public class PlayerController extends Observer {
         	playerSettings.setRestrictMovingLeft(true);
         	playerSettings.setRestrictMovingRight(false);
         }
-		
-	}
-
-	@Override
-	public void wallBubbleEvent(Bubble bubble) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void powerupPlayerEvent(Powerup powerup) {
-		// TODO Auto-generated method stub
 		
 	}
 

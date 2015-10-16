@@ -1,7 +1,11 @@
 package game;
 
+import java.util.ArrayList;
+
 import settings.playerSettings;
 import settings.screenSettings;
+import game.collisions.Collision;
+import game.collisions.CollisionFactory;
 import game.log.LogSettings;
 import game.log.Logger;
 import game.observers.BubbleController;
@@ -25,7 +29,7 @@ public class NormalDriver extends Driver {
     private static String name;
     private static NormalDriver driver;
     private static GameScreen gameScreen;
-    private Collisions collisions;
+    private ArrayList<Collision> collisions;
 
     /**
      * Constructor that will pass the name of the player.
@@ -36,12 +40,7 @@ public class NormalDriver extends Driver {
     public NormalDriver() {
         setupGame();
         initDriver();
-        this.collisions = new Collisions();
-        new BubbleController(collisions);
-        new GameController(collisions);
-        new LevelController(collisions);
-        new PowerupController(collisions);
-        new PlayerController(collisions);
+        this.collisions = (new CollisionFactory()).buildAllCollisions();
     }
 
     /**
@@ -96,7 +95,9 @@ public class NormalDriver extends Driver {
             curLevel = game.getCurrentLevel();
 
             game.moveEntities();
-            collisions.allCollisions(game);
+            for(Collision col : collisions){
+            	col.checkCollision(game);
+            }
 
             gameScreen.reload();
 

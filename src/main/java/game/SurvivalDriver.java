@@ -1,5 +1,7 @@
 package game;
 
+import game.collisions.Collision;
+import game.collisions.CollisionFactory;
 import game.log.LogSettings;
 import game.log.Logger;
 import game.observers.BubbleController;
@@ -12,6 +14,7 @@ import game.screens.LeaderBoardScreen;
 import game.screens.LosingScreen;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -32,7 +35,7 @@ public class SurvivalDriver extends Driver {
     private static String name;
     private static Leaderboard leaderBoard = new Leaderboard();
 
-    private Collisions collisions;
+    private ArrayList<Collision> collisions;
 
     /**
      * Constructor for a survival driver that will get the name of a player.
@@ -43,12 +46,7 @@ public class SurvivalDriver extends Driver {
     public SurvivalDriver() {
         setupGame();
         initDriver();
-        this.collisions = new Collisions();
-        new BubbleController(collisions);
-        new GameController(collisions);
-        new LevelController(collisions);
-        new PowerupController(collisions);
-        new PlayerController(collisions);
+        this.collisions = (new CollisionFactory()).buildAllCollisions();
     }
 
     /**
@@ -105,7 +103,9 @@ public class SurvivalDriver extends Driver {
 
             game.moveEntities();
             game.update();
-            collisions.allCollisions(game);
+            for(Collision col : collisions){
+            	col.checkCollision(game);
+            }
 
             gameScreen.reload();
 

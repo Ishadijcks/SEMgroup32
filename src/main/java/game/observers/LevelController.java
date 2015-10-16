@@ -2,22 +2,16 @@ package game.observers;
 
 import java.util.ArrayList;
 
-import game.Collisions;
 import game.Driver;
 import game.bubble.Bubble;
+import game.collisions.Collision;
 import game.powerups.Powerup;
 
 public class LevelController extends Observer {
 
-	public LevelController(Collisions subject) {
+	public LevelController(Collision subject) {
 		super(subject);
 		subject.registerObserver(this);
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -31,24 +25,6 @@ public class LevelController extends Observer {
         Driver.score.addScore(bubble.getScoreWorth());
         bubbleList.addAll(bubble.destroyBubble(bubblePosX, bubblePosY));
         bubbleList.remove(bubble);
-
-	}
-
-	@Override
-	public void bubblePlayerEvent() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void wallPlayerEvent() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void wallBubbleEvent(Bubble bubble) {
-		// TODO Auto-generated method stub
 
 	}
 
