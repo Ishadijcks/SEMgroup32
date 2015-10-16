@@ -9,7 +9,6 @@ public class CollisionsTest {
 
 	@Test
 	public void Collisions() {
-		Collision c = new Collision();
 	}
 
 }
