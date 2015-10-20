@@ -10,13 +10,26 @@
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
+<reporting>
+    <outputDirectory>${basedir}/target/site</outputDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.0.1</version>
+        <reportSets>
+          <reportSet></reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting> 
+
 	<!-- Versienummers komen overeen, maar <targetJdk> moet weg denk ik? -->
 	 <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<targetJdk>1.7</targetJdk>
 		<checkstyle.plugin.version>2.16</checkstyle.plugin.version>
 		<pmd.plugin.version>3.2</pmd.plugin.version>
-		<findbugs.version>3.0.1</findbugs.version>
+		<findbugs.version>3.0.0</findbugs.version>
 	</properties>
 	
 	<dependencies>
@@ -143,17 +156,6 @@
 	</build>
 </project>
 
-<!-- Belangrijk! Dit stukje moet er denk ik ergens tussen maar ik word er niet wijs uit waar precies:
-<reporting>
-    <outputDirectory>${basedir}/target/site</outputDirectory>
-    <plugins>
-      <plugin>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.0.1</version>
-        <reportSets>
-          <reportSet></reportSet>
-        </reportSets>
-      </plugin>
-    </plugins>
-  </reporting> -->
+<!-- Belangrijk! Dit stukje moet er denk ik ergens tussen maar ik word er niet wijs uit waar precies: -->
+
   
