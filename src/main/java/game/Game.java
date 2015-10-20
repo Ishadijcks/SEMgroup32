@@ -5,8 +5,6 @@ import game.screens.GameScreen;
 
 import java.util.ArrayList;
 
-import settings.playerSettings;
-
 /**
  * Class that will handle everything of 1 game session.
  * 
@@ -16,7 +14,7 @@ import settings.playerSettings;
 public abstract class Game {
     protected ArrayList<Level> levelList = new ArrayList<Level>();
     protected ArrayList<Player> playerList;
-    protected int lives = playerSettings.getLives();
+    protected int lives = 5;
     protected int currentLevel = 1;
     protected boolean inProgress;
 

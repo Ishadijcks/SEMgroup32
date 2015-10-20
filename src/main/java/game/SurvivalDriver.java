@@ -4,22 +4,12 @@ import game.collisions.Collision;
 import game.collisions.CollisionFactory;
 import game.log.LogSettings;
 import game.log.Logger;
-import game.observers.BubbleController;
-import game.observers.GameController;
-import game.observers.LevelController;
-import game.observers.PlayerController;
-import game.observers.PowerupController;
 import game.screens.GameScreen;
 import game.screens.LeaderBoardScreen;
 import game.screens.LosingScreen;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-import settings.playerSettings;
 import settings.screenSettings;
 
 /**
@@ -122,7 +112,7 @@ public class SurvivalDriver extends Driver {
      */
     public void setupGame() {
         driver = this;
-        player = new Player(name, playerSettings.getPlayerSpawnPoint());
+        player = new Player(name, 350);
         game = GameFactory.createSurvival(player);
         score = Score.getInstance();
         game.addPlayer(player);

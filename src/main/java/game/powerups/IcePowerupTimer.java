@@ -1,7 +1,7 @@
 package game.powerups;
 
 import game.Game;
-import settings.playerSettings;
+import game.Player;
 import settings.threadSettings;
 
 /**
@@ -24,19 +24,20 @@ public class IcePowerupTimer extends PowerupTimer {
 	 */
 	@Override
 	public void run() {
+		Player player = game.getCurrentLevel().getPlayerList().get(0);
 		long start = System.currentTimeMillis();
 		long end = start + 5*1000; // 5 seconds * 1000 ms/sec
 		while (System.currentTimeMillis() < end)
 		{
-		    if(!playerSettings.getPlayerHasIceRope()){
-		        playerSettings.setPlayerHasIceRope(true);
+		    if(!player.hasIceRope()){
+		        player.setHasIceRope(true);
 		    }
 		    if(threadSettings.getDieThreads()){
 		    	threadSettings.setDieThreads(false);
 		    	end = System.currentTimeMillis();
 		    }
 		}
-		playerSettings.setPlayerHasIceRope(false);
+		player.setHasIceRope(false);
 	}
 
 }

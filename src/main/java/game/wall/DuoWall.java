@@ -2,8 +2,6 @@ package game.wall;
 
 import java.awt.Color;
 
-import settings.playerSettings;
-
 
 /**
  * Wall class of a duo wall.
@@ -22,8 +20,8 @@ public class DuoWall extends Wall {
     @Override
 	public boolean expectPlayerCollision(int xCoord, boolean movingLeft) {
 		int plyrXCoord = xCoord;
-		int plyrStepSize = playerSettings.getPlayerStepSize();
-		int plyrWidth = playerSettings.getPlayerWidth();
+		int plyrStepSize = 4;
+		int plyrWidth = 111;
 		if(this.isActive())
 			if((plyrXCoord - plyrStepSize <= this.getxCoord() + this.getWidth()
 					&& plyrXCoord - plyrStepSize >= this.getxCoord() && movingLeft) 

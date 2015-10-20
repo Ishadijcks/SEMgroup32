@@ -2,7 +2,6 @@ package game;
 
 import java.util.ArrayList;
 
-import settings.playerSettings;
 import settings.screenSettings;
 import game.collisions.Collision;
 import game.collisions.CollisionFactory;
@@ -122,7 +121,7 @@ public class NormalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        Player player = new Player(name, playerSettings.getPlayerSpawnPoint());
+        Player player = new Player(name, 350);
         game = GameFactory.createSinglePlayer(player);
         
         score = Score.getInstance();

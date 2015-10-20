@@ -8,9 +8,6 @@ import game.wall.Wall;
 
 import java.util.ArrayList;
 
-import settings.playerSettings;
-import settings.screenSettings;
-
 /**
  * Class that will control a player.
  * 
@@ -20,13 +17,16 @@ import settings.screenSettings;
 public class Player {
     private String name;
     private int xCoord;
-    private int yCoord = screenSettings.getLevelHeight() - playerSettings.getPlayerHeight()
-            + screenSettings.getTopMargin();
+    /**
+     * yCoord is calculated by:
+     * levelHeight + playerHeight + topMargin
+     */
+    private int yCoord = 389;
     private int colY = yCoord + 61;
     private int colX;
-    private int height = playerSettings.getPlayerHeight();
-    private int width = playerSettings.getPlayerWidth();
-    private int stepSize = playerSettings.getPlayerStepSize();
+    private final int height = 161;
+    private final int width = 111;
+    private int stepSize = 2;
     private boolean movingLeft = false;
     private boolean movingRight = false;
     
@@ -34,6 +34,19 @@ public class Player {
     private boolean hasIceRope = false;
     private final int powerupStepSize = 5;
     private final int normalStepSize = 2;
+    private boolean restrictMovingLeft = false;
+    private boolean restrictMovingRight = false;
+    
+    //Boundaries of movingspace
+    /**
+     * The left boundary is the leftmargin of the screen
+     */
+    private final int boundaryLeft = 75;
+    /**
+     * The right boundary is calculated by
+     * LevelWidth + LeftMargin + 37 <- half of sprite
+     */
+    private final int boundaryRight = 887;
 
     /**
      * Constructor for a player.
@@ -99,22 +112,21 @@ public class Player {
      *            list of walls
      */
     public void move() {
-        if (movingLeft && !playerSettings.isRestrictMovingLeft()) {
-            if (xCoord - stepSize > screenSettings.getLeftMargin()) {
+        if (movingLeft && !restrictMovingLeft) {
+            if (xCoord - stepSize > boundaryLeft) {
                 xCoord -= stepSize;
                 colX -= stepSize;
-                playerSettings.setRestrictMovingRight(false);
+                setRestrictMovingRight(false);
             } else {
                 Logger.log("Player is at the left border", 1, 4);
             }
         }
 
-        if (movingRight && !playerSettings.isRestrictMovingRight()) {
-            if (xCoord + stepSize + width < screenSettings.getLevelWidth()
-                    + screenSettings.getLeftMargin() + 37) {
+        if (movingRight && !restrictMovingRight) {
+            if (xCoord + stepSize + width < boundaryRight) {
                 xCoord += stepSize;
                 colX += stepSize;
-                playerSettings.setRestrictMovingLeft(false);
+                setRestrictMovingLeft(false);
             } else {
                 Logger.log("Player is at the right border", 1, 4);
             }
@@ -127,7 +139,16 @@ public class Player {
      * @return true if it has, false otherwise
      */
     public boolean hasIceRope() {
-        return playerSettings.getPlayerHasIceRope();
+        return hasIceRope;
+    }
+    
+    /**
+     * Sets the new state of the ice rope
+     * 
+     * @param state of the ice rope
+     */
+    public void setHasIceRope(boolean state) {
+    	hasIceRope = state;
     }
 
     /**
@@ -248,5 +269,33 @@ public class Player {
     public int getPlayerNormalStepSize() {
     	return this.normalStepSize;
     }
+
+	/**
+	 * @return the restrictMovingLeft
+	 */
+	public boolean isRestrictMovingLeft() {
+		return restrictMovingLeft;
+	}
+
+	/**
+	 * @param restrictMovingLeft the restrictMovingLeft to set
+	 */
+	public void setRestrictMovingLeft(boolean restrictMovingLeft) {
+		this.restrictMovingLeft = restrictMovingLeft;
+	}
+
+	/**
+	 * @return the restrictMovingRight
+	 */
+	public boolean isRestrictMovingRight() {
+		return restrictMovingRight;
+	}
+
+	/**
+	 * @param restrictMovingRight the restrictMovingRight to set
+	 */
+	public void setRestrictMovingRight(boolean restrictMovingRight) {
+		this.restrictMovingRight = restrictMovingRight;
+	}
 
 }

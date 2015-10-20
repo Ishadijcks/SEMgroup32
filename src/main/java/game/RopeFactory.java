@@ -1,15 +1,15 @@
 package game;
 
-import settings.playerSettings;
 import game.log.Logger;
 
 public class RopeFactory {
 
 	public Rope createRope(boolean iceRope) {
 		Level currentLevel = Driver.game.getCurrentLevel();
+		// minus the top margin which is 50
 		int yCoord = currentLevel.getHeight()
-                - playerSettings.getPlayerHeight();
-        int xCoord = currentLevel.getPlayerList().get(0).getX() + playerSettings.getPlayerWidth() / 2;
+                - 50;
+        int xCoord = currentLevel.getPlayerList().get(0).getX() + currentLevel.getPlayerList().get(0).getWidth() / 2;
 
         Logger.log("Shot a rope", 1, 4);
         
