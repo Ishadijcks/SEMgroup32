@@ -1,5 +1,7 @@
 package game.wall;
 
+import helperobjects.Coordinates;
+
 import java.awt.Color;
 
 import settings.playerSettings;
@@ -14,8 +16,8 @@ public class PlayerWall extends Wall {
      * Constructor of a player wall.
      * @param xCoord xCoord-Coordinate of the wall
      */
-    public PlayerWall(int xCoord) {
-        super(xCoord, Color.green);
+    public PlayerWall(Coordinates coordinates, int height, int width) {
+        super(coordinates, Color.green, height, width);
     }
 
 	@Override

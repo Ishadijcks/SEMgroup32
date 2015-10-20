@@ -8,8 +8,11 @@ import game.bubble.Bubblex8;
 import game.log.Logger;
 import game.wall.BubbleWall;
 import game.wall.PlayerWall;
+import helperobjects.Coordinates;
 
 import java.util.ArrayList;
+
+import settings.screenSettings;
 
 /**
  * Class that creates a level for the normal game mode.
@@ -82,9 +85,9 @@ public class NormalLevelFactory {
         Bubble bubble1 = new Bubblex8(100, 100, false, false);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
-        BubbleWall wall1 = new BubbleWall(300);
+        BubbleWall wall1 = new BubbleWall(new Coordinates(300, 0), screenSettings.getLevelHeight() - 300, 100);
         level.addWall(wall1);
-        PlayerWall wall9 = new PlayerWall(675);
+        PlayerWall wall9 = new PlayerWall(new Coordinates(675, 0), screenSettings.getLevelHeight(), 100);
         level.addWall(wall9);
         level.setLevelNumber(1);
         return level;
@@ -101,10 +104,10 @@ public class NormalLevelFactory {
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
         level.addBubble(bubble2);
-        BubbleWall wall = new BubbleWall(300);
-        PlayerWall wall2 = new PlayerWall(700);
-        BubbleWall wall3 = new BubbleWall(850);
-        BubbleWall wall4 = new BubbleWall(900);
+        BubbleWall wall = new BubbleWall(new Coordinates(300, 0), screenSettings.getLevelHeight(), 10);
+        PlayerWall wall2 = new PlayerWall(new Coordinates(700, 0), screenSettings.getLevelHeight(), 10);
+        BubbleWall wall3 = new BubbleWall(new Coordinates(850, 0), screenSettings.getLevelHeight(), 10);
+        BubbleWall wall4 = new BubbleWall(new Coordinates(900, 0), screenSettings.getLevelHeight(), 10);
         level.addWall(wall);
         level.addWall(wall2);
         level.addWall(wall3);
@@ -162,7 +165,7 @@ public class NormalLevelFactory {
     public static Level getLevel6() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
         NormalLevel level = new NormalLevel(playerList);
-        PlayerWall wall1 = new PlayerWall(700);
+        PlayerWall wall1 = new PlayerWall(new Coordinates(700, 0), screenSettings.getLevelHeight(), 10);
         level.addBubble(bubble1);
         level.addWall(wall1);
         level.setLevelNumber(6);
@@ -177,8 +180,8 @@ public class NormalLevelFactory {
     public static Level getLevel7() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
         NormalLevel level = new NormalLevel(playerList);
-        PlayerWall wall1 = new PlayerWall(600);
-        PlayerWall wall2 = new PlayerWall(200);
+        PlayerWall wall1 = new PlayerWall(new Coordinates(600, 0), screenSettings.getLevelHeight(), 10);
+        PlayerWall wall2 = new PlayerWall(new Coordinates(200, 0), screenSettings.getLevelHeight(), 10);
         level.addBubble(bubble1);
         level.addWall(wall1);
         level.addWall(wall2);

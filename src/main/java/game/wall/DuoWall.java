@@ -1,5 +1,7 @@
 package game.wall;
 
+import helperobjects.Coordinates;
+
 import java.awt.Color;
 
 import settings.playerSettings;
@@ -15,8 +17,8 @@ public class DuoWall extends Wall {
      * Constructor of a duo wall.
      * @param xCoord xCoord-Coordinate of the wall
      */
-    public DuoWall(int xCoord) {
-        super(xCoord, Color.blue);
+    public DuoWall(Coordinates coordinates, int height, int width) {
+        super(coordinates, Color.blue, height, width);
     }
 
     @Override

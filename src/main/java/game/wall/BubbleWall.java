@@ -1,5 +1,7 @@
 package game.wall;
 
+import helperobjects.Coordinates;
+
 import java.awt.Color;
 
 /**
@@ -14,8 +16,8 @@ public class BubbleWall extends Wall {
      * Constructor of a bubble wall.
      * @param xCoord x-Coordinate of the wall
      */
-    public BubbleWall(int xCoord) {
-        super(xCoord, Color.red);
+    public BubbleWall(Coordinates coordinates, int height, int width) {
+        super(coordinates, Color.red, height, width);
         this.bouncedOn = 0;
     }
 

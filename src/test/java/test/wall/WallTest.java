@@ -11,6 +11,7 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
+import settings.screenSettings;
 import settings.wallSettings;
 
 
@@ -21,8 +22,8 @@ public class WallTest {
 	
 	@Before
 	public void init() {
-		wall = new DuoWall(10);
-		otherWall = new DuoWall(10);
+		wall = new DuoWall(10, 0, screenSettings.getLevelHeight(), 10);
+		otherWall = new DuoWall(1, 0, screenSettings.getLevelHeight(), 10);
 	}
 
 	@Test
