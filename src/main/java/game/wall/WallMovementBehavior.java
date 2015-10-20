@@ -8,13 +8,8 @@ package game.wall;
  */
 public interface WallMovementBehavior {
     /**
-     * The movement of the wall method, where the coordinate will be increased.
+     * The movement of the wall method.
      */
-    void moveIncrease(int speed);
-    
-    /**
-     * The movement of the wall method, where the coordinate will be decreased.
-     */
-    void moveDecrease(int speed);
+    void move();
 }
 

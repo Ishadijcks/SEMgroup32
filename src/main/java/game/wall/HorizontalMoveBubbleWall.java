@@ -11,20 +11,13 @@ public class HorizontalMoveBubbleWall extends BubbleWall {
     
     private int bouncedOn;
     private MoveHorizontally mover;
-    private boolean goingRight;
-    private int leftBoundary;
-    private int rightBoundary;
-    private int movementSpeed;
 
     /**
      * Constructor of the horizontal move bubble wall.
      */
     public HorizontalMoveBubbleWall(Coordinates coordinates, int height, int width, int leftBound, int rightBound, int speed) {
         super(coordinates, height, width);
-        mover = new MoveHorizontally(coordinates);
-        leftBoundary = leftBound;
-        rightBoundary = rightBound;
-        movementSpeed = speed;
+        mover = new MoveHorizontally(coordinates, leftBound, rightBound, speed);
         this.bouncedOn = 0;
     }
     
@@ -49,27 +42,7 @@ public class HorizontalMoveBubbleWall extends BubbleWall {
      */
     @Override
     public void move() {
-        if(goingRight) {
-            mover.moveIncrease(1);
-            this.setxCoord(mover.getCoordinates().getxCoordinate());
-        }
-        else {
-            mover.moveDecrease(1);
-            this.setxCoord(mover.getCoordinates().getxCoordinate());
-        }
-        checkPlace();
-    }
-    
-    /**
-     * Check if the wall has to go to the right or to the left.
-     */
-    public void checkPlace() {
-        if(this.getxCoord() >= rightBoundary) {
-            goingRight = false;
-        }
-        if(this.getxCoord() <= leftBoundary) {
-            goingRight = true;
-        }
+        mover.move();
     }
 
 }

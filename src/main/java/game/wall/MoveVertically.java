@@ -4,33 +4,40 @@ import helperobjects.Coordinates;
 
 /**
  * Class that gives a wall a vertical movement.
+ * 
  * @author Boning
  *
  */
 public class MoveVertically implements WallMovementBehavior {
-    
+
     private Coordinates coordinates;
-    
+    private int bouncedOn;
+    private int lowerBoundary;
+    private int upperBoundary;
+    private int movementSpeed;
+    private int goingUp = 1;
+
     /**
      * Constructor for the vertical mover.
-     * @param coord Current coordinates of the wall
+     * 
+     * @param coord
+     *            Current coordinates of the wall
      */
-    public MoveVertically(Coordinates coord) {
+    public MoveVertically(Coordinates coord, int lower, int upper, int speed) {
         coordinates = coord;
+        movementSpeed = speed;
+        lowerBoundary = lower;
+        upperBoundary = upper;
     }
-    
-    /**
-     * Moves the wall down.
-     */
-    public void moveIncrease(int speed) {
-        coordinates.setyCoordinate(coordinates.getyCoordinate() + speed);
-    }
-    
-    /**
-     * Moves the wall up.
-     */
-    public void moveDecrease(int speed) {
-        coordinates.setyCoordinate(coordinates.getyCoordinate() - speed);
+
+    public void move() {
+        if (coordinates.getyCoordinate() >= upperBoundary) {
+            goingUp = -1;
+        }
+        if (coordinates.getyCoordinate() <= lowerBoundary) {
+            goingUp = 1;
+        }
+        coordinates.setyCoordinate(coordinates.getyCoordinate() + movementSpeed * goingUp);
     }
 
     /**
@@ -40,12 +47,4 @@ public class MoveVertically implements WallMovementBehavior {
         return coordinates;
     }
 
-    /**
-     * @param coordinates the coordinates to set
-     */
-    public void setCoordinates(Coordinates coordinates) {
-        this.coordinates = coordinates;
-    }
-    
-    
 }
