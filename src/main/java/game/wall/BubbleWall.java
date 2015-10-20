@@ -8,7 +8,7 @@ import java.awt.Color;
  * Wall class of a bubble wall.
  * @author Boning
  */
-public class BubbleWall extends Wall {
+public abstract class BubbleWall extends Wall {
 	
 	private int bouncedOn;
 
@@ -16,8 +16,8 @@ public class BubbleWall extends Wall {
      * Constructor of a bubble wall.
      * @param xCoord x-Coordinate of the wall
      */
-    public BubbleWall(Coordinates coordinates, int height, int width) {
-        super(coordinates, Color.red, height, width);
+    public BubbleWall(Coordinates coordinates, int height, int width, WallMovementBehavior wallMovement) {
+        super(coordinates, Color.red, height, width, wallMovement);
         this.bouncedOn = 0;
     }
 

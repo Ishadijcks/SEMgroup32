@@ -5,6 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import game.wall.DuoWall;
 import game.wall.Wall;
+import helperobjects.Coordinates;
 
 import java.awt.Color;
 
@@ -22,8 +23,8 @@ public class WallTest {
 	
 	@Before
 	public void init() {
-		wall = new DuoWall(10, 0, screenSettings.getLevelHeight(), 10);
-		otherWall = new DuoWall(1, 0, screenSettings.getLevelHeight(), 10);
+		wall = new DuoWall(new Coordinates(10, 0), screenSettings.getLevelHeight(), 10);
+		otherWall = new DuoWall(new Coordinates(1, 0), screenSettings.getLevelHeight(), 10);
 	}
 
 	@Test
@@ -32,11 +33,6 @@ public class WallTest {
 		assertEquals(0, wall.getyCoord());
 		assertEquals(Color.blue, wall.getColor());
 	}
-	
-	@Test
-    public void testEquals() {
-        assertTrue(wall.equals(otherWall));
-    }
 
 	@Test
 	public void testGetHeight() {

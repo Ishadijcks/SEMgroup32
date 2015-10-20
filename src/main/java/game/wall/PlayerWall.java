@@ -17,7 +17,7 @@ public class PlayerWall extends Wall {
      * @param xCoord xCoord-Coordinate of the wall
      */
     public PlayerWall(Coordinates coordinates, int height, int width) {
-        super(coordinates, Color.green, height, width);
+        super(coordinates, Color.green, height, width, new NoMove());
     }
 
 	@Override

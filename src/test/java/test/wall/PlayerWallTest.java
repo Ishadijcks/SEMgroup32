@@ -2,6 +2,7 @@ package test.wall;
 
 import static org.junit.Assert.*;
 import game.wall.PlayerWall;
+import helperobjects.Coordinates;
 
 import java.awt.Color;
 
@@ -16,7 +17,7 @@ public class PlayerWallTest {
 	
 	@Before
 	public void init(){
-		wall = new PlayerWall(10, 0, screenSettings.getLevelHeight(), 10);
+		wall = new PlayerWall(new Coordinates(10, 0), screenSettings.getLevelHeight(), 10);
 	}
 
 	@Test
