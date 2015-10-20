@@ -14,8 +14,8 @@ public class BubbleWall extends Wall {
      * Constructor of a bubble wall.
      * @param xCoord x-Coordinate of the wall
      */
-    public BubbleWall(int xCoord) {
-        super(xCoord, Color.red);
+    public BubbleWall(int xCoord, int height, int width) {
+        super(xCoord, Color.red, height, width);
         this.bouncedOn = 0;
     }
 

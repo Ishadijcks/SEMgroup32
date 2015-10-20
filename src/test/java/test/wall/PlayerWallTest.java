@@ -8,13 +8,15 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
+import settings.screenSettings;
+
 public class PlayerWallTest {
 	
 	private PlayerWall wall;
 	
 	@Before
 	public void init(){
-		wall = new PlayerWall(10);
+		wall = new PlayerWall(10, screenSettings.getLevelHeight(), 10);
 	}
 
 	@Test

@@ -18,8 +18,8 @@ public abstract class Wall {
 
     private int xCoord;
     private int yCoord;
-    private int width = wallSettings.getWallWidth();
-    private int height = wallSettings.getWallHeight();
+    private int width;
+    private int height;
     private Color color;
     private boolean isActive;
 
@@ -31,11 +31,13 @@ public abstract class Wall {
      * @param color
      *            of the wall
      */
-    public Wall(int xCoord, Color color) {
+    public Wall(int xCoord, Color color, int height, int width) {
         this.xCoord = xCoord;
         this.yCoord = 0;
         this.color = color;
         this.isActive = true;
+        this.height = height;
+        this.width = width;
     }
 
     /**

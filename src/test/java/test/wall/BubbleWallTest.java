@@ -9,13 +9,15 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
+import settings.screenSettings;
+
 public class BubbleWallTest {
     
     private BubbleWall wall;
     
     @Before
     public void init() {
-        wall = new BubbleWall(10);
+        wall = new BubbleWall(10, screenSettings.getLevelHeight(), 10);
     }
 
     @Test

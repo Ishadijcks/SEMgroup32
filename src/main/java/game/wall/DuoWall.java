@@ -15,8 +15,8 @@ public class DuoWall extends Wall {
      * Constructor of a duo wall.
      * @param xCoord xCoord-Coordinate of the wall
      */
-    public DuoWall(int xCoord) {
-        super(xCoord, Color.blue);
+    public DuoWall(int xCoord, int height, int width) {
+        super(xCoord, Color.blue, height, width);
     }
 
     @Override
