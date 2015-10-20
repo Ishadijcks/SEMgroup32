@@ -21,20 +21,25 @@ public class NormalLevelFactory {
     private static ArrayList<Player> playerList;
     private static int levelsAvailable = 10;
     
+    /**
+     * Creates a normalLevelFactory with a playerList.
+     * @param pList the playerList to use
+     */
     public NormalLevelFactory(ArrayList<Player> pList) {
-    	this.playerList = pList;
+        this.playerList = pList;
     }
-    
-    /** Get an arraylist of all the levels that can be built
-     * within this class.
+
+    /**
+     * Get an arraylist of all the levels that can be built within this class.
+     * 
      * @return ArrayList<Level>
      */
     public ArrayList<Level> getAllLevels() {
-    	ArrayList<Level> levelList = new ArrayList<Level>();
-    	for(int i = 1; i < levelsAvailable + 1; i++){
-    		levelList.add(getLevel(i));
-    	}
-    	return levelList;
+        ArrayList<Level> levelList = new ArrayList<Level>();
+        for (int i = 1; i < levelsAvailable + 1; i++) {
+            levelList.add(getLevel(i));
+        }
+        return levelList;
     }
 
     /**
@@ -240,8 +245,9 @@ public class NormalLevelFactory {
     public static void setPlayerList(ArrayList<Player> pList) {
         playerList = pList;
     }
-    
-    /** The total amount of playable levels
+
+    /**
+     * The total amount of playable levels.
      * @return int of the total amount of playable levels
      */
     public int getLevelsAvailable() {

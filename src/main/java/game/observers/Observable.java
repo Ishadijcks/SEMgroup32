@@ -18,6 +18,7 @@ public interface Observable {
 
     /**
      * Removed The observer.
+     * @param ob The observer to remove
      */
     void removeObserver(Observer ob);
     

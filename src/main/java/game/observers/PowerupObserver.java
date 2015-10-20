@@ -1,15 +1,11 @@
 package game.observers;
 
-import settings.powerupSettings;
 import game.Driver;
-import game.Game;
-import game.Player;
 import game.bubble.Bubble;
 import game.collisions.Collision;
-import game.log.Logger;
-import game.powerups.IcePowerup;
 import game.powerups.Powerup;
 import game.powerups.PowerupFactory;
+import settings.powerupSettings;
 
 /**
  * Powerup with player collisions observer.

@@ -4,20 +4,11 @@ import game.collisions.Collision;
 import game.collisions.CollisionFactory;
 import game.log.LogSettings;
 import game.log.Logger;
-import game.observers.BubbleObserver;
-import game.observers.GameObserver;
-import game.observers.LevelObserver;
-import game.observers.PlayerObserver;
-import game.observers.PowerupObserver;
 import game.screens.GameScreen;
 import game.screens.LeaderBoardScreen;
 import game.screens.LosingScreen;
 
-import java.io.IOException;
 import java.util.ArrayList;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 import settings.playerSettings;
 import settings.screenSettings;
@@ -39,9 +30,6 @@ public class SurvivalDriver extends Driver {
 
     /**
      * Constructor for a survival driver that will get the name of a player.
-     * 
-     * @param name
-     *            Name that the player entered
      */
     public SurvivalDriver() {
         setupGame();
@@ -102,8 +90,8 @@ public class SurvivalDriver extends Driver {
 
             game.moveEntities();
             game.update();
-            for(Collision col : collisions){
-            	col.checkCollision(game);
+            for (Collision col : collisions) {
+                col.checkCollision(game);
             }
 
             gameScreen.reload();
@@ -127,9 +115,8 @@ public class SurvivalDriver extends Driver {
         score = Score.getInstance();
         game.addPlayer(player);
 
-        int centerConstant = (int) Math
-                .round(0.5 * (screenSettings.getScreenWidth() - screenSettings
-                        .getLevelWidth()));
+        int centerConstant = (int) Math.round(0.5 * (screenSettings
+                .getScreenWidth() - screenSettings.getLevelWidth()));
         screenSettings.setLeftMargin(centerConstant);
     }
 

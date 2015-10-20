@@ -1,11 +1,9 @@
 package test.screen;
 
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertFalse;
 import game.screens.StartScreen;
 
 import org.junit.Test;
-
 
 public class StartScreenTest {
 

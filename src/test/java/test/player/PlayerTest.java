@@ -1,4 +1,5 @@
 package test.player;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -9,8 +10,6 @@ import game.Player;
 import org.junit.Test;
 
 import settings.playerSettings;
-
-import com.sun.scenario.Settings;
 
 public class PlayerTest {
 
@@ -63,7 +62,7 @@ public class PlayerTest {
 
     @Test
     public void testMoveLeftBoundary() {
-    	Player play = new Player("test", 0);
+        Player play = new Player("test", 0);
         int x = player.getX();
         play.movingLeft();
         play.move();
@@ -80,7 +79,7 @@ public class PlayerTest {
 
     @Test
     public void testMoveRightBoundary() {
-    	Player play = new Player("test", 10000);
+        Player play = new Player("test", 10000);
         int x = player.getX();
         play.movingRight();
         play.move();
@@ -96,18 +95,18 @@ public class PlayerTest {
     public void testGetHeight() {
         assertEquals(playerSettings.getPlayerHeight(), player.getHeight());
     }
-    
+
     @Test
-    public void testHasIceRopeNoIceRope(){
-    	NormalDriver.game = GameFactory.createSinglePlayer(player);
-    	assertFalse(player.hasIceRope());
+    public void testHasIceRopeNoIceRope() {
+        NormalDriver.game = GameFactory.createSinglePlayer(player);
+        assertFalse(player.hasIceRope());
     }
-    
+
     @Test
     public void testSetName() {
-    	assertTrue(player.getName().equals("Isha"));
-    	player.setName("NietIsha");
-    	assertTrue(player.getName().equals("NietIsha"));
+        assertTrue(player.getName().equals("Isha"));
+        player.setName("NietIsha");
+        assertTrue(player.getName().equals("NietIsha"));
     }
 
 }

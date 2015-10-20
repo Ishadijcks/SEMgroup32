@@ -1,8 +1,8 @@
 package game;
 
+import game.log.Logger;
 import settings.ropeSettings;
 import settings.screenSettings;
-import game.log.Logger;
 
 /**
  * Rope class.
@@ -20,19 +20,21 @@ public class Rope {
      *            x-Coordinate of the rope
      * @param yCoord
      *            y-Coordinate of the rope
-     * @param isNormalMode
-     *            checks if it is a normal game of a survival game
      */
     public Rope(int xCoord, int yCoord) {
         this.xCoord = xCoord;
         this.yCoord = yCoord;
     }
-    
-    public boolean isAtTop(){
-    	 if (yCoord <= screenSettings.getTopMargin() - 2) {
-    		 return true;
-    	 }
-    	 return false;
+
+    /**
+     * Checks if the rope is at the top of the screen.
+     * @return true if the rope is at the top of the screen, false otherwise
+     */
+    public boolean isAtTop() {
+        if (yCoord <= screenSettings.getTopMargin() - 2) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -40,14 +42,14 @@ public class Rope {
      */
     public void move() {
         if (isAtTop()) {
-            Driver.game.getCurrentLevel()
-                     .setRope(null);
+            Driver.game.getCurrentLevel().setRope(null);
             Logger.log("Rope hit the roof", 5, 4);
-         } else {
-             Logger.log("Rope moved from " + xCoord + "," + yCoord
-                     + " to " + xCoord + "," + (yCoord - ropeSettings.getRopeSpeed()), 5, 5);
-             yCoord -= ropeSettings.getRopeSpeed();
-         }
+        } else {
+            Logger.log("Rope moved from " + xCoord + "," + yCoord + " to "
+                    + xCoord + "," + (yCoord - ropeSettings.getRopeSpeed()), 5,
+                    5);
+            yCoord -= ropeSettings.getRopeSpeed();
+        }
     }
 
     /**
@@ -88,23 +90,23 @@ public class Rope {
      *         attributes
      */
     @Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		Rope other = (Rope) obj;
-		if (xCoord != other.xCoord) {
-			return false;
-		}
-		if (yCoord != other.yCoord) {
-			return false;
-		}
-		return true;
-	}
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Rope other = (Rope) obj;
+        if (xCoord != other.xCoord) {
+            return false;
+        }
+        if (yCoord != other.yCoord) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -1,9 +1,7 @@
 package game.observers;
 
-import game.Game;
 import game.bubble.Bubble;
 import game.collisions.Collision;
-import game.powerups.Powerup;
 
 /**
  * Wall  with bubble collisions observer.

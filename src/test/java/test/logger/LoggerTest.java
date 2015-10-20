@@ -1,14 +1,8 @@
 package test.logger;
-import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
-import game.log.LogSettings;
 import game.log.Logger;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 
 public class LoggerTest {
 
@@ -30,33 +24,33 @@ public class LoggerTest {
 
 }
 //
-//    @Test
-//    public void getFilteredLogsTest2() {
-//        ArrayList<Integer> categoryList = new ArrayList<Integer>();
-//        categoryList.add(3);
-//        categoryList.add(4);
-//        assertEquals(6, Logger.getFilteredLogs(categoryList, 2).size());
-//        categoryList.add(5);
-//        assertEquals(9, Logger.getFilteredLogs(categoryList, 2).size());
-//    }
+// @Test
+// public void getFilteredLogsTest2() {
+// ArrayList<Integer> categoryList = new ArrayList<Integer>();
+// categoryList.add(3);
+// categoryList.add(4);
+// assertEquals(6, Logger.getFilteredLogs(categoryList, 2).size());
+// categoryList.add(5);
+// assertEquals(9, Logger.getFilteredLogs(categoryList, 2).size());
+// }
 //
-//    @Test
-//    public void getFilteredLogsTestWrongInput() {
-//        ArrayList<Integer> categoryList = new ArrayList<Integer>();
+// @Test
+// public void getFilteredLogsTestWrongInput() {
+// ArrayList<Integer> categoryList = new ArrayList<Integer>();
 //
-//        assertEquals(0, Logger.getFilteredLogs(categoryList, 5).size());
-//        categoryList.add(100);
-//        assertEquals(0, Logger.getFilteredLogs(categoryList, 5).size());
-//    }
+// assertEquals(0, Logger.getFilteredLogs(categoryList, 5).size());
+// categoryList.add(100);
+// assertEquals(0, Logger.getFilteredLogs(categoryList, 5).size());
+// }
 //
-//    @Test
-//    public void getFilteredLogsTest4() {
-//        ArrayList<Integer> categoryList = new ArrayList<Integer>();
-//        categoryList.add(1);
-//        categoryList.add(2);
-//        assertEquals(0, Logger.getFilteredLogs(categoryList, 1).size());
-//        categoryList.add(3);
-//        categoryList.add(4);
-//        assertEquals(4, Logger.getFilteredLogs(categoryList, 1).size());
-//    }
-//}
+// @Test
+// public void getFilteredLogsTest4() {
+// ArrayList<Integer> categoryList = new ArrayList<Integer>();
+// categoryList.add(1);
+// categoryList.add(2);
+// assertEquals(0, Logger.getFilteredLogs(categoryList, 1).size());
+// categoryList.add(3);
+// categoryList.add(4);
+// assertEquals(4, Logger.getFilteredLogs(categoryList, 1).size());
+// }
+// }

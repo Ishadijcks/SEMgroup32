@@ -13,10 +13,10 @@ import settings.playerSettings;
  */
 public class Bubblex8 extends Bubble {
 
-    private final static int maxheight = 200;
-    private final static Color color = playerSettings.getDragonRed();
-    private final static double gravitation = 1;
-    private final static int diameter = 8;
+    private static final int maxheight = 200;
+    private static final Color color = playerSettings.getDragonRed();
+    private static final double gravitation = 1;
+    private static final int diameter = 8;
     private static double speedX = 0.9;
 
     /**

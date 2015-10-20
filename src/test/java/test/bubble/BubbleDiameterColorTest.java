@@ -23,15 +23,18 @@ import settings.playerSettings;
 public class BubbleDiameterColorTest {
     @Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] { 
-                { 8, new Bubblex8(100,100,false,false), playerSettings.getDragonRed() }, { 16, new Bubblex16(100,100,false,false), Color.BLACK }, { 32, new Bubblex32(100,100,false,false), Color.GREEN}, 
-                { 64, new Bubblex64(100,100,false,false), Color.CYAN }, { 128, new Bubblex128(100,100,false,false), Color.PINK }});
+        return Arrays.asList(new Object[][] {
+                { 8, new Bubblex8(100, 100, false, false),
+                        playerSettings.getDragonRed() },
+                { 16, new Bubblex16(100, 100, false, false), Color.BLACK },
+                { 32, new Bubblex32(100, 100, false, false), Color.GREEN },
+                { 64, new Bubblex64(100, 100, false, false), Color.CYAN },
+                { 128, new Bubblex128(100, 100, false, false), Color.PINK } });
     }
 
     private Color expectedColor;
     private Bubble bubble;
 
-    
     public BubbleDiameterColorTest(int diameter, Bubble bub, Color expectedColor) {
         this.expectedColor = expectedColor;
         bubble = bub;
@@ -39,6 +42,6 @@ public class BubbleDiameterColorTest {
 
     @Test
     public void test() {
-          assertTrue(expectedColor.equals(bubble.getColor()));
+        assertTrue(expectedColor.equals(bubble.getColor()));
     }
 }

@@ -1,12 +1,9 @@
 package game.observers;
 
-import settings.playerSettings;
 import game.Driver;
-import game.Game;
 import game.Player;
-import game.bubble.Bubble;
 import game.collisions.Collision;
-import game.powerups.Powerup;
+import settings.playerSettings;
 
 /**
  * Wall with Player collisions observer.

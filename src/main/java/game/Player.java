@@ -1,13 +1,6 @@
 package game;
 
 import game.log.Logger;
-import game.powerups.Powerup;
-import game.wall.DuoWall;
-import game.wall.PlayerWall;
-import game.wall.Wall;
-
-import java.util.ArrayList;
-
 import settings.playerSettings;
 import settings.screenSettings;
 
@@ -20,8 +13,8 @@ import settings.screenSettings;
 public class Player {
     private String name;
     private int xCoord;
-    private int yCoord = screenSettings.getLevelHeight() - playerSettings.getPlayerHeight()
-            + screenSettings.getTopMargin();
+    private int yCoord = screenSettings.getLevelHeight()
+            - playerSettings.getPlayerHeight() + screenSettings.getTopMargin();
     private int colY = yCoord + 61;
     private int colX;
     private int height = playerSettings.getPlayerHeight();
@@ -29,9 +22,8 @@ public class Player {
     private int stepSize = playerSettings.getPlayerStepSize();
     private boolean movingLeft = false;
     private boolean movingRight = false;
-    
-    //THIS MIGHT BE MOVED TO PLAYERPOWERUP CLASS OR SOMETHING
-    private boolean hasIceRope = false;
+
+
     private final int powerupStepSize = 5;
     private final int normalStepSize = 2;
 
@@ -42,8 +34,6 @@ public class Player {
      *            of the player
      * @param xCoord
      *            x-Coordinate of the player
-     * @param isNormalMode
-     *            true if it is a normal game, false otherwise
      */
     public Player(String name, int xCoord) {
         this.name = name;
@@ -88,15 +78,16 @@ public class Player {
     /**
      * Set the x coordinate of the player.
      * 
-     * @param x new xcoord player
+     * @param x
+     *            new xcoord player
      */
     public void setXCoord(int x) {
         xCoord = x;
     }
 
     /**
-     * Moves the player left or right, depending on what key is pressed.
-     *            list of walls
+     * Moves the player left or right, depending on what key is pressed. list of
+     * walls
      */
     public void move() {
         if (movingLeft && !playerSettings.isRestrictMovingLeft()) {
@@ -223,30 +214,34 @@ public class Player {
 
     /**
      * Remove all powerups of the player.
+     * 
      * @return the stepSize
      */
     public int getStepSize() {
         return stepSize;
     }
 
+
     /**
-     * Check if the player has a powerup.
-     * 
-     * @return true if the player has 1 powerup or more, false otherwise
+     * Set the stepsize of the player.
+     * @param stepSize The stepsize
      */
     public void setStepSize(int stepSize) {
         this.stepSize = stepSize;
     }
-    
+
     /**
      * @return the powerupstepsize of the player
      */
     public int getPlayerPowerupStepSize() {
-    	return this.powerupStepSize;
+        return this.powerupStepSize;
     }
-    
+
+    /**
+     * @return the normal stepSize of the player.
+     */
     public int getPlayerNormalStepSize() {
-    	return this.normalStepSize;
+        return this.normalStepSize;
     }
 
 }

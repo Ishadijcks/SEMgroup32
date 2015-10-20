@@ -1,10 +1,9 @@
 package game.observers;
 
-import settings.threadSettings;
 import game.Driver;
-import game.bubble.Bubble;
 import game.collisions.Collision;
-import game.powerups.Powerup;
+import settings.threadSettings;
+
 
 public class GameObserver extends Observer {
 
