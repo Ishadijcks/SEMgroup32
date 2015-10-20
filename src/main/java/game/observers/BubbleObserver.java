@@ -10,13 +10,13 @@ import game.powerups.Powerup;
  * @author Tim
  *
  */
-public class BubbleController extends Observer {
+public class BubbleObserver extends Observer {
 
     /**
      * The constructor of the observer class.
      * @param collisions class handels all collisions.
      */
-    public BubbleController(Collision collisions) {
+    public BubbleObserver(Collision collisions) {
         super(collisions);
         collisions.registerObserver(this);
 	}
