@@ -99,15 +99,6 @@ public class Player {
     }
 
     /**
-     * Set the x coordinate of the player.
-     * 
-     * @param x new xcoord player
-     */
-    public void setXCoord(int x) {
-        xCoord = x;
-    }
-
-    /**
      * Moves the player left or right, depending on what key is pressed.
      *            list of walls
      */
