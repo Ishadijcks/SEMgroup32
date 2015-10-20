@@ -24,6 +24,6 @@ public class NoMove implements WallMovementBehavior {
      * Move method that will do nothing in this case.
      */
     public void move() {
-        
+        System.out.println("Hello69");
     }
 }
