@@ -6,19 +6,21 @@ import java.awt.Color;
 
 import settings.playerSettings;
 
-
 /**
  * Wall class of a duo wall.
+ * 
  * @author Boning
  */
 public class DuoWall extends Wall {
 
     /**
      * Constructor of a duo wall.
-     * @param xCoord xCoord-Coordinate of the wall
+     * 
+     * @param xCoord
+     *            xCoord-Coordinate of the wall
      */
     public DuoWall(Coordinates coordinates, int height, int width) {
-        super(coordinates, Color.blue, height, width);
+        super(coordinates, Color.blue, height, width, new NoMove());
     }
 
     @Override

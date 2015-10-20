@@ -3,6 +3,7 @@ package test.wall;
 
 import static org.junit.Assert.*;
 import game.wall.DuoWall;
+import helperobjects.Coordinates;
 
 import java.awt.Color;
 
@@ -17,7 +18,7 @@ public class DuoWallTest {
 	
 	@Before
 	public void init() {
-		wall = new DuoWall(10, 0, screenSettings.getLevelHeight(), 10);
+		wall = new DuoWall(new Coordinates(10, 0), screenSettings.getLevelHeight(), 10);
 	}
 
 	@Test

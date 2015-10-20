@@ -7,6 +7,7 @@ import game.bubble.Bubblex64;
 import game.bubble.Bubblex8;
 import game.log.Logger;
 import game.wall.BubbleWall;
+import game.wall.NoMoveBubbleWall;
 import game.wall.PlayerWall;
 import helperobjects.Coordinates;
 
@@ -85,7 +86,7 @@ public class NormalLevelFactory {
         Bubble bubble1 = new Bubblex8(100, 100, false, false);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
-        BubbleWall wall1 = new BubbleWall(new Coordinates(300, 0), screenSettings.getLevelHeight() - 300, 100);
+        NoMoveBubbleWall wall1 = new NoMoveBubbleWall(new Coordinates(300, 0), screenSettings.getLevelHeight() - 300, 100);
         level.addWall(wall1);
         PlayerWall wall9 = new PlayerWall(new Coordinates(675, 0), screenSettings.getLevelHeight(), 100);
         level.addWall(wall9);
@@ -104,10 +105,10 @@ public class NormalLevelFactory {
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
         level.addBubble(bubble2);
-        BubbleWall wall = new BubbleWall(new Coordinates(300, 0), screenSettings.getLevelHeight() - 200, 50);
+        BubbleWall wall = new NoMoveBubbleWall(new Coordinates(300, 0), screenSettings.getLevelHeight() - 200, 50);
         PlayerWall wall2 = new PlayerWall(new Coordinates(700, 0), screenSettings.getLevelHeight() - 300, 40);
-        BubbleWall wall3 = new BubbleWall(new Coordinates(850, 0), screenSettings.getLevelHeight() - 400, 30);
-        BubbleWall wall4 = new BubbleWall(new Coordinates(900, 0), screenSettings.getLevelHeight() - 100, 20);
+        BubbleWall wall3 = new NoMoveBubbleWall(new Coordinates(850, 0), screenSettings.getLevelHeight() - 400, 30);
+        BubbleWall wall4 = new NoMoveBubbleWall(new Coordinates(900, 0), screenSettings.getLevelHeight() - 100, 20);
         level.addWall(wall);
         level.addWall(wall2);
         level.addWall(wall3);

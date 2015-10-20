@@ -39,7 +39,6 @@ public abstract class Game {
     }
 
     /**
-     * <<<<<<< HEAD ======= Sets the levelList.
      * 
      * @param levels
      *            List of all levels

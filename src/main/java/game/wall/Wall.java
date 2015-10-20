@@ -1,8 +1,5 @@
 package game.wall;
 
-
-
-
 import helperobjects.Coordinates;
 import helperobjects.Dimensions;
 
@@ -34,11 +31,12 @@ public abstract class Wall {
      * @param color
      *            of the wall
      */
-    public Wall(Coordinates coordinates, Color color, int height, int width) {
+    public Wall(Coordinates coordinates, Color color, int height, int width, WallMovementBehavior wallMovement) {
         curCoord = coordinates;
         curDim = new Dimensions(height, width);
         this.color = color;
         this.isActive = true;
+        this.wallMovement = wallMovement;
     }
 
     /**
@@ -132,7 +130,7 @@ public abstract class Wall {
      *            the yCoord to set
      */
     public void setyCoord(int yCoord) {
-        curCoord.setxCoordinate(yCoord);
+        curCoord.setyCoordinate(yCoord);
     }
 
     /**
@@ -159,38 +157,5 @@ public abstract class Wall {
         this.color = color;
     }
 
-    /**
-     * Equals method for a wall object.
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Wall other = (Wall) obj;
-        if (color == null) {
-            if (other.color != null)
-                return false;
-        } else if (!color.equals(other.color))
-            return false;
-        if (curCoord == null) {
-            if (other.curCoord != null)
-                return false;
-        } else if (!curCoord.equals(other.curCoord))
-            return false;
-        if (curDim == null) {
-            if (other.curDim != null)
-                return false;
-        } else if (!curDim.equals(other.curDim))
-            return false;
-        if (isActive != other.isActive)
-            return false;
-        return true;
-    }
-
-    
 
 }

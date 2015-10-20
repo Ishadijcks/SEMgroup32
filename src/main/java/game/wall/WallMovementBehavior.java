@@ -1,5 +1,7 @@
 package game.wall;
 
+import helperobjects.Coordinates;
+
 /**
  * @author Tim
  * This interface class controlls the movement of walls.
@@ -10,6 +12,6 @@ public interface WallMovementBehavior {
     /**
      * The movement of the wall method.
      */
-    void move();
+    void move(Coordinates coordinates);
 }
 
