@@ -17,7 +17,7 @@ public class PlayerWall extends Wall {
      * Constructor of a player wall.
      * @param xCoord xCoord-Coordinate of the wall
      */
-    public PlayerWall(Coordinates coordinates, int height, int width) {
+    public PlayerWall(Coordinates coordinates, int width) {
         super(new Coordinates(coordinates.getxCoordinate(), 0), Color.green, screenSettings.getLevelHeight(), width, new NoMove());
     }
 

@@ -2,10 +2,8 @@ package game.wall;
 
 import helperobjects.Coordinates;
 
-import java.awt.Color;
-
 /**
- * Wall class of a bubble wall.
+ * Wall class of a bubble wall that can move vertical.
  * @author Boning
  */
 public class VerticalMoveBubbleWall extends BubbleWall {
@@ -13,8 +11,7 @@ public class VerticalMoveBubbleWall extends BubbleWall {
 	private int bouncedOn;
 
     /**
-     * Constructor of a bubble wall.
-     * @param xCoord x-Coordinate of the wall
+     * Constructor of the vertical move bubble wall.
      */
     public VerticalMoveBubbleWall(Coordinates coordinates, int height, int width) {
         super(coordinates, height, width, new MoveVertically());

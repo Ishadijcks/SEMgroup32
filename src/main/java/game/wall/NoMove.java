@@ -1,7 +1,5 @@
 package game.wall;
 
-import helperobjects.Coordinates;
-
 /**
  * No movement for the static wall.
  * 
@@ -9,9 +7,16 @@ import helperobjects.Coordinates;
  *
  */
 public class NoMove implements WallMovementBehavior {
+    
     /**
      * No implementation because there is no movement.
      */
-    public void move(Coordinates coordinates) {
+    public void moveIncrease(int speed) {
+    }
+    
+    /**
+     * No implementation because there is no movement.
+     */
+    public void moveDecrease(int speed) {
     }
 }
