@@ -106,9 +106,9 @@
 							<includeTestSourceDirectory>true</includeTestSourceDirectory>
 							<encoding>UTF-8</encoding>
          					<consoleOutput>true</consoleOutput>
-         					<failsOnError>true</failsOnError>
+         					<failsOnError>false</failsOnError>
          					<linkXRef>false</linkXRef>
-         					<outputFile>${project.build.directory}/checkstyle-result.xml</outputFile>
+         					<outputFile>${project.build.directory}\checkstyle-result.xml</outputFile>
 						</configuration>
                     	<goals>
 							<goal>check</goal>
