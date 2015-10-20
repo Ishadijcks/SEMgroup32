@@ -163,10 +163,7 @@ public class Painter {
             drawNormalRopeDragonLeft();
         }
 
-        // Set g2d back to normal settings
-        g2d.setColor(Color.BLACK);
-        Stroke normalStroke = new BasicStroke(1f);
-        g2d.setStroke(normalStroke);
+        resetg2d();
     }
     
     /**
@@ -270,11 +267,7 @@ public class Painter {
         } else {
             drawIceRopeDragonLeft();
         }
-
-        // Set g2d back to normal settings
-        g2d.setColor(Color.BLACK);
-        Stroke normalStroke = new BasicStroke(1f);
-        g2d.setStroke(normalStroke);
+        resetg2d();
     }
     
     /**
@@ -440,6 +433,15 @@ public class Painter {
                     game.getCurrentLevel().getHeight() + 51);
             g2d.setColor(Color.BLACK);
         }
+    }
+    
+    /**
+     * Set g2d back to normal settings
+     */
+    public void resetg2d() {
+        g2d.setColor(Color.BLACK);
+        Stroke normalStroke = new BasicStroke(1f);
+        g2d.setStroke(normalStroke);
     }
     
 }
