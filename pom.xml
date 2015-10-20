@@ -14,6 +14,9 @@
 	 <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<targetJdk>1.7</targetJdk>
+		<checkstyle.plugin.version>2.14</checkstyle.plugin.version>
+		<pmd.plugin.version>4.0</pmd.plugin.version>
+		<findbugs.version>3.0.0</findbugs.version>
 	</properties>
 	
 	<dependencies>
@@ -23,24 +26,7 @@
       <version>4.11</version>
       <scope>test</scope>
     	</dependency>
-    	<dependency>
-    		<groupId>org.apache.maven.plugins</groupId>
-    		<artifactId>maven-checkstyle-plugin</artifactId>
-    		<type>maven-plugin</type>
-    	</dependency>
-    	<dependency>
-    		<groupId>org.codehaus.mojo</groupId>
-    		<artifactId>findbugs-maven-plugin</artifactId>
-    		<version>3.0.1</version>
-    		<type>maven-plugin</type>
-    	</dependency>
-    	<dependency>
-    		<groupId>org.apache.maven.plugins</groupId>
-    		<artifactId>maven-pmd-plugin</artifactId>
-    		<version>3.2</version>
-    		<type>maven-plugin</type>
-    	</dependency>
-	</dependencies>
+    </dependencies>
 	<!-- Andere groepjes (andere weer niet) hebben nu <repositories> erin staan, 
 	maar werkelijk geen idee wat daar precies staat. Niet nodig denk ik -->
 	
@@ -137,15 +123,6 @@
 		</plugins>
 		</pluginManagement>
 	</build>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.16</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 </project>
 
 <!-- Belangrijk! Dit stukje moet er denk ik ergens tussen maar ik word er niet wijs uit waar precies:
