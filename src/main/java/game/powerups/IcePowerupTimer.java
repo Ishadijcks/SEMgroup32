@@ -2,7 +2,6 @@ package game.powerups;
 
 import game.Game;
 import game.Player;
-import settings.threadSettings;
 
 /**
  * Special timer for the ice powerup.
@@ -32,8 +31,8 @@ public class IcePowerupTimer extends PowerupTimer {
 		    if(!player.hasIceRope()){
 		        player.setHasIceRope(true);
 		    }
-		    if(threadSettings.getDieThreads()){
-		    	threadSettings.setDieThreads(false);
+		    if(PowerupThreadKiller.getDieThreads()){
+		    	PowerupThreadKiller.setDieThreads(false);
 		    	end = System.currentTimeMillis();
 		    }
 		}

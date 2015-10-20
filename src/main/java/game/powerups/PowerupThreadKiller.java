@@ -1,6 +1,5 @@
-package settings;
+package game.powerups;
 
-import java.awt.Color;
 
 /**
  * Class that keeps all the settings of the whole game.
@@ -8,7 +7,7 @@ import java.awt.Color;
  * @author Boning
  *
  */
-public class threadSettings {
+public class PowerupThreadKiller {
 
     private static boolean dieThreads = false;
 
@@ -31,7 +30,7 @@ public class threadSettings {
      *            the dieThreads to set
      */
     public static void setDieThreads(boolean dieThreads) {
-        threadSettings.dieThreads = dieThreads;
+        PowerupThreadKiller.dieThreads = dieThreads;
     }
 
 }
