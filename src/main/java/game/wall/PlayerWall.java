@@ -42,5 +42,10 @@ public class PlayerWall extends Wall {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public void move(){
+	    
+	}
     
 }

@@ -7,8 +7,10 @@ import game.bubble.Bubblex64;
 import game.bubble.Bubblex8;
 import game.log.Logger;
 import game.wall.BubbleWall;
+import game.wall.HorizontalMoveBubbleWall;
 import game.wall.NoMoveBubbleWall;
 import game.wall.PlayerWall;
+import game.wall.VerticalMoveBubbleWall;
 import helperobjects.Coordinates;
 
 import java.util.ArrayList;
@@ -86,7 +88,7 @@ public class NormalLevelFactory {
         Bubble bubble1 = new Bubblex8(100, 100, false, false);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
-        NoMoveBubbleWall wall1 = new NoMoveBubbleWall(new Coordinates(300, 0), screenSettings.getLevelHeight() - 300, 100);
+        NoMoveBubbleWall wall1 = new NoMoveBubbleWall(new Coordinates(300, 50), screenSettings.getLevelHeight() - 300, 10);
         level.addWall(wall1);
         PlayerWall wall9 = new PlayerWall(new Coordinates(675, 0), 5);
         level.addWall(wall9);

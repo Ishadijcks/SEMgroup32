@@ -116,6 +116,13 @@ public abstract class Wall {
     public Color getColor() {
         return color;
     }
+    
+    /**
+     * Method that will move the wall.
+     */
+    public void move() {
+        
+    }
 
     /**
      * @param xCoord

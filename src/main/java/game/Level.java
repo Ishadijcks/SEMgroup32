@@ -55,6 +55,17 @@ public abstract class Level {
     public void resetBubble() {
         bubbleList = new ArrayList<Bubble>();
     }
+    
+    /**
+     * Checks if the level has walls or not.
+     * @return true if the level has 1 or more walls
+     */
+    public boolean hasWallList() {
+        if(wallList.size() == 0) {
+            return false;
+        }
+        return true;
+    }
 
     /**
      * Getter for the list of the players.

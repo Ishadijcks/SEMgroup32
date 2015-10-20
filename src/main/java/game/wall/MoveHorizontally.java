@@ -24,4 +24,19 @@ public class MoveHorizontally implements WallMovementBehavior {
     public void moveDecrease(int speed) {
         coordinates.setxCoordinate(coordinates.getxCoordinate() - speed);
     }
+
+    /**
+     * @return the coordinates
+     */
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
+
+    /**
+     * @param coordinates the coordinates to set
+     */
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+    
 }

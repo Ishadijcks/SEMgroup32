@@ -39,8 +39,6 @@ public abstract class BubbleWall extends Wall {
 		}
 		return false;
 	}
-	
-
 
     /**
      * Checks if a ball bounced on the wall.
@@ -48,6 +46,14 @@ public abstract class BubbleWall extends Wall {
     public void bouncedOn() {
         bouncedOn++;
         setActive(false);
+    }
+    
+    /**
+     * Method that will move the rope.
+     */
+    @Override
+    public void move() {
+        
     }
     
 }

@@ -19,4 +19,11 @@ public class NoMove implements WallMovementBehavior {
      */
     public void moveDecrease(int speed) {
     }
+    
+    /**
+     * Move method that will do nothing in this case.
+     */
+    public void move() {
+        
+    }
 }

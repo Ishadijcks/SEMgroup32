@@ -98,6 +98,12 @@ public abstract class Game {
         if (currentLevel.hasRope()) {
             currentLevel.getRope().move();
         }
+        
+        if(currentLevel.hasWallList()) {
+            for(int a = 0; a < currentLevel.getWallList().size(); a++) {
+                currentLevel.getWallList().get(a).move();
+            }
+        }
     }
 
     /**

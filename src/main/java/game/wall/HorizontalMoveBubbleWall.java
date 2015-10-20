@@ -1,5 +1,6 @@
 package game.wall;
 
+import settings.screenSettings;
 import helperobjects.Coordinates;
 
 /**
@@ -9,13 +10,29 @@ import helperobjects.Coordinates;
 public class HorizontalMoveBubbleWall extends BubbleWall {
     
     private int bouncedOn;
+    private static MoveHorizontally mover = new MoveHorizontally();
 
     /**
      * Constructor of the horizontal move bubble wall.
      */
     public HorizontalMoveBubbleWall(Coordinates coordinates, int height, int width) {
-        super(coordinates, height, width, new MoveHorizontally());
+        super(coordinates, height, width, mover);
         this.bouncedOn = 0;
+    }
+    
+    /**
+     * Moves the wall left and right.
+     */
+    @Override
+    public void move() {
+        if(this.getxCoord() < screenSettings.getLevelWidth()) {
+            mover.moveIncrease(1);
+            this.setxCoord(mover.getCoordinates().getxCoordinate());
+        }
+        else {
+            mover.moveDecrease(1);
+            this.setxCoord(mover.getCoordinates().getxCoordinate());
+        }
     }
 
 }
