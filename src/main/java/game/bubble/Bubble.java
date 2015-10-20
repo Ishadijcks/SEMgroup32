@@ -1,11 +1,10 @@
 package game.bubble;
 
+import game.Driver;
 import game.log.Logger;
 
 import java.awt.Color;
 import java.util.ArrayList;
-
-import settings.screenSettings;
 
 /**
  * Abstract class of a bubble.
@@ -69,41 +68,6 @@ public abstract class Bubble {
     }
 
     /**
-     * Checks if x-Coordinate is in the boundaries.
-     * @param xCoord of the bubble
-     * @param diameter of the bubble
-     * @return true if the bubble is placed correctly between the boundaries, false otherwise
-     */
-    public boolean correctX(double xCoord, int diameter) {
-        if (xCoord > 0
-                && xCoord < screenSettings.getLeftMargin() + screenSettings.getLevelWidth()
-                        - diameter) {
-            return true;
-        } else {
-            Logger.log("Incorrect xCoord", 3, 3);
-            return false;
-        }
-    }
-
-    /**
-     * Checks if y-Coordinate is in the boundaries.
-     * @param yCoord of the bubble
-     * @param diameter of the bubble
-     * @return true if the bubble is placed correctly between the boundaries, false otherwise
-     */
-    public boolean correctY(double yCoord, int diameter) {
-        if (yCoord > screenSettings.getTopMargin()
-                && yCoord < (screenSettings.getTopMargin() + screenSettings.getLevelHeight() - diameter)) {
-            return true;
-        }
-
-        else {
-            Logger.log("Incorrect yCoord", 3, 3);
-            return false;
-        }
-    }
-
-    /**
      * Move the bubble.
      */
     public void move() {
@@ -117,7 +81,7 @@ public abstract class Bubble {
      * Check if the bubble isn'time outside of the borders.
      */
     public void outOfBoardCheck() {
-        if (yCoord < screenSettings.getTopMargin() || !(yCoord > 0)) {
+        if (yCoord < Driver.game.getCurrentLevel().getTopMargin() || !(yCoord > 0)) {
             yCoord = maxheight;
         }
     }
@@ -126,13 +90,13 @@ public abstract class Bubble {
      * Checks if the bubble bounced against the borders.
      */
     public void bounceBorder() {
-        if (xCoord + diameter > screenSettings.getLeftMargin() + screenSettings.getLevelWidth()
-                && directionHorizontal || xCoord <= screenSettings.getLeftMargin() && !directionHorizontal) {
+        if (xCoord + diameter > Driver.game.getCurrentLevel().getLeftMargin() + Driver.game.getCurrentLevel().getWidth()
+                && directionHorizontal || xCoord <= Driver.game.getCurrentLevel().getLeftMargin() && !directionHorizontal) {
             bounceH();
         }
 
-        if (yCoord + diameter > screenSettings.getTopMargin() + screenSettings.getLevelHeight()
-                && directionVertical || yCoord <= screenSettings.getTopMargin() && !directionVertical) {
+        if (yCoord + diameter > Driver.game.getCurrentLevel().getTopMargin() + Driver.game.getCurrentLevel().getHeight()
+                && directionVertical || yCoord <=Driver.game.getCurrentLevel().getTopMargin() && !directionVertical) {
             bounceV();
         }
     }
@@ -175,13 +139,13 @@ public abstract class Bubble {
                 newBubble = false;
                 lastDownSpeed = 4;
             }
-            factor = ((yCoord - maxheight) / (screenSettings.getTopMargin()
-                    + screenSettings.getLevelHeight() - maxheight));
+            factor = ((yCoord - maxheight) / (Driver.game.getCurrentLevel().getTopMargin()
+                    + Driver.game.getCurrentLevel().getHeight() - maxheight));
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             yCoord -= lastUpSpeed;
         }
         if (lastUpSpeed < 0.5 && !directionVertical
-                && yCoord < screenSettings.getTopMargin() + screenSettings.getLevelHeight() - 50) {
+                && yCoord < Driver.game.getCurrentLevel().getTopMargin() + Driver.game.getCurrentLevel().getHeight() - 50) {
             timer += 0.4;
         }
         if (timer > 5) {

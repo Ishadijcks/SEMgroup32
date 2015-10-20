@@ -9,9 +9,6 @@ import java.awt.Image;
 
 import javax.swing.ImageIcon;
 
-import settings.powerupSettings;
-import settings.screenSettings;
-
 /**
  * Class that controls the powerups.
  * @author Boning
@@ -23,10 +20,10 @@ public abstract class Powerup {
     
     protected Game game;
     
-    int width = powerupSettings.getPowerupWidth();
-    int height = powerupSettings.getPowerupHeight();
+    private final int width = 15;
+    private final int height = 10;
     
-    int framesLeft = 10*screenSettings.getFps();
+    private final int powerupSpeed = 2;
     
     /**
      * Constructor of the powerup.
@@ -59,9 +56,7 @@ public abstract class Powerup {
 				if (((Powerup) obj).yCoord == this.yCoord) {
 					if (((Powerup) obj).width == this.width) {
 						if (((Powerup) obj).height == this.height) {
-							if (((Powerup) obj).framesLeft == this.framesLeft) {
-								return true;
-							}
+							return true;
 						}
 					}
 				}
@@ -78,8 +73,8 @@ public abstract class Powerup {
     public void move() {
         if (yCoord <= Driver.game.getCurrentLevel().getHeight() - (height - 1)) {
             Logger.log("Powerup moved from " + xCoord + "," + yCoord + " to " + xCoord 
-                    + "," + (yCoord + powerupSettings.getPowerupSpeed()), 6, 5, 10);
-            yCoord += powerupSettings.getPowerupSpeed();
+                    + "," + (yCoord + powerupSpeed), 6, 5, 10);
+            yCoord += powerupSpeed;
         }
         
 
@@ -87,35 +82,6 @@ public abstract class Powerup {
     
     public void addToLevel() {
     	Driver.game.getCurrentLevel().getPowerupList().add(this);
-    }
-
-    /**
-     * Decrease the frames that are left.
-     */
-    public void decreaseFramesLeft() {
-        framesLeft--;
-    }
-    
-    /**
-     * The powerup is active when the framesLeft count is higher than zero.
-     * @return true if the powerup is active, false otherwise
-     */
-    public boolean isActive() {
-        return framesLeft > 0;
-    }
-    
-    /**
-     * DeActivate the powerup by setting the framesLeft counter to zero.
-     */
-    public void deActivate() {
-        framesLeft = 0;
-    }
-    
-    /**
-     * Reset the framesLeft counter to the starting count.
-     */
-    public void resetFramesLeft() {
-        framesLeft = 10 * screenSettings.getFps();
     }
     
     /**
@@ -148,22 +114,6 @@ public abstract class Powerup {
      */
     public int getWidth() {
         return width;
-    }
-    
-    /**
-     * Get the frames that are left of the powerup.
-     * @return the amount of frames left
-     */
-    public int getFramesLeft() {
-        return framesLeft;
-    }
-    
-    /**
-     * Set the frames that are left of the powerup.
-     * @param left new amount of framesLeft
-     */
-    public void setFramesLeft(int left) {
-        framesLeft = left;
     }
     
     /**

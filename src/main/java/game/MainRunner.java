@@ -1,11 +1,5 @@
 package game;
 
-import java.io.IOException;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-import settings.screenSettings;
 import game.log.LogSettings;
 import game.screens.StartScreen;
 
@@ -19,6 +13,7 @@ public class MainRunner {
 
     private static Driver driver;
     private static boolean driverIsSet;
+    private final static int GAME_FPS = 120;
 
     /**
      * Constructor of the main runner class.
@@ -44,7 +39,7 @@ public class MainRunner {
 
             // 120 FPS
             try {
-                Thread.sleep(1000 / screenSettings.getFps());
+                Thread.sleep(1000 / GAME_FPS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

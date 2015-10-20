@@ -10,8 +10,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import settings.screenSettings;
-
 /**
  * Class that will create a pausing screen.
  * 
@@ -36,8 +34,7 @@ public class PauseScreen extends JFrame {
         ScreenBuilder.initScreen(this, "Paused game");
         addResumeButton(game);
         addStopButton(game);
-        setSize(screenSettings.getPauseWidth() - 1, screenSettings.getPauseHeight() - 1);
-        setSize(screenSettings.getPauseWidth(), screenSettings.getPauseHeight());
+        setSize(300, 250);
     }
 
     /**

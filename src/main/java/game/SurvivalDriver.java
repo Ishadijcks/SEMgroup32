@@ -10,8 +10,6 @@ import game.screens.LosingScreen;
 
 import java.util.ArrayList;
 
-import settings.screenSettings;
-
 /**
  * Class that executes a survival game.
  * 
@@ -118,9 +116,7 @@ public class SurvivalDriver extends Driver {
         game.addPlayer(player);
 
         int centerConstant = (int) Math
-                .round(0.5 * (screenSettings.getScreenWidth() - screenSettings
-                        .getLevelWidth()));
-        screenSettings.setLeftMargin(centerConstant);
+                .round(0.5 * (1000 - 850));
     }
 
     /**

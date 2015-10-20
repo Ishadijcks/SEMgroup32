@@ -5,7 +5,6 @@ package game.wall;
 
 import java.awt.Color;
 
-import settings.screenSettings;
 import settings.wallSettings;
 
 /**

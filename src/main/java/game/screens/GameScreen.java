@@ -1,5 +1,6 @@
 package game.screens;
 
+import game.Driver;
 import game.Game;
 import game.MyKeyListener;
 import game.Score;
@@ -18,8 +19,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import settings.screenSettings;
 
 
 /**
@@ -118,9 +117,8 @@ public class GameScreen extends JPanel {
         frame.addKeyListener(new MyKeyListener(gameInput));
         Logger.log("Added key listener", 9, 4);
         frame.add(gameScreen);
-        frame.setSize(screenSettings.getScreenWidth(), screenSettings.getScreenHeight());
-        Logger.log("Screen size set to " + screenSettings.getScreenWidth() + " by "
-                + screenSettings.getScreenWidth(), 9, 4);
+        frame.setSize(Driver.game.getCurrentLevel().getWidth(), 800);
+        Logger.log("Screen size set to " + Driver.game.getCurrentLevel().getWidth() + " by 1000", 9, 4);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(false);
@@ -135,8 +133,8 @@ public class GameScreen extends JPanel {
     public void paint(Graphics graph) {
         
         // Calculate the margin left to center the board
-        centerConstant = screenSettings.getLeftMargin();
-        topMargin = screenSettings.getTopMargin();
+        centerConstant = Driver.game.getCurrentLevel().getLeftMargin();
+        topMargin = Driver.game.getCurrentLevel().getTopMargin();
         g2d = (Graphics2D) graph;
         super.paint(graph);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,

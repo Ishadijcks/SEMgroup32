@@ -1,20 +1,14 @@
 package game;
 
-import java.util.ArrayList;
-
-import settings.screenSettings;
 import game.collisions.Collision;
 import game.collisions.CollisionFactory;
 import game.log.LogSettings;
 import game.log.Logger;
-import game.observers.BubbleObserver;
-import game.observers.GameObserver;
-import game.observers.LevelObserver;
-import game.observers.PlayerObserver;
-import game.observers.PowerupObserver;
 import game.screens.GameScreen;
 import game.screens.LosingScreen;
 import game.screens.WinningScreen;
+
+import java.util.ArrayList;
 
 /**
  * Class that executes the game.
@@ -128,9 +122,7 @@ public class NormalDriver extends Driver {
         game.addPlayer(player);
 
         int centerConstant = (int) Math
-                .round(0.5 * (screenSettings.getScreenWidth() - screenSettings
-                        .getLevelWidth()));
-        screenSettings.setLeftMargin(centerConstant);
+                .round(0.5 * (1000 - 850));
     }
 
     /**

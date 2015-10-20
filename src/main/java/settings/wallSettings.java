@@ -4,7 +4,7 @@ package settings;
 public class wallSettings {
 
     private static int wallWidth = 10;
-    private static int wallHeight = screenSettings.getLevelHeight();
+    private static int wallHeight = 500;
 
     /**
      * @return the wallWidth
