@@ -16,7 +16,7 @@ import game.powerups.PowerupFactory;
  * @author Tim
  *
  */
-public class PowerupController extends Observer {
+public class PowerupObserver extends Observer {
 
 	private PowerupFactory pfac = new PowerupFactory();
 	
@@ -24,7 +24,7 @@ public class PowerupController extends Observer {
      * Powerup with player collisions observer constructor.
      * @param collisions class for all collisions
      */
-    public PowerupController(Collision collisions) {
+    public PowerupObserver(Collision collisions) {
         super(collisions);
         collisions.registerObserver(this);
     }

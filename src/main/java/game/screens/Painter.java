@@ -72,15 +72,15 @@ public class Painter {
     public void paint(Graphics2D g2d) {
             this.g2d = g2d;
            
-            drawLevel(); // Draw the board for each level
-            drawBubbles(); // Draw the bubbles of the level with a black border
-            drawWalls(); // Draw the walls of the level
-            drawRopes(); // Draw the rope of the player
-            drawPlayer(); // Draw the player
-            drawPowerups(); // Draw the powerups
-            drawLives(); // Show the lives of the player
-            drawScore(); // Show the score of the player
-            drawLevelNumber(); // Show the number of the current level
+            drawLevel(); 
+            drawBubbles(); 
+            drawWalls(); 
+            drawRopes(); 
+            drawPlayer(); 
+            drawPowerups(); 
+            drawLives(); 
+            drawScore(); 
+            drawLevelNumber(); 
     }
     
     /**
@@ -163,10 +163,7 @@ public class Painter {
             drawNormalRopeDragonLeft();
         }
 
-        // Set g2d back to normal settings
-        g2d.setColor(Color.BLACK);
-        Stroke normalStroke = new BasicStroke(1f);
-        g2d.setStroke(normalStroke);
+        resetg2d();
     }
     
     /**
@@ -270,11 +267,7 @@ public class Painter {
         } else {
             drawIceRopeDragonLeft();
         }
-
-        // Set g2d back to normal settings
-        g2d.setColor(Color.BLACK);
-        Stroke normalStroke = new BasicStroke(1f);
-        g2d.setStroke(normalStroke);
+        resetg2d();
     }
     
     /**
@@ -440,6 +433,15 @@ public class Painter {
                     game.getCurrentLevel().getHeight() + 51);
             g2d.setColor(Color.BLACK);
         }
+    }
+    
+    /**
+     * Set g2d back to normal settings
+     */
+    public void resetg2d() {
+        g2d.setColor(Color.BLACK);
+        Stroke normalStroke = new BasicStroke(1f);
+        g2d.setStroke(normalStroke);
     }
     
 }

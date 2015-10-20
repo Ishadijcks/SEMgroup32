@@ -66,12 +66,9 @@ public class DrawPlayer {
             this.g2d = g2d;
             player = game.getPlayerList().get(0);
             drawPlayerName();
-
-            // Get the current X position of the player.
             newX = player.getX();
             
             if (ropeDurationCounter < 40 || !(shootRope)) {
-                // Check if the player is moving.
                 if (oldX != newX) {
                     dragonIsMoving = true;
                 } else {
@@ -95,11 +92,8 @@ public class DrawPlayer {
      * Update all variables that the draw player function requires. 
      */
     public void drawPlayerUpdateVar() {
-        // Update the old x coordinate of the player with the current one
         oldX = game.getPlayerList().get(0).getX();
-        
-        // When the dragon is in it's last state of the animation, the
-        // animation will reset itself.
+
         if (animationLeftCounter == 10) {
             animationLeftCounter = 1;
         }
@@ -144,8 +138,6 @@ public class DrawPlayer {
      * Draw the dragon standing still and doing nothing.
      */
     public void drawDragonStandingStill() {
-        // The dragon was last moving right and should be facing
-        // right now.
         if (dragonIsRight && !(dragonIsMoving)) {
             ImageIcon dragonRightNormal = new ImageIcon(
                     imageLocation
@@ -154,9 +146,6 @@ public class DrawPlayer {
             g2d.drawImage(dragonRightNormal.getImage(),
                     player.getX() - 50, player.getY(), panel);
         }
-        
-        // The dragon was last moving left and should be facing left
-        // now.
         else if (!(dragonIsMoving)) {
             ImageIcon dragonLeftNormal = new ImageIcon(
                     imageLocation + "src/main/Images/dragon/dragonL"
@@ -182,7 +171,6 @@ public class DrawPlayer {
                 + "src/main/Images/dragon/dragonR"
                 + animationRightCounter + ".png");
         
-        // If the dragon is going right, the animation for flying is enabled
         if (oldX < newX) {
             g2d.drawImage(dragonRight.getImage(),
                     player.getX() - 50, player.getY(), panel);
@@ -205,7 +193,6 @@ public class DrawPlayer {
                 + "src/main/Images/dragon/dragonL"
                 + animationLeftCounter + ".png");
         
-        // If the dragon is going left, the animation for flying left is enabled
         if (oldX > newX) {
             g2d.drawImage(dragonLeft.getImage(),
                     player.getX() - 50, player.getY(), panel);
