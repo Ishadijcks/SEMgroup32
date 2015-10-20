@@ -10,12 +10,25 @@
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
+<reporting>
+    <outputDirectory>${basedir}/target/site</outputDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.0.1</version>
+        <reportSets>
+          <reportSet></reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting> 
+
 	<!-- Versienummers komen overeen, maar <targetJdk> moet weg denk ik? -->
 	 <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<targetJdk>1.7</targetJdk>
-		<checkstyle.plugin.version>2.14</checkstyle.plugin.version>
-		<pmd.plugin.version>4.0</pmd.plugin.version>
+		<checkstyle.plugin.version>2.16</checkstyle.plugin.version>
+		<pmd.plugin.version>3.2</pmd.plugin.version>
 		<findbugs.version>3.0.0</findbugs.version>
 	</properties>
 	
@@ -26,7 +39,7 @@
       <version>4.11</version>
       <scope>test</scope>
     	</dependency>
-    </dependencies>
+	</dependencies>
 	<!-- Andere groepjes (andere weer niet) hebben nu <repositories> erin staan, 
 	maar werkelijk geen idee wat daar precies staat. Niet nodig denk ik -->
 	
@@ -75,8 +88,9 @@
 							<includeTestSourceDirectory>true</includeTestSourceDirectory>
 							<encoding>UTF-8</encoding>
          					<consoleOutput>true</consoleOutput>
-         					<failsOnError>true</failsOnError>
+         					<failsOnError>false</failsOnError>
          					<linkXRef>false</linkXRef>
+         					<outputFile>${project.build.directory}\checkstyle-result.xml</outputFile>
 						</configuration>
                     	<goals>
 							<goal>check</goal>
@@ -125,17 +139,6 @@
 	</build>
 </project>
 
-<!-- Belangrijk! Dit stukje moet er denk ik ergens tussen maar ik word er niet wijs uit waar precies:
-<reporting>
-    <outputDirectory>${basedir}/target/site</outputDirectory>
-    <plugins>
-      <plugin>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-        <version>2.0.1</version>
-        <reportSets>
-          <reportSet></reportSet>
-        </reportSets>
-      </plugin>
-    </plugins>
-  </reporting> -->
+<!-- Belangrijk! Dit stukje moet er denk ik ergens tussen maar ik word er niet wijs uit waar precies: -->
+
   
