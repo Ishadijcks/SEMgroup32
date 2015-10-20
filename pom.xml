@@ -131,25 +131,25 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>3.0.0</version>
-				<executions>
-                    			<execution>
-                        			<id>verify-findbugs</id>
-                        			<phase>process-classes</phase>
-                        			<goals>
-                            				<goal>check</goal>
-                        			</goals>
-                    			</execution>
-        			</executions>
-				<configuration>
-					<failOnError>false</failOnError>	
-					<xmlOutput>true</xmlOutput>
-					<includeTests>true</includeTests>
-				</configuration>
-			</plugin>
+			          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>findbugs-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>package</phase>
+                <goals>
+                  <goal>findbugs</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <xmlOutput>true</xmlOutput>
+              <effort>Max</effort>
+              <excludeFilterFile>${build.home}findbugs/findbugs-exclude.xml</excludeFilterFile>
+              <failOnError>false</failOnError>
+              <sourceEncoding>${file.encoding}</sourceEncoding>
+            </configuration>
+          </plugin>
 			
 		</plugins>
 		</pluginManagement>
