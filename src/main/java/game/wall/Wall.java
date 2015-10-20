@@ -15,7 +15,7 @@ import settings.wallSettings;
  *
  */
 public abstract class Wall {
-
+    private WallMovementBehavior wallMovement;
     private int xCoord;
     private int yCoord;
     private int width = wallSettings.getWallWidth();
