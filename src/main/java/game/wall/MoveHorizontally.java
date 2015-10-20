@@ -12,6 +12,14 @@ public class MoveHorizontally implements WallMovementBehavior {
     private Coordinates coordinates;
     
     /**
+     * Constructor for the horizontal mover.
+     * @param coord Current coordinates of the wall
+     */
+    public MoveHorizontally(Coordinates coord) {
+        coordinates = coord;
+    }
+    
+    /**
      * Moves the wall to the right.
      */
     public void moveIncrease(int speed) {

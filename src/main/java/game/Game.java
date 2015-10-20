@@ -99,10 +99,8 @@ public abstract class Game {
             currentLevel.getRope().move();
         }
         
-        if(currentLevel.hasWallList()) {
-            for(int a = 0; a < currentLevel.getWallList().size(); a++) {
+        for(int a = 0; a < currentLevel.getWallList().size(); a++) {
                 currentLevel.getWallList().get(a).move();
-            }
         }
     }
 

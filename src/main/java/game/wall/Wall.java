@@ -14,7 +14,6 @@ import settings.wallSettings;
  *
  */
 public abstract class Wall {
-    private WallMovementBehavior wallMovement;
     private int coordinates;
     private int width = wallSettings.getWallWidth();
     private int height = wallSettings.getWallHeight();
@@ -31,12 +30,11 @@ public abstract class Wall {
      * @param color
      *            of the wall
      */
-    public Wall(Coordinates coordinates, Color color, int height, int width, WallMovementBehavior wallMovement) {
+    public Wall(Coordinates coordinates, Color color, int height, int width) {
         curCoord = coordinates;
         curDim = new Dimensions(height, width);
         this.color = color;
         this.isActive = true;
-        this.wallMovement = wallMovement;
     }
 
     /**

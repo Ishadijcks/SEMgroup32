@@ -16,17 +16,22 @@ public abstract class BubbleWall extends Wall {
      * Constructor of a bubble wall.
      * @param xCoord x-Coordinate of the wall
      */
-    public BubbleWall(Coordinates coordinates, int height, int width, WallMovementBehavior wallMovement) {
-        super(coordinates, Color.red, height, width, wallMovement);
+    public BubbleWall(Coordinates coordinates, int height, int width) {
+        super(coordinates, Color.red, height, width);
         this.bouncedOn = 0;
     }
 
+    /**
+     * A BubbleWall will never collide with a player.
+     */
 	@Override
 	public boolean expectPlayerCollision(int xCoord, int yCoord, boolean movingLeft) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
+	 /**
+     *  Checks if a bubble collides with the wall.
+     */
 	@Override
 	public boolean expectBubbleCollision(int BubblexCoord, int BubbleyCoord, int BubbleDiameter) {
 		if ((BubblexCoord <= (this.getxCoord() + this.getWidth()) && 
@@ -49,7 +54,7 @@ public abstract class BubbleWall extends Wall {
     }
     
     /**
-     * Method that will move the rope.
+     * Method that will move the wall.
      */
     @Override
     public void move() {

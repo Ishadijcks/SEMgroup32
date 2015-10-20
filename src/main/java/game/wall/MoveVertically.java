@@ -12,6 +12,14 @@ public class MoveVertically implements WallMovementBehavior {
     private Coordinates coordinates;
     
     /**
+     * Constructor for the vertical mover.
+     * @param coord Current coordinates of the wall
+     */
+    public MoveVertically(Coordinates coord) {
+        coordinates = coord;
+    }
+    
+    /**
      * Moves the wall down.
      */
     public void moveIncrease(int speed) {

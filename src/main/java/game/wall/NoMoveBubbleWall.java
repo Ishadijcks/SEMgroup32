@@ -11,14 +11,23 @@ import java.awt.Color;
 public class NoMoveBubbleWall extends BubbleWall {
 	
 	private int bouncedOn;
+	private NoMove mover;
 
     /**
      * Constructor of a bubble wall.
      * @param xCoord x-Coordinate of the wall
      */
     public NoMoveBubbleWall(Coordinates coordinates, int height, int width) {
-        super(coordinates, height, width, new NoMove());
+        super(coordinates, height, width);
         this.bouncedOn = 0;
+    }
+    
+    /**
+     * A NoMoveBubbleWall does not move.
+     */
+    @Override
+    public void move() {
+        mover.move();
     }
 
 }

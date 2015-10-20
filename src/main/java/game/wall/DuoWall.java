@@ -20,9 +20,12 @@ public class DuoWall extends Wall {
      *            xCoord-Coordinate of the wall
      */
     public DuoWall(Coordinates coordinates, int height, int width) {
-        super(coordinates, Color.blue, height, width, new NoMove());
+        super(coordinates, Color.blue, height, width);
     }
 
+    /**
+     *  Checks if a player collides with the wall.
+     */
     @Override
 	public boolean expectPlayerCollision(int xCoord, int yCoord, boolean movingLeft) {
 		int plyrXCoord = xCoord;
@@ -38,6 +41,9 @@ public class DuoWall extends Wall {
 		return false;
 	}
 
+    /**
+     *  Checks if a bubble collides with the wall.
+     */
 	@Override
 	public boolean expectBubbleCollision(int BubblexCoord, int BubbleyCoord, int BubbleDiameter) {
 	    if ((BubblexCoord <= (this.getxCoord() + this.getWidth()) && 
@@ -48,6 +54,14 @@ public class DuoWall extends Wall {
 			return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * A DuoWall will not move.
+	 */
+	@Override
+	public void move() {
+	    
 	}
 
 }

@@ -10,13 +10,15 @@ import helperobjects.Coordinates;
 public class VerticalMoveBubbleWall extends BubbleWall {
 	
 	private int bouncedOn;
-	private static MoveVertically mover = new MoveVertically();
+	private static MoveVertically mover;
+	private boolean goingDown = true;
 
     /**
      * Constructor of the vertical move bubble wall.
      */
     public VerticalMoveBubbleWall(Coordinates coordinates, int height, int width) {
-        super(coordinates, height, width, mover);
+        super(coordinates, height, width);
+        mover = new MoveVertically(coordinates);
         this.bouncedOn = 0;
     }
     
@@ -25,11 +27,15 @@ public class VerticalMoveBubbleWall extends BubbleWall {
      */
     @Override
     public void move() {
-        if(this.getyCoord() < screenSettings.getLevelHeight()) {
+        if(goingDown && this.getyCoord() < screenSettings.getLevelHeight()) {
             mover.moveIncrease(1);
             this.setyCoord(mover.getCoordinates().getyCoordinate());
         }
+        else if(this.getyCoord() == 0) {
+            goingDown = true;
+        }
         else {
+            goingDown = false;
             mover.moveDecrease(1);
             this.setyCoord(mover.getCoordinates().getyCoordinate());
         }

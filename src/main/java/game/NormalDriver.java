@@ -101,10 +101,6 @@ public class NormalDriver extends Driver {
 
             gameScreen.reload();
 
-            // It is important that the player moves after all the collisions
-            // are checked. Since the collisions decide if the player can move
-            // one step ahead or not. If the player moves first the collisions
-            // detection will be too late.
             Player player1 = game.getPlayerList().get(0);
             player1.move();
 

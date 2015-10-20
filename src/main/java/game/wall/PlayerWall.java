@@ -18,9 +18,12 @@ public class PlayerWall extends Wall {
      * @param xCoord xCoord-Coordinate of the wall
      */
     public PlayerWall(Coordinates coordinates, int width) {
-        super(new Coordinates(coordinates.getxCoordinate(), 0), Color.green, screenSettings.getLevelHeight(), width, new NoMove());
+        super(new Coordinates(coordinates.getxCoordinate(), 0), Color.green, screenSettings.getLevelHeight(), width);
     }
 
+    /**
+     *  Checks if a player collides with the wall.
+     */
 	@Override
 	public boolean expectPlayerCollision(int xCoord, int yCoord, boolean movingLeft) {
 		int plyrXCoord = xCoord;
@@ -37,12 +40,17 @@ public class PlayerWall extends Wall {
 		return false;
 	}
 
+	/**
+	 * A PlayerWall will never collide with a bubble.
+	 */
 	@Override
 	public boolean expectBubbleCollision(int xCoord, int yCoord, int BubbleDiameter) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	
+	/**
+	 * A PlayerWall will not move.
+	 */
 	@Override
 	public void move(){
 	    
