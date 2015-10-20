@@ -5,6 +5,7 @@ import helperobjects.Coordinates;
 import java.awt.Color;
 
 import settings.playerSettings;
+import settings.screenSettings;
 
 /**
  * Wall class of a player wall.
@@ -17,14 +18,15 @@ public class PlayerWall extends Wall {
      * @param xCoord xCoord-Coordinate of the wall
      */
     public PlayerWall(Coordinates coordinates, int height, int width) {
-        super(coordinates, Color.green, height, width);
+        super(new Coordinates(coordinates.getxCoordinate(), 0), Color.green, screenSettings.getLevelHeight(), width);
     }
 
 	@Override
-	public boolean expectPlayerCollision(int xCoord, boolean movingLeft) {
+	public boolean expectPlayerCollision(int xCoord, int yCoord, boolean movingLeft) {
 		int plyrXCoord = xCoord;
 		int plyrStepSize = playerSettings.getPlayerStepSize();
 		int plyrWidth = playerSettings.getPlayerWidth();
+		int plyrHeight = playerSettings.getPlayerHeight();
 		if(this.isActive())
 			if((plyrXCoord - plyrStepSize <= this.getxCoord() + this.getWidth()
 					&& plyrXCoord - plyrStepSize >= this.getxCoord() && movingLeft) 
@@ -36,7 +38,7 @@ public class PlayerWall extends Wall {
 	}
 
 	@Override
-	public boolean expectBubbleCollision(int xCoord, int BubbleDiameter) {
+	public boolean expectBubbleCollision(int xCoord, int yCoord, int BubbleDiameter) {
 		// TODO Auto-generated method stub
 		return false;
 	}

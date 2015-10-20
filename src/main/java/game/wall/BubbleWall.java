@@ -22,15 +22,18 @@ public class BubbleWall extends Wall {
     }
 
 	@Override
-	public boolean expectPlayerCollision(int xCoord, boolean movingLeft) {
+	public boolean expectPlayerCollision(int xCoord, int yCoord, boolean movingLeft) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean expectBubbleCollision(int BubblexCoord, int BubbleDiameter) {
-		if ((BubblexCoord <= (this.getxCoord() + this.getWidth()) && (BubblexCoord + BubbleDiameter) >= this.getxCoord())
-                && this.isActive()) {
+	public boolean expectBubbleCollision(int BubblexCoord, int BubbleyCoord, int BubbleDiameter) {
+		if ((BubblexCoord <= (this.getxCoord() + this.getWidth()) && 
+		        (BubblexCoord + BubbleDiameter) >= this.getxCoord()) &&
+		            (BubbleyCoord <= (this.getyCoord() + this.getHeight()) &&
+		                (BubbleyCoord + BubbleDiameter) >= this.getyCoord()) &&
+		                    this.isActive()) {
             this.bouncedOn();
 			return true;
 		}

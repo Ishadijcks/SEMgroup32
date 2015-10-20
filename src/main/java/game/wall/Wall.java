@@ -18,7 +18,6 @@ import settings.wallSettings;
  */
 public abstract class Wall {
     private WallMovementBehavior wallMovement;
-    private int xCoord;
     private int coordinates;
     private int width = wallSettings.getWallWidth();
     private int height = wallSettings.getWallHeight();
@@ -52,7 +51,7 @@ public abstract class Wall {
      *            of the player
      * @return boolean of collision
      */
-    public abstract boolean expectPlayerCollision(int xCoord, boolean movingLeft);
+    public abstract boolean expectPlayerCollision(int xCoord, int yCoord, boolean movingLeft);
 
     /**
      * Returns true if a collision between the wall and bubble is expected.
@@ -64,7 +63,7 @@ public abstract class Wall {
      *            of the bubble
      * @return boolean of collision
      */
-    public abstract boolean expectBubbleCollision(int xCoord, int BubbleDiameter);
+    public abstract boolean expectBubbleCollision(int xCoord, int yCoord, int BubbleDiameter);
 
     /**
      * Checks if a wall is active or not.

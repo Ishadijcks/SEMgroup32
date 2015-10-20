@@ -22,7 +22,7 @@ public class DuoWall extends Wall {
     }
 
     @Override
-	public boolean expectPlayerCollision(int xCoord, boolean movingLeft) {
+	public boolean expectPlayerCollision(int xCoord, int yCoord, boolean movingLeft) {
 		int plyrXCoord = xCoord;
 		int plyrStepSize = playerSettings.getPlayerStepSize();
 		int plyrWidth = playerSettings.getPlayerWidth();
@@ -37,9 +37,12 @@ public class DuoWall extends Wall {
 	}
 
 	@Override
-	public boolean expectBubbleCollision(int BubblexCoord, int BubbleDiameter) {
-		if ((BubblexCoord <= (this.getxCoord() + this.getWidth()) && (BubblexCoord + BubbleDiameter) >= this.getxCoord())
-                && this.isActive()) {
+	public boolean expectBubbleCollision(int BubblexCoord, int BubbleyCoord, int BubbleDiameter) {
+	    if ((BubblexCoord <= (this.getxCoord() + this.getWidth()) && 
+                (BubblexCoord + BubbleDiameter) >= this.getxCoord()) &&
+                    (BubbleyCoord <= (this.getyCoord() + this.getHeight()) &&
+                        (BubbleyCoord + BubbleDiameter) >= this.getyCoord()) &&
+                            this.isActive()) {
 			return true;
 		}
 		return false;

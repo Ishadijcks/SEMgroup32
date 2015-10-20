@@ -23,7 +23,7 @@ public class WallPlayerCollision extends Collision {
 	public boolean checkCollision(Game game) {
         Player player = game.getPlayerList().get(0);
         for (Wall wall : game.getCurrentLevel().getWallList()) {
-            if (wall.expectPlayerCollision(player.getX(),
+            if (wall.expectPlayerCollision(player.getX(), player.getY(),
                     player.getMovingLeft())) {
                 notifyListeningObservers();
                 return true;

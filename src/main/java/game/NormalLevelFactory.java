@@ -104,10 +104,10 @@ public class NormalLevelFactory {
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
         level.addBubble(bubble2);
-        BubbleWall wall = new BubbleWall(new Coordinates(300, 0), screenSettings.getLevelHeight(), 10);
-        PlayerWall wall2 = new PlayerWall(new Coordinates(700, 0), screenSettings.getLevelHeight(), 10);
-        BubbleWall wall3 = new BubbleWall(new Coordinates(850, 0), screenSettings.getLevelHeight(), 10);
-        BubbleWall wall4 = new BubbleWall(new Coordinates(900, 0), screenSettings.getLevelHeight(), 10);
+        BubbleWall wall = new BubbleWall(new Coordinates(300, 0), screenSettings.getLevelHeight() - 200, 50);
+        PlayerWall wall2 = new PlayerWall(new Coordinates(700, 0), screenSettings.getLevelHeight() - 300, 40);
+        BubbleWall wall3 = new BubbleWall(new Coordinates(850, 0), screenSettings.getLevelHeight() - 400, 30);
+        BubbleWall wall4 = new BubbleWall(new Coordinates(900, 0), screenSettings.getLevelHeight() - 100, 20);
         level.addWall(wall);
         level.addWall(wall2);
         level.addWall(wall3);

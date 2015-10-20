@@ -23,7 +23,7 @@ public class WallBubbleCollision extends Collision {
 	public boolean checkCollision(Game game) {
         for (Bubble bubble : game.getCurrentLevel().getBubbleList()) {
             for (Wall wall : game.getCurrentLevel().getWallList()) {
-                if (wall.expectBubbleCollision(bubble.getX(),
+                if (wall.expectBubbleCollision(bubble.getX(), bubble.getY(),
                         bubble.getDiameter())) {
                     notifyListeningObservers(bubble);
                     return true;
