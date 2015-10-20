@@ -13,13 +13,13 @@ import game.powerups.Powerup;
  * @author Floris
  *
  */
-public class PlayerController extends Observer {
+public class PlayerObserver extends Observer {
 
     /**
      * Constructor.
      * @param collisions class for all collision
      */
-    public PlayerController(Collision collisions) {
+    public PlayerObserver(Collision collisions) {
         super(collisions);
         collisions.registerObserver(this);
     }

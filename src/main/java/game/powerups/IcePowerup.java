@@ -21,7 +21,6 @@ public class IcePowerup extends Powerup {
      */
 	public IcePowerup(int x, int y) {
 		super(x, y);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
