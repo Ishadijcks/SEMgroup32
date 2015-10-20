@@ -17,7 +17,7 @@ public class DuoWallTest {
 	
 	@Before
 	public void init() {
-		wall = new DuoWall(10, screenSettings.getLevelHeight(), 10);
+		wall = new DuoWall(10, 0, screenSettings.getLevelHeight(), 10);
 	}
 
 	@Test

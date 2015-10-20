@@ -16,7 +16,7 @@ public class PlayerWallTest {
 	
 	@Before
 	public void init(){
-		wall = new PlayerWall(10, screenSettings.getLevelHeight(), 10);
+		wall = new PlayerWall(10, 0, screenSettings.getLevelHeight(), 10);
 	}
 
 	@Test

@@ -3,6 +3,9 @@ package game.wall;
 
 
 
+import helperobjects.Coordinates;
+import helperobjects.Dimensions;
+
 import java.awt.Color;
 
 import settings.screenSettings;
@@ -16,10 +19,8 @@ import settings.wallSettings;
  */
 public abstract class Wall {
 
-    private int xCoord;
-    private int yCoord;
-    private int width;
-    private int height;
+    private Coordinates curCoord;
+    private Dimensions curDim;
     private Color color;
     private boolean isActive;
 
@@ -31,13 +32,11 @@ public abstract class Wall {
      * @param color
      *            of the wall
      */
-    public Wall(int xCoord, Color color, int height, int width) {
-        this.xCoord = xCoord;
-        this.yCoord = 0;
+    public Wall(int xCoord, int yCoord, Color color, int height, int width) {
+        curCoord = new Coordinates(xCoord, yCoord);
+        curDim = new Dimensions(height, width);
         this.color = color;
         this.isActive = true;
-        this.height = height;
-        this.width = width;
     }
 
     /**
@@ -87,28 +86,28 @@ public abstract class Wall {
      * @return the xCoord
      */
     public int getxCoord() {
-        return xCoord;
+        return curCoord.getxCoordinate();
     }
 
     /**
      * @return the yCoord
      */
     public int getyCoord() {
-        return yCoord;
+        return curCoord.getyCoordinate();
     }
 
     /**
      * @return the width
      */
     public int getWidth() {
-        return width;
+        return curDim.getWidth();
     }
 
     /**
      * @return the height
      */
     public int getHeight() {
-        return height;
+        return curDim.getHeight();
     }
 
     /**
@@ -123,7 +122,7 @@ public abstract class Wall {
      *            the xCoord to set
      */
     public void setxCoord(int xCoord) {
-        this.xCoord = xCoord;
+        curCoord.setxCoordinate(xCoord);
     }
 
     /**
@@ -131,7 +130,7 @@ public abstract class Wall {
      *            the yCoord to set
      */
     public void setyCoord(int yCoord) {
-        this.yCoord = yCoord;
+        curCoord.setxCoordinate(yCoord);
     }
 
     /**
@@ -139,7 +138,7 @@ public abstract class Wall {
      *            the width to set
      */
     public void setWidth(int width) {
-        this.width = width;
+        curDim.setWidth(width);
     }
 
     /**
@@ -147,7 +146,7 @@ public abstract class Wall {
      *            the height to set
      */
     public void setHeight(int height) {
-        this.height = height;
+        curDim.setWidth(height);
     }
 
     /**
@@ -159,49 +158,37 @@ public abstract class Wall {
     }
 
     /**
-     * Generated equals method to check if all attributes equals another of the
-     * same class.
-     * 
-     * @param obj
-     *            Object that it will compare to
-     * @return true if the object is from the same type and has the same
-     *         attributes
+     * Equals method for a wall object.
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
+        if (this == obj)
             return true;
-        }
-        if (obj == null) {
+        if (obj == null)
             return false;
-        }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass())
             return false;
-        }
         Wall other = (Wall) obj;
         if (color == null) {
-            if (other.color != null) {
+            if (other.color != null)
                 return false;
-            }
-        } else if (!color.equals(other.color)) {
+        } else if (!color.equals(other.color))
             return false;
-        }
-        if (height != other.height) {
+        if (curCoord == null) {
+            if (other.curCoord != null)
+                return false;
+        } else if (!curCoord.equals(other.curCoord))
             return false;
-        }
-        if (isActive != other.isActive) {
+        if (curDim == null) {
+            if (other.curDim != null)
+                return false;
+        } else if (!curDim.equals(other.curDim))
             return false;
-        }
-        if (width != other.width) {
+        if (isActive != other.isActive)
             return false;
-        }
-        if (xCoord != other.xCoord) {
-            return false;
-        }
-        if (yCoord != other.yCoord) {
-            return false;
-        }
         return true;
     }
+
+    
 
 }

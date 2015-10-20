@@ -14,8 +14,8 @@ public class PlayerWall extends Wall {
      * Constructor of a player wall.
      * @param xCoord xCoord-Coordinate of the wall
      */
-    public PlayerWall(int xCoord, int height, int width) {
-        super(xCoord, Color.green, height, width);
+    public PlayerWall(int xCoord, int yCoord, int height, int width) {
+        super(xCoord, yCoord, Color.green, height, width);
     }
 
 	@Override

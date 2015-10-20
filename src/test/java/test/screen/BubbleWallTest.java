@@ -16,7 +16,7 @@ public class BubbleWallTest {
 	
 	@Before
 	public void init() {
-		w = new BubbleWall(10, screenSettings.getLevelHeight(), 10);
+		w = new BubbleWall(10, 0, screenSettings.getLevelHeight(), 10);
 	}
 
 	@Test
