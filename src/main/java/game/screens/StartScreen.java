@@ -1,23 +1,17 @@
 package game.screens;
 
 import game.Driver;
-import game.Game;
 import game.DriverFactory;
 import game.MainRunner;
-import game.NormalDriver;
 import game.NormalDriverFactory;
-import game.SurvivalDriver;
 import game.SurvivalDriverFactory;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.net.URL;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,6 +26,7 @@ import javax.swing.JTextField;
  */
 public class StartScreen extends JFrame {
 
+    private static final long serialVersionUID = 1L;
     JButton normalGameButton;
     JButton survivalGameButton;
     JButton settingsButton;
@@ -155,7 +150,6 @@ public class StartScreen extends JFrame {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
                 dispose();
-                LevelOverviewScreen levelOverviewScreen = new LevelOverviewScreen();
             }
         });
         add(settingsButton);

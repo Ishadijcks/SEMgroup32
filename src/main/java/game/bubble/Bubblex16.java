@@ -11,10 +11,10 @@ import java.util.ArrayList;
  */
 public class Bubblex16 extends Bubble {
 
-    private final static int maxheight = 150;
-    private final static Color color = Color.BLACK;
-    private final static double gravitation = 1.3;
-    private final static int diameter = 16;
+    private static final int maxheight = 150;
+    private static final Color color = Color.BLACK;
+    private static final double gravitation = 1.3;
+    private static final int diameter = 16;
     private static double speedX = 1;
 
     /**

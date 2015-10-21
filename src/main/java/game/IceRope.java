@@ -1,11 +1,12 @@
 package game;
 
-import settings.ropeSettings;
-import settings.screenSettings;
+import settings.RopeSettings;
+import settings.ScreenSettings;
 import game.log.Logger;
 
 /**
  * Class that will control a rope with an ice powerup.
+ * 
  * @author Boning
  *
  */
@@ -13,14 +14,16 @@ public class IceRope extends Rope {
 
     /**
      * Constructor for an icerope.
-     * @param xCoord x-Coordinate of the rope
-     * @param yCoord y-Coordinate of the rope
-     * @param isNormalMode checks if it is a normal game of a survival game
+     * 
+     * @param xCoord
+     *            x-Coordinate of the rope
+     * @param yCoord
+     *            y-Coordinate of the rope
      */
     public IceRope(int xCoord, int yCoord) {
-       
+
         super(xCoord, yCoord);
-        Logger.log("Ice rope created", 5 , 4);
+        Logger.log("Ice rope created", 5, 4);
     }
 
     /**
@@ -29,12 +32,11 @@ public class IceRope extends Rope {
     @Override
     public void move() {
         Logger.log("Ice rope moved", 5, 5, 100);
-       if (super.yCoord <= screenSettings.getTopMargin() - 2) {
-          return;
-       } 
-       else {
-           super.yCoord -= ropeSettings.getRopeSpeed();
-       } 
+        if (super.yCoord <= ScreenSettings.getTopMargin() - 2) {
+            return;
+        } else {
+            super.yCoord -= RopeSettings.getRopeSpeed();
+        }
     }
-    
+
 }

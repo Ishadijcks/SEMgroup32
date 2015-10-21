@@ -15,6 +15,7 @@ import javax.swing.JLabel;
  */
 public class LeaderBoardScreen extends JFrame {
 
+    private static final long serialVersionUID = 1L;
     Leaderboard leaderBoard;
     static JLabel[] allLabels = new JLabel[500];
 

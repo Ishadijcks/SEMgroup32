@@ -21,18 +21,35 @@ import org.junit.runners.Parameterized.Parameters;
 public class BubbleDestroyTest {
     @Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] { 
-                { new Bubblex8(100,100,false,false), new ArrayList<Bubble>() }, 
-                { new Bubblex16(100,100,false,false), new ArrayList<Bubble>(Arrays.asList(new Bubblex8(100,100,false,false), new Bubblex8(100,100,true,false))) }, 
-                { new Bubblex32(100,100,false,false), new ArrayList<Bubble>(Arrays.asList(new Bubblex16(100,100,false,false), new Bubblex16(100,100,true,false))) }, 
-                { new Bubblex64(100,100,false,false), new ArrayList<Bubble>(Arrays.asList(new Bubblex32(100,100,false,false), new Bubblex32(100,100,true,false))) }, 
-                { new Bubblex128(100,100,false,false), new ArrayList<Bubble>(Arrays.asList(new Bubblex64(100,100,false,false), new Bubblex64(100,100,true,false))) }});
+        return Arrays
+                .asList(new Object[][] {
+                        { new Bubblex8(100, 100, false, false),
+                                new ArrayList<Bubble>() },
+                        {
+                                new Bubblex16(100, 100, false, false),
+                                new ArrayList<Bubble>(Arrays.asList(
+                                        new Bubblex8(100, 100, false, false),
+                                        new Bubblex8(100, 100, true, false))) },
+                        {
+                                new Bubblex32(100, 100, false, false),
+                                new ArrayList<Bubble>(Arrays.asList(
+                                        new Bubblex16(100, 100, false, false),
+                                        new Bubblex16(100, 100, true, false))) },
+                        {
+                                new Bubblex64(100, 100, false, false),
+                                new ArrayList<Bubble>(Arrays.asList(
+                                        new Bubblex32(100, 100, false, false),
+                                        new Bubblex32(100, 100, true, false))) },
+                        {
+                                new Bubblex128(100, 100, false, false),
+                                new ArrayList<Bubble>(Arrays.asList(
+                                        new Bubblex64(100, 100, false, false),
+                                        new Bubblex64(100, 100, true, false))) } });
     }
 
     private ArrayList<Bubble> expectedList;
     private Bubble bubble;
 
-    
     public BubbleDestroyTest(Bubble bub, ArrayList<Bubble> expectedList) {
         this.expectedList = expectedList;
         bubble = bub;
@@ -40,6 +57,6 @@ public class BubbleDestroyTest {
 
     @Test
     public void test() {
-          assertTrue(expectedList.equals(bubble.destroyBubble(100, 100)));
+        assertTrue(expectedList.equals(bubble.destroyBubble(100, 100)));
     }
 }

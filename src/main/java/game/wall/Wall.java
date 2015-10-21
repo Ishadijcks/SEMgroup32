@@ -2,10 +2,8 @@ package game.wall;
 
 import helperobjects.Coordinates;
 import helperobjects.Dimensions;
-
 import java.awt.Color;
-
-import settings.wallSettings;
+import settings.WallSettings;
 
 /**
  * Wall class.
@@ -15,10 +13,12 @@ import settings.wallSettings;
  */
 public abstract class Wall {
     private int coordinates;
-    private int width = wallSettings.getWallWidth();
-    private int height = wallSettings.getWallHeight();
+    private int width = WallSettings.getWallWidth();
+    private int height = WallSettings.getWallHeight();
     private Coordinates curCoord;
     private Dimensions curDim;
+    private int xCoord;
+    private int yCoord;
     private Color color;
     private boolean isActive;
 
@@ -162,5 +162,45 @@ public abstract class Wall {
         this.color = color;
     }
 
+    /**
+     * Generated equals method to check if all attributes equals another of the
+     * same class.
+     * 
+     * @param obj
+     *            Object that it will compare to
+     * @return true if the object is from the same type and has the same
+     *         attributes
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Wall other = (Wall) obj;
+        if (color == null) {
+            if (other.color != null) {
+                return false;
+            }
+        } else if (!color.equals(other.color)) {
+            return false;
+        }
+        if (height != other.height || width != other.width) {
+            return false;
+        }
+        if (isActive != other.isActive) {
+            return false;
+        }
+
+        if (xCoord != other.xCoord || yCoord != other.yCoord) {
+            return false;
+        }
+        return true;
+    }
 
 }

@@ -1,21 +1,17 @@
 package game;
 
-import java.util.ArrayList;
-
-import settings.playerSettings;
-import settings.screenSettings;
 import game.collisions.Collision;
 import game.collisions.CollisionFactory;
 import game.log.LogSettings;
 import game.log.Logger;
-import game.observers.BubbleController;
-import game.observers.GameController;
-import game.observers.LevelController;
-import game.observers.PlayerController;
-import game.observers.PowerupController;
 import game.screens.GameScreen;
 import game.screens.LosingScreen;
 import game.screens.WinningScreen;
+
+import java.util.ArrayList;
+
+import settings.PlayerSettings;
+import settings.ScreenSettings;
 
 /**
  * Class that executes the game.
@@ -23,7 +19,7 @@ import game.screens.WinningScreen;
  * @author Boning
  *
  */
-@SuppressWarnings("serial")
+
 public class NormalDriver extends Driver {
 
     private static String name;
@@ -33,9 +29,6 @@ public class NormalDriver extends Driver {
 
     /**
      * Constructor that will pass the name of the player.
-     * 
-     * @param name
-     *            Name that the player entered
      */
     public NormalDriver() {
         setupGame();
@@ -95,7 +88,7 @@ public class NormalDriver extends Driver {
             curLevel = game.getCurrentLevel();
 
             game.moveEntities();
-            for(Collision col : collisions){
+            for (Collision col : collisions) {
             	col.checkCollision(game);
             }
 
@@ -118,16 +111,16 @@ public class NormalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        Player player = new Player(name, playerSettings.getPlayerSpawnPoint());
+        Player player = new Player(name, PlayerSettings.getPlayerSpawnPoint());
         game = GameFactory.createSinglePlayer(player);
         
         score = Score.getInstance();
         game.addPlayer(player);
 
         int centerConstant = (int) Math
-                .round(0.5 * (screenSettings.getScreenWidth() - screenSettings
+                .round(0.5 * (ScreenSettings.getScreenWidth() - ScreenSettings
                         .getLevelWidth()));
-        screenSettings.setLeftMargin(centerConstant);
+        ScreenSettings.setLeftMargin(centerConstant);
     }
 
     /**

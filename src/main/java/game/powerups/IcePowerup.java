@@ -16,12 +16,11 @@ public class IcePowerup extends Powerup {
 
     /**
      * Constructor for the ice powerup.
-     * @param x-Coordinate
-     * @param y-Coordinate
+     * @param x x-Coordinate
+     * @param y y-Coordinate
      */
 	public IcePowerup(int x, int y) {
 		super(x, y);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

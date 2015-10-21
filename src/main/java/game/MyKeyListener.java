@@ -2,7 +2,6 @@ package game;
 
 import game.log.LogSettings;
 import game.log.Logger;
-import game.screens.GameScreen;
 import game.screens.LogScreen;
 
 import java.awt.event.KeyAdapter;
@@ -12,7 +11,7 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import settings.playerSettings;
+import settings.PlayerSettings;
 
 /**
  * Keylistener that will handle all key inputs.
@@ -43,38 +42,27 @@ public class MyKeyListener extends KeyAdapter {
      * @param evt
      *            Key event
      */
+    @Override
     public void keyPressed(KeyEvent evt) {
-
         if (game.inProgress()) {
-
             switch (evt.getKeyCode()) {
-
             case 27:
                 Logger.log("Player pressed Escape", 0, 5);
                 game.pauseGame();
                 break;
-            // Left
             case 37:
                 Logger.log("Player pressed Left", 0, 5);
                 game.getPlayerList().get(0).movingLeft();
                 break;
-            // Right
             case 39:
                 Logger.log("Player pressed right", 0, 5);
                 game.getPlayerList().get(0).movingRight();
                 break;
+            case 32:
             case 38:
                 Logger.log("Player pressed up", 0, 5);
                 if (!Driver.game.getCurrentLevel().hasRope()) {
-                    Driver.game.getCurrentLevel().setRope(
-                            rFac.createRope(playerSettings.getPlayerHasIceRope()));
-                }
-                break;
-            case 32:
-                Logger.log("Player pressed space", 0, 5);
-                if (!Driver.game.getCurrentLevel().hasRope()) {
-                    Driver.game.getCurrentLevel().setRope(
-                            rFac.createRope(playerSettings.getPlayerHasIceRope()));
+                    Driver.game.getCurrentLevel().setRope(rFac.createRope(PlayerSettings.getPlayerHasIceRope()));
                 }
                 break;
             case 76:
@@ -101,6 +89,9 @@ public class MyKeyListener extends KeyAdapter {
      * 
      * Checks what key is released, makes the player stop moving in that
      * direction.
+     * 
+     * @param evt
+     *            The keyEvent that's being released
      */
     public void keyReleased(KeyEvent evt) {
 

@@ -21,22 +21,24 @@ public class BubbleDiameterMaxHeightTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-                { 8, new Bubblex8(100,100,false,false), 200 }, { 16, new Bubblex16(100,100,false,false), 150 }, { 32, new Bubblex32(100,100,false,false), 120}, 
-                { 64, new Bubblex64(100,100,false,false), 80 }, { 128, new Bubblex128(100,100,false,false), 40} });
+                { 8, new Bubblex8(100, 100, false, false), 200 },
+                { 16, new Bubblex16(100, 100, false, false), 150 },
+                { 32, new Bubblex32(100, 100, false, false), 120 },
+                { 64, new Bubblex64(100, 100, false, false), 80 },
+                { 128, new Bubblex128(100, 100, false, false), 40 } });
     }
-
-
 
     private int expectedMaxHeight;
     private Bubble bubble;
-    
-    public BubbleDiameterMaxHeightTest(int diameter, Bubble bub, int expectedMaxHeight) {
+
+    public BubbleDiameterMaxHeightTest(int diameter, Bubble bub,
+            int expectedMaxHeight) {
         this.expectedMaxHeight = expectedMaxHeight;
         bubble = bub;
     }
 
     @Test
     public void test() {
-          assertEquals(expectedMaxHeight, bubble.getMaxheight());
+        assertEquals(expectedMaxHeight, bubble.getMaxheight());
     }
 }

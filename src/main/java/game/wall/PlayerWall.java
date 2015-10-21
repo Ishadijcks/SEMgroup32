@@ -4,56 +4,65 @@ import helperobjects.Coordinates;
 
 import java.awt.Color;
 
-import settings.playerSettings;
-import settings.screenSettings;
+import settings.PlayerSettings;
+import settings.ScreenSettings;
+import settings.PlayerSettings;
 
 /**
  * Wall class of a player wall.
+ * 
  * @author Boning
  */
 public class PlayerWall extends Wall {
 
     /**
      * Constructor of a player wall.
-     * @param xCoord xCoord-Coordinate of the wall
+     * 
+     * @param xCoord
+     *            xCoord-Coordinate of the wall
      */
     public PlayerWall(Coordinates coordinates, int width) {
-        super(new Coordinates(coordinates.getxCoordinate(), 0), Color.green, screenSettings.getLevelHeight(), width);
+        super(new Coordinates(coordinates.getxCoordinate(), 0), Color.green,
+                ScreenSettings.getLevelHeight(), width);
     }
 
     /**
-     *  Checks if a player collides with the wall.
+     * Checks if a player collides with the wall.
      */
-	@Override
-	public boolean expectPlayerCollision(int xCoord, int yCoord, boolean movingLeft) {
-		int plyrXCoord = xCoord;
-		int plyrStepSize = playerSettings.getPlayerStepSize();
-		int plyrWidth = playerSettings.getPlayerWidth();
-		int plyrHeight = playerSettings.getPlayerHeight();
-		if(this.isActive())
-			if((plyrXCoord - plyrStepSize <= this.getxCoord() + this.getWidth()
-					&& plyrXCoord - plyrStepSize >= this.getxCoord() && movingLeft) 
-					|| (plyrXCoord + plyrStepSize + plyrWidth >= this.getxCoord() 
-					&& plyrXCoord + plyrStepSize + plyrWidth <= this.getxCoord() + this.getWidth() && !movingLeft)
-					)
-				return true;
-		return false;
-	}
+    @Override
+    public boolean expectPlayerCollision(int xCoord, int yCoord,
+            boolean movingLeft) {
+        int plyrXCoord = xCoord;
+        int plyrStepSize = PlayerSettings.getPlayerStepSize();
+        int plyrWidth = PlayerSettings.getPlayerWidth();
+        int plyrHeight = PlayerSettings.getPlayerHeight();
+        if (this.isActive())
+            if ((plyrXCoord - plyrStepSize <= this.getxCoord()
+                    + this.getWidth()
+                    && plyrXCoord - plyrStepSize >= this.getxCoord() && movingLeft)
+                    || (plyrXCoord + plyrStepSize + plyrWidth >= this
+                            .getxCoord()
+                            && plyrXCoord + plyrStepSize + plyrWidth <= this
+                                    .getxCoord() + this.getWidth() && !movingLeft))
+                return true;
+        return false;
+    }
 
-	/**
-	 * A PlayerWall will never collide with a bubble.
-	 */
-	@Override
-	public boolean expectBubbleCollision(int xCoord, int yCoord, int BubbleDiameter) {
-		return false;
-	}
-	
-	/**
-	 * A PlayerWall will not move.
-	 */
-	@Override
-	public void move(){
-	    
-	}
-    
+    /**
+     * A PlayerWall will never collide with a bubble.
+     */
+    @Override
+    public boolean expectBubbleCollision(int xCoord, int yCoord,
+            int BubbleDiameter) {
+        return false;
+    }
+
+    /**
+     * A PlayerWall will not move.
+     */
+    @Override
+    public void move() {
+
+    }
+
 }

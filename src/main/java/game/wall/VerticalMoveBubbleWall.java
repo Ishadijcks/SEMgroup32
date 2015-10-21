@@ -1,6 +1,6 @@
 package game.wall;
 
-import settings.screenSettings;
+import settings.ScreenSettings;
 import helperobjects.Coordinates;
 
 /**

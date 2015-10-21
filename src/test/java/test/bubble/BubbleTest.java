@@ -1,7 +1,5 @@
 package test.bubble;
 
-
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import game.bubble.Bubble;
@@ -10,18 +8,18 @@ import game.bubble.Bubblex8;
 
 import org.junit.Test;
 
-import settings.screenSettings;
-public class BubbleTest {
+import settings.ScreenSettings;
 
+public class BubbleTest {
 
     @Test
     public void testBubbleConstructor() {
         Bubble bub = new Bubblex8(10, 10, true, true);
-        assertTrue(bub.getX() ==  10);
-        assertTrue(bub.getY() ==  10);
+        assertTrue(bub.getX() == 10);
+        assertTrue(bub.getY() == 10);
         assertTrue(bub.isDirectionH());
         assertTrue(bub.isDirectionV());
-        
+
     }
 
     @Test
@@ -33,47 +31,57 @@ public class BubbleTest {
         bub.setDirectionV(false);
         assertFalse(bub.isDirectionH());
         assertFalse(bub.isDirectionV());
-        
+
     }
 
     @Test
     public void testBounceX() {
-        Bubble bub = new Bubblex8(screenSettings.getLeftMargin()+screenSettings.getLevelWidth()-5, screenSettings.getTopMargin()+screenSettings.getLevelHeight(), true, true);
+        Bubble bub = new Bubblex8(
+                ScreenSettings.getLeftMargin() + ScreenSettings.getLevelWidth()
+                        - 5,
+                ScreenSettings.getTopMargin() + ScreenSettings.getLevelHeight(),
+                true, true);
         assertTrue(bub.isDirectionH());
-        
-        for(int i = 0; i<6; i++){
-        	bub.move();
+
+        for (int i = 0; i < 6; i++) {
+            bub.move();
         }
         assertFalse(bub.isDirectionH());
-      
+
     }
-    
+
     @Test
     public void testBounceY() {
-        Bubble bub = new Bubblex8(screenSettings.getLeftMargin(), screenSettings.getTopMargin()+screenSettings.getLevelHeight()-5, true, true);
+        Bubble bub = new Bubblex8(ScreenSettings.getLeftMargin(),
+                ScreenSettings.getTopMargin() + ScreenSettings.getLevelHeight()
+                        - 5, true, true);
         assertTrue(bub.isDirectionV());
-        for(int i = 0; i<100; i++){
-        	bub.move();
+        for (int i = 0; i < 100; i++) {
+            bub.move();
         }
         assertFalse(bub.isDirectionV());
-      
+
     }
-    
+
     @Test
     public void testBounceMaxHeight() {
-        Bubble bub = new Bubblex16(screenSettings.getLeftMargin(), 75+5, true, false);
+        Bubble bub = new Bubblex16(ScreenSettings.getLeftMargin(), 75 + 5,
+                true, false);
 
         assertFalse(bub.isDirectionV());
-        for(int i = 0; i<100; i++){
-        	bub.move();
+        for (int i = 0; i < 100; i++) {
+            bub.move();
         }
         assertTrue(bub.isDirectionV());
-      
+
     }
 
     @Test
     public void testMove2() {
-        Bubble bub = new Bubblex8(screenSettings.getLeftMargin(), screenSettings.getTopMargin()+screenSettings.getLevelHeight(), true, true);
+        Bubble bub = new Bubblex8(
+                ScreenSettings.getLeftMargin(),
+                ScreenSettings.getTopMargin() + ScreenSettings.getLevelHeight(),
+                true, true);
 
         bub.move();
         bub.move();
@@ -81,10 +89,9 @@ public class BubbleTest {
         bub.move();
         bub.move();
         bub.move();
-        
-      
+
     }
-    
+
     @Test
     public void testBounceH() {
         Bubble bubble = new Bubblex8(10, 10, true, true);
@@ -100,6 +107,5 @@ public class BubbleTest {
         bubble.bounceV();
         assertFalse(bubble.isDirectionV());
     }
-    
 
 }

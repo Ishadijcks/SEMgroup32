@@ -1,12 +1,6 @@
-
-import static org.junit.Assert.*;
-
-import java.util.Random;
-
-import game.NormalDriver;
+import static org.junit.Assert.assertEquals;
 import game.Score;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 

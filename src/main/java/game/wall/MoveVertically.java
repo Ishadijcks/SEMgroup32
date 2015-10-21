@@ -37,7 +37,8 @@ public class MoveVertically implements WallMovementBehavior {
         if (coordinates.getyCoordinate() <= lowerBoundary) {
             goingUp = 1;
         }
-        coordinates.setyCoordinate(coordinates.getyCoordinate() + movementSpeed * goingUp);
+        coordinates.setyCoordinate(coordinates.getyCoordinate() + movementSpeed
+                * goingUp);
     }
 
     /**

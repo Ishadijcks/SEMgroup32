@@ -49,14 +49,14 @@ public class Leaderboard {
      * @param scoreList A new score list that will be used
      */
     public void setScoreList(ArrayList<EndScore> scoreList) {
-        this.scoreList = scoreList;
+        Leaderboard.scoreList = scoreList;
     }
     
     /**
      * Reset the score list.
      */
     public void resetScoreList() {
-    	this.scoreList = new ArrayList<EndScore>();
+    	Leaderboard.scoreList = new ArrayList<EndScore>();
     }
     
     /**

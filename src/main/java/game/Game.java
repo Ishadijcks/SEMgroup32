@@ -1,11 +1,10 @@
 package game;
 
 import game.log.Logger;
-import game.screens.GameScreen;
 
 import java.util.ArrayList;
 
-import settings.playerSettings;
+import settings.PlayerSettings;
 
 /**
  * Class that will handle everything of 1 game session.
@@ -16,7 +15,7 @@ import settings.playerSettings;
 public abstract class Game {
     protected ArrayList<Level> levelList = new ArrayList<Level>();
     protected ArrayList<Player> playerList;
-    protected int lives = playerSettings.getLives();
+    protected int lives = PlayerSettings.getLives();
     protected int currentLevel = 1;
     protected boolean inProgress;
 
@@ -215,8 +214,8 @@ public abstract class Game {
     /**
      * Checks if a game is won.
      */
-    public void gameWon(){
-    	
+    public void gameWon() {
+
     }
 
     /**
@@ -246,21 +245,13 @@ public abstract class Game {
         if (inProgress != other.inProgress) {
             return false;
         }
-        if (levelList == null) {
-            if (other.levelList != null) {
-                return false;
-            }
-        } else if (!levelList.equals(other.levelList)) {
+        if (!levelList.equals(other.levelList)) {
             return false;
         }
         if (lives != other.lives) {
             return false;
         }
-        if (playerList == null) {
-            if (other.playerList != null) {
-                return false;
-            }
-        } else if (!playerList.equals(other.playerList)) {
+        if (!playerList.equals(other.playerList)) {
             return false;
         }
         return true;
