@@ -88,7 +88,7 @@ public class NormalLevelFactory {
         Bubble bubble1 = new Bubblex8(100, 100, false, false);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
-        VerticalMoveBubbleWall wall1 = new VerticalMoveBubbleWall(new Coordinates(300, 55), 50, 5, 15, 420, 3);
+        NoMoveBubbleWall wall1 = new NoMoveBubbleWall(new Coordinates(200, 255), 5, 500);
         level.addWall(wall1);
         HorizontalMoveBubbleWall wall2 = new HorizontalMoveBubbleWall(new Coordinates(425, 355), 20, 190, 20, 300, 1);
         level.addWall(wall2);
