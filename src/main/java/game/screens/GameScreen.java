@@ -117,7 +117,7 @@ public class GameScreen extends JPanel {
         frame.addKeyListener(new MyKeyListener(gameInput));
         Logger.log("Added key listener", 9, 4);
         frame.add(gameScreen);
-        frame.setSize(Driver.game.getCurrentLevel().getWidth(), 800);
+        frame.setSize(1000, 800);
         Logger.log("Screen size set to " + Driver.game.getCurrentLevel().getWidth() + " by 1000", 9, 4);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
