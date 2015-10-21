@@ -17,10 +17,12 @@ public class MoveHorizontally implements WallMovementBehavior {
     private int goingLeft = 1;
 
     /**
-     * Constructor for the vertical mover.
      * 
-     * @param coord
-     *            Current coordinates of the wall
+     * Constructor for the vertical mover.
+     * @param coord coordinates of the wall
+     * @param left boundary
+     * @param right boundary
+     * @param speed movement speed wall
      */
     public MoveHorizontally(Coordinates coord, int left, int right, int speed) {
         coordinates = coord;
@@ -29,6 +31,9 @@ public class MoveHorizontally implements WallMovementBehavior {
         rightbound = right;
     }
 
+    /**
+     * Movement of the wall switch direction when at the border of the bounding.
+     */
     public void move() {
         if (coordinates.getxCoordinate() <= leftBound) {
             goingLeft = 1;
