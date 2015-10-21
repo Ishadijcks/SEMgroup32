@@ -9,7 +9,7 @@ import game.collisions.Collision;
  *
  */
 public abstract class Driver {
-    public static int totalFrames = 1;
+    static int totalFrames = 1;
     public static Score score;
     protected static Level curLevel;
     protected static boolean canDrawGame = true;
@@ -28,8 +28,6 @@ public abstract class Driver {
 
     /**
      * Set up the game.
-     * 
-     * @param startingLevel begin level number
      */
     public abstract void setupGame();
 
@@ -42,5 +40,22 @@ public abstract class Driver {
      * Method that will take care of everything that happens in a game session.
      */
     public abstract void driverHeart();
+
+    /**
+     * Return the total frames the game is playing.
+     * @return the total frames
+     */
+    public static int getTotalFrames() {
+        return totalFrames;
+    }
+
+    
+    /**
+     * Set the total frames the game is playing.
+     * @param totalFrames the amount of frames
+     */
+    public static void setTotalFrames(int totalFrames) {
+        Driver.totalFrames = totalFrames;
+    }
 
 }

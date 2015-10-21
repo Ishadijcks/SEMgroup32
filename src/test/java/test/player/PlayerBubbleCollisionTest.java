@@ -1,9 +1,8 @@
 package test.player;
-import static org.junit.Assert.*;
+
 import game.Level;
 import game.NormalLevel;
 import game.Player;
-import game.Rope;
 import game.bubble.Bubble;
 import game.bubble.Bubblex16;
 
@@ -21,8 +20,8 @@ public class PlayerBubbleCollisionTest {
 
     @Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] { 
-        		{ 100, 450, true }, { 1000, 0, false } });
+        return Arrays.asList(new Object[][] { { 100, 450, true },
+                { 1000, 0, false } });
     }
 
     public Level l;
@@ -45,7 +44,7 @@ public class PlayerBubbleCollisionTest {
 
     @Test
     public void testCheckCollisionRope() {
-        //assertEquals(this.expected, l.checkCollisionPlayer());
+        // assertEquals(this.expected, l.checkCollisionPlayer());
     }
 
 }

@@ -1,15 +1,11 @@
 package game.observers;
 
-import settings.powerupSettings;
 import game.Driver;
-import game.Game;
-import game.Player;
 import game.bubble.Bubble;
 import game.collisions.Collision;
-import game.log.Logger;
-import game.powerups.IcePowerup;
 import game.powerups.Powerup;
 import game.powerups.PowerupFactory;
+import settings.PowerupSettings;
 
 /**
  * Powerup with player collisions observer.
@@ -35,7 +31,7 @@ public class PowerupObserver extends Observer {
 		int bubblePosX = bubble.getX();
         int bubblePosY = bubble.getY();
         
-		if (powerupSettings.getPowerupChance() > Math.random() * 100) {
+		if (PowerupSettings.getPowerupChance() > Math.random() * 100) {
 	        Powerup powerup = pfac.createRandomPowerup();
 	        powerup.setX(bubblePosX);
 	        powerup.setY(bubblePosY);

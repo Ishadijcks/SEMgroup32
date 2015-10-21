@@ -1,12 +1,9 @@
 package game.observers;
 
-import settings.playerSettings;
 import game.Driver;
-import game.Game;
 import game.Player;
-import game.bubble.Bubble;
 import game.collisions.Collision;
-import game.powerups.Powerup;
+import settings.PlayerSettings;
 
 /**
  * Wall with Player collisions observer.
@@ -28,11 +25,11 @@ public class PlayerObserver extends Observer {
 	public void wallPlayerEvent() {
 		Player player = Driver.game.getPlayerList().get(0);
         if (player.getMovingRight()) {
-            playerSettings.setRestrictMovingRight(true);
-            playerSettings.setRestrictMovingLeft(false);
+            PlayerSettings.setRestrictMovingRight(true);
+            PlayerSettings.setRestrictMovingLeft(false);
         } else if (player.getMovingLeft()) {
-        	playerSettings.setRestrictMovingLeft(true);
-        	playerSettings.setRestrictMovingRight(false);
+        	PlayerSettings.setRestrictMovingLeft(true);
+        	PlayerSettings.setRestrictMovingRight(false);
         }
 		
 	}

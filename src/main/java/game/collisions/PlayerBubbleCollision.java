@@ -4,12 +4,7 @@ import game.Game;
 import game.Player;
 import game.bubble.Bubble;
 import game.log.Logger;
-import game.observers.BubbleObserver;
-import game.observers.GameObserver;
-import game.observers.LevelObserver;
 import game.observers.Observer;
-import game.observers.PlayerObserver;
-import game.observers.PowerupObserver;
 
 /**
  * Bubble and player collision class.

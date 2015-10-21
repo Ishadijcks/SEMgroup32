@@ -8,15 +8,12 @@ import java.awt.Color;
  */
 public class BubbleWall extends Wall {
 	
-	private int bouncedOn;
-
-    /**
+	/**
      * Constructor of a bubble wall.
      * @param xCoord x-Coordinate of the wall
      */
     public BubbleWall(int xCoord) {
         super(xCoord, Color.red);
-        this.bouncedOn = 0;
     }
 
 	@Override
@@ -41,7 +38,6 @@ public class BubbleWall extends Wall {
      * Checks if a ball bounced on the wall.
      */
     public void bouncedOn() {
-        bouncedOn++;
         setActive(false);
     }
     

@@ -1,13 +1,8 @@
 package game;
 
-import java.io.IOException;
-
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
-import settings.screenSettings;
 import game.log.LogSettings;
 import game.screens.StartScreen;
+import settings.ScreenSettings;
 
 /**
  * Class that will execute the whole game.
@@ -18,13 +13,10 @@ import game.screens.StartScreen;
 public class MainRunner {
 
     private static Driver driver;
-    private static boolean driverIsSet;
-
     /**
      * Constructor of the main runner class.
      */
     public MainRunner() {
-        driverIsSet = false;
     }
 
     /**
@@ -34,7 +26,6 @@ public class MainRunner {
      *            standard java thingie
      */
     public static void main(String[] args) {
-        driverIsSet = false;
         new StartScreen();
         while (true) {
             try {
@@ -44,13 +35,13 @@ public class MainRunner {
 
             // 120 FPS
             try {
-                Thread.sleep(1000 / screenSettings.getFps());
+                Thread.sleep(1000 / ScreenSettings.getFps());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            driver.totalFrames++;
-            if (LogSettings.isLogScreen() && driver.totalFrames % 500 == 0
-                    && driver.game.inProgress()) {
+            Driver.totalFrames++;
+            if (LogSettings.isLogScreen() && Driver.totalFrames % 500 == 0
+                    && Driver.game.inProgress()) {
                 LogSettings.getLogscreen().reloadData();
             }
         }
@@ -65,7 +56,6 @@ public class MainRunner {
      */
     public static void setDriver(Driver buildDriver) {
         driver = buildDriver;
-        driverIsSet = true;
     }
 
 }

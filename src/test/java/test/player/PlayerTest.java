@@ -1,4 +1,5 @@
 package test.player;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -8,9 +9,7 @@ import game.Player;
 
 import org.junit.Test;
 
-import settings.playerSettings;
-
-import com.sun.scenario.Settings;
+import settings.PlayerSettings;
 
 public class PlayerTest {
 
@@ -58,12 +57,12 @@ public class PlayerTest {
         int x = player.getX();
         player.movingLeft();
         player.move();
-        assertEquals(x - playerSettings.getPlayerStepSize(), player.getX());
+        assertEquals(x - PlayerSettings.getPlayerStepSize(), player.getX());
     }
 
     @Test
     public void testMoveLeftBoundary() {
-    	Player play = new Player("test", 0);
+        Player play = new Player("test", 0);
         int x = player.getX();
         play.movingLeft();
         play.move();
@@ -75,12 +74,12 @@ public class PlayerTest {
         int x = player.getX();
         player.movingRight();
         player.move();
-        assertEquals(x + playerSettings.getPlayerStepSize(), player.getX());
+        assertEquals(x + PlayerSettings.getPlayerStepSize(), player.getX());
     }
 
     @Test
     public void testMoveRightBoundary() {
-    	Player play = new Player("test", 10000);
+        Player play = new Player("test", 10000);
         int x = player.getX();
         play.movingRight();
         play.move();
@@ -89,25 +88,25 @@ public class PlayerTest {
 
     @Test
     public void testGetWidth() {
-        assertEquals(playerSettings.getPlayerWidth(), player.getWidth());
+        assertEquals(PlayerSettings.getPlayerWidth(), player.getWidth());
     }
 
     @Test
     public void testGetHeight() {
-        assertEquals(playerSettings.getPlayerHeight(), player.getHeight());
+        assertEquals(PlayerSettings.getPlayerHeight(), player.getHeight());
     }
-    
+
     @Test
-    public void testHasIceRopeNoIceRope(){
-    	NormalDriver.game = GameFactory.createSinglePlayer(player);
-    	assertFalse(player.hasIceRope());
+    public void testHasIceRopeNoIceRope() {
+        NormalDriver.game = GameFactory.createSinglePlayer(player);
+        assertFalse(player.hasIceRope());
     }
-    
+
     @Test
     public void testSetName() {
-    	assertTrue(player.getName().equals("Isha"));
-    	player.setName("NietIsha");
-    	assertTrue(player.getName().equals("NietIsha"));
+        assertTrue(player.getName().equals("Isha"));
+        player.setName("NietIsha");
+        assertTrue(player.getName().equals("NietIsha"));
     }
 
 }

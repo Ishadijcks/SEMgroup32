@@ -1,12 +1,8 @@
 package game.wall;
 
-
-
-
 import java.awt.Color;
 
-import settings.screenSettings;
-import settings.wallSettings;
+import settings.WallSettings;
 
 /**
  * Wall class.
@@ -18,8 +14,8 @@ public abstract class Wall {
 
     private int xCoord;
     private int yCoord;
-    private int width = wallSettings.getWallWidth();
-    private int height = wallSettings.getWallHeight();
+    private int width = WallSettings.getWallWidth();
+    private int height = WallSettings.getWallHeight();
     private Color color;
     private boolean isActive;
 
@@ -184,19 +180,14 @@ public abstract class Wall {
         } else if (!color.equals(other.color)) {
             return false;
         }
-        if (height != other.height) {
+        if (height != other.height || width != other.width) {
             return false;
         }
         if (isActive != other.isActive) {
             return false;
         }
-        if (width != other.width) {
-            return false;
-        }
-        if (xCoord != other.xCoord) {
-            return false;
-        }
-        if (yCoord != other.yCoord) {
+
+        if (xCoord != other.xCoord || yCoord != other.yCoord) {
             return false;
         }
         return true;

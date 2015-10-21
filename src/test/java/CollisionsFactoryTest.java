@@ -1,8 +1,6 @@
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import game.collisions.CollisionFactory;
 import game.collisions.PlayerBubbleCollision;
-import game.collisions.PlayerPowerupCollision;
 import game.collisions.RopeBubbleCollision;
 import game.collisions.WallBubbleCollision;
 import game.collisions.WallPlayerCollision;
@@ -45,7 +43,7 @@ public class CollisionsFactoryTest {
     public void buildCollisionInstanceofcheck4() {
         assertTrue(cf.buildPlayerBubbleCollision() instanceof PlayerBubbleCollision);
     }
-    
+
     @Test
     public void buildCollisionInstanceofcheck5() {
         assertTrue(cf.buildWallPlayerCollision() instanceof WallPlayerCollision);

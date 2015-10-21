@@ -6,7 +6,6 @@ import game.log.Logger;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
@@ -17,7 +16,15 @@ import java.util.LinkedList;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 
 /**
  * Class that will make a screen for the logger.
@@ -27,11 +34,10 @@ import javax.swing.*;
  */
 public class LogScreen extends JFrame {
 
+    private static final long serialVersionUID = 1L;
     JButton startButton;
     JButton button;
     private LogFilters filters;
-    private JList list;
-    private Container pane;
     private ArrayList<JCheckBox> checkList;
     Font boldFont;
     Font basicFont;

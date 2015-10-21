@@ -2,10 +2,8 @@ package game;
 
 import game.bubble.Bubble;
 import game.log.Logger;
-import game.powerups.Powerup;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * Class that will handle everything in a normal level.

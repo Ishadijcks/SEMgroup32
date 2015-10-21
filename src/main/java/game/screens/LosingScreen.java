@@ -14,6 +14,8 @@ import javax.swing.JLabel;
  *
  */
 public class LosingScreen extends EndScreen {
+
+    private static final long serialVersionUID = 1L;
     EndScore score;
 
     /**

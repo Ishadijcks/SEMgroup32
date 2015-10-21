@@ -1,6 +1,12 @@
 package settings;
 
-public class screenSettings {
+/**
+ * Settings for the screen class.
+ * @author Isha
+ *
+ */
+
+public class ScreenSettings {
 
     private static int fps = 120;
     private static int screenWidth = 1000;
@@ -16,6 +22,10 @@ public class screenSettings {
     private static int topMargin = 50;
     private static int leftMargin = 0;
 
+    /**
+     * Set the left margin of the screen.
+     * @param left the left margin
+     */
     public static void setLeftMargin(int left) {
         leftMargin = left;
     }

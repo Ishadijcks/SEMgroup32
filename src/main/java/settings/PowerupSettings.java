@@ -1,6 +1,12 @@
 package settings;
 
-public class powerupSettings {
+
+/**
+ * Settings for the powerup class.
+ * @author Isha
+ *
+ */
+public class PowerupSettings {
 
     private static int powerupSpeed = 2;
     private static int powerupChance = 40;
