@@ -14,6 +14,8 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Stroke;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +24,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -79,7 +82,6 @@ public class Painter {
      */
     public void paint(Graphics2D g2d) throws IOException {
             this.g2d = g2d;
-           
             drawLevel(); 
             drawBubbles(); 
             drawWalls(); 
@@ -413,6 +415,7 @@ public class Painter {
      * Draw lives of player.
      */
     public void drawLives() {
+        g2d.setColor(Color.WHITE);
         g2d.setFont(new Font("Calibri", Font.BOLD, 40));
         g2d.drawString("Lives: ", centerConstant, game.getCurrentLevel().getHeight() + 45
                 + topMargin);
@@ -428,6 +431,7 @@ public class Painter {
      * Draw score of player.
      */
     public void drawScore() {
+        g2d.setColor(Color.WHITE);
         g2d.drawString("Score: ", centerConstant, game.getCurrentLevel().getHeight() + 91
                 + topMargin);
         g2d.setColor(dragonRed);
@@ -442,11 +446,11 @@ public class Painter {
     public void drawLevelNumber() {
         if (game.getCurrentLevel() instanceof NormalLevel) {
             NormalLevel curNormalLevel = (NormalLevel) game.getCurrentLevel();
-            g2d.drawString("Level:", centerConstant, 45);
+            g2d.setColor(Color.WHITE);
+            g2d.drawString("Level:", centerConstant, 35);
             g2d.setColor(dragonRed);
             g2d.drawString(curNormalLevel.getLevelNumber() + " ",
-                    centerConstant + 110, 45);
-            g2d.setColor(Color.BLACK);
+                    centerConstant + 110, 35);
 
             g2d.setColor(dragonRed);
             g2d.drawString(" " + (game.getCurrentLevelInt() + 1), 1350,
@@ -463,5 +467,6 @@ public class Painter {
         Stroke normalStroke = new BasicStroke(1f);
         g2d.setStroke(normalStroke);
     }
+    
     
 }
