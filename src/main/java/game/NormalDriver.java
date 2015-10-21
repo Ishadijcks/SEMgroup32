@@ -131,7 +131,6 @@ public class NormalDriver extends Driver {
         gameScreen = new GameScreen();
         Logger.log("Main Frame created", 9, 4);
         GameScreen.setupScreen(game, score);
-
         LogSettings.setActiveLog(true);
 
     }

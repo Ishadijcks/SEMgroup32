@@ -12,30 +12,10 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
-<<<<<<< HEAD
-import settings.screenSettings;
-import settings.wallSettings;
-
-
-public class WallTest {
-	
-	private Wall wall;
-	private Wall otherWall;
-	
-	@Before
-	public void init() {
-		wall = new DuoWall(new Coordinates(10, 0), screenSettings.getLevelHeight(), 10);
-		otherWall = new DuoWall(new Coordinates(1, 0), screenSettings.getLevelHeight(), 10);
-	}
-
-	@Test
-	public void testWall() {
-		assertEquals(10, wall.getxCoord());
-		assertEquals(0, wall.getyCoord());
-		assertEquals(Color.blue, wall.getColor());
-	}
-=======
+import settings.ScreenSettings;
 import settings.WallSettings;
+
+
 
 public class WallTest {
 
@@ -44,8 +24,8 @@ public class WallTest {
 
     @Before
     public void init() {
-        wall = new DuoWall(10);
-        otherWall = new DuoWall(10);
+        wall = new DuoWall(new Coordinates(10, 0), 500, 10);
+        otherWall = new DuoWall(new Coordinates(10, 0), 500, 10);
     }
 
     @Test
@@ -59,7 +39,6 @@ public class WallTest {
     public void testEquals() {
         assertTrue(wall.equals(otherWall));
     }
->>>>>>> 2ba4d40c50b5dc0078e6bb71f45eea0d5fa315ff
 
     @Test
     public void testGetHeight() {

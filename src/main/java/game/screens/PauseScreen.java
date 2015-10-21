@@ -39,6 +39,7 @@ public class PauseScreen extends JFrame {
         ScreenBuilder.initScreen(this, "Paused game");
         addResumeButton(game);
         addStopButton(game);
+        getContentPane().setBackground(Color.BLACK);
         this.setLocation(800, 350);
         setSize(ScreenSettings.getPauseWidth() - 1, ScreenSettings.getPauseHeight() - 1);
         setSize(ScreenSettings.getPauseWidth(), ScreenSettings.getPauseHeight());
@@ -50,7 +51,8 @@ public class PauseScreen extends JFrame {
      */
     public void addResumeButton(Game game) {
         resumeButton = new JButton("Resume game");
-        resumeButton.setForeground(Color.BLACK);
+        resumeButton.setBackground(Color.GRAY);
+        resumeButton.setForeground(Color.WHITE);
         resumeButton.setFont(new Font("Calibri", Font.BOLD, 30));
         resumeButton.setOpaque(true);
         resumeButton.setBounds(50, 90, 250, 50);
@@ -70,7 +72,8 @@ public class PauseScreen extends JFrame {
      */
     public void addStopButton(Game game) {
         stopButton = new JButton("Exit");
-        resumeButton.setForeground(Color.BLACK);
+        stopButton.setBackground(Color.GRAY);
+        stopButton.setForeground(Color.WHITE);
         stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
         stopButton.setOpaque(true);
         stopButton.setBounds(50, 150, 250, 50);
