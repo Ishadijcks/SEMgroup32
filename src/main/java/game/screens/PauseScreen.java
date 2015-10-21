@@ -3,7 +3,9 @@ package game.screens;
 import game.Game;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -37,6 +39,7 @@ public class PauseScreen extends JFrame {
         ScreenBuilder.initScreen(this, "Paused game");
         addResumeButton(game);
         addStopButton(game);
+        this.setLocation(800, 350);
         setSize(ScreenSettings.getPauseWidth() - 1, ScreenSettings.getPauseHeight() - 1);
         setSize(ScreenSettings.getPauseWidth(), ScreenSettings.getPauseHeight());
     }

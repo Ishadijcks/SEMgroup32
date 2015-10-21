@@ -107,12 +107,14 @@ public class Painter {
             imageLocation = imageLocation.replace("target/classes/", "src/");
 
             Image img1 = Toolkit.getDefaultToolkit().getImage("src/main/Images/backgroundGameScreen.png");
+            g2d.setColor(Color.BLACK);
+            g2d.setBackground(Color.BLACK);
+            //g2d.fillRect(centerConstant + 1, 0, game.getCurrentLevel().getWidth() - 1,
+            //        game.getCurrentLevel().getHeight() - 1);
             
             g2d.drawImage(img1, 0, 0, null);
             
-            //g2d.setColor(bg);
-            //g2d.fillRect(centerConstant + 1, 51, game.getCurrentLevel().getWidth() - 1,
-            //        game.getCurrentLevel().getHeight() - 1);
+            
             g2d.setColor(Color.BLACK);
         }
     }

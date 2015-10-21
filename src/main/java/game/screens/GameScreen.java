@@ -5,6 +5,8 @@ import game.MyKeyListener;
 import game.Score;
 import game.log.Logger;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -72,22 +74,22 @@ public class GameScreen extends JPanel {
      * Level is won by player.
      */
     public void levelWon() {
-        final JLabel label = new JLabel("test");
-        label.setText("Congratulations! Level won!");
-        gameScreen.add(label);
         final JButton nextLevel = new JButton("Next Level");
-        nextLevel.setBounds(300, 50, 140, 50);
+        //Fucked up ouwe deze setBound
+        nextLevel.setBounds(0, 0, 200, 50);
+        nextLevel.setBackground(Color.BLACK);
+        nextLevel.setForeground(Color.WHITE);
+        nextLevel.setOpaque(true);
+        nextLevel.setVisible(true);
         nextLevel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
                 game.gameStart();
                 gameScreen.remove(nextLevel);
-                gameScreen.remove(label);
             }
         });
         gameScreen.add(nextLevel);
         gameScreen.validate();
         validate();
-        reload();
     }
 
     /**
@@ -113,6 +115,7 @@ public class GameScreen extends JPanel {
         gameScreen = new GameScreen();
         frame.addKeyListener(new MyKeyListener(gameInput));
         Logger.log("Added key listener", 9, 4);
+        frame.getContentPane().setBackground(Color.BLACK);
         frame.add(gameScreen);
         frame.setSize(ScreenSettings.getScreenWidth(),
                 ScreenSettings.getScreenHeight());
