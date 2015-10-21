@@ -11,11 +11,18 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Stroke;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import settings.screenSettings;
@@ -68,8 +75,9 @@ public class Painter {
     /**
      * Paint everything that has to be painted.
      * @param g2d Graphics object that will help us paint
+     * @throws IOException 
      */
-    public void paint(Graphics2D g2d) {
+    public void paint(Graphics2D g2d) throws IOException {
             this.g2d = g2d;
            
             drawLevel(); // Draw the board for each level
@@ -85,15 +93,26 @@ public class Painter {
     
     /**
      * Draw the board for all levels.
+     * @throws IOException 
      */
-    public void drawLevel() {
+    public void drawLevel() throws IOException {
         iceRope = game.getPlayerList().get(0).hasIceRope();
         g2d.drawRect(centerConstant, 50, game.getCurrentLevel().getWidth(),
                 game.getCurrentLevel().getHeight());
         if (canDrawGame) {
-            g2d.setColor(bg);
-            g2d.fillRect(centerConstant + 1, 51, game.getCurrentLevel().getWidth() - 1,
-                    game.getCurrentLevel().getHeight() - 1);
+            URL location = StartScreen.class.getProtectionDomain().getCodeSource()
+                    .getLocation();
+            String imageLocation = location.getFile();
+            imageLocation = imageLocation.replace("%20", " ");
+            imageLocation = imageLocation.replace("target/classes/", "src/");
+
+            Image img1 = Toolkit.getDefaultToolkit().getImage("src/main/Images/backgroundGameScreen.png");
+            
+            g2d.drawImage(img1, 0, 0, null);
+            
+            //g2d.setColor(bg);
+            //g2d.fillRect(centerConstant + 1, 51, game.getCurrentLevel().getWidth() - 1,
+            //        game.getCurrentLevel().getHeight() - 1);
             g2d.setColor(Color.BLACK);
         }
     }

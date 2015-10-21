@@ -142,7 +142,12 @@ public class GameScreen extends JPanel {
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
         
-        painter.paint(g2d);
+        try {
+            painter.paint(g2d);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
 }
