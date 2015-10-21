@@ -7,7 +7,7 @@ import game.wall.Wall;
 
 import java.util.ArrayList;
 
-import settings.screenSettings;
+import settings.ScreenSettings;
 
 /**
  * Class that will handle everything in a level.
@@ -21,8 +21,8 @@ public abstract class Level {
     protected ArrayList<Wall> wallList;
     protected Rope rope = null;
     protected int numberOfRopes = 0;
-    protected int width = screenSettings.getLevelWidth();
-    protected int height = screenSettings.getLevelHeight();
+    protected int width = ScreenSettings.getLevelWidth();
+    protected int height = ScreenSettings.getLevelHeight();
     protected boolean increasedPowerupTime = false;
 
     /**

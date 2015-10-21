@@ -1,20 +1,16 @@
 package game.screens;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-
 import game.Driver;
 import game.DriverFactory;
-import game.Leaderboard;
 import game.LevelCompletion;
 import game.MainRunner;
 import game.NormalDriverFactory;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,6 +22,7 @@ import javax.swing.JLabel;
  */
 public class LevelOverviewScreen extends JFrame {
 
+    private static final long serialVersionUID = 1L;
     JButton levelButton;
     JButton stopButton;
     Font basicFont;
@@ -64,7 +61,7 @@ public class LevelOverviewScreen extends JFrame {
             driver.setupGame();
             driver.initDriver();
             driver.startGame("");
-            driver.game.setCurrentLevelInt(levelNumber);
+            Driver.game.setCurrentLevelInt(levelNumber);
             MainRunner.setDriver(driver);
         }
     }

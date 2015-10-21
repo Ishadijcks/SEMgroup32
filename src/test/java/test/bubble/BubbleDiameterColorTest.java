@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
-import settings.playerSettings;
+import settings.PlayerSettings;
 
 @RunWith(Parameterized.class)
 public class BubbleDiameterColorTest {
@@ -25,7 +25,7 @@ public class BubbleDiameterColorTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
                 { 8, new Bubblex8(100, 100, false, false),
-                        playerSettings.getDragonRed() },
+                        PlayerSettings.getDragonRed() },
                 { 16, new Bubblex16(100, 100, false, false), Color.BLACK },
                 { 32, new Bubblex32(100, 100, false, false), Color.GREEN },
                 { 64, new Bubblex64(100, 100, false, false), Color.CYAN },

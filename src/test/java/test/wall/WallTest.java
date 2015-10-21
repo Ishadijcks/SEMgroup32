@@ -11,7 +11,7 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
-import settings.wallSettings;
+import settings.WallSettings;
 
 public class WallTest {
 
@@ -38,12 +38,12 @@ public class WallTest {
 
     @Test
     public void testGetHeight() {
-        assertEquals(wallSettings.getWallHeight(), wall.getHeight());
+        assertEquals(WallSettings.getWallHeight(), wall.getHeight());
     }
 
     @Test
     public void testGetWidth() {
-        assertEquals(wallSettings.getWallWidth(), wall.getWidth());
+        assertEquals(WallSettings.getWallWidth(), wall.getWidth());
     }
 
     @Test

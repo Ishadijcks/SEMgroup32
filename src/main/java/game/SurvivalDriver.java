@@ -10,8 +10,8 @@ import game.screens.LosingScreen;
 
 import java.util.ArrayList;
 
-import settings.playerSettings;
-import settings.screenSettings;
+import settings.PlayerSettings;
+import settings.ScreenSettings;
 
 /**
  * Class that executes a survival game.
@@ -70,7 +70,7 @@ public class SurvivalDriver extends Driver {
     public static void gameLost() {
         EndScore es = new EndScore(name, score.getScore());
         leaderBoard.addScore(es);
-        leaderBoard.appendToFile();
+        Leaderboard.appendToFile();
         score.resetScore();
         gameScreen.dispose();
         game.toggleProgress();
@@ -110,14 +110,14 @@ public class SurvivalDriver extends Driver {
      */
     public void setupGame() {
         driver = this;
-        player = new Player(name, playerSettings.getPlayerSpawnPoint());
+        player = new Player(name, PlayerSettings.getPlayerSpawnPoint());
         game = GameFactory.createSurvival(player);
         score = Score.getInstance();
         game.addPlayer(player);
 
-        int centerConstant = (int) Math.round(0.5 * (screenSettings
-                .getScreenWidth() - screenSettings.getLevelWidth()));
-        screenSettings.setLeftMargin(centerConstant);
+        int centerConstant = (int) Math.round(0.5 * (ScreenSettings
+                .getScreenWidth() - ScreenSettings.getLevelWidth()));
+        ScreenSettings.setLeftMargin(centerConstant);
     }
 
     /**

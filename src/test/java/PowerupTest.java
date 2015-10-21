@@ -17,17 +17,17 @@ import javax.swing.ImageIcon;
 import org.junit.Before;
 import org.junit.Test;
 
-import settings.powerupSettings;
-import settings.screenSettings;
+import settings.PowerupSettings;
+import settings.ScreenSettings;
 
 public class PowerupTest {
 
     public int x;
     public int y;
     public Powerup powerup;
-    int framesLeft = 10 * screenSettings.getFps();
-    int height = powerupSettings.getPowerupHeight();
-    int width = powerupSettings.getPowerupWidth();
+    int framesLeft = 10 * ScreenSettings.getFps();
+    int height = PowerupSettings.getPowerupHeight();
+    int width = PowerupSettings.getPowerupWidth();
 
     @Before
     public void init() {
@@ -124,7 +124,7 @@ public class PowerupTest {
         driver.setupGame();
         driver.initDriver();
         Powerup pow = new IcePowerup(100, 100);
-        int deltaY = powerupSettings.getPowerupSpeed();
+        int deltaY = PowerupSettings.getPowerupSpeed();
         int initY = 100;
         pow.move();
         assertEquals(initY + deltaY, pow.getY());
@@ -134,7 +134,7 @@ public class PowerupTest {
     public void testMoveSurvivalMode() {
         SurvivalDriver driver = new SurvivalDriver();
         Powerup pow = new IcePowerup(100, 100);
-        int deltaY = powerupSettings.getPowerupSpeed();
+        int deltaY = PowerupSettings.getPowerupSpeed();
         int initY = 100;
         pow.move();
         assertEquals(initY + deltaY, pow.getY());

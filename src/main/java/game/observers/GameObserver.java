@@ -2,7 +2,7 @@ package game.observers;
 
 import game.Driver;
 import game.collisions.Collision;
-import settings.threadSettings;
+import settings.ThreadSettings;
 
 
 public class GameObserver extends Observer {
@@ -14,7 +14,7 @@ public class GameObserver extends Observer {
 
 	@Override
 	public void bubblePlayerEvent() {
-		threadSettings.setDieThreads(true);
+		ThreadSettings.setDieThreads(true);
         Driver.game.resetLevel();
         Driver.game.loseLife();
 	}

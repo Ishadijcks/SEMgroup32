@@ -2,7 +2,7 @@ package game;
 
 import game.log.LogSettings;
 import game.screens.StartScreen;
-import settings.screenSettings;
+import settings.ScreenSettings;
 
 /**
  * Class that will execute the whole game.
@@ -35,13 +35,13 @@ public class MainRunner {
 
             // 120 FPS
             try {
-                Thread.sleep(1000 / screenSettings.getFps());
+                Thread.sleep(1000 / ScreenSettings.getFps());
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            driver.totalFrames++;
-            if (LogSettings.isLogScreen() && driver.totalFrames % 500 == 0
-                    && driver.game.inProgress()) {
+            Driver.totalFrames++;
+            if (LogSettings.isLogScreen() && Driver.totalFrames % 500 == 0
+                    && Driver.game.inProgress()) {
                 LogSettings.getLogscreen().reloadData();
             }
         }

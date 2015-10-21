@@ -10,17 +10,13 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import settings.screenSettings;
-
+import settings.ScreenSettings;
 
 /**
  * Class that will create everything on a screen for a game.
@@ -29,11 +25,11 @@ import settings.screenSettings;
  *
  */
 public class GameScreen extends JPanel {
+
+
+    private static final long serialVersionUID = 1L;
     public static Game game;
     public static Score score;
-    private static boolean canDrawGame = true;
-    private int topMargin;
-    private int centerConstant;
     private static JFrame frame;
     private static Graphics2D g2d;
     private static GameScreen gameScreen;
@@ -51,7 +47,7 @@ public class GameScreen extends JPanel {
      */
     public GameScreen() {
         frame = new JFrame("Game Screen");
-        this.painter = new Painter(this, game, score);
+        GameScreen.painter = new Painter(this, game, score);
     }
 
     /**
@@ -82,7 +78,6 @@ public class GameScreen extends JPanel {
         nextLevel.setBounds(300, 50, 140, 50);
         nextLevel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent ae) {
-                canDrawGame = true;
                 game.gameStart();
                 gameScreen.remove(nextLevel);
                 gameScreen.remove(label);
@@ -118,9 +113,10 @@ public class GameScreen extends JPanel {
         frame.addKeyListener(new MyKeyListener(gameInput));
         Logger.log("Added key listener", 9, 4);
         frame.add(gameScreen);
-        frame.setSize(screenSettings.getScreenWidth(), screenSettings.getScreenHeight());
-        Logger.log("Screen size set to " + screenSettings.getScreenWidth() + " by "
-                + screenSettings.getScreenWidth(), 9, 4);
+        frame.setSize(ScreenSettings.getScreenWidth(),
+                ScreenSettings.getScreenHeight());
+        Logger.log("Screen size set to " + ScreenSettings.getScreenWidth()
+                + " by " + ScreenSettings.getScreenWidth(), 9, 4);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setVisible(false);
@@ -133,15 +129,14 @@ public class GameScreen extends JPanel {
      */
     @Override
     public void paint(Graphics graph) {
-        
-        // Calculate the margin left to center the board
-        centerConstant = screenSettings.getLeftMargin();
-        topMargin = screenSettings.getTopMargin();
+
+        ScreenSettings.getLeftMargin();
+        ScreenSettings.getTopMargin();
         g2d = (Graphics2D) graph;
         super.paint(graph);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON);
-        
+
         painter.paint(g2d);
     }
 

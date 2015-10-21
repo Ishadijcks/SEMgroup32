@@ -1,14 +1,13 @@
 package settings;
 
-import java.awt.Color;
 
 /**
- * Class that keeps all the settings of the whole game.
- * 
- * @author Boning
+ * Settings for the threads.
+ * @author Isha
  *
  */
-public class threadSettings {
+
+public class ThreadSettings {
 
     private static boolean dieThreads = false;
 
@@ -31,7 +30,7 @@ public class threadSettings {
      *            the dieThreads to set
      */
     public static void setDieThreads(boolean dieThreads) {
-        threadSettings.dieThreads = dieThreads;
+        ThreadSettings.dieThreads = dieThreads;
     }
 
 }

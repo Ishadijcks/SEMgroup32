@@ -5,7 +5,7 @@ import game.log.Logger;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import settings.screenSettings;
+import settings.ScreenSettings;
 
 /**
  * Abstract class of a bubble.
@@ -92,8 +92,8 @@ public abstract class Bubble {
      */
     public boolean correctX(double xCoord, int diameter) {
         if (xCoord > 0
-                && xCoord < screenSettings.getLeftMargin()
-                        + screenSettings.getLevelWidth() - diameter) {
+                && xCoord < ScreenSettings.getLeftMargin()
+                        + ScreenSettings.getLevelWidth() - diameter) {
             return true;
         } else {
             Logger.log("Incorrect xCoord", 3, 3);
@@ -112,9 +112,9 @@ public abstract class Bubble {
      *         false otherwise
      */
     public boolean correctY(double yCoord, int diameter) {
-        if (yCoord > screenSettings.getTopMargin()
-                && yCoord < (screenSettings.getTopMargin()
-                        + screenSettings.getLevelHeight() - diameter)) {
+        if (yCoord > ScreenSettings.getTopMargin()
+                && yCoord < (ScreenSettings.getTopMargin()
+                        + ScreenSettings.getLevelHeight() - diameter)) {
             return true;
         }
 
@@ -138,7 +138,7 @@ public abstract class Bubble {
      * Check if the bubble isn'time outside of the borders.
      */
     public void outOfBoardCheck() {
-        if (yCoord < screenSettings.getTopMargin() || !(yCoord > 0)) {
+        if (yCoord < ScreenSettings.getTopMargin() || !(yCoord > 0)) {
             yCoord = maxheight;
         }
     }
@@ -147,18 +147,18 @@ public abstract class Bubble {
      * Checks if the bubble bounced against the borders.
      */
     public void bounceBorder() {
-        if (xCoord + diameter > screenSettings.getLeftMargin()
-                + screenSettings.getLevelWidth()
+        if (xCoord + diameter > ScreenSettings.getLeftMargin()
+                + ScreenSettings.getLevelWidth()
                 && directionHorizontal
-                || xCoord <= screenSettings.getLeftMargin()
+                || xCoord <= ScreenSettings.getLeftMargin()
                 && !directionHorizontal) {
             bounceH();
         }
 
-        if (yCoord + diameter > screenSettings.getTopMargin()
-                + screenSettings.getLevelHeight()
+        if (yCoord + diameter > ScreenSettings.getTopMargin()
+                + ScreenSettings.getLevelHeight()
                 && directionVertical
-                || yCoord <= screenSettings.getTopMargin()
+                || yCoord <= ScreenSettings.getTopMargin()
                 && !directionVertical) {
             bounceV();
         }
@@ -206,16 +206,15 @@ public abstract class Bubble {
             if (newBubble) {
                 newBubble = false;
                 lastDownSpeed = 4;
-            }
-            factor = ((yCoord - maxheight) / (screenSettings.getTopMargin()
-                    + screenSettings.getLevelHeight() - maxheight));
+            }            factor = ((yCoord - maxheight) / (ScreenSettings.getTopMargin()
+                    + ScreenSettings.getLevelHeight() - maxheight));
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             yCoord -= lastUpSpeed;
         }
         if (lastUpSpeed < 0.5
                 && !directionVertical
-                && yCoord < screenSettings.getTopMargin()
-                        + screenSettings.getLevelHeight() - 50) {
+                && yCoord < ScreenSettings.getTopMargin()
+                        + ScreenSettings.getLevelHeight() - 50) {
             timer += 0.4;
         }
         if (timer > 5) {

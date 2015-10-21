@@ -1,6 +1,11 @@
 package settings;
 
-public class bubbleSettings {
+/**
+ * Settings for the bubble class.
+ * @author Isha
+ *
+ */
+public class BubbleSettings {
 
     private static int bubbleDefaultDiameter = 16;
     private static int bubbleDefaultX = 10;

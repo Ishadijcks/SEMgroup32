@@ -1,8 +1,8 @@
 package game;
 
 import game.log.Logger;
-import settings.ropeSettings;
-import settings.screenSettings;
+import settings.RopeSettings;
+import settings.ScreenSettings;
 
 /**
  * Rope class.
@@ -31,7 +31,7 @@ public class Rope {
      * @return true if the rope is at the top of the screen, false otherwise
      */
     public boolean isAtTop() {
-        if (yCoord <= screenSettings.getTopMargin() - 2) {
+        if (yCoord <= ScreenSettings.getTopMargin() - 2) {
             return true;
         }
         return false;
@@ -46,9 +46,9 @@ public class Rope {
             Logger.log("Rope hit the roof", 5, 4);
         } else {
             Logger.log("Rope moved from " + xCoord + "," + yCoord + " to "
-                    + xCoord + "," + (yCoord - ropeSettings.getRopeSpeed()), 5,
+                    + xCoord + "," + (yCoord - RopeSettings.getRopeSpeed()), 5,
                     5);
-            yCoord -= ropeSettings.getRopeSpeed();
+            yCoord -= RopeSettings.getRopeSpeed();
         }
     }
 

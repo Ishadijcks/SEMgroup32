@@ -2,9 +2,13 @@ package settings;
 
 import java.awt.Color;
 
-public class playerSettings {
+/**
+ * Settings for the player class.
+ * @author Isha
+ *
+ */
+public class PlayerSettings {
 
-    private static int playerSpawnPoint = 350;
     private static int playerHeight = 161;
     private static int playerWidth = 111;
     private static int playerStepSize = 2;
@@ -21,9 +25,9 @@ public class playerSettings {
      */
     public static int getPlayerSpawnPoint() {
         return (int) Math.round(0.5
-                * (screenSettings.getScreenWidth() - screenSettings
+                * (ScreenSettings.getScreenWidth() - ScreenSettings
                         .getLevelWidth()) + 0.5
-                * screenSettings.getLevelWidth());
+                * ScreenSettings.getLevelWidth());
     }
 
     /**
@@ -85,7 +89,7 @@ public class playerSettings {
      *            the restrictMovingRight to set
      */
     public static void setRestrictMovingRight(boolean restrictMovingRight) {
-        playerSettings.restrictMovingRight = restrictMovingRight;
+        PlayerSettings.restrictMovingRight = restrictMovingRight;
     }
 
     /**
@@ -100,7 +104,7 @@ public class playerSettings {
      *            the restrictMovingLeft to set
      */
     public static void setRestrictMovingLeft(boolean restrictMovingLeft) {
-        playerSettings.restrictMovingLeft = restrictMovingLeft;
+        PlayerSettings.restrictMovingLeft = restrictMovingLeft;
     }
 
     /**

@@ -5,12 +5,10 @@ import game.Driver;
 import game.Game;
 import game.log.Logger;
 
-import java.awt.Image;
-
 import javax.swing.ImageIcon;
 
-import settings.powerupSettings;
-import settings.screenSettings;
+import settings.PowerupSettings;
+import settings.ScreenSettings;
 
 /**
  * Class that controls the powerups.
@@ -19,20 +17,19 @@ import settings.screenSettings;
 public abstract class Powerup {
     private int xCoord;
     private int yCoord;
-    private Image image;
-    
+   
     protected Game game;
     
-    int width = powerupSettings.getPowerupWidth();
-    int height = powerupSettings.getPowerupHeight();
+    int width = PowerupSettings.getPowerupWidth();
+    int height = PowerupSettings.getPowerupHeight();
     
-    int framesLeft = 10*screenSettings.getFps();
-    
+    int framesLeft = 10 * ScreenSettings.getFps();
+
     /**
      * Constructor of the powerup.
      * @param name
-     * @param xCoord
-     * @param yCoord
+     * @param xCoord The xCoord of the rope
+     * @param yCoord The yCoord of the rope
      */
     public Powerup(int xCoord, int yCoord) {
         Logger.log("Powerup created", 6, 4);
@@ -78,13 +75,16 @@ public abstract class Powerup {
     public void move() {
         if (yCoord <= Driver.game.getCurrentLevel().getHeight() - (height - 1)) {
             Logger.log("Powerup moved from " + xCoord + "," + yCoord + " to " + xCoord 
-                    + "," + (yCoord + powerupSettings.getPowerupSpeed()), 6, 5, 10);
-            yCoord += powerupSettings.getPowerupSpeed();
+                    + "," + (yCoord + PowerupSettings.getPowerupSpeed()), 6, 5, 10);
+            yCoord += PowerupSettings.getPowerupSpeed();
         }
         
 
     }
     
+    /**
+     * Add this powerup to the current level.
+     */
     public void addToLevel() {
     	Driver.game.getCurrentLevel().getPowerupList().add(this);
     }
@@ -115,7 +115,7 @@ public abstract class Powerup {
      * Reset the framesLeft counter to the starting count.
      */
     public void resetFramesLeft() {
-        framesLeft = 10 * screenSettings.getFps();
+        framesLeft = 10 * ScreenSettings.getFps();
     }
     
     /**

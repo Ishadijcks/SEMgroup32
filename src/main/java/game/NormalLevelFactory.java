@@ -26,7 +26,7 @@ public class NormalLevelFactory {
      * @param pList the playerList to use
      */
     public NormalLevelFactory(ArrayList<Player> pList) {
-        this.playerList = pList;
+        NormalLevelFactory.playerList = pList;
     }
 
     /**
