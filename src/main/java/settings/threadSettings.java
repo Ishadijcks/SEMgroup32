@@ -18,6 +18,7 @@ public class ThreadSettings {
      *            what the margin should be.
      */
 
+    
     /**
      * @return the dieThreads
      */
