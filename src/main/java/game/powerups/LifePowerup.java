@@ -16,8 +16,8 @@ public class LifePowerup extends Powerup {
 
     /**
      * Constructor for the life powerup.
-     * @param x-Coordinate
-     * @param y-Coordinate
+     * @param x x-Coordinate
+     * @param y y-Coordinate
      */
 	public LifePowerup(int x, int y) {
 		super(x, y);

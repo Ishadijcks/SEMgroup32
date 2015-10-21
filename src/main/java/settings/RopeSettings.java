@@ -1,6 +1,11 @@
 package settings;
 
-public class ropeSettings {
+/**
+ * Settings for the rope class.
+ * @author Isha
+ *
+ */
+public class RopeSettings {
 
     private static int ropeSpeed = 4;
 

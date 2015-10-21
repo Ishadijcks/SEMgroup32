@@ -38,7 +38,7 @@ public class Logger {
      */
     public static void log(String message, int category, int severity,
             int frameRepeat) {
-        if (NormalDriver.totalFrames % frameRepeat == 0) {
+        if (NormalDriver.getTotalFrames() % frameRepeat == 0) {
 
             LogObject tempLog = new LogObject(message, category, severity);
             logList.add(tempLog);

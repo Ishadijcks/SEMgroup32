@@ -5,7 +5,7 @@ import game.log.Logger;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import settings.screenSettings;
+import settings.ScreenSettings;
 
 /**
  * Abstract class of a bubble.
@@ -81,49 +81,6 @@ public abstract class Bubble {
 
     }
 
-    /**
-     * Checks if x-Coordinate is in the boundaries.
-     * 
-     * @param xCoord
-     *            of the bubble
-     * @param diameter
-     *            of the bubble
-     * @return true if the bubble is placed correctly between the boundaries,
-     *         false otherwise
-     */
-    public boolean correctX(double xCoord, int diameter) {
-        if (xCoord > 0
-                && xCoord < screenSettings.getLeftMargin()
-                        + screenSettings.getLevelWidth() - diameter) {
-            return true;
-        } else {
-            Logger.log("Incorrect xCoord", 3, 3);
-            return false;
-        }
-    }
-
-    /**
-     * Checks if y-Coordinate is in the boundaries.
-     * 
-     * @param yCoord
-     *            of the bubble
-     * @param diameter
-     *            of the bubble
-     * @return true if the bubble is placed correctly between the boundaries,
-     *         false otherwise
-     */
-    public boolean correctY(double yCoord, int diameter) {
-        if (yCoord > screenSettings.getTopMargin()
-                && yCoord < (screenSettings.getTopMargin()
-                        + screenSettings.getLevelHeight() - diameter)) {
-            return true;
-        }
-
-        else {
-            Logger.log("Incorrect yCoord", 3, 3);
-            return false;
-        }
-    }
 
     /**
      * Move the bubble.
@@ -139,7 +96,7 @@ public abstract class Bubble {
      * Check if the bubble isn'time outside of the borders.
      */
     public void outOfBoardCheck() {
-        if (yCoord < screenSettings.getTopMargin() || !(yCoord > 0)) {
+        if (yCoord < ScreenSettings.getTopMargin() || !(yCoord > 0)) {
             yCoord = maxheight;
         }
     }
@@ -148,18 +105,17 @@ public abstract class Bubble {
      * Checks if the bubble bounced against the borders.
      */
     public void bounceBorder() {
-        if (xCoord + diameter > screenSettings.getLeftMargin()
-                + screenSettings.getLevelWidth()
+        if (xCoord + diameter > ScreenSettings.getLeftMargin()
+                + ScreenSettings.getLevelWidth()
                 && directionHorizontal
-                || xCoord <= screenSettings.getLeftMargin()
+                || xCoord <= ScreenSettings.getLeftMargin()
                 && !directionHorizontal) {
             bounceH();
         }
-
-        if (yCoord + diameter > screenSettings.getTopMargin()
-                + screenSettings.getLevelHeight()
+        if (yCoord + diameter > ScreenSettings.getTopMargin()
+                + ScreenSettings.getLevelHeight()
                 && directionVertical
-                || yCoord <= screenSettings.getTopMargin()
+                || yCoord <= ScreenSettings.getTopMargin()
                 && !directionVertical) {
             bounceV();
         }
@@ -211,16 +167,15 @@ public abstract class Bubble {
             if (newBubble) {
                 newBubble = false;
                 lastDownSpeed = 4;
-            }
-            factor = ((yCoord - maxheight) / (screenSettings.getTopMargin()
-                    + screenSettings.getLevelHeight() - maxheight));
+            }            factor = ((yCoord - maxheight) / (ScreenSettings.getTopMargin()
+                    + ScreenSettings.getLevelHeight() - maxheight));
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             yCoord -= lastUpSpeed;
         }
         if (lastUpSpeed < 0.5
                 && !directionVertical
-                && yCoord < screenSettings.getTopMargin()
-                        + screenSettings.getLevelHeight() - 50) {
+                && yCoord < ScreenSettings.getTopMargin()
+                        + ScreenSettings.getLevelHeight() - 50) {
             timer += 0.4;
         }
         if (timer > 5) {
@@ -323,7 +278,8 @@ public abstract class Bubble {
     /**
      * Set the vertical direction of the bubble.
      * 
-     * @param directionVertical boolean
+     * @param directionVertical
+     *            the vertical direction
      */
     public void setDirectionV(boolean directionVertical) {
         this.directionVertical = directionVertical;
@@ -358,10 +314,21 @@ public abstract class Bubble {
         return maxheight;
     }
 
+    /**
+     * Returns the score points this bubble is worth.
+     * 
+     * @return the score points this bubble is worth
+     */
     public int getScoreWorth() {
         return this.scoreWorth;
     }
 
+    /**
+     * Sets the score points this bubble is worth.
+     * 
+     * @param newWorth
+     *            the score points this bubble is worth
+     */
     public void setScoreWorth(int newWorth) {
         this.scoreWorth = newWorth;
     }
@@ -377,67 +344,86 @@ public abstract class Bubble {
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Bubble other = (Bubble) obj;
         if (Double.doubleToLongBits(gravitation) != Double
-                .doubleToLongBits(other.gravitation))
+                .doubleToLongBits(other.gravitation)) {
             return false;
+        }
         if (color == null) {
-            if (other.color != null)
+            if (other.color != null) {
                 return false;
-        } else if (!color.equals(other.color))
+            }
+        } else if (!color.equals(other.color)) {
             return false;
-        if (diameter != other.diameter)
+        }
+        if (diameter != other.diameter) {
             return false;
-        if (directionHorizontal != other.directionHorizontal)
+        }
+        if (directionHorizontal != other.directionHorizontal) {
             return false;
-        if (directionVertical != other.directionVertical)
+        }
+        if (directionVertical != other.directionVertical) {
             return false;
+        }
         if (Double.doubleToLongBits(factor) != Double
-                .doubleToLongBits(other.factor))
+                .doubleToLongBits(other.factor)) {
             return false;
+        }
         if (Double.doubleToLongBits(lastDownSpeed) != Double
-                .doubleToLongBits(other.lastDownSpeed))
+                .doubleToLongBits(other.lastDownSpeed)) {
             return false;
+        }
         if (Double.doubleToLongBits(lastUpSpeed) != Double
-                .doubleToLongBits(other.lastUpSpeed))
+                .doubleToLongBits(other.lastUpSpeed)) {
             return false;
-        if (maxheight != other.maxheight)
+        }
+        if (maxheight != other.maxheight) {
             return false;
-        if (newBubble != other.newBubble)
+        }
+        if (newBubble != other.newBubble) {
             return false;
+        }
         if (Double.doubleToLongBits(shifting) != Double
-                .doubleToLongBits(other.shifting))
+                .doubleToLongBits(other.shifting)) {
             return false;
+        }
         if (Double.doubleToLongBits(sOld) != Double
-                .doubleToLongBits(other.sOld))
+                .doubleToLongBits(other.sOld)) {
             return false;
+        }
         if (Double.doubleToLongBits(speedX) != Double
-                .doubleToLongBits(other.speedX))
+                .doubleToLongBits(other.speedX)) {
             return false;
-        if (Double.doubleToLongBits(time) != Double
-                .doubleToLongBits(other.time))
-            return false;
+        }
         if (Double.doubleToLongBits(timeStep) != Double
-                .doubleToLongBits(other.timeStep))
+                .doubleToLongBits(other.timeStep)) {
             return false;
+        }
         if (Double.doubleToLongBits(timer) != Double
-                .doubleToLongBits(other.timer))
+                .doubleToLongBits(other.timer)) {
             return false;
+        }
         if (Double.doubleToLongBits(velocity) != Double
-                .doubleToLongBits(other.velocity))
+                .doubleToLongBits(other.velocity)) {
             return false;
+        }
         if (Double.doubleToLongBits(xCoord) != Double
-                .doubleToLongBits(other.xCoord))
+                .doubleToLongBits(other.xCoord)) {
             return false;
+        }
         if (Double.doubleToLongBits(yCoord) != Double
-                .doubleToLongBits(other.yCoord))
+                .doubleToLongBits(other.yCoord)) {
             return false;
+        }
         return true;
     }
 

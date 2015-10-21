@@ -25,7 +25,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import settings.screenSettings;
+import settings.ScreenSettings;
 
 /**
  * Class that will paint everything in a game.
@@ -62,14 +62,14 @@ public class Painter {
     public Painter(JPanel panel, Game gameInput, Score scoreInput) {
         game = gameInput;
         score = scoreInput;
-        this.panel = panel;
+        Painter.panel = panel;
         
-        centerConstant = screenSettings.getLeftMargin();
-        topMargin = screenSettings.getTopMargin();
+        centerConstant = ScreenSettings.getLeftMargin();
+        topMargin = ScreenSettings.getTopMargin();
         
         imageLocation = imageLocation.replace("%20", " ");
         imageLocation = imageLocation.replace("target/classes/", "/");
-        playerDrawer = new DrawPlayer(game, this.panel, this);
+        playerDrawer = new DrawPlayer(game, Painter.panel, this);
     }
     
     /**
@@ -80,15 +80,15 @@ public class Painter {
     public void paint(Graphics2D g2d) throws IOException {
             this.g2d = g2d;
            
-            drawLevel(); // Draw the board for each level
-            drawBubbles(); // Draw the bubbles of the level with a black border
-            drawWalls(); // Draw the walls of the level
-            drawRopes(); // Draw the rope of the player
-            drawPlayer(); // Draw the player
-            drawPowerups(); // Draw the powerups
-            drawLives(); // Show the lives of the player
-            drawScore(); // Show the score of the player
-            drawLevelNumber(); // Show the number of the current level
+            drawLevel(); 
+            drawBubbles(); 
+            drawWalls(); 
+            drawRopes(); 
+            drawPlayer(); 
+            drawPowerups(); 
+            drawLives(); 
+            drawScore(); 
+            drawLevelNumber(); 
     }
     
     /**
@@ -141,7 +141,7 @@ public class Painter {
             if (wall.isActive()) {
                 g2d.setColor(wall.getColor());
                 g2d.fillRect(wall.getxCoord(),
-                        wall.getyCoord() + screenSettings.getTopMargin(),
+                        wall.getyCoord() + ScreenSettings.getTopMargin(),
                         wall.getWidth(), wall.getHeight());
                 g2d.setColor(Color.BLACK);
             }
@@ -273,7 +273,6 @@ public class Painter {
         playerDrawer.shootRope = true;
         ropeDurationCounter--;
 
-        Random rand = new Random();
         Color[] colors = getIceRopeColors();
         Stroke[] strokes = getBasicStrokes();
 
@@ -455,7 +454,7 @@ public class Painter {
     }
     
     /**
-     * Set g2d back to normal settings
+     * Set g2d back to normal settings.
      */
     public void resetg2d() {
         g2d.setColor(Color.BLACK);

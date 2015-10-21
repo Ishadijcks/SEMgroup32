@@ -9,6 +9,7 @@ import game.screens.StartScreen;
 
 /**
  * Class that controls a powerup of the type speed.
+ * 
  * @author Boning
  *
  */
@@ -16,44 +17,51 @@ public class SpeedPowerup extends Powerup {
 
     /**
      * Constructor for the speed powerup.
-     * @param x-Coordinate
-     * @param y-Coordinate
+     * 
+     * @param x
+     *            x-Coordinate
+     * @param y
+     *            y-Coordinate
      */
-	public SpeedPowerup(int x, int y) {
-		super(x, y);
-		// TODO Auto-generated constructor stub
-	}
+    public SpeedPowerup(int x, int y) {
+        super(x, y);
+       
+    }
 
-	/**
+    /**
      * What will happen if you pick the powerup up.
      */
-	@Override
-	public void executeEffect() {
-		new Thread(new SpeedPowerupTimer(game)).start();
-	}
+    @Override
+    public void executeEffect() {
+        new Thread(new SpeedPowerupTimer(game)).start();
+    }
 
-	/**
+    /**
      * Set the game.
-     * @param game in which powerups will spawn
+     * 
+     * @param game
+     *            in which powerups will spawn
      */
-	@Override
-	public void setGame(Game game) {
-		this.game = game;
-	}
+    @Override
+    public void setGame(Game game) {
+        this.game = game;
+    }
 
-	/**
+    /**
      * Get the image of the powerup.
+     * 
      * @return the image of the powerup
      */
-	@Override
-	public ImageIcon getImageIcon() {
-		URL location = StartScreen.class.getProtectionDomain().getCodeSource()
-		            .getLocation();
-		String imageLocation = location.getFile();
-		imageLocation = imageLocation.replace("%20", " ");
-		imageLocation = imageLocation.replace("target/classes/", "src/");
-		ImageIcon powerupspeed = new ImageIcon(imageLocation + "main/Images/Powerups/puspeed.png", "speed");
-		return powerupspeed;
-	}
+    @Override
+    public ImageIcon getImageIcon() {
+        URL location = StartScreen.class.getProtectionDomain().getCodeSource()
+                .getLocation();
+        String imageLocation = location.getFile();
+        imageLocation = imageLocation.replace("%20", " ");
+        imageLocation = imageLocation.replace("target/classes/", "src/");
+        ImageIcon powerupspeed = new ImageIcon(imageLocation
+                + "main/Images/Powerups/puspeed.png", "speed");
+        return powerupspeed;
+    }
 
 }

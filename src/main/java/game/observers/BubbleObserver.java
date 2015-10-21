@@ -1,9 +1,7 @@
 package game.observers;
 
-import game.Game;
 import game.bubble.Bubble;
 import game.collisions.Collision;
-import game.powerups.Powerup;
 
 /**
  * Wall with bubble collisions observer.
@@ -11,7 +9,7 @@ import game.powerups.Powerup;
  * @author Tim
  *
  */
-public class BubbleController extends Observer {
+public class BubbleObserver extends Observer {
 
     /**
      * The constructor of the observer class.
@@ -19,7 +17,7 @@ public class BubbleController extends Observer {
      * @param collisions
      *            class handels all collisions.
      */
-    public BubbleController(Collision collisions) {
+    public BubbleObserver(Collision collisions) {
         super(collisions);
         collisions.registerObserver(this);
     }

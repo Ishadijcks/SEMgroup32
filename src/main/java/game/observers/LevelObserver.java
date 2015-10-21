@@ -7,9 +7,9 @@ import game.bubble.Bubble;
 import game.collisions.Collision;
 import game.powerups.Powerup;
 
-public class LevelController extends Observer {
+public class LevelObserver extends Observer {
 
-	public LevelController(Collision subject) {
+	public LevelObserver(Collision subject) {
 		super(subject);
 		subject.registerObserver(this);
 	}

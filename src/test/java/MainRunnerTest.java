@@ -1,4 +1,4 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import game.MainRunner;
 import game.NormalDriverFactory;
 
