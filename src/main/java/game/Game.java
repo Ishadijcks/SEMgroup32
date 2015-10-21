@@ -90,19 +90,15 @@ public abstract class Game {
         Level currentLevel = this.getCurrentLevel();
 
         currentLevel.moveBubbles();
-        System.out.println("Hello1");
         for (int i = 0; i < currentLevel.getPowerupList().size(); i++) {
             currentLevel.getPowerupList().get(i).move();
         }
-        System.out.println("Hello2");
         if (currentLevel.hasRope()) {
             currentLevel.getRope().move();
         }
-        System.out.println("Hello3");
         for(int a = 0; a < currentLevel.getWallList().size(); a++) {
                 currentLevel.getWallList().get(a).move();
         }
-        System.out.println("Hello4");
     }
 
     /**

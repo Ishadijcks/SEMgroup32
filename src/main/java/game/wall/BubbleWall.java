@@ -10,7 +10,6 @@ import java.awt.Color;
  */
 public abstract class BubbleWall extends Wall {
 	
-	private int bouncedOn;
 
     /**
      * Constructor of a bubble wall.
@@ -18,7 +17,6 @@ public abstract class BubbleWall extends Wall {
      */
     public BubbleWall(Coordinates coordinates, int height, int width) {
         super(coordinates, Color.red, height, width);
-        this.bouncedOn = 0;
     }
 
     /**
@@ -36,8 +34,8 @@ public abstract class BubbleWall extends Wall {
 	public boolean expectBubbleCollision(int BubblexCoord, int BubbleyCoord, int BubbleDiameter) {
 		if ((BubblexCoord <= (this.getxCoord() + this.getWidth()) && 
 		        (BubblexCoord + BubbleDiameter) >= this.getxCoord()) &&
-		            (BubbleyCoord <= (this.getyCoord() + this.getHeight()) &&
-		                (BubbleyCoord + BubbleDiameter) >= this.getyCoord()) &&
+		            (BubbleyCoord <= (this.getyCoord() + this.getHeight() + 50) &&
+		                (BubbleyCoord + BubbleDiameter) >= this.getyCoord() + 50) &&
 		                    this.isActive()) {
             this.bouncedOn();
 			return true;
@@ -49,8 +47,7 @@ public abstract class BubbleWall extends Wall {
      * Checks if a ball bounced on the wall.
      */
     public void bouncedOn() {
-        bouncedOn++;
-        setActive(false);
+      setActive(false);
     }
     
     /**

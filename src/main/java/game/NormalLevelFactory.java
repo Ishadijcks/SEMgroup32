@@ -1,6 +1,7 @@
 package game;
 
 import game.bubble.Bubble;
+import game.bubble.Bubblex128;
 import game.bubble.Bubblex16;
 import game.bubble.Bubblex32;
 import game.bubble.Bubblex64;
@@ -85,14 +86,14 @@ public class NormalLevelFactory {
      * @return Level 1
      */
     public Level getLevel1() {
-        Bubble bubble1 = new Bubblex8(100, 100, false, false);
+        Bubble bubble1 = new Bubblex8(152, 50, false, false);
+        Bubble bubble2 = new Bubblex8(100, 50, false, false);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
-        NoMoveBubbleWall wall1 = new NoMoveBubbleWall(new Coordinates(200, 255), 5, 500);
+        level.addBubble(bubble2);
+        VerticalMoveBubbleWall wall1 = new VerticalMoveBubbleWall(new Coordinates(300, 55), 150, 5, 15, 420, 3);
         level.addWall(wall1);
-        HorizontalMoveBubbleWall wall2 = new HorizontalMoveBubbleWall(new Coordinates(425, 355), 20, 190, 20, 300, 1);
-        level.addWall(wall2);
-        HorizontalMoveBubbleWall wall3 = new HorizontalMoveBubbleWall(new Coordinates(225, 300), 20, 250, 250, 400, 3);
+        HorizontalMoveBubbleWall wall3 = new HorizontalMoveBubbleWall(new Coordinates(225, 300), 20, 300, 250, 400, 3);
         level.addWall(wall3);
         VerticalMoveBubbleWall wall9 = new VerticalMoveBubbleWall(new Coordinates(625, 5), 200, 10, 0, 300, 1);
         level.addWall(wall9);
