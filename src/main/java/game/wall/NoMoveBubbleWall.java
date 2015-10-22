@@ -9,7 +9,6 @@ import helperobjects.Coordinates;
  */
 public class NoMoveBubbleWall extends BubbleWall {
 
-    private int bouncedOn;
     private NoMove mover;
 
     /**
@@ -25,7 +24,6 @@ public class NoMoveBubbleWall extends BubbleWall {
     public NoMoveBubbleWall(Coordinates coordinates, int height, int width) {
         super(coordinates, height, width);
         mover = new NoMove();
-        this.bouncedOn = 0;
     }
 
     /**

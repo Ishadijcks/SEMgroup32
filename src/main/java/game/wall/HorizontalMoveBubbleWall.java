@@ -9,6 +9,7 @@ import helperobjects.Coordinates;
  */
 public class HorizontalMoveBubbleWall extends BubbleWall {
 
+    @SuppressWarnings("unused")
     private int bouncedOn;
     private MoveHorizontally mover;
 

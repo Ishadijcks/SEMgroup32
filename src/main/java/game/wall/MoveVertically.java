@@ -11,7 +11,6 @@ import helperobjects.Coordinates;
 public class MoveVertically implements WallMovementBehavior {
 
     private Coordinates coordinates;
-    private int bouncedOn;
     private int lowerBoundary;
     private int upperBoundary;
     private int movementSpeed;

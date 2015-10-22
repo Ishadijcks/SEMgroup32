@@ -9,7 +9,6 @@ import helperobjects.Coordinates;
  */
 public class VerticalMoveBubbleWall extends BubbleWall {
 
-    private int bouncedOn;
     private MoveVertically mover;
 
     /**
@@ -26,7 +25,6 @@ public class VerticalMoveBubbleWall extends BubbleWall {
             int width, int lowerBound, int upperBound, int speed) {
         super(coordinates, height, width);
         mover = new MoveVertically(coordinates, lowerBound, upperBound, speed);
-        this.bouncedOn = 0;
     }
 
     /**
