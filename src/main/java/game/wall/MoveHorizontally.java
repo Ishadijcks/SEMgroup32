@@ -10,7 +10,6 @@ import helperobjects.Coordinates;
 public class MoveHorizontally implements WallMovementBehavior {
     
     private Coordinates coordinates;
-    private int bouncedOn;
     private int leftBound;
     private int rightbound;
     private int movementSpeed;

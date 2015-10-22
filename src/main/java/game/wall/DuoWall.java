@@ -16,8 +16,12 @@ public class DuoWall extends Wall {
     /**
      * Constructor of a duo wall.
      * 
-     * @param xCoord
-     *            xCoord-Coordinate of the wall
+     * @param coordinates
+     *            of the bubble wall
+     * @param height
+     *            of the wall
+     * @param width
+     *            of the wall
      */
     public DuoWall(Coordinates coordinates, int height, int width) {
         super(coordinates, Color.blue, height, width);
@@ -32,15 +36,17 @@ public class DuoWall extends Wall {
         int plyrXCoord = xCoord;
         int plyrStepSize = PlayerSettings.getPlayerStepSize();
         int plyrWidth = PlayerSettings.getPlayerWidth();
-        if (this.isActive())
+        if (this.isActive()) {
             if ((plyrXCoord - plyrStepSize <= this.getxCoord()
                     + this.getWidth()
                     && plyrXCoord - plyrStepSize >= this.getxCoord() && movingLeft)
                     || (plyrXCoord + plyrStepSize + plyrWidth - 37 >= this
                             .getxCoord()
                             && plyrXCoord + plyrStepSize + plyrWidth - 37 <= this
-                                    .getxCoord() + this.getWidth() && !movingLeft))
+                                    .getxCoord() + this.getWidth() && !movingLeft)) {
                 return true;
+            }
+        }
         return false;
     }
 

@@ -6,7 +6,6 @@ import java.awt.Color;
 
 import settings.PlayerSettings;
 import settings.ScreenSettings;
-import settings.PlayerSettings;
 
 /**
  * Wall class of a player wall.
@@ -16,10 +15,13 @@ import settings.PlayerSettings;
 public class PlayerWall extends Wall {
 
     /**
+     * 
      * Constructor of a player wall.
      * 
-     * @param xCoord
-     *            xCoord-Coordinate of the wall
+     * @param coordinates
+     *            of the wall
+     * @param width
+     *            of the wall
      */
     public PlayerWall(Coordinates coordinates, int width) {
         super(new Coordinates(coordinates.getxCoordinate(), 0), Color.green,
@@ -35,16 +37,17 @@ public class PlayerWall extends Wall {
         int plyrXCoord = xCoord;
         int plyrStepSize = PlayerSettings.getPlayerStepSize();
         int plyrWidth = PlayerSettings.getPlayerWidth();
-        int plyrHeight = PlayerSettings.getPlayerHeight();
-        if (this.isActive())
+        if (this.isActive()) {
             if ((plyrXCoord - plyrStepSize <= this.getxCoord()
                     + this.getWidth()
                     && plyrXCoord - plyrStepSize >= this.getxCoord() && movingLeft)
                     || (plyrXCoord + plyrStepSize + plyrWidth >= this
                             .getxCoord()
                             && plyrXCoord + plyrStepSize + plyrWidth <= this
-                                    .getxCoord() + this.getWidth() && !movingLeft))
+                                    .getxCoord() + this.getWidth() && !movingLeft)) {
                 return true;
+            }
+        }
         return false;
     }
 

@@ -2,18 +2,22 @@ package helperobjects;
 
 /**
  * Class that will keep a combination of a x-Coordinate and a y-Coordinate.
+ * 
  * @author Boning
  *
  */
 public class Coordinates {
-    
+
     private int xCoordinate;
     private int yCoordinate;
-    
+
     /**
      * Constructor for the coordinates class.
-     * @param height of object
-     * @param width of object
+     * 
+     * @param xCoord
+     *            of object
+     * @param yCoord
+     *            of object
      */
     public Coordinates(int xCoord, int yCoord) {
         xCoordinate = xCoord;
@@ -35,14 +39,16 @@ public class Coordinates {
     }
 
     /**
-     * @param xCoordinate the xCoordinate to set
+     * @param xCoordinate
+     *            the xCoordinate to set
      */
     public void setxCoordinate(int xCoordinate) {
         this.xCoordinate = xCoordinate;
     }
 
     /**
-     * @param yCoordinate the yCoordinate to set
+     * @param yCoordinate
+     *            the yCoordinate to set
      */
     public void setyCoordinate(int yCoordinate) {
         this.yCoordinate = yCoordinate;
@@ -53,19 +59,23 @@ public class Coordinates {
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Coordinates other = (Coordinates) obj;
-        if (xCoordinate != other.xCoordinate)
+        if (xCoordinate != other.xCoordinate) {
             return false;
-        if (yCoordinate != other.yCoordinate)
+        }
+        if (yCoordinate != other.yCoordinate) {
             return false;
+        }
         return true;
     }
-
 
 }

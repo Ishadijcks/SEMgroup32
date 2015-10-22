@@ -9,13 +9,16 @@ package game.wall;
 public class NoMove implements WallMovementBehavior {
     
     /**
+     * 
      * No implementation because there is no movement.
+     * @param speed of movement
      */
     public void moveIncrease(int speed) {
     }
     
     /**
      * No implementation because there is no movement.
+     * @param speed of movement
      */
     public void moveDecrease(int speed) {
     }

@@ -28,6 +28,7 @@ public class Rope {
 
     /**
      * Checks if the rope is at the top of the screen.
+     * 
      * @return true if the rope is at the top of the screen, false otherwise
      */
     public boolean isAtTop() {

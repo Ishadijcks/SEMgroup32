@@ -12,7 +12,6 @@ import settings.WallSettings;
  *
  */
 public abstract class Wall {
-    private int coordinates;
     private int width = WallSettings.getWallWidth();
     private int height = WallSettings.getWallHeight();
     private Coordinates curCoord;
@@ -23,12 +22,17 @@ public abstract class Wall {
     private boolean isActive;
 
     /**
+     * 
      * Constructor of a wall.
      * 
-     * @param xCoord
-     *            x-Coordinate of the wall
+     * @param coordinates
+     *            of a wall
      * @param color
-     *            of the wall
+     *            of a wall
+     * @param height
+     *            of a wall
+     * @param width
+     *            of a wall
      */
     public Wall(Coordinates coordinates, Color color, int height, int width) {
         curCoord = coordinates;
@@ -45,9 +49,12 @@ public abstract class Wall {
      *            is the direction of the player
      * @param xCoord
      *            of the player
+     * @param yCoord
+     *            of the player
      * @return boolean of collision
      */
-    public abstract boolean expectPlayerCollision(int xCoord, int yCoord, boolean movingLeft);
+    public abstract boolean expectPlayerCollision(int xCoord, int yCoord,
+            boolean movingLeft);
 
     /**
      * Returns true if a collision between the wall and bubble is expected.
@@ -57,9 +64,12 @@ public abstract class Wall {
      *            is size of the bubble
      * @param xCoord
      *            of the bubble
+     * @param yCoord
+     *            of the bubble
      * @return boolean of collision
      */
-    public abstract boolean expectBubbleCollision(int xCoord, int yCoord, int BubbleDiameter);
+    public abstract boolean expectBubbleCollision(int xCoord, int yCoord,
+            int BubbleDiameter);
 
     /**
      * Checks if a wall is active or not.
@@ -114,12 +124,12 @@ public abstract class Wall {
     public Color getColor() {
         return color;
     }
-    
+
     /**
      * Method that will move the wall.
      */
     public void move() {
-        
+
     }
 
     /**

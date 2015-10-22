@@ -14,8 +14,10 @@ public abstract class BubbleWall extends Wall {
     /**
      * Constructor of a bubble wall.
      * 
-     * @param xCoord
-     *            x-Coordinate of the wall
+     * @param coordinates
+     *           coordinates of the wall
+     * @param height the bubblewall length
+     * @param width the bubblewall width
      */
     public BubbleWall(Coordinates coordinates, int height, int width) {
         super(coordinates, Color.red, height, width);

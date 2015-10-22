@@ -55,13 +55,14 @@ public abstract class Level {
     public void resetBubble() {
         bubbleList = new ArrayList<Bubble>();
     }
-    
+
     /**
      * Checks if the level has walls or not.
+     * 
      * @return true if the level has 1 or more walls
      */
     public boolean hasWallList() {
-        if(wallList.size() == 0) {
+        if (wallList.size() == 0) {
             return false;
         }
         return true;
@@ -207,46 +208,63 @@ public abstract class Level {
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Level other = (Level) obj;
         if (bubbleList == null) {
-            if (other.bubbleList != null)
+            if (other.bubbleList != null) {
                 return false;
-        } else if (!bubbleList.equals(other.bubbleList))
+            }
+        } else if (!bubbleList.equals(other.bubbleList)) {
             return false;
-        if (height != other.height)
+        }
+        if (height != other.height) {
             return false;
-        if (increasedPowerupTime != other.increasedPowerupTime)
+        }
+        if (increasedPowerupTime != other.increasedPowerupTime) {
             return false;
-        if (numberOfRopes != other.numberOfRopes)
+        }
+        if (numberOfRopes != other.numberOfRopes) {
             return false;
+        }
         if (playerList == null) {
-            if (other.playerList != null)
+            if (other.playerList != null) {
                 return false;
-        } else if (!playerList.equals(other.playerList))
+            }
+        } else if (!playerList.equals(other.playerList)) {
             return false;
+        }
         if (powerupList == null) {
-            if (other.powerupList != null)
+            if (other.powerupList != null) {
                 return false;
-        } else if (!powerupList.equals(other.powerupList))
+            }
+        } else if (!powerupList.equals(other.powerupList)) {
             return false;
+        }
         if (rope == null) {
-            if (other.rope != null)
+            if (other.rope != null) {
                 return false;
-        } else if (!rope.equals(other.rope))
+            }
+        } else if (!rope.equals(other.rope)) {
             return false;
+        }
         if (wallList == null) {
-            if (other.wallList != null)
+            if (other.wallList != null) {
                 return false;
-        } else if (!wallList.equals(other.wallList))
+            }
+        } else if (!wallList.equals(other.wallList)) {
             return false;
-        if (width != other.width)
+        }
+        if (width != other.width) {
             return false;
+        }
         return true;
     }
 

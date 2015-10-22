@@ -81,7 +81,6 @@ public abstract class Bubble {
 
     }
 
-
     /**
      * Move the bubble.
      */
@@ -150,6 +149,23 @@ public abstract class Bubble {
      * Updates the y-Coordinate location of the bubble.
      */
     public void moveY() {
+        mainMovementY();
+        if (lastUpSpeed < 0.5
+                && !directionVertical
+                && yCoord < ScreenSettings.getTopMargin()
+                        + ScreenSettings.getLevelHeight() - 50) {
+            timer += 0.4;
+        }
+        if (timer > 5) {
+            bounceV();
+            timer = 1;
+        }
+    }
+
+    /**
+     * The main movement of the bubble verticlally.
+     */
+    public void mainMovementY() {
         if (directionVertical) {
             sOld = 0.5 * gravitation * time * time;
             time += timeStep;
@@ -167,20 +183,11 @@ public abstract class Bubble {
             if (newBubble) {
                 newBubble = false;
                 lastDownSpeed = 4;
-            }            factor = ((yCoord - maxheight) / (ScreenSettings.getTopMargin()
+            }
+            factor = ((yCoord - maxheight) / (ScreenSettings.getTopMargin()
                     + ScreenSettings.getLevelHeight() - maxheight));
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             yCoord -= lastUpSpeed;
-        }
-        if (lastUpSpeed < 0.5
-                && !directionVertical
-                && yCoord < ScreenSettings.getTopMargin()
-                        + ScreenSettings.getLevelHeight() - 50) {
-            timer += 0.4;
-        }
-        if (timer > 5) {
-            bounceV();
-            timer = 1;
         }
     }
 

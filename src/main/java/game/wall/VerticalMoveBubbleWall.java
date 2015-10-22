@@ -1,6 +1,5 @@
 package game.wall;
 
-import settings.ScreenSettings;
 import helperobjects.Coordinates;
 
 /**
@@ -12,10 +11,16 @@ public class VerticalMoveBubbleWall extends BubbleWall {
 
     private int bouncedOn;
     private MoveVertically mover;
-    private boolean goingDown;
 
     /**
+     * 
      * Constructor of the vertical move bubble wall.
+     * @param coordinates of the wall
+     * @param height of the wall
+     * @param width of the wall
+     * @param lowerBound lower boundary
+     * @param upperBound upper boundary
+     * @param speed of the wall
      */
     public VerticalMoveBubbleWall(Coordinates coordinates, int height,
             int width, int lowerBound, int upperBound, int speed) {
