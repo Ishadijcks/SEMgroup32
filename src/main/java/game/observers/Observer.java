@@ -52,6 +52,15 @@ public abstract class Observer {
      * 
      * @param bubble
      *            that is being collided with
+     * @param vertical
+     *            direction boolean of the bubble bounce
+     */
+    public void wallBubbleEvent(Bubble bubble, boolean vertical) {
+    }
+
+    /**
+     * @param bubble
+     *            that is being collided with
      */
     public void wallBubbleEvent(Bubble bubble) {
 
@@ -66,5 +75,4 @@ public abstract class Observer {
     public void powerupPlayerEvent(Powerup powerup) {
 
     }
-
 }

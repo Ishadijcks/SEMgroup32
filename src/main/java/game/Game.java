@@ -38,7 +38,6 @@ public abstract class Game {
     }
 
     /**
-     * <<<<<<< HEAD ======= Sets the levelList.
      * 
      * @param levels
      *            List of all levels
@@ -90,13 +89,14 @@ public abstract class Game {
         Level currentLevel = this.getCurrentLevel();
 
         currentLevel.moveBubbles();
-
         for (int i = 0; i < currentLevel.getPowerupList().size(); i++) {
             currentLevel.getPowerupList().get(i).move();
         }
-
         if (currentLevel.hasRope()) {
             currentLevel.getRope().move();
+        }
+        for(int a = 0; a < currentLevel.getWallList().size(); a++) {
+                currentLevel.getWallList().get(a).move();
         }
     }
 

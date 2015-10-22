@@ -22,6 +22,7 @@ public abstract class Bubble {
     protected double lastDownSpeed = 0;
     protected double lastUpSpeed = 1;
     protected boolean newBubble;
+    protected double wallBounceBoost = 0;
 
     private int maxheight;
     private Color color;
@@ -80,49 +81,6 @@ public abstract class Bubble {
 
     }
 
-    /**
-     * Checks if x-Coordinate is in the boundaries.
-     * 
-     * @param xCoord
-     *            of the bubble
-     * @param diameter
-     *            of the bubble
-     * @return true if the bubble is placed correctly between the boundaries,
-     *         false otherwise
-     */
-    public boolean correctX(double xCoord, int diameter) {
-        if (xCoord > 0
-                && xCoord < ScreenSettings.getLeftMargin()
-                        + ScreenSettings.getLevelWidth() - diameter) {
-            return true;
-        } else {
-            Logger.log("Incorrect xCoord", 3, 3);
-            return false;
-        }
-    }
-
-    /**
-     * Checks if y-Coordinate is in the boundaries.
-     * 
-     * @param yCoord
-     *            of the bubble
-     * @param diameter
-     *            of the bubble
-     * @return true if the bubble is placed correctly between the boundaries,
-     *         false otherwise
-     */
-    public boolean correctY(double yCoord, int diameter) {
-        if (yCoord > ScreenSettings.getTopMargin()
-                && yCoord < (ScreenSettings.getTopMargin()
-                        + ScreenSettings.getLevelHeight() - diameter)) {
-            return true;
-        }
-
-        else {
-            Logger.log("Incorrect yCoord", 3, 3);
-            return false;
-        }
-    }
 
     /**
      * Move the bubble.
@@ -154,7 +112,6 @@ public abstract class Bubble {
                 && !directionHorizontal) {
             bounceH();
         }
-
         if (yCoord + diameter > ScreenSettings.getTopMargin()
                 + ScreenSettings.getLevelHeight()
                 && directionVertical
@@ -199,6 +156,10 @@ public abstract class Bubble {
             shifting = 0.5 * gravitation * time * time;
             velocity = (shifting - sOld) / timeStep;
             lastDownSpeed = velocity;
+            if (wallBounceBoost > 0) {
+                wallBounceBoost = wallBounceBoost - 0.01;
+                lastDownSpeed += wallBounceBoost;
+            }
             yCoord += lastDownSpeed;
             lastDownSpeed += 0.05;
         } else {
@@ -252,12 +213,20 @@ public abstract class Bubble {
      */
     public void bounceV() {
         if (directionVertical) {
+            wallBounceBoost = 0;
             Logger.log("Bubble bounced on the floor", 2, 4, 1);
         } else {
             Logger.log("Bubble reached max height", 2, 4, 1);
         }
         directionVertical = !directionVertical;
 
+    }
+
+    /**
+     * small boost in speed from bouncing on a wall.
+     */
+    public void wallBounceBoost() {
+        wallBounceBoost = 1;
     }
 
     /**
@@ -433,10 +402,6 @@ public abstract class Bubble {
         }
         if (Double.doubleToLongBits(speedX) != Double
                 .doubleToLongBits(other.speedX)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(time) != Double
-                .doubleToLongBits(other.time)) {
             return false;
         }
         if (Double.doubleToLongBits(timeStep) != Double

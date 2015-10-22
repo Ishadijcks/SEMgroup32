@@ -11,11 +11,21 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Stroke;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import settings.ScreenSettings;
@@ -68,10 +78,10 @@ public class Painter {
     /**
      * Paint everything that has to be painted.
      * @param g2d Graphics object that will help us paint
+     * @throws IOException 
      */
-    public void paint(Graphics2D g2d) {
+    public void paint(Graphics2D g2d) throws IOException {
             this.g2d = g2d;
-           
             drawLevel(); 
             drawBubbles(); 
             drawWalls(); 
@@ -85,15 +95,28 @@ public class Painter {
     
     /**
      * Draw the board for all levels.
+     * @throws IOException 
      */
-    public void drawLevel() {
+    public void drawLevel() throws IOException {
         iceRope = game.getPlayerList().get(0).hasIceRope();
         g2d.drawRect(centerConstant, 50, game.getCurrentLevel().getWidth(),
                 game.getCurrentLevel().getHeight());
         if (canDrawGame) {
-            g2d.setColor(bg);
-            g2d.fillRect(centerConstant + 1, 51, game.getCurrentLevel().getWidth() - 1,
-                    game.getCurrentLevel().getHeight() - 1);
+            URL location = StartScreen.class.getProtectionDomain().getCodeSource()
+                    .getLocation();
+            String imageLocation = location.getFile();
+            imageLocation = imageLocation.replace("%20", " ");
+            imageLocation = imageLocation.replace("target/classes/", "src/");
+
+            Image img1 = Toolkit.getDefaultToolkit().getImage("src/main/Images/backgroundGameScreen.png");
+            g2d.setColor(Color.BLACK);
+            g2d.setBackground(Color.BLACK);
+            //g2d.fillRect(centerConstant + 1, 0, game.getCurrentLevel().getWidth() - 1,
+            //        game.getCurrentLevel().getHeight() - 1);
+            
+            g2d.drawImage(img1, 0, 0, null);
+            
+            
             g2d.setColor(Color.BLACK);
         }
     }
@@ -392,6 +415,7 @@ public class Painter {
      * Draw lives of player.
      */
     public void drawLives() {
+        g2d.setColor(Color.WHITE);
         g2d.setFont(new Font("Calibri", Font.BOLD, 40));
         g2d.drawString("Lives: ", centerConstant, game.getCurrentLevel().getHeight() + 45
                 + topMargin);
@@ -407,6 +431,7 @@ public class Painter {
      * Draw score of player.
      */
     public void drawScore() {
+        g2d.setColor(Color.WHITE);
         g2d.drawString("Score: ", centerConstant, game.getCurrentLevel().getHeight() + 91
                 + topMargin);
         g2d.setColor(dragonRed);
@@ -421,11 +446,11 @@ public class Painter {
     public void drawLevelNumber() {
         if (game.getCurrentLevel() instanceof NormalLevel) {
             NormalLevel curNormalLevel = (NormalLevel) game.getCurrentLevel();
-            g2d.drawString("Level:", centerConstant, 45);
+            g2d.setColor(Color.WHITE);
+            g2d.drawString("Level:", centerConstant, 35);
             g2d.setColor(dragonRed);
             g2d.drawString(curNormalLevel.getLevelNumber() + " ",
-                    centerConstant + 110, 45);
-            g2d.setColor(Color.BLACK);
+                    centerConstant + 110, 35);
 
             g2d.setColor(dragonRed);
             g2d.drawString(" " + (game.getCurrentLevelInt() + 1), 1350,
@@ -442,5 +467,6 @@ public class Painter {
         Stroke normalStroke = new BasicStroke(1f);
         g2d.setStroke(normalStroke);
     }
+    
     
 }

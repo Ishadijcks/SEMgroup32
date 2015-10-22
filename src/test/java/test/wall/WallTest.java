@@ -5,13 +5,17 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import game.wall.DuoWall;
 import game.wall.Wall;
+import helperobjects.Coordinates;
 
 import java.awt.Color;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import settings.ScreenSettings;
 import settings.WallSettings;
+
+
 
 public class WallTest {
 
@@ -20,8 +24,8 @@ public class WallTest {
 
     @Before
     public void init() {
-        wall = new DuoWall(10);
-        otherWall = new DuoWall(10);
+        wall = new DuoWall(new Coordinates(10, 0), 500, 10);
+        otherWall = new DuoWall(new Coordinates(10, 0), 500, 10);
     }
 
     @Test

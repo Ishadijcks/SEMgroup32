@@ -1,5 +1,7 @@
 package game.wall;
 
+import helperobjects.Coordinates;
+
 import java.awt.Color;
 
 import settings.PlayerSettings;
@@ -17,37 +19,52 @@ public class DuoWall extends Wall {
      * @param xCoord
      *            xCoord-Coordinate of the wall
      */
-    public DuoWall(int xCoord) {
-        super(xCoord, Color.blue);
+    public DuoWall(Coordinates coordinates, int height, int width) {
+        super(coordinates, Color.blue, height, width);
     }
 
+    /**
+     * Checks if a player collides with the wall.
+     */
     @Override
-    public boolean expectPlayerCollision(int xCoord, boolean movingLeft) {
+    public boolean expectPlayerCollision(int xCoord, int yCoord,
+            boolean movingLeft) {
         int plyrXCoord = xCoord;
         int plyrStepSize = PlayerSettings.getPlayerStepSize();
         int plyrWidth = PlayerSettings.getPlayerWidth();
-        if (this.isActive()) {
+        if (this.isActive())
             if ((plyrXCoord - plyrStepSize <= this.getxCoord()
                     + this.getWidth()
                     && plyrXCoord - plyrStepSize >= this.getxCoord() && movingLeft)
                     || (plyrXCoord + plyrStepSize + plyrWidth - 37 >= this
                             .getxCoord()
                             && plyrXCoord + plyrStepSize + plyrWidth - 37 <= this
-                                    .getxCoord() + this.getWidth() && !movingLeft)) {
+                                    .getxCoord() + this.getWidth() && !movingLeft))
                 return true;
-            }
-            
+        return false;
+    }
+
+    /**
+     * Checks if a bubble collides with the wall.
+     */
+    @Override
+    public boolean expectBubbleCollision(int BubblexCoord, int BubbleyCoord,
+            int BubbleDiameter) {
+        if ((BubblexCoord <= (this.getxCoord() + this.getWidth()) && (BubblexCoord + BubbleDiameter) >= this
+                .getxCoord())
+                && (BubbleyCoord <= (this.getyCoord() + this.getHeight()) && (BubbleyCoord + BubbleDiameter) >= this
+                        .getyCoord()) && this.isActive()) {
+            return true;
         }
         return false;
     }
 
+    /**
+     * A DuoWall will not move.
+     */
     @Override
-    public boolean expectBubbleCollision(int BubblexCoord, int BubbleDiameter) {
-        if ((BubblexCoord <= (this.getxCoord() + this.getWidth()) && (BubblexCoord + BubbleDiameter) >= this
-                .getxCoord()) && this.isActive()) {
-            return true;
-        }
-        return false;
+    public void move() {
+
     }
 
 }
