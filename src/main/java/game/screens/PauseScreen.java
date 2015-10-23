@@ -1,11 +1,11 @@
 package game.screens;
 
 import game.Game;
+import game.MainRunner;
+import game.states.NewGameState;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -56,7 +56,7 @@ public class PauseScreen extends JFrame {
         resumeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent playAgainGame) {
                 setVisible(false);
-                game.toggleProgress();
+                MainRunner.getStateManager().prevState();
                 dispose();
             }
         });
@@ -78,7 +78,7 @@ public class PauseScreen extends JFrame {
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
-                game.endGame();
+                MainRunner.getStateManager().newState(new NewGameState());
                 dispose();
             }
         });

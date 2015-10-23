@@ -29,4 +29,9 @@ public class SurvivalGameState implements State{
 		context.newState(state);
 	}
 
+	@Override
+	public void handleFallBack() {
+		MainRunner.getDriver().game.toggleProgress();
+	}
+
 }

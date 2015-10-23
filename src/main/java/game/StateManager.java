@@ -5,6 +5,7 @@ import game.states.State;
 public class StateManager {
 	
 	private State currentState;
+	private State prevState = null;
 
 	public StateManager() {
 		this.currentState = null;
@@ -15,6 +16,7 @@ public class StateManager {
 	 * @param state
 	 */
 	public void setState(State state) {
+		this.prevState = this.currentState;
 		this.currentState = state;
 	}
 	
@@ -23,6 +25,7 @@ public class StateManager {
 	 * @param state
 	 */
 	public void newState(State state) {
+		this.prevState = this.currentState;
 		this.currentState = state;
 		currentState.handle(this);
 	}
@@ -33,6 +36,11 @@ public class StateManager {
 	 */
 	public State getState() {
 		return this.currentState;
+	}
+	
+	public void prevState() {
+		this.currentState = this.prevState;
+		this.currentState.handleFallBack();
 	}
 
 }

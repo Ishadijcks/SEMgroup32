@@ -21,15 +21,15 @@ public class LosingScreen extends EndScreen {
     /**
      * Constructor for the losing screen class.
      * 
-     * @param driverInput
-     *            where the screen comes from
      * @param score
      *            what the player got
      */
-    public LosingScreen(Driver driverInput, final EndScore score) {
-        super(driverInput, "loseScreenBackground", new Color(130, 170, 73));
+    public LosingScreen(final EndScore score) {
+        super("loseScreenBackground", new Color(130, 170, 73));
         this.score = score;
         addScoreLabel();
+        revalidate();
+        repaint();
     }
 
     /**
@@ -37,7 +37,7 @@ public class LosingScreen extends EndScreen {
      */
     public void addScoreLabel() {
         Font font = new Font("Calibri", Font.PLAIN, 55);
-        JLabel scoreLabel = new JLabel(score.getName() + "s score: "
+        JLabel scoreLabel = new JLabel(score.getName() + "'s score: "
                 + score.getScore());
         scoreLabel.setFont(font);
         scoreLabel.setForeground(Color.WHITE);

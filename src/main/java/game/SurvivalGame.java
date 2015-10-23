@@ -2,6 +2,7 @@ package game;
 
 import game.bubble.BubbleFactory;
 import game.screens.PauseScreen;
+import game.states.PauseGameState;
 
 /**
  * Class that handles everything of one survival game.
@@ -31,15 +32,6 @@ public class SurvivalGame extends Game {
     public void endGame() {
         this.setLives(0);
         this.toggleProgress();
-    }
-
-    /**
-     * Game is paused.
-     */
-    @Override
-    public void pauseGame() {
-        super.toggleProgress();
-        new PauseScreen(super.getPlayerList().get(0).getName(), this);
     }
 
     /**

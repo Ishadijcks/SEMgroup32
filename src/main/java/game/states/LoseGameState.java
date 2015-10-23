@@ -18,18 +18,23 @@ public class LoseGameState implements State{
 
 	@Override
 	public void handle(StateManager context) {
-		System.out.println("YAA");
 		this.context = context;
         Driver.game.toggleProgress();
         EndScore es = new EndScore(MainRunner.getPlayerName(), Score.getInstance().getScore());
         Score.getInstance().resetScore();
-        new LosingScreen(MainRunner.getDriver(), es);
+        new LosingScreen(es);
         Logger.log("Game lost", 7, 4);		
 	}
 
 	@Override
 	public void changeContextState(State state) {
 		context.newState(state);
+	}
+
+	@Override
+	public void handleFallBack() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

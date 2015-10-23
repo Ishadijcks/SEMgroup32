@@ -1,6 +1,7 @@
 package game;
 
 import game.log.Logger;
+import game.states.PauseGameState;
 
 import java.util.ArrayList;
 
@@ -207,7 +208,10 @@ public abstract class Game {
     /**
      * Game is paused.
      */
-    public abstract void pauseGame();
+    public void pauseGame() {
+    	toggleProgress();
+        MainRunner.getStateManager().newState(new PauseGameState());
+    }
 
     /**
      * Checks if a game is won.

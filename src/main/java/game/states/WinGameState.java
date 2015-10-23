@@ -17,12 +17,18 @@ public class WinGameState implements State{
 	public void handle(StateManager context) {
 		this.context = context;
         Logger.log("Frame destroyed", 9, 4);
-        new WinningScreen(MainRunner.getDriver());
+        new WinningScreen();
 	}
 
 	@Override
 	public void changeContextState(State state) {
 		context.newState(state);
+	}
+
+	@Override
+	public void handleFallBack() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

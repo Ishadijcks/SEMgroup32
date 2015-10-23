@@ -22,4 +22,10 @@ public class NewGameState implements State{
 		context.newState(state);
 	}
 
+	@Override
+	public void handleFallBack() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

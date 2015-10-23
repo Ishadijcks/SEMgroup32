@@ -26,13 +26,19 @@ public class LoseSurvivalGameState implements State{
         leaderBoard.addScore(es);
         Leaderboard.appendToFile();
         Score.getInstance().resetScore();
-        new LosingScreen(MainRunner.getDriver(), es);
+        new LosingScreen(es);
         new LeaderBoardScreen(leaderBoard);
 	}
 
 	@Override
 	public void changeContextState(State state) {
 		context.newState(state);
+	}
+
+	@Override
+	public void handleFallBack() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,6 +1,7 @@
 package game.screens;
 
-import game.Driver;
+import game.MainRunner;
+import game.states.NewGameState;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -35,8 +36,8 @@ public class EndScreen extends JFrame {
      * @param colorButton
      *            of the button.
      */
-    public EndScreen(Driver driverInput, String background, Color colorButton) {
-        ScreenBuilder.initScreen(this, "hm");
+    public EndScreen(String background, Color colorButton) {
+        ScreenBuilder.initScreen(this, "");
         addBackgroundImage(background);
         addStopButton(colorButton);
         setSize(1000, 800);
@@ -58,7 +59,7 @@ public class EndScreen extends JFrame {
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
-                new StartScreen();
+                MainRunner.getStateManager().newState(new NewGameState());
                 dispose();
             }
         });

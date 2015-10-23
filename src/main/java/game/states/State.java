@@ -8,4 +8,6 @@ public interface State {
 	
 	public void changeContextState(State state);
 	
+	public void handleFallBack();
+	
 }
