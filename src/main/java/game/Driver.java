@@ -1,6 +1,7 @@
 package game;
 
 import game.collisions.Collision;
+import game.states.State;
 
 /**
  * Abstract class for the Normal- and SurvivalDriver.
@@ -9,7 +10,7 @@ import game.collisions.Collision;
  *
  */
 public abstract class Driver {
-    static int totalFrames = 1;
+    public static int totalFrames = 1;
     public static Score score;
     protected static Level curLevel;
     protected static boolean canDrawGame = true;
@@ -56,6 +57,15 @@ public abstract class Driver {
      */
     public static void setTotalFrames(int totalFrames) {
         Driver.totalFrames = totalFrames;
+    }
+    
+    /**
+     * Registers a state to fall back on when the 
+     * current state needs to change;
+     * @param state
+     */
+    public void registerListeningState(State state) {
+    	this.listeningState = state;
     }
 
 }

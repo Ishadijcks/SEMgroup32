@@ -20,8 +20,10 @@ public class WinningScreen extends EndScreen {
      * @param driverInput
      *            where the screen comes from
      */
-    public WinningScreen(Driver driverInput) {
-        super(driverInput, "winScreenBackground", new Color(248, 81, 49));
+    public WinningScreen() {
+        super("winScreenBackground", new Color(248, 81, 49));
+        revalidate();
+        repaint();
     }
 
 }

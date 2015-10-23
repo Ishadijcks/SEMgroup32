@@ -1,11 +1,10 @@
 package game.wall;
 
+import game.Driver;
 import helperobjects.Coordinates;
 
 import java.awt.Color;
 
-import settings.PlayerSettings;
-import settings.ScreenSettings;
 
 /**
  * Wall class of a player wall.
@@ -25,7 +24,7 @@ public class PlayerWall extends Wall {
      */
     public PlayerWall(Coordinates coordinates, int width) {
         super(new Coordinates(coordinates.getxCoordinate(), 0), Color.green,
-                ScreenSettings.getLevelHeight(), width);
+                500, width);
     }
 
     /**
@@ -42,10 +41,10 @@ public class PlayerWall extends Wall {
     @Override
     public boolean expectPlayerCollision(int xCoord, int yCoord,
             boolean movingLeft) {
-        int plyrXCoord = xCoord;
-        int plyrStepSize = PlayerSettings.getPlayerStepSize();
-        int plyrWidth = PlayerSettings.getPlayerWidth();
-        if (this.isActive()) {
+		int plyrXCoord = xCoord;
+		int plyrStepSize = 4;
+		int plyrWidth = 80;
+        if (this.isActive())
             if ((plyrXCoord - plyrStepSize <= this.getxCoord()
                     + this.getWidth()
                     && plyrXCoord - plyrStepSize >= this.getxCoord() && movingLeft)
@@ -82,5 +81,4 @@ public class PlayerWall extends Wall {
     public void move() {
 
     }
-
 }

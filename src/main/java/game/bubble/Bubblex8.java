@@ -3,8 +3,6 @@ package game.bubble;
 import java.awt.Color;
 import java.util.ArrayList;
 
-import settings.PlayerSettings;
-
 /**
  * Bubble class of a bubble with diameter 8.
  * 
@@ -14,7 +12,7 @@ import settings.PlayerSettings;
 public class Bubblex8 extends Bubble {
 
     private static final int MAXHEIGHT = 200;
-    private static final Color COLOR = PlayerSettings.getDragonRed();
+    private static final Color COLOR = new Color(135, 15, 15);
     private static final double GRAVITATION = 1;
     private static final int DIAMETER = 8;
     private static double speedX = 0.9;

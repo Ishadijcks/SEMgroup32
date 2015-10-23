@@ -19,7 +19,7 @@ public class WinningScreenTest {
     @Test
     public void testLosingScreenNormalDriver() {
         NormalDriver testDriver = new NormalDriver();
-        WinningScreen ls = new WinningScreen(testDriver);
+        WinningScreen ls = new WinningScreen();
         assertFalse(ls == null);
     }
 

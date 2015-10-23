@@ -11,7 +11,6 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
-import settings.ScreenSettings;
 
 /**
  * Test class for the duoWall class.
@@ -20,17 +19,13 @@ import settings.ScreenSettings;
  *
  */
 public class DuoWallTest {
-
-    private DuoWall wall;
-
-    /**
-     * Sets up initial variables used in the tests.
-     */
-    @Before
-    public void init() {
-        wall = new DuoWall(new Coordinates(10, 0),
-                ScreenSettings.getLevelHeight(), 10);
-    }
+	
+	private DuoWall wall;
+	
+	@Before
+	public void init() {
+		wall = new DuoWall(new Coordinates(10, 0), 500, 10);
+	}
 
     /**
      * Test if the duoWall is created correctly.

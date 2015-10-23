@@ -15,8 +15,6 @@ import helperobjects.Coordinates;
 
 import java.util.ArrayList;
 
-import settings.ScreenSettings;
-
 
 /**
  * Class that creates a level for the normal game mode.
@@ -115,12 +113,13 @@ public class NormalLevelFactory {
         Bubble bubble1 = new Bubblex16(320, 250, false, true);
         Bubble bubble2 = new Bubblex32(720, 100, false, false);
         NormalLevel level = new NormalLevel(playerList);
+        int levelHeight = 500;
         level.addBubble(bubble1);
         level.addBubble(bubble2);
-        BubbleWall wall = new NoMoveBubbleWall(new Coordinates(300, 0), ScreenSettings.getLevelHeight() - 200, 50);
+        BubbleWall wall = new NoMoveBubbleWall(new Coordinates(300, 0), levelHeight - 200, 50);
         PlayerWall wall2 = new PlayerWall(new Coordinates(700, 0), 5);
-        BubbleWall wall3 = new NoMoveBubbleWall(new Coordinates(850, 0), ScreenSettings.getLevelHeight() - 400, 30);
-        BubbleWall wall4 = new NoMoveBubbleWall(new Coordinates(900, 0), ScreenSettings.getLevelHeight() - 100, 20);
+        BubbleWall wall3 = new NoMoveBubbleWall(new Coordinates(850, 0),levelHeight - 400, 30);
+        BubbleWall wall4 = new NoMoveBubbleWall(new Coordinates(900, 0), levelHeight - 100, 20);
         level.addWall(wall);
         level.addWall(wall2);
         level.addWall(wall3);

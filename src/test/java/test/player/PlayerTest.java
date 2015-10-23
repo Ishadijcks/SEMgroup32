@@ -9,8 +9,6 @@ import game.Player;
 
 import org.junit.Test;
 
-import settings.PlayerSettings;
-
 public class PlayerTest {
 
     Player player = new Player("Isha", 500);
@@ -57,7 +55,7 @@ public class PlayerTest {
         int x = player.getX();
         player.movingLeft();
         player.move();
-        assertEquals(x - PlayerSettings.getPlayerStepSize(), player.getX());
+        assertEquals(x - player.getStepSize(), player.getX());
     }
 
     @Test
@@ -74,7 +72,7 @@ public class PlayerTest {
         int x = player.getX();
         player.movingRight();
         player.move();
-        assertEquals(x + PlayerSettings.getPlayerStepSize(), player.getX());
+        assertEquals(x + player.getStepSize(), player.getX());
     }
 
     @Test
@@ -88,12 +86,12 @@ public class PlayerTest {
 
     @Test
     public void testGetWidth() {
-        assertEquals(PlayerSettings.getPlayerWidth(), player.getWidth());
+        assertEquals(111, player.getWidth());
     }
 
     @Test
     public void testGetHeight() {
-        assertEquals(PlayerSettings.getPlayerHeight(), player.getHeight());
+        assertEquals(161, player.getHeight());
     }
 
     @Test

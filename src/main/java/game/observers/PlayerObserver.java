@@ -3,7 +3,6 @@ package game.observers;
 import game.Driver;
 import game.Player;
 import game.collisions.Collision;
-import settings.PlayerSettings;
 
 /**
  * Wall with Player collisions observer.
@@ -28,11 +27,11 @@ public class PlayerObserver extends Observer {
 	public void wallPlayerEvent() {
 		Player player = Driver.game.getPlayerList().get(0);
         if (player.getMovingRight()) {
-            PlayerSettings.setRestrictMovingRight(true);
-            PlayerSettings.setRestrictMovingLeft(false);
+            player.setRestrictMovingRight(true);
+            player.setRestrictMovingLeft(false);
         } else if (player.getMovingLeft()) {
-        	PlayerSettings.setRestrictMovingLeft(true);
-        	PlayerSettings.setRestrictMovingRight(false);
+        	player.setRestrictMovingLeft(true);
+        	player.setRestrictMovingRight(false);
         }
 		
 	}

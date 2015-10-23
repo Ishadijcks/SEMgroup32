@@ -1,10 +1,9 @@
 package game;
 
 import game.log.Logger;
+import game.states.PauseGameState;
 
 import java.util.ArrayList;
-
-import settings.PlayerSettings;
 
 /**
  * Class that will handle everything of 1 game session.
@@ -15,7 +14,7 @@ import settings.PlayerSettings;
 public abstract class Game {
     protected ArrayList<Level> levelList = new ArrayList<Level>();
     protected ArrayList<Player> playerList;
-    protected int lives = PlayerSettings.getLives();
+    protected int lives = 5;
     protected int currentLevel = 1;
     protected boolean inProgress;
 
@@ -209,7 +208,10 @@ public abstract class Game {
     /**
      * Game is paused.
      */
-    public abstract void pauseGame();
+    public void pauseGame() {
+    	toggleProgress();
+        MainRunner.getStateManager().newState(new PauseGameState());
+    }
 
     /**
      * Checks if a game is won.
