@@ -10,9 +10,6 @@ import game.screens.WinningScreen;
 
 import java.util.ArrayList;
 
-import settings.PlayerSettings;
-import settings.ScreenSettings;
-
 /**
  * Class that executes the game.
  * 
@@ -111,16 +108,14 @@ public class NormalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        Player player = new Player(name, PlayerSettings.getPlayerSpawnPoint());
+        Player player = new Player(name, 350);
         game = GameFactory.createSinglePlayer(player);
         
         score = Score.getInstance();
         game.addPlayer(player);
 
         int centerConstant = (int) Math
-                .round(0.5 * (ScreenSettings.getScreenWidth() - ScreenSettings
-                        .getLevelWidth()));
-        ScreenSettings.setLeftMargin(centerConstant);
+                .round(0.5 * (1000 - 850));
     }
 
     /**

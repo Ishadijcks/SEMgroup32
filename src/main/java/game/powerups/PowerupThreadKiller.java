@@ -1,13 +1,13 @@
-package settings;
+package game.powerups;
 
 
 /**
- * Settings for the threads.
- * @author Isha
+ * Class that keeps all the settings of the whole game.
+ * 
+ * @author Boning
  *
  */
-
-public class ThreadSettings {
+public class PowerupThreadKiller {
 
     private static boolean dieThreads = false;
 
@@ -18,7 +18,6 @@ public class ThreadSettings {
      *            what the margin should be.
      */
 
-    
     /**
      * @return the dieThreads
      */
@@ -31,7 +30,7 @@ public class ThreadSettings {
      *            the dieThreads to set
      */
     public static void setDieThreads(boolean dieThreads) {
-        ThreadSettings.dieThreads = dieThreads;
+        PowerupThreadKiller.dieThreads = dieThreads;
     }
 
 }

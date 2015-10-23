@@ -7,8 +7,6 @@ import game.wall.Wall;
 
 import java.util.ArrayList;
 
-import settings.ScreenSettings;
-
 /**
  * Class that will handle everything in a level.
  * 
@@ -21,9 +19,12 @@ public abstract class Level {
     protected ArrayList<Wall> wallList;
     protected Rope rope = null;
     protected int numberOfRopes = 0;
-    protected int width = ScreenSettings.getLevelWidth();
-    protected int height = ScreenSettings.getLevelHeight();
+    protected final int width = 850;
+    protected final int height = 500;
     protected boolean increasedPowerupTime = false;
+    
+    protected final int topMargin = 50;
+    protected final int leftMargin = 75;
 
     /**
      * Constructor, initializes the bubble- and playerList.
@@ -249,5 +250,19 @@ public abstract class Level {
             return false;
         return true;
     }
+
+	/**
+	 * @return the topMargin
+	 */
+	public int getTopMargin() {
+		return topMargin;
+	}
+
+	/**
+	 * @return the leftMargin
+	 */
+	public int getLeftMargin() {
+		return leftMargin;
+	}
 
 }

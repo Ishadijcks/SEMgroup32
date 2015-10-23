@@ -13,8 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import settings.ScreenSettings;
-
 /**
  * Class that will create a winning screen.
  * 
@@ -41,8 +39,7 @@ public class EndScreen extends JFrame {
         ScreenBuilder.initScreen(this, "");
         addBackgroundImage(background);
         addStopButton(colorButton);
-        setSize(ScreenSettings.getScreenWidth() - 1, ScreenSettings.getScreenHeight() - 1);
-        setSize(ScreenSettings.getScreenWidth(), ScreenSettings.getScreenHeight());
+        setSize(1000, 800);
     }
 
     /**

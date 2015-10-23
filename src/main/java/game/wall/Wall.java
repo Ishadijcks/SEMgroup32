@@ -3,7 +3,6 @@ package game.wall;
 import helperobjects.Coordinates;
 import helperobjects.Dimensions;
 import java.awt.Color;
-import settings.WallSettings;
 
 /**
  * Wall class.
@@ -13,12 +12,12 @@ import settings.WallSettings;
  */
 public abstract class Wall {
     private int coordinates;
-    private int width = WallSettings.getWallWidth();
-    private int height = WallSettings.getWallHeight();
     private Coordinates curCoord;
     private Dimensions curDim;
     private int xCoord;
     private int yCoord;
+    private int width = 10;
+    private int height = 500;
     private Color color;
     private boolean isActive;
 

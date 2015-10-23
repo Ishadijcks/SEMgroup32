@@ -2,7 +2,6 @@ package game;
 
 import game.log.LogSettings;
 import game.screens.StartScreen;
-import settings.ScreenSettings;
 
 /**
  * Class that will execute the whole game.
@@ -13,6 +12,8 @@ import settings.ScreenSettings;
 public class MainRunner {
 
     private static Driver driver;
+    private static boolean driverIsSet;
+    private final static int GAME_FPS = 120;
     /**
      * Constructor of the main runner class.
      */
@@ -35,7 +36,7 @@ public class MainRunner {
 
             // 120 FPS
             try {
-                Thread.sleep(1000 / ScreenSettings.getFps());
+                Thread.sleep(1000 / GAME_FPS);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
