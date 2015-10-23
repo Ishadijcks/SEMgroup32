@@ -153,8 +153,8 @@ public abstract class Bubble {
         mainMovementY();
         if (lastUpSpeed < 0.5
                 && !directionVertical
-                && yCoord < ScreenSettings.getTopMargin()
-                        + ScreenSettings.getLevelHeight() - 50) {
+                && yCoord <
+                        + 500) {
             timer += 0.4;
         }
         if (timer > 5) {

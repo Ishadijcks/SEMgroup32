@@ -18,6 +18,8 @@ public abstract class Driver {
     protected static Player player;
     protected Collision collisions;
     public static Game game;
+    
+    protected State listeningState;
 
     /** 
      * Method to start the game.

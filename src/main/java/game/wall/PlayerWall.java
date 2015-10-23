@@ -44,7 +44,7 @@ public class PlayerWall extends Wall {
 		int plyrXCoord = xCoord;
 		int plyrStepSize = 4;
 		int plyrWidth = 80;
-        if (this.isActive())
+        if (this.isActive()){
             if ((plyrXCoord - plyrStepSize <= this.getxCoord()
                     + this.getWidth()
                     && plyrXCoord - plyrStepSize >= this.getxCoord() && movingLeft)
