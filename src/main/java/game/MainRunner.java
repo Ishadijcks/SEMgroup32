@@ -2,6 +2,7 @@ package game;
 
 import game.log.LogSettings;
 import game.screens.StartScreen;
+import game.states.NewGameState;
 
 /**
  * Class that will execute the whole game.
@@ -14,6 +15,9 @@ public class MainRunner {
     private static Driver driver;
     private static boolean driverIsSet;
     private final static int GAME_FPS = 120;
+    private static StateManager stateMan;
+    private static String playerName;
+    
     /**
      * Constructor of the main runner class.
      */
@@ -27,7 +31,8 @@ public class MainRunner {
      *            standard java thingie
      */
     public static void main(String[] args) {
-        new StartScreen();
+    	stateMan = new StateManager();
+    	stateMan.newState(new NewGameState());
         while (true) {
             try {
                 driver.driverHeart();
@@ -57,6 +62,38 @@ public class MainRunner {
      */
     public static void setDriver(Driver buildDriver) {
         driver = buildDriver;
+    }
+    
+    /**
+     * Returns the current driver;
+     * @return
+     */
+    public static Driver getDriver() {
+    	return driver;
+    }
+    
+    /**
+     * Get the stateManager from the mainrunner
+     * @return the statemanager
+     */
+    public static StateManager getStateManager(){
+    	return stateMan;
+    }
+    
+    /**
+     * Sets the name of the player;
+     * @param name
+     */
+    public static void setPlayerName(String name) {
+    	playerName = name;
+    }
+    
+    /**
+     * Returns the name of the player
+     * @return
+     */
+    public static String getPlayerName() {
+    	return playerName;
     }
 
 }

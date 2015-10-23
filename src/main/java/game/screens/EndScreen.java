@@ -36,7 +36,7 @@ public class EndScreen extends JFrame {
      *            of the button.
      */
     public EndScreen(Driver driverInput, String background, Color colorButton) {
-        ScreenBuilder.initScreen(this, "");
+        ScreenBuilder.initScreen(this, "hm");
         addBackgroundImage(background);
         addStopButton(colorButton);
         setSize(1000, 800);
