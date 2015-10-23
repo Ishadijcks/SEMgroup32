@@ -1,8 +1,7 @@
 package game.wall;
 
-
-
-
+import helperobjects.Coordinates;
+import helperobjects.Dimensions;
 import java.awt.Color;
 
 /**
@@ -12,7 +11,9 @@ import java.awt.Color;
  *
  */
 public abstract class Wall {
-
+    private int coordinates;
+    private Coordinates curCoord;
+    private Dimensions curDim;
     private int xCoord;
     private int yCoord;
     private int width = 10;
@@ -28,9 +29,9 @@ public abstract class Wall {
      * @param color
      *            of the wall
      */
-    public Wall(int xCoord, Color color) {
-        this.xCoord = xCoord;
-        this.yCoord = 0;
+    public Wall(Coordinates coordinates, Color color, int height, int width) {
+        curCoord = coordinates;
+        curDim = new Dimensions(height, width);
         this.color = color;
         this.isActive = true;
     }
@@ -45,7 +46,7 @@ public abstract class Wall {
      *            of the player
      * @return boolean of collision
      */
-    public abstract boolean expectPlayerCollision(int xCoord, boolean movingLeft);
+    public abstract boolean expectPlayerCollision(int xCoord, int yCoord, boolean movingLeft);
 
     /**
      * Returns true if a collision between the wall and bubble is expected.
@@ -57,7 +58,7 @@ public abstract class Wall {
      *            of the bubble
      * @return boolean of collision
      */
-    public abstract boolean expectBubbleCollision(int xCoord, int BubbleDiameter);
+    public abstract boolean expectBubbleCollision(int xCoord, int yCoord, int BubbleDiameter);
 
     /**
      * Checks if a wall is active or not.
@@ -82,28 +83,28 @@ public abstract class Wall {
      * @return the xCoord
      */
     public int getxCoord() {
-        return xCoord;
+        return curCoord.getxCoordinate();
     }
 
     /**
      * @return the yCoord
      */
     public int getyCoord() {
-        return yCoord;
+        return curCoord.getyCoordinate();
     }
 
     /**
      * @return the width
      */
     public int getWidth() {
-        return width;
+        return curDim.getWidth();
     }
 
     /**
      * @return the height
      */
     public int getHeight() {
-        return height;
+        return curDim.getHeight();
     }
 
     /**
@@ -112,13 +113,20 @@ public abstract class Wall {
     public Color getColor() {
         return color;
     }
+    
+    /**
+     * Method that will move the wall.
+     */
+    public void move() {
+        
+    }
 
     /**
      * @param xCoord
      *            the xCoord to set
      */
     public void setxCoord(int xCoord) {
-        this.xCoord = xCoord;
+        curCoord.setxCoordinate(xCoord);
     }
 
     /**
@@ -126,7 +134,7 @@ public abstract class Wall {
      *            the yCoord to set
      */
     public void setyCoord(int yCoord) {
-        this.yCoord = yCoord;
+        curCoord.setyCoordinate(yCoord);
     }
 
     /**
@@ -134,7 +142,7 @@ public abstract class Wall {
      *            the width to set
      */
     public void setWidth(int width) {
-        this.width = width;
+        curDim.setWidth(width);
     }
 
     /**
@@ -142,7 +150,7 @@ public abstract class Wall {
      *            the height to set
      */
     public void setHeight(int height) {
-        this.height = height;
+        curDim.setWidth(height);
     }
 
     /**
@@ -181,19 +189,14 @@ public abstract class Wall {
         } else if (!color.equals(other.color)) {
             return false;
         }
-        if (height != other.height) {
+        if (height != other.height || width != other.width) {
             return false;
         }
         if (isActive != other.isActive) {
             return false;
         }
-        if (width != other.width) {
-            return false;
-        }
-        if (xCoord != other.xCoord) {
-            return false;
-        }
-        if (yCoord != other.yCoord) {
+
+        if (xCoord != other.xCoord || yCoord != other.yCoord) {
             return false;
         }
         return true;

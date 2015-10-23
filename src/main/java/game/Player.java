@@ -29,9 +29,9 @@ public class Player {
     private int stepSize = 2;
     private boolean movingLeft = false;
     private boolean movingRight = false;
-    
-    //THIS MIGHT BE MOVED TO PLAYERPOWERUP CLASS OR SOMETHING
     private boolean hasIceRope = false;
+
+
     private final int powerupStepSize = 5;
     private final int normalStepSize = 2;
     private boolean restrictMovingLeft = false;
@@ -55,8 +55,6 @@ public class Player {
      *            of the player
      * @param xCoord
      *            x-Coordinate of the player
-     * @param isNormalMode
-     *            true if it is a normal game, false otherwise
      */
     public Player(String name, int xCoord) {
         this.name = name;
@@ -99,6 +97,7 @@ public class Player {
     }
 
     /**
+<<<<<<< HEAD
      * Moves the player left or right, depending on what key is pressed.
      *            list of walls
      */
@@ -114,7 +113,7 @@ public class Player {
         }
 
         if (movingRight && !restrictMovingRight) {
-            if (xCoord + stepSize + width < boundaryRight) {
+            if (xCoord + stepSize + 0.5 * width < boundaryRight) {
                 xCoord += stepSize;
                 colX += stepSize;
                 setRestrictMovingLeft(false);
@@ -235,30 +234,34 @@ public class Player {
 
     /**
      * Remove all powerups of the player.
+     * 
      * @return the stepSize
      */
     public int getStepSize() {
         return stepSize;
     }
 
+
     /**
-     * Check if the player has a powerup.
-     * 
-     * @return true if the player has 1 powerup or more, false otherwise
+     * Set the stepsize of the player.
+     * @param stepSize The stepsize
      */
     public void setStepSize(int stepSize) {
         this.stepSize = stepSize;
     }
-    
+
     /**
      * @return the powerupstepsize of the player
      */
     public int getPlayerPowerupStepSize() {
-    	return this.powerupStepSize;
+        return this.powerupStepSize;
     }
-    
+
+    /**
+     * @return the normal stepSize of the player.
+     */
     public int getPlayerNormalStepSize() {
-    	return this.normalStepSize;
+        return this.normalStepSize;
     }
 
 	/**

@@ -4,6 +4,7 @@ import game.log.Logger;
 
 /**
  * Class that will control a rope with an ice powerup.
+ * 
  * @author Boning
  *
  */
@@ -11,14 +12,16 @@ public class IceRope extends Rope {
 
     /**
      * Constructor for an icerope.
-     * @param xCoord x-Coordinate of the rope
-     * @param yCoord y-Coordinate of the rope
-     * @param isNormalMode checks if it is a normal game of a survival game
+     * 
+     * @param xCoord
+     *            x-Coordinate of the rope
+     * @param yCoord
+     *            y-Coordinate of the rope
      */
     public IceRope(int xCoord, int yCoord) {
-       
+
         super(xCoord, yCoord);
-        Logger.log("Ice rope created", 5 , 4);
+        Logger.log("Ice rope created", 5, 4);
     }
 
     /**
@@ -34,5 +37,5 @@ public class IceRope extends Rope {
            super.yCoord -= ropeSpeed;
        } 
     }
-    
+
 }

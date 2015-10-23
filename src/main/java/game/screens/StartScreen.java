@@ -1,23 +1,17 @@
 package game.screens;
 
 import game.Driver;
-import game.Game;
 import game.DriverFactory;
 import game.MainRunner;
-import game.NormalDriver;
 import game.NormalDriverFactory;
-import game.SurvivalDriver;
 import game.SurvivalDriverFactory;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 import java.net.URL;
 
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,6 +26,7 @@ import javax.swing.JTextField;
  */
 public class StartScreen extends JFrame {
 
+    private static final long serialVersionUID = 1L;
     JButton normalGameButton;
     JButton survivalGameButton;
     JButton settingsButton;
@@ -51,6 +46,7 @@ public class StartScreen extends JFrame {
         addNormalGameButton();
         addSurvivalGameButton();
         addSettingsButton();
+        addStopButton();
 
         setSize(699, 699);
         setSize(700, 700);
@@ -77,7 +73,7 @@ public class StartScreen extends JFrame {
         Font font2 = new Font("Calibri", Font.PLAIN, 25);
         tf = new JTextField(100);
         tf.setSize(200, 50);
-        tf.setLocation(375, 165);
+        tf.setLocation(255, 225);
         tf.setFont(font2);
         add(tf);
     }
@@ -91,7 +87,7 @@ public class StartScreen extends JFrame {
         nameInput.setFont(font);
         nameInput.setSize(500, 50);
         nameInput.setForeground(Color.WHITE);
-        nameInput.setLocation(335, 115);
+        nameInput.setLocation(210, 175);
         add(nameInput);
     }
 
@@ -100,11 +96,11 @@ public class StartScreen extends JFrame {
      */
     public void addNormalGameButton() {
         normalGameButton = new JButton("Start Normal game");
-        normalGameButton.setBackground(Color.RED);
+        normalGameButton.setBackground(Color.GRAY);
         normalGameButton.setForeground(Color.WHITE);
         normalGameButton.setFont(new Font("Calibri", Font.BOLD, 30));
         normalGameButton.setOpaque(true);
-        normalGameButton.setBounds(55, 250, 350, 60);
+        normalGameButton.setBounds(175, 350, 350, 60);
         normalGameButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent startGame) {
                 setVisible(false);
@@ -123,11 +119,11 @@ public class StartScreen extends JFrame {
      */
     public void addSurvivalGameButton() {
         survivalGameButton = new JButton("Start Survival game");
-        survivalGameButton.setBackground(Color.RED);
+        survivalGameButton.setBackground(Color.GRAY);
         survivalGameButton.setForeground(Color.WHITE);
         survivalGameButton.setFont(new Font("Calibri", Font.BOLD, 30));
         survivalGameButton.setOpaque(true);
-        survivalGameButton.setBounds(55, 350, 350, 60);
+        survivalGameButton.setBounds(175, 425, 350, 60);
         survivalGameButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent startGame) {
                 setVisible(false);
@@ -146,16 +142,15 @@ public class StartScreen extends JFrame {
      */
     public void addSettingsButton() {
         settingsButton = new JButton("Select Level");
-        settingsButton.setBackground(Color.RED);
+        settingsButton.setBackground(Color.GRAY);
         settingsButton.setForeground(Color.WHITE);
         settingsButton.setFont(new Font("Calibri", Font.BOLD, 30));
         settingsButton.setOpaque(true);
-        settingsButton.setBounds(55, 450, 350, 60);
+        settingsButton.setBounds(175, 500, 350, 60);
         settingsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
                 dispose();
-                LevelOverviewScreen levelOverviewScreen = new LevelOverviewScreen();
             }
         });
         add(settingsButton);
@@ -166,11 +161,17 @@ public class StartScreen extends JFrame {
      */
     public void addStopButton() {
         stopButton = new JButton("Exit");
-        stopButton.setBackground(Color.RED);
+        stopButton.setBackground(Color.GRAY);
         stopButton.setForeground(Color.WHITE);
         stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
         stopButton.setOpaque(true);
-        stopButton.setBounds(55, 550, 350, 60);
+        stopButton.setBounds(175, 575, 350, 60);
+        stopButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent closeScreen) {
+                setVisible(false);
+                dispose();
+            }
+        });
         add(stopButton);
     }
 

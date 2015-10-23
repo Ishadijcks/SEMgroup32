@@ -2,7 +2,6 @@ package game;
 
 import game.log.LogSettings;
 import game.log.Logger;
-import game.screens.GameScreen;
 import game.screens.LogScreen;
 
 import java.awt.event.KeyAdapter;
@@ -42,22 +41,18 @@ public class MyKeyListener extends KeyAdapter {
      * @param evt
      *            Key event
      */
+    @Override
     public void keyPressed(KeyEvent evt) {
-
         if (game.inProgress()) {
-
             switch (evt.getKeyCode()) {
-
             case 27:
                 Logger.log("Player pressed Escape", 0, 5);
                 game.pauseGame();
                 break;
-            // Left
             case 37:
                 Logger.log("Player pressed Left", 0, 5);
                 game.getPlayerList().get(0).movingLeft();
                 break;
-            // Right
             case 39:
                 Logger.log("Player pressed right", 0, 5);
                 game.getPlayerList().get(0).movingRight();
@@ -102,6 +97,9 @@ public class MyKeyListener extends KeyAdapter {
      * 
      * Checks what key is released, makes the player stop moving in that
      * direction.
+     * 
+     * @param evt
+     *            The keyEvent that's being released
      */
     public void keyReleased(KeyEvent evt) {
 

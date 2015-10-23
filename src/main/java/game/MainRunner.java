@@ -14,12 +14,10 @@ public class MainRunner {
     private static Driver driver;
     private static boolean driverIsSet;
     private final static int GAME_FPS = 120;
-
     /**
      * Constructor of the main runner class.
      */
     public MainRunner() {
-        driverIsSet = false;
     }
 
     /**
@@ -29,7 +27,6 @@ public class MainRunner {
      *            standard java thingie
      */
     public static void main(String[] args) {
-        driverIsSet = false;
         new StartScreen();
         while (true) {
             try {
@@ -43,9 +40,9 @@ public class MainRunner {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            driver.totalFrames++;
-            if (LogSettings.isLogScreen() && driver.totalFrames % 500 == 0
-                    && driver.game.inProgress()) {
+            Driver.totalFrames++;
+            if (LogSettings.isLogScreen() && Driver.totalFrames % 500 == 0
+                    && Driver.game.inProgress()) {
                 LogSettings.getLogscreen().reloadData();
             }
         }
@@ -60,7 +57,6 @@ public class MainRunner {
      */
     public static void setDriver(Driver buildDriver) {
         driver = buildDriver;
-        driverIsSet = true;
     }
 
 }

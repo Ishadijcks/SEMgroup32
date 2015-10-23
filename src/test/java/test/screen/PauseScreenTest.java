@@ -15,7 +15,7 @@ public class PauseScreenTest {
         PauseScreen pause = new PauseScreen("Player", normal);
         assertFalse(pause == null);
     }
-    
+
     @Test
     public void testPauseScreenSurvivalGame() {
         SurvivalGame survival = new SurvivalGame();

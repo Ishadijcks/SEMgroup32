@@ -27,9 +27,6 @@ public class SurvivalDriver extends Driver {
 
     /**
      * Constructor for a survival driver that will get the name of a player.
-     * 
-     * @param name
-     *            Name that the player entered
      */
     public SurvivalDriver() {
         setupGame();
@@ -70,7 +67,7 @@ public class SurvivalDriver extends Driver {
     public static void gameLost() {
         EndScore es = new EndScore(name, score.getScore());
         leaderBoard.addScore(es);
-        leaderBoard.appendToFile();
+        Leaderboard.appendToFile();
         score.resetScore();
         gameScreen.dispose();
         game.toggleProgress();
@@ -90,8 +87,8 @@ public class SurvivalDriver extends Driver {
 
             game.moveEntities();
             game.update();
-            for(Collision col : collisions){
-            	col.checkCollision(game);
+            for (Collision col : collisions) {
+                col.checkCollision(game);
             }
 
             gameScreen.reload();

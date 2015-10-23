@@ -20,6 +20,9 @@ import javax.swing.JLabel;
  *
  */
 public class EndScreen extends JFrame {
+
+
+    private static final long serialVersionUID = 1L;
     JButton stopButton;
 
     /**
@@ -36,7 +39,6 @@ public class EndScreen extends JFrame {
         ScreenBuilder.initScreen(this, "");
         addBackgroundImage(background);
         addStopButton(colorButton);
-        setSize(1000 - 1, 800 - 1);
         setSize(1000, 800);
     }
 

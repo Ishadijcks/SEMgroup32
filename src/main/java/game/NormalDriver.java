@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author Boning
  *
  */
-@SuppressWarnings("serial")
+
 public class NormalDriver extends Driver {
 
     private static String name;
@@ -26,9 +26,6 @@ public class NormalDriver extends Driver {
 
     /**
      * Constructor that will pass the name of the player.
-     * 
-     * @param name
-     *            Name that the player entered
      */
     public NormalDriver() {
         setupGame();
@@ -88,16 +85,12 @@ public class NormalDriver extends Driver {
             curLevel = game.getCurrentLevel();
 
             game.moveEntities();
-            for(Collision col : collisions){
+            for (Collision col : collisions) {
             	col.checkCollision(game);
             }
 
             gameScreen.reload();
 
-            // It is important that the player moves after all the collisions
-            // are checked. Since the collisions decide if the player can move
-            // one step ahead or not. If the player moves first the collisions
-            // detection will be too late.
             Player player1 = game.getPlayerList().get(0);
             player1.move();
 
@@ -133,7 +126,6 @@ public class NormalDriver extends Driver {
         gameScreen = new GameScreen();
         Logger.log("Main Frame created", 9, 4);
         GameScreen.setupScreen(game, score);
-
         LogSettings.setActiveLog(true);
 
     }

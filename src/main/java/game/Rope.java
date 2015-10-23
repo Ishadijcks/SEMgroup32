@@ -20,8 +20,6 @@ public class Rope {
      *            x-Coordinate of the rope
      * @param yCoord
      *            y-Coordinate of the rope
-     * @param isNormalMode
-     *            checks if it is a normal game of a survival game
      */
     public Rope(int xCoord, int yCoord) {
         this.xCoord = xCoord;
@@ -40,8 +38,7 @@ public class Rope {
      */
     public void move() {
         if (isAtTop()) {
-            Driver.game.getCurrentLevel()
-                     .setRope(null);
+            Driver.game.getCurrentLevel().setRope(null);
             Logger.log("Rope hit the roof", 5, 4);
          } else {
              Logger.log("Rope moved from " + xCoord + "," + yCoord
@@ -88,23 +85,23 @@ public class Rope {
      *         attributes
      */
     @Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		Rope other = (Rope) obj;
-		if (xCoord != other.xCoord) {
-			return false;
-		}
-		if (yCoord != other.yCoord) {
-			return false;
-		}
-		return true;
-	}
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        Rope other = (Rope) obj;
+        if (xCoord != other.xCoord) {
+            return false;
+        }
+        if (yCoord != other.yCoord) {
+            return false;
+        }
+        return true;
+    }
 }

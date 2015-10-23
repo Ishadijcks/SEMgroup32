@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 /**
  * Abstract class of a bubble.
+ * 
  * @author Boning
  *
  */
@@ -20,6 +21,7 @@ public abstract class Bubble {
     protected double lastDownSpeed = 0;
     protected double lastUpSpeed = 1;
     protected boolean newBubble;
+    protected double wallBounceBoost = 0;
 
     private int maxheight;
     private Color color;
@@ -35,20 +37,31 @@ public abstract class Bubble {
     protected double factor = 2;
     protected int scoreWorth;
 
-   /**
-    * Constructor which will make a new bubble with the given parameters.
-    * @param xCoord x-Coordinate
-    * @param yCoord y-Coordinate
-    * @param directionHorizontal horizontal direction
-    * @param directionVertical vertical direction
-    * @param maxheight max bounce height
-    * @param color of the ball
-    * @param gravitation of the ball
-    * @param diameter of the ball
-    * @param speedX speed of the x-Coordination movement
-    */
-    public Bubble(double xCoord, double yCoord, boolean directionHorizontal, boolean directionVertical,
-            int maxheight, Color color, double gravitation, int diameter, double speedX) {
+    /**
+     * Constructor which will make a new bubble with the given parameters.
+     * 
+     * @param xCoord
+     *            x-Coordinate
+     * @param yCoord
+     *            y-Coordinate
+     * @param directionHorizontal
+     *            horizontal direction
+     * @param directionVertical
+     *            vertical direction
+     * @param maxheight
+     *            max bounce height
+     * @param color
+     *            of the ball
+     * @param gravitation
+     *            of the ball
+     * @param diameter
+     *            of the ball
+     * @param speedX
+     *            speed of the x-Coordination movement
+     */
+    public Bubble(double xCoord, double yCoord, boolean directionHorizontal,
+            boolean directionVertical, int maxheight, Color color,
+            double gravitation, int diameter, double speedX) {
 
         Logger.log("Bubble created with diameter " + diameter, 3, 4);
 
@@ -66,13 +79,13 @@ public abstract class Bubble {
         this.newBubble = true;
 
     }
-
+    
     /**
      * Move the bubble.
      */
     public void move() {
         outOfBoardCheck();
-        bounceBorder();      
+        bounceBorder();
         moveX();
         moveY();
     }
@@ -103,20 +116,25 @@ public abstract class Bubble {
 
     /**
      * Destroy a bubble.
-     * @param xCoord of the bubble
-     * @param yCoord of the bubble
+     * 
+     * @param xCoord
+     *            of the bubble
+     * @param yCoord
+     *            of the bubble
      * @return new list of bubbles with the given bubble removed
      */
     public abstract ArrayList<Bubble> destroyBubble(int xCoord, int yCoord);
 
     /**
      * Get the diameter of the bubble.
+     * 
      * @return diameter of the bubble
      */
     public abstract int getDiameter();
 
     /**
      * Get the color of the bubble.
+     * 
      * @return color of the bubble
      */
     public abstract Color getColor();
@@ -131,6 +149,10 @@ public abstract class Bubble {
             shifting = 0.5 * gravitation * time * time;
             velocity = (shifting - sOld) / timeStep;
             lastDownSpeed = velocity;
+            if (wallBounceBoost > 0) {
+                wallBounceBoost = wallBounceBoost - 0.01;
+                lastDownSpeed += wallBounceBoost;
+            }
             yCoord += lastDownSpeed;
             lastDownSpeed += 0.05;
         } else {
@@ -183,6 +205,7 @@ public abstract class Bubble {
      */
     public void bounceV() {
         if (directionVertical) {
+            wallBounceBoost = 0;
             Logger.log("Bubble bounced on the floor", 2, 4, 1);
         } else {
             Logger.log("Bubble reached max height", 2, 4, 1);
@@ -192,7 +215,15 @@ public abstract class Bubble {
     }
 
     /**
+     * small boost in speed from bouncing on a wall.
+     */
+    public void wallBounceBoost() {
+        wallBounceBoost = 1;
+    }
+
+    /**
      * Get the x-Coordinate of the bubble.
+     * 
      * @return x-Coordinate of the bubble
      */
     public int getX() {
@@ -201,6 +232,7 @@ public abstract class Bubble {
 
     /**
      * Get the y-Coordinate of the bubble.
+     * 
      * @return y-Coordinate of the bubble
      */
     public int getY() {
@@ -209,6 +241,7 @@ public abstract class Bubble {
 
     /**
      * Give the horizontal direction of the bubble.
+     * 
      * @return the horizontal direction
      */
     public boolean isDirectionH() {
@@ -217,7 +250,9 @@ public abstract class Bubble {
 
     /**
      * Set the horizontal direction of the bubble.
-     * @param directionHorizontal new horizontal directions
+     * 
+     * @param directionHorizontal
+     *            new horizontal directions
      */
     public void setDirectionH(boolean directionHorizontal) {
         this.directionHorizontal = directionHorizontal;
@@ -235,7 +270,8 @@ public abstract class Bubble {
     /**
      * Set the vertical direction of the bubble.
      * 
-     * @param directionVertical 
+     * @param directionVertical
+     *            the vertical direction
      */
     public void setDirectionV(boolean directionVertical) {
         this.directionVertical = directionVertical;
@@ -269,107 +305,148 @@ public abstract class Bubble {
     public int getMaxheight() {
         return maxheight;
     }
-    
-    public int getScoreWorth(){
-    	return this.scoreWorth;
-    }
-    
-    public void setScoreWorth(int newWorth){
-    	this.scoreWorth = newWorth;
+
+    /**
+     * Returns the score points this bubble is worth.
+     * 
+     * @return the score points this bubble is worth
+     */
+    public int getScoreWorth() {
+        return this.scoreWorth;
     }
 
     /**
-     * Generated equals method to check if all attributes 
-     * equals another of the same class.
-     * @param obj Object that it will compare to
-     * @return true if the object is from the same type and has the same attributes
+     * Sets the score points this bubble is worth.
+     * 
+     * @param newWorth
+     *            the score points this bubble is worth
+     */
+    public void setScoreWorth(int newWorth) {
+        this.scoreWorth = newWorth;
+    }
+
+    /**
+     * Generated equals method to check if all attributes equals another of the
+     * same class.
+     * 
+     * @param obj
+     *            Object that it will compare to
+     * @return true if the object is from the same type and has the same
+     *         attributes
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         Bubble other = (Bubble) obj;
-        if (Double.doubleToLongBits(gravitation) != Double.doubleToLongBits(other.gravitation))
+        if (Double.doubleToLongBits(gravitation) != Double
+                .doubleToLongBits(other.gravitation)) {
             return false;
+        }
         if (color == null) {
-            if (other.color != null)
+            if (other.color != null) {
                 return false;
-        } else if (!color.equals(other.color))
+            }
+        } else if (!color.equals(other.color)) {
             return false;
-        if (diameter != other.diameter)
+        }
+        if (diameter != other.diameter) {
             return false;
-        if (directionHorizontal != other.directionHorizontal)
+        }
+        if (directionHorizontal != other.directionHorizontal) {
             return false;
-        if (directionVertical != other.directionVertical)
+        }
+        if (directionVertical != other.directionVertical) {
             return false;
+        }
         if (Double.doubleToLongBits(factor) != Double
-                .doubleToLongBits(other.factor))
+                .doubleToLongBits(other.factor)) {
             return false;
+        }
         if (Double.doubleToLongBits(lastDownSpeed) != Double
-                .doubleToLongBits(other.lastDownSpeed))
+                .doubleToLongBits(other.lastDownSpeed)) {
             return false;
+        }
         if (Double.doubleToLongBits(lastUpSpeed) != Double
-                .doubleToLongBits(other.lastUpSpeed))
+                .doubleToLongBits(other.lastUpSpeed)) {
             return false;
-        if (maxheight != other.maxheight)
+        }
+        if (maxheight != other.maxheight) {
             return false;
-        if (newBubble != other.newBubble)
+        }
+        if (newBubble != other.newBubble) {
             return false;
-        if (Double.doubleToLongBits(shifting) != Double.doubleToLongBits(other.shifting))
+        }
+        if (Double.doubleToLongBits(shifting) != Double
+                .doubleToLongBits(other.shifting)) {
             return false;
+        }
         if (Double.doubleToLongBits(sOld) != Double
-                .doubleToLongBits(other.sOld))
+                .doubleToLongBits(other.sOld)) {
             return false;
+        }
         if (Double.doubleToLongBits(speedX) != Double
-                .doubleToLongBits(other.speedX))
+                .doubleToLongBits(other.speedX)) {
             return false;
-        if (Double.doubleToLongBits(time) != Double.doubleToLongBits(other.time))
-            return false;
+        }
         if (Double.doubleToLongBits(timeStep) != Double
-                .doubleToLongBits(other.timeStep))
+                .doubleToLongBits(other.timeStep)) {
             return false;
+        }
         if (Double.doubleToLongBits(timer) != Double
-                .doubleToLongBits(other.timer))
+                .doubleToLongBits(other.timer)) {
             return false;
-        if (Double.doubleToLongBits(velocity) != Double.doubleToLongBits(other.velocity))
+        }
+        if (Double.doubleToLongBits(velocity) != Double
+                .doubleToLongBits(other.velocity)) {
             return false;
-        if (Double.doubleToLongBits(xCoord) != Double.doubleToLongBits(other.xCoord))
+        }
+        if (Double.doubleToLongBits(xCoord) != Double
+                .doubleToLongBits(other.xCoord)) {
             return false;
-        if (Double.doubleToLongBits(yCoord) != Double.doubleToLongBits(other.yCoord))
+        }
+        if (Double.doubleToLongBits(yCoord) != Double
+                .doubleToLongBits(other.yCoord)) {
             return false;
+        }
         return true;
     }
 
-	/**
-	 * @return the xCoord
-	 */
-	public double getxCoord() {
-		return xCoord;
-	}
+    /**
+     * @return the xCoord
+     */
+    public double getxCoord() {
+        return xCoord;
+    }
 
-	/**
-	 * @param xCoord the xCoord to set
-	 */
-	public void setxCoord(double xCoord) {
-		this.xCoord = xCoord;
-	}
+    /**
+     * @param xCoord
+     *            the xCoord to set
+     */
+    public void setxCoord(double xCoord) {
+        this.xCoord = xCoord;
+    }
 
-	/**
-	 * @return the yCoord
-	 */
-	public double getyCoord() {
-		return yCoord;
-	}
+    /**
+     * @return the yCoord
+     */
+    public double getyCoord() {
+        return yCoord;
+    }
 
-	/**
-	 * @param yCoord the yCoord to set
-	 */
-	public void setyCoord(double yCoord) {
-		this.yCoord = yCoord;
-	}
+    /**
+     * @param yCoord
+     *            the yCoord to set
+     */
+    public void setyCoord(double yCoord) {
+        this.yCoord = yCoord;
+    }
 
 }

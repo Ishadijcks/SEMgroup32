@@ -12,6 +12,8 @@ import game.Driver;
  */
 public class WinningScreen extends EndScreen {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Constructor for the winning screen class.
      * 

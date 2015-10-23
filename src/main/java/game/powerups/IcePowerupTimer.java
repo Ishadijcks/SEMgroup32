@@ -5,18 +5,21 @@ import game.Player;
 
 /**
  * Special timer for the ice powerup.
+ * 
  * @author Boning
  *
  */
 public class IcePowerupTimer extends PowerupTimer {
-	
+
     /**
      * Constructor for the Icepowerup timer.
-     * @param game in which the timer is active
+     * 
+     * @param game
+     *            in which the timer is active
      */
-	public IcePowerupTimer(Game game) {
-		super(game);
-	}
+    public IcePowerupTimer(Game game) {
+        super(game);
+    }
 
 	/**
 	 * Let the counter start.
@@ -36,6 +39,7 @@ public class IcePowerupTimer extends PowerupTimer {
 		    	end = System.currentTimeMillis();
 		    }
 		}
+    	PowerupThreadKiller.setDieThreads(false);
 		player.setHasIceRope(false);
 	}
 

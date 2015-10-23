@@ -5,8 +5,6 @@ import game.Driver;
 import game.Game;
 import game.log.Logger;
 
-import java.awt.Image;
-
 import javax.swing.ImageIcon;
 
 /**
@@ -16,20 +14,19 @@ import javax.swing.ImageIcon;
 public abstract class Powerup {
     private int xCoord;
     private int yCoord;
-    private Image image;
-    
+   
     protected Game game;
     
     private final int width = 15;
     private final int height = 10;
     
     private final int powerupSpeed = 2;
-    
+
     /**
      * Constructor of the powerup.
      * @param name
-     * @param xCoord
-     * @param yCoord
+     * @param xCoord The xCoord of the rope
+     * @param yCoord The yCoord of the rope
      */
     public Powerup(int xCoord, int yCoord) {
         Logger.log("Powerup created", 6, 4);
@@ -80,6 +77,9 @@ public abstract class Powerup {
 
     }
     
+    /**
+     * Add this powerup to the current level.
+     */
     public void addToLevel() {
     	Driver.game.getCurrentLevel().getPowerupList().add(this);
     }

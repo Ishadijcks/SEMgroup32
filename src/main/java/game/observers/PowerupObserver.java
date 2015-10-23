@@ -30,7 +30,7 @@ public class PowerupObserver extends Observer {
 		int bubblePosX = bubble.getX();
         int bubblePosY = bubble.getY();
         
-        int powerupChance = 40;        
+        int powerupChance = 100;        
 		if (powerupChance > Math.random() * 100) {
 	        Powerup powerup = pfac.createRandomPowerup();
 	        powerup.setX(bubblePosX);

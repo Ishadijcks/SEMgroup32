@@ -2,6 +2,11 @@ package game;
 
 import game.log.Logger;
 
+/**
+ * Creates ice ropes and normal ropes.
+ * @author Isha
+ *
+ */
 public class RopeFactory {
 
 	public Rope createRope(boolean iceRope) {
@@ -12,11 +17,12 @@ public class RopeFactory {
         int xCoord = currentLevel.getPlayerList().get(0).getX() + currentLevel.getPlayerList().get(0).getWidth() / 2;
 
         Logger.log("Shot a rope", 1, 4);
-        
-		if(!iceRope)
-			return new Rope(xCoord, yCoord);
-		else 
-			return new IceRope(xCoord, yCoord);
-	}
+
+        if (!iceRope) {
+            return new Rope(xCoord, yCoord);
+        } else {
+            return new IceRope(xCoord, yCoord);
+        }
+    }
 
 }

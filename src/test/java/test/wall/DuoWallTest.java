@@ -1,13 +1,17 @@
 package test.wall;
 
-
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import game.wall.DuoWall;
+import helperobjects.Coordinates;
 
 import java.awt.Color;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import settings.ScreenSettings;
 
 public class DuoWallTest {
 	
@@ -15,7 +19,7 @@ public class DuoWallTest {
 	
 	@Before
 	public void init() {
-		wall = new DuoWall(10);
+		wall = new DuoWall(new Coordinates(10, 0), ScreenSettings.getLevelHeight(), 10);
 	}
 
 	@Test
@@ -24,16 +28,16 @@ public class DuoWallTest {
 		assertEquals(0, wall.getyCoord());
 		assertEquals(Color.BLUE, wall.getColor());
 	}
-	
-	@Test
+
+    @Test
     public void testexpectPlayerCollision() {
-        assertFalse(wall.expectPlayerCollision(10, true));
+        assertFalse(wall.expectPlayerCollision(10, 5, true));
     }
-	
-	@Test
+
+    @Test
     public void tesexpectBubbleCollision() {
-        assertTrue(wall.expectBubbleCollision(10, 500));
-        assertFalse(wall.expectBubbleCollision(100, 1));
+        assertTrue(wall.expectBubbleCollision(10, 5, 500));
+        assertFalse(wall.expectBubbleCollision(100, 5, 1));
     }
 
 }

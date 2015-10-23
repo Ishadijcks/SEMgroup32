@@ -5,23 +5,26 @@ import game.Player;
 
 /**
  * Special timer for the speed powerup.
+ * 
  * @author Boning
  *
  */
 public class SpeedPowerupTimer extends PowerupTimer {
-	
-	private Player player;
+
+    private Player player;
 
     /**
      * Constructor for the Speedpowerup timer.
-     * @param game in which the timer is active
+     * 
+     * @param game
+     *            in which the timer is active
      */
-	public SpeedPowerupTimer(Game game) {
-		super(game);
-		this.player = game.getPlayerList().get(0);
-	}
+    public SpeedPowerupTimer(Game game) {
+        super(game);
+        this.player = game.getPlayerList().get(0);
+    }
 
-	/**
+    /**
      * Let the counter start.
      */
 	@Override

@@ -1,7 +1,6 @@
 package game.observers;
 
 import game.Driver;
-import game.bubble.Bubble;
 import game.collisions.Collision;
 import game.powerups.Powerup;
 import game.powerups.PowerupThreadKiller;
@@ -18,6 +17,13 @@ public class GameObserver extends Observer {
 		PowerupThreadKiller.setDieThreads(true);
         Driver.game.resetLevel();
         Driver.game.loseLife();
+        try {
+			Thread.sleep(10);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        PowerupThreadKiller.setDieThreads(false);
 	}
 
 }

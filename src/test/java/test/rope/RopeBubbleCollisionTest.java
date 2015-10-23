@@ -1,8 +1,7 @@
 package test.rope;
 
-import static org.junit.Assert.assertEquals;
-import game.NormalDriver;
 import game.Level;
+import game.NormalDriver;
 import game.NormalLevel;
 import game.Player;
 import game.Rope;
@@ -23,11 +22,13 @@ public class RopeBubbleCollisionTest {
 
     @Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] { { 20, 66, true }, { 28, 66, true },
-                { 36, 66, true }, { 20, 58, true }, { 20, 50, true }, { 20, 30, true },
-                { 24, 59, true }, { 35, 29, true }, { 19, 68, false }, { 20, 69, false },
-                { 19, 69, false }, { 39, 68, false }, { 38, 69, false }, { 39, 69, false },
-                { -10000, 20192, false }, { 100000, -129293, false } });
+        return Arrays.asList(new Object[][] { { 20, 66, true },
+                { 28, 66, true }, { 36, 66, true }, { 20, 58, true },
+                { 20, 50, true }, { 20, 30, true }, { 24, 59, true },
+                { 35, 29, true }, { 19, 68, false }, { 20, 69, false },
+                { 19, 69, false }, { 39, 68, false }, { 38, 69, false },
+                { 39, 69, false }, { -10000, 20192, false },
+                { 100000, -129293, false } });
     }
 
     public Level l;
@@ -53,7 +54,7 @@ public class RopeBubbleCollisionTest {
 
     @Test
     public void testCheckCollisionRope() {
-        //assertEquals(this.expected, l.handleCollisionRope());
+        // assertEquals(this.expected, l.handleCollisionRope());
     }
 
 }
