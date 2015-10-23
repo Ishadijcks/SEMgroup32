@@ -20,6 +20,9 @@ public class PlayerBubbleCollision extends Collision {
 		super();
 	}
 
+	/**
+	 * Checks the collision between a player and a bubble.
+	 */
 	@Override
 	public boolean checkCollision(Game game) {
 		
@@ -42,6 +45,9 @@ public class PlayerBubbleCollision extends Collision {
 	    return false;
 	}
 
+	/**
+     * Notify the collision.
+     */
 	@Override
 	public void notifyListeningObservers() {
 		for (Observer o : observers) {
@@ -49,9 +55,11 @@ public class PlayerBubbleCollision extends Collision {
     	}
 	}
 
+	/**
+     * Notify the collision.
+     */
 	@Override
 	public void notifyListeningObservers(Object object) {
-		// TODO Auto-generated method stub
 		
 	}
 

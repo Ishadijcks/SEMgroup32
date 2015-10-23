@@ -21,6 +21,9 @@ public class PlayerObserver extends Observer {
         collisions.registerObserver(this);
     }
 
+    /**
+     * Player hits a wall.
+     */
 	@Override
 	public void wallPlayerEvent() {
 		Player player = Driver.game.getPlayerList().get(0);

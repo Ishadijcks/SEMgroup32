@@ -38,13 +38,6 @@ public class GameScreen extends JPanel {
 
     /**
      * Constructor for the game screen class.
-     * 
-     * @throws UnsupportedAudioFileException
-     *             exception
-     * @throws IOException
-     *             exception
-     * @throws LineUnavailableException
-     *             exception
      */
     public GameScreen() {
         frame = new JFrame("Game Screen");

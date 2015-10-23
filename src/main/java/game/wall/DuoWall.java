@@ -28,7 +28,15 @@ public class DuoWall extends Wall {
     }
 
     /**
-     * Checks if a player collides with the wall.
+     * Returns true if a collision between the wall and player is expected.
+     * 
+     * @param movingLeft
+     *            is the direction of the player
+     * @param xCoord
+     *            of the player
+     * @param yCoord
+     *            of the player
+     * @return boolean, true if there is a collision, false otherwise
      */
     @Override
     public boolean expectPlayerCollision(int xCoord, int yCoord,
@@ -52,6 +60,13 @@ public class DuoWall extends Wall {
 
     /**
      * Checks if a bubble collides with the wall.
+     *  @param BubbleDiameter
+     *            is size of the bubble
+     * @param BubblexCoord
+     *            of the bubble
+     * @param BubbleyCoord
+     *            of the bubble
+     * @return boolean, true if there is a collision, false otherwise
      */
     @Override
     public boolean expectBubbleCollision(int BubblexCoord, int BubbleyCoord,

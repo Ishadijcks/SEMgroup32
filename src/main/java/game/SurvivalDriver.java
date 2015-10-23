@@ -81,8 +81,6 @@ public class SurvivalDriver extends Driver {
     /**
      * Setup the beginscreen and handels the actual game.
      * 
-     * @param args
-     * @throws InterruptedException
      */
     public void driverHeart() {
         if (game.inProgress()) {
@@ -121,7 +119,7 @@ public class SurvivalDriver extends Driver {
     }
 
     /**
-     * init the driver.
+     * Initialises the driver.
      */
     public void initDriver() {
         gameScreen = new GameScreen();

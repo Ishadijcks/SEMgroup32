@@ -22,6 +22,9 @@ public class GameObserver extends Observer {
         subject.registerObserver(this);
     }
 
+    /**
+     * Bubble hits a player.
+     */
     @Override
     public void bubblePlayerEvent() {
         ThreadSettings.setDieThreads(true);

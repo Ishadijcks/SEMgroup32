@@ -27,7 +27,6 @@ public abstract class Powerup {
 
     /**
      * Constructor of the powerup.
-     * @param name
      * @param xCoord The xCoord of the rope
      * @param yCoord The yCoord of the rope
      */

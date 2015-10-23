@@ -25,6 +25,13 @@ public abstract class BubbleWall extends Wall {
 
     /**
      * A BubbleWall will never collide with a player.
+     * @param movingLeft
+     *            is the direction of the player
+     * @param xCoord
+     *            of the player
+     * @param yCoord
+     *            of the player
+     * @return boolean, true if there is a collision, false otherwise
      */
     @Override
     public boolean expectPlayerCollision(int xCoord, int yCoord,
@@ -34,6 +41,13 @@ public abstract class BubbleWall extends Wall {
 
     /**
      * Checks if a bubble collides with the wall.
+     *  @param BubbleDiameter
+     *            is size of the bubble
+     * @param BubblexCoord
+     *            of the bubble
+     * @param BubbleyCoord
+     *            of the bubble
+     * @return boolean, true if there is a collision, false otherwise
      */
     @Override
     public boolean expectBubbleCollision(int BubblexCoord, int BubbleyCoord,

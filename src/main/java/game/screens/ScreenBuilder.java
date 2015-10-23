@@ -11,6 +11,7 @@ import settings.ScreenSettings;
  *
  */
 public class ScreenBuilder {
+    
     /**
      * Initializes the given screen.
      * 

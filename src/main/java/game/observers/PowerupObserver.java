@@ -25,6 +25,9 @@ public class PowerupObserver extends Observer {
         collisions.registerObserver(this);
     }
 
+    /**
+     * Bubble hits a rope.
+     */
 	@Override
 	public void ropeBubbleEvent(Bubble bubble) {
 		
@@ -41,6 +44,9 @@ public class PowerupObserver extends Observer {
 		
 	}
 
+	/**
+	 * Player hits a powerup.
+	 */
 	@Override
 	public void powerupPlayerEvent(Powerup powerup) {
         powerup.setGame(Driver.game);

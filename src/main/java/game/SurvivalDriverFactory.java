@@ -1,7 +1,7 @@
 package game;
 
 /**
- * 
+ * Class that will create a SurvivalDriver.
  * @author Floris
  *
  */
@@ -15,7 +15,7 @@ public class SurvivalDriverFactory extends DriverFactory {
 
     /**
      * Builds a survival driver.
-     * @return Retruns a driver.
+     * @return Returns a driver.
      */
     @Override
     public Driver buildDriver() {

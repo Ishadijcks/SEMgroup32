@@ -59,6 +59,7 @@ public abstract class Observer {
     }
 
     /**
+     * Bubble hits a wall.
      * @param bubble
      *            that is being collided with
      */

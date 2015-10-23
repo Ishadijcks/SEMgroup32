@@ -51,7 +51,7 @@ public abstract class Wall {
      *            of the player
      * @param yCoord
      *            of the player
-     * @return boolean of collision
+     * @return boolean, true if there is a collision, false otherwise
      */
     public abstract boolean expectPlayerCollision(int xCoord, int yCoord,
             boolean movingLeft);
@@ -66,7 +66,7 @@ public abstract class Wall {
      *            of the bubble
      * @param yCoord
      *            of the bubble
-     * @return boolean of collision
+     * @return boolean, true if there is a collision, false otherwise
      */
     public abstract boolean expectBubbleCollision(int xCoord, int yCoord,
             int BubbleDiameter);

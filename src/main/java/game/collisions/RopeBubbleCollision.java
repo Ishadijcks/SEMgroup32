@@ -20,6 +20,9 @@ public class RopeBubbleCollision extends Collision {
 		super();
 	}
 
+	/**
+     * Checks the collision between a player and a bubble.
+     */
 	@Override
 	public boolean checkCollision(Game game) {
 		if (game.getCurrentLevel().hasRope()) {
@@ -39,12 +42,18 @@ public class RopeBubbleCollision extends Collision {
         return false;
 	}
 
+	/**
+     * Notify the collision.
+     */
 	@Override
 	public void notifyListeningObservers() {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+     * Notify the collision.
+     */
 	@Override
 	public void notifyListeningObservers(Object object) {
 		Bubble bubble = (Bubble) object;

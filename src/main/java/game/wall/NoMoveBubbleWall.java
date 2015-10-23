@@ -3,7 +3,7 @@ package game.wall;
 import helperobjects.Coordinates;
 
 /**
- * Wall class of a bubble wall.
+ * Wall class of a no movement bubble wall.
  * 
  * @author Boning
  */
@@ -12,7 +12,7 @@ public class NoMoveBubbleWall extends BubbleWall {
     private NoMove mover;
 
     /**
-     * Constructor of a bubble wall.
+     * Constructor of a no movement bubble wall.
      * 
      * @param coordinates
      *            of the wall

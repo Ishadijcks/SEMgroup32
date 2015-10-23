@@ -435,13 +435,15 @@ public abstract class Bubble {
     }
 
     /**
-     * @return the xCoord
+     * Get the x-Coordinate of a bubble.
+     * @return the x-Coordinate
      */
     public double getxCoord() {
         return xCoord;
     }
 
     /**
+     * Set the x-Coordinate of a bubble.
      * @param xCoord
      *            the xCoord to set
      */
@@ -450,6 +452,7 @@ public abstract class Bubble {
     }
 
     /**
+     * Get the y-Coordinate of a bubble.
      * @return the yCoord
      */
     public double getyCoord() {
@@ -457,8 +460,9 @@ public abstract class Bubble {
     }
 
     /**
+     * Set the y-Coordinate of a bubble.
      * @param yCoord
-     *            the yCoord to set
+     *            the y-Coordinate to set
      */
     public void setyCoord(double yCoord) {
         this.yCoord = yCoord;

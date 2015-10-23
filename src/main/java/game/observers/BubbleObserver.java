@@ -22,6 +22,9 @@ public class BubbleObserver extends Observer {
         collisions.registerObserver(this);
     }
 
+    /**
+     * Bubble hits a wall.
+     */
     @Override
     public void wallBubbleEvent(Bubble bubble, boolean vertical) {
         if (vertical) {

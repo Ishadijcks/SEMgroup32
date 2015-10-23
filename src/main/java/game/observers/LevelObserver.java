@@ -8,7 +8,7 @@ import game.collisions.Collision;
 import game.powerups.Powerup;
 
 /**
- * Controlls the evens in the level as bubbles, rope and score.
+ * Controls the evens in the level as bubbles, rope and score.
  * @author Tim
  *
  */
@@ -23,6 +23,9 @@ public class LevelObserver extends Observer {
 		subject.registerObserver(this);
 	}
 
+	/**
+	 * Bubble hits a rope.
+	 */
 	@Override
 	public void ropeBubbleEvent(Bubble bubble) {
 		ArrayList<Bubble> bubbleList = Driver.game.getCurrentLevel().getBubbleList();
@@ -37,6 +40,9 @@ public class LevelObserver extends Observer {
 
 	}
 
+	/**
+	 * Player picks up a powerup.
+	 */
 	@Override
 	public void powerupPlayerEvent(Powerup powerup) {
 		Driver.game.getCurrentLevel().getPowerupList().remove(powerup);

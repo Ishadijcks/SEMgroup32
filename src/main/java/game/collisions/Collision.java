@@ -55,21 +55,28 @@ public abstract class Collision implements Observable {
      */
     public abstract void notifyListeningObservers(Object object);
 
+    /**
+     * Register an observer to a collision.
+     */
     @Override
     public void registerObserver(Observer ob) {
         observers.add(ob);
     }
 
+    /**
+     * Removes an observer of a collision.
+     */
     @Override
     public void removeObserver(Observer ob) {
         observers.remove(ob);
 
     }
 
+    /**
+     * Notify the collision.
+     */
     @Override
     public void notifyObservers() {
-        // TODO Auto-generated method stub
-
     }
 
 }
