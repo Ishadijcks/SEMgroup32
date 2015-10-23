@@ -1,5 +1,6 @@
 package game.screens;
 
+import game.Driver;
 import game.Game;
 import game.Player;
 
@@ -10,8 +11,6 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
-import settings.ScreenSettings;
 
 /**
  * Draws the player in-game.
@@ -53,12 +52,12 @@ public class DrawPlayer {
      * @param painter
      *            that will use this class
      */
-    public DrawPlayer(Game game, JPanel panel, Painter painter) {
-        DrawPlayer.game = game;
-        DrawPlayer.panel = panel;
-        DrawPlayer.painter = painter;
-
-        topMargin = ScreenSettings.getTopMargin();
+    public DrawPlayer(Game game, JPanel panel, Painter painter){
+        this.game = game;
+        this.panel = panel;
+        this.painter = painter;
+        
+        topMargin = Driver.game.getCurrentLevel().getTopMargin();
         imageLocation = imageLocation.replace("%20", " ");
         imageLocation = imageLocation.replace("target/classes/", "/");
     }

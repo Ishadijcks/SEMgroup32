@@ -8,8 +8,6 @@ import game.bubble.Bubblex8;
 
 import org.junit.Test;
 
-import settings.ScreenSettings;
-
 public class BubbleTest {
 
     @Test
@@ -37,9 +35,9 @@ public class BubbleTest {
     @Test
     public void testBounceX() {
         Bubble bub = new Bubblex8(
-                ScreenSettings.getLeftMargin() + ScreenSettings.getLevelWidth()
+                75 + 850
                         - 5,
-                ScreenSettings.getTopMargin() + ScreenSettings.getLevelHeight(),
+                50 + 500,
                 true, true);
         assertTrue(bub.isDirectionH());
 
@@ -52,8 +50,8 @@ public class BubbleTest {
 
     @Test
     public void testBounceY() {
-        Bubble bub = new Bubblex8(ScreenSettings.getLeftMargin(),
-                ScreenSettings.getTopMargin() + ScreenSettings.getLevelHeight()
+        Bubble bub = new Bubblex8(75,
+                50 + 500
                         - 5, true, true);
         assertTrue(bub.isDirectionV());
         for (int i = 0; i < 100; i++) {
@@ -65,7 +63,7 @@ public class BubbleTest {
 
     @Test
     public void testBounceMaxHeight() {
-        Bubble bub = new Bubblex16(ScreenSettings.getLeftMargin(), 75 + 5,
+        Bubble bub = new Bubblex16(75, 75 + 5,
                 true, false);
 
         assertFalse(bub.isDirectionV());
@@ -79,8 +77,8 @@ public class BubbleTest {
     @Test
     public void testMove2() {
         Bubble bub = new Bubblex8(
-                ScreenSettings.getLeftMargin(),
-                ScreenSettings.getTopMargin() + ScreenSettings.getLevelHeight(),
+                75,
+                50 + 500,
                 true, true);
 
         bub.move();

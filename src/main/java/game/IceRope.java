@@ -1,7 +1,5 @@
 package game;
 
-import settings.RopeSettings;
-import settings.ScreenSettings;
 import game.log.Logger;
 
 /**
@@ -32,11 +30,12 @@ public class IceRope extends Rope {
     @Override
     public void move() {
         Logger.log("Ice rope moved", 5, 5, 100);
-        if (super.yCoord <= ScreenSettings.getTopMargin() - 2) {
-            return;
-        } else {
-            super.yCoord -= RopeSettings.getRopeSpeed();
-        }
+       if (super.yCoord <= Driver.game.getCurrentLevel().getTopMargin() - 2) {
+          return;
+       } 
+       else {
+           super.yCoord -= ropeSpeed;
+       } 
     }
 
 }

@@ -1,10 +1,9 @@
 package game.screens;
 
-import game.Driver;
-import game.DriverFactory;
 import game.MainRunner;
-import game.NormalDriverFactory;
-import game.SurvivalDriverFactory;
+import game.states.NormalGameState;
+import game.states.State;
+import game.states.SurvivalGameState;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -25,6 +24,8 @@ import javax.swing.JTextField;
  *
  */
 public class StartScreen extends JFrame {
+	
+	private State listeningState;
 
     private static final long serialVersionUID = 1L;
     JButton normalGameButton;
@@ -105,10 +106,8 @@ public class StartScreen extends JFrame {
             public void actionPerformed(ActionEvent startGame) {
                 setVisible(false);
                 dispose();
-                DriverFactory dFactory = new NormalDriverFactory();
-                Driver d = dFactory.buildDriver();
-                d.startGame(tf.getText());
-                MainRunner.setDriver(d);
+                MainRunner.setPlayerName(tf.getText());
+                MainRunner.getStateManager().newState(new NormalGameState());
             }
         });
         add(normalGameButton);
@@ -128,10 +127,8 @@ public class StartScreen extends JFrame {
             public void actionPerformed(ActionEvent startGame) {
                 setVisible(false);
                 dispose();
-                DriverFactory dFactory = new SurvivalDriverFactory();
-                Driver d = dFactory.buildDriver();
-                d.startGame(tf.getText());
-                MainRunner.setDriver(d);
+                MainRunner.setPlayerName(tf.getText());
+                MainRunner.getStateManager().newState(new SurvivalGameState());
             }
         });
         add(survivalGameButton);
@@ -173,6 +170,10 @@ public class StartScreen extends JFrame {
             }
         });
         add(stopButton);
+    }
+    
+    public void registerListeningState(State state) {
+    	this.listeningState = state;
     }
 
 }

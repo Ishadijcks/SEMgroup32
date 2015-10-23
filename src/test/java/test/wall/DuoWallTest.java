@@ -11,15 +11,13 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
-import settings.ScreenSettings;
-
 public class DuoWallTest {
 	
 	private DuoWall wall;
 	
 	@Before
 	public void init() {
-		wall = new DuoWall(new Coordinates(10, 0), ScreenSettings.getLevelHeight(), 10);
+		wall = new DuoWall(new Coordinates(10, 0), 500, 10);
 	}
 
 	@Test

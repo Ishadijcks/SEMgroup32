@@ -5,13 +5,9 @@ import game.collisions.CollisionFactory;
 import game.log.LogSettings;
 import game.log.Logger;
 import game.screens.GameScreen;
-import game.screens.LeaderBoardScreen;
-import game.screens.LosingScreen;
+import game.states.LoseSurvivalGameState;
 
 import java.util.ArrayList;
-
-import settings.PlayerSettings;
-import settings.ScreenSettings;
 
 /**
  * Class that executes a survival game.
@@ -24,7 +20,6 @@ public class SurvivalDriver extends Driver {
     private static SurvivalDriver driver;
     private static GameScreen gameScreen;
     private static String name;
-    private static Leaderboard leaderBoard = new Leaderboard();
 
     private ArrayList<Collision> collisions;
 
@@ -67,15 +62,9 @@ public class SurvivalDriver extends Driver {
      * Check if the game has been lost.
      * 
      */
-    public static void gameLost() {
-        EndScore es = new EndScore(name, score.getScore());
-        leaderBoard.addScore(es);
-        Leaderboard.appendToFile();
-        score.resetScore();
+    public void gameLost() {
         gameScreen.dispose();
-        game.toggleProgress();
-        new LeaderBoardScreen(leaderBoard);
-        new LosingScreen(driver, es);
+        listeningState.changeContextState(new LoseSurvivalGameState());
     }
 
     /**
@@ -110,14 +99,13 @@ public class SurvivalDriver extends Driver {
      */
     public void setupGame() {
         driver = this;
-        player = new Player(name, PlayerSettings.getPlayerSpawnPoint());
+        player = new Player(name, 350);
         game = GameFactory.createSurvival(player);
         score = Score.getInstance();
         game.addPlayer(player);
 
-        int centerConstant = (int) Math.round(0.5 * (ScreenSettings
-                .getScreenWidth() - ScreenSettings.getLevelWidth()));
-        ScreenSettings.setLeftMargin(centerConstant);
+        int centerConstant = (int) Math
+                .round(0.5 * (1000 - 850));
     }
 
     /**

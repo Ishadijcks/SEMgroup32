@@ -2,6 +2,7 @@ package game;
 
 import game.bubble.BubbleFactory;
 import game.screens.PauseScreen;
+import game.states.PauseGameState;
 
 /**
  * Class that handles everything of one survival game.
@@ -34,15 +35,6 @@ public class SurvivalGame extends Game {
     }
 
     /**
-     * Game is paused.
-     */
-    @Override
-    public void pauseGame() {
-        super.toggleProgress();
-        new PauseScreen(super.getPlayerList().get(0).getName(), this);
-    }
-
-    /**
      * Updates the state of a game.
      */
     public void update() {
@@ -61,6 +53,6 @@ public class SurvivalGame extends Game {
 
     @Override
     public void resetLevel() {
-        SurvivalDriver.gameLost();
+        //SurvivalDriver.gameLost();
     }
 }

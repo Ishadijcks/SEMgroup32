@@ -5,13 +5,10 @@ import game.collisions.CollisionFactory;
 import game.log.LogSettings;
 import game.log.Logger;
 import game.screens.GameScreen;
-import game.screens.LosingScreen;
-import game.screens.WinningScreen;
+import game.states.LoseGameState;
+import game.states.WinGameState;
 
 import java.util.ArrayList;
-
-import settings.PlayerSettings;
-import settings.ScreenSettings;
 
 /**
  * Class that executes the game.
@@ -51,11 +48,10 @@ public class NormalDriver extends Driver {
      * 
      * @return true if the game is won, false otherwise
      */
-    public static boolean checkGameWon() {
+    public boolean checkGameWon() {
         if (game.getCurrentLevelInt() == game.getLevelList().size() - 1) {
             gameScreen.dispose();
-            Logger.log("Frame destroyed", 9, 4);
-            new WinningScreen(driver);
+            listeningState.changeContextState(new WinGameState());
             return true;
         }
         return false;
@@ -66,15 +62,11 @@ public class NormalDriver extends Driver {
      * 
      * @return true if the game is lost, false otherwise
      */
-    public static boolean checkGameLost() {
+    public boolean checkGameLost() {
         int livesLeft = game.getLives();
         if (livesLeft == 0 && game.inProgress()) {
             gameScreen.dispose();
-            game.toggleProgress();
-            EndScore es = new EndScore(name, score.getScore());
-            score.resetScore();
-            new LosingScreen(driver, es);
-            Logger.log("Game lost", 7, 4);
+            listeningState.changeContextState(new LoseGameState());
             return true;
         }
         return false;
@@ -84,7 +76,7 @@ public class NormalDriver extends Driver {
      * Method that will take care of everything that happens in a game session.
      */
     public void driverHeart() {
-        if (game.inProgress()) {
+		if (game.inProgress()) {
             curLevel = game.getCurrentLevel();
 
             game.moveEntities();
@@ -105,22 +97,21 @@ public class NormalDriver extends Driver {
             checkGameLost();
             checkGameWon();
         }
+    
     }
 
     /**
      * Set up the game.
      */
     public void setupGame() {
-        Player player = new Player(name, PlayerSettings.getPlayerSpawnPoint());
+        Player player = new Player(name, 350);
         game = GameFactory.createSinglePlayer(player);
         
         score = Score.getInstance();
         game.addPlayer(player);
 
         int centerConstant = (int) Math
-                .round(0.5 * (ScreenSettings.getScreenWidth() - ScreenSettings
-                        .getLevelWidth()));
-        ScreenSettings.setLeftMargin(centerConstant);
+                .round(0.5 * (1000 - 850));
     }
 
     /**

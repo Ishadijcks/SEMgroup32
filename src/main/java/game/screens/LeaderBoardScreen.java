@@ -30,6 +30,8 @@ public class LeaderBoardScreen extends JFrame {
         setSize(450, 450);
         this.leaderBoard = leaderBoard;
         addScoreList();
+        revalidate();
+        repaint();
     }
 
     /**

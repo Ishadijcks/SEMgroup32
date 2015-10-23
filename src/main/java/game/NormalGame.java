@@ -41,15 +41,6 @@ public class NormalGame extends Game {
         this.setLives(0);
         this.toggleProgress();
     }
-	
-	/**
-     * Game is paused.
-     */
-	@Override
-    public void pauseGame() {
-        super.toggleProgress();
-        new PauseScreen(super.getPlayerList().get(0).getName(), this);
-    }
 
 	/**
      * Updates the state of a game.

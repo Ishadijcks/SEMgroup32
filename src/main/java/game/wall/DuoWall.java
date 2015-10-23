@@ -4,8 +4,6 @@ import helperobjects.Coordinates;
 
 import java.awt.Color;
 
-import settings.PlayerSettings;
-
 /**
  * Wall class of a duo wall.
  * 
@@ -24,14 +22,15 @@ public class DuoWall extends Wall {
     }
 
     /**
-     * Checks if a player collides with the wall.
+     * Checks if a player collides with the wall. 
+     * A duowall will not move.
      */
     @Override
     public boolean expectPlayerCollision(int xCoord, int yCoord,
             boolean movingLeft) {
-        int plyrXCoord = xCoord;
-        int plyrStepSize = PlayerSettings.getPlayerStepSize();
-        int plyrWidth = PlayerSettings.getPlayerWidth();
+		int plyrXCoord = xCoord;
+		int plyrStepSize = 4;
+		int plyrWidth = 111;
         if (this.isActive())
             if ((plyrXCoord - plyrStepSize <= this.getxCoord()
                     + this.getWidth()
@@ -57,14 +56,6 @@ public class DuoWall extends Wall {
             return true;
         }
         return false;
-    }
-
-    /**
-     * A DuoWall will not move.
-     */
-    @Override
-    public void move() {
-
     }
 
 }

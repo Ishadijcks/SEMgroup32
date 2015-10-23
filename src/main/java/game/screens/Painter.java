@@ -1,5 +1,6 @@
 package game.screens;
 
+import game.Driver;
 import game.Game;
 import game.NormalLevel;
 import game.Score;
@@ -27,8 +28,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import settings.ScreenSettings;
 
 /**
  * Class that will paint everything in a game.
@@ -67,8 +66,8 @@ public class Painter {
         score = scoreInput;
         Painter.panel = panel;
         
-        centerConstant = ScreenSettings.getLeftMargin();
-        topMargin = ScreenSettings.getTopMargin();
+        centerConstant = Driver.game.getCurrentLevel().getLeftMargin();
+        topMargin = Driver.game.getCurrentLevel().getTopMargin();
         
         imageLocation = imageLocation.replace("%20", " ");
         imageLocation = imageLocation.replace("target/classes/", "/");
@@ -145,7 +144,7 @@ public class Painter {
             if (wall.isActive()) {
                 g2d.setColor(wall.getColor());
                 g2d.fillRect(wall.getxCoord(),
-                        wall.getyCoord() + ScreenSettings.getTopMargin(),
+                        wall.getyCoord() + topMargin,
                         wall.getWidth(), wall.getHeight());
                 g2d.setColor(Color.BLACK);
             }

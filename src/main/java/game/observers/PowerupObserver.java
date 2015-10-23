@@ -5,7 +5,6 @@ import game.bubble.Bubble;
 import game.collisions.Collision;
 import game.powerups.Powerup;
 import game.powerups.PowerupFactory;
-import settings.PowerupSettings;
 
 /**
  * Powerup with player collisions observer.
@@ -31,7 +30,8 @@ public class PowerupObserver extends Observer {
 		int bubblePosX = bubble.getX();
         int bubblePosY = bubble.getY();
         
-		if (PowerupSettings.getPowerupChance() > Math.random() * 100) {
+        int powerupChance = 100;        
+		if (powerupChance > Math.random() * 100) {
 	        Powerup powerup = pfac.createRandomPowerup();
 	        powerup.setX(bubblePosX);
 	        powerup.setY(bubblePosY);

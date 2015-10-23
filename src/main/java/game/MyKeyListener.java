@@ -11,8 +11,6 @@ import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-import settings.PlayerSettings;
-
 /**
  * Keylistener that will handle all key inputs.
  * 
@@ -22,6 +20,7 @@ import settings.PlayerSettings;
 public class MyKeyListener extends KeyAdapter {
 
     private Game game;
+    private Player player;
     private RopeFactory rFac;
 
     /**
@@ -58,11 +57,20 @@ public class MyKeyListener extends KeyAdapter {
                 Logger.log("Player pressed right", 0, 5);
                 game.getPlayerList().get(0).movingRight();
                 break;
-            case 32:
             case 38:
                 Logger.log("Player pressed up", 0, 5);
                 if (!Driver.game.getCurrentLevel().hasRope()) {
-                    Driver.game.getCurrentLevel().setRope(rFac.createRope(PlayerSettings.getPlayerHasIceRope()));
+                    player = game.getPlayerList().get(0);
+                    Driver.game.getCurrentLevel().setRope(
+                            rFac.createRope(player.hasIceRope()));
+                }
+                break;
+            case 32:
+                Logger.log("Player pressed space", 0, 5);
+                if (!Driver.game.getCurrentLevel().hasRope()) {
+                    player = game.getPlayerList().get(0);
+                    Driver.game.getCurrentLevel().setRope(
+                            rFac.createRope(player.hasIceRope()));
                 }
                 break;
             case 76:

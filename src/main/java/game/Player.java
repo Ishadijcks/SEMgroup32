@@ -1,8 +1,12 @@
 package game;
 
 import game.log.Logger;
-import settings.PlayerSettings;
-import settings.ScreenSettings;
+import game.powerups.Powerup;
+import game.wall.DuoWall;
+import game.wall.PlayerWall;
+import game.wall.Wall;
+
+import java.util.ArrayList;
 
 /**
  * Class that will control a player.
@@ -13,19 +17,36 @@ import settings.ScreenSettings;
 public class Player {
     private String name;
     private int xCoord;
-    private int yCoord = ScreenSettings.getLevelHeight()
-            - PlayerSettings.getPlayerHeight() + ScreenSettings.getTopMargin();
+    /**
+     * yCoord is calculated by:
+     * levelHeight + playerHeight + topMargin
+     */
+    private int yCoord = 389;
     private int colY = yCoord + 61;
     private int colX;
-    private int height = PlayerSettings.getPlayerHeight();
-    private int width = PlayerSettings.getPlayerWidth();
-    private int stepSize = PlayerSettings.getPlayerStepSize();
+    private final int height = 161;
+    private final int width = 111;
+    private int stepSize = 2;
     private boolean movingLeft = false;
     private boolean movingRight = false;
+    private boolean hasIceRope = false;
 
 
     private final int powerupStepSize = 5;
     private final int normalStepSize = 2;
+    private boolean restrictMovingLeft = false;
+    private boolean restrictMovingRight = false;
+    
+    //Boundaries of movingspace
+    /**
+     * The left boundary is the leftmargin of the screen
+     */
+    private final int boundaryLeft = 75;
+    /**
+     * The right boundary is calculated by
+     * LevelWidth + LeftMargin + 37 <- half of sprite
+     */
+    private final int boundaryRight = 887;
 
     /**
      * Constructor for a player.
@@ -76,36 +97,26 @@ public class Player {
     }
 
     /**
-     * Set the x coordinate of the player.
-     * 
-     * @param x
-     *            new xcoord player
-     */
-    public void setXCoord(int x) {
-        xCoord = x;
-    }
-
-    /**
-     * Moves the player left or right, depending on what key is pressed. list of
-     * walls
+<<<<<<< HEAD
+     * Moves the player left or right, depending on what key is pressed.
+     *            list of walls
      */
     public void move() {
-        if (movingLeft && !PlayerSettings.isRestrictMovingLeft()) {
-            if (xCoord - stepSize > ScreenSettings.getLeftMargin()) {
+        if (movingLeft && !restrictMovingLeft) {
+            if (xCoord - stepSize > boundaryLeft) {
                 xCoord -= stepSize;
                 colX -= stepSize;
-                PlayerSettings.setRestrictMovingRight(false);
+                setRestrictMovingRight(false);
             } else {
                 Logger.log("Player is at the left border", 1, 4);
             }
         }
 
-        if (movingRight && !PlayerSettings.isRestrictMovingRight()) {
-            if (xCoord + stepSize + width < ScreenSettings.getLevelWidth()
-                    + ScreenSettings.getLeftMargin() + 37) {
+        if (movingRight && !restrictMovingRight) {
+            if (xCoord + stepSize + 0.5 * width < boundaryRight) {
                 xCoord += stepSize;
                 colX += stepSize;
-                PlayerSettings.setRestrictMovingLeft(false);
+                setRestrictMovingLeft(false);
             } else {
                 Logger.log("Player is at the right border", 1, 4);
             }
@@ -118,7 +129,16 @@ public class Player {
      * @return true if it has, false otherwise
      */
     public boolean hasIceRope() {
-        return PlayerSettings.getPlayerHasIceRope();
+        return hasIceRope;
+    }
+    
+    /**
+     * Sets the new state of the ice rope
+     * 
+     * @param state of the ice rope
+     */
+    public void setHasIceRope(boolean state) {
+    	hasIceRope = state;
     }
 
     /**
@@ -243,5 +263,33 @@ public class Player {
     public int getPlayerNormalStepSize() {
         return this.normalStepSize;
     }
+
+	/**
+	 * @return the restrictMovingLeft
+	 */
+	public boolean isRestrictMovingLeft() {
+		return restrictMovingLeft;
+	}
+
+	/**
+	 * @param restrictMovingLeft the restrictMovingLeft to set
+	 */
+	public void setRestrictMovingLeft(boolean restrictMovingLeft) {
+		this.restrictMovingLeft = restrictMovingLeft;
+	}
+
+	/**
+	 * @return the restrictMovingRight
+	 */
+	public boolean isRestrictMovingRight() {
+		return restrictMovingRight;
+	}
+
+	/**
+	 * @param restrictMovingRight the restrictMovingRight to set
+	 */
+	public void setRestrictMovingRight(boolean restrictMovingRight) {
+		this.restrictMovingRight = restrictMovingRight;
+	}
 
 }
