@@ -29,7 +29,6 @@ public class PlayerBubbleCollisionTest {
     public Bubble bubble;
     public ArrayList<Bubble> bubbleList;
     public ArrayList<Player> p;
-    private boolean expected;
 
     public PlayerBubbleCollisionTest(int x, int y, boolean exp) {
         bubble = new Bubblex16(x, y, true, true);
@@ -39,7 +38,6 @@ public class PlayerBubbleCollisionTest {
         l = new NormalLevel(p);
         bubbleList = new ArrayList<Bubble>();
         l.addBubble(bubble);
-        this.expected = exp;
     }
 
     @Test

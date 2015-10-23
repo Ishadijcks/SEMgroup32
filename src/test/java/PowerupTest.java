@@ -3,7 +3,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 import game.NormalDriver;
-import game.SurvivalDriver;
 import game.powerups.IcePowerup;
 import game.powerups.LifePowerup;
 import game.powerups.Powerup;
@@ -33,8 +32,6 @@ public class PowerupTest {
     public void init() {
         x = 3;
         y = 5;
-        String name = "speed";
-
         powerup = new SpeedPowerup(x, y);
     }
 
@@ -132,7 +129,6 @@ public class PowerupTest {
 
     @Test
     public void testMoveSurvivalMode() {
-        SurvivalDriver driver = new SurvivalDriver();
         Powerup pow = new IcePowerup(100, 100);
         int deltaY = PowerupSettings.getPowerupSpeed();
         int initY = 100;

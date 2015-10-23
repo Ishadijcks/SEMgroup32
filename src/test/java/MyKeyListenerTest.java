@@ -32,6 +32,7 @@ public class MyKeyListenerTest {
 
     @Test
     public void testKeyPressedKeyEventRight() {
+        @SuppressWarnings("deprecation")
         KeyEvent k = new KeyEvent(new JButton(), 0, 0, 0, 39);
         NormalDriver.game.gameStart();
         key.keyPressed(k);
@@ -40,6 +41,7 @@ public class MyKeyListenerTest {
 
     @Test
     public void testKeyPressedKeyEventLeft() {
+        @SuppressWarnings("deprecation")
         KeyEvent k = new KeyEvent(new JButton(), 0, 0, 0, 37);
         NormalDriver.game.gameStart();
         key.keyPressed(k);
@@ -48,6 +50,7 @@ public class MyKeyListenerTest {
 
     @Test
     public void testKeyPressedKeyEventSpace() {
+        @SuppressWarnings("deprecation")
         KeyEvent k = new KeyEvent(new JButton(), 0, 0, 0, 32);
         NormalDriver.game.gameStart();
         key.keyPressed(k);
@@ -56,6 +59,7 @@ public class MyKeyListenerTest {
 
     @Test
     public void testKeyPressedKeyEventLog() {
+        @SuppressWarnings("deprecation")
         KeyEvent k = new KeyEvent(new JButton(), 0, 0, 0, 76);
         NormalDriver.game.gameStart();
         key.keyPressed(k);
@@ -63,6 +67,7 @@ public class MyKeyListenerTest {
 
     @Test
     public void testKeyPressedKeyEventDefault() {
+        @SuppressWarnings("deprecation")
         KeyEvent k = new KeyEvent(new JButton(), 0, 0, 0, 99);
         NormalDriver.game.gameStart();
         key.keyPressed(k);
@@ -70,6 +75,7 @@ public class MyKeyListenerTest {
 
     @Test
     public void testKeyReleasedKeyEventLeft() {
+        @SuppressWarnings("deprecation")
         KeyEvent k = new KeyEvent(new JButton(), 0, 0, 0, 37);
         NormalDriver.game.gameStart();
         key.keyReleased(k);
@@ -78,6 +84,7 @@ public class MyKeyListenerTest {
 
     @Test
     public void testKeyReleasedKeyEventRight() {
+        @SuppressWarnings("deprecation")
         KeyEvent k = new KeyEvent(new JButton(), 0, 0, 0, 39);
         NormalDriver.game.gameStart();
         key.keyReleased(k);
