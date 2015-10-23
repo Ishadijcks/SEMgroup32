@@ -1,6 +1,5 @@
 package game.screens;
 
-import game.Driver;
 import game.EndScore;
 
 import java.awt.Color;

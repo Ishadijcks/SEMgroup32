@@ -4,10 +4,7 @@ import game.Driver;
 import game.DriverFactory;
 import game.MainRunner;
 import game.NormalDriverFactory;
-import game.Score;
 import game.StateManager;
-import game.log.LogSettings;
-import game.screens.GameScreen;
 
 public class NormalGameState implements State{
 	

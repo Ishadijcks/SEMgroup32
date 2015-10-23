@@ -2,7 +2,6 @@ package game.screens;
 
 import java.awt.Color;
 
-import game.Driver;
 
 /**
  * Class that will create a winning screen.

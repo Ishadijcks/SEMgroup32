@@ -1,7 +1,6 @@
 package game;
 
 import game.log.Logger;
-import game.screens.PauseScreen;
 
 /**
  * Class that will handle a normal game session.

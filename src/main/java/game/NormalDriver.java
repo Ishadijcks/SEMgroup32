@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class NormalDriver extends Driver {
 
     private static String name;
-    private static NormalDriver driver;
     private static GameScreen gameScreen;
     private ArrayList<Collision> collisions;
 
@@ -109,9 +108,6 @@ public class NormalDriver extends Driver {
         
         score = Score.getInstance();
         game.addPlayer(player);
-
-        int centerConstant = (int) Math
-                .round(0.5 * (1000 - 850));
     }
 
     /**

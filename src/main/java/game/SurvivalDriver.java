@@ -17,7 +17,6 @@ import java.util.ArrayList;
  */
 public class SurvivalDriver extends Driver {
 
-    private static SurvivalDriver driver;
     private static GameScreen gameScreen;
     private static String name;
 
@@ -96,14 +95,10 @@ public class SurvivalDriver extends Driver {
      * Set up the game.
      */
     public void setupGame() {
-        driver = this;
         player = new Player(name, 350);
         game = GameFactory.createSurvival(player);
         score = Score.getInstance();
         game.addPlayer(player);
-
-        int centerConstant = (int) Math
-                .round(0.5 * (1000 - 850));
     }
 
     /**

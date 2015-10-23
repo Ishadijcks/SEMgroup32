@@ -1,7 +1,6 @@
 package game;
 
 import game.log.LogSettings;
-import game.screens.StartScreen;
 import game.states.NewGameState;
 
 /**
@@ -13,7 +12,6 @@ import game.states.NewGameState;
 public class MainRunner {
 
     private static Driver driver;
-    private static boolean driverIsSet;
     private final static int GAME_FPS = 120;
     private static StateManager stateMan;
     private static String playerName;

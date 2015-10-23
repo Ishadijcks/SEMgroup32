@@ -1,8 +1,6 @@
 package game;
 
 import game.bubble.BubbleFactory;
-import game.screens.PauseScreen;
-import game.states.PauseGameState;
 
 /**
  * Class that handles everything of one survival game.

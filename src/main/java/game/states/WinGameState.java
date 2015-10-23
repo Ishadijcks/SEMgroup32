@@ -1,6 +1,5 @@
 package game.states;
 
-import game.MainRunner;
 import game.StateManager;
 import game.log.Logger;
 import game.screens.WinningScreen;

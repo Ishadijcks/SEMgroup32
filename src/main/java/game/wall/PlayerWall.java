@@ -1,6 +1,5 @@
 package game.wall;
 
-import game.Driver;
 import helperobjects.Coordinates;
 
 import java.awt.Color;

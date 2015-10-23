@@ -1,12 +1,6 @@
 package game;
 
 import game.log.Logger;
-import game.powerups.Powerup;
-import game.wall.DuoWall;
-import game.wall.PlayerWall;
-import game.wall.Wall;
-
-import java.util.ArrayList;
 
 /**
  * Class that will control a player.
