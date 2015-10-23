@@ -142,5 +142,12 @@ public abstract class Powerup {
 	 * @param game in which powerups will spawn
 	 */
 	public abstract void setGame(Game game);
+
+	/**
+	 * @return the powerupSpeed
+	 */
+	public int getPowerupSpeed() {
+		return powerupSpeed;
+	}
     
 }

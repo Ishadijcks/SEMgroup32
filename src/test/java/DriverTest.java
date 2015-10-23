@@ -2,6 +2,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import game.NormalDriver;
+import game.states.NormalGameState;
 
 import java.util.Random;
 
@@ -35,21 +36,6 @@ public class DriverTest {
         assertFalse(driver.game.inProgress());
         driver.startGame("Isha");
         assertTrue(driver.game.inProgress());
-    }
-
-    @Test
-    public void testCheckGameWon() {
-        assertFalse(driver.checkGameWon());
-        driver.game.setCurrentLevelInt(driver.game.getLevelList().size() - 1);
-        assertTrue(driver.checkGameWon());
-    }
-
-    @Test
-    public void testCheckGameLost() {
-        assertFalse(driver.checkGameLost());
-        driver.game.setLives(0);
-        driver.game.toggleProgress();
-        assertTrue(driver.checkGameLost());
     }
 
 }

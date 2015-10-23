@@ -10,8 +10,6 @@ import java.awt.Color;
 import org.junit.Before;
 import org.junit.Test;
 
-import settings.ScreenSettings;
-
 
 public class PlayerWallTest {
 	

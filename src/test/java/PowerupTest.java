@@ -17,17 +17,13 @@ import javax.swing.ImageIcon;
 import org.junit.Before;
 import org.junit.Test;
 
-import settings.PowerupSettings;
-import settings.ScreenSettings;
-
 public class PowerupTest {
 
     public int x;
     public int y;
     public Powerup powerup;
-    int framesLeft = 10 * ScreenSettings.getFps();
-    int height = PowerupSettings.getPowerupHeight();
-    int width = PowerupSettings.getPowerupWidth();
+    int height = 10;
+    int width = 15;
 
     @Before
     public void init() {
@@ -49,11 +45,6 @@ public class PowerupTest {
     }
 
     @Test
-    public void testIsActive() {
-        assertTrue(powerup.isActive());
-    }
-
-    @Test
     public void testGetHeight() {
         int height2 = 10;
         assertEquals(height, height2);
@@ -64,12 +55,6 @@ public class PowerupTest {
     public void testGetWidth() {
         int width2 = 15;
         assertEquals(width, width2);
-    }
-
-    @Test
-    public void testGetFramesLeft() {
-        int framesLeft2 = 1200;
-        assertEquals(framesLeft, framesLeft2);
     }
 
     @Test
@@ -124,7 +109,7 @@ public class PowerupTest {
         driver.setupGame();
         driver.initDriver();
         Powerup pow = new IcePowerup(100, 100);
-        int deltaY = PowerupSettings.getPowerupSpeed();
+        int deltaY = pow.getPowerupSpeed();
         int initY = 100;
         pow.move();
         assertEquals(initY + deltaY, pow.getY());
@@ -134,35 +119,10 @@ public class PowerupTest {
     public void testMoveSurvivalMode() {
         SurvivalDriver driver = new SurvivalDriver();
         Powerup pow = new IcePowerup(100, 100);
-        int deltaY = PowerupSettings.getPowerupSpeed();
+        int deltaY = pow.getPowerupSpeed();
         int initY = 100;
         pow.move();
         assertEquals(initY + deltaY, pow.getY());
-    }
-
-    @Test
-    public void testDecreaseFramesLeft() {
-        Powerup pow = new IcePowerup(100, 100);
-        int initFrames = pow.getFramesLeft();
-        pow.decreaseFramesLeft();
-        assertEquals(initFrames - 1, pow.getFramesLeft());
-    }
-
-    @Test
-    public void testResetFramesLeft() {
-        Powerup pow = new IcePowerup(100, 100);
-        int initFrames = pow.getFramesLeft();
-        pow.decreaseFramesLeft();
-        assertNotSame(initFrames, pow.getFramesLeft());
-        pow.resetFramesLeft();
-        assertEquals(initFrames, pow.getFramesLeft());
-    }
-
-    @Test
-    public void testSetFramesLeft() {
-        Powerup pow = new IcePowerup(100, 100);
-        pow.setFramesLeft(5);
-        assertEquals(5, pow.getFramesLeft());
     }
 
 }
