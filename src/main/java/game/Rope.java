@@ -10,7 +10,7 @@ import game.log.Logger;
 public class Rope {
     protected int xCoord;
     protected int yCoord;
-    
+
     protected final int ropeSpeed = 4;
 
     /**
@@ -25,12 +25,17 @@ public class Rope {
         this.xCoord = xCoord;
         this.yCoord = yCoord;
     }
-    
-    public boolean isAtTop(){
-    	 if (yCoord <= Driver.game.getCurrentLevel().getTopMargin() - 2) {
-    		 return true;
-    	 }
-    	 return false;
+
+    /**
+     * Checks if the rope is at the top of the screen.
+     * 
+     * @return true if the rope is at the top of the screen, false otherwise
+     */
+    public boolean isAtTop() {
+        if (yCoord <= Driver.game.getCurrentLevel().getTopMargin() - 2) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -40,11 +45,11 @@ public class Rope {
         if (isAtTop()) {
             Driver.game.getCurrentLevel().setRope(null);
             Logger.log("Rope hit the roof", 5, 4);
-         } else {
-             Logger.log("Rope moved from " + xCoord + "," + yCoord
-                     + " to " + xCoord + "," + (yCoord - ropeSpeed), 5, 5);
-             yCoord -= ropeSpeed;
-         }
+        } else {
+            Logger.log("Rope moved from " + xCoord + "," + yCoord + " to "
+                    + xCoord + "," + (yCoord - ropeSpeed), 5, 5);
+            yCoord -= ropeSpeed;
+        }
     }
 
     /**

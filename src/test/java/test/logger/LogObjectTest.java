@@ -31,8 +31,7 @@ public class LogObjectTest {
 
     @Test
     public void testToStringOutOfBounds() {
-        LogObject lo1 = new LogObject("Test Message", -10000, 1);
-        assertEquals("[EXCEPTION] [Player] Test Message", lo.toString());
+       assertEquals("[EXCEPTION] [Player] Test Message", lo.toString());
     }
 
     @Test
@@ -42,7 +41,6 @@ public class LogObjectTest {
 
     @Test
     public void testToStringShortOutOfBounds() {
-        LogObject lo1 = new LogObject("Test Message", -10000, 1);
         assertEquals("[Player] Test Message", lo.toStringShort());
     }
 

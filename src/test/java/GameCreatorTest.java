@@ -19,8 +19,7 @@ public class GameCreatorTest {
         game.setLevelList(new NormalLevelFactory(game.getPlayerList())
                 .getAllLevels());
 
-        GameFactory crtr = new GameFactory();
-        assertTrue(crtr.createMultiPlayer(player1, player2).equals(game));
+        assertTrue(GameFactory.createMultiPlayer(player1, player2).equals(game));
     }
 
 }

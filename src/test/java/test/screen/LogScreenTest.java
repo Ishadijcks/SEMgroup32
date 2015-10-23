@@ -12,8 +12,17 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import org.junit.Test;
 
+/**
+ * Tests if the log screen is created correctly.
+ * 
+ * @author Isha
+ *
+ */
 public class LogScreenTest {
 
+    /**
+     * Tests if the log screen opens correctly.
+     */
     @Test
     public void testLogScreen() {
         try {
@@ -32,6 +41,13 @@ public class LogScreenTest {
 
     }
 
+    /**
+     * Tests if the game reloads the data correctly.
+     * 
+     * @throws UnsupportedAudioFileException UnsupportedAudioFileException
+     * @throws IOException IOException
+     * @throws LineUnavailableException LineUnavailableException
+     */
     @Test
     public void testreloadData() throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
@@ -40,11 +56,18 @@ public class LogScreenTest {
         assertEquals(1, lsc.getFrame().getComponentCount());
     }
 
+    /**
+     * Tests if the horizontal panel is created correctly.
+     * 
+     * @throws UnsupportedAudioFileException UnsupportedAudioFileException
+     * @throws IOException IOException
+     * @throws LineUnavailableException LineUnavailableException
+     */
     @Test
     public void testmakeHorizontalPanel() throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
         LogScreen lsc = new LogScreen();
-        List<String> ll = new LinkedList();
+        List<String> ll = new LinkedList<String>();
         ll.add("test1");
         ll.add("test2");
         ll.add("test3");

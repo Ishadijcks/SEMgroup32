@@ -12,12 +12,12 @@ public interface Observable {
      * register the observer.
      * 
      * @param ob
-     *            Observer
+     *            The current observer object
      */
     void registerObserver(Observer ob);
 
     /**
-     * Removed The observer.
+     * Remove the observer.
      * @param ob The observer to remove
      */
     void removeObserver(Observer ob);

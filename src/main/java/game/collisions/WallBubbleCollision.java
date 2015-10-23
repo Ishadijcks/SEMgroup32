@@ -22,6 +22,9 @@ public class WallBubbleCollision extends Collision {
         super();
     }
 
+    /**
+     * Checks the collision between a player and a bubble.
+     */
     @Override
     public boolean checkCollision(Game game) {
         for (Bubble bubble : game.getCurrentLevel().getBubbleList()) {
@@ -41,12 +44,18 @@ public class WallBubbleCollision extends Collision {
         return false;
     }
 
+    /**
+     * Notify the collision.
+     */
     @Override
     public void notifyListeningObservers() {
         // TODO Auto-generated method stub
 
     }
 
+    /**
+     * Notify the collision.
+     */
     @Override
     public void notifyListeningObservers(Object object) {
         Bubble bubble = (Bubble) object;

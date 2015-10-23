@@ -11,10 +11,10 @@ import java.util.ArrayList;
  */
 public class Bubblex16 extends Bubble {
 
-    private static final int maxheight = 150;
-    private static final Color color = Color.BLACK;
-    private static final double gravitation = 1.3;
-    private static final int diameter = 16;
+    private static final int MAXHEIGHT = 150;
+    private static final Color COLOR = Color.BLACK;
+    private static final double GRAVIATION = 1.3;
+    private static final int DIAMETER = 16;
     private static double speedX = 1;
 
     /**
@@ -32,7 +32,7 @@ public class Bubblex16 extends Bubble {
     public Bubblex16(double xCoord, double yCoord, boolean directionHorizontal,
             boolean directionVertical) {
         super(xCoord, yCoord, directionHorizontal, directionVertical,
-                maxheight, color, gravitation, diameter, speedX);
+                MAXHEIGHT, COLOR, GRAVIATION, DIAMETER, speedX);
         this.scoreWorth = 15;
     }
 
@@ -57,28 +57,28 @@ public class Bubblex16 extends Bubble {
      * @return the maxheight
      */
     public int getMaxheight() {
-        return maxheight;
+        return MAXHEIGHT;
     }
 
     /**
      * @return the color
      */
     public Color getColor() {
-        return color;
+        return COLOR;
     }
 
     /**
      * @return the gravitation
      */
     public double getGravitation() {
-        return gravitation;
+        return GRAVIATION;
     }
 
     /**
      * @return the diameter
      */
     public int getDiameter() {
-        return diameter;
+        return DIAMETER;
     }
 
     /**

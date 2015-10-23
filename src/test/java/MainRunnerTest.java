@@ -16,7 +16,7 @@ public class MainRunnerTest {
     @Test
     public void SetDrivertest() {
         NormalDriverFactory driverFactory = new NormalDriverFactory();
-        mr.setDriver(driverFactory.buildDriver());
+        MainRunner.setDriver(driverFactory.buildDriver());
         assertTrue(mr.toString() != null);
     }
 

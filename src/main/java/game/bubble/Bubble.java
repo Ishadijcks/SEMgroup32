@@ -79,7 +79,7 @@ public abstract class Bubble {
         this.newBubble = true;
 
     }
-    
+
     /**
      * Move the bubble.
      */
@@ -94,7 +94,8 @@ public abstract class Bubble {
      * Check if the bubble isn'time outside of the borders.
      */
     public void outOfBoardCheck() {
-        if (yCoord < Driver.game.getCurrentLevel().getTopMargin() || !(yCoord > 0)) {
+        if (yCoord < Driver.game.getCurrentLevel().getTopMargin()
+                || !(yCoord > 0)) {
             yCoord = maxheight;
         }
     }
@@ -103,13 +104,19 @@ public abstract class Bubble {
      * Checks if the bubble bounced against the borders.
      */
     public void bounceBorder() {
-        if (xCoord + diameter > Driver.game.getCurrentLevel().getLeftMargin() + Driver.game.getCurrentLevel().getWidth()
-                && directionHorizontal || xCoord <= Driver.game.getCurrentLevel().getLeftMargin() && !directionHorizontal) {
+        if (xCoord + diameter > Driver.game.getCurrentLevel().getLeftMargin()
+                + Driver.game.getCurrentLevel().getWidth()
+                && directionHorizontal
+                || xCoord <= Driver.game.getCurrentLevel().getLeftMargin()
+                && !directionHorizontal) {
             bounceH();
         }
 
-        if (yCoord + diameter > Driver.game.getCurrentLevel().getTopMargin() + Driver.game.getCurrentLevel().getHeight()
-                && directionVertical || yCoord <=Driver.game.getCurrentLevel().getTopMargin() && !directionVertical) {
+        if (yCoord + diameter > Driver.game.getCurrentLevel().getTopMargin()
+                + Driver.game.getCurrentLevel().getHeight()
+                && directionVertical
+                || yCoord <= Driver.game.getCurrentLevel().getTopMargin()
+                && !directionVertical) {
             bounceV();
         }
     }
@@ -143,6 +150,23 @@ public abstract class Bubble {
      * Updates the y-Coordinate location of the bubble.
      */
     public void moveY() {
+        mainMovementY();
+        if (lastUpSpeed < 0.5
+                && !directionVertical
+                && yCoord <
+                        + 500) {
+            timer += 0.4;
+        }
+        if (timer > 5) {
+            bounceV();
+            timer = 1;
+        }
+    }
+
+    /**
+     * The main movement of the bubble verticlally.
+     */
+    public void mainMovementY() {
         if (directionVertical) {
             sOld = 0.5 * gravitation * time * time;
             time += timeStep;
@@ -161,13 +185,15 @@ public abstract class Bubble {
                 newBubble = false;
                 lastDownSpeed = 4;
             }
-            factor = ((yCoord - maxheight) / (Driver.game.getCurrentLevel().getTopMargin()
-                    + Driver.game.getCurrentLevel().getHeight() - maxheight));
+            factor = ((yCoord - maxheight) / (Driver.game.getCurrentLevel()
+                    .getTopMargin() + Driver.game.getCurrentLevel().getHeight() - maxheight));
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             yCoord -= lastUpSpeed;
         }
-        if (lastUpSpeed < 0.5 && !directionVertical
-                && yCoord < Driver.game.getCurrentLevel().getTopMargin() + Driver.game.getCurrentLevel().getHeight() - 50) {
+        if (lastUpSpeed < 0.5
+                && !directionVertical
+                && yCoord < Driver.game.getCurrentLevel().getTopMargin()
+                        + Driver.game.getCurrentLevel().getHeight() - 50) {
             timer += 0.4;
         }
         if (timer > 5) {
@@ -420,13 +446,17 @@ public abstract class Bubble {
     }
 
     /**
-     * @return the xCoord
+     * Get the x-Coordinate of a bubble.
+     * 
+     * @return the x-Coordinate
      */
     public double getxCoord() {
         return xCoord;
     }
 
     /**
+     * Set the x-Coordinate of a bubble.
+     * 
      * @param xCoord
      *            the xCoord to set
      */
@@ -435,6 +465,8 @@ public abstract class Bubble {
     }
 
     /**
+     * Get the y-Coordinate of a bubble.
+     * 
      * @return the yCoord
      */
     public double getyCoord() {
@@ -442,8 +474,10 @@ public abstract class Bubble {
     }
 
     /**
+     * Set the y-Coordinate of a bubble.
+     * 
      * @param yCoord
-     *            the yCoord to set
+     *            the y-Coordinate to set
      */
     public void setyCoord(double yCoord) {
         this.yCoord = yCoord;

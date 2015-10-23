@@ -32,7 +32,6 @@ public class PlayerPowerupCollisionTest {
     public Player player;
     public Powerup pow;
     public ArrayList<Player> p;
-    private boolean expected;
 
     public PlayerPowerupCollisionTest(int x, int y, boolean exp) {
         player = new Player("Test", 100);
@@ -41,7 +40,6 @@ public class PlayerPowerupCollisionTest {
         l = new NormalLevel(p);
         pow = new SpeedPowerup(x, y);
         l.addPowerup(pow);
-        this.expected = exp;
     }
 
     @Test

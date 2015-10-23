@@ -50,6 +50,9 @@ public class NormalGame extends Game {
 		
 	}
 
+	/**
+	 * Will reset the level.
+	 */
 	@Override
 	public void resetLevel() {
     	NormalLevelFactory nLevelFac = new NormalLevelFactory(playerList);

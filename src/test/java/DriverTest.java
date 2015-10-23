@@ -1,8 +1,8 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import game.Driver;
 import game.NormalDriver;
-import game.states.NormalGameState;
 
 import java.util.Random;
 
@@ -33,9 +33,8 @@ public class DriverTest {
 
     @Test
     public void testStartGame() {
-        assertFalse(driver.game.inProgress());
+        assertFalse(Driver.game.inProgress());
         driver.startGame("Isha");
-        assertTrue(driver.game.inProgress());
+        assertTrue(Driver.game.inProgress());
     }
-
 }

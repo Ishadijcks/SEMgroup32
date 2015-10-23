@@ -7,7 +7,6 @@ import game.Score;
 import game.log.Logger;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -17,7 +16,6 @@ import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -39,13 +37,6 @@ public class GameScreen extends JPanel {
 
     /**
      * Constructor for the game screen class.
-     * 
-     * @throws UnsupportedAudioFileException
-     *             exception
-     * @throws IOException
-     *             exception
-     * @throws LineUnavailableException
-     *             exception
      */
     public GameScreen() {
         frame = new JFrame("Game Screen");

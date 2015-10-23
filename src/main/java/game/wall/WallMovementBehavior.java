@@ -7,6 +7,7 @@ package game.wall;
  *
  */
 public interface WallMovementBehavior {
+    
     /**
      * The movement of the wall method.
      */

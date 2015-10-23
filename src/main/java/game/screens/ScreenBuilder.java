@@ -9,6 +9,7 @@ import javax.swing.JFrame;
  *
  */
 public class ScreenBuilder {
+    
     /**
      * Initializes the given screen.
      * 

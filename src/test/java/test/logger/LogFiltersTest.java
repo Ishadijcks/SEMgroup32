@@ -52,7 +52,6 @@ public class LogFiltersTest {
 
     @Test
     public void testSetSeverity() {
-        int initSev = filter.getSeverity();
         filter.setSeverity(5);
         assertEquals(5, filter.getSeverity());
     }

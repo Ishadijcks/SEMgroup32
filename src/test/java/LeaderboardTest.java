@@ -63,7 +63,7 @@ public class LeaderboardTest {
     @Test
     public void testFullLeaderBoardEmpty() {
         led.resetScoreList();
-        assertTrue(led.fullLeaderBoard().equals(""));
+        assertTrue(Leaderboard.fullLeaderBoard().equals(""));
     }
 
     @Test
@@ -71,7 +71,7 @@ public class LeaderboardTest {
         led.resetScoreList();
         EndScore sc = new EndScore("ddd", 101);
         led.addScore(sc);
-        assertTrue(led.fullLeaderBoard().equals("ddd:101\n"));
+        assertTrue(Leaderboard.fullLeaderBoard().equals("ddd:101\n"));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class LeaderboardTest {
         EndScore sc1 = new EndScore("dddd", 20);
         led.addScore(sc);
         led.addScore(sc1);
-        assertTrue(led.fullLeaderBoard().equals("ddd:101\ndddd:20\n"));
+        assertTrue(Leaderboard.fullLeaderBoard().equals("ddd:101\ndddd:20\n"));
     }
 
     @Test
@@ -96,7 +96,7 @@ public class LeaderboardTest {
 
     @Test
     public void testAppendToFile() {
-        led.appendToFile();
+        Leaderboard.appendToFile();
         File f = new File("leaderboard.txt");
         assertTrue(f.exists());
         assertFalse(f.isDirectory());

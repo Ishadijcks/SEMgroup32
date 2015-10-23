@@ -9,12 +9,20 @@ import helperobjects.Coordinates;
  */
 public class HorizontalMoveBubbleWall extends BubbleWall {
 
+    @SuppressWarnings("unused")
     private int bouncedOn;
     private MoveHorizontally mover;
 
     /**
      * Constructor of the horizontal move bubble wall.
+     * @param coordinates of the wall x and y
+     * @param height of the wall
+     * @param width of the wall
+     * @param leftBound left boundary
+     * @param rightBound right boundary
+     * @param speed of the wall
      */
+     
     public HorizontalMoveBubbleWall(Coordinates coordinates, int height,
             int width, int leftBound, int rightBound, int speed) {
         super(coordinates, height, width);

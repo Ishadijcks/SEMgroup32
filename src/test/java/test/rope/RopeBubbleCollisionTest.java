@@ -17,9 +17,18 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
+/**
+ * Tests collisions between the rope and the bubble.
+ * @author Isha
+ *
+ */
 @RunWith(Parameterized.class)
 public class RopeBubbleCollisionTest {
 
+    /**
+     * Returns the parameters used to test.
+     * @return the parameters used to test
+     */
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] { { 20, 66, true },
@@ -35,8 +44,13 @@ public class RopeBubbleCollisionTest {
     public Bubble bubble;
     public ArrayList<Bubble> bubbleList;
     public ArrayList<Player> p;
-    private boolean expected;
-
+    
+    /**
+     * Sets up the test variables.
+     * @param x xCoord
+     * @param y yCoord
+     * @param exp expected value
+     */
     public RopeBubbleCollisionTest(int x, int y, boolean exp) {
         bubble = new Bubblex16(20, 50, true, true);
         p = new ArrayList<Player>();
@@ -45,16 +59,18 @@ public class RopeBubbleCollisionTest {
         Rope r = new Rope(x, y);
         l.setRope(r);
         l.addBubble(bubble);
-        this.expected = exp;
         NormalDriver nd = new NormalDriver();
         nd.setupGame();
         nd.initDriver();
         nd.startGame("Isha");
     }
 
+    /**
+     * Runs the tests.
+     */
     @Test
     public void testCheckCollisionRope() {
-        // assertEquals(this.expected, l.handleCollisionRope());
+      //   assertEquals(this.expected, l.handleCollisionRope());
     }
 
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class CollisionFactory {
 
     /**
-     * The constructor.
+     * The constructor of the CollisionFactory.
      */
     public CollisionFactory() {
         // TODO Auto-generated constructor stub
@@ -60,7 +60,7 @@ public class CollisionFactory {
     }
 
     /**
-     * BUilder of the wall and bubble collision.
+     * Builder of the wall and bubble collision.
      * @return the Collision object
      */
     public Collision buildWallBubbleCollision() {

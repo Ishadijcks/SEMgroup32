@@ -51,6 +51,9 @@ public class SurvivalGame extends Game {
         }
     }
 
+    /**
+     * Resets the level.
+     */
     @Override
     public void resetLevel() {
         //SurvivalDriver.gameLost();

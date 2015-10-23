@@ -20,6 +20,9 @@ public class PlayerPowerupCollision extends Collision {
 		super();
 	}
 
+	/**
+     * Checks the collision between a player and a bubble.
+     */
 	@Override
 	public boolean checkCollision(Game game) {
         Player player1 = game.getPlayerList().get(0);
@@ -39,12 +42,18 @@ public class PlayerPowerupCollision extends Collision {
         return false;
 	}
 
+	/**
+     * Notify the collision.
+     */
 	@Override
 	public void notifyListeningObservers() {
 		// TODO Auto-generated method stub
 
 	}
 
+	/**
+     * Notify the collision.
+     */
 	@Override
 	public void notifyListeningObservers(Object object) {
 		Powerup powerup = (Powerup) object;
