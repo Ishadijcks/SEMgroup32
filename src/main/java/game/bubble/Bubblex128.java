@@ -15,7 +15,7 @@ public class Bubblex128 extends Bubble {
     private static final Color COLOR = Color.PINK;
     private static final double GRAVITATION = 1;
     private static final int DIAMETER = 128;
-    private static double speedX = 1;
+    private static final double SPEEDX = 1;
 
     /**
      * Constructor which will make a new bubble with the given parameters.
@@ -31,8 +31,14 @@ public class Bubblex128 extends Bubble {
      */
     public Bubblex128(double xCoord, double yCoord,
             boolean directionHorizontal, boolean directionVertical) {
-        super(xCoord, yCoord, directionHorizontal, directionVertical,
-                MAXHEIGHT, COLOR, GRAVITATION, DIAMETER, speedX);
+        super(xCoord, yCoord, directionHorizontal, directionVertical);
+        
+        super.maxheight = MAXHEIGHT;
+        super.color = COLOR;
+        super.gravitation = GRAVITATION;
+        super.diameter = DIAMETER;
+        super.speedX = SPEEDX;
+        
         this.scoreWorth = 30;
     }
 
@@ -86,14 +92,6 @@ public class Bubblex128 extends Bubble {
      */
     public double getSpeedX() {
         return speedX;
-    }
-
-    /**
-     * @param speedX
-     *            the speedX to set
-     */
-    public void setSpeedX(double speedX) {
-        Bubblex128.speedX = speedX;
     }
 
 }

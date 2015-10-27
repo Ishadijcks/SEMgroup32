@@ -23,11 +23,11 @@ public abstract class Bubble {
     protected boolean newBubble;
     protected double wallBounceBoost = 0;
 
-    private int maxheight;
-    private Color color;
-    private double gravitation;
-    private int diameter;
-    private double speedX;
+    protected int maxheight;
+    protected Color color;
+    protected double gravitation;
+    protected int diameter;
+    protected double speedX;
 
     protected double shifting;
     protected double sOld;
@@ -48,31 +48,16 @@ public abstract class Bubble {
      *            horizontal direction
      * @param directionVertical
      *            vertical direction
-     * @param maxheight
-     *            max bounce height
-     * @param color
-     *            of the ball
-     * @param gravitation
-     *            of the ball
-     * @param diameter
-     *            of the ball
-     * @param speedX
-     *            speed of the x-Coordination movement
      */
     public Bubble(double xCoord, double yCoord, boolean directionHorizontal,
-            boolean directionVertical, int maxheight, Color color,
-            double gravitation, int diameter, double speedX) {
+            boolean directionVertical) {
 
         Logger.log("Bubble created with diameter " + diameter, 3, 4);
 
         this.xCoord = xCoord;
         this.yCoord = yCoord;
 
-        this.maxheight = maxheight;
-        this.color = color;
-        this.gravitation = gravitation;
-        this.diameter = diameter;
-        this.speedX = speedX;
+        
 
         this.directionHorizontal = directionHorizontal;
         this.directionVertical = directionVertical;
