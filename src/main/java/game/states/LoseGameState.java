@@ -8,13 +8,14 @@ import game.StateManager;
 import game.log.Logger;
 import game.screens.LosingScreen;
 
-public class LoseGameState implements State{
+/**
+ * The state the game is in when the game is lost.
+ * @author floris
+ *
+ */
+public class LoseGameState implements State {
 	
 	private StateManager context;
-
-	public LoseGameState() {
-		
-	}
 
 	@Override
 	public void handle(StateManager context) {
