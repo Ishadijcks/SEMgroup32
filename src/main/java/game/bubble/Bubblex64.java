@@ -15,7 +15,7 @@ public class Bubblex64 extends Bubble {
     private static final Color COLOR = Color.CYAN;
     private static final double GRAVITATION = 1.1;
     private static final int DIAMETER = 64;
-    private static double speedX = 1.3;
+    private static final double SPEEDX = 1.3;
 
     /**
      * Constructor which will make a new bubble with the given parameters.
@@ -31,8 +31,14 @@ public class Bubblex64 extends Bubble {
      */
     public Bubblex64(double xCoord, double yCoord, boolean directionHorizontal,
             boolean directionVertical) {
-        super(xCoord, yCoord, directionHorizontal, directionVertical,
-                MAXHEIGHT, COLOR, GRAVITATION, DIAMETER, speedX);
+    	super(xCoord, yCoord, directionHorizontal, directionVertical);
+        
+        super.maxheight = MAXHEIGHT;
+        super.color = COLOR;
+        super.gravitation = GRAVITATION;
+        super.diameter = DIAMETER;
+        super.speedX = SPEEDX;
+        
         this.scoreWorth = 25;
     }
 
@@ -86,14 +92,6 @@ public class Bubblex64 extends Bubble {
      */
     public double getSpeedX() {
         return speedX;
-    }
-
-    /**
-     * @param speedX
-     *            the speedX to set
-     */
-    public void setSpeedX(double speedX) {
-        Bubblex64.speedX = speedX;
     }
 
 }

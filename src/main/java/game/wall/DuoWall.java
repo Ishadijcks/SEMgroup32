@@ -39,9 +39,9 @@ public class DuoWall extends Wall {
     @Override
     public boolean expectPlayerCollision(int xCoord, int yCoord,
             boolean movingLeft) {
-        int plyrXCoord = xCoord;
-        int plyrStepSize = 4;
-        int plyrWidth = 111;
+		int plyrXCoord = xCoord;
+		int plyrStepSize = 4;
+		int plyrWidth = 111;
         if (this.isActive()) {
             if ((plyrXCoord - plyrStepSize <= this.getxCoord()
                     + this.getWidth()

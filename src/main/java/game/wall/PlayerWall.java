@@ -39,9 +39,9 @@ public class PlayerWall extends Wall {
     @Override
     public boolean expectPlayerCollision(int xCoord, int yCoord,
             boolean movingLeft) {
-        int plyrXCoord = xCoord;
-        int plyrStepSize = 4;
-        int plyrWidth = 80;
+		int plyrXCoord = xCoord;
+		int plyrStepSize = 4;
+		int plyrWidth = 80;
         if (this.isActive()) {
             if ((plyrXCoord - plyrStepSize <= this.getxCoord()
                     + this.getWidth()
