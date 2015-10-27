@@ -10,32 +10,34 @@ import game.screens.LosingScreen;
 
 /**
  * The state the game is in when the game is lost.
- * @author floris
+ * 
+ * @author Floris
  *
  */
 public class LoseGameState implements State {
-	
-	private StateManager context;
-	
-	@Override
-	public void handle(StateManager context) {
-		this.context = context;
+
+    private StateManager context;
+
+    @Override
+    public void handle(StateManager context) {
+        this.context = context;
         Driver.game.toggleProgress();
-        EndScore es = new EndScore(MainRunner.getPlayerName(), Score.getInstance().getScore());
+        EndScore es = new EndScore(MainRunner.getPlayerName(), Score
+                .getInstance().getScore());
         Score.getInstance().resetScore();
         new LosingScreen(es);
-        Logger.log("Game lost", 7, 4);		
-	}
+        Logger.log("Game lost", 7, 4);
+    }
 
-	@Override
-	public void changeContextState(State state) {
-		context.newState(state);
-	}
+    @Override
+    public void changeContextState(State state) {
+        context.newState(state);
+    }
 
-	@Override
-	public void handleFallBack() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void handleFallBack() {
+        // TODO Auto-generated method stub
+
+    }
 
 }

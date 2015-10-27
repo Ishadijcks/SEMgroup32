@@ -57,8 +57,6 @@ public abstract class Bubble {
         this.xCoord = xCoord;
         this.yCoord = yCoord;
 
-        
-
         this.directionHorizontal = directionHorizontal;
         this.directionVertical = directionVertical;
         this.newBubble = true;
@@ -172,6 +170,14 @@ public abstract class Bubble {
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             yCoord -= lastUpSpeed;
         }
+        advanceCurveAtTop();
+    }
+
+    /**
+     * Advance curve for smooth movement. At the top of the curve slows
+     * gradually down.
+     */
+    public void advanceCurveAtTop() {
         if (lastUpSpeed < 0.5
                 && !directionVertical
                 && yCoord < Driver.game.getCurrentLevel().getTopMargin()
@@ -342,7 +348,7 @@ public abstract class Bubble {
      * @return true if the object is from the same type and has the same
      *         attributes
      */
-    //CHECKSTYLE:OFF
+    // CHECKSTYLE:OFF
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
