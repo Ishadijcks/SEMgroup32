@@ -25,9 +25,7 @@ import javax.swing.JTextField;
  */
 public class StartScreen extends JFrame {
 	
-	private State listeningState;
-
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
     JButton normalGameButton;
     JButton survivalGameButton;
     JButton settingsButton;
@@ -173,7 +171,6 @@ public class StartScreen extends JFrame {
     }
     
     public void registerListeningState(State state) {
-    	this.listeningState = state;
     }
 
 }

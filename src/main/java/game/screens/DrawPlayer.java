@@ -53,9 +53,9 @@ public class DrawPlayer {
      *            that will use this class
      */
     public DrawPlayer(Game game, JPanel panel, Painter painter){
-        this.game = game;
-        this.panel = panel;
-        this.painter = painter;
+        DrawPlayer.game = game;
+        DrawPlayer.panel = panel;
+        DrawPlayer.painter = painter;
         
         topMargin = Driver.game.getCurrentLevel().getTopMargin();
         imageLocation = imageLocation.replace("%20", " ");

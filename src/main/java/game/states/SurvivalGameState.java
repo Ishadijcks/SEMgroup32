@@ -31,7 +31,8 @@ public class SurvivalGameState implements State{
 
 	@Override
 	public void handleFallBack() {
-		MainRunner.getDriver().game.toggleProgress();
+		MainRunner.getDriver();
+        Driver.game.toggleProgress();
 	}
 
 }
