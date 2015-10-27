@@ -15,7 +15,6 @@ import helperobjects.Coordinates;
 
 import java.util.ArrayList;
 
-
 /**
  * Class that creates a level for the normal game mode.
  * 
@@ -25,10 +24,12 @@ public class NormalLevelFactory {
 
     private static ArrayList<Player> playerList;
     private static int levelsAvailable = 10;
-    
+
     /**
      * Creates a normalLevelFactory with a playerList.
-     * @param pList the playerList to use
+     * 
+     * @param pList
+     *            the playerList to use
      */
     public NormalLevelFactory(ArrayList<Player> pList) {
         NormalLevelFactory.playerList = pList;
@@ -94,11 +95,14 @@ public class NormalLevelFactory {
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
         level.addBubble(bubble2);
-        VerticalMoveBubbleWall wall1 = new VerticalMoveBubbleWall(new Coordinates(300, 55), 150, 5, 15, 420, 3);
+        VerticalMoveBubbleWall wall1 = new VerticalMoveBubbleWall(
+                new Coordinates(300, 55), 150, 5, 15, 420, 3);
         level.addWall(wall1);
-        HorizontalMoveBubbleWall wall3 = new HorizontalMoveBubbleWall(new Coordinates(225, 300), 20, 300, 250, 400, 3);
+        HorizontalMoveBubbleWall wall3 = new HorizontalMoveBubbleWall(
+                new Coordinates(225, 300), 20, 300, 250, 400, 3);
         level.addWall(wall3);
-        VerticalMoveBubbleWall wall9 = new VerticalMoveBubbleWall(new Coordinates(625, 5), 200, 10, 0, 300, 1);
+        VerticalMoveBubbleWall wall9 = new VerticalMoveBubbleWall(
+                new Coordinates(625, 5), 200, 10, 0, 300, 1);
         level.addWall(wall9);
         level.setLevelNumber(1);
         return level;
@@ -116,10 +120,13 @@ public class NormalLevelFactory {
         int levelHeight = 500;
         level.addBubble(bubble1);
         level.addBubble(bubble2);
-        BubbleWall wall = new NoMoveBubbleWall(new Coordinates(300, 0), levelHeight - 200, 50);
+        BubbleWall wall = new NoMoveBubbleWall(new Coordinates(300, 0),
+                levelHeight - 200, 50);
         PlayerWall wall2 = new PlayerWall(new Coordinates(700, 0), 5);
-        BubbleWall wall3 = new NoMoveBubbleWall(new Coordinates(850, 0),levelHeight - 400, 30);
-        BubbleWall wall4 = new NoMoveBubbleWall(new Coordinates(900, 0), levelHeight - 100, 20);
+        BubbleWall wall3 = new NoMoveBubbleWall(new Coordinates(850, 0),
+                levelHeight - 400, 30);
+        BubbleWall wall4 = new NoMoveBubbleWall(new Coordinates(900, 0),
+                levelHeight - 100, 20);
         level.addWall(wall);
         level.addWall(wall2);
         level.addWall(wall3);
@@ -258,6 +265,7 @@ public class NormalLevelFactory {
 
     /**
      * The total amount of playable levels.
+     * 
      * @return int of the total amount of playable levels
      */
     public int getLevelsAvailable() {

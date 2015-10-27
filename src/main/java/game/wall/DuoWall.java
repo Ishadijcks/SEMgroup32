@@ -39,10 +39,10 @@ public class DuoWall extends Wall {
     @Override
     public boolean expectPlayerCollision(int xCoord, int yCoord,
             boolean movingLeft) {
-		int plyrXCoord = xCoord;
-		int plyrStepSize = 4;
-		int plyrWidth = 111;
-        if (this.isActive()){
+        int plyrXCoord = xCoord;
+        int plyrStepSize = 4;
+        int plyrWidth = 111;
+        if (this.isActive()) {
             if ((plyrXCoord - plyrStepSize <= this.getxCoord()
                     + this.getWidth()
                     && plyrXCoord - plyrStepSize >= this.getxCoord() && movingLeft)
@@ -58,7 +58,8 @@ public class DuoWall extends Wall {
 
     /**
      * Checks if a bubble collides with the wall.
-     *  @param BubbleDiameter
+     * 
+     * @param BubbleDiameter
      *            is size of the bubble
      * @param BubblexCoord
      *            of the bubble

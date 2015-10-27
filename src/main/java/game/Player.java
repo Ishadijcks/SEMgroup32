@@ -11,10 +11,6 @@ import game.log.Logger;
 public class Player {
     private String name;
     private int xCoord;
-    /**
-     * yCoord is calculated by:
-     * levelHeight + playerHeight + topMargin
-     */
     private int yCoord = 389;
     private int colY = yCoord + 61;
     private int colX;
@@ -25,20 +21,18 @@ public class Player {
     private boolean movingRight = false;
     private boolean hasIceRope = false;
 
-
     private final int powerupStepSize = 5;
     private final int normalStepSize = 2;
     private boolean restrictMovingLeft = false;
     private boolean restrictMovingRight = false;
-    
-    //Boundaries of movingspace
+
     /**
-     * The left boundary is the leftmargin of the screen
+     * The left boundary is the left margin of the screen.
      */
     private final int boundaryLeft = 75;
     /**
-     * The right boundary is calculated by
-     * LevelWidth + LeftMargin + 37 <- half of sprite
+     * The right boundary is calculated by LevelWidth + LeftMargin + 37 <- half
+     * of sprite.
      */
     private final int boundaryRight = 887;
 
@@ -91,9 +85,8 @@ public class Player {
     }
 
     /**
-<<<<<<< HEAD
-     * Moves the player left or right, depending on what key is pressed.
-     *            list of walls
+     * <<<<<<< HEAD Moves the player left or right, depending on what key is
+     * pressed. list of walls
      */
     public void move() {
         if (movingLeft && !restrictMovingLeft) {
@@ -125,14 +118,15 @@ public class Player {
     public boolean hasIceRope() {
         return hasIceRope;
     }
-    
+
     /**
-     * Sets the new state of the ice rope
+     * Sets the new state of the ice rope.
      * 
-     * @param state of the ice rope
+     * @param state
+     *            of the ice rope
      */
     public void setHasIceRope(boolean state) {
-    	hasIceRope = state;
+        hasIceRope = state;
     }
 
     /**
@@ -235,10 +229,11 @@ public class Player {
         return stepSize;
     }
 
-
     /**
      * Set the stepsize of the player.
-     * @param stepSize The stepsize
+     * 
+     * @param stepSize
+     *            The stepsize
      */
     public void setStepSize(int stepSize) {
         this.stepSize = stepSize;
@@ -258,32 +253,34 @@ public class Player {
         return this.normalStepSize;
     }
 
-	/**
-	 * @return the restrictMovingLeft
-	 */
-	public boolean isRestrictMovingLeft() {
-		return restrictMovingLeft;
-	}
+    /**
+     * @return the restrictMovingLeft
+     */
+    public boolean isRestrictMovingLeft() {
+        return restrictMovingLeft;
+    }
 
-	/**
-	 * @param restrictMovingLeft the restrictMovingLeft to set
-	 */
-	public void setRestrictMovingLeft(boolean restrictMovingLeft) {
-		this.restrictMovingLeft = restrictMovingLeft;
-	}
+    /**
+     * @param restrictMovingLeft
+     *            the restrictMovingLeft to set
+     */
+    public void setRestrictMovingLeft(boolean restrictMovingLeft) {
+        this.restrictMovingLeft = restrictMovingLeft;
+    }
 
-	/**
-	 * @return the restrictMovingRight
-	 */
-	public boolean isRestrictMovingRight() {
-		return restrictMovingRight;
-	}
+    /**
+     * @return the restrictMovingRight
+     */
+    public boolean isRestrictMovingRight() {
+        return restrictMovingRight;
+    }
 
-	/**
-	 * @param restrictMovingRight the restrictMovingRight to set
-	 */
-	public void setRestrictMovingRight(boolean restrictMovingRight) {
-		this.restrictMovingRight = restrictMovingRight;
-	}
+    /**
+     * @param restrictMovingRight
+     *            the restrictMovingRight to set
+     */
+    public void setRestrictMovingRight(boolean restrictMovingRight) {
+        this.restrictMovingRight = restrictMovingRight;
+    }
 
 }
