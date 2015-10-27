@@ -1,0 +1,74 @@
+-------------------------------------------------------------------------------
+Test set: SettingsTest
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 16, Errors: 0, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
+SettingsTest.testGetPlayerPowerupStepSize()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetPlayerPowerupStepSize(SettingsTest.java:51)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 19 more
+
+SettingsTest.testGetSmallestBubbleSize()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetSmallestBubbleSize(SettingsTest.java:66)
+
+SettingsTest.testGetPowerupChance()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetPowerupChance(SettingsTest.java:76)
+
+SettingsTest.testGetPowerupWidth()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetPowerupWidth(SettingsTest.java:81)
+
+SettingsTest.testGetScreenWidth()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetScreenWidth(SettingsTest.java:16)
+
+SettingsTest.testGetLevelHeight()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetLevelHeight(SettingsTest.java:31)
+
+SettingsTest.testGetPlayerStepSize()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetPlayerStepSize(SettingsTest.java:46)
+
+SettingsTest.testGetLevelWidth()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetLevelWidth(SettingsTest.java:26)
+
+SettingsTest.testGetPlayerHeight()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetPlayerHeight(SettingsTest.java:36)
+
+SettingsTest.testGetScreenHeight()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetScreenHeight(SettingsTest.java:21)
+
+SettingsTest.testGetPlayerWidth()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetPlayerWidth(SettingsTest.java:41)
+
+SettingsTest.testGetPowerupSpeed()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetPowerupSpeed(SettingsTest.java:71)
+
+SettingsTest.testGetPowerupHeight()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetPowerupHeight(SettingsTest.java:86)
+
+SettingsTest.testGetLives()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetLives(SettingsTest.java:56)
+
+SettingsTest.testGetRopeSpeed()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetRopeSpeed(SettingsTest.java:61)
+
+SettingsTest.testGetFps()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at SettingsTest.testGetFps(SettingsTest.java:11)
+

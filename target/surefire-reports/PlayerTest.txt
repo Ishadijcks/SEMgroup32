@@ -1,0 +1,106 @@
+-------------------------------------------------------------------------------
+Test set: PlayerTest
+-------------------------------------------------------------------------------
+Tests run: 24, Failures: 24, Errors: 0, Skipped: 0, Time elapsed: 0.047 sec <<< FAILURE!
+PlayerTest.testMoveDeactivatedSpeed()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testMoveDeactivatedSpeed(PlayerTest.java:74)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 19 more
+
+PlayerTest.testRemovePowerup()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testRemovePowerup(PlayerTest.java:97)
+
+PlayerTest.testStopMovingRight()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testStopMovingRight(PlayerTest.java:46)
+
+PlayerTest.testHasIceRopeNoIceRope()  Time elapsed: 0.015 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testHasIceRopeNoIceRope(PlayerTest.java:193)
+
+PlayerTest.testMovePowerupLeft()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testMovePowerupLeft(PlayerTest.java:108)
+
+PlayerTest.testMovePowerupRight()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testMovePowerupRight(PlayerTest.java:117)
+
+PlayerTest.testRemoveAllPowerUpsEmptyList()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testRemoveAllPowerUpsEmptyList(PlayerTest.java:166)
+
+PlayerTest.testRemoveAllPowerUps1Element()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testRemoveAllPowerUps1Element(PlayerTest.java:175)
+
+PlayerTest.testShotDeactivatedIceRope()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testShotDeactivatedIceRope(PlayerTest.java:146)
+
+PlayerTest.testMoveDeactivatedIceRope()  Time elapsed: 0.016 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testMoveDeactivatedIceRope(PlayerTest.java:84)
+
+PlayerTest.testStopMovingLeft()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testStopMovingLeft(PlayerTest.java:38)
+
+PlayerTest.testPlayerConstructor()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testPlayerConstructor(PlayerTest.java:16)
+
+PlayerTest.testShootRope()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testShootRope(PlayerTest.java:123)
+
+PlayerTest.testSetPowerup()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testSetPowerup(PlayerTest.java:90)
+
+PlayerTest.testShootIceRope()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testShootIceRope(PlayerTest.java:134)
+
+PlayerTest.testGetHeight()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testGetHeight(PlayerTest.java:160)
+
+PlayerTest.testGetWidth()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testGetWidth(PlayerTest.java:155)
+
+PlayerTest.testMovingLeft()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testMovingLeft(PlayerTest.java:23)
+
+PlayerTest.testMoveRight()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testMoveRight(PlayerTest.java:64)
+
+PlayerTest.testMovingRight()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testMovingRight(PlayerTest.java:30)
+
+PlayerTest.testMoveLeft()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testMoveLeft(PlayerTest.java:56)
+
+PlayerTest.testHasIceRopeWithIceRope()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testHasIceRopeWithIceRope(PlayerTest.java:200)
+
+PlayerTest.testRemoveAllPowerUpsMultiElement()  Time elapsed: 0.016 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testRemoveAllPowerUpsMultiElement(PlayerTest.java:185)
+
+PlayerTest.testHasPowerup()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at PlayerTest.testHasPowerup(PlayerTest.java:206)
+

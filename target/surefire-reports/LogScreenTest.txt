@@ -1,0 +1,18 @@
+-------------------------------------------------------------------------------
+Test set: LogScreenTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.063 sec <<< FAILURE!
+LogScreenTest.testLogScreen()  Time elapsed: 0.063 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at LogScreenTest.testLogScreen(LogScreenTest.java:19)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 19 more
+
+LogScreenTest.testReloadData()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at LogScreenTest.testReloadData(LogScreenTest.java:35)
+

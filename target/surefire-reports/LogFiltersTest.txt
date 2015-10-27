@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: LogFiltersTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
+LogFiltersTest.testAddCategoryNotContain()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at LogFiltersTest.testAddCategoryNotContain(LogFiltersTest.java:30)
+
+LogFiltersTest.testAddCategoryAlreadyContains()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at LogFiltersTest.testAddCategoryAlreadyContains(LogFiltersTest.java:37)
+
+LogFiltersTest.testRemoveCategory()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at LogFiltersTest.testRemoveCategory(LogFiltersTest.java:46)
+
+LogFiltersTest.testLogFilters()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at LogFiltersTest.testLogFilters(LogFiltersTest.java:23)
+
+LogFiltersTest.testSetSeverity()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at LogFiltersTest.testSetSeverity(LogFiltersTest.java:54)
+

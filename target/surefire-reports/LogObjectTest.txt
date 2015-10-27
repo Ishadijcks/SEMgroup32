@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: LogObjectTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 6, Errors: 0, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
+LogObjectTest.testToStringShortOutOfBounds()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at LogObjectTest.testToStringShortOutOfBounds(LogObjectTest.java:44)
+
+LogObjectTest.testToStringOutOfBounds()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at LogObjectTest.testToStringOutOfBounds(LogObjectTest.java:33)
+
+LogObjectTest.testToStringShort()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at LogObjectTest.testToStringShort(LogObjectTest.java:38)
+
+LogObjectTest.testLogObject()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at LogObjectTest.testLogObject(LogObjectTest.java:20)
+
+LogObjectTest.testToString()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at LogObjectTest.testToString(LogObjectTest.java:27)
+
+LogObjectTest.testEqualsObject()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at LogObjectTest.testEqualsObject(LogObjectTest.java:54)
+
