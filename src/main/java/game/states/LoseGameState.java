@@ -13,7 +13,6 @@ public class LoseGameState implements State{
 	private StateManager context;
 
 	public LoseGameState() {
-		
 	}
 
 	@Override

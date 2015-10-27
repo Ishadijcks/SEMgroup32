@@ -12,10 +12,10 @@ import game.states.NewGameState;
 public class MainRunner {
 
     private static Driver driver;
-    private final static int GAME_FPS = 120;
+    private static final int GAME_FPS = 120;
     private static StateManager stateMan;
     private static String playerName;
-    
+
     /**
      * Constructor of the main runner class.
      */
@@ -29,8 +29,8 @@ public class MainRunner {
      *            standard java thingie
      */
     public static void main(String[] args) {
-    	stateMan = new StateManager();
-    	stateMan.newState(new NewGameState());
+        stateMan = new StateManager();
+        stateMan.newState(new NewGameState());
         while (true) {
             try {
                 driver.driverHeart();
@@ -61,37 +61,41 @@ public class MainRunner {
     public static void setDriver(Driver buildDriver) {
         driver = buildDriver;
     }
-    
+
     /**
-     * Returns the current driver;
-     * @return
+     * Returns the current driver.
+     * 
+     * @return Driver driver
      */
     public static Driver getDriver() {
-    	return driver;
+        return driver;
     }
-    
+
     /**
-     * Get the stateManager from the mainrunner
-     * @return the statemanager
+     * Get the stateManager from the main runner.
+     * 
+     * @return the state manager
      */
-    public static StateManager getStateManager(){
-    	return stateMan;
+    public static StateManager getStateManager() {
+        return stateMan;
     }
-    
+
     /**
-     * Sets the name of the player;
-     * @param name
+     * Sets the name of the player.
+     * 
+     * @param name of the player
      */
     public static void setPlayerName(String name) {
-    	playerName = name;
+        playerName = name;
     }
-    
+
     /**
-     * Returns the name of the player
-     * @return
+     * Returns the name of the player.
+     * 
+     * @return player name.
      */
     public static String getPlayerName() {
-    	return playerName;
+        return playerName;
     }
 
 }

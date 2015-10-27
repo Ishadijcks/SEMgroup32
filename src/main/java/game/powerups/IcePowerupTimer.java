@@ -21,26 +21,25 @@ public class IcePowerupTimer extends PowerupTimer {
         super(game);
     }
 
-	/**
-	 * Let the counter start.
-	 */
-	@Override
-	public void run() {
-		Player player = game.getCurrentLevel().getPlayerList().get(0);
-		long start = System.currentTimeMillis();
-		long end = start + 5*1000; // 5 seconds * 1000 ms/sec
-		while (System.currentTimeMillis() < end)
-		{
-		    if(!player.hasIceRope()){
-		        player.setHasIceRope(true);
-		    }
-		    if(PowerupThreadKiller.getDieThreads()){
-		    	PowerupThreadKiller.setDieThreads(false);
-		    	end = System.currentTimeMillis();
-		    }
-		}
-    	PowerupThreadKiller.setDieThreads(false);
-		player.setHasIceRope(false);
-	}
+    /**
+     * Let the counter start.
+     */
+    @Override
+    public void run() {
+        Player player = game.getCurrentLevel().getPlayerList().get(0);
+        long start = System.currentTimeMillis();
+        long end = start + 5 * 1000;
+        while (System.currentTimeMillis() < end) {
+            if (!player.hasIceRope()) {
+                player.setHasIceRope(true);
+            }
+            if (PowerupThreadKiller.getDieThreads()) {
+                PowerupThreadKiller.setDieThreads(false);
+                end = System.currentTimeMillis();
+            }
+        }
+        PowerupThreadKiller.setDieThreads(false);
+        player.setHasIceRope(false);
+    }
 
 }
