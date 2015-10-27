@@ -16,7 +16,7 @@ import game.screens.LosingScreen;
 public class LoseGameState implements State {
 	
 	private StateManager context;
-
+	
 	@Override
 	public void handle(StateManager context) {
 		this.context = context;

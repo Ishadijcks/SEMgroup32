@@ -151,10 +151,7 @@ public abstract class Bubble {
      */
     public void moveY() {
         mainMovementY();
-        if (lastUpSpeed < 0.5
-                && !directionVertical
-                && yCoord <
-                        + 500) {
+        if (lastUpSpeed < 0.5 && !directionVertical && yCoord < +500) {
             timer += 0.4;
         }
         if (timer > 5) {
@@ -164,7 +161,7 @@ public abstract class Bubble {
     }
 
     /**
-     * The main movement of the bubble verticlally.
+     * The main movement of the bubble vertically.
      */
     public void mainMovementY() {
         if (directionVertical) {
@@ -360,6 +357,7 @@ public abstract class Bubble {
      * @return true if the object is from the same type and has the same
      *         attributes
      */
+    //CHECKSTYLE:OFF
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

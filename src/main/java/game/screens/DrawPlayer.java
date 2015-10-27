@@ -52,11 +52,11 @@ public class DrawPlayer {
      * @param painter
      *            that will use this class
      */
-    public DrawPlayer(Game game, JPanel panel, Painter painter){
+    public DrawPlayer(Game game, JPanel panel, Painter painter) {
         DrawPlayer.game = game;
         DrawPlayer.panel = panel;
         DrawPlayer.painter = painter;
-        
+
         topMargin = Driver.game.getCurrentLevel().getTopMargin();
         imageLocation = imageLocation.replace("%20", " ");
         imageLocation = imageLocation.replace("target/classes/", "/");
@@ -64,7 +64,9 @@ public class DrawPlayer {
 
     /**
      * Draw the player.
-     * @param g2d The 2DGraphics to draw on
+     * 
+     * @param g2d
+     *            The 2DGraphics to draw on
      */
     public void drawPlayer(Graphics2D g2d) {
         this.g2d = g2d;
@@ -156,7 +158,9 @@ public class DrawPlayer {
 
     /**
      * Draw the dragon flying either to the left or to the right.
-     * @param newX - The xCoord the player is moving to
+     * 
+     * @param newX
+     *            - The xCoord the player is moving to
      */
     public void drawDragonFlying(int newX) {
         drawDragonFlyRight(newX);
@@ -165,7 +169,9 @@ public class DrawPlayer {
 
     /**
      * Draw the dragon flying to the right.
-     * @param newX - The xCoord the player is moving to
+     * 
+     * @param newX
+     *            - The xCoord the player is moving to
      */
     public void drawDragonFlyRight(int newX) {
         ImageIcon dragonRight = new ImageIcon(imageLocation
@@ -188,7 +194,9 @@ public class DrawPlayer {
 
     /**
      * Draw the dragon flying to the left.
-     * @param newX - The xCoord the player is moving to
+     * 
+     * @param newX
+     *            - The xCoord the player is moving to
      */
     public void drawDragonFlyLeft(int newX) {
         ImageIcon dragonLeft = new ImageIcon(imageLocation

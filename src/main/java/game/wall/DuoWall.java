@@ -58,7 +58,8 @@ public class DuoWall extends Wall {
 
     /**
      * Checks if a bubble collides with the wall.
-     *  @param BubbleDiameter
+     * 
+     * @param BubbleDiameter
      *            is size of the bubble
      * @param BubblexCoord
      *            of the bubble

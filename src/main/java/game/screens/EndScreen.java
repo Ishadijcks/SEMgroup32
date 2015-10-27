@@ -22,15 +22,12 @@ import javax.swing.JLabel;
  */
 public class EndScreen extends JFrame {
 
-
     private static final long serialVersionUID = 1L;
     JButton stopButton;
 
     /**
-     * Constructor for the winning screen class.
+     * Constructor for the winning screen class. where the screen comes from
      * 
-     * @param driverInput
-     *            where the screen comes from
      * @param background
      *            image of the screen.
      * @param colorButton

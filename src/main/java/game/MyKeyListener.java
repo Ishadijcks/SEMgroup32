@@ -41,6 +41,7 @@ public class MyKeyListener extends KeyAdapter {
      * @param evt
      *            Key event
      */
+    //CHECKSTYLE:OFF
     @Override
     public void keyPressed(KeyEvent evt) {
         if (game.inProgress()) {
