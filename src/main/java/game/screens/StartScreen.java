@@ -146,6 +146,7 @@ public class StartScreen extends JFrame {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
                 dispose();
+                LevelOverviewScreen screen = new LevelOverviewScreen();
             }
         });
         add(settingsButton);

@@ -33,6 +33,7 @@ public class LevelOverviewScreen extends JFrame {
      * of which will be made a screen
      */
     public LevelOverviewScreen() {
+        System.out.println("LevelOverviewScreen");
         setSize(800, 800);
         ScreenBuilder.initScreen(this, "Levels");
         basicFont = new Font("Calibri", Font.PLAIN, 30);
