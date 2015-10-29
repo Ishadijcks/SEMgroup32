@@ -23,11 +23,11 @@ public abstract class Bubble {
     protected boolean newBubble;
     protected double wallBounceBoost = 0;
 
-    private int maxheight;
-    private Color color;
-    private double gravitation;
-    private int diameter;
-    private double speedX;
+    protected int maxheight;
+    protected Color color;
+    protected double gravitation;
+    protected int diameter;
+    protected double speedX;
 
     protected double shifting;
     protected double sOld;
@@ -48,31 +48,14 @@ public abstract class Bubble {
      *            horizontal direction
      * @param directionVertical
      *            vertical direction
-     * @param maxheight
-     *            max bounce height
-     * @param color
-     *            of the ball
-     * @param gravitation
-     *            of the ball
-     * @param diameter
-     *            of the ball
-     * @param speedX
-     *            speed of the x-Coordination movement
      */
     public Bubble(double xCoord, double yCoord, boolean directionHorizontal,
-            boolean directionVertical, int maxheight, Color color,
-            double gravitation, int diameter, double speedX) {
+            boolean directionVertical) {
 
         Logger.log("Bubble created with diameter " + diameter, 3, 4);
 
         this.xCoord = xCoord;
         this.yCoord = yCoord;
-
-        this.maxheight = maxheight;
-        this.color = color;
-        this.gravitation = gravitation;
-        this.diameter = diameter;
-        this.speedX = speedX;
 
         this.directionHorizontal = directionHorizontal;
         this.directionVertical = directionVertical;
@@ -151,10 +134,7 @@ public abstract class Bubble {
      */
     public void moveY() {
         mainMovementY();
-        if (lastUpSpeed < 0.5
-                && !directionVertical
-                && yCoord <
-                        + 500) {
+        if (lastUpSpeed < 0.5 && !directionVertical && yCoord < +500) {
             timer += 0.4;
         }
         if (timer > 5) {
@@ -164,7 +144,7 @@ public abstract class Bubble {
     }
 
     /**
-     * The main movement of the bubble verticlally.
+     * The main movement of the bubble vertically.
      */
     public void mainMovementY() {
         if (directionVertical) {
@@ -190,6 +170,14 @@ public abstract class Bubble {
             lastUpSpeed = lastDownSpeed * Math.pow(factor, timer);
             yCoord -= lastUpSpeed;
         }
+        advanceCurveAtTop();
+    }
+
+    /**
+     * Advance curve for smooth movement. At the top of the curve slows
+     * gradually down.
+     */
+    public void advanceCurveAtTop() {
         if (lastUpSpeed < 0.5
                 && !directionVertical
                 && yCoord < Driver.game.getCurrentLevel().getTopMargin()
@@ -360,6 +348,7 @@ public abstract class Bubble {
      * @return true if the object is from the same type and has the same
      *         attributes
      */
+    // CHECKSTYLE:OFF
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

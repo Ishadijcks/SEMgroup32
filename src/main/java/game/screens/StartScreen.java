@@ -18,14 +18,12 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**
- * Class that will make the startscreen of the game.
+ * Class that will make the start screen of the game.
  * 
  * @author Boning
  *
  */
 public class StartScreen extends JFrame {
-	
-	private State listeningState;
 
     private static final long serialVersionUID = 1L;
     JButton normalGameButton;
@@ -33,7 +31,7 @@ public class StartScreen extends JFrame {
     JButton settingsButton;
     JButton stopButton;
     JTextField tf;
-    
+
     /**
      * Constructor of the start screen class.
      */
@@ -171,9 +169,14 @@ public class StartScreen extends JFrame {
         });
         add(stopButton);
     }
-    
+
+    /**
+     * register Listening State.
+     * 
+     * @param state
+     *            of the game.
+     */
     public void registerListeningState(State state) {
-    	this.listeningState = state;
     }
 
 }

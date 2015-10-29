@@ -207,6 +207,7 @@ public abstract class Level {
     /**
      * Generated equals method.
      */
+    //CHECKSTYLE:OFF
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

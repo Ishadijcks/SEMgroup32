@@ -4,13 +4,14 @@ import game.StateManager;
 import game.log.Logger;
 import game.screens.WinningScreen;
 
-public class WinGameState implements State{
+/**
+ * The state the game is in when the game is won.
+ * @author floris
+ *
+ */
+public class WinGameState implements State {
 
 	private StateManager context;
-	
-	public WinGameState() {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public void handle(StateManager context) {

@@ -6,14 +6,16 @@ import game.MainRunner;
 import game.NormalDriverFactory;
 import game.StateManager;
 
-public class NormalGameState implements State{
+/**
+ * The state the game is in when the player
+ * chooses to play a normal game.
+ * @author floris
+ *
+ */
+public class NormalGameState implements State {
 	
 	private StateManager context;
 	private Driver driver;
-
-	public NormalGameState() {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public void handle(StateManager context) {
@@ -32,7 +34,8 @@ public class NormalGameState implements State{
 
 	@Override
 	public void handleFallBack() {
-		MainRunner.getDriver().game.toggleProgress();
+		MainRunner.getDriver();
+        Driver.game.toggleProgress();
 	}
 
 }

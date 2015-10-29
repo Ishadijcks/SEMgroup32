@@ -1,0 +1,26 @@
+-------------------------------------------------------------------------------
+Test set: RopeTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0 sec <<< FAILURE!
+RopeTest.testgetY()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at RopeTest.testgetY(RopeTest.java:40)
+
+RopeTest.testgetX()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NullPointerException
+	at RopeTest.testgetX(RopeTest.java:34)
+
+RopeTest.testMoveNormal()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at RopeTest.testMoveNormal(RopeTest.java:55)
+Caused by: java.lang.ClassNotFoundException: org.junit.Assert
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 19 more
+
+RopeTest.testaddX()  Time elapsed: 0 sec  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/junit/Assert
+	at RopeTest.testaddX(RopeTest.java:47)
+

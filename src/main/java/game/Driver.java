@@ -18,10 +18,10 @@ public abstract class Driver {
     protected static Player player;
     protected Collision collisions;
     public static Game game;
-    
+
     protected State listeningState;
 
-    /** 
+    /**
      * Method to start the game.
      * 
      * @param name
@@ -46,28 +46,31 @@ public abstract class Driver {
 
     /**
      * Return the total frames the game is playing.
+     * 
      * @return the total frames
      */
     public static int getTotalFrames() {
         return totalFrames;
     }
 
-    
     /**
      * Set the total frames the game is playing.
-     * @param totalFrames the amount of frames
+     * 
+     * @param totalFrames
+     *            the amount of frames
      */
     public static void setTotalFrames(int totalFrames) {
         Driver.totalFrames = totalFrames;
     }
-    
+
     /**
-     * Registers a state to fall back on when the 
-     * current state needs to change;
+     * Registers a state to fall back on when the current state needs to change.
+     * 
      * @param state
+     *            of the game
      */
     public void registerListeningState(State state) {
-    	this.listeningState = state;
+        this.listeningState = state;
     }
 
 }

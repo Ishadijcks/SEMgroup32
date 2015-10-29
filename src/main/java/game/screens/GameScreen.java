@@ -122,9 +122,8 @@ public class GameScreen extends JPanel {
     @Override
     public void paint(Graphics graph) {
         
-        // Calculate the margin left to center the board
-        int centerConstant = Driver.game.getCurrentLevel().getLeftMargin();
-        int topMargin = Driver.game.getCurrentLevel().getTopMargin();
+        Driver.game.getCurrentLevel().getLeftMargin();
+        Driver.game.getCurrentLevel().getTopMargin();
         g2d = (Graphics2D) graph;
         super.paint(graph);
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,

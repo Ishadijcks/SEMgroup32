@@ -4,7 +4,6 @@ import helperobjects.Coordinates;
 
 import java.awt.Color;
 
-
 /**
  * Wall class of a player wall.
  * 
@@ -43,7 +42,7 @@ public class PlayerWall extends Wall {
 		int plyrXCoord = xCoord;
 		int plyrStepSize = 4;
 		int plyrWidth = 80;
-        if (this.isActive()){
+        if (this.isActive()) {
             if ((plyrXCoord - plyrStepSize <= this.getxCoord()
                     + this.getWidth()
                     && plyrXCoord - plyrStepSize >= this.getxCoord() && movingLeft)
@@ -59,7 +58,8 @@ public class PlayerWall extends Wall {
 
     /**
      * A PlayerWall will never collide with a bubble.
-     *  @param BubbleDiameter
+     * 
+     * @param BubbleDiameter
      *            is size of the bubble
      * @param BubblexCoord
      *            of the bubble

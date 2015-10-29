@@ -99,13 +99,7 @@ public class LogObject {
     public static String[] getSeverityNames() {
         return severityString;
     }
-
-    /**
-     * Generated equals method to check if all attributes 
-     * equals another of the same class.
-     * @param obj Object that it will compare to
-     * @return true if the object is from the same type and has the same attributes
-     */
+    
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {

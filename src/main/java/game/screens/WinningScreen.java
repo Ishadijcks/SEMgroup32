@@ -16,8 +16,6 @@ public class WinningScreen extends EndScreen {
     /**
      * Constructor for the winning screen class.
      * 
-     * @param driverInput
-     *            where the screen comes from
      */
     public WinningScreen() {
         super("winScreenBackground", new Color(248, 81, 49));

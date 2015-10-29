@@ -9,36 +9,39 @@ import game.StateManager;
 import game.screens.LeaderBoardScreen;
 import game.screens.LosingScreen;
 
-public class LoseSurvivalGameState implements State{
-	
-	private StateManager context;
+/**
+ * lost the survival game state.
+ * 
+ * @author Floris
+ *
+ */
+public class LoseSurvivalGameState implements State {
 
-	public LoseSurvivalGameState() {
-		// TODO Auto-generated constructor stub
-	}
+    private StateManager context;
 
-	@Override
-	public void handle(StateManager context) {
-		this.context = context;
+    @Override
+    public void handle(StateManager context) {
+        this.context = context;
         Driver.game.toggleProgress();
-	    Leaderboard leaderBoard = new Leaderboard();
-        EndScore es = new EndScore(MainRunner.getPlayerName(), Score.getInstance().getScore());
+        Leaderboard leaderBoard = new Leaderboard();
+        EndScore es = new EndScore(MainRunner.getPlayerName(), Score
+                .getInstance().getScore());
         leaderBoard.addScore(es);
         Leaderboard.appendToFile();
         Score.getInstance().resetScore();
         new LosingScreen(es);
         new LeaderBoardScreen(leaderBoard);
-	}
+    }
 
-	@Override
-	public void changeContextState(State state) {
-		context.newState(state);
-	}
+    @Override
+    public void changeContextState(State state) {
+        context.newState(state);
+    }
 
-	@Override
-	public void handleFallBack() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void handleFallBack() {
+        // TODO Auto-generated method stub
+
+    }
 
 }

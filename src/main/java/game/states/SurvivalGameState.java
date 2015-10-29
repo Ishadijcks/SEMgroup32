@@ -6,13 +6,15 @@ import game.MainRunner;
 import game.StateManager;
 import game.SurvivalDriverFactory;
 
-public class SurvivalGameState implements State{
+/**
+ * The state the game is in when the
+ * player chooses a survival game.
+ * @author floris
+ *
+ */
+public class SurvivalGameState implements State {
 	
 	private StateManager context;
-
-	public SurvivalGameState() {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public void handle(StateManager context) {
@@ -31,7 +33,8 @@ public class SurvivalGameState implements State{
 
 	@Override
 	public void handleFallBack() {
-		MainRunner.getDriver().game.toggleProgress();
+		MainRunner.getDriver();
+        Driver.game.toggleProgress();
 	}
 
 }
