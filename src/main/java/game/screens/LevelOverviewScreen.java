@@ -44,6 +44,7 @@ public class LevelOverviewScreen extends JFrame {
 
     /**
      * Listeners for the level buttons.
+     * 
      * @author Tim
      *
      */
@@ -78,6 +79,19 @@ public class LevelOverviewScreen extends JFrame {
         label.setLocation(35, 15);
         add(label);
     }
+    
+
+    /**
+     * Adda label that there are no levels completed.
+     */
+    public void addSimpleLabel2() {
+        JLabel label = new JLabel("No Levels Are Completed!");
+        label.setFont(basicFont);
+        label.setSize(500, 50);
+        label.setForeground(Color.RED);
+        label.setLocation(125, 55);
+        add(label);
+    }
 
     /**
      * Add the stop button to the screen.
@@ -102,8 +116,10 @@ public class LevelOverviewScreen extends JFrame {
      * Add all the level buttons of completed levels to the screen.
      */
     public void addLevelButtons() {
+        boolean aLevelCompleted = false;
         for (int i = 1; i < 7; i++) {
             if (LevelCompletion.isLevelCompleted(i)) {
+                aLevelCompleted = true;
                 levelButton = new JButton("Level " + i);
                 levelButton.setBackground(Color.RED);
                 levelButton.setForeground(Color.WHITE);
@@ -113,6 +129,9 @@ public class LevelOverviewScreen extends JFrame {
                 add(levelButton);
                 levelButton.addActionListener(new ButtonActionListener(i));
             }
+        }
+        if (!aLevelCompleted) {
+            addSimpleLabel2();
         }
     }
 }
