@@ -6,6 +6,7 @@ import game.states.NewGameState;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -78,6 +79,9 @@ public class PauseScreen extends JFrame {
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
                 setVisible(false);
+                for(Frame frame : Frame.getFrames()){
+                	frame.dispose();
+                }
                 MainRunner.getStateManager().newState(new NewGameState());
                 dispose();
             }
