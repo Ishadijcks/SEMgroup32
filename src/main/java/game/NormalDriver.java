@@ -48,7 +48,7 @@ public class NormalDriver extends Driver {
      * @return true if the game is won, false otherwise
      */
     public boolean checkGameWon() {
-        if (game.getCurrentLevelInt() == game.getLevelList().size() - 1) {
+        if (game.getCurrentLevelInt() == game.getLevelList().size()) {
             gameScreen.dispose();
             listeningState.changeContextState(new WinGameState());
             return true;

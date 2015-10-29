@@ -15,7 +15,7 @@ public abstract class Game {
     protected ArrayList<Level> levelList = new ArrayList<Level>();
     protected ArrayList<Player> playerList;
     protected int lives = 5;
-    protected int currentLevel = 1;
+    protected int currentLevel = 9;
     protected boolean inProgress;
 
     /**

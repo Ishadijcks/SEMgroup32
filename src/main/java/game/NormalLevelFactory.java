@@ -1,6 +1,7 @@
 package game;
 
 import game.bubble.Bubble;
+import game.bubble.Bubblex128;
 import game.bubble.Bubblex16;
 import game.bubble.Bubblex32;
 import game.bubble.Bubblex64;
@@ -90,20 +91,15 @@ public class NormalLevelFactory {
      * @return Level 1
      */
     public Level getLevel1() {
-        Bubble bubble1 = new Bubblex8(152, 50, false, false);
-        Bubble bubble2 = new Bubblex8(100, 50, false, false);
+        Bubble bubble1 = new Bubblex16(152, 50, false, false);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
-        level.addBubble(bubble2);
-        VerticalMoveBubbleWall wall1 = new VerticalMoveBubbleWall(
-                new Coordinates(300, 55), 150, 5, 15, 420, 3);
+        HorizontalMoveBubbleWall wall1 = new HorizontalMoveBubbleWall(
+                new Coordinates(225, 300), 10, 300, 100, 550, 2);
+        HorizontalMoveBubbleWall wall2 = new HorizontalMoveBubbleWall(
+                new Coordinates(200, 350), 10, 200, 20, 550, 3);
         level.addWall(wall1);
-        HorizontalMoveBubbleWall wall3 = new HorizontalMoveBubbleWall(
-                new Coordinates(225, 300), 20, 300, 250, 400, 3);
-        level.addWall(wall3);
-        VerticalMoveBubbleWall wall9 = new VerticalMoveBubbleWall(
-                new Coordinates(625, 5), 200, 10, 0, 300, 1);
-        level.addWall(wall9);
+        level.addWall(wall2);
         level.setLevelNumber(1);
         return level;
     }
@@ -117,20 +113,16 @@ public class NormalLevelFactory {
         Bubble bubble1 = new Bubblex16(320, 250, false, true);
         Bubble bubble2 = new Bubblex32(720, 100, false, false);
         NormalLevel level = new NormalLevel(playerList);
-        int levelHeight = 500;
         level.addBubble(bubble1);
         level.addBubble(bubble2);
-        BubbleWall wall = new NoMoveBubbleWall(new Coordinates(300, 0),
-                levelHeight - 200, 50);
-        PlayerWall wall2 = new PlayerWall(new Coordinates(700, 0), 5);
-        BubbleWall wall3 = new NoMoveBubbleWall(new Coordinates(850, 0),
-                levelHeight - 400, 30);
-        BubbleWall wall4 = new NoMoveBubbleWall(new Coordinates(900, 0),
-                levelHeight - 100, 20);
-        level.addWall(wall);
+        PlayerWall wall1 = new PlayerWall(new Coordinates(600, 0), 3);
+        HorizontalMoveBubbleWall wall2 = new HorizontalMoveBubbleWall(
+                new Coordinates(300, 350), 10, 75, 100, 650, 5);
+        VerticalMoveBubbleWall wall3 = new VerticalMoveBubbleWall(
+                new Coordinates(750, 250), 100, 10, 50, 350, 2);
+        level.addWall(wall1);
         level.addWall(wall2);
         level.addWall(wall3);
-        level.addWall(wall4);
         level.setLevelNumber(2);
         return level;
     }
@@ -141,11 +133,21 @@ public class NormalLevelFactory {
      * @return Level 3
      */
     public Level getLevel3() {
-        Bubble bubble1 = new Bubblex32(620, 300, false, true);
-        Bubble bubble2 = new Bubblex64(120, 200, false, false);
+        Bubble bubble1 = new Bubblex64(620, 100, false, true);
+        NoMoveBubbleWall wall1 = new NoMoveBubbleWall(
+                new Coordinates(750, 0), 500, 10);
+        NoMoveBubbleWall wall2 = new NoMoveBubbleWall(
+                new Coordinates(250, 0), 500, 10);
+        NoMoveBubbleWall wall3 = new NoMoveBubbleWall(
+                new Coordinates(350, 0), 500, 10);
+        NoMoveBubbleWall wall4 = new NoMoveBubbleWall(
+                new Coordinates(550, 0), 500, 10);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
-        level.addBubble(bubble2);
+        level.addWall(wall1);
+        level.addWall(wall2);
+        level.addWall(wall3);
+        level.addWall(wall4);
         level.setLevelNumber(3);
         return level;
     }
@@ -157,8 +159,14 @@ public class NormalLevelFactory {
      */
     public Level getLevel4() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
+        PlayerWall wall1 = new PlayerWall(
+                new Coordinates(750, 0), 10);
+        PlayerWall wall2 = new PlayerWall(
+                new Coordinates(250, 0), 10);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
+        level.addWall(wall1);
+        level.addWall(wall2);
         level.setLevelNumber(4);
         return level;
     }
@@ -169,9 +177,20 @@ public class NormalLevelFactory {
      * @return Level 5
      */
     public Level getLevel5() {
-        Bubble bubble1 = new Bubblex64(320, 100, false, true);
+        Bubble bubble1 = new Bubblex32(320, 100, false, true);
+        Bubble bubble2 = new Bubblex32(620, 100, false, true);
+        PlayerWall wall1 = new PlayerWall(
+                new Coordinates(450, 0), 10);
+        HorizontalMoveBubbleWall wall2 = new HorizontalMoveBubbleWall(
+                new Coordinates(55, 300), 10, 300, 75, 150, 1);
+        HorizontalMoveBubbleWall wall3 = new HorizontalMoveBubbleWall(
+                new Coordinates(500, 350), 10, 200, 470, 710, 1);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
+        level.addBubble(bubble2);
+        level.addWall(wall1);
+        level.addWall(wall2);
+        level.addWall(wall3);
         level.setLevelNumber(5);
         return level;
     }
@@ -182,12 +201,33 @@ public class NormalLevelFactory {
      * @return Level 6
      */
     public static Level getLevel6() {
-        Bubble bubble1 = new Bubblex64(320, 100, false, true);
+        Bubble bubble1 = new Bubblex16(320, 100, false, true);
+        Bubble bubble2 = new Bubblex16(620, 100, false, true);
+        HorizontalMoveBubbleWall wall1 = new HorizontalMoveBubbleWall(
+                new Coordinates(55, 100), 10, 300, 75, 150, 1);
+        HorizontalMoveBubbleWall wall2 = new HorizontalMoveBubbleWall(
+                new Coordinates(55, 300), 10, 300, 75, 150, 1);
+        HorizontalMoveBubbleWall wall3 = new HorizontalMoveBubbleWall(
+                new Coordinates(500, 350), 10, 200, 470, 710, 1);
+        HorizontalMoveBubbleWall wall4 = new HorizontalMoveBubbleWall(
+                new Coordinates(500, 150), 10, 200, 470, 710, 1);
+        HorizontalMoveBubbleWall wall5 = new HorizontalMoveBubbleWall(
+                new Coordinates(500, 250), 10, 200, 150, 500, 1);
+        VerticalMoveBubbleWall wall6 = new VerticalMoveBubbleWall(
+                new Coordinates(350, 250), 100, 10, 50, 350, 2);
+        VerticalMoveBubbleWall wall7 = new VerticalMoveBubbleWall(
+                new Coordinates(550, 250), 100, 10, 50, 350, 2);
         NormalLevel level = new NormalLevel(playerList);
-        PlayerWall wall1 = new PlayerWall(new Coordinates(700, 0), 10);
         level.addBubble(bubble1);
+        level.addBubble(bubble2);
         level.addWall(wall1);
-        level.setLevelNumber(6);
+        level.addWall(wall2);
+        level.addWall(wall3);
+        level.addWall(wall4);
+        level.addWall(wall5);
+        level.addWall(wall6);
+        level.addWall(wall7);
+        level.setLevelNumber(5);
         return level;
     }
 
@@ -197,10 +237,10 @@ public class NormalLevelFactory {
      * @return Level 7
      */
     public static Level getLevel7() {
-        Bubble bubble1 = new Bubblex64(320, 100, false, true);
+        Bubble bubble1 = new Bubblex128(320, 100, false, true);
         NormalLevel level = new NormalLevel(playerList);
         PlayerWall wall1 = new PlayerWall(new Coordinates(600, 0), 10);
-        PlayerWall wall2 = new PlayerWall(new Coordinates(200, 0), 10);
+        PlayerWall wall2 = new PlayerWall(new Coordinates(250, 0), 10);
         level.addBubble(bubble1);
         level.addWall(wall1);
         level.addWall(wall2);
@@ -215,10 +255,31 @@ public class NormalLevelFactory {
      */
     public static Level getLevel8() {
         Bubble bubble1 = new Bubblex64(320, 100, false, true);
-        Bubble bubble2 = new Bubblex64(320, 100, false, true);
+        Bubble bubble2 = new Bubblex64(820, 30, false, true);
+        VerticalMoveBubbleWall wall1 = new VerticalMoveBubbleWall(
+                new Coordinates(150, 250), 150, 10, 25, 300, 1);
+        VerticalMoveBubbleWall wall2 = new VerticalMoveBubbleWall(
+                new Coordinates(250, 250), 130, 10, 25, 310, 2);
+        VerticalMoveBubbleWall wall3 = new VerticalMoveBubbleWall(
+                new Coordinates(350, 250), 110, 10, 25, 300, 3);
+        VerticalMoveBubbleWall wall4 = new VerticalMoveBubbleWall(
+                new Coordinates(450, 250), 70, 10, 25, 300, 4);
+        VerticalMoveBubbleWall wall5 = new VerticalMoveBubbleWall(
+                new Coordinates(550, 250), 30, 10, 25, 300, 2);
+        VerticalMoveBubbleWall wall6 = new VerticalMoveBubbleWall(
+                new Coordinates(650, 250), 10, 10, 25, 330, 6);
+        VerticalMoveBubbleWall wall7 = new VerticalMoveBubbleWall(
+                new Coordinates(750, 250), 100, 10, 25, 300, 3);
         NormalLevel level = new NormalLevel(playerList);
         level.addBubble(bubble1);
         level.addBubble(bubble2);
+        level.addWall(wall1);
+        level.addWall(wall2);
+        level.addWall(wall3);
+        level.addWall(wall4);
+        level.addWall(wall5);
+        level.addWall(wall6);
+        level.addWall(wall7);
         level.setLevelNumber(8);
         return level;
     }
@@ -230,10 +291,18 @@ public class NormalLevelFactory {
      */
     public static Level getLevel9() {
         NormalLevel level = new NormalLevel(playerList);
-        for (int i = 0; i < 4; i++) {
-            Bubble bubble = new Bubblex16(320, 100, false, true);
+        for (int i = 0; i < 6; i++) {
+            Bubble bubble = new Bubblex8(250 + 95 * i, 100, false, false);
             level.addBubble(bubble);
         }
+        Bubble bubble1 = new Bubblex128(720, 100, false, true);
+        VerticalMoveBubbleWall wall1 = new VerticalMoveBubbleWall(
+                new Coordinates(250, 250), 200, 10, 25, 330, 1);
+        VerticalMoveBubbleWall wall2 = new VerticalMoveBubbleWall(
+                new Coordinates(750, 250), 150, 10, 25, 300, 1);
+        level.addBubble(bubble1);
+        level.addWall(wall1);
+        level.addWall(wall2);
         level.setLevelNumber(9);
         return level;
     }
@@ -245,10 +314,16 @@ public class NormalLevelFactory {
      */
     public static Level getLevel10() {
         NormalLevel level = new NormalLevel(playerList);
-        for (int i = 0; i < 8; i++) {
-            Bubble bubble = new Bubblex8(320, 100, false, true);
-            level.addBubble(bubble);
-        }
+        Bubble bubble1 = new Bubblex128(320, 100, false, true);
+        Bubble bubble2 = new Bubblex128(720, 80, false, true);
+        VerticalMoveBubbleWall wall1 = new VerticalMoveBubbleWall(
+                new Coordinates(250, 250), 200, 10, 25, 330, 1);
+        VerticalMoveBubbleWall wall2 = new VerticalMoveBubbleWall(
+                new Coordinates(750, 250), 150, 10, 25, 300, 1);
+        level.addBubble(bubble1);
+        level.addBubble(bubble2);
+        level.addWall(wall1);
+        level.addWall(wall2);
         level.setLevelNumber(10);
         return level;
     }
