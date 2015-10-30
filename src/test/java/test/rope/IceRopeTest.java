@@ -69,7 +69,7 @@ public class IceRopeTest {
     @Test
     public void testBuildIceRope() {
     	RopeFactory rFac = new RopeFactory();
-    	Rope rope = rFac.createRope(true);
+    	rFac.createRope(true);
     }
 
 }
