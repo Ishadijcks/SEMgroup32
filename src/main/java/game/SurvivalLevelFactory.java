@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class SurvivalLevelFactory {
 
-    private ArrayList<Player> playerList;
+    private static ArrayList<Player> playerList;
 
     /**
      * Creates a survivalLevelFactory with a list of players.
@@ -21,7 +21,7 @@ public class SurvivalLevelFactory {
      *            the list of players to use
      */
     public SurvivalLevelFactory(ArrayList<Player> pList) {
-        this.playerList = pList;
+        SurvivalLevelFactory.playerList = pList;
     }
 
     /**
@@ -35,15 +35,13 @@ public class SurvivalLevelFactory {
         level1.addBubble(bubble1);
         return level1;
     }
-
+    
     /**
-     * Set the playerList.
-     * 
-     * @param pList
-     *            The list that should be used to set the playerList.
+     * Getter for the player list.
+     * @return the playerlist.
      */
-    public void setPlayerList(ArrayList<Player> pList) {
-        playerList = pList;
+    public static ArrayList<Player> getPlayerList() {
+    	return playerList;
     }
 
 }

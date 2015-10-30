@@ -2,6 +2,8 @@ package test.rope;
 
 import static org.junit.Assert.assertEquals;
 import game.IceRope;
+import game.Rope;
+import game.RopeFactory;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -62,6 +64,12 @@ public class IceRopeTest {
         rope.move();
         int expectedYCoord = 48;
         assertEquals(expectedYCoord, rope.getY());
+    }
+    
+    @Test
+    public void testBuildIceRope() {
+    	RopeFactory rFac = new RopeFactory();
+    	Rope rrope = rFac.createRope(true);
     }
 
 }

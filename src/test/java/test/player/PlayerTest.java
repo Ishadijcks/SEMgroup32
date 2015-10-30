@@ -106,5 +106,49 @@ public class PlayerTest {
         player.setName("NietIsha");
         assertTrue(player.getName().equals("NietIsha"));
     }
+    
+    @Test
+    public void testSetHasIceRope() {
+    	assertFalse(player.hasIceRope());
+    	player.setHasIceRope(true);
+    	assertTrue(player.hasIceRope());
+    }
+    
+    @Test
+    public void testSetStepSize() {
+    	assertTrue(player.getStepSize() != 1000);
+    	player.setStepSize(1000);
+    	assertTrue(player.getStepSize() == 1000);
+    }
+    
+    @Test
+    public void testGetCollisionX() {
+    	assertTrue(player.getCollisionX() == player.getX() - 50);
+    }
+    
+    @Test
+    public void testGetCollisionY() {
+    	assertTrue(player.getCollisionY() == 389 + 61);
+    }
+    
+    @Test
+    public void testGetPlayerNormalStepSize() {
+    	assertTrue(player.getPlayerNormalStepSize() == 2);
+    }
+    
+    @Test
+    public void testGetPlayerPowerupStepSize() {
+    	assertTrue(player.getPlayerPowerupStepSize() == 5);
+    }
+    
+    @Test
+    public void testIsRestrictMovingLeft() {
+    	assertFalse(player.isRestrictMovingLeft());
+    }
+    
+    @Test
+    public void testIsRestrictMovingRight() {
+    	assertFalse(player.isRestrictMovingRight());
+    }
 
 }

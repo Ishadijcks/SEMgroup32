@@ -26,7 +26,6 @@ public class SurvivalGame extends Game {
     /**
      * Ends the game and disposes the screen.
      */
-    @Override
     public void endGame() {
         this.setLives(0);
         this.toggleProgress();
