@@ -1,7 +1,10 @@
+package test.powerups;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import game.Driver;
 import game.NormalDriver;
+import game.NormalDriverFactory;
 import game.powerups.IcePowerup;
 import game.powerups.LifePowerup;
 import game.powerups.Powerup;
@@ -38,19 +41,6 @@ public class PowerupTest {
         assertTrue(powerup1.equals(powerup2));
         assertFalse(powerup1.equals(powerup3));
 
-    }
-
-    @Test
-    public void testGetHeight() {
-        int height2 = 10;
-        assertEquals(height, height2);
-
-    }
-
-    @Test
-    public void testGetWidth() {
-        int width2 = 15;
-        assertEquals(width, width2);
     }
 
     @Test
@@ -118,6 +108,37 @@ public class PowerupTest {
         int initY = 100;
         pow.move();
         assertEquals(initY + deltaY, pow.getY());
+    }
+    
+    @Test
+    public void testAddToLevel() {
+    	(new NormalDriverFactory()).buildDriver();
+    	powerup.addToLevel();
+    	assertTrue(Driver.game.getCurrentLevel().getPowerupList().contains(powerup));
+    }
+    
+    @Test
+    public void testSetX() {
+    	assertTrue(powerup.getX() != 1000);
+    	powerup.setX(1000);
+    	assertTrue(powerup.getX() == 1000);
+    }
+    
+    @Test
+    public void testSetY() {
+    	assertTrue(powerup.getY() != 1000);
+    	powerup.setY(1000);
+    	assertTrue(powerup.getY() == 1000);
+    }
+    
+    @Test
+    public void testGetHeight() {
+    	assertTrue(powerup.getHeight() == 10);
+    }
+    
+    @Test
+    public void testGetWidth() {
+    	assertTrue(powerup.getWidth() == 15);
     }
 
 }

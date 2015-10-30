@@ -59,5 +59,23 @@ public class NormalGameTest {
         assertFalse(game.inProgress());
         assertTrue(game.getCurrentLevelInt() == 2);
     }
+    
+    @Test
+    public void testEndGame() {
+    	assertTrue(game.getLives() != 0);
+    	game.endGame();
+    	assertTrue(game.getLives() == 0);
+    }
+    
+    @Test
+    public void testGameWonElse() {
+        game.addLevel(l);
+        game.addLevel(new NormalLevelFactory(game.getPlayerList()).getLevel1());
+        assertFalse(game.inProgress());
+        game.gameStart();
+        game.setCurrentLevelInt(1000000);
+        game.gameWon();
+        assertFalse(game.inProgress());
+    }
 
 }

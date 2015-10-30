@@ -37,4 +37,11 @@ public class DriverTest {
         driver.startGame("Isha");
         assertTrue(Driver.game.inProgress());
     }
+    
+    @Test
+    public void testSetTotalFrames() {
+    	assertTrue(driver.getTotalFrames() != 5);
+    	driver.setTotalFrames(5);
+    	assertTrue(driver.getTotalFrames() == 5);
+    }
 }

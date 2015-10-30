@@ -20,6 +20,7 @@ public class NormalGame extends Game {
      * Function that advances the player to the next level or makes the player
      * win the whole game.
      */
+    @Override
     public void gameWon() {
         if (currentLevel <= levelList.size() + 2) {
             LevelCompletion.setLevelCompleted(currentLevel);

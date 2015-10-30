@@ -337,6 +337,14 @@ public class NormalLevelFactory {
     public static void setPlayerList(ArrayList<Player> pList) {
         playerList = pList;
     }
+    
+    /**
+     * Getter for the player list.
+     * @return the playerlist.
+     */
+    public static ArrayList<Player> getPlayerList() {
+    	return playerList;
+    }
 
     /**
      * The total amount of playable levels.

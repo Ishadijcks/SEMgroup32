@@ -91,6 +91,7 @@ public class NormalDriver extends Driver {
             if (curLevel.getBubbleList().size() == 0) {
                 canDrawGame = false;
                 gameScreen.levelWon();
+                game.gameWon();
             }
             checkGameLost();
             checkGameWon();

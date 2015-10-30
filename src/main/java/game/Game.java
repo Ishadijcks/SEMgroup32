@@ -98,6 +98,13 @@ public abstract class Game {
             currentLevel.getWallList().get(a).move();
         }
     }
+    
+    /**
+     * Handles game wonstate.
+     */
+    public void gameWon() {
+    	
+    }
 
     /**
      * Returns the currentLevel.
