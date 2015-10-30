@@ -114,7 +114,6 @@ public class DrawPlayer {
 
             painter.shootRope = false;
             Painter.addOnce = false;
-            System.out.println("no ropes");
             painter.ropeDurationCounter = 100;
         }
         slowDownCounter++;
@@ -223,7 +222,6 @@ public class DrawPlayer {
      */
     public void drawDragonSpittingFire() {
         if (shootRope && ropeDurationCounter > 40) {
-            System.out.println(ropeDurationCounter);
             if (dragonIsRight) {
                 ImageIcon dragonRightFire = new ImageIcon(imageLocation
                         + "src/main/Images/dragon/fireR" + fireRightCounter
