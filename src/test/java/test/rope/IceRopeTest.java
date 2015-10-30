@@ -2,7 +2,6 @@ package test.rope;
 
 import static org.junit.Assert.assertEquals;
 import game.IceRope;
-import game.Rope;
 import game.RopeFactory;
 
 import org.junit.Before;
