@@ -126,9 +126,7 @@ public abstract class Level {
      *            that is added
      */
     public void addWall(Wall wall) {
-        if (!wallList.contains(wall)) {
             wallList.add(wall);
-        }
     }
 
     /**
