@@ -47,12 +47,12 @@ public class PauseScreen extends JFrame {
      * @param game for the onclick action
      */
     public void addResumeButton(Game game) {
-        resumeButton = new JButton("Resume game");
+        resumeButton = new JButton("Resume");
         resumeButton.setBackground(Color.GRAY);
         resumeButton.setForeground(Color.WHITE);
         resumeButton.setFont(new Font("Calibri", Font.BOLD, 30));
         resumeButton.setOpaque(true);
-        resumeButton.setBounds(50, 90, 250, 50);
+        resumeButton.setBounds(50, 90, 200, 50);
         resumeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent playAgainGame) {
                 setVisible(false);
@@ -73,7 +73,7 @@ public class PauseScreen extends JFrame {
         stopButton.setForeground(Color.WHITE);
         stopButton.setFont(new Font("Calibri", Font.BOLD, 30));
         stopButton.setOpaque(true);
-        stopButton.setBounds(50, 150, 250, 50);
+        stopButton.setBounds(50, 150, 200, 50);
         add(stopButton);
         stopButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent closeScreen) {
