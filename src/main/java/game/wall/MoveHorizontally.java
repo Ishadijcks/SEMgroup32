@@ -1,6 +1,6 @@
 package game.wall;
 
-import helperobjects.Coordinates;
+import game.helperobjects.Coordinates;
 
 /**
  * Class that gives a wall a horizontal movement.

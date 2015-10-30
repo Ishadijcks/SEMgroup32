@@ -1,4 +1,4 @@
-package helperobjects;
+package game.helperobjects;
 
 /**
  * Class that will keep a combination of a height and a width element.

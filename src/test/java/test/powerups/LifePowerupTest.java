@@ -28,7 +28,7 @@ public class LifePowerupTest {
 	@Test
 	public void testExecuteEffect() {
 		Player p = new Player("", 0);
-		Game game = (new GameFactory()).createSinglePlayer(p);
+		Game game = GameFactory.createSinglePlayer(p);
 		int initLife = game.getLives();
 		pow.setGame(game);
 		pow.executeEffect();

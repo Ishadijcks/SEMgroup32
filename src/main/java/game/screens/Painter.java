@@ -267,6 +267,7 @@ public class Painter {
         shootRope = true;
         playerDrawer.shootRope = true;
         ropeDurationCounter--;
+        playerDrawer.ropeDurationCounter--;
 
         Color[] colors = getIceRopeColors();
         Stroke[] strokes = getBasicStrokes();

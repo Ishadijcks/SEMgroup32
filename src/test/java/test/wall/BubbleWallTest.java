@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import game.wall.NoMoveBubbleWall;
-import helperobjects.Coordinates;
+import game.helperobjects.Coordinates;
 
 import java.awt.Color;
 

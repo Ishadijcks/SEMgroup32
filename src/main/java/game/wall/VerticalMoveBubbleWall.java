@@ -1,6 +1,6 @@
 package game.wall;
 
-import helperobjects.Coordinates;
+import game.helperobjects.Coordinates;
 
 /**
  * Wall class of a bubble wall that can move vertical.

@@ -5,7 +5,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import game.wall.DuoWall;
 import game.wall.Wall;
-import helperobjects.Coordinates;
+import game.helperobjects.Coordinates;
 
 import java.awt.Color;
 

@@ -121,7 +121,6 @@ public class GameScreen extends JPanel {
      */
     @Override
     public void paint(Graphics graph) {
-        
         Driver.game.getCurrentLevel().getLeftMargin();
         Driver.game.getCurrentLevel().getTopMargin();
         g2d = (Graphics2D) graph;

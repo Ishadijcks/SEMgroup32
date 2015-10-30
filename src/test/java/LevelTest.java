@@ -12,7 +12,7 @@ import game.powerups.IcePowerup;
 import game.powerups.Powerup;
 import game.powerups.SpeedPowerup;
 import game.wall.DuoWall;
-import helperobjects.Coordinates;
+import game.helperobjects.Coordinates;
 
 import java.util.ArrayList;
 import java.util.Random;

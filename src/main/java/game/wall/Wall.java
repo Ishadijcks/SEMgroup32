@@ -1,7 +1,7 @@
 package game.wall;
 
-import helperobjects.Coordinates;
-import helperobjects.Dimensions;
+import game.helperobjects.Coordinates;
+import game.helperobjects.Dimensions;
 import java.awt.Color;
 
 /**

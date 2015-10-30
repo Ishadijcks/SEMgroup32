@@ -3,7 +3,7 @@ package test.wall;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import game.wall.PlayerWall;
-import helperobjects.Coordinates;
+import game.helperobjects.Coordinates;
 
 import java.awt.Color;
 
