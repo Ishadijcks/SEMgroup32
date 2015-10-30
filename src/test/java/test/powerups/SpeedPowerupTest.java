@@ -28,7 +28,7 @@ public class SpeedPowerupTest {
 	@Test
 	public void testExecuteEffect() {
 		Player p = new Player("", 0);
-		pow.setGame((new GameFactory()).createSinglePlayer(p));
+		pow.setGame(GameFactory.createSinglePlayer(p));
 		pow.executeEffect();
 		try {
 			Thread.sleep(100);

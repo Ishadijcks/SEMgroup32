@@ -11,7 +11,7 @@ import game.wall.HorizontalMoveBubbleWall;
 import game.wall.NoMoveBubbleWall;
 import game.wall.PlayerWall;
 import game.wall.VerticalMoveBubbleWall;
-import helperobjects.Coordinates;
+import game.helperobjects.Coordinates;
 
 import java.util.ArrayList;
 

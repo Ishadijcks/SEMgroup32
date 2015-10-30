@@ -249,6 +249,7 @@ public class LogScreen extends JFrame {
     private JPanel makeMainInnerPanel() {
         ArrayList<Integer> category = filters.getCategory();
         int severity = filters.getSeverity();
+        
         LinkedList<LogObject> ll = Logger.getFilteredLogs(category, severity);
         ArrayList<JPanel> jPanels = new ArrayList<JPanel>();
         for (int i = ll.size() - 1; i > -1; i--) {

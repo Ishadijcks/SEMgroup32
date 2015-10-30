@@ -1,4 +1,4 @@
-package helperobjects;
+package game.helperobjects;
 
 /**
  * Class that will keep a combination of a x-Coordinate and a y-Coordinate.

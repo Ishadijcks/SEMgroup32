@@ -33,10 +33,10 @@ public class SurvivalDriverTest {
 	
 	@Test
 	public void testCheckGameLost() {
-		assertFalse(driver.checkGameLost());
+		assertFalse(SurvivalDriver.checkGameLost());
 		assertTrue(Driver.game.inProgress());
 		Driver.game.setLives(0);
-		assertTrue(driver.checkGameLost());
+		assertTrue(SurvivalDriver.checkGameLost());
 	}
 
 }

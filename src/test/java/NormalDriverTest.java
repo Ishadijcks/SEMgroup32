@@ -29,7 +29,7 @@ public class NormalDriverTest {
 	@Test
 	public void testCheckGameWon() {
 		assertFalse(driver.checkGameWon());
-		Driver.game.setCurrentLevelInt(driver.game.getLevelList().size());
+		Driver.game.setCurrentLevelInt(Driver.game.getLevelList().size());
 		assertTrue(driver.checkGameWon());
 	}
 	
