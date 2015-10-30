@@ -20,7 +20,6 @@ public class NormalGame extends Game {
      * Function that advances the player to the next level or makes the player
      * win the whole game.
      */
-    @Override
     public void gameWon() {
         if (currentLevel <= levelList.size() + 2) {
             LevelCompletion.setLevelCompleted(currentLevel);
@@ -35,7 +34,6 @@ public class NormalGame extends Game {
 	/**
      * Ends the game and disposes the screen.
      */
-	@Override
     public void endGame() {
         this.setLives(0);
         this.toggleProgress();

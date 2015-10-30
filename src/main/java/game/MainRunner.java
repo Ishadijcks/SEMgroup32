@@ -79,6 +79,14 @@ public class MainRunner {
     public static StateManager getStateManager() {
         return stateMan;
     }
+    
+    /**
+     * Sets the statemanager for the mainrunner class.
+     * @param stateman that has to be set.
+     */
+    public static void setStateManager(StateManager stateman) {
+    	stateMan = stateman;
+    }
 
     /**
      * Sets the name of the player.

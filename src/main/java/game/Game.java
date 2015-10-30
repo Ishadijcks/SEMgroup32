@@ -159,14 +159,7 @@ public abstract class Game {
      * Reset the level if you lose a life.
      */
     public abstract void resetLevel();
-
-    /**
-     * Ends the game and disposes the screen.
-     */
-    public void endGame() {
-
-    }
-
+    
     /**
      * Method to control losing a life.
      */
@@ -211,13 +204,6 @@ public abstract class Game {
     public void pauseGame() {
     	toggleProgress();
         MainRunner.getStateManager().newState(new PauseGameState());
-    }
-
-    /**
-     * Checks if a game is won.
-     */
-    public void gameWon() {
-
     }
 
     /**

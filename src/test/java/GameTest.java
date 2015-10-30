@@ -2,10 +2,13 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import game.Level;
+import game.MainRunner;
+import game.NormalDriverFactory;
 import game.NormalGame;
 import game.NormalLevel;
 import game.NormalLevelFactory;
 import game.Player;
+import game.StateManager;
 
 import java.util.ArrayList;
 
@@ -137,6 +140,16 @@ public class GameTest {
         assertTrue(game.getLives() == 5);
         game.getLife();
         assertTrue(game.getLives() == 6);
+    }
+    
+    @Test
+    public void testPauseGame() {
+    	(new NormalDriverFactory()).buildDriver();
+    	StateManager sman = new StateManager();
+    	MainRunner.setStateManager(sman);
+    	assertFalse(game.inProgress());
+    	game.pauseGame();
+    	assertTrue(game.inProgress());
     }
 
 }
