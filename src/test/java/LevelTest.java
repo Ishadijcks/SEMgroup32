@@ -12,13 +12,10 @@ import game.powerups.IcePowerup;
 import game.powerups.Powerup;
 import game.powerups.SpeedPowerup;
 import game.wall.DuoWall;
-import game.wall.Wall;
 import helperobjects.Coordinates;
 
 import java.util.ArrayList;
 import java.util.Random;
-
-import javafx.scene.paint.Color;
 
 import org.junit.Before;
 import org.junit.Test;

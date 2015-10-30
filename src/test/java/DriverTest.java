@@ -40,8 +40,8 @@ public class DriverTest {
     
     @Test
     public void testSetTotalFrames() {
-    	assertTrue(driver.getTotalFrames() != 5);
-    	driver.setTotalFrames(5);
-    	assertTrue(driver.getTotalFrames() == 5);
+    	assertTrue(Driver.getTotalFrames() != 5);
+    	Driver.setTotalFrames(5);
+    	assertTrue(Driver.getTotalFrames() == 5);
     }
 }

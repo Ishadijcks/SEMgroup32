@@ -3,7 +3,6 @@ import static org.junit.Assert.assertTrue;
 import game.Level;
 import game.NormalLevelFactory;
 import game.Player;
-import game.SurvivalLevelFactory;
 
 import java.util.ArrayList;
 

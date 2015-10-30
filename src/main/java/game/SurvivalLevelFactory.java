@@ -21,7 +21,7 @@ public class SurvivalLevelFactory {
      *            the list of players to use
      */
     public SurvivalLevelFactory(ArrayList<Player> pList) {
-        this.playerList = pList;
+        SurvivalLevelFactory.playerList = pList;
     }
 
     /**
